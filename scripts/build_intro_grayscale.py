@@ -46,16 +46,18 @@ def embed_image(photo, x, y, width, height):
 
 
 def build_intro_grayscale():
-    """Draw photo → plain numbers → the same values mapped to brightness."""
+    """Draw equal-size photo → plain digits → digits colored by pixel value."""
     grayscale, values = grayscale_images()
-    photo_x, table_x, pixel_x = 20, 292, 748
-    panel_y, panel_width, panel_height = 94, 432, 288
+    photo_x, table_x, pixel_x = 20, 420, 820
+    panel_y, panel_width, panel_height = 112, 360, 240
     cell_width = panel_width / IMAGE_COLUMNS
     cell_height = panel_height / IMAGE_ROWS
-    content = label(130, 53, "흑백 사진 · 1채널", 24, BLUE, "middle", True)
-    content += label(508, 53, "컴퓨터가 받는 숫자", 25, BLUE, "middle", True)
-    content += label(964, 53, "숫자를 밝기로 표현", 25, BLUE, "middle", True)
-    content += embed_image(grayscale, photo_x, 165, 220, 220*2/3)
+    content = label(200, 70, "흑백 사진 · 1채널", 25, BLUE, "middle", True)
+    content += label(600, 70, "순수 숫자 배열", 25, BLUE, "middle", True)
+    content += label(1000, 70, "숫자에 밝기를 적용", 25, BLUE, "middle", True)
+    content += embed_image(
+        grayscale, photo_x, panel_y, panel_width, panel_height
+    )
     # Equal physical panels and equal row/column spacing; numeric background
     # stays completely white and all digits have the same ink color.
     for x in [table_x, pixel_x]:
@@ -63,41 +65,46 @@ def build_intro_grayscale():
             f'<rect x="{x}" y="{panel_y}" width="{panel_width}" '
             f'height="{panel_height}" fill="white" stroke="#cbd5e1"/>'
         )
-    content += '<g font-size="4.5" fill="#17243b" text-anchor="middle">'
+    content += '<g id="plain-digits" font-size="4" fill="#000000" text-anchor="middle">'
     for row in range(IMAGE_ROWS):
         for column in range(IMAGE_COLUMNS):
             x = table_x + (column + .5)*cell_width
-            y = panel_y + (row + .5)*cell_height + 1.6
+            y = panel_y + (row + .5)*cell_height + 1.4
             value = int(values[row, column])
             content += f'<text x="{x}" y="{y}">{value}</text>'
     content += '</g>'
-    pixel_buffer = io.BytesIO()
-    Image.fromarray(values).save(pixel_buffer, format="PNG", optimize=True)
-    pixel_data = base64.b64encode(pixel_buffer.getvalue()).decode("ascii")
-    content += (
-        f'<image x="{pixel_x}" y="{panel_y}" width="{panel_width}" '
-        f'height="{panel_height}" style="image-rendering:pixelated" '
-        f'xlink:href="data:image/png;base64,{pixel_data}"/>'
-    )
-    for x1, x2 in [(253, 280), (728, 741)]:
+    # Only the glyph fill changes. No bitmap, shaded cell or photo overlay
+    # exists in the right panel. Whitespace remains white in both arrays.
+    content += '<g id="brightness-digits" font-size="4" text-anchor="middle">'
+    for row in range(IMAGE_ROWS):
+        for column in range(IMAGE_COLUMNS):
+            x = pixel_x + (column + .5)*cell_width
+            y = panel_y + (row + .5)*cell_height + 1.4
+            value = int(values[row, column])
+            content += (
+                f'<text x="{x}" y="{y}" fill="rgb({value},{value},{value})">'
+                f'{value}</text>'
+            )
+    content += '</g>'
+    for x1, x2 in [(386, 412), (786, 812)]:
         content += (
-            f'<path d="M{x1} 238 H{x2}" stroke="{BLUE}" '
+            f'<path d="M{x1} 232 H{x2}" stroke="{BLUE}" '
             'stroke-width="2" marker-end="url(#arrow)"/>'
         )
-    content += label(130, 415, "앞 장과 같은 사진", 22, MUTED, "middle")
-    content += label(508, 415, "32행 × 48열 = 1,536개 값", 22, MUTED, "middle")
-    content += label(964, 415, "같은 행·열의 값을 밝기로 표시", 22, MUTED, "middle")
-    content += box(20, 444, 1160, 44, "#f2f6fa")
-    content += label(600, 474, "0 = 검정  ·  255 = 흰색  ·  숫자가 클수록 밝습니다", 24, BLUE, "middle")
+    content += label(200, 392, "앞 장과 같은 사진", 22, MUTED, "middle")
+    content += label(600, 392, "32행 × 48열 = 1,536개 값", 22, MUTED, "middle")
+    content += label(1000, 392, "같은 숫자 · 글자색만 변화", 22, MUTED, "middle")
+    content += box(20, 426, 1160, 54, "#f2f6fa")
+    content += label(600, 460, "숫자 0은 검정 글자, 255는 흰 글자  ·  각 숫자가 자신의 밝기를 나타냅니다", 23, BLUE, "middle")
     svg = (
         '<svg xmlns="http://www.w3.org/2000/svg" '
         'xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1200 500" '
         'font-family="Noto Sans CJK KR, Malgun Gothic, sans-serif" '
         'role="img" aria-labelledby="title desc">'
-        '<title id="title">흑백 사진, 48×32 숫자 배열, 밝기 영상의 대응</title>'
+        '<title id="title">동일한 크기의 흑백 사진, 숫자 배열, 밝기 숫자 그림</title>'
         '<desc id="desc">사과 사진을 48열 32행으로 축소해 얻은 1536개 밝기 '
-        '값을 중앙에 검정 숫자로 표시합니다. 오른쪽 영상은 같은 값과 같은 '
-        '행·열의 위치를 밝기로 표시합니다. 두 패널의 크기는 같습니다.</desc>'
+        '값을 중앙에 검정 숫자로 표시합니다. 오른쪽도 같은 숫자로만 구성하며 '
+        '값 v의 글자색은 RGB(v,v,v)입니다. 세 패널은 360×240으로 같습니다.</desc>'
         f'<defs><marker id="arrow" markerWidth="6" markerHeight="6" refX="5" '
         f'refY="3" orient="auto"><path d="M0 0 L6 3 L0 6Z" fill="{BLUE}"/>'
         '</marker></defs><rect width="1200" height="500" fill="white"/>'
