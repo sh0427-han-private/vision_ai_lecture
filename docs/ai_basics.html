@@ -301,7 +301,7 @@
 <h2 class="slide-title">불량이 적을수록 학습과 평가를 함께 점검합니다</h2>
 <p class="slide-subtitle">정상 95장·불량 5장처럼 Class 수가 다르면 소수 Class의 오류가 가려질 수 있습니다.</p>
 <figure class="lesson-figure"><a href="assets/lesson/survey_class_imbalance.svg?v=survey-20261006-1" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/survey_class_imbalance.svg?v=survey-20261006-1" alt="불량이 적을수록 학습과 평가를 함께 점검합니다"></a></figure>
-<p class="lesson-takeaway">Test를 인위적으로 균형화하지 않고 운영 분포에서 확인합니다. 불량 Recall뿐 아니라 Precision과 오알람도 함께 봅니다.</p><details class="lesson-reference"><summary>출처 · 근거</summary><div>참고: <a href="https://link.springer.com/article/10.1186/s40537-021-00444-8" target="_blank" rel="noopener">Alzubaidi et al. (2021) · Imbalanced data</a> · <a href="https://docs.pytorch.org/docs/stable/generated/torch.nn.CrossEntropyLoss.html" target="_blank" rel="noopener">클래스별 Loss 가중치</a> · 강의용 재구성</div></details></div></section>
+<p class="lesson-takeaway">Accuracy는 전체 정답률, F1은 Precision·Recall의 조화평균입니다. Test는 운영 분포를 유지하고 불량 Recall·Precision·오알람을 함께 봅니다.</p><details class="lesson-reference"><summary>출처 · 근거</summary><div>참고: <a href="https://link.springer.com/article/10.1186/s40537-021-00444-8" target="_blank" rel="noopener">Alzubaidi et al. (2021) · Imbalanced data</a> · <a href="https://docs.pytorch.org/docs/stable/generated/torch.nn.CrossEntropyLoss.html" target="_blank" rel="noopener">클래스별 Loss 가중치</a> · 강의용 재구성</div></details></div></section>
 <section class="slide" data-topic="Shortcut Learning" data-level="basic">
 <div class="slide-inner"><div class="lesson-meta"><span>42 · Shortcut Learning</span>
 <span class="lesson-level">핵심 개념</span></div>
