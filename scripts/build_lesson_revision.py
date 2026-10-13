@@ -874,9 +874,11 @@ def build_lessons():
     for folder,key in [("02_ai_basics","ai_basics"),("03_vision_ai","vision_ai")]:
         note=REPO_DIR / "lectures" / folder / "README.md"
         previous=note.read_text(encoding="utf-8")
-        if "## 2026-10-06 배포 슬라이드 순서" in previous:
-            previous=previous.split("## 2026-10-06 배포 슬라이드 순서")[0].rstrip()+"\n"
-        previous+="\n## 2026-10-06 배포 슬라이드 순서\n\n현재 배포 HTML의 순서는 아래를 기준으로 합니다. 상세 설명은 관련 개념 바로 뒤에 배치합니다. 앞의 개념 노트는 참고용입니다.\n\n"
+        for old_heading in ("## 2026-10-06 배포 슬라이드 순서", "## 2026-10-13 배포 슬라이드 순서"):
+            if old_heading in previous:
+                previous=previous.split(old_heading)[0].rstrip()+"\n"
+                break
+        previous+="\n## 2026-10-13 배포 슬라이드 순서\n\n현재 배포 HTML의 순서는 아래를 기준으로 합니다. 상세 설명은 관련 개념 바로 뒤에 배치합니다. 앞의 개념 노트는 참고용입니다.\n\n"
         for item in manifest[key]:
             previous+=f"{item['number']}. {item['title']} ({'상세' if item['level']=='detail' else '기본'})\n"
         previous+="\n계산·숫자·Tensor 구조 그림은 `scripts/build_lesson_revision.py`에서 생성하며, 외부 이미지 서버나 CDN을 사용하지 않습니다.\n"
