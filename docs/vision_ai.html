@@ -156,7 +156,7 @@
 <span class="lesson-level lesson-level--detail">상세 설명</span></div>
 <h2 class="slide-title">같은 위치끼리 곱하고 더해 출력 한 칸을 만듭니다</h2>
 <p class="slide-subtitle">입력의 3×3 영역과 필터를 곱해 합산하고, 필터를 옮겨 다음 칸을 계산합니다. 모든 출력은 실제 계산한 값입니다.</p>
-<figure class="lesson-figure"><a href="assets/lesson/lesson_convolution_calculated.svg?v=pedagogic-20261013-1" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/lesson_convolution_calculated.svg?v=pedagogic-20261013-1" alt="같은 위치끼리 곱하고 더해 출력 한 칸을 만듭니다"></a></figure>
+<figure class="lesson-figure"><a href="assets/lesson/lesson_convolution_calculated.svg?v=pedagogic-20261013-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/lesson_convolution_calculated.svg?v=pedagogic-20261013-2" alt="같은 위치끼리 곱하고 더해 출력 한 칸을 만듭니다"></a></figure>
 <p class="lesson-takeaway">이 장은 한 채널·Bias 0 예시입니다. 일반적인 딥러닝 Conv는 필터를 뒤집지 않는 Cross-correlation 연산입니다.</p><details class="lesson-reference"><summary>출처 · 근거</summary><div>개념 참고: <a href="https://cs231n.github.io/convolutional-networks/" target="_blank" rel="noopener">Stanford CS231n</a> · 직접 재구성한 설명용 Figure</div></details></div></section>
 <section class="slide" data-topic="Feature Map" data-level="basic">
 <div class="slide-inner"><div class="lesson-meta"><span>21 · Feature Map</span>
@@ -170,7 +170,7 @@
 <span class="lesson-level lesson-level--detail">상세 설명</span></div>
 <h2 class="slide-title">RGB 전체를 보는 필터 하나가 출력 Channel 하나를 만듭니다</h2>
 <p class="slide-subtitle">일반적인 Conv2d에서 필터 하나는 입력 Channel 전체를 곱해 합산합니다. 출력 Channel 수는 필터 수입니다.</p>
-<figure class="lesson-figure"><a href="assets/lesson/lesson_multichannel_filter_to_maps.svg?v=pedagogic-20261013-1" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/lesson_multichannel_filter_to_maps.svg?v=pedagogic-20261013-1" alt="RGB 전체를 보는 필터 하나가 출력 Channel 하나를 만듭니다"></a></figure>
+<figure class="lesson-figure"><a href="assets/lesson/lesson_multichannel_filter_to_maps.svg?v=pedagogic-20261013-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/lesson_multichannel_filter_to_maps.svg?v=pedagogic-20261013-2" alt="RGB 전체를 보는 필터 하나가 출력 Channel 하나를 만듭니다"></a></figure>
 <p class="lesson-takeaway">3×3×3 필터 64개라면 가중치 1,728개와 Bias 64개이며, Stride 1·Padding 1의 출력은 224×224×64입니다.</p><details class="lesson-reference"><summary>출처 · 근거</summary><div>개념 참고: <a href="https://cs231n.github.io/convolutional-networks/" target="_blank" rel="noopener">Stanford CS231n</a> · 직접 재구성한 설명용 Figure</div></details></div></section>
 <section class="slide" data-topic="Stride" data-level="basic">
 <div class="slide-inner"><div class="lesson-meta"><span>23 · Stride</span>
