@@ -4874,3 +4874,36 @@ body.deck-page {
     padding: 10px 14px;
   }
 }
+
+/* 2026-10-13 teaching QA round 4: retain image size while stopping Intro
+   text from being reduced by whole-slide zoom in 1366×768 classrooms. */
+@media (min-width: 901px) and (min-height: 700px) and (max-height: 850px) {
+  body[data-next-page="ai_basics.html"] .slide .figure--generated-lecture img {
+    max-height: min(52dvh, 410px);
+  }
+  body[data-next-page="ai_basics.html"] .perspective-photo-card img {
+    height: min(43dvh, 345px);
+  }
+  body[data-next-page="ai_basics.html"] .perspective-example-layout {
+    margin-top: 7px; gap: 12px;
+  }
+  body[data-next-page="ai_basics.html"] .perspective-explain-stack {
+    gap: 6px;
+  }
+  body[data-next-page="ai_basics.html"] .perspective-explain-stack article {
+    padding: 9px 12px; gap: 4px;
+  }
+  body[data-next-page="ai_basics.html"] .sensor-life-trio {
+    gap: 12px; margin-top: 6px;
+  }
+  body[data-next-page="ai_basics.html"] .sensor-life-crop,
+  body[data-next-page="ai_basics.html"] .sensor-life-image {
+    aspect-ratio: 1.34 / 1;
+  }
+  body[data-next-page="ai_basics.html"] .sensor-life-visual-body {
+    padding: 8px 12px 9px; gap: 5px;
+  }
+  body[data-next-page="ai_basics.html"] .sensor-life-message {
+    margin-top: 7px; padding: 8px 12px;
+  }
+}
