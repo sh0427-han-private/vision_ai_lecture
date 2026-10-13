@@ -156,22 +156,22 @@
 <span class="lesson-level lesson-level--detail">상세 설명</span></div>
 <h2 class="slide-title">같은 위치끼리 곱하고 더해 출력 한 칸을 만듭니다</h2>
 <p class="slide-subtitle">입력의 3×3 영역과 필터를 곱해 합산하고, 필터를 옮겨 다음 칸을 계산합니다. 모든 출력은 실제 계산한 값입니다.</p>
-<figure class="lesson-figure"><a href="assets/lesson/convolution_detail.svg?v=professional-20261006-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/convolution_detail.svg?v=professional-20261006-2" alt="같은 위치끼리 곱하고 더해 출력 한 칸을 만듭니다"></a></figure>
+<figure class="lesson-figure"><a href="assets/lesson/lesson_convolution_calculated.svg?v=pedagogic-20261013-1" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/lesson_convolution_calculated.svg?v=pedagogic-20261013-1" alt="같은 위치끼리 곱하고 더해 출력 한 칸을 만듭니다"></a></figure>
 <p class="lesson-takeaway">이 장은 한 채널·Bias 0 예시입니다. 일반적인 딥러닝 Conv는 필터를 뒤집지 않는 Cross-correlation 연산입니다.</p><details class="lesson-reference"><summary>출처 · 근거</summary><div>개념 참고: <a href="https://cs231n.github.io/convolutional-networks/" target="_blank" rel="noopener">Stanford CS231n</a> · 직접 재구성한 설명용 Figure</div></details></div></section>
 <section class="slide" data-topic="Feature Map" data-level="basic">
 <div class="slide-inner"><div class="lesson-meta"><span>21 · Feature Map</span>
 <span class="lesson-level">기본 개념</span></div>
 <h2 class="slide-title">반응값을 위치대로 모으면 특징 지도가 됩니다</h2>
-<p class="slide-subtitle">서로 다른 필터는 서로 다른 위치에서 반응합니다. 여러 반응 지도를 쌓은 것이 출력 Channel(채널)입니다.</p>
-<figure class="lesson-figure"><a href="assets/lesson/feature_basic.svg?v=professional-20261006-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/feature_basic.svg?v=professional-20261006-2" alt="반응값을 위치대로 모으면 특징 지도가 됩니다"></a></figure>
-<p class="lesson-takeaway">이 그림은 설명용 예시입니다. 실제 학습된 Channel의 의미는 항상 사람이 이름 붙일 수 있지는 않습니다.</p></div></section>
+<p class="slide-subtitle">직전 Convolution에서 계산한 3×3 출력값을 동일한 위치에 배치합니다. 양수·음수의 반응 강도를 색으로 비교합니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/lesson_featuremap_numeric_continuation.svg?v=pedagogic-20261013-1" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/lesson_featuremap_numeric_continuation.svg?v=pedagogic-20261013-1" alt="반응값을 위치대로 모으면 특징 지도가 됩니다"></a></figure>
+<p class="lesson-takeaway">Feature Map은 한 필터의 위치별 반응입니다. 이 예시에는 활성화 함수(ReLU)를 적용하지 않아 음수도 남아 있습니다.</p></div></section>
 <section class="slide" data-topic="Feature Map과 Channel" data-level="detail">
 <div class="slide-inner"><div class="lesson-meta"><span>22 · Feature Map과 Channel</span>
 <span class="lesson-level lesson-level--detail">상세 설명</span></div>
 <h2 class="slide-title">RGB 전체를 보는 필터 하나가 출력 Channel 하나를 만듭니다</h2>
 <p class="slide-subtitle">일반적인 Conv2d에서 필터 하나는 입력 Channel 전체를 곱해 합산합니다. 출력 Channel 수는 필터 수입니다.</p>
-<figure class="lesson-figure"><a href="assets/lesson/feature_detail.svg?v=professional-20261006-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/feature_detail.svg?v=professional-20261006-2" alt="RGB 전체를 보는 필터 하나가 출력 Channel 하나를 만듭니다"></a></figure>
-<p class="lesson-takeaway">224×224×3 입력, 64개 필터, Stride 1·Padding 1이면 224×224×64가 됩니다.</p><details class="lesson-reference"><summary>출처 · 근거</summary><div>개념 참고: <a href="https://cs231n.github.io/convolutional-networks/" target="_blank" rel="noopener">Stanford CS231n</a> · 직접 재구성한 설명용 Figure</div></details></div></section>
+<figure class="lesson-figure"><a href="assets/lesson/lesson_multichannel_filter_to_maps.svg?v=pedagogic-20261013-1" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/lesson_multichannel_filter_to_maps.svg?v=pedagogic-20261013-1" alt="RGB 전체를 보는 필터 하나가 출력 Channel 하나를 만듭니다"></a></figure>
+<p class="lesson-takeaway">3×3×3 필터 64개라면 가중치 1,728개와 Bias 64개이며, Stride 1·Padding 1의 출력은 224×224×64입니다.</p><details class="lesson-reference"><summary>출처 · 근거</summary><div>개념 참고: <a href="https://cs231n.github.io/convolutional-networks/" target="_blank" rel="noopener">Stanford CS231n</a> · 직접 재구성한 설명용 Figure</div></details></div></section>
 <section class="slide" data-topic="Stride" data-level="basic">
 <div class="slide-inner"><div class="lesson-meta"><span>23 · Stride</span>
 <span class="lesson-level">기본 개념</span></div>
