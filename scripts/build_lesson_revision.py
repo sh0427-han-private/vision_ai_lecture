@@ -697,8 +697,8 @@ def build_deck(filename, title, subtitle, cards, lessons, prev_page, next_page="
 <link rel="stylesheet" href="lesson.css?v={VERSION}">
 <script src="slide.js?v=generatedfigfit-20260927-27" defer></script>
 </head><body class="deck-page lesson-deck" data-prev-page="{prev_page}" data-next-page="{next_page}">
-<header class="site-header"><nav class="nav"><a class="brand" href="intro.html">Vision AI</a>
-<div class="nav-links"><a href="intro.html">01 Intro</a><a href="ai_basics.html">02 AI Basics</a>
+<header class="site-header"><nav class="nav"><a class="brand" href="index.html">Vision AI</a>
+<div class="nav-links"><a href="index.html">목차</a><a href="intro.html">01 Intro</a><a href="ai_basics.html">02 AI Basics</a>
 <a href="vision_ai.html">03 Vision AI</a></div></nav></header>
 <main class="deck" aria-live="polite">
 <section class="slide active"><div class="slide-inner">
@@ -866,6 +866,7 @@ def build_lessons():
     for asset in ASSET_DIR.glob("*.svg"):
         if asset.name not in used and asset.name not in {
             "lecture_rgb_channel_stack.svg",
+            "lecture_noise_outlier.svg",
             "lecture_2d_brightness_surface.svg",
         }:
             asset.unlink()
