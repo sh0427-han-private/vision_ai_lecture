@@ -53,7 +53,7 @@
       "topic": "Perceptron",
       "level": "basic",
       "title": "입력마다 가중치를 곱하고, 더해서 하나의 판정을 만듭니다",
-      "asset": "assets/lesson/perceptron_basic.svg"
+      "asset": "assets/lesson/lesson_perceptron_numeric_flow.svg"
     },
     {
       "number": 8,
@@ -81,7 +81,7 @@
       "topic": "AND와 XOR",
       "level": "basic",
       "title": "하나의 직선으로 나눌 수 없는 문제도 있습니다",
-      "asset": "assets/lesson/and_xor.svg"
+      "asset": "assets/lesson/lesson_and_xor_separability.svg"
     },
     {
       "number": 12,
@@ -447,21 +447,21 @@
       "topic": "Convolution",
       "level": "detail",
       "title": "같은 위치끼리 곱하고 더해 출력 한 칸을 만듭니다",
-      "asset": "assets/lesson/convolution_detail.svg"
+      "asset": "assets/lesson/lesson_convolution_calculated.svg"
     },
     {
       "number": 21,
       "topic": "Feature Map",
       "level": "basic",
       "title": "반응값을 위치대로 모으면 특징 지도가 됩니다",
-      "asset": "assets/lesson/feature_basic.svg"
+      "asset": "assets/lesson/lesson_featuremap_numeric_continuation.svg"
     },
     {
       "number": 22,
       "topic": "Feature Map과 Channel",
       "level": "detail",
       "title": "RGB 전체를 보는 필터 하나가 출력 Channel 하나를 만듭니다",
-      "asset": "assets/lesson/feature_detail.svg"
+      "asset": "assets/lesson/lesson_multichannel_filter_to_maps.svg"
     },
     {
       "number": 23,
