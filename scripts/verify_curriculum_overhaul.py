@@ -255,3 +255,32 @@ assert "직전 Convolution" not in (
     DOCS / "assets/lesson/lesson_featuremap_numeric_continuation.svg"
 ).read_text("utf-8")
 print("Core-course narrative continuity: skipped-advanced references verified.")
+
+
+# Important number- and structure-heavy figures must have useful descriptions
+# rather than just repeat their slide titles.
+accessible_figures = (
+    "lesson_perceptron_numeric_flow",
+    "lesson_and_xor_separability",
+    "lesson_relu_value_graph",
+    "lesson_video_group_split_comparison",
+    "lesson_confusion_100cases",
+    "lesson_precision_recall_sharedcase",
+    "lesson_accuracy_f1_same100",
+    "lesson_featuremap_numeric_continuation",
+    "lesson_backbone_head_roles",
+    "lesson_receptive_field_growth",
+    "lesson_transfer_freeze_vs_finetune",
+    "lesson_cnn_feature_hierarchy",
+)
+joined_lessons = (
+    (DOCS / "ai_basics.html").read_text("utf-8")
+    + (DOCS / "vision_ai.html").read_text("utf-8")
+)
+for basename in accessible_figures:
+    match = re.search(
+        rf'<img src="assets/lesson/{basename}\\.svg\\?v=[^"]+" alt="([^"]+)"',
+        joined_lessons
+    )
+    assert match and len(html.unescape(match.group(1))) >= 35, basename
+print("Descriptive alt text on 12 key instructional figures verified.")
