@@ -118,3 +118,11 @@ Prediction
 - Noise 개념 직후 3×3 예시로 정상 중앙값 100이 255로 변하는 점 잡음(Impulse noise)을 소개하고, Spatial Filtering으로 이어지는 질문을 제시합니다.
 - 신규 파일: `docs/assets/lesson/lecture_2d_brightness_surface.svg`, `lecture_rgb_channel_stack.svg`, `lecture_noise_outlier.svg`.
 - 이미지/숫자 예시는 설명용 합성 도식이며, 깊이 추정 모델의 결과로 제시하지 않습니다.
+
+
+## 2026-10-13 전체 강의 개편 반영
+
+- Intro 3의 글자 크기 4px 수준인 1,536개 숫자 도식은 메인 화면에서 제외하고, 원래 48×32 grayscale 이미지로부터 같은 위치의 6×6 (36개) 수치와 밝기 셀을 추출해 일대일 대응시켰습니다.
+- 밝기 기반 3D 표면 도식은 RGB Channel 설명 뒤로 이동해 실제 Depth 센서와 구분했습니다.
+- 입문부의 점 노이즈 문제 제기는 Intro에 남기고, Vision AI의 중복된 소개는 제거해 계산 단계에서 이어지도록 정리했습니다.
+- 이 SVG 확대는 실제 픽셀 표본이며, AI 모델 예측·분할의 성능 측정이 아닙니다.
