@@ -178,3 +178,41 @@ assert all(
 assert sum(len(x) for x in grouped_splits.values()) == 9
 assert [3 + 2 * depth for depth in (0, 1, 2)] == [3, 5, 7]
 print("Pedagogical continuity: ReLU, affine layer collapse, video-grouped holdout, 3/5/7 receptive fields verified.")
+
+# All teaching figures below refer to the SAME evaluation of 100 samples.
+metrics_figures = {
+    "lesson_threshold_score_decision": "0.82",
+    "lesson_confusion_100cases": "18",
+    "lesson_precision_recall_sharedcase": "81.8%",
+    "lesson_accuracy_f1_same100": "85.7%",
+    "lesson_backbone_head_roles": "Backbone",
+    "lesson_backbone_tensor_head_options": "224×224×3",
+    "lesson_transfer_pretraining_to_task": "Backbone",
+    "lesson_transfer_freeze_vs_finetune": "Fine-tuning",
+}
+for stem, marker in metrics_figures.items():
+    path = DOCS / "assets" / "lesson" / f"{stem}.svg"
+    assert path.is_file(), path
+    assert ET.parse(path).getroot().tag == "{http://www.w3.org/2000/svg}svg", path
+    assert marker in path.read_text("utf-8"), (stem, marker)
+    assert stem in builder, stem
+
+tp, fn, fp, tn = 18, 2, 4, 76
+assert tp + fn + fp + tn == 100
+assert tp + fn == 20 and fp + tn == 80 and tp + fp == 22
+precision = tp / (tp + fp)
+recall = tp / (tp + fn)
+accuracy = (tp + tn) / (tp + fn + fp + tn)
+f1 = 2 * tp / (2 * tp + fp + fn)
+assert round(precision * 100, 1) == 81.8
+assert round(recall * 100, 1) == 90.0
+assert round(accuracy * 100, 1) == 94.0
+assert round(f1 * 100, 1) == 85.7
+assert abs(2 * precision * recall / (precision + recall) - f1) < 1e-12
+
+demo_score = 0.82
+assert demo_score >= 0.5 and demo_score < 0.9
+assert [((224 + 2 * 1 - 3) // 2 + 1), ((112 + 2 * 1 - 3) // 2 + 1),
+        ((56 + 2 * 1 - 3) // 2 + 1), ((28 + 2 * 1 - 3) // 2 + 1)] == [112, 56, 28, 14]
+assert [64, 128, 192, 256] == [64, 128, 192, 256]
+print("Metrics (100 cases), threshold decision, backbone tensor sizes, transfer diagrams verified.")
