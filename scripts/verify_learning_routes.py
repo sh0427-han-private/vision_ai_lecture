@@ -92,6 +92,23 @@ def main() -> None:
         check(page.locator("[data-slide-total]").inner_text() == "28",
               "core mode lost at AI -> Vision handoff")
 
+        # New essential-route regression tests: these lessons must not
+        # refer to advanced slides skipped by mode=core.
+        for physical_slide, filename, banned in [
+            (14, "median", "다음 장"),
+            (22, "feature_map", "직전"),
+        ]:
+            page.goto(f"{BASE}/vision_ai.html?mode=core#slide-{physical_slide}")
+            wait_slide(page, physical_slide)
+            subtitle = page.locator(".slide.active .slide-subtitle").inner_text()
+            check(banned not in subtitle,
+                  f"vision_ai slide {physical_slide} still depends on skipped detail")
+            page.screenshot(
+                path=str(__import__("pathlib").Path(__file__).resolve().parents[1]
+                         / "visual_audit_output" / f"core_continuity_{filename}.jpg"),
+                type="jpeg", quality=80
+            )
+
         browser.close()
         print("CORE_FULL_LEARNING_ROUTE_QA_PASSED: Intro15 + AI36 + Vision28 = 79")
         print("FULL_ROUTE_LENGTH: Intro15 + AI44 + Vision40 = 99")
