@@ -423,10 +423,10 @@
     },
     {
       "number": 17,
-      "topic": "이미지의 단서",
+      "topic": "고정 필터와 학습 필터",
       "level": "basic",
-      "title": "작은 영역의 경계·밝기 변화를 먼저 살펴봅니다",
-      "asset": "assets/lesson/cnn_local_basic.svg"
+      "title": "Spatial Filtering의 Kernel 개념은 CNN으로 연결됩니다",
+      "asset": "assets/lesson/lecture_filter_to_cnn_bridge.svg"
     },
     {
       "number": 18,
