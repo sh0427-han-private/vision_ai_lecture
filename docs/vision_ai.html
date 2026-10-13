@@ -151,13 +151,20 @@
 <p class="slide-subtitle">Kernel 또는 Filter(커널·필터)는 작은 가중치 배열입니다. 세로 밝기 변화가 있는 영역과 평평한 영역의 반응을 비교합니다.</p>
 <figure class="lesson-figure"><a href="assets/lesson/kernel_basic.svg?v=professional-20261006-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/kernel_basic.svg?v=professional-20261006-2" alt="같은 필터도 이미지 영역에 따라 반응이 달라집니다"></a></figure>
 <p class="lesson-takeaway">그림은 사람이 정한 경계 필터 예시입니다. CNN의 필터 값은 학습으로 정해집니다.</p></div></section>
-<section class="slide" data-topic="Convolution" data-level="detail">
-<div class="slide-inner"><div class="lesson-meta"><span>20 · Convolution</span>
-<span class="lesson-level lesson-level--detail">심화 학습</span></div>
-<h2 class="slide-title">같은 위치끼리 곱하고 더해 출력 한 칸을 만듭니다</h2>
-<p class="slide-subtitle">입력의 3×3 영역과 필터를 곱해 합산하고, 필터를 옮겨 다음 칸을 계산합니다. 모든 출력은 실제 계산한 값입니다.</p>
-<figure class="lesson-figure"><a href="assets/lesson/lesson_convolution_calculated.svg?v=pedagogic-20261013-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/lesson_convolution_calculated.svg?v=pedagogic-20261013-2" alt="같은 위치끼리 곱하고 더해 출력 한 칸을 만듭니다"></a></figure>
-<p class="lesson-takeaway">이 장은 한 채널·Bias 0 예시입니다. 일반적인 딥러닝 Conv는 필터를 뒤집지 않는 Cross-correlation 연산입니다.</p><details class="lesson-reference"><summary>출처 · 근거</summary><div>개념 참고: <a href="https://cs231n.github.io/convolutional-networks/" target="_blank" rel="noopener">Stanford CS231n</a> · 직접 재구성한 설명용 Figure</div></details></div></section>
+<section class="slide ppt-replaced" data-topic="Convolution" data-level="detail">
+<div class="slide-inner ppt-slide-inner">
+  <div class="ppt-screenreader-only">
+    <div class="lesson-meta"><span>20 · Convolution</span><span class="lesson-level lesson-level--detail">심화 학습</span></div>
+    <h2 class="slide-title">같은 위치끼리 곱하고 더해 출력 한 칸을 만듭니다</h2>
+    <p class="slide-subtitle">5×5 입력의 3×3 영역과 필터를 위치별로 곱하고 더합니다. 첫 위치의 결과는 −6이며 Kernel을 이동해 3×3 Feature Map을 만듭니다.</p>
+    <p class="lesson-takeaway">Stride 1, Padding 0, Bias 0인 CNN식 Cross-correlation 예시입니다. ReLU를 적용하지 않아 음수가 남습니다.</p>
+  </div>
+  <figure class="ppt-slide-figure lesson-figure">
+    <a href="assets/ppt_slides/vision_ai_convolution_ppt.svg?v=ppt-source-20261013-1" target="_blank" rel="noopener" title="Convolution 강의 슬라이드 크게 보기">
+      <img src="assets/ppt_slides/vision_ai_convolution_ppt.svg?v=ppt-source-20261013-1" alt="입력 5×5의 왼쪽 위 3×3을 강조하고 가중치 1·0·−1의 Kernel과 곱해 세 행 모두 −2를 얻습니다. 합계 −6을 출력 첫 칸에 기록하고, 필터를 한 칸씩 옮겨 −6 12 16 / −6 8 15 / −4 2 7의 출력 Feature Map을 만듭니다.">
+    </a>
+  </figure>
+</div></section>
 <section class="slide" data-topic="Feature Map" data-level="basic">
 <div class="slide-inner"><div class="lesson-meta"><span>21 · Feature Map</span>
 <span class="lesson-level">핵심 개념</span></div>
