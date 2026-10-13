@@ -325,3 +325,13 @@ https://www.nature.com/articles/s42256-020-00257-z
 - 오른쪽의 각 값 v는 글자색 RGB(v,v,v)로 표시합니다. 배경은 흰색이며 셀 채움이나 사진/Pixel PNG를 겹치지 않습니다. 수치는 그대로이고 글자색만 바뀝니다.
 - 이전 PNG 밝기 영상 구현은 교체되었습니다. 0은 검정, 255는 흰색 글자입니다. 높은 값의 글자는 흰 배경에 가까워 옅게 보입니다.
 - 실제 사진에서 계산한 밝기 값의 시각화이며 모델 실험 결과가 아닙니다. 확대 링크로 각 숫자를 확인할 수 있습니다.
+
+
+## Pixel·Noise·Spatial Filtering 신규 도식 (2026-10-13)
+
+- 참고 강의: Brown University CSCI1430, *Image Filtering* (2020) — https://cs.brown.edu/courses/csci1430/2020_Spring/lectures/2020Spring_02_ImageFiltering.pdf. 제공 PDF의 원문 페이지는 이번 작업에서 직접 열람·대조하지 못했으며, 수업 주제와 학습 흐름의 참고 자료입니다.
+- 계산/개념 확인: OpenCV Filtering https://docs.opencv.org/4.x/d4/d13/tutorial_py_filtering.html · OpenCV Gradients https://docs.opencv.org/4.x/d5/d0f/tutorial_py_gradients.html
+- 신규 SVG: `lecture_rgb_channel_stack.svg`, `lecture_2d_brightness_surface.svg`, `lecture_noise_outlier.svg`, `lecture_point_neighborhood.svg`, `lecture_kernel_slide.svg`, `lecture_mean_calculation.svg`, `lecture_filter_comparison.svg`, `lecture_sobel_concept.svg`.
+- 수치 예시는 실제 관측값이 아니라 강의용 합성값입니다. 동일 3×3 배열의 합은 1053이고 Mean = 117, Gaussian = 2219/16 ≈ 138.69, Median = 100입니다.
+- 2D 밝기 높이 그래프는 영상의 Pixel 밝기값을 세로축으로 표시한 개념도이며, 단안 카메라에서 측정된 깊이 맵이 아닙니다.
+- 이전에 생성된 이미지 인포그래픽은 위치·숫자 대응을 보장하기 어려워 실제 교재에는 검증 가능한 독립 SVG 도식을 사용합니다. 그림은 Brown 원본 Figure를 복제하지 않았습니다.
