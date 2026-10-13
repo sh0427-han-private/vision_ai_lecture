@@ -216,3 +216,40 @@ assert [((224 + 2 * 1 - 3) // 2 + 1), ((112 + 2 * 1 - 3) // 2 + 1),
         ((56 + 2 * 1 - 3) // 2 + 1), ((28 + 2 * 1 - 3) // 2 + 1)] == [112, 56, 28, 14]
 assert [64, 128, 192, 256] == [64, 128, 192, 256]
 print("Metrics (100 cases), threshold decision, backbone tensor sizes, transfer diagrams verified.")
+
+
+# Essential-only route: a basic lesson must not rely on a neighboring
+# advanced slide, because 79-slide mode intentionally skips all such pages.
+for deck in ("ai_basics", "vision_ai"):
+    registry = manifest[deck]
+    page = (DOCS / f"{deck}.html").read_text("utf-8")
+    slide_sections = re.findall(
+        r'<section class="slide(?: active)?"[^>]*>[\\s\\S]*?</section>',
+        page
+    )
+    assert len(slide_sections) == len(registry) + 1
+    for idx, item in enumerate(registry):
+        if item["level"] != "basic":
+            continue
+        match = re.search(
+            r'<p class="slide-subtitle">([\\s\\S]*?)</p>',
+            slide_sections[idx + 1]
+        )
+        assert match, (deck, idx + 1, "missing subtitle")
+        description = re.sub(r"<[^>]+>", " ", match.group(1))
+        previous_advanced = idx > 0 and registry[idx - 1]["level"] == "detail"
+        next_advanced = idx + 1 < len(registry) and registry[idx + 1]["level"] == "detail"
+        if previous_advanced:
+            assert not re.search(r"직전|앞 장|지난 장|이전 장", description), (
+                deck, item["number"], "refers to skipped preceding advanced slide"
+            )
+        if next_advanced:
+            assert not re.search(r"다음 장|바로 다음|이후 장", description), (
+                deck, item["number"], "refers to skipped following advanced slide"
+            )
+assert 15 + 1 + sum(x["level"] == "basic" for x in manifest["ai_basics"]) + \\
+       1 + sum(x["level"] == "basic" for x in manifest["vision_ai"]) == 79
+assert "직전 Convolution" not in (
+    DOCS / "assets/lesson/lesson_featuremap_numeric_continuation.svg"
+).read_text("utf-8")
+print("Core-course narrative continuity: skipped-advanced references verified.")
