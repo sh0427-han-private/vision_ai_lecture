@@ -271,30 +271,30 @@
 <div class="slide-inner"><div class="lesson-meta"><span>37 · Threshold</span>
 <span class="lesson-level">기본 개념</span></div>
 <h2 class="slide-title">점수에 기준을 적용하면 실제 판정이 됩니다</h2>
-<p class="slide-subtitle">Threshold(임계값)는 불량으로 판정할 점수 기준입니다. 예: 불량 점수 0.82는 기준 0.5에서 불량으로 판정합니다.</p>
-<figure class="lesson-figure"><a href="assets/lesson/threshold_basic.svg?v=professional-20261006-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/threshold_basic.svg?v=professional-20261006-2" alt="점수에 기준을 적용하면 실제 판정이 됩니다"></a></figure>
-<p class="lesson-takeaway">기준을 바꾸면 찾는 불량과 오알람 수가 달라집니다. 기준은 Validation에서 선택합니다.</p></div></section>
+<p class="slide-subtitle">설명용 불량 점수 0.82를 기준 0.50과 0.90에 각각 적용합니다. 점수는 같아도 판정 결과는 바뀝니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/lesson_threshold_score_decision.svg?v=lesson-metrics-20261013-1" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/lesson_threshold_score_decision.svg?v=lesson-metrics-20261013-1" alt="점수에 기준을 적용하면 실제 판정이 됩니다"></a></figure>
+<p class="lesson-takeaway">임계값을 바꾸면 불량 미검과 오알람 수가 달라질 수 있습니다. 기준은 Validation에서 선택하며, 점수 0.82는 다음 100개 평가 사례와 별개입니다.</p></div></section>
 <section class="slide" data-topic="Confusion Matrix" data-level="basic">
 <div class="slide-inner"><div class="lesson-meta"><span>38 · Confusion Matrix</span>
 <span class="lesson-level">기본 개념</span></div>
 <h2 class="slide-title">정답과 판정을 비교해 네 가지 결과를 셉니다</h2>
-<p class="slide-subtitle">Confusion Matrix(혼동행렬)는 TP·FN·FP·TN을 구분합니다. 실제 불량 20개 중 18개를 찾고, 정상 80개 중 4개를 잘못 알린 예시입니다.</p>
-<figure class="lesson-figure"><a href="assets/lesson/confusion_counts.svg?v=professional-20261006-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/confusion_counts.svg?v=professional-20261006-2" alt="정답과 판정을 비교해 네 가지 결과를 셉니다"></a></figure>
+<p class="slide-subtitle">총 100건의 같은 평가 데이터를 다음 지표 계산까지 이어갑니다. 실제 불량 20건 중 18건을 찾고, 정상 80건 중 4건을 잘못 알렸습니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/lesson_confusion_100cases.svg?v=lesson-metrics-20261013-1" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/lesson_confusion_100cases.svg?v=lesson-metrics-20261013-1" alt="정답과 판정을 비교해 네 가지 결과를 셉니다"></a></figure>
 <p class="lesson-takeaway">TP: 찾은 불량 / FN: 놓친 불량 / FP: 오알람 / TN: 정상 통과.</p></div></section>
 <section class="slide" data-topic="Precision과 Recall" data-level="basic">
 <div class="slide-inner"><div class="lesson-meta"><span>39 · Precision과 Recall</span>
 <span class="lesson-level">기본 개념</span></div>
 <h2 class="slide-title">알람의 정확성과 불량을 찾는 비율을 구분합니다</h2>
-<p class="slide-subtitle">Precision은 불량이라 알린 것 중 진짜 불량의 비율, Recall은 실제 불량 중 찾아낸 비율입니다.</p>
-<figure class="lesson-figure"><a href="assets/lesson/precision_recall.svg?v=professional-20261006-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/precision_recall.svg?v=professional-20261006-2" alt="알람의 정확성과 불량을 찾는 비율을 구분합니다"></a></figure>
-<p class="lesson-takeaway">같은 모델도 임계값에 따라 Precision·Recall이 달라질 수 있습니다.</p></div></section>
+<p class="slide-subtitle">직전 혼동행렬의 TP=18·FP=4·FN=2를 그대로 사용합니다. Precision은 불량이라고 알린 22건, Recall은 실제 불량 20건을 분모로 계산합니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/lesson_precision_recall_sharedcase.svg?v=lesson-metrics-20261013-1" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/lesson_precision_recall_sharedcase.svg?v=lesson-metrics-20261013-1" alt="알람의 정확성과 불량을 찾는 비율을 구분합니다"></a></figure>
+<p class="lesson-takeaway">동일한 TP=18이어도 Precision=18/22=81.8%, Recall=18/20=90%입니다. 임계값이 바뀌면 두 지표도 변할 수 있습니다.</p></div></section>
 <section class="slide" data-topic="Accuracy와 F1" data-level="detail">
 <div class="slide-inner"><div class="lesson-meta"><span>40 · Accuracy와 F1</span>
 <span class="lesson-level lesson-level--detail">상세 설명</span></div>
 <h2 class="slide-title">전체 정답률과 Precision·Recall의 균형을 함께 봅니다</h2>
-<p class="slide-subtitle">Accuracy는 전체 중 맞춘 비율입니다. F1은 Precision과 Recall의 조화평균이며 두 지표가 모두 높아야 높아집니다.</p>
-<figure class="lesson-figure"><a href="assets/lesson/accuracy_f1.svg?v=professional-20261006-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/accuracy_f1.svg?v=professional-20261006-2" alt="전체 정답률과 Precision·Recall의 균형을 함께 봅니다"></a></figure>
-<p class="lesson-takeaway">불량이 1%인 데이터에서 모두 정상으로 예측해도 Accuracy는 99%이지만 Recall은 0%입니다.</p><details class="lesson-reference"><summary>출처 · 근거</summary><div>개념 참고: <a href="https://cs231n.github.io/" target="_blank" rel="noopener">Stanford CS231n</a> · 직접 재구성한 설명용 Figure</div></details></div></section>
+<p class="slide-subtitle">동일한 100건에서 Accuracy=(18+76)/100=94%, F1=2×18/(2×18+4+2)=85.7%를 계산합니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/lesson_accuracy_f1_same100.svg?v=lesson-metrics-20261013-1" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/lesson_accuracy_f1_same100.svg?v=lesson-metrics-20261013-1" alt="전체 정답률과 Precision·Recall의 균형을 함께 봅니다"></a></figure>
+<p class="lesson-takeaway">F1은 Precision·Recall의 조화평균이며 TN은 포함하지 않습니다. 다음 장의 극단적 클래스 불균형 사례는 별도 가상 데이터입니다.</p><details class="lesson-reference"><summary>출처 · 근거</summary><div>개념 참고: <a href="https://cs231n.github.io/" target="_blank" rel="noopener">Stanford CS231n</a> · 직접 재구성한 설명용 Figure</div></details></div></section>
 <section class="slide" data-topic="클래스 불균형" data-level="basic">
 <div class="slide-inner"><div class="lesson-meta"><span>41 · 클래스 불균형</span>
 <span class="lesson-level">기본 개념</span></div>
