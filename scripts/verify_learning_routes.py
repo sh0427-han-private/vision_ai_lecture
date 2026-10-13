@@ -41,6 +41,8 @@ def main() -> None:
               "Intro to AI Basics core handoff lost route")
         check(page.locator("[data-lesson-mode-toggle]").get_attribute("aria-pressed") == "true",
               "AI core toggle not active")
+        check("mode=core" in page.locator('.nav-links a[href^="vision_ai.html"]').get_attribute("href"),
+              "chapter header link lost selected core route")
 
         for deck, (full, core) in DECKS.items():
             page.goto(f"{BASE}/{deck}.html?mode=core#slide-1")
@@ -48,6 +50,11 @@ def main() -> None:
                   f"{deck}: unexpected core length")
             check(page.locator("[data-lesson-mode-toggle]").count() == 1,
                   f"{deck}: core/full toggle missing")
+            page.screenshot(
+                path=str(__import__("pathlib").Path(__file__).resolve().parents[1]
+                         / "visual_audit_output" / f"learning_route_{deck}_core.jpg"),
+                type="jpeg", quality=80
+            )
             for i in range(core):
                 level = page.locator(".slide.active").get_attribute("data-level")
                 check(level != "detail", f"{deck}: detail visited in core mode")
@@ -62,6 +69,8 @@ def main() -> None:
             check(page.locator("[data-slide-total]").inner_text() == str(full),
                   f"{deck}: full mode not restored")
             check("mode=core" not in page.url, f"{deck}: URL core flag retained")
+            check("mode=core" not in page.locator('.nav-links a[href^="intro.html"]').get_attribute("href"),
+                  f"{deck}: chapter header link retained core flag")
             page.click("[data-lesson-mode-toggle]")
             check(page.locator("[data-slide-total]").inner_text() == str(core),
                   f"{deck}: core mode toggle failed")
