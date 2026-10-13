@@ -284,3 +284,10 @@ for basename in accessible_figures:
     )
     assert match and len(html.unescape(match.group(1))) >= 35, basename
 print("Descriptive alt text on 12 key instructional figures verified.")
+
+# The core Median slide contains no numeric 3×3 grid; do not claim that
+# its photograph-only panel shows a preceding list of 9 values.
+assert "앞의 9개 숫자" not in (
+    DOCS / "assets/lesson/processing_median.svg"
+).read_text("utf-8")
+print("Median essential Figure has no reference to hidden arithmetic.")
