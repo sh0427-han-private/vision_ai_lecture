@@ -16,6 +16,13 @@ Vision AI를 처음 접하는 사람도 **현실 세계 → Sensor → 숫자 �
 2. **강의 자료** — 한 슬라이드에 한 메시지, 그림과 비교 중심으로 설명
 3. **실습 자료** — Notebook과 웹 데모로 개념을 직접 확인
 
+## 학습 경로 선택
+
+- **[핵심 과정 · 79장](https://sh0427-han.github.io/vision_ai_lecture/docs/intro.html?mode=core#slide-1)** — Intro 15장 + AI Basics 36장(표지 포함) + Vision AI 28장(표지 포함). 정량 계산·심화 해설 20장을 건너뛰며 먼저 큰 흐름을 익힙니다.
+- **[전체 과정 · 99장](https://sh0427-han.github.io/vision_ai_lecture/docs/intro.html#slide-1)** — 기존 모든 슬라이드 보존. 강의 하단 버튼으로 어느 과정에서든 핵심/전체를 전환합니다.
+
+기본 상태는 **전체 과정**이며, URL의 `?mode=core`는 핵심 과정입니다. 강의 목차의 버튼 또는 슬라이드 하단의 **핵심만 보기 / 심화 포함 전체 보기**에서 모드를 바꿀 수 있습니다. 기존 번호와 슬라이드 직접 링크는 유지합니다.
+
 ## 학습 순서
 
 ```text
