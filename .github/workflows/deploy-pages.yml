@@ -25,6 +25,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
 
+      - name: Validate lecture structure
+        run: python scripts/verify_curriculum_overhaul.py
+
       - name: Configure Pages
         uses: actions/configure-pages@v5
 
