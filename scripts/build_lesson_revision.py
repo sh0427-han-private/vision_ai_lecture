@@ -737,6 +737,15 @@ def build_deck(filename, title, subtitle, cards, lessons, prev_page, next_page="
                 f' · <a href="{primary_url}" target="_blank" rel="noopener">{primary_label}</a>'
                 ' · 강의용 재구성</p>'
             )
+        if Path(asset).stem.startswith("lecture_"):
+            figure_version = "visual-20261013-1"
+            reference = (
+                '<p class="lesson-reference">참고: '
+                '<a href="https://cs.brown.edu/courses/csci1430/2020_Spring/lectures/2020Spring_02_ImageFiltering.pdf" '
+                'target="_blank" rel="noopener">Brown CSCI1430 Image Filtering (2020)</a> · '
+                '<a href="https://docs.opencv.org/4.x/d4/d13/tutorial_py_filtering.html" '
+                'target="_blank" rel="noopener">OpenCV Image Filtering</a> · 검산된 설명용 도식</p>'
+            )
         if Path(asset).stem in PROCESSING_SECTIONS:
             section = PROCESSING_SECTIONS[Path(asset).stem]
             figure_version = "processing-20261006-2" if Path(asset).stem == "processing_pyramid" else "processing-20261006-1"
@@ -817,10 +826,14 @@ def build_lessons():
         ("Label","같은 사진이라도 Task가 바뀌면 정답 형태가 바뀝니다","분류는 이미지 클래스, 검출은 클래스와 Box, 분할은 Pixel Mask를 정답으로 사용합니다.","backbone_basic","여기서 결과 그림을 정답으로 작성한 것이 Label이고, 모델이 계산한 것이 Prediction입니다."),
         ("IoU","위치와 영역은 정답과 얼마나 겹치는지 평가합니다","IoU(Intersection over Union, 교집합/합집합 비율)는 정답 영역과 예측 영역의 겹침 정도입니다.","old:iou_visual","완전 일치하면 1, 겹치는 영역이 없으면 0입니다."),
         ("IoU","겹친 칸 수를 전체 합집합 칸 수로 나눕니다","정답 12칸과 예측 12칸이 4칸 겹치면, 합집합은 12+12−4=20칸입니다.","iou_detail","IoU = 4/20 = 0.2. 검출은 Box, 분할은 Mask의 영역으로 계산합니다.",True),
+        ("노이즈와 Pixel","Pixel 한 값이 튀면 주변과 불규칙한 차이가 생깁니다","작은 3×3 영역에서 정상 값 100이 255로 바뀌는 합성 점 잡음을 살펴봅니다.","lecture_noise_outlier","이웃과 다른 값은 잡음일 수도, 작은 실제 결함일 수도 있습니다."),
         ("영상처리의 기본", "한 Pixel을 바꿀 수도, 주변 Pixel을 함께 볼 수도 있습니다", "영상처리는 밝기·잡음·경계 같은 이미지의 성질을 바꿉니다. 같은 사과 사진으로 두 연산을 비교합니다.", "processing_point_neighborhood", "밝기 변환은 해당 Pixel 값으로 계산하고, 필터는 주변 값도 사용합니다. 이 연산 자체가 물체 이름을 예측하지는 않습니다."),
+        ("Kernel의 이동","3×3 Kernel은 움직이며 출력 Pixel을 하나씩 만듭니다","5×5 입력의 중앙 3×3 값을 골라 평균을 계산하고 위치를 옮겨 반복합니다.","lecture_kernel_slide","중앙에 255가 포함된 9개 Pixel의 합 1053을 9로 나누면 117입니다.",True),
         ("Gaussian 필터", "잡음을 줄이면 작은 변화도 함께 흐려질 수 있습니다", "Gaussian(가우시안) 필터는 가까운 Pixel에 큰 가중치를 주어 평균합니다. σ(시그마)는 퍼짐의 정도를 정합니다.", "processing_gaussian", "σ는 원본 Pixel 단위입니다. 잡음 감소와 작은 결함 보존을 함께 확인하고, 실제 Task의 평가 결과로 전처리를 선택합니다."),
         ("평균 필터 계산", "주변 9개 값을 평균해 출력 한 칸을 계산합니다", "3×3 평균 필터의 각 가중치는 1/9입니다. 가운데의 큰 값 160도 주변 8개 값과 함께 계산합니다.", "processing_mean_detail", "평균 필터는 사람이 정한 고정 가중치입니다. CNN은 같은 가중합 구조의 필터 값을 데이터에서 학습할 수 있습니다.", True),
         ("중앙값 필터", "튀는 점 잡음에는 중앙값이 유용할 수 있습니다", "Median(중앙값) 필터는 이웃 값을 정렬해 가운데 값을 선택합니다. 같은 점 잡음 입력에서 평균 필터와 비교합니다.", "processing_median", "중앙값은 선형 가중합이 아닌 비선형 연산입니다. 얇은 선이나 작은 결함도 없어질 수 있어 모든 잡음에 최선인 것은 아닙니다."),
+        ("필터 비교","동일 입력에서도 Mean·Gaussian·Median 결과는 다릅니다","중앙 값만 255로 튄 동일한 3×3 입력을 서로 다른 필터로 계산했습니다.","lecture_filter_comparison","Mean 117, Gaussian 약 138.69, Median 100. 점 잡음에는 Median이 유리할 수 있습니다.",True),
+        ("Sobel 직관","Sobel은 잡음을 지우기보다 경계 반응을 계산합니다","밝기가 급격히 바뀌는 위치의 x·y 방향 변화량을 계산해 윤곽 단서를 얻습니다.","lecture_sobel_concept","이미지의 Gradient와 신경망 학습의 Loss Gradient는 서로 다릅니다."),
         ("영상 기울기", "밝기가 급격히 바뀌는 위치에서 경계 단서를 얻습니다", "Sobel(소벨) 필터로 좌우·상하 밝기 변화를 계산합니다. 부호 있는 값을 계산한 뒤 절댓값과 크기로 시각화합니다.", "processing_gradient", "두 기울기 그림은 같은 최대값으로 표시했습니다. 경계 반응은 밝기 변화의 단서이며, 그 자체가 물체나 결함의 정답은 아닙니다."),
         ("Mask 후처리", "작은 점 제거와 작은 구멍 메우기는 다른 연산입니다", "Morphology(형태학)는 구조 요소로 Mask의 모양을 처리합니다. 침식은 1 영역을 줄이고, 팽창은 1 영역을 넓힙니다.", "processing_morphology", "Opening·Closing은 원래 Mask를 각각 처리한 결과입니다. 작은 실제 결함이 지워지거나 가까운 영역이 붙을 수 있어 크기를 검증해야 합니다."),
         ("이미지의 단서","작은 영역의 경계·밝기 변화를 먼저 살펴봅니다","이미지에서는 가까운 Pixel의 배치가 중요합니다. 작은 영역의 반응을 여러 위치에서 계산하면 패턴이 있는 위치를 알 수 있습니다.","cnn_local_basic","Patch는 이미지의 작은 영역, Feature Map은 위치별 반응값을 모은 지도입니다."),
@@ -852,7 +865,10 @@ def build_lessons():
     manifest={"generated_assets":["assets/generated/apple_studio.webp","assets/generated/orange_studio.webp","assets/generated/capture_conditions.webp"],"version":VERSION,"ai_basics":ai_manifest,"vision_ai":vision_manifest}
     used={Path(item["asset"]).name for key in ["ai_basics","vision_ai"] for item in manifest[key]}
     for asset in ASSET_DIR.glob("*.svg"):
-        if asset.name not in used:
+        if asset.name not in used and asset.name not in {
+            "lecture_rgb_channel_stack.svg",
+            "lecture_2d_brightness_surface.svg",
+        }:
             asset.unlink()
     (ASSET_DIR / "manifest.json").write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     for folder,key in [("02_ai_basics","ai_basics"),("03_vision_ai","vision_ai")]:
