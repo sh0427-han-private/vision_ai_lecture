@@ -34,3 +34,13 @@
 - 이 수치들은 `scripts/verify_curriculum_overhaul.py`를 통해 검증한다.
 - Chromium 브라우저 1920×1080 및 1366×768 레이아웃 검사 기록은 GitHub Actions `Visual QA - full lecture`의 run으로 확인한다.
 - 브라우저 자동 검사 결과만으로 개별 SVG 내부의 모든 라벨 겹침이나 특정 실제 프로젝터 환경의 가독성을 보장하지 않는다.
+
+## Chromium 198화면 최종 검사 결과
+
+- GitHub Pages 배포: https://github.com/sh0427-han/vision_ai_lecture/actions/runs/38345874602 — 성공
+- 브라우저 시각 검사: https://github.com/sh0427-han/vision_ai_lecture/actions/runs/38345874619 — 성공
+- Intro 15장 · AI Basics 44장 · Vision AI 40장 × 2개 뷰포트(1920×1080, 1366×768), 총 **198화면 렌더링**.
+- 자동 레이아웃 문제 레코드 **0건**, 최저 fitScale **0.95**. 자동 검사에서는 주요 블록 클리핑/이미지 로딩 오류가 발견되지 않음.
+- 1366×768 실제 스크린샷으로 AI Basics 웹 13, 14, 31장과 Vision AI 웹 29, 30장을 눈으로 확인: 새 ReLU값·Affine 수치·Video Group Split·사과 특징 조합·3/5/7 수용영역의 정렬 및 라벨 확인.
+- 이 검사는 HTML 컨테이너의 겹침/잘림과 5개 Figure의 화면을 확인한 것이며, 99개 모든 도식의 SVG 내부 요소에 대한 완전한 형식적 검증이나 모든 모바일 화면에서의 가독성을 보장하지는 않음.
+
