@@ -447,7 +447,7 @@
       "topic": "Convolution",
       "level": "detail",
       "title": "같은 위치끼리 곱하고 더해 출력 한 칸을 만듭니다",
-      "asset": "assets/lesson/lesson_convolution_calculated.svg"
+      "asset": "assets/ppt_slides/vision_ai_convolution_ppt.svg"
     },
     {
       "number": 21,
