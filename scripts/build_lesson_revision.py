@@ -754,12 +754,17 @@ def build_deck(filename, title, subtitle, cards, lessons, prev_page, next_page="
                 f'target="_blank" rel="noopener">Szeliski · Ch. 3 {section}</a>'
                 ' · 기존 AI 생성 사진 / 합성 데이터에 실제 연산 적용</p>'
             )
+        if reference:
+            reference = reference.replace(
+                '<p class="lesson-reference">',
+                '<details class="lesson-reference"><summary>출처 · 근거</summary><div>'
+            ).replace('</p>', '</div></details>')
         header+=f'''<section class="slide" data-topic="{html.escape(topic)}" data-level="{"detail" if detailed else "basic"}">
 <div class="slide-inner"><div class="lesson-meta"><span>{index:02d} · {html.escape(topic)}</span>
 <span class="lesson-level{" lesson-level--detail" if detailed else ""}">{"상세 설명" if detailed else "기본 개념"}</span></div>
 <h2 class="slide-title">{html.escape(heading)}</h2>
 <p class="slide-subtitle">{html.escape(description)}</p>
-<figure class="lesson-figure"><img src="{asset}?v={figure_version}" alt="{html.escape(heading)}"></figure>
+<figure class="lesson-figure"><a href="{asset}?v={figure_version}" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="{asset}?v={figure_version}" alt="{html.escape(heading)}"></a></figure>
 <p class="lesson-takeaway">{html.escape(takeaway)}</p>{reference}</div></section>\n'''
         manifest.append({"number":index,"topic":topic,"level":"detail" if detailed else "basic","title":heading,"asset":asset})
     header+='''</main><div class="deck-controls"><div class="deck-controls-inner">
