@@ -344,3 +344,10 @@ https://www.nature.com/articles/s42256-020-00257-z
 - `docs/assets/lesson/lecture_filter_to_cnn_bridge.svg`: 동일한 사과 사진과 고정 평균 커널(1/9)·학습 커널(w1..w9) 비교를 새로 구성했습니다. 학습 커널에는 실제 모델 Weight를 표기하지 않았습니다.
 - 커널 이동은 동일한 5×5 배열에서 왼쪽 상단 ROI를 오른쪽으로 3번 옮긴 합 1045·1053·1055와 평균값 약 116.11·117·117.22를 표시합니다.
 - 저장소에 있는 원본 필터 연산 Figure와 수치·라벨 Figure는 별개 예시이므로 임의의 학습/측정 결과로 설명하지 않습니다.
+
+
+## 2026-10-13 추가 AI Basics 시각 교재
+
+- `docs/assets/lesson/lesson_sgd_update_flow.svg`: 기존 x=2, y=4, w=1, b=0 고정 예시의 SGD 1회 갱신을 전/후 파이프라인으로 재구성. η=0.1, gradient=-8, w'=1.8, ŷ'=3.6, L'=0.16. 직접 작성한 벡터 도식이며 실제 모델 학습 성능 결과가 아님.
+- `docs/assets/lesson/lesson_chain_rule_graph.svg`: 동일 x=2, y=4 예제에 학습 가능한 Bias를 추가. 초기 w=1,b=0, L=4. Chain Rule을 통해 dL/dŷ=-4, dL/dw=-8, dL/db=-4, SGD η=0.1 후 w'=1.8,b'=0.4 및 L'=0. 실제 계산을 표현한 교육용 SVG.
+- 참고 개념: https://cs231n.github.io/optimization-1/ 와 https://cs231n.github.io/ (Stanford CS231n). 도식 구조와 수치는 독자적으로 설계·계산함.
