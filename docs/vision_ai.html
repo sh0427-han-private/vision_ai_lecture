@@ -211,16 +211,16 @@
 <div class="slide-inner"><div class="lesson-meta"><span>28 · 특징의 조합</span>
 <span class="lesson-level">기본 개념</span></div>
 <h2 class="slide-title">Layer는 앞의 특징을 조합해 더 복잡한 표현을 만듭니다</h2>
-<p class="slide-subtitle">초기 반응들을 여러 층에서 조합하면 더 넓은 형태와 Task에 유용한 내부 표현을 만들 수 있습니다.</p>
-<figure class="lesson-figure"><a href="assets/lesson/hierarchy_professional.svg?v=professional-20261006-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/hierarchy_professional.svg?v=professional-20261006-2" alt="Layer는 앞의 특징을 조합해 더 복잡한 표현을 만듭니다"></a></figure>
-<p class="lesson-takeaway">경계 → 부분 → 형태는 개념적 설명이며 모든 모델에서 같은 방식으로 나타난다고 보장하지 않습니다.</p><details class="lesson-reference"><summary>출처 · 근거</summary><div>사진: AI 생성 교육용 예시 · 실제 측정/실험 결과가 아님</div></details></div></section>
+<p class="slide-subtitle">사과 이미지를 예시로 국소 밝기 반응 → 곡선·무늬의 조합 → 더 넓은 형태의 단서로 이어지는 개념적 특징 표현을 살펴봅니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/lesson_cnn_feature_hierarchy.svg?v=pedagogic-20261013-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/lesson_cnn_feature_hierarchy.svg?v=pedagogic-20261013-2" alt="Layer는 앞의 특징을 조합해 더 복잡한 표현을 만듭니다"></a></figure>
+<p class="lesson-takeaway">국소 반응을 여러 Layer에서 조합한 개념도입니다. 실제 학습된 Feature Map이 항상 이 순서로 사람에게 해석되는 것은 아닙니다.</p><details class="lesson-reference"><summary>출처 · 근거</summary><div>사진: AI 생성 교육용 예시 · 실제 측정/실험 결과가 아님</div></details></div></section>
 <section class="slide" data-topic="Receptive Field" data-level="detail">
 <div class="slide-inner"><div class="lesson-meta"><span>29 · Receptive Field</span>
 <span class="lesson-level lesson-level--detail">상세 설명</span></div>
 <h2 class="slide-title">깊은 층의 한 위치는 더 넓은 입력 범위의 영향을 받습니다</h2>
-<p class="slide-subtitle">Receptive Field(수용영역)는 한 출력 위치에 영향을 주는 원본 입력 영역입니다.</p>
-<figure class="lesson-figure"><a href="assets/lesson/context_receptive_field.svg?v=professional-20261006-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/context_receptive_field.svg?v=professional-20261006-2" alt="깊은 층의 한 위치는 더 넓은 입력 범위의 영향을 받습니다"></a></figure>
-<p class="lesson-takeaway">3×3 Conv, Stride 1, Dilation 1을 쌓으면 이론적 수용영역은 3×3 → 5×5 → 7×7입니다.</p><details class="lesson-reference"><summary>출처 · 근거</summary><div>개념 참고: <a href="https://cs231n.github.io/convolutional-networks/" target="_blank" rel="noopener">Stanford CS231n</a> · 직접 재구성한 설명용 Figure</div></details></div></section>
+<p class="slide-subtitle">동일한 원본 7×7 위치를 기준으로 3×3 Convolution을 3개 Layer에 쌓을 때 한 출력 위치에 영향을 주는 이론적 입력 범위를 비교합니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/lesson_receptive_field_growth.svg?v=pedagogic-20261013-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/lesson_receptive_field_growth.svg?v=pedagogic-20261013-2" alt="깊은 층의 한 위치는 더 넓은 입력 범위의 영향을 받습니다"></a></figure>
+<p class="lesson-takeaway">3×3 Conv, Stride 1, Dilation 1의 이론적 수용영역은 3×3 → 5×5 → 7×7입니다. 실제 강하게 반응한 영역과는 다릅니다.</p><details class="lesson-reference"><summary>출처 · 근거</summary><div>개념 참고: <a href="https://cs231n.github.io/convolutional-networks/" target="_blank" rel="noopener">Stanford CS231n</a> · 직접 재구성한 설명용 Figure</div></details></div></section>
 <section class="slide" data-topic="CNN 전체 흐름" data-level="basic">
 <div class="slide-inner"><div class="lesson-meta"><span>30 · CNN 전체 흐름</span>
 <span class="lesson-level">기본 개념</span></div>
