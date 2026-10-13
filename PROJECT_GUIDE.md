@@ -12,7 +12,7 @@ Vision AI를 처음 접하는 사람을 대상으로 하는 입문 강의자료 
 ### 01. Vision AI Intro
 
 - 사람과 컴퓨터가 이미지를 보는 방식의 차이
-- Intro 3: 같은 사과를 Grayscale 1채널로 변환해 같은 크기의 사진 → 48×32 순수 숫자 행렬 → 숫자의 글자색에 밝기를 적용한 그림으로 대응
+- Intro 3: 48×32 원본 Grayscale에서 실제 6×6 영역을 확대해 사진 → 실제 숫자 → 같은 값의 밝기 셀로 대응
 - 다음 Pixel 설명에서 RGB 3채널과 H×W×3 구조를 소개
 - 원근감: 단일 RGB 숫자 배열에는 실제 거리·실제 크기가 직접 들어 있지 않아 가까워서 큰 것과 실제로 큰 것을 해석해야 함
 - Pixel / Channel의 의미와 8-bit 0~255 값
@@ -158,16 +158,16 @@ GitHub Pages:
 - 생성 사진과 설명용 Feature 그림을 실제 모델의 측정·실험 결과로 표현하지 않습니다.
 
 
-## Visual Filtering Curriculum (2026-10-13)
+## Visual Filtering Curriculum (2026-10-13, 초기 변경 기록)
 
-- Intro 14장: Gray 영상 숫자 배열 → 2D 평면과 원근감 → 밝기값의 3D 그래프(실제 Depth 아님) → RGB 3개 Channel → Noise 단일 Pixel 변화 → 일반화.
-- Vision AI 41장(표지 포함): IoU 뒤 영상처리 파트에 노이즈 픽셀·공간 커널 이동·Mean/Gaussian/Median 검산·Sobel 경계 단서를 추가했습니다.
+- 초기 Intro 14장: Gray 영상 숫자 배열 → 2D 평면과 원근감 → 밝기값의 3D 그래프(실제 Depth 아님) → RGB 3개 Channel → Noise 단일 Pixel 변화 → 일반화.
+- 초기 Vision AI 41장(표지 포함): IoU 뒤 영상처리 파트에 노이즈 픽셀·공간 커널 이동·Mean/Gaussian/Median 검산·Sobel 경계 단서를 추가했습니다.
 - 신규 계산 도식 8개는 `docs/assets/lesson/lecture_*.svg`, 배포 순서는 `docs/assets/lesson/manifest.json`과 `scripts/build_lesson_revision.py`가 기준입니다.
 - 같은 합성 3×3 배열을 재사용하여 용어 소개 → 지역 계산 → 세 가지 필터 결과 비교가 단절되지 않게 합니다.
 - 이미지의 채널(C=3)과 장면의 공간적 깊이(Z)를 혼동하지 않으며, 필터링이 객체 인식이나 모든 종류의 잡음 제거를 보장한다고 표현하지 않습니다.
 
 
-## 2026-10-13 전체 98장 커리큘럼 개편 (적용)
+## 2026-10-13 전체 99장 커리큘럼 개편 (적용)
 
 - 웹 강의는 Intro 15장 / AI Basics 44장 / Vision AI 40장 = 총 99장과 첫 화면 목차 `docs/index.html`입니다.
 - Intro의 수치 이미지는 `intro_grayscale_crop_6x6.svg`를 사용합니다. 원본 48×32 픽셀 중 6×6 구간은 값과 밝기가 동일하게 대응해야 합니다.
