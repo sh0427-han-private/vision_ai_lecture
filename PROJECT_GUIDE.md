@@ -169,7 +169,7 @@ GitHub Pages:
 
 ## 2026-10-13 전체 98장 커리큘럼 개편 (적용)
 
-- 웹 강의는 Intro 14장 / AI Basics 44장 / Vision AI 40장 = 총 98장과 첫 화면 목차 `docs/index.html`입니다.
+- 웹 강의는 Intro 15장 / AI Basics 44장 / Vision AI 40장 = 총 99장과 첫 화면 목차 `docs/index.html`입니다.
 - Intro의 수치 이미지는 `intro_grayscale_crop_6x6.svg`를 사용합니다. 원본 48×32 픽셀 중 6×6 구간은 값과 밝기가 동일하게 대응해야 합니다.
 - AI Basics는 신경 계산의 구조를 Loss·Gradient 이전에 설명합니다. Vision AI는 Label을 Class/Box/Mask로 교체하고 Mean → Gaussian → Median 및 고정 필터→CNN 학습 필터 브리지로 연결합니다.
 - 수치·수식·구조는 SVG 유지, 계산이 아닌 현상 묘사는 사진 중심, 출처는 접을 수 있는 섹션, 이미지 원본 확대를 제공합니다.
