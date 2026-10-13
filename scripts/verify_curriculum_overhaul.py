@@ -112,7 +112,7 @@ for number in (-6, 12, 16, 8, 15, -4, 2, 7):
 for ident in (
     "lesson_perceptron_numeric_flow",
     "lesson_and_xor_separability",
-    "lesson_convolution_calculated",
+    "vision_ai_convolution_ppt",
     "lesson_featuremap_numeric_continuation",
     "lesson_multichannel_filter_to_maps",
 ):
@@ -291,3 +291,12 @@ assert "앞의 9개 숫자" not in (
     DOCS / "assets/lesson/processing_median.svg"
 ).read_text("utf-8")
 print("Median essential Figure has no reference to hidden arithmetic.")
+
+ppt_svg = DOCS / "assets/ppt_slides/vision_ai_convolution_ppt.svg"
+assert ppt_svg.is_file(), ppt_svg
+ppt_data = ppt_svg.read_text("utf-8")
+assert 'width="1200" height="675"' in ppt_data
+for output_number in ("-6", "12", "16", "8", "15", "-4", "2", "7"):
+    assert output_number in ppt_data, output_number
+assert (ROOT / "slides/pptx_sources/Vision_AI_Convolution_PPT_Source.pptx").is_file()
+print("PPT slide source and 16:9 lecture SVG are present and mathematically aligned.")
