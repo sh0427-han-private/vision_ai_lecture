@@ -351,3 +351,12 @@ https://www.nature.com/articles/s42256-020-00257-z
 - `docs/assets/lesson/lesson_sgd_update_flow.svg`: 기존 x=2, y=4, w=1, b=0 고정 예시의 SGD 1회 갱신을 전/후 파이프라인으로 재구성. η=0.1, gradient=-8, w'=1.8, ŷ'=3.6, L'=0.16. 직접 작성한 벡터 도식이며 실제 모델 학습 성능 결과가 아님.
 - `docs/assets/lesson/lesson_chain_rule_graph.svg`: 동일 x=2, y=4 예제에 학습 가능한 Bias를 추가. 초기 w=1,b=0, L=4. Chain Rule을 통해 dL/dŷ=-4, dL/dw=-8, dL/db=-4, SGD η=0.1 후 w'=1.8,b'=0.4 및 L'=0. 실제 계산을 표현한 교육용 SVG.
 - 참고 개념: https://cs231n.github.io/optimization-1/ 와 https://cs231n.github.io/ (Stanford CS231n). 도식 구조와 수치는 독자적으로 설계·계산함.
+
+
+## 2026-10-13 성능 평가 및 Transfer Learning 추가 Figure
+
+- 성능 평가 4개 SVG (`lesson_threshold_score_decision.svg`, `lesson_confusion_100cases.svg`, `lesson_precision_recall_sharedcase.svg`, `lesson_accuracy_f1_same100.svg`): 사용자가 기존 강의에 제공한 합성 결과 TP 18/FN 2/FP 4/TN 76, 총 100건을 수치 변경 없이 직접 재시각화했습니다. Threshold의 0.82 사례는 독립적인 단일 예시입니다.
+- 모델 구조 2개 SVG (`lesson_backbone_head_roles.svg`, `lesson_backbone_tensor_head_options.svg`): Backbone과 Classification/Detection/Segmentation Head를 비교하는 새 블록 다이어그램. 기본 구성도에 포함한 사과 사진은 동일 저장소의 `docs/assets/lesson/backbone_basic.svg` 내 강의용 사진을 재사용했습니다. 학습된 실제 Backbone의 특징을 측정한 시각화가 아닙니다.
+- Transfer Learning 2개 SVG (`lesson_transfer_pretraining_to_task.svg`, `lesson_transfer_freeze_vs_finetune.svg`): Weight 재사용, 고정 및 갱신 경로를 직접 그린 설명용 개념도입니다. 특정 모델을 실제로 Fine-tuning한 성능 결과가 아닙니다.
+- 구조 참고자료: [Stanford CS231n CNN](https://cs231n.github.io/convolutional-networks/) · [PyTorch Transfer Learning Tutorial](https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html). 링크는 개념적 참고이며, 원문의 Figure를 복제하지 않았습니다.
+- 계산 검증: `scripts/verify_curriculum_overhaul.py`에서 동일한 100건의 Precision/Recall/Accuracy/F1과 Shape·Threshold 예시를 점검합니다.
