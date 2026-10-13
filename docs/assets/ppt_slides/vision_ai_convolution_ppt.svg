@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-label="5×5 입력의 3×3 영역과 커널을 곱하고 더해 첫 출력값 −6 및 3×3 Feature Map을 만드는 계산"><rect width="1200" height="675" fill="#FFFFFF"/>
+<rect x="53.1" y="27.0" width="5.0" height="43.2" rx="0.0" fill="#177C68" stroke="#177C68" stroke-width="0.00"/>
+<text x="72.0" y="65.0" text-anchor="start" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-size="37.5" font-weight="700" fill="#123B53">Convolution: 작은 필터의 계산이 Feature Map으로 이어집니다</text>
+<text x="72.0" y="102.6" text-anchor="start" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-size="20.0" font-weight="400" fill="#647A89">입력의 일부와 Kernel을 곱해 합산합니다. Kernel을 한 칸씩 옮기면 다음 출력값이 만들어집니다.</text>
+<rect x="52.2" y="132.3" width="324.9" height="313.2" rx="10.8" fill="#F8FBFC" stroke="#DCE9ED" stroke-width="1.25"/>
+<rect x="69.3" y="152.1" width="38.7" height="32.4" rx="5.4" fill="#E5F4F0" stroke="#E5F4F0" stroke-width="0.63"/>
+<text x="88.7" y="173.4" text-anchor="middle" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-size="16.3" font-weight="700" fill="#177C68">01</text>
+<text x="116.1" y="175.9" text-anchor="start" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-size="22.5" font-weight="700" fill="#123B53">입력에서 3×3 선택</text>
+<rect x="414.0" y="132.3" width="321.3" height="313.2" rx="10.8" fill="#F8FBFC" stroke="#DCE9ED" stroke-width="1.25"/>
+<rect x="431.1" y="152.1" width="38.7" height="32.4" rx="5.4" fill="#E5F4F0" stroke="#E5F4F0" stroke-width="0.63"/>
+<text x="450.4" y="173.4" text-anchor="middle" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-size="16.3" font-weight="700" fill="#177C68">02</text>
+<text x="477.9" y="175.9" text-anchor="start" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-size="22.5" font-weight="700" fill="#123B53">Kernel을 곱해 합산</text>
+<rect x="772.2" y="132.3" width="373.5" height="313.2" rx="10.8" fill="#F8FBFC" stroke="#DCE9ED" stroke-width="1.25"/>
+<rect x="789.3" y="152.1" width="38.7" height="32.4" rx="5.4" fill="#E5F4F0" stroke="#E5F4F0" stroke-width="0.63"/>
+<text x="808.6" y="173.4" text-anchor="middle" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-size="16.3" font-weight="700" fill="#177C68">03</text>
+<text x="836.1" y="175.9" text-anchor="start" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-size="22.5" font-weight="700" fill="#123B53">출력 위치에 기록</text>
+<rect x="89.1" y="198.0" width="46.8" height="46.8" rx="0.0" fill="#DDF2EA" stroke="#80B8AD" stroke-width="1.00"/>
+<text x="112.5" y="229.1" text-anchor="middle" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-size="22.5" font-weight="700" fill="#123B53">1</text>
+<rect x="135.9" y="198.0" width="46.8" height="46.8" rx="0.0" fill="#DDF2EA" stroke="#80B8AD" stroke-width="1.00"/>
+<text x="159.3" y="229.1" text-anchor="middle" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-size="22.5" font-weight="700" fill="#123B53">2</text>
+<rect x="182.7" y="198.0" width="46.8" height="46.8" rx="0.0" fill="#DDF2EA" stroke="#80B8AD" stroke-width="1.00"/>
+<text x="206.1" y="229.1" text-anchor="middle" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-size="22.5" font-weight="700" fill="#123B53">3</text>
+<rect x="229.5" y="198.0" width="46.8" height="46.8" rx="0.0" fill="#FFFFFF" stroke="#BBCED6" stroke-width="1.00"/>
+<text x="252.9" y="229.1" text-anchor="middle" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-size="22.5" font-weight="700" fill="#123B53">0</text>
+<rect x="276.3" y="198.0" width="46.8" height="46.8" rx="0.0" fill="#FFFFFF" stroke="#BBCED6" stroke-width="1.00"/>
+<text x="299.7" y="229.1" text-anchor="middle" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-size="22.5" font-weight="700" fill="#123B53">1</text>
+<rect x="89.1" y="244.8" width="46.8" height="46.8" rx="0.0" fill="#DDF2EA" stroke="#80B8AD" stroke-width="1.00"/>
+<text x="112.5" y="275.9" text-anchor="middle" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-size="22.5" font-weight="700" fill="#123B53">4</text>
+<rect x="135.9" y="244.8" width="46.8" height="46.8" rx="0.0" fill="#DDF2EA" stroke="#80B8AD" stroke-width="1.00"/>
+<text x="159.3" y="275.9" text-anchor="middle" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-size="22.5" font-weight="700" fill="#123B53">5</text>
+<rect x="182.7" y="244.8" width="46.8" height="46.8" rx="0.0" fill="#DDF2EA" stroke="#80B8AD" stroke-width="1.00"/>
+<text x="206.1" y="275.9" text-anchor="middle" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-size="22.5" font-weight="700" fill="#123B53">6</text>
+<rect x="229.5" y="244.8" width="46.8" height="46.8" rx="0.0" fill="#FFFFFF" stroke="#BBCED6" stroke-width="1.00"/>
+<text x="252.9" y="275.9" text-anchor="middle" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-size="22.5" font-weight="700" fill="#123B53">1</text>
+<rect x="276.3" y="244.8" width="46.8" height="46.8" rx="0.0" fill="#FFFFFF" stroke="#BBCED6" stroke-width="1.00"/>
+<text x="299.7" y="275.9" text-anchor="middle" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-size="22.5" font-weight="700" fill="#123B53">0</text>
+<rect x="89.1" y="291.6" width="46.8" height="46.8" rx="0.0" fill="#DDF2EA" stroke="#80B8AD" stroke-width="1.00"/>
+<text x="112.5" y="322.6" text-anchor="middle" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-size="22.5" font-weight="700" fill="#123B53">7</text>
+<rect x="135.9" y="291.6" width="46.8" height="46.8" rx="0.0" fill="#DDF2EA" stroke="#80B8AD" stroke-width="1.00"/>
+<text x="159.3" y="322.6" text-anchor="middle" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-size="22.5" font-weight="700" fill="#123B53">8</text>
+<rect x="182.7" y="291.6" width="46.8" height="46.8" rx="0.0" fill="#DDF2EA" stroke="#80B8AD" stroke-width="1.00"/>
+<text x="206.1" y="322.6" text-anchor="middle" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-size="22.5" font-weight="700" fill="#123B53">9</text>
+<rect x="229.5" y="291.6" width="46.8" height="46.8" rx="0.0" fill="#FFFFFF" stroke="#BBCED6" stroke-width="1.00"/>
+<text x="252.9" y="322.6" text-anchor="middle" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-size="22.5" font-weight="700" fill="#123B53">2</text>
+<rect x="276.3" y="291.6" width="46.8" height="46.8" rx="0.0" fill="#FFFFFF" stroke="#BBCED6" stroke-width="1.00"/>
+<text x="299.7" y="322.6" text-anchor="middle" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-size="22.5" font-weight="700" fill="#123B53">1</text>
+<rect x="89.1" y="338.4" width="46.8" height="46.8" rx="0.0" fill="#FFFFFF" stroke="#BBCED6" stroke-width="1.00"/>
+<text x="112.5" y="369.5" text-anchor="middle" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-size="22.5" font-weight="700" fill="#123B53">0</text>
+<rect x="135.9" y="338.4" width="46.8" height="46.8" rx="0.0" fill="#FFFFFF" stroke="#BBCED6" stroke-width="1.00"/>
+<text x="159.3" y="369.5" text-anchor="middle" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-size="22.5" font-weight="700" fill="#123B53">1</text>
+<rect x="182.7" y="338.4" width="46.8" height="46.8" rx="0.0" fill="#FFFFFF" stroke="#BBCED6" stroke-width="1.00"/>
+<text x="206.1" y="369.5" text-anchor="middle" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-size="22.5" font-weight="700" fill="#123B53">2</text>
+<rect x="229.5" y="338.4" width="46.8" height="46.8" rx="0.0" fill="#FFFFFF" stroke="#BBCED6" stroke-width="1.00"/>
+<text x="252.9" y="369.5" text-anchor="middle" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-size="22.5" font-weight="700" fill="#123B53">3</text>
+<rect x="276.3" y="338.4" width="46.8" height="46.8" rx="0.0" fill="#FFFFFF" stroke="#BBCED6" stroke-width="1.00"/>
+<text x="299.7" y="369.5" text-anchor="middle" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-size="22.5" font-weight="700" fill="#123B53">1</text>
+<rect x="89.1" y="385.2" width="46.8" height="46.8" rx="0.0" fill="#FFFFFF" stroke="#BBCED6" stroke-width="1.00"/>
+<text x="112.5" y="416.3" text-anchor="middle" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-size="22.5" font-weight="700" fill="#123B53">1</text>
+<rect x="135.9" y="385.2" width="46.8" height="46.8" rx="0.0" fill="#FFFFFF" stroke="#BBCED6" stroke-width="1.00"/>
+<text x="159.3" y="416.3" text-anchor="middle" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-size="22.5" font-weight="700" fill="#123B53">0</text>
+<rect x="182.7" y="385.2" width="46.8" height="46.8" rx="0.0" fill="#FFFFFF" stroke="#BBCED6" stroke-width="1.00"/>
+<text x="206.1" y="416.3" text-anchor="middle" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-size="22.5" font-weight="700" fill="#123B53">1</text>
+<rect x="229.5" y="385.2" width="46.8" height="46.8" rx="0.0" fill="#FFFFFF" stroke="#BBCED6" stroke-width="1.00"/>
+<text x="252.9" y="416.3" text-anchor="middle" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-size="22.5" font-weight="700" fill="#123B53">2</text>
+<rect x="276.3" y="385.2" width="46.8" height="46.8" rx="0.0" fill="#FFFFFF" stroke="#BBCED6" stroke-width="1.00"/>
+<text x="299.7" y="416.3" text-anchor="middle" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-size="22.5" font-weight="700" fill="#123B53">3</text>
+<line x1="86.8" y1="195.8" x2="231.7" y2="195.8" stroke="#D96A4F" stroke-width="3.25"/>
+<line x1="86.8" y1="340.7" x2="231.7" y2="340.7" stroke="#D96A4F" stroke-width="3.25"/>
+<line x1="86.8" y1="195.8" x2="86.8" y2="340.7" stroke="#D96A4F" stroke-width="3.25"/>
+<line x1="231.7" y1="195.8" x2="231.7" y2="340.7" stroke="#D96A4F" stroke-width="3.25"/>
+<rect x="477.0" y="224.1" width="63.9" height="63.9" rx="0.0" fill="#E8F3F8" stroke="#AFCDD6" stroke-width="1.00"/>
+<text x="508.9" y="265.8" text-anchor="middle" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-size="28.8" font-weight="700" fill="#123B53">1</text>
+<rect x="540.9" y="224.1" width="63.9" height="63.9" rx="0.0" fill="#FFFFFF" stroke="#AFCDD6" stroke-width="1.00"/>
+<text x="572.9" y="265.8" text-anchor="middle" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-size="28.8" font-weight="700" fill="#123B53">0</text>
+<rect x="604.8" y="224.1" width="63.9" height="63.9" rx="0.0" fill="#FDECE6" stroke="#AFCDD6" stroke-width="1.00"/>
+<text x="636.7" y="265.8" text-anchor="middle" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-size="28.8" font-weight="700" fill="#D96A4F">-1</text>
+<rect x="477.0" y="288.0" width="63.9" height="63.9" rx="0.0" fill="#E8F3F8" stroke="#AFCDD6" stroke-width="1.00"/>
+<text x="508.9" y="329.7" text-anchor="middle" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-size="28.8" font-weight="700" fill="#123B53">1</text>
+<rect x="540.9" y="288.0" width="63.9" height="63.9" rx="0.0" fill="#FFFFFF" stroke="#AFCDD6" stroke-width="1.00"/>
+<text x="572.9" y="329.7" text-anchor="middle" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-size="28.8" font-weight="700" fill="#123B53">0</text>
+<rect x="604.8" y="288.0" width="63.9" height="63.9" rx="0.0" fill="#FDECE6" stroke="#AFCDD6" stroke-width="1.00"/>
+<text x="636.7" y="329.7" text-anchor="middle" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-size="28.8" font-weight="700" fill="#D96A4F">-1</text>
+<rect x="477.0" y="351.9" width="63.9" height="63.9" rx="0.0" fill="#E8F3F8" stroke="#AFCDD6" stroke-width="1.00"/>
+<text x="508.9" y="393.6" text-anchor="middle" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-size="28.8" font-weight="700" fill="#123B53">1</text>
+<rect x="540.9" y="351.9" width="63.9" height="63.9" rx="0.0" fill="#FFFFFF" stroke="#AFCDD6" stroke-width="1.00"/>
+<text x="572.9" y="393.6" text-anchor="middle" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-size="28.8" font-weight="700" fill="#123B53">0</text>
+<rect x="604.8" y="351.9" width="63.9" height="63.9" rx="0.0" fill="#FDECE6" stroke="#AFCDD6" stroke-width="1.00"/>
+<text x="636.7" y="393.6" text-anchor="middle" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-size="28.8" font-weight="700" fill="#D96A4F">-1</text>
+<rect x="860.4" y="227.7" width="63.0" height="63.0" rx="0.0" fill="#DDF2EA" stroke="#168774" stroke-width="2.50"/>
+<text x="891.9" y="268.6" text-anchor="middle" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-size="27.5" font-weight="700" fill="#177C68">-6</text>
+<rect x="923.4" y="227.7" width="63.0" height="63.0" rx="0.0" fill="#FFFFFF" stroke="#B6CDD7" stroke-width="0.87"/>
+<text x="954.9" y="268.6" text-anchor="middle" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-size="27.5" font-weight="700" fill="#123B53">12</text>
+<rect x="986.4" y="227.7" width="63.0" height="63.0" rx="0.0" fill="#FFFFFF" stroke="#B6CDD7" stroke-width="0.87"/>
+<text x="1017.9" y="268.6" text-anchor="middle" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-size="27.5" font-weight="700" fill="#123B53">16</text>
+<rect x="860.4" y="290.7" width="63.0" height="63.0" rx="0.0" fill="#FFFFFF" stroke="#B6CDD7" stroke-width="0.87"/>
+<text x="891.9" y="331.6" text-anchor="middle" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-size="27.5" font-weight="700" fill="#123B53">-6</text>
+<rect x="923.4" y="290.7" width="63.0" height="63.0" rx="0.0" fill="#FFFFFF" stroke="#B6CDD7" stroke-width="0.87"/>
+<text x="954.9" y="331.6" text-anchor="middle" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-size="27.5" font-weight="700" fill="#123B53">8</text>
+<rect x="986.4" y="290.7" width="63.0" height="63.0" rx="0.0" fill="#FFFFFF" stroke="#B6CDD7" stroke-width="0.87"/>
+<text x="1017.9" y="331.6" text-anchor="middle" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-size="27.5" font-weight="700" fill="#123B53">15</text>
+<rect x="860.4" y="353.7" width="63.0" height="63.0" rx="0.0" fill="#FFFFFF" stroke="#B6CDD7" stroke-width="0.87"/>
+<text x="891.9" y="394.5" text-anchor="middle" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-size="27.5" font-weight="700" fill="#123B53">-4</text>
+<rect x="923.4" y="353.7" width="63.0" height="63.0" rx="0.0" fill="#FFFFFF" stroke="#B6CDD7" stroke-width="0.87"/>
+<text x="954.9" y="394.5" text-anchor="middle" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-size="27.5" font-weight="700" fill="#123B53">2</text>
+<rect x="986.4" y="353.7" width="63.0" height="63.0" rx="0.0" fill="#FFFFFF" stroke="#B6CDD7" stroke-width="0.87"/>
+<text x="1017.9" y="394.5" text-anchor="middle" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-size="27.5" font-weight="700" fill="#123B53">7</text>
+<line x1="377.1" y1="288.0" x2="397.8" y2="288.0" stroke="#2F7E97" stroke-width="3.25"/>
+<polygon points="396.0,279.0 409.5,288.0 396.0,297.0" fill="#2F7E97"/>
+<line x1="735.3" y1="288.0" x2="756.9" y2="288.0" stroke="#2F7E97" stroke-width="3.25"/>
+<polygon points="755.1,279.0 768.6,288.0 755.1,297.0" fill="#2F7E97"/>
+<rect x="52.2" y="466.2" width="1094.4" height="155.7" rx="10.8" fill="#F3F9F7" stroke="#CCE5DB" stroke-width="1.25"/>
+<text x="75.6" y="503.1" text-anchor="start" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-size="23.8" font-weight="700" fill="#177C68">첫 출력값 −6이 만들어지는 과정</text>
+<line x1="873.0" y1="488.7" x2="873.0" y2="604.8" stroke="#B9D7CC" stroke-width="1.88"/>
+<rect x="77.4" y="519.3" width="26.1" height="24.3" rx="2.7" fill="#E2F2ED" stroke="#B1D6C8" stroke-width="0.75"/>
+<text x="90.4" y="536.5" text-anchor="middle" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-size="15.0" font-weight="700" fill="#177C68">1</text>
+<text x="113.4" y="538.7" text-anchor="start" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-size="18.8" font-weight="400" fill="#123B53">1×1 + 2×0 + 3×(−1) = −2</text>
+<rect x="77.4" y="549.9" width="26.1" height="24.3" rx="2.7" fill="#E2F2ED" stroke="#B1D6C8" stroke-width="0.75"/>
+<text x="90.4" y="567.1" text-anchor="middle" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-size="15.0" font-weight="700" fill="#177C68">2</text>
+<text x="113.4" y="569.3" text-anchor="start" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-size="18.8" font-weight="400" fill="#123B53">4×1 + 5×0 + 6×(−1) = −2</text>
+<rect x="77.4" y="580.5" width="26.1" height="24.3" rx="2.7" fill="#E2F2ED" stroke="#B1D6C8" stroke-width="0.75"/>
+<text x="90.4" y="597.7" text-anchor="middle" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-size="15.0" font-weight="700" fill="#177C68">3</text>
+<text x="113.4" y="599.9" text-anchor="start" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-size="18.8" font-weight="400" fill="#123B53">7×1 + 8×0 + 9×(−1) = −2</text>
+<rect x="897.3" y="503.1" width="218.7" height="94.5" rx="9.0" fill="#DDF2EA" stroke="#A3D6C3" stroke-width="1.25"/>
+<text x="1005.3" y="531.6" text-anchor="middle" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-size="17.5" font-weight="400" fill="#177C68">세 행을 더하면</text>
+<text x="1006.2" y="566.0" text-anchor="middle" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-size="26.3" font-weight="700" fill="#177C68">−2−2−2 = −6</text>
+<text x="59.4" y="649.5" text-anchor="start" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-size="12.5" font-weight="400" fill="#647A89">Stride = 1  ·  Padding = 0  ·  Bias = 0  ·  ReLU 적용 전(음수 유지)</text>
+<text x="1133.1" y="648.2" text-anchor="end" font-family="Noto Sans CJK KR,Malgun Gothic,sans-serif" font-size="13.8" font-weight="700" fill="#177C68">다음 장: Feature Map</text>
+</svg>
