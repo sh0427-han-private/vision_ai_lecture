@@ -156,3 +156,12 @@ GitHub Pages:
 - 절제된 청회색/녹색, 얇은 선, 작은 모서리 반경, 정렬된 패널과 여백을 사용합니다.
 - 수식·Tensor shape·계산 그래프는 검증 가능한 벡터 도표로 표현합니다.
 - 생성 사진과 설명용 Feature 그림을 실제 모델의 측정·실험 결과로 표현하지 않습니다.
+
+
+## Visual Filtering Curriculum (2026-10-13)
+
+- Intro 14장: Gray 영상 숫자 배열 → 2D 평면과 원근감 → 밝기값의 3D 그래프(실제 Depth 아님) → RGB 3개 Channel → Noise 단일 Pixel 변화 → 일반화.
+- Vision AI 41장(표지 포함): IoU 뒤 영상처리 파트에 노이즈 픽셀·공간 커널 이동·Mean/Gaussian/Median 검산·Sobel 경계 단서를 추가했습니다.
+- 신규 계산 도식 8개는 `docs/assets/lesson/lecture_*.svg`, 배포 순서는 `docs/assets/lesson/manifest.json`과 `scripts/build_lesson_revision.py`가 기준입니다.
+- 같은 합성 3×3 배열을 재사용하여 용어 소개 → 지역 계산 → 세 가지 필터 결과 비교가 단절되지 않게 합니다.
+- 이미지의 채널(C=3)과 장면의 공간적 깊이(Z)를 혼동하지 않으며, 필터링이 객체 인식이나 모든 종류의 잡음 제거를 보장한다고 표현하지 않습니다.
