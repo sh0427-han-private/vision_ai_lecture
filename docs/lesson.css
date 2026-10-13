@@ -88,3 +88,39 @@
   }
   .lesson-deck .lesson-reference { margin-top: 3px; }
 }
+
+/* Learning routes: essential path / full (advanced) path.
+   Kept in the existing navigation footer to preserve screen real estate. */
+.lesson-deck .lesson-mode-controls {
+  display: flex; align-items: center; justify-content: center;
+  gap: 9px; margin: 0 0 3px; white-space: nowrap;
+}
+.lesson-deck .lesson-mode-toggle {
+  font: inherit; font-size: 12px; font-weight: 750;
+  color: #186d7e; background: #edf7f8;
+  border: 1px solid #96ccd4; border-radius: 8px;
+  padding: 4px 10px; cursor: pointer;
+}
+.lesson-deck .lesson-mode-toggle:hover,
+.lesson-deck .lesson-mode-toggle:focus-visible {
+  background: #dff2f4; outline: 2px solid #74b7c1;
+  outline-offset: 1px;
+}
+.lesson-deck .lesson-mode-toggle[aria-pressed="true"] {
+  color: #156f60; background: #e7f5ee;
+  border-color: #8ccbb1;
+}
+.lesson-deck .lesson-mode-summary {
+  color: #64748b; font-size: 11px; font-weight: 600;
+}
+.lesson-deck .lesson-level { font-size: 13px; background: #eaf4f8; color: #245e78; }
+.lesson-deck .lesson-level--detail { background: #e8f5ee; color: #136f5d; }
+@media (max-width: 700px) {
+  .lesson-deck .deck-controls-inner {
+    grid-template-columns: 78px minmax(0,1fr) 78px;
+    gap: 6px; width: calc(100% - 12px);
+  }
+  .lesson-deck .deck-button { font-size: 12px; padding: 7px 5px; }
+  .lesson-deck .lesson-mode-summary { display: none; }
+  .lesson-deck .lesson-mode-toggle { font-size: 11px; padding: 3px 5px; }
+}
