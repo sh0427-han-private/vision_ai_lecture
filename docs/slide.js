@@ -51,6 +51,17 @@
     return target.href;
   }
 
+  function syncChapterLinks() {
+    document.querySelectorAll(".nav-links a[href]").forEach(link => {
+      const raw = link.getAttribute("href") || "";
+      if (!/^(intro|ai_basics|vision_ai)\.html(?:\?.*)?$/.test(raw)) return;
+      const url = new URL(raw, location.href);
+      if (coreMode) url.searchParams.set("mode", "core");
+      else url.searchParams.delete("mode");
+      link.setAttribute("href", url.pathname.split("/").pop() + url.search);
+    });
+  }
+
   function indexFromHash() {
     const match = location.hash.match(/^#slide-(\d+)$/);
     if (!match) return 0;
@@ -143,6 +154,7 @@
       nextButton.disabled = currentIndex === slides.length - 1 && !nextPage;
     }
 
+    syncChapterLinks();
     history.replaceState(null, "", "#slide-" + (currentIndex + 1));
     scheduleFit();
   }
