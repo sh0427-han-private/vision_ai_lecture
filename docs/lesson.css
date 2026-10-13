@@ -54,3 +54,15 @@
   .lesson-deck .lesson-outline strong { font-size: 20px; }
   .lesson-deck .lesson-outline p { margin: 4px 0; font-size: 16px; }
 }
+
+/* 2026-10-13: allow learners to zoom detailed math diagrams without shrinking fonts. */
+.lesson-deck .lesson-figure a { display:block; cursor:zoom-in; border-radius:3px; }
+.lesson-deck .lesson-figure a:focus-visible { outline:3px solid #1c8a92; outline-offset:4px; }
+.lesson-deck .lesson-figure img { max-height:58dvh; }
+.lesson-deck .lesson-reference { background:none; border:0; font-size:13px; padding:0; }
+.lesson-deck .lesson-reference summary { cursor:pointer; display:inline-block; list-style:none; color:#6b8190; }
+.lesson-deck .lesson-reference summary::after { content:' +'; }
+.lesson-deck .lesson-reference[open] summary::after { content:' −'; }
+.lesson-deck .lesson-reference > div { margin-top:5px; line-height:1.6; }
+@media(max-height:760px){.lesson-deck .lesson-figure img{max-height:52dvh;}}
+@media(max-width:700px){.lesson-deck .lesson-figure img{max-height:45dvh;}}
