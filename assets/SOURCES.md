@@ -335,3 +335,12 @@ https://www.nature.com/articles/s42256-020-00257-z
 - 수치 예시는 실제 관측값이 아니라 강의용 합성값입니다. 동일 3×3 배열의 합은 1053이고 Mean = 117, Gaussian = 2219/16 ≈ 138.69, Median = 100입니다.
 - 2D 밝기 높이 그래프는 영상의 Pixel 밝기값을 세로축으로 표시한 개념도이며, 단안 카메라에서 측정된 깊이 맵이 아닙니다.
 - 이전에 생성된 이미지 인포그래픽은 위치·숫자 대응을 보장하기 어려워 실제 교재에는 검증 가능한 독립 SVG 도식을 사용합니다. 그림은 Brown 원본 Figure를 복제하지 않았습니다.
+
+
+## 2026-10-13 전체 강의 개편 이미지 계보
+
+- `docs/assets/intro_grayscale_crop_6x6.svg`: 기존 `intro_grayscale_values.svg`의 48×32 밝기 배열에서 6×6 구간(행 10–15, 열 16–21, 0부터)을 추출해 동일 JPG의 위치 표시와 함께 재구성했습니다.
+- `docs/assets/lesson/task_labels_three_outputs.svg`: 기존 `context_task_classification.svg`에 임베드된 강의용 사과 사진을 재사용하고 Class·Bounding Box·Pixel Mask의 세 라벨 형태를 직접 그렸습니다. Box/Mask는 개념적 오버레이이고 실제 수동 정밀 라벨이나 모델 출력이 아닙니다.
+- `docs/assets/lesson/lecture_filter_to_cnn_bridge.svg`: 동일한 사과 사진과 고정 평균 커널(1/9)·학습 커널(w1..w9) 비교를 새로 구성했습니다. 학습 커널에는 실제 모델 Weight를 표기하지 않았습니다.
+- 커널 이동은 동일한 5×5 배열에서 왼쪽 상단 ROI를 오른쪽으로 3번 옮긴 합 1045·1053·1055와 평균값 약 116.11·117·117.22를 표시합니다.
+- 저장소에 있는 원본 필터 연산 Figure와 수치·라벨 Figure는 별개 예시이므로 임의의 학습/측정 결과로 설명하지 않습니다.
