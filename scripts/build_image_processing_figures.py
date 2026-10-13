@@ -114,7 +114,7 @@ def build_image_processing_figures():
                                     ndi.median_filter(impulse, 3, mode="reflect")]],
                  ["점 잡음이 있는 입력", "평균 필터 · 3×3", "중앙값 필터 · 3×3"],
                  ["검정·흰색 합성 잡음 · 약 5%", "극단값도 평균에 포함", "이웃 값을 정렬해 가운데 선택"],
-                 "앞의 9개 숫자: 평균 88.9 / 중앙값 80  ·  같은 입력에서도 계산 방식이 다릅니다.",
+                 "같은 입력 영상에서도 평균은 주변 값을 합산하고, 중앙값은 정렬해 선택합니다.",
                  "같은 점 잡음 영상에 적용한 평균 필터와 중앙값 필터의 확대 비교")
 
     smooth = ndi.gaussian_filter(image, 1, mode="reflect")
