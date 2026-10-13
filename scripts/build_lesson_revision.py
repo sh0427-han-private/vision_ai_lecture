@@ -819,7 +819,7 @@ def build_lessons():
         ("Confusion Matrix","정답과 판정을 비교해 네 가지 결과를 셉니다","총 100건의 같은 평가 데이터를 다음 지표 계산까지 이어갑니다. 실제 불량 20건 중 18건을 찾고, 정상 80건 중 4건을 잘못 알렸습니다.","lesson_confusion_100cases","TP: 찾은 불량 / FN: 놓친 불량 / FP: 오알람 / TN: 정상 통과."),
         ("Precision과 Recall","알람의 정확성과 불량을 찾는 비율을 구분합니다","직전 혼동행렬의 TP=18·FP=4·FN=2를 그대로 사용합니다. Precision은 불량이라고 알린 22건, Recall은 실제 불량 20건을 분모로 계산합니다.","lesson_precision_recall_sharedcase","동일한 TP=18이어도 Precision=18/22=81.8%, Recall=18/20=90%입니다. 임계값이 바뀌면 두 지표도 변할 수 있습니다."),
         ("Accuracy와 F1","전체 정답률과 Precision·Recall의 균형을 함께 봅니다","동일한 100건에서 Accuracy=(18+76)/100=94%, F1=2×18/(2×18+4+2)=85.7%를 계산합니다.","lesson_accuracy_f1_same100","F1은 Precision·Recall의 조화평균이며 TN은 포함하지 않습니다. 다음 장의 극단적 클래스 불균형 사례는 별도 가상 데이터입니다.",True),
-        ("클래스 불균형", "불량이 적을수록 학습과 평가를 함께 점검합니다", "정상 95장·불량 5장처럼 Class 수가 다르면 소수 Class의 오류가 가려질 수 있습니다.", "survey_class_imbalance", "Test를 인위적으로 균형화하지 않고 운영 분포에서 확인합니다. 불량 Recall뿐 아니라 Precision과 오알람도 함께 봅니다."),
+        ("클래스 불균형", "불량이 적을수록 학습과 평가를 함께 점검합니다", "정상 95장·불량 5장처럼 Class 수가 다르면 소수 Class의 오류가 가려질 수 있습니다.", "survey_class_imbalance", "Accuracy는 전체 정답률, F1은 Precision·Recall의 조화평균입니다. Test는 운영 분포를 유지하고 불량 Recall·Precision·오알람을 함께 봅니다."),
         ("Shortcut Learning","모델이 우리가 원한 단서를 사용했는지도 확인합니다","Shortcut Learning(지름길 학습)은 물체 형태 대신 배경처럼 쉬운 단서로 정답을 맞추는 현상입니다.","shortcut_professional","Leakage는 정보가 새는 문제, Shortcut은 입력의 원치 않는 상관관계를 이용하는 문제입니다."),
         ("개발과 운영","운영의 실패 사례를 다음 데이터와 학습에 연결합니다","배포 후에도 조명·설비·제품 조건이 바뀔 수 있습니다. 실패 이미지를 모으고 정답 기준과 평가 조건을 다시 확인합니다.","workflow_basic","데이터 수집 → 학습 → 평가 → 배포 → 관찰을 반복하며 개선합니다."),
     ]
