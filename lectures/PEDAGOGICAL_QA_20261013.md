@@ -3,9 +3,9 @@
 ## 이번 수정 범위
 
 - 기존 강의의 전체 99장과 강의 흐름은 유지
-- **AI Basics**: Perceptron 기본(7장), AND/XOR(11장) 그림 재구성
-- **Vision AI**: Convolution(21장), Feature Map(22장), Feature Map/Channel(23장) 그림 재구성
-- *주의:* Vision AI의 표지 포함 실제 웹 페이지 기준 번호를 사용했습니다. Manifest 번호는 표지 제외이므로 1씩 작습니다.
+- **AI Basics**: Perceptron 기본(웹 8장, Manifest 7번), AND/XOR(웹 12장, Manifest 11번) 그림 재구성
+- **Vision AI**: Convolution(웹 21장), Feature Map(웹 22장), Feature Map/Channel(웹 23장) 그림 재구성
+- *주의:* 두 웹 강의 모두 표지 1장이 포함되어 있습니다. 따라서 실제 웹 슬라이드 번호는 Manifest 번호보다 1이 큽니다.
 - **Backpropagation**(AI Basics 27장)은 지난 교정의 Chain Rule 계산 그래프를 유지하고, 그 수치의 수학적 일관성을 추가 확인
 
 ## 교정 전후의 교육적 차이
@@ -37,3 +37,9 @@
 ## 다음 개편 후보
 
 Linear Layer의 비선형 활성화, 데이터 누수와 Group Split, 정밀도·재현율의 현장 의사결정, CNN 입력 Channel에서 학습 가능한 Kernel까지의 연결성을 같은 기준으로 점검합니다.
+
+## 후속 스크린샷 기반 교정
+
+- 실제 Chromium 렌더링에서 자동 검사의 주요 블록 겹침 0건임에도 **Convolution 입력 행렬과 주석이 겹치는 내부 SVG 문제**를 발견했습니다. 5×5 입력 셀을 56→50px로 조정하고 동일 수치·강조 영역을 유지했습니다.
+- RGB 다채널 Conv 도식에서 5장의 출력 Feature Map이 설명 제목에 겹친 부분을 발견해, 5개 맵의 시각적 시작 위치를 아래로 옮겼습니다.
+- 두 SVG 모두 수학 계산은 그대로 유지하고, 웹 슬라이드에서 캐시 버전을 갱신했습니다. 후속 전수 렌더링으로 수정 반영 여부를 확인합니다.
