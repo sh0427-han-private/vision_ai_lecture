@@ -360,66 +360,66 @@
     },
     {
       "number": 8,
+      "topic": "Mask 후처리",
+      "level": "basic",
+      "title": "작은 점 제거와 작은 구멍 메우기는 다른 연산입니다",
+      "asset": "assets/lesson/processing_morphology.svg"
+    },
+    {
+      "number": 9,
       "topic": "영상처리의 기본",
       "level": "basic",
       "title": "한 Pixel을 바꿀 수도, 주변 Pixel을 함께 볼 수도 있습니다",
       "asset": "assets/lesson/lecture_point_neighborhood.svg"
     },
     {
-      "number": 9,
+      "number": 10,
       "topic": "Kernel의 이동",
       "level": "detail",
       "title": "3×3 Kernel은 움직이며 출력 Pixel을 하나씩 만듭니다",
       "asset": "assets/lesson/lecture_kernel_slide.svg"
     },
     {
-      "number": 10,
+      "number": 11,
       "topic": "평균 필터 계산",
       "level": "detail",
       "title": "주변 9개 값을 평균해 출력 한 칸을 계산합니다",
       "asset": "assets/lesson/lecture_mean_calculation.svg"
     },
     {
-      "number": 11,
+      "number": 12,
       "topic": "Gaussian 필터",
       "level": "basic",
       "title": "잡음을 줄이면 작은 변화도 함께 흐려질 수 있습니다",
       "asset": "assets/lesson/processing_gaussian.svg"
     },
     {
-      "number": 12,
+      "number": 13,
       "topic": "중앙값 필터",
       "level": "basic",
       "title": "튀는 점 잡음에는 중앙값이 유용할 수 있습니다",
       "asset": "assets/lesson/processing_median.svg"
     },
     {
-      "number": 13,
+      "number": 14,
       "topic": "필터 비교",
       "level": "detail",
       "title": "동일 입력에서도 Mean·Gaussian·Median 결과는 다릅니다",
       "asset": "assets/lesson/lecture_filter_comparison.svg"
     },
     {
-      "number": 14,
+      "number": 15,
       "topic": "Sobel 직관",
       "level": "basic",
       "title": "Sobel은 잡음을 지우기보다 경계 반응을 계산합니다",
       "asset": "assets/lesson/lecture_sobel_concept.svg"
     },
     {
-      "number": 15,
+      "number": 16,
       "topic": "영상 기울기",
       "level": "basic",
       "title": "밝기가 급격히 바뀌는 위치에서 경계 단서를 얻습니다",
       "asset": "assets/lesson/processing_gradient.svg"
-    },
-    {
-      "number": 16,
-      "topic": "Mask 후처리",
-      "level": "basic",
-      "title": "작은 점 제거와 작은 구멍 메우기는 다른 연산입니다",
-      "asset": "assets/lesson/processing_morphology.svg"
     },
     {
       "number": 17,
