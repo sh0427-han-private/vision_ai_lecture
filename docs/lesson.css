@@ -124,3 +124,39 @@
   .lesson-deck .lesson-mode-summary { display: none; }
   .lesson-deck .lesson-mode-toggle { font-size: 11px; padding: 3px 5px; }
 }
+
+/* Full-slide PowerPoint visual: preserve the 16:9 PPT slide composition.
+   Scoped to explicitly replaced slides; all other 98 pages stay unchanged. */
+.lesson-deck .ppt-replaced .ppt-slide-inner {
+  width: min(1200px, calc(100vw - 32px));
+  max-width: none;
+}
+.lesson-deck .ppt-replaced .ppt-screenreader-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  border: 0; overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  clip-path: inset(50%);
+}
+.lesson-deck .ppt-replaced .ppt-slide-figure {
+  width: 100%; margin: 0; padding: 0;
+  display: flex; justify-content: center; align-items: center;
+}
+.lesson-deck .ppt-replaced .ppt-slide-figure a {
+  width: 100%; display: flex; justify-content: center; align-items: center;
+  border-radius: 4px; cursor: zoom-in;
+}
+.lesson-deck .ppt-replaced .ppt-slide-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: calc(100dvh - var(--deck-header-height) - var(--deck-footer-height) - 32px);
+  object-fit: contain;
+  border-radius: 0;
+}
+@media (max-width:700px) {
+  .lesson-deck .ppt-replaced.slide { padding: 8px; }
+  .lesson-deck .ppt-replaced .ppt-slide-inner { width: 100%; }
+}
