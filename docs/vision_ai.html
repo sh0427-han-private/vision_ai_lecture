@@ -104,7 +104,7 @@
 <div class="slide-inner"><div class="lesson-meta"><span>13 · 중앙값 필터</span>
 <span class="lesson-level">핵심 개념</span></div>
 <h2 class="slide-title">튀는 점 잡음에는 중앙값이 유용할 수 있습니다</h2>
-<p class="slide-subtitle">Median(중앙값) 필터는 이웃 값을 정렬해 가운데 값을 선택합니다. 합성 잡음 이미지에서 효과를 본 뒤, 다음 장에서 같은 3×3 숫자 입력을 비교합니다.</p>
+<p class="slide-subtitle">Median(중앙값) 필터는 주변 3×3 Pixel 값을 크기순으로 정렬해 가운데 값을 선택합니다. 평균처럼 모두 더하지 않으므로 튀는 점 잡음에 강할 수 있습니다.</p>
 <figure class="lesson-figure"><a href="assets/lesson/processing_median.svg?v=processing-20261006-1" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/processing_median.svg?v=processing-20261006-1" alt="튀는 점 잡음에는 중앙값이 유용할 수 있습니다"></a></figure>
 <p class="lesson-takeaway">중앙값은 선형 가중합이 아닌 비선형 연산입니다. 얇은 선이나 작은 결함도 없어질 수 있어 모든 잡음에 최선인 것은 아닙니다.</p><details class="lesson-reference"><summary>출처 · 근거</summary><div>참고: <a href="https://szeliski.org/Book/1stEdition.htm" target="_blank" rel="noopener">Szeliski · Ch. 3 §3.3.1</a> · 기존 AI 생성 사진 / 합성 데이터에 실제 연산 적용</div></details></div></section>
 <section class="slide" data-topic="필터 비교" data-level="detail">
@@ -162,7 +162,7 @@
 <div class="slide-inner"><div class="lesson-meta"><span>21 · Feature Map</span>
 <span class="lesson-level">핵심 개념</span></div>
 <h2 class="slide-title">반응값을 위치대로 모으면 특징 지도가 됩니다</h2>
-<p class="slide-subtitle">직전 Convolution에서 계산한 3×3 출력값을 동일한 위치에 배치합니다. 양수·음수의 반응 강도를 색으로 비교합니다.</p>
+<p class="slide-subtitle">5×5 입력에서 3×3 필터를 한 칸씩 이동하며 계산하면 3×3개의 반응값이 생깁니다. 이 값을 같은 위치에 모은 것이 Feature Map입니다.</p>
 <figure class="lesson-figure"><a href="assets/lesson/lesson_featuremap_numeric_continuation.svg?v=pedagogic-20261013-1" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/lesson_featuremap_numeric_continuation.svg?v=pedagogic-20261013-1" alt="반응값을 위치대로 모으면 특징 지도가 됩니다"></a></figure>
 <p class="lesson-takeaway">Feature Map은 한 필터의 위치별 반응입니다. 이 예시에는 활성화 함수(ReLU)를 적용하지 않아 음수도 남아 있습니다.</p></div></section>
 <section class="slide" data-topic="Feature Map과 Channel" data-level="detail">
