@@ -126,6 +126,6 @@ vision_ai_lecture/
 
 ## Web Lecture
 
-정적 강의 사이트는 [docs/intro.html](docs/intro.html)에서 시작합니다.
+정적 강의 사이트는 [강의 목차](docs/index.html)에서 시작합니다. Intro 15장 → AI Basics 44장 → Vision AI 40장, 총 99장입니다.
 
 디자인은 **흰색 배경, 한 화면 한 슬라이드, 최소한의 포인트 컬러**를 기본으로 합니다.
