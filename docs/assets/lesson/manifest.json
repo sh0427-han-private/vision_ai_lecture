@@ -88,14 +88,14 @@
       "topic": "Activation",
       "level": "basic",
       "title": "Layer를 쌓을 때 비선형 계산도 필요합니다",
-      "asset": "assets/lesson/activation_basic.svg"
+      "asset": "assets/lesson/lesson_relu_value_graph.svg"
     },
     {
       "number": 13,
       "topic": "선형 Layer의 한계",
       "level": "detail",
       "title": "비선형성이 없으면 여러 Layer도 하나로 합쳐집니다",
-      "asset": "assets/lesson/context_linear_layers_collapse.svg"
+      "asset": "assets/lesson/lesson_affine_relu_comparison.svg"
     },
     {
       "number": 14,
@@ -172,7 +172,7 @@
       "topic": "Feature와 Representation",
       "level": "basic",
       "title": "이미지 숫자는 판단에 유용한 내부 표현으로 바뀝니다",
-      "asset": "assets/lesson/hierarchy_professional.svg"
+      "asset": "assets/lesson/lesson_cnn_feature_hierarchy.svg"
     },
     {
       "number": 25,
@@ -214,7 +214,7 @@
       "topic": "Group Split",
       "level": "basic",
       "title": "같은 영상의 비슷한 Frame은 통째로 분리합니다",
-      "asset": "assets/lesson/context_group_split_visual.svg"
+      "asset": "assets/lesson/lesson_video_group_split_comparison.svg"
     },
     {
       "number": 31,
@@ -503,14 +503,14 @@
       "topic": "특징의 조합",
       "level": "basic",
       "title": "Layer는 앞의 특징을 조합해 더 복잡한 표현을 만듭니다",
-      "asset": "assets/lesson/hierarchy_professional.svg"
+      "asset": "assets/lesson/lesson_cnn_feature_hierarchy.svg"
     },
     {
       "number": 29,
       "topic": "Receptive Field",
       "level": "detail",
       "title": "깊은 층의 한 위치는 더 넓은 입력 범위의 영향을 받습니다",
-      "asset": "assets/lesson/context_receptive_field.svg"
+      "asset": "assets/lesson/lesson_receptive_field_growth.svg"
     },
     {
       "number": 30,
