@@ -279,7 +279,7 @@ joined_lessons = (
 )
 for basename in accessible_figures:
     match = re.search(
-        rf'<img src="assets/lesson/{basename}\\.svg\\?v=[^"]+" alt="([^"]+)"',
+        rf'<img src="assets/lesson/{basename}[.]svg[?]v=[^"]+" alt="([^"]+)"',
         joined_lessons
     )
     assert match and len(html.unescape(match.group(1))) >= 35, basename
