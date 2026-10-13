@@ -165,3 +165,13 @@ GitHub Pages:
 - 신규 계산 도식 8개는 `docs/assets/lesson/lecture_*.svg`, 배포 순서는 `docs/assets/lesson/manifest.json`과 `scripts/build_lesson_revision.py`가 기준입니다.
 - 같은 합성 3×3 배열을 재사용하여 용어 소개 → 지역 계산 → 세 가지 필터 결과 비교가 단절되지 않게 합니다.
 - 이미지의 채널(C=3)과 장면의 공간적 깊이(Z)를 혼동하지 않으며, 필터링이 객체 인식이나 모든 종류의 잡음 제거를 보장한다고 표현하지 않습니다.
+
+
+## 2026-10-13 전체 98장 커리큘럼 개편 (적용)
+
+- 웹 강의는 Intro 14장 / AI Basics 44장 / Vision AI 40장 = 총 98장과 첫 화면 목차 `docs/index.html`입니다.
+- Intro의 수치 이미지는 `intro_grayscale_crop_6x6.svg`를 사용합니다. 원본 48×32 픽셀 중 6×6 구간은 값과 밝기가 동일하게 대응해야 합니다.
+- AI Basics는 신경 계산의 구조를 Loss·Gradient 이전에 설명합니다. Vision AI는 Label을 Class/Box/Mask로 교체하고 Mean → Gaussian → Median 및 고정 필터→CNN 학습 필터 브리지로 연결합니다.
+- 수치·수식·구조는 SVG 유지, 계산이 아닌 현상 묘사는 사진 중심, 출처는 접을 수 있는 섹션, 이미지 원본 확대를 제공합니다.
+- GitHub Pages 배포에서는 `scripts/verify_curriculum_overhaul.py`로 HTML 구조·자산·SVG·커널 계산을 확인합니다.
+- 실사·사진 기반 고급 강의 개선은 기존 저장소의 합성 사과 이미지와 실제 필터 결과 자산을 활용합니다. Brown 원문 Figure 복제나 PPT 원본의 binary 복사는 하지 않았습니다.
