@@ -84,7 +84,7 @@
 <h2 class="slide-title">3×3 Kernel은 움직이며 출력 Pixel을 하나씩 만듭니다</h2>
 <p class="slide-subtitle">동일한 5×5 배열에서 Kernel을 오른쪽으로 한 칸씩 세 번 이동하며 출력 첫 행을 만듭니다.</p>
 <figure class="lesson-figure"><a href="assets/lesson/lecture_kernel_slide.svg?v=visual-20261013-1" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/lecture_kernel_slide.svg?v=visual-20261013-1" alt="3×3 Kernel은 움직이며 출력 Pixel을 하나씩 만듭니다"></a></figure>
-<p class="lesson-takeaway">중앙에 255가 포함된 9개 Pixel의 합 1053을 9로 나누면 117입니다.</p>
+<p class="lesson-takeaway">Kernel을 옮길 때마다 선택되는 9개 값이 달라지고, 출력 Pixel도 순서대로 달라집니다. 구체적인 산술평균 계산은 다음 장에서 다룹니다.</p>
 <details class="lesson-reference"><summary>출처 · 근거</summary><div>참고: <a href="https://cs.brown.edu/courses/csci1430/2020_Spring/lectures/2020Spring_02_ImageFiltering.pdf" target="_blank" rel="noopener">Brown CSCI1430 Image Filtering</a> · <a href="https://docs.opencv.org/4.x/d4/d13/tutorial_py_filtering.html" target="_blank" rel="noopener">OpenCV Filtering</a> · 직접 계산한 교육용 도식</div></details></div></section>
 <section class="slide" data-topic="평균 필터 계산" data-level="detail">
 <div class="slide-inner"><div class="lesson-meta"><span>11 · 평균 필터 계산</span>
@@ -119,9 +119,9 @@
 <div class="slide-inner"><div class="lesson-meta"><span>15 · Sobel 직관</span>
 <span class="lesson-level">핵심 개념</span></div>
 <h2 class="slide-title">Sobel은 잡음을 지우기보다 경계 반응을 계산합니다</h2>
-<p class="slide-subtitle">밝기가 급격히 바뀌는 위치의 x·y 방향 변화량을 계산해 윤곽 단서를 얻습니다.</p>
+<p class="slide-subtitle">Sobel Gx의 3×3 가중치를 사용해 좌우 밝기 차이를 계산합니다. 특히 세로 경계에서 큰 반응이 나타나는 이유를 살펴봅니다.</p>
 <figure class="lesson-figure"><a href="assets/lesson/lecture_sobel_concept.svg?v=visual-20261013-1" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/lecture_sobel_concept.svg?v=visual-20261013-1" alt="Sobel은 잡음을 지우기보다 경계 반응을 계산합니다"></a></figure>
-<p class="lesson-takeaway">이미지의 Gradient와 신경망 학습의 Loss Gradient는 서로 다릅니다.</p>
+<p class="lesson-takeaway">이 장의 Gx는 이미지 밝기의 가로 방향 변화량입니다. 다음 장에서는 Gx와 Gy를 합쳐 경계 반응을 시각화합니다.</p>
 <details class="lesson-reference"><summary>출처 · 근거</summary><div>참고: <a href="https://cs.brown.edu/courses/csci1430/2020_Spring/lectures/2020Spring_02_ImageFiltering.pdf" target="_blank" rel="noopener">Brown CSCI1430 Image Filtering</a> · <a href="https://docs.opencv.org/4.x/d4/d13/tutorial_py_filtering.html" target="_blank" rel="noopener">OpenCV Filtering</a> · 직접 계산한 교육용 도식</div></details></div></section>
 <section class="slide" data-topic="영상 기울기" data-level="basic">
 <div class="slide-inner"><div class="lesson-meta"><span>16 · 영상 기울기</span>
@@ -281,16 +281,16 @@
 <div class="slide-inner"><div class="lesson-meta"><span>38 · 평가와 실패 사례</span>
 <span class="lesson-level">핵심 개념</span></div>
 <h2 class="slide-title">높은 점수만으로 판단 근거가 맞다고 보장할 수 없습니다</h2>
-<p class="slide-subtitle">배경·조명·장비가 정답과 우연히 연결되면 모델은 쉬운 Shortcut을 사용할 수 있습니다.</p>
+<p class="slide-subtitle">Vision AI에서 배경·조명·설비의 차이가 Class·Box·Mask 결과에 어떤 영향을 주는지 확인해야 합니다. 다른 조건의 이미지로도 판단 근거가 유지되는지 비교합니다.</p>
 <figure class="lesson-figure"><a href="assets/lesson/shortcut_professional.svg?v=professional-20261006-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/shortcut_professional.svg?v=professional-20261006-2" alt="높은 점수만으로 판단 근거가 맞다고 보장할 수 없습니다"></a></figure>
-<p class="lesson-takeaway">평균 Metric과 함께 실패 이미지·설비별·조명별 결과를 점검합니다.</p><details class="lesson-reference"><summary>출처 · 근거</summary><div>사진: AI 생성 교육용 예시 · 실제 측정/실험 결과가 아님</div></details></div></section>
+<p class="lesson-takeaway">분류 오판뿐 아니라 Box 위치·Mask 경계의 실패도 구분합니다. 설비별·조명별 오류 유형을 모아 모델이 바라본 단서를 점검합니다.</p><details class="lesson-reference"><summary>출처 · 근거</summary><div>사진: AI 생성 교육용 예시 · 실제 측정/실험 결과가 아님</div></details></div></section>
 <section class="slide" data-topic="운영 Cycle" data-level="basic">
 <div class="slide-inner"><div class="lesson-meta"><span>39 · 운영 Cycle</span>
 <span class="lesson-level">핵심 개념</span></div>
 <h2 class="slide-title">문제 정의부터 운영 관찰까지 연결해 개선합니다</h2>
-<p class="slide-subtitle">성공 기준을 정하고 데이터를 모아 학습·평가·배포합니다. 운영의 실패 사례는 다음 데이터 보강의 근거가 됩니다.</p>
+<p class="slide-subtitle">Vision Task별 성공 기준(분류 판정·Box 위치·Mask 품질)을 정하고, 운영 중 수집한 오류를 Label 검토 및 재평가로 연결합니다.</p>
 <figure class="lesson-figure"><a href="assets/lesson/context_vision_project_pipeline.svg?v=professional-20261006-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/context_vision_project_pipeline.svg?v=professional-20261006-2" alt="문제 정의부터 운영 관찰까지 연결해 개선합니다"></a></figure>
-<p class="lesson-takeaway">모델 구조뿐 아니라 Label 기준·데이터 분리·운영 조건까지 함께 관리합니다.</p></div></section>
+<p class="lesson-takeaway">운영 Cycle에서는 Task별 Metric·오류 이미지·촬영 조건을 함께 추적하고, 개선 전후를 같은 기준으로 다시 평가합니다.</p></div></section>
 </main><div class="deck-controls"><div class="deck-controls-inner">
 <button class="deck-button" type="button" data-slide-prev>← 이전</button>
 <div class="deck-status"><div class="lesson-mode-controls"><button class="lesson-mode-toggle" type="button" data-lesson-mode-toggle aria-pressed="false" aria-label="핵심/전체 학습 경로 전환">핵심만 보기</button><span class="lesson-mode-summary" data-lesson-mode-summary>전체 과정 · 심화 포함</span></div><span class="deck-counter"><span data-slide-current>1</span> / <span data-slide-total>1</span></span>
