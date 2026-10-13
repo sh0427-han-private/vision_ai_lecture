@@ -130,7 +130,7 @@
       "topic": "Gradient와 Learning Rate",
       "level": "detail",
       "title": "기울기 계산 → 가중치 수정 → Loss 재계산을 연결합니다",
-      "asset": "assets/lesson/gradient_detail.svg"
+      "asset": "assets/lesson/lesson_sgd_update_flow.svg"
     },
     {
       "number": 19,
@@ -186,7 +186,7 @@
       "topic": "Backpropagation",
       "level": "detail",
       "title": "Chain Rule로 각 Parameter의 변화율을 계산합니다",
-      "asset": "assets/lesson/backprop_detail.svg"
+      "asset": "assets/lesson/lesson_chain_rule_graph.svg"
     },
     {
       "number": 27,
