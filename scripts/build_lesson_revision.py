@@ -761,7 +761,7 @@ def build_deck(filename, title, subtitle, cards, lessons, prev_page, next_page="
             ).replace('</p>', '</div></details>')
         header+=f'''<section class="slide" data-topic="{html.escape(topic)}" data-level="{"detail" if detailed else "basic"}">
 <div class="slide-inner"><div class="lesson-meta"><span>{index:02d} · {html.escape(topic)}</span>
-<span class="lesson-level{" lesson-level--detail" if detailed else ""}">{"상세 설명" if detailed else "기본 개념"}</span></div>
+<span class="lesson-level{" lesson-level--detail" if detailed else ""}">{"심화 학습" if detailed else "핵심 개념"}</span></div>
 <h2 class="slide-title">{html.escape(heading)}</h2>
 <p class="slide-subtitle">{html.escape(description)}</p>
 <figure class="lesson-figure"><a href="{asset}?v={figure_version}" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="{asset}?v={figure_version}" alt="{html.escape(heading)}"></a></figure>
@@ -769,7 +769,7 @@ def build_deck(filename, title, subtitle, cards, lessons, prev_page, next_page="
         manifest.append({"number":index,"topic":topic,"level":"detail" if detailed else "basic","title":heading,"asset":asset})
     header+='''</main><div class="deck-controls"><div class="deck-controls-inner">
 <button class="deck-button" type="button" data-slide-prev>← 이전</button>
-<div class="deck-status"><span class="deck-counter"><span data-slide-current>1</span> / <span data-slide-total>1</span></span>
+<div class="deck-status"><div class="lesson-mode-controls"><button class="lesson-mode-toggle" type="button" data-lesson-mode-toggle aria-pressed="false" aria-label="핵심/전체 학습 경로 전환">핵심만 보기</button><span class="lesson-mode-summary" data-lesson-mode-summary>전체 과정 · 심화 포함</span></div><span class="deck-counter"><span data-slide-current>1</span> / <span data-slide-total>1</span></span>
 <div class="deck-progress"><div class="deck-progress-bar" data-slide-progress></div></div></div>
 <button class="deck-button" type="button" data-slide-next>다음 →</button></div></div></body></html>\n'''
     (REPO_DIR / "docs" / filename).write_text(header,encoding="utf-8")
