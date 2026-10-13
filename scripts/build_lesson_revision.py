@@ -730,6 +730,8 @@ def build_deck(filename, title, subtitle, cards, lessons, prev_page, next_page="
         detailed=bool(extra and extra[0])
         if asset.startswith("old:"):
             asset=legacy_figure(asset[4:])
+        elif asset.startswith("ppt:"):
+            asset=f"assets/ppt_slides/{asset[4:]}.svg"
         else:
             asset=f"assets/lesson/{asset}.svg"
         reference=""
@@ -775,6 +777,25 @@ def build_deck(filename, title, subtitle, cards, lessons, prev_page, next_page="
                 '<p class="lesson-reference">',
                 '<details class="lesson-reference"><summary>출처 · 근거</summary><div>'
             ).replace('</p>', '</div></details>')
+        if asset == "assets/ppt_slides/vision_ai_convolution_ppt.svg":
+            # PPT-first production workflow: full editable slide in source PPTX,
+            # with matching SVG used as the entire web lecture composition.
+            header += f'''<section class="slide ppt-replaced" data-topic="{html.escape(topic)}" data-level="detail">
+<div class="slide-inner ppt-slide-inner">
+  <div class="ppt-screenreader-only">
+    <div class="lesson-meta"><span>{index:02d} · {html.escape(topic)}</span><span class="lesson-level lesson-level--detail">심화 학습</span></div>
+    <h2 class="slide-title">{html.escape(heading)}</h2>
+    <p class="slide-subtitle">5×5 입력의 3×3 영역과 필터를 위치별로 곱하고 더합니다. 첫 위치의 결과는 −6이며 Kernel을 이동해 3×3 Feature Map을 만듭니다.</p>
+    <p class="lesson-takeaway">Stride 1, Padding 0, Bias 0인 CNN식 Cross-correlation 예시입니다. ReLU를 적용하지 않아 음수가 남습니다.</p>
+  </div>
+  <figure class="ppt-slide-figure lesson-figure">
+    <a href="{asset}?v=ppt-source-20261013-1" target="_blank" rel="noopener" title="Convolution 강의 슬라이드 크게 보기">
+      <img src="{asset}?v=ppt-source-20261013-1" alt="입력 5×5의 왼쪽 위 3×3을 강조하고 가중치 1·0·−1의 Kernel과 곱해 세 행 모두 −2를 얻습니다. 합계 −6을 출력 첫 칸에 기록하고, 필터를 한 칸씩 옮겨 −6 12 16 / −6 8 15 / −4 2 7의 출력 Feature Map을 만듭니다.">
+    </a>
+  </figure>
+</div></section>\n'''
+            manifest.append({"number":index,"topic":topic,"level":"detail","title":heading,"asset":asset})
+            continue
         header+=f'''<section class="slide" data-topic="{html.escape(topic)}" data-level="{"detail" if detailed else "basic"}">
 <div class="slide-inner"><div class="lesson-meta"><span>{index:02d} · {html.escape(topic)}</span>
 <span class="lesson-level{" lesson-level--detail" if detailed else ""}">{"심화 학습" if detailed else "핵심 개념"}</span></div>
@@ -859,7 +880,7 @@ def build_lessons():
         ("고정 필터와 학습 필터","Spatial Filtering의 Kernel 개념은 CNN으로 연결됩니다","두 방법 모두 주변 Pixel을 계산하지만, 평균·Gaussian은 사람이 정한 고정 가중치이고 CNN 가중치는 데이터 학습으로 갱신됩니다.","lecture_filter_to_cnn_bridge","이 장은 서로 다른 목적의 연산을 연결하는 개념도입니다. CNN의 실제 학습 가중치 값을 표시한 것은 아닙니다."),
         ("CNN","CNN은 작은 영역을 보고 같은 가중치를 재사용합니다","Convolutional Neural Network(합성곱 신경망)는 지역 연결과 가중치 공유로 이미지의 공간적 패턴을 계산합니다.","old:cnn_why_local","Flatten은 값과 순서를 유지하지만, 완전연결층에는 공간 이웃 관계와 가중치 공유가 명시되어 있지 않습니다."),
         ("Kernel","같은 필터도 이미지 영역에 따라 반응이 달라집니다","Kernel 또는 Filter(커널·필터)는 작은 가중치 배열입니다. 세로 밝기 변화가 있는 영역과 평평한 영역의 반응을 비교합니다.","kernel_basic","그림은 사람이 정한 경계 필터 예시입니다. CNN의 필터 값은 학습으로 정해집니다."),
-        ("Convolution","같은 위치끼리 곱하고 더해 출력 한 칸을 만듭니다","입력의 3×3 영역과 필터를 곱해 합산하고, 필터를 옮겨 다음 칸을 계산합니다. 모든 출력은 실제 계산한 값입니다.","lesson_convolution_calculated","이 장은 한 채널·Bias 0 예시입니다. 일반적인 딥러닝 Conv는 필터를 뒤집지 않는 Cross-correlation 연산입니다.",True),
+        ("Convolution","같은 위치끼리 곱하고 더해 출력 한 칸을 만듭니다","입력의 3×3 영역과 필터를 곱해 합산하고, 필터를 옮겨 다음 칸을 계산합니다. 모든 출력은 실제 계산한 값입니다.","ppt:vision_ai_convolution_ppt","이 장은 한 채널·Bias 0 예시입니다. 일반적인 딥러닝 Conv는 필터를 뒤집지 않는 Cross-correlation 연산입니다.",True),
         ("Feature Map","반응값을 위치대로 모으면 특징 지도가 됩니다","5×5 입력에서 3×3 필터를 한 칸씩 이동하며 계산하면 3×3개의 반응값이 생깁니다. 이 값을 같은 위치에 모은 것이 Feature Map입니다.","lesson_featuremap_numeric_continuation","Feature Map은 한 필터의 위치별 반응입니다. 이 예시에는 활성화 함수(ReLU)를 적용하지 않아 음수도 남아 있습니다."),
         ("Feature Map과 Channel","RGB 전체를 보는 필터 하나가 출력 Channel 하나를 만듭니다","일반적인 Conv2d에서 필터 하나는 입력 Channel 전체를 곱해 합산합니다. 출력 Channel 수는 필터 수입니다.","lesson_multichannel_filter_to_maps","3×3×3 필터 64개라면 가중치 1,728개와 Bias 64개이며, Stride 1·Padding 1의 출력은 224×224×64입니다.",True),
         ("Stride","필터를 몇 칸씩 이동할지 정합니다","Stride(이동 간격)가 1이면 한 칸, 2이면 두 칸씩 이동합니다. 같은 입력과 필터에서 이동 간격이 크면 출력 크기가 작아집니다.","stride_basic","5×5 입력과 3×3 필터, Padding 0: Stride 1은 3×3, Stride 2는 2×2 출력입니다."),
