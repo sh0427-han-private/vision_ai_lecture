@@ -18,6 +18,22 @@ from build_loss_optimizer_figures import build_loss_optimizer_figures
 from build_survey_figures import build_survey_figures
 from build_image_processing_figures import build_image_processing_figures, SECTIONS as PROCESSING_SECTIONS
 
+
+FIGURE_ALT_DESCRIPTIONS = {
+  "lesson_perceptron_numeric_flow": "두 입력 0.5와 1.0에 가중치 0.2와 0.8을 곱한 뒤 Bias −0.6을 더해 0.3을 얻고, 임계값 0 이상이므로 1로 판정하는 흐름",
+  "lesson_and_xor_separability": "AND는 (1,1)만 출력 1이므로 직선으로 구분되지만 XOR는 (0,1)과 (1,0)이 출력 1이라 직선 하나로 구분되지 않는 좌표 비교",
+  "lesson_relu_value_graph": "ReLU 함수는 입력 −2, −1, 0을 0으로 바꾸고 1, 2는 그대로 내보내며 원점에서 꺾이는 그래프",
+  "lesson_video_group_split_comparison": "9개 프레임을 무작위로 나누면 영상 A B C가 Train Validation Test에 중복되지만 영상별 Group Split에서는 원본 영상이 서로 겹치지 않는 비교",
+  "lesson_confusion_100cases": "총 100건에서 실제 불량 20건의 TP 18 FN 2와 실제 정상 80건의 FP 4 TN 76을 배치한 2×2 혼동행렬",
+  "lesson_precision_recall_sharedcase": "정밀도는 TP 18개를 불량 판정 22개로 나눠 81.8%, 재현율은 TP 18개를 실제 불량 20개로 나눠 90%가 되는 비교",
+  "lesson_accuracy_f1_same100": "혼동행렬 TP18 FP4 FN2 TN76으로 Accuracy는 94/100=94%, F1은 36/42=85.7%가 되는 계산",
+  "lesson_featuremap_numeric_continuation": "5×5 입력에 3×3 필터를 이동해 얻은 3×3 반응값을 같은 위치에 놓아 Feature Map이 되며 음수와 양수의 차이도 보여주는 격자",
+  "lesson_backbone_head_roles": "사과 사진 입력에서 Backbone이 공통 특징을 추출하고 분류 Head는 Class 점수, 검출 Head는 Box, 분할 Head는 Pixel Mask를 출력하는 선택형 구조",
+  "lesson_receptive_field_growth": "동일한 7×7 입력 격자 위에서 3×3 합성곱 층이 1개 2개 3개 쌓일 때 이론적 수용영역이 3×3, 5×5, 7×7로 커지는 비교",
+  "lesson_transfer_freeze_vs_finetune": "Freeze에서는 사전학습 Backbone을 고정하고 Head만 학습하며 Fine-tuning에서는 선택한 Backbone 가중치도 함께 업데이트하는 구조",
+  "lesson_cnn_feature_hierarchy": "사과 사진에서 작은 경계 반응이 곡선과 형태의 단서로 조합되는 CNN 특징 계층 개념도이며 실제 모델 Feature Map 측정 결과는 아님"
+}
+
 REPO_DIR = Path(__file__).resolve().parents[1]
 ASSET_DIR = REPO_DIR / "docs/assets/lesson"
 VERSION = "professional-20261006-2"
@@ -764,7 +780,7 @@ def build_deck(filename, title, subtitle, cards, lessons, prev_page, next_page="
 <span class="lesson-level{" lesson-level--detail" if detailed else ""}">{"심화 학습" if detailed else "핵심 개념"}</span></div>
 <h2 class="slide-title">{html.escape(heading)}</h2>
 <p class="slide-subtitle">{html.escape(description)}</p>
-<figure class="lesson-figure"><a href="{asset}?v={figure_version}" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="{asset}?v={figure_version}" alt="{html.escape(heading)}"></a></figure>
+<figure class="lesson-figure"><a href="{asset}?v={figure_version}" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="{asset}?v={figure_version}" alt="{html.escape(FIGURE_ALT_DESCRIPTIONS.get(Path(asset).stem, heading))}"></a></figure>
 <p class="lesson-takeaway">{html.escape(takeaway)}</p>{reference}</div></section>\n'''
         manifest.append({"number":index,"topic":topic,"level":"detail" if detailed else "basic","title":heading,"asset":asset})
     header+='''</main><div class="deck-controls"><div class="deck-controls-inner">
