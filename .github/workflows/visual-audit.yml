@@ -1,0 +1,44 @@
+name: Visual QA - full lecture
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/**'
+      - 'scripts/audit_visual_slides.py'
+      - '.github/workflows/visual-audit.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: vision-slide-visual-audit-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  visual-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Prepare Chromium and Python
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install playwright pillow
+          python -m playwright install --with-deps chromium
+
+      - name: Render 99 slides at two resolutions
+        run: |
+          python -m http.server 8765 --directory docs > /tmp/lecture-http.log 2>&1 &
+          python scripts/audit_visual_slides.py
+
+      - name: Upload full slides and contact sheets
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: visual-audit-99-slides
+          path: visual_audit_output/
+          retention-days: 14
+          if-no-files-found: warn
