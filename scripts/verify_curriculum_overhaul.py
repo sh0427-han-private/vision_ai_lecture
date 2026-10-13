@@ -16,7 +16,7 @@ expected = {"intro": 15, "ai_basics": 44, "vision_ai": 40}
 
 for name, count in expected.items():
     document = (DOCS / f"{name}.html").read_text("utf-8")
-    actual = len(re.findall(r'<section class="slide(?: active)?"', document))
+    actual = len(re.findall(r'<section class="slide(?: [^"]+)?"', document))
     assert actual == count, (name, actual, count)
     assert document.count('class="slide active"') == 1, name
 
@@ -224,7 +224,7 @@ for deck in ("ai_basics", "vision_ai"):
     registry = manifest[deck]
     page = (DOCS / f"{deck}.html").read_text("utf-8")
     slide_sections = re.findall(
-        r'(?s)<section class="slide(?: active)?"[^>]*>.*?</section>',
+        r'(?s)<section class="slide(?: [^"]+)?"[^>]*>.*?</section>',
         page
     )
     assert len(slide_sections) == len(registry) + 1
