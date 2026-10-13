@@ -109,3 +109,12 @@ Prediction
 ```
 
 → [02. AI 기초](../02_ai_basics/README.md)
+
+
+## 2026-10-13 보강: Pixel, 2D 이미지와 RGB 채널
+
+- 흑백 사진의 밝기값을 3D 높이 그래프로 그릴 수 있지만, 세로 높이는 실제 카메라-물체 거리 정보가 아닙니다.
+- RGB 컬러 사진은 H×W×3 형태로 다룰 수 있습니다. 여기서 3은 R, G, B 채널 수이지 실세계 3차원 좌표를 의미하지 않습니다.
+- Noise 개념 직후 3×3 예시로 정상 중앙값 100이 255로 변하는 점 잡음(Impulse noise)을 소개하고, Spatial Filtering으로 이어지는 질문을 제시합니다.
+- 신규 파일: `docs/assets/lesson/lecture_2d_brightness_surface.svg`, `lecture_rgb_channel_stack.svg`, `lecture_noise_outlier.svg`.
+- 이미지/숫자 예시는 설명용 합성 도식이며, 깊이 추정 모델의 결과로 제시하지 않습니다.
