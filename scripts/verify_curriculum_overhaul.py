@@ -87,3 +87,43 @@ for marker in (
     assert marker in builder, marker
 
 print("SVG XML, kernel arithmetic, Python syntax, source registry verified.")
+
+# Pedagogical continuity: the feature map must preserve all values from
+# the immediately preceding CNN-style cross-correlation calculation.
+i = [[1, 2, 3, 0, 1], [4, 5, 6, 1, 0], [7, 8, 9, 2, 1],
+     [0, 1, 2, 3, 1], [1, 0, 1, 2, 3]]
+k = [[1, 0, -1]] * 3
+expected = [[-6, 12, 16], [-6, 8, 15], [-4, 2, 7]]
+calculated = [
+    [sum(i[y + dy][x + dx] * k[dy][dx]
+         for dy in range(3) for dx in range(3))
+     for x in range(3)]
+    for y in range(3)
+]
+assert calculated == expected, calculated
+
+content_conv = (DOCS / "assets/lesson/lesson_convolution_calculated.svg").read_text("utf-8")
+content_map = (DOCS / "assets/lesson/lesson_featuremap_numeric_continuation.svg").read_text("utf-8")
+for number in (-6, 12, 16, 8, 15, -4, 2, 7):
+    # Values are embedded in readable SVG text, including negative responses.
+    needle = f">{number}</text>"
+    assert needle in content_conv and needle in content_map, number
+
+for ident in (
+    "lesson_perceptron_numeric_flow",
+    "lesson_and_xor_separability",
+    "lesson_convolution_calculated",
+    "lesson_featuremap_numeric_continuation",
+    "lesson_multichannel_filter_to_maps",
+):
+    assert ident in builder, ident
+
+assert abs(0.5 * 0.2 + 1.0 * 0.8 - 0.6 - 0.3) < 1e-12
+assert [(u, v, int(u and v), int(bool(u) != bool(v)))
+        for u in (0, 1) for v in (0, 1)] == [
+        (0, 0, 0, 0), (0, 1, 0, 1), (1, 0, 0, 1), (1, 1, 1, 0)
+]
+assert 64 * 3 * 3 * 3 == 1728
+assert 1728 + 64 == 1792
+assert (224 + 2 * 1 - 3) // 1 + 1 == 224
+print("Pedagogical continuity: perceptron, AND/XOR, convolution → feature-map and 64-channel shapes verified.")
