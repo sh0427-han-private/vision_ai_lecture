@@ -97,7 +97,7 @@
 <div class="slide-inner"><div class="lesson-meta"><span>12 · Gaussian 필터</span>
 <span class="lesson-level">핵심 개념</span></div>
 <h2 class="slide-title">잡음을 줄이면 작은 변화도 함께 흐려질 수 있습니다</h2>
-<p class="slide-subtitle">Gaussian(가우시안) 필터는 가까운 Pixel에 큰 가중치를 주어 평균합니다. σ(시그마)는 퍼짐의 정도를 정합니다.</p>
+<p class="slide-subtitle">Mean(평균) 필터는 이웃 Pixel에 같은 가중치를 주고, Gaussian은 가까운 Pixel에 더 큰 가중치를 줍니다. σ(시그마)는 가중치가 퍼지는 정도를 정합니다.</p>
 <figure class="lesson-figure"><a href="assets/lesson/processing_gaussian.svg?v=processing-20261006-1" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/processing_gaussian.svg?v=processing-20261006-1" alt="잡음을 줄이면 작은 변화도 함께 흐려질 수 있습니다"></a></figure>
 <p class="lesson-takeaway">σ는 원본 Pixel 단위입니다. 잡음 감소와 작은 결함 보존을 함께 확인하고, 실제 Task의 평가 결과로 전처리를 선택합니다.</p><details class="lesson-reference"><summary>출처 · 근거</summary><div>참고: <a href="https://szeliski.org/Book/1stEdition.htm" target="_blank" rel="noopener">Szeliski · Ch. 3 §3.2.2</a> · 기존 AI 생성 사진 / 합성 데이터에 실제 연산 적용</div></details></div></section>
 <section class="slide" data-topic="중앙값 필터" data-level="basic">
