@@ -127,3 +127,54 @@ assert 64 * 3 * 3 * 3 == 1728
 assert 1728 + 64 == 1792
 assert (224 + 2 * 1 - 3) // 1 + 1 == 224
 print("Pedagogical continuity: perceptron, AND/XOR, convolution → feature-map and 64-channel shapes verified.")
+
+# Visual teaching additions: ReLU, affine composition, grouped-video split,
+# local-to-global CNN illustration, and theoretical receptive field.
+new_figures = [
+    "lesson_relu_value_graph",
+    "lesson_affine_relu_comparison",
+    "lesson_video_group_split_comparison",
+    "lesson_cnn_feature_hierarchy",
+    "lesson_receptive_field_growth",
+]
+for name in new_figures:
+    path = DOCS / "assets/lesson" / f"{name}.svg"
+    assert path.is_file(), path
+    assert ET.parse(path).getroot().tag == "{http://www.w3.org/2000/svg}svg"
+    assert name in builder, name
+
+def relu(x):
+    return max(0, x)
+
+assert [relu(x) for x in (-2, -1, 0, 1, 2)] == [0, 0, 0, 1, 2]
+for x in (-2, -1, -0.5, 0, 1, 2):
+    h = 2 * x + 1
+    assert 3 * h - 2 == 6 * x + 1
+assert 3 * relu(2 * -1 + 1) - 2 == -2
+assert 3 * relu(2 * 0 + 1) - 2 == 1
+assert 3 * relu(2 * 1 + 1) - 2 == 7
+
+random_splits = {
+    "Train": {"A1", "B1", "C1"},
+    "Validation": {"A2", "B2", "C2"},
+    "Test": {"A3", "B3", "C3"},
+}
+grouped_splits = {
+    "Train": {"A1", "A2", "A3"},
+    "Validation": {"B1", "B2", "B3"},
+    "Test": {"C1", "C2", "C3"},
+}
+group_identity = lambda frame: frame[0]
+assert set(group_identity(x) for x in random_splits["Train"]) & set(
+    group_identity(x) for x in random_splits["Test"]
+)
+assert all(
+    set(group_identity(x) for x in grouped_splits[a]).isdisjoint(
+        set(group_identity(x) for x in grouped_splits[b])
+    )
+    for a, b in [("Train", "Validation"), ("Train", "Test"),
+                 ("Validation", "Test")]
+)
+assert sum(len(x) for x in grouped_splits.values()) == 9
+assert [3 + 2 * depth for depth in (0, 1, 2)] == [3, 5, 7]
+print("Pedagogical continuity: ReLU, affine layer collapse, video-grouped holdout, 3/5/7 receptive fields verified.")
