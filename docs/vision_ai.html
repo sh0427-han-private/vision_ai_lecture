@@ -130,13 +130,13 @@
 <p class="slide-subtitle">Morphology(형태학)는 구조 요소로 Mask의 모양을 처리합니다. 침식은 1 영역을 줄이고, 팽창은 1 영역을 넓힙니다.</p>
 <figure class="lesson-figure"><img src="assets/lesson/processing_morphology.svg?v=processing-20261006-1" alt="작은 점 제거와 작은 구멍 메우기는 다른 연산입니다"></figure>
 <p class="lesson-takeaway">Opening·Closing은 원래 Mask를 각각 처리한 결과입니다. 작은 실제 결함이 지워지거나 가까운 영역이 붙을 수 있어 크기를 검증해야 합니다.</p><p class="lesson-reference">참고: <a href="https://szeliski.org/Book/1stEdition.htm" target="_blank" rel="noopener">Szeliski · Ch. 3 §3.3.2</a> · 기존 AI 생성 사진 / 합성 데이터에 실제 연산 적용</p></div></section>
-<section class="slide" data-topic="이미지의 단서" data-level="basic">
-<div class="slide-inner"><div class="lesson-meta"><span>17 · 이미지의 단서</span>
+<section class="slide" data-topic="고정 필터와 학습 필터" data-level="basic">
+<div class="slide-inner"><div class="lesson-meta"><span>17 · 고정 필터와 학습 필터</span>
 <span class="lesson-level">기본 개념</span></div>
-<h2 class="slide-title">작은 영역의 경계·밝기 변화를 먼저 살펴봅니다</h2>
-<p class="slide-subtitle">이미지에서는 가까운 Pixel의 배치가 중요합니다. 작은 영역의 반응을 여러 위치에서 계산하면 패턴이 있는 위치를 알 수 있습니다.</p>
-<figure class="lesson-figure"><img src="assets/lesson/cnn_local_basic.svg?v=professional-20261006-2" alt="작은 영역의 경계·밝기 변화를 먼저 살펴봅니다"></figure>
-<p class="lesson-takeaway">Patch는 이미지의 작은 영역, Feature Map은 위치별 반응값을 모은 지도입니다.</p></div></section>
+<h2 class="slide-title">Spatial Filtering의 Kernel 개념은 CNN으로 연결됩니다</h2>
+<p class="slide-subtitle">두 방법 모두 주변 Pixel을 계산하지만, 평균·Gaussian은 사람이 정한 고정 가중치이고 CNN 가중치는 데이터 학습으로 갱신됩니다.</p>
+<figure class="lesson-figure"><img src="assets/lesson/lecture_filter_to_cnn_bridge.svg?v=lecture-overhaul-20261013-1" alt="작은 영역의 경계·밝기 변화를 먼저 살펴봅니다"></figure>
+<p class="lesson-takeaway">이 장은 서로 다른 목적의 연산을 연결하는 개념도입니다. CNN의 실제 학습 가중치 값을 표시한 것은 아닙니다.</p></div></section>
 <section class="slide" data-topic="CNN" data-level="basic">
 <div class="slide-inner"><div class="lesson-meta"><span>18 · CNN</span>
 <span class="lesson-level">기본 개념</span></div>
