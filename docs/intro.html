@@ -64,7 +64,7 @@
 
 <section class="slide">
   <div class="slide-inner">
-    <span class="slide-number">2</span>
+    <span class="slide-number">4</span>
     <h2 class="slide-title">화면에서 크게 보인다고 실제로 더 큰 물체라는 뜻은 아닙니다</h2>
     <p class="slide-subtitle">단일 RGB Image에는 2D Pixel 위치와 색은 있지만, 실제 거리와 실제 크기가 직접 기록되어 있지 않습니다.</p>
     <div class="figure figure--generated-lecture">
@@ -75,8 +75,20 @@
 </section>
 
 <section class="slide">
+  <div class="slide-inner">
+    <span class="slide-number">5</span>
+    <h2 class="slide-title">밝기값을 3D로 그려도 실제 거리가 생기지는 않습니다</h2>
+    <p class="slide-subtitle">2D 이미지를 높이 그래프로 시각화할 수 있지만, 그래프의 높이는 밝기값이지 실제 물체의 거리(Depth)가 아닙니다.</p>
+    <div class="figure figure--generated-lecture">
+      <img src="assets/lesson/lecture_2d_brightness_surface.svg?v=visual-20261013-1" alt="밝기값을 3D로 그려도 실제 거리가 생기지는 않습니다">
+    </div>
+    <div class="callout"><strong>핵심:</strong> 숫자 배열의 3D 시각화와 실제 3차원 거리 정보는 구별해야 합니다.</div>
+  </div>
+</section>
+
+<section class="slide">
     <div class="slide-inner">
-      <span class="slide-number">3</span>
+      <span class="slide-number">6</span>
       <h2 class="slide-title">Pixel 하나는 “위치 + R · G · B 값”입니다</h2>
       <p class="slide-subtitle">
         Pixel은 이미지의 한 위치입니다. 일반적인 8-bit RGB 이미지에서는 각 위치에
@@ -125,8 +137,20 @@
   </section>
 
 <section class="slide">
+  <div class="slide-inner">
+    <span class="slide-number">7</span>
+    <h2 class="slide-title">RGB 이미지의 세 번째 차원은 거리 정보가 아닙니다</h2>
+    <p class="slide-subtitle">RGB 입력은 R·G·B 채널을 겹쳐 표현한 H × W × 3 배열입니다. 마지막 3은 공간 깊이가 아니라 색상 채널 수입니다.</p>
+    <div class="figure figure--generated-lecture">
+      <img src="assets/lesson/lecture_rgb_channel_stack.svg?v=visual-20261013-1" alt="RGB 이미지의 세 번째 차원은 거리 정보가 아닙니다">
+    </div>
+    <div class="callout"><strong>핵심:</strong> 영상의 채널 수 3과 실제 공간의 Z(깊이)는 다른 개념입니다.</div>
+  </div>
+</section>
+
+<section class="slide">
     <div class="slide-inner">
-      <span class="slide-number">4</span>
+      <span class="slide-number">8</span>
       <h2 class="slide-title">Signal과 Noise는 이미지 종류가 아니라 “판단 기준”입니다</h2>
       <p class="slide-subtitle">
         둘 다 컴퓨터에는 같은 Pixel 숫자로 들어옵니다.
@@ -224,8 +248,20 @@
   </section>
 
 <section class="slide">
+  <div class="slide-inner">
+    <span class="slide-number">9</span>
+    <h2 class="slide-title">노이즈가 섞이면 픽셀 숫자가 갑자기 달라집니다</h2>
+    <p class="slide-subtitle">주변이 98~102 정도인 3×3 영역에서 한 값만 255로 튄 상황을 생각해 봅니다.</p>
+    <div class="figure figure--generated-lecture">
+      <img src="assets/lesson/lecture_noise_outlier.svg?v=visual-20261013-1" alt="노이즈가 섞이면 픽셀 숫자가 갑자기 달라집니다">
+    </div>
+    <div class="callout"><strong>핵심:</strong> 중앙 Pixel 값만 보면 잡음인지 실제 작은 특징인지 구별하기 어렵습니다.</div>
+  </div>
+</section>
+
+<section class="slide">
     <div class="slide-inner">
-      <span class="slide-number">5</span>
+      <span class="slide-number">10</span>
       <h2 class="slide-title">같은 사과도 촬영 조건이 바뀌면 Pixel 값과 위치가 달라집니다</h2>
       <p class="slide-subtitle">
         사람에게는 같은 물체지만 조명·거리·방향·가림·초점·색 환경이 바뀌면
@@ -253,7 +289,7 @@
 
 <section class="slide">
     <div class="slide-inner">
-      <span class="slide-number">6</span>
+      <span class="slide-number">11</span>
       <h2 class="slide-title">AI는 Pixel을 외우는 대신, 여러 조건에서 반복되는 Pattern을 배워야 합니다</h2>
       <p class="slide-subtitle">
         <strong>Generalization(일반화)</strong>은 학습에서 직접 보지 못한 조명·가림·초점 조건에서도
@@ -305,7 +341,7 @@
 
 <section class="slide">
     <div class="slide-inner">
-      <span class="slide-number">7</span>
+      <span class="slide-number">12</span>
       <h2 class="slide-title">Vision AI는 숫자 배열에서 필요한 Pattern을 찾아 결과로 바꿉니다</h2>
       <p class="slide-subtitle">
         입력은 Pixel 숫자이지만, 모델은 학습을 통해 경계·색·질감·형태 같은 Feature를 이용하고
@@ -356,7 +392,7 @@
 
 <section class="slide">
   <div class="slide-inner">
-    <span class="slide-number">8</span>
+    <span class="slide-number">13</span>
     <h2 class="slide-title">같은 장면도 Sensor가 다르면 컴퓨터가 받는 데이터가 달라집니다</h2>
     <p class="slide-subtitle">RGB Camera는 색과 질감, LiDAR는 거리와 3D 구조, IR Sensor/Camera는 적외선 강도나 열 정보를 측정합니다.</p>
     <div class="figure figure--generated-lecture">
@@ -368,7 +404,7 @@
 
 <section class="slide">
     <div class="slide-inner">
-      <span class="slide-number">9</span>
+      <span class="slide-number">14</span>
       <h2 class="slide-title">우리는 이미 매일 Vision Sensor를 사용하고 있습니다</h2>
       <p class="slide-subtitle">
         스마트폰과 CCTV, 로봇청소기, 열화상 검사처럼 익숙한 제품에서도
