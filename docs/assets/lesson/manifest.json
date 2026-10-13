@@ -263,28 +263,28 @@
       "topic": "Threshold",
       "level": "basic",
       "title": "점수에 기준을 적용하면 실제 판정이 됩니다",
-      "asset": "assets/lesson/threshold_basic.svg"
+      "asset": "assets/lesson/lesson_threshold_score_decision.svg"
     },
     {
       "number": 38,
       "topic": "Confusion Matrix",
       "level": "basic",
       "title": "정답과 판정을 비교해 네 가지 결과를 셉니다",
-      "asset": "assets/lesson/confusion_counts.svg"
+      "asset": "assets/lesson/lesson_confusion_100cases.svg"
     },
     {
       "number": 39,
       "topic": "Precision과 Recall",
       "level": "basic",
       "title": "알람의 정확성과 불량을 찾는 비율을 구분합니다",
-      "asset": "assets/lesson/precision_recall.svg"
+      "asset": "assets/lesson/lesson_precision_recall_sharedcase.svg"
     },
     {
       "number": 40,
       "topic": "Accuracy와 F1",
       "level": "detail",
       "title": "전체 정답률과 Precision·Recall의 균형을 함께 봅니다",
-      "asset": "assets/lesson/accuracy_f1.svg"
+      "asset": "assets/lesson/lesson_accuracy_f1_same100.svg"
     },
     {
       "number": 41,
@@ -524,14 +524,14 @@
       "topic": "Backbone과 Head",
       "level": "basic",
       "title": "특징을 만드는 부분과, 결과를 만드는 부분을 나눠 봅니다",
-      "asset": "assets/lesson/backbone_basic.svg"
+      "asset": "assets/lesson/lesson_backbone_head_roles.svg"
     },
     {
       "number": 32,
       "topic": "Backbone과 Head",
       "level": "detail",
       "title": "블록을 연결하고 각 단계의 특징 크기를 표시합니다",
-      "asset": "assets/lesson/backbone_detail.svg"
+      "asset": "assets/lesson/lesson_backbone_tensor_head_options.svg"
     },
     {
       "number": 33,
@@ -559,14 +559,14 @@
       "topic": "Transfer Learning",
       "level": "basic",
       "title": "이미 배운 가중치에서 내 Task의 학습을 시작합니다",
-      "asset": "assets/lesson/transfer_basic.svg"
+      "asset": "assets/lesson/lesson_transfer_pretraining_to_task.svg"
     },
     {
       "number": 37,
       "topic": "Freeze와 Fine-tuning",
       "level": "detail",
       "title": "고정할 부분과 추가 학습할 부분을 구분합니다",
-      "asset": "assets/lesson/transfer_detail.svg"
+      "asset": "assets/lesson/lesson_transfer_freeze_vs_finetune.svg"
     },
     {
       "number": 38,
