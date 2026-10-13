@@ -16,7 +16,7 @@ def check(flag: bool, message: str) -> None:
 def wait_slide(page, number: int) -> None:
     page.wait_for_function(
         "(n) => location.hash === '#slide-' + n && "
-        "document.querySelector('.slide.active') !== null", number
+        "document.querySelector('.slide.active') !== null", arg=number
     )
 
 
