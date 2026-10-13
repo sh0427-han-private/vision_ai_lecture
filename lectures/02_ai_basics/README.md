@@ -232,3 +232,11 @@ Loss는 목표값, Gradient는 변화율, Optimizer는 갱신 규칙입니다. �
 43. 운영의 실패 사례를 다음 데이터와 학습에 연결합니다 (기본)
 
 그림은 클릭해서 원본 크기로 확대할 수 있고, 슬라이드 하단의 출처·근거를 펼칠 수 있습니다.
+
+
+## 2026-10-13 계산 Figure 교육적 개선
+
+- SGD 1회 업데이트(현재 AI Basics 19장): 앞서 소개한 Gradient 그래프를 반복하는 대신, 같은 x=2와 정답 y=4에서 **Parameter 갱신 전후의 예측 및 Loss 변화**를 나란히 비교합니다. 그림: `docs/assets/lesson/lesson_sgd_update_flow.svg`.
+- Chain Rule(현재 AI Basics 27장): 공식 세 상자 대신 **Forward 예측·오차·Loss → Backward 편미분 → SGD 갱신**의 흐름을 사용합니다. 그림: `docs/assets/lesson/lesson_chain_rule_graph.svg`.
+- AI Basics 19장은 Bias를 0으로 고정하며, 27장은 Bias까지 학습합니다. 이 차이를 강의 중 명시합니다.
+- 강의 내부의 출처·근거는 펼침 방식이며, 이미지 확대 링크를 제공합니다.
