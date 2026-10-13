@@ -370,7 +370,7 @@
       "topic": "영상처리의 기본",
       "level": "basic",
       "title": "한 Pixel을 바꿀 수도, 주변 Pixel을 함께 볼 수도 있습니다",
-      "asset": "assets/lesson/processing_point_neighborhood.svg"
+      "asset": "assets/lesson/lecture_point_neighborhood.svg"
     },
     {
       "number": 10,
@@ -391,7 +391,7 @@
       "topic": "평균 필터 계산",
       "level": "detail",
       "title": "주변 9개 값을 평균해 출력 한 칸을 계산합니다",
-      "asset": "assets/lesson/processing_mean_detail.svg"
+      "asset": "assets/lesson/lecture_mean_calculation.svg"
     },
     {
       "number": 13,
