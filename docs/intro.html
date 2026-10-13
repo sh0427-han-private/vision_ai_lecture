@@ -253,20 +253,13 @@
 <section class="slide">
     <div class="slide-inner">
       <span class="slide-number">10</span>
-      <h2 class="slide-title">같은 사과도 촬영 조건이 바뀌면 Pixel 값과 위치가 달라집니다</h2>
-      <p class="slide-subtitle">
-        사람에게는 같은 물체지만 조명·거리·방향·가림·초점·색 환경이 바뀌면
-        컴퓨터가 받는 H × W × 3 숫자 배열은 크게 달라집니다.
-      </p>
+      <h2 class="slide-title">같은 사과도 조명이 바뀌면 Pixel의 밝기와 색이 달라집니다</h2>
+      <p class="slide-subtitle">동일한 사과 사진에서 밝기와 색상 조건만 바꾸어 비교합니다. 같은 물체도 카메라 입력값은 달라집니다.</p>
 
       <div class="intro-visual apple-variation-grid apple-variation-grid--dense">
         <article class="variation-card"><h3>원본</h3><div class="variation-image"><img src="assets/vision_task_apple_reference.jpg?v=generatedfigfit-20260927-27" alt="원본 사과"></div><p>기준 입력</p></article>
         <article class="variation-card"><h3>어두운 조명</h3><div class="variation-image variation-image--dark"><img src="assets/vision_task_apple_reference.jpg?v=generatedfigfit-20260927-27" alt="어두운 조명"></div><p>전체 밝기 값 감소</p></article>
         <article class="variation-card"><h3>강한 조명</h3><div class="variation-image variation-image--bright"><img src="assets/vision_task_apple_reference.jpg?v=generatedfigfit-20260927-27" alt="강한 조명"></div><p>하이라이트와 대비 변화</p></article>
-        <article class="variation-card"><h3>방향 · 기울기</h3><div class="variation-image variation-image--view"><img src="assets/vision_task_apple_reference.jpg?v=generatedfigfit-20260927-27" alt="평면상 방향과 기울기 변화 예시"></div><p>Pixel 위치와 윤곽 배치 변화</p></article>
-        <article class="variation-card"><h3>멀리 보임</h3><div class="variation-image variation-image--small"><img src="assets/vision_task_apple_reference.jpg?v=generatedfigfit-20260927-27" alt="작게 보이는 사과"></div><p>대상을 표현하는 Pixel 수 감소</p></article>
-        <article class="variation-card"><h3>일부 가림</h3><div class="variation-image variation-image--occluded"><img src="assets/vision_task_apple_reference.jpg?v=generatedfigfit-20260927-27" alt="일부가 가려진 사과"><span class="occlusion-block" aria-hidden="true"></span></div><p>일부 특징이 입력에서 사라짐</p></article>
-        <article class="variation-card"><h3>초점 흐림</h3><div class="variation-image variation-image--blur"><img src="assets/vision_task_apple_reference.jpg?v=generatedfigfit-20260927-27" alt="초점이 흐린 사과"></div><p>경계와 미세 질감 감소</p></article>
         <article class="variation-card"><h3>조명 색 · White Balance</h3><div class="variation-image variation-image--color-cast"><img src="assets/vision_task_apple_reference.jpg?v=generatedfigfit-20260927-27" alt="조명 색과 화이트밸런스 변화로 색이 달라진 사과"></div><p>R · G · B Channel 균형 변화</p></article>
       </div>
 
@@ -280,6 +273,26 @@
 <section class="slide">
     <div class="slide-inner">
       <span class="slide-number">11</span>
+      <h2 class="slide-title">촬영 거리·방향·가림·초점도 같은 사과를 다르게 보이게 합니다</h2>
+      <p class="slide-subtitle">공간상 위치와 형태, 크기, 선명도가 달라지면 사진의 Pixel 배열도 달라집니다.</p>
+
+      <div class="intro-visual apple-variation-grid apple-variation-grid--dense">
+        <article class="variation-card"><h3>방향 · 기울기</h3><div class="variation-image variation-image--view"><img src="assets/vision_task_apple_reference.jpg?v=generatedfigfit-20260927-27" alt="평면상 방향과 기울기 변화 예시"></div><p>Pixel 위치와 윤곽 배치 변화</p></article>
+        <article class="variation-card"><h3>멀리 보임</h3><div class="variation-image variation-image--small"><img src="assets/vision_task_apple_reference.jpg?v=generatedfigfit-20260927-27" alt="작게 보이는 사과"></div><p>대상을 표현하는 Pixel 수 감소</p></article>
+        <article class="variation-card"><h3>일부 가림</h3><div class="variation-image variation-image--occluded"><img src="assets/vision_task_apple_reference.jpg?v=generatedfigfit-20260927-27" alt="일부가 가려진 사과"><span class="occlusion-block" aria-hidden="true"></span></div><p>일부 특징이 입력에서 사라짐</p></article>
+        <article class="variation-card"><h3>초점 흐림</h3><div class="variation-image variation-image--blur"><img src="assets/vision_task_apple_reference.jpg?v=generatedfigfit-20260927-27" alt="초점이 흐린 사과"></div><p>경계와 미세 질감 감소</p></article>
+      </div>
+
+      <div class="variation-takeaway">
+        <strong>사람: “여전히 같은 사과”</strong>
+        <span>↔</span>
+        <strong>컴퓨터 입력: 거리·초점마다 다른 Pixel 배열</strong>
+      </div>
+    </div>
+  </section>
+<section class="slide">
+    <div class="slide-inner">
+      <span class="slide-number">12</span>
       <h2 class="slide-title">AI는 Pixel을 외우는 대신, 여러 조건에서 반복되는 Pattern을 배워야 합니다</h2>
       <p class="slide-subtitle">
         <strong>Generalization(일반화)</strong>은 학습에서 직접 보지 못한 조명·가림·초점 조건에서도
@@ -319,7 +332,7 @@
           <div class="generalization-result-image">
             <img src="assets/vision_task_apple_reference.jpg?v=generatedfigfit-20260927-27" alt="처음 보는 흐린 조건의 사과">
           </div>
-          <div class="generalization-prediction">Apple <b>0.97</b></div>
+          <div class="generalization-prediction">예시 점수 · Apple <b>0.97</b></div>
         </article>
       </div>
 
@@ -330,7 +343,7 @@
   </section>
 <section class="slide">
     <div class="slide-inner">
-      <span class="slide-number">12</span>
+      <span class="slide-number">13</span>
       <h2 class="slide-title">Vision AI는 숫자 배열에서 필요한 Pattern을 찾아 결과로 바꿉니다</h2>
       <p class="slide-subtitle">
         입력은 Pixel 숫자이지만, 모델은 학습을 통해 경계·색·질감·형태 같은 Feature를 이용하고
@@ -380,7 +393,7 @@
   </section>
 <section class="slide">
   <div class="slide-inner">
-    <span class="slide-number">13</span>
+    <span class="slide-number">14</span>
     <h2 class="slide-title">같은 장면도 Sensor가 다르면 컴퓨터가 받는 데이터가 달라집니다</h2>
     <p class="slide-subtitle">RGB Camera는 색과 질감, LiDAR는 거리와 3D 구조, IR Sensor/Camera는 적외선 강도나 열 정보를 측정합니다.</p>
     <div class="figure figure--generated-lecture">
@@ -391,7 +404,7 @@
 </section>
 <section class="slide">
     <div class="slide-inner">
-      <span class="slide-number">14</span>
+      <span class="slide-number">15</span>
       <h2 class="slide-title">우리는 이미 매일 Vision Sensor를 사용하고 있습니다</h2>
       <p class="slide-subtitle">
         스마트폰과 CCTV, 로봇청소기, 열화상 검사처럼 익숙한 제품에서도
