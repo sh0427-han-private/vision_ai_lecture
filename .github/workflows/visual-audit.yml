@@ -5,6 +5,7 @@ on:
     paths:
       - 'docs/**'
       - 'scripts/audit_visual_slides.py'
+      - 'scripts/verify_learning_routes.py'
       - '.github/workflows/visual-audit.yml'
   workflow_dispatch:
 
@@ -33,6 +34,9 @@ jobs:
         run: |
           python -m http.server 8765 --directory docs > /tmp/lecture-http.log 2>&1 &
           python scripts/audit_visual_slides.py
+
+      - name: Test core/full navigation
+        run: python scripts/verify_learning_routes.py
 
       - name: Upload full slides and contact sheets
         uses: actions/upload-artifact@v4
