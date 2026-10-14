@@ -5,7 +5,9 @@
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="slide.css?v=generatedfigfit-20260927-27">
 <link rel="stylesheet" href="lesson.css?v=professional-20261006-2">
+<link rel="stylesheet" href="interactive_lessons.css?v=20261014-1">
 <script src="slide.js?v=generatedfigfit-20260927-27" defer></script>
+<script src="interactive_lessons.js?v=20261014-1" defer></script>
 </head><body class="deck-page lesson-deck" data-prev-page="ai_basics.html" data-next-page="">
 <header class="site-header"><nav class="nav"><a class="brand" href="index.html">Vision AI</a>
 <div class="nav-links"><a href="index.html">목차</a><a href="intro.html">01 Intro</a><a href="ai_basics.html">02 AI Basics</a>
@@ -98,8 +100,39 @@
 <span class="lesson-level">핵심 개념</span></div>
 <h2 class="slide-title">잡음을 줄이면 작은 변화도 함께 흐려질 수 있습니다</h2>
 <p class="slide-subtitle">Mean(평균) 필터는 이웃 Pixel에 같은 가중치를 주고, Gaussian은 가까운 Pixel에 더 큰 가중치를 줍니다. σ(시그마)는 가중치가 퍼지는 정도를 정합니다.</p>
-<figure class="lesson-figure"><a href="assets/lesson/processing_gaussian.svg?v=processing-20261006-1" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/processing_gaussian.svg?v=processing-20261006-1" alt="잡음을 줄이면 작은 변화도 함께 흐려질 수 있습니다"></a></figure>
-<p class="lesson-takeaway">σ는 원본 Pixel 단위입니다. 잡음 감소와 작은 결함 보존을 함께 확인하고, 실제 Task의 평가 결과로 전처리를 선택합니다.</p><details class="lesson-reference"><summary>출처 · 근거</summary><div>참고: <a href="https://szeliski.org/Book/1stEdition.htm" target="_blank" rel="noopener">Szeliski · Ch. 3 §3.2.2</a> · 기존 AI 생성 사진 / 합성 데이터에 실제 연산 적용</div></details></div></section>
+<figure class="lesson-figure lesson-inline-lab" data-filter-lesson aria-label="실제 이미지에 필터를 적용하며 비교하기">
+  <div class="lab-toolbar">
+    <span class="lab-prompt">같은 사진에 다른 필터를 적용하면 어떻게 달라질까요?</span>
+    <div class="lab-options" role="group" aria-label="공간 필터 종류">
+      <button type="button" class="lab-choice" data-filter-mode="original">원본</button>
+      <button type="button" class="lab-choice" data-filter-mode="mean">Mean</button>
+      <button type="button" class="lab-choice" data-filter-mode="gaussian" aria-pressed="true">Gaussian</button>
+      <button type="button" class="lab-choice" data-filter-mode="median">Median</button>
+      <button type="button" class="lab-choice" data-filter-mode="sobel">Sobel</button>
+    </div>
+    <label class="lab-check"><input type="checkbox" data-noise checked> 점 잡음 추가</label>
+  </div>
+  <div class="lab-three">
+    <div class="lab-visual">
+      <div class="lab-caption">01 · 입력 사진 <em data-selection>Pixel 선택 가능</em></div>
+      <canvas class="lab-image" data-role="source" width="300" height="200" tabindex="0" role="button" aria-label="계산할 입력 픽셀 선택"></canvas>
+      <p class="lab-hint">사진을 클릭하면 해당 위치의 실제 입력·출력 값을 비교합니다.</p>
+    </div>
+    <div class="lab-middle">
+      <div class="lab-caption">02 · 필터 계산 <em data-kernel-label>읽기 전용 Kernel</em></div>
+      <div class="lab-kernel" data-kernel style="--kernel-size:5;" aria-label="선택된 필터의 실제 커널 값"></div>
+      <div class="lab-settings" data-sigma-box><label for="lecture-gaussian-sigma">Gaussian σ</label><input id="lecture-gaussian-sigma" type="range" data-sigma min="0.5" max="2.5" step="0.1" value="1.0"><output class="lab-value" data-sigma-text for="lecture-gaussian-sigma">1.0</output></div>
+      <p class="lab-math" data-math aria-live="polite">이웃 Pixel × Kernel → 출력 Pixel</p>
+    </div>
+    <div class="lab-visual">
+      <div class="lab-caption">03 · 출력 영상 <em>같은 위치 · 같은 크기</em></div>
+      <canvas class="lab-image" data-role="output" width="300" height="200" aria-label="선택된 필터로 실제 계산한 결과 사진"></canvas>
+      <p class="lab-hint">선택 Pixel 결과: <strong class="lab-emphasis" data-output-label>—</strong></p>
+    </div>
+  </div>
+  <figcaption class="lab-footnote" data-processing-note>Kernel 값은 직접 입력하지 않습니다. 필터 종류 및 σ에서 자동 계산됩니다.</figcaption>
+</figure>
+<p class="lesson-takeaway">σ는 Pixel 단위입니다. σ가 커지면 5×5 안에서 먼 Pixel도 더 큰 비중을 갖습니다. 잡음과 세부 정보의 변화를 함께 살펴보세요.</p><details class="lesson-reference"><summary>출처 · 근거</summary><div>참고: <a href="https://szeliski.org/Book/1stEdition.htm" target="_blank" rel="noopener">Szeliski · Ch. 3 §3.2.2</a> · 동일 이미지에 실제 필터 연산 적용</div></details></div></section>
 <section class="slide" data-topic="중앙값 필터" data-level="basic">
 <div class="slide-inner"><div class="lesson-meta"><span>13 · 중앙값 필터</span>
 <span class="lesson-level">핵심 개념</span></div>
@@ -134,11 +167,9 @@
 <div class="slide-inner"><div class="lesson-meta"><span>17 · 고정 필터와 학습 필터</span>
 <span class="lesson-level">핵심 개념</span></div>
 <h2 class="slide-title">Spatial Filtering의 Kernel 개념은 CNN으로 연결됩니다</h2>
-<p class="slide-subtitle">같은 사과 이미지에 평균·Gaussian·경계 검출 필터를 적용하고, 3×3 가중치를 직접 수정해 출력 Pixel과 전체 영상이 어떻게 변하는지 확인합니다.</p>
-<figure class="lesson-figure" style="margin:5px 0 0;">
-<iframe src="demos/kernel_lab.html" title="3×3 커널 9개 가중치와 실제 결과 영상을 직접 변경하는 실습" loading="lazy" height="440" style="display:block;width:100%;height:min(51dvh,440px);border:1px solid #d9e5e9;border-radius:6px;background:#fff;" sandbox="allow-scripts allow-same-origin"></iframe>
-<figcaption style="text-align:right;margin-top:5px;font-size:12px;color:#63798b;"><a href="demos/kernel_lab.html" target="_blank" rel="noopener" style="color:#187d78;">실습 전체 화면 ↗</a> · <a href="assets/lesson/lecture_filter_to_cnn_bridge.svg?v=lecture-overhaul-20261013-1" target="_blank" rel="noopener" style="color:#627c8c;">기존 설명 Figure 보기 ↗</a></figcaption></figure>
-<p class="lesson-takeaway">같은 위치의 9개 Pixel과 Kernel 가중치를 곱해 더합니다. 이 예시는 사람이 값을 정하는 고정 필터이며, CNN에서는 필터 값이 데이터로부터 학습됩니다.</p></div></section>
+<p class="slide-subtitle">두 방법 모두 주변 Pixel을 계산하지만, 평균·Gaussian은 사람이 정한 고정 가중치이고 CNN 가중치는 데이터 학습으로 갱신됩니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/lecture_filter_to_cnn_bridge.svg?v=lecture-overhaul-20261013-1" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/lecture_filter_to_cnn_bridge.svg?v=lecture-overhaul-20261013-1" alt="고정 영상 필터와 학습되는 CNN 필터의 원리 비교"></a></figure>
+<p class="lesson-takeaway">이 그림은 고정 필터와 학습 필터의 개념적 비교이며, CNN의 실제 학습된 필터 값을 보여주는 것은 아닙니다.</p></div></section>
 <section class="slide" data-topic="CNN" data-level="basic">
 <div class="slide-inner"><div class="lesson-meta"><span>18 · CNN</span>
 <span class="lesson-level">핵심 개념</span></div>
