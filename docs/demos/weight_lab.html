@@ -38,8 +38,8 @@ svg text{font:12px "Noto Sans KR","Malgun Gothic",sans-serif;fill:#6c8592}
     <h1 class="title">가중치 w를 움직이면 예측이 바뀝니다</h1>
     <div class="equation">예측 ŷ = <span id="w-formula">0.50</span> × 2 = <span id="prediction-formula">1.00</span></div>
     <div class="slider-title"><label for="weight">Weight w</label><strong id="weight-text">0.50</strong></div>
-    <input id="weight" type="range" min="0" max="4" step="0.05" value="0.5" aria-label="가중치">
-    <div class="ticks"><span>0</span><span>1</span><span>2 (정답에 맞는 값)</span><span>3</span><span>4</span></div>
+    <input id="weight" type="range" min="0" max="3" step="0.05" value="0.5" aria-label="가중치">
+    <div class="ticks"><span>0</span><span>1</span><span>2 (정답에 맞는 값)</span><span>3</span></div>
     <div class="actions">
       <button type="button" id="learn">학습 한 단계 적용 ↗</button>
       <button type="button" id="reset" class="secondary">초기화</button>
@@ -119,7 +119,7 @@ svg text{font:12px "Noto Sans KR","Malgun Gothic",sans-serif;fill:#6c8592}
   document.getElementById("learn").addEventListener("click", () => {
     const current = Number(input.value);
     const gradient = 2 * (current * x - target) * x;
-    const next = Math.max(0, Math.min(4, current - learningRate * gradient));
+    const next = Math.max(0, Math.min(3, current - learningRate * gradient));
     input.value = String(Math.round(next / .05) * .05);
     render();
   });
