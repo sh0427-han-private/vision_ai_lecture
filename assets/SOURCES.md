@@ -360,3 +360,18 @@ https://www.nature.com/articles/s42256-020-00257-z
 - Transfer Learning 2개 SVG (`lesson_transfer_pretraining_to_task.svg`, `lesson_transfer_freeze_vs_finetune.svg`): Weight 재사용, 고정 및 갱신 경로를 직접 그린 설명용 개념도입니다. 특정 모델을 실제로 Fine-tuning한 성능 결과가 아닙니다.
 - 구조 참고자료: [Stanford CS231n CNN](https://cs231n.github.io/convolutional-networks/) · [PyTorch Transfer Learning Tutorial](https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html). 링크는 개념적 참고이며, 원문의 Figure를 복제하지 않았습니다.
 - 계산 검증: `scripts/verify_curriculum_overhaul.py`에서 동일한 100건의 Precision/Recall/Accuracy/F1과 Shape·Threshold 예시를 점검합니다.
+
+
+## Intro 실제 사진 및 외부 교육 Figure (2026-10-14)
+
+상세 변형 및 라이선스: [출처 페이지](../docs/assets/intro_photos/SOURCES.html).
+
+- apple: Abhijit Tembhekar · CC BY 2.0 — https://commons.wikimedia.org/wiki/File:Red_Apple.jpg
+- perspective: Livioandronico2013 · CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:Forced_perspective_gallery_by_Francesco_Borromini.jpg
+- lidar: Rebecca equator · CC BY-SA 4.0 — https://commons.wikimedia.org/wiki/File:Austin_Texas_LiDAR_Point_Cloud_(Highway_183).png
+- robot: S. Winkvist · Public domain — https://commons.wikimedia.org/wiki/File:LIDAR_equipped_mobile_robot.jpg
+- cctv: Neslihan Turan · CC0 — https://commons.wikimedia.org/wiki/File:Surveillance_camera.jpg
+- thermal: MartinThoma · CC0 — https://commons.wikimedia.org/wiki/File:Thermal-image.jpg
+- pcp: Meinard Müller / AudioLabs · PCP Unit 5 · MIT — https://www.audiolabs-erlangen.de/resources/MIR/PCP/PCP_05_vis.html
+
+사진은 축소·WebP 변환. CC BY-SA 변환본은 동일 라이선스. PCP Figure는 MIT (동봉 원문 참조), 2D 패널만 크롭. 8/10/11 변형은 교육용이며 실제 재촬영/모델 예측이 아님.
