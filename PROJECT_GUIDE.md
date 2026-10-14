@@ -86,7 +86,7 @@ Vision AI를 처음 접하는 사람을 대상으로 하는 입문 강의자료 
 - Process와 학습 과정은 실제 Flow Chart / Block Diagram으로 표현합니다.
 - 같은 원본 이미지를 반복 활용해 Classification / Detection / Segmentation의 차이를 직관적으로 보여줍니다.
 - 논문 Figure나 외부 이미지를 그대로 복사하기보다 강의용 Diagram으로 재구성합니다.
-- 사진형·현장형 예시는 **라이선스가 확인된 실제 공개 사진(CC0/CC BY 등)**을 우선 검토합니다. 수치·기술 Figure는 직접 제작하거나 적법한 권한이 확인된 것만 재사용합니다. 실제 사진이 개념에 맞지 않으면 생성 이미지를 사용하되 사실적 측정 자료와 구별합니다. Wikimedia Commons 등의 외부 미디어 URL을 사용할 경우 출처·라이선스·다운로드 의존성 및 대체 이미지를 기록합니다.
+- 사진형·현장형 예시는 가능하면 ChatGPT에서 강의 목적에 맞게 생성한 뒤 `docs/assets/generated/`에 저장하고, HTML에서는 Repository 내부 자산만 참조합니다.
 - 생성 Figure도 개념적 정확성을 먼저 검토하고 사용합니다. 포함관계·수식·Tensor/Convolution 구조처럼 정밀한 관계는 생성 이미지가 부정확하면 SVG/HTML Diagram을 우선합니다.
 - 개념 관계·수식·구조 설명은 SVG/HTML Diagram을 사용하고, 실제 장면을 직관적으로 보여줘야 할 때는 생성 이미지 또는 실제 사진을 우선합니다.
 - 실제 강의 화면에는 강사용 메모, 발표 지시, 다음 챕터 안내 같은 메타 문구를 넣지 않습니다.
