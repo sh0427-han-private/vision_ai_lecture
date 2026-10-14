@@ -35,6 +35,14 @@
 
 과거 TODO가 현재 가이드와 충돌하면 TODO를 그대로 구현하지 않습니다.
 
+## Interactive Lesson Rules
+
+- Kernel/Weight/Threshold처럼 파라미터와 출력의 인과관계가 중요한 페이지에서는 편집 가능한 컨트롤과 실시간 계산 Figure 도입을 검토합니다.
+- Input → 실제 계산 → Output이 같은 프레임에서 보여야 합니다. 숫자와 결과 그래프/픽셀 사이의 일관성을 테스트합니다.
+- Preset, 직접 수정, 초기화, 접근 가능한 Label, 키보드/터치 조작을 우선합니다.
+- UI가 추가되어도 기존 슬라이드 수·manifest 제목·Hash Deep Link와 강의용 시각적 일관성을 유지합니다.
+- 재현 가능한 실습 구현 사례: docs/demos/kernel_lab.html 및 docs/demos/weight_lab.html.
+
 ## Before Editing
 
 - 최신 branch 상태를 확인합니다.
