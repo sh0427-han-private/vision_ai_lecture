@@ -4,6 +4,7 @@
   padding:10px 2px 6px; color:#224353; font-size:13px;
 }
 .lesson-inline-lab * {box-sizing:border-box}
+.lesson-inline-lab [hidden] {display:none !important}
 .lesson-inline-lab button {font:inherit;cursor:pointer;border-radius:5px}
 .lesson-inline-lab button:focus-visible,
 .lesson-inline-lab input:focus-visible,
