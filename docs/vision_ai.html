@@ -5,7 +5,6 @@
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="slide.css?v=generatedfigfit-20260927-27">
 <link rel="stylesheet" href="lesson.css?v=professional-20261006-2">
-<link rel="stylesheet" href="photo_evidence.css?v=realphotos-20261014-1">
 <link rel="stylesheet" href="interactive_lessons.css?v=20261014-1">
 <script src="slide.js?v=generatedfigfit-20260927-27" defer></script>
 <script src="interactive_lessons.js?v=20261014-1" defer></script>
@@ -29,52 +28,22 @@
 <div class="slide-inner"><div class="lesson-meta"><span>02 · Classification</span>
 <span class="lesson-level">핵심 개념</span></div>
 <h2 class="slide-title">이미지 전체의 상태나 종류를 예측합니다</h2>
-<p class="slide-subtitle">Classification(분류)은 이미지 단위의 클래스와 점수를 출력합니다. 사과의 정상/불량을 판단하는 경우를 생각해 보세요. 오른쪽 그림의 점수는 설명용입니다.</p>
-<figure class="lesson-figure photo-evidence" aria-label="실제 사과 불량 사진과 Classification 출력 구조 비교">
- <div class="evidence-duo">
- <div class="evidence-unit"><div class="evidence-head">실제 불량 사과 사진 <small>판단 대상의 예시</small></div>
- <div class="evidence-shot contain"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Rotten_Apple_02.jpg/960px-Rotten_Apple_02.jpg" alt="실제 촬영된 썩은 사과의 상태를 보여주는 사진" loading="eager" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='assets/vision_task_apple_reference.jpg';this.alt='외부 사진 로드 실패: 기존 교육용 사과 이미지';"></div>
- <p class="evidence-text"><strong>강의 질문:</strong> 정상 / 불량 중 무엇인가?</p>
- <span class="evidence-credit">Shams948 · <a href="https://commons.wikimedia.org/wiki/File:Rotten_Apple_02.jpg" target="_blank" rel="noopener noreferrer">원본</a> · CC0 1.0</span></div>
- <div class="evidence-unit"><div class="evidence-head">Classification · 이미지 단위 판단<small>이미지에 클래스 하나</small></div>
- <a href="assets/lesson/context_task_classification.svg?v=professional-20261006-2" target="_blank" rel="noopener" title="Classification 교육용 Figure 확대">
- <img class="evidence-tech" src="assets/lesson/context_task_classification.svg?v=professional-20261006-2" alt="Classification의 결과 형태를 그린 별도의 교육용 도식, 실제 사진의 모델 추론 결과가 아님">
- </a><p class="evidence-text">어디가 불량인지 알려주지는 않습니다.</p></div></div>
- <figcaption class="photo-source-inline">왼쪽은 <strong>실제 공개 사진</strong>, 오른쪽은 <strong>별도 교육용 Figure</strong>입니다. 오른쪽 Box·Mask·Score는 이 실사 이미지에서 산출한 모델 추론 결과가 아닙니다.</figcaption></figure>
+<p class="slide-subtitle">Classification(분류)은 이미지 단위의 클래스와 점수를 출력합니다. 아래 예시는 사과 사진 전체의 불량 여부입니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/context_task_classification.svg?v=professional-20261006-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/context_task_classification.svg?v=professional-20261006-2" alt="이미지 전체의 상태나 종류를 예측합니다"></a></figure>
 <p class="lesson-takeaway">이 예시는 단일 Label 분류입니다. 위치나 정확한 결함 영역은 출력하지 않습니다.</p></div></section>
 <section class="slide" data-topic="Object Detection" data-level="basic">
 <div class="slide-inner"><div class="lesson-meta"><span>03 · Object Detection</span>
 <span class="lesson-level">핵심 개념</span></div>
 <h2 class="slide-title">객체나 결함의 위치를 사각형으로 찾습니다</h2>
-<p class="slide-subtitle">Object Detection(객체 검출)은 결함이 있는 위치에 클래스·Bounding Box(경계 상자)·점수를 반환합니다. 표시 값은 교육용 예시입니다.</p>
-<figure class="lesson-figure photo-evidence" aria-label="실제 사과 불량 사진과 Object Detection 출력 구조 비교">
- <div class="evidence-duo">
- <div class="evidence-unit"><div class="evidence-head">실제 불량 사과 사진 <small>판단 대상의 예시</small></div>
- <div class="evidence-shot contain"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Rotten_Apple_02.jpg/960px-Rotten_Apple_02.jpg" alt="실제 촬영된 썩은 사과의 상태를 보여주는 사진" loading="eager" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='assets/vision_task_apple_reference.jpg';this.alt='외부 사진 로드 실패: 기존 교육용 사과 이미지';"></div>
- <p class="evidence-text"><strong>강의 질문:</strong> 불량 부분은 대략 어디인가?</p>
- <span class="evidence-credit">Shams948 · <a href="https://commons.wikimedia.org/wiki/File:Rotten_Apple_02.jpg" target="_blank" rel="noopener noreferrer">원본</a> · CC0 1.0</span></div>
- <div class="evidence-unit"><div class="evidence-head">Object Detection · 위치 찾기<small>Box + Class + Score</small></div>
- <a href="assets/lesson/context_task_detection.svg?v=professional-20261006-2" target="_blank" rel="noopener" title="Object Detection 교육용 Figure 확대">
- <img class="evidence-tech" src="assets/lesson/context_task_detection.svg?v=professional-20261006-2" alt="Object Detection의 결과 형태를 그린 별도의 교육용 도식, 실제 사진의 모델 추론 결과가 아님">
- </a><p class="evidence-text">Bounding Box는 정확한 불량 면적이 아닙니다.</p></div></div>
- <figcaption class="photo-source-inline">왼쪽은 <strong>실제 공개 사진</strong>, 오른쪽은 <strong>별도 교육용 Figure</strong>입니다. 오른쪽 Box·Mask·Score는 이 실사 이미지에서 산출한 모델 추론 결과가 아닙니다.</figcaption></figure>
+<p class="slide-subtitle">Object Detection(객체 검출)은 클래스·Bounding Box(경계 상자)·점수를 출력합니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/context_task_detection.svg?v=professional-20261006-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/context_task_detection.svg?v=professional-20261006-2" alt="객체나 결함의 위치를 사각형으로 찾습니다"></a></figure>
 <p class="lesson-takeaway">Box 내부 전체가 결함인 것은 아닙니다. 상자는 위치를 둘러싸는 표현입니다.</p></div></section>
 <section class="slide" data-topic="Segmentation" data-level="basic">
 <div class="slide-inner"><div class="lesson-meta"><span>04 · Segmentation</span>
 <span class="lesson-level">핵심 개념</span></div>
 <h2 class="slide-title">어느 Pixel이 관심 영역인지 구분합니다</h2>
-<p class="slide-subtitle">Segmentation(분할)은 Pixel별 클래스나 Mask(영역 표시)를 출력합니다. 결함 영역처럼 정확한 모양이 필요할 때 사용하며 오른쪽 Mask는 개념 설명용입니다.</p>
-<figure class="lesson-figure photo-evidence" aria-label="실제 사과 불량 사진과 Segmentation 출력 구조 비교">
- <div class="evidence-duo">
- <div class="evidence-unit"><div class="evidence-head">실제 불량 사과 사진 <small>판단 대상의 예시</small></div>
- <div class="evidence-shot contain"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Rotten_Apple_02.jpg/960px-Rotten_Apple_02.jpg" alt="실제 촬영된 썩은 사과의 상태를 보여주는 사진" loading="eager" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='assets/vision_task_apple_reference.jpg';this.alt='외부 사진 로드 실패: 기존 교육용 사과 이미지';"></div>
- <p class="evidence-text"><strong>강의 질문:</strong> 불량 영역의 경계는 어디인가?</p>
- <span class="evidence-credit">Shams948 · <a href="https://commons.wikimedia.org/wiki/File:Rotten_Apple_02.jpg" target="_blank" rel="noopener noreferrer">원본</a> · CC0 1.0</span></div>
- <div class="evidence-unit"><div class="evidence-head">Segmentation · 픽셀 영역<small>Pixel별 Mask</small></div>
- <a href="assets/lesson/context_task_segmentation.svg?v=professional-20261006-2" target="_blank" rel="noopener" title="Segmentation 교육용 Figure 확대">
- <img class="evidence-tech" src="assets/lesson/context_task_segmentation.svg?v=professional-20261006-2" alt="Segmentation의 결과 형태를 그린 별도의 교육용 도식, 실제 사진의 모델 추론 결과가 아님">
- </a><p class="evidence-text">실제 경계와 일치하는지 Mask 품질을 평가해야 합니다.</p></div></div>
- <figcaption class="photo-source-inline">왼쪽은 <strong>실제 공개 사진</strong>, 오른쪽은 <strong>별도 교육용 Figure</strong>입니다. 오른쪽 Box·Mask·Score는 이 실사 이미지에서 산출한 모델 추론 결과가 아닙니다.</figcaption></figure>
+<p class="slide-subtitle">Segmentation(분할)은 Pixel별 클래스나 Mask(영역 표시)를 출력합니다. 아래 예시는 결함 영역입니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/context_task_segmentation.svg?v=professional-20261006-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/context_task_segmentation.svg?v=professional-20261006-2" alt="어느 Pixel이 관심 영역인지 구분합니다"></a></figure>
 <p class="lesson-takeaway">형상·면적·경계가 필요하면 Box보다 Mask가 적합합니다.</p></div></section>
 <section class="slide" data-topic="Label" data-level="basic">
 <div class="slide-inner"><div class="lesson-meta"><span>05 · Label</span>
@@ -198,7 +167,7 @@
 <div class="slide-inner"><div class="lesson-meta"><span>17 · 고정 필터와 학습 필터</span>
 <span class="lesson-level">핵심 개념</span></div>
 <h2 class="slide-title">Spatial Filtering의 Kernel 개념은 CNN으로 연결됩니다</h2>
-<p class="slide-subtitle">Mean·Gaussian처럼 고정된 Kernel과 CNN이 학습으로 갱신한 Kernel은 모두 국소 가중합을 사용하지만, 필터를 정하는 과정과 사용 목적이 다릅니다.</p>
+<p class="slide-subtitle">두 방법 모두 주변 Pixel을 계산하지만, 평균·Gaussian은 사람이 정한 고정 가중치이고 CNN 가중치는 데이터 학습으로 갱신됩니다.</p>
 <figure class="lesson-figure"><a href="assets/lesson/lecture_filter_to_cnn_bridge.svg?v=lecture-overhaul-20261013-1" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/lecture_filter_to_cnn_bridge.svg?v=lecture-overhaul-20261013-1" alt="고정 영상 필터와 학습되는 CNN 필터의 원리 비교"></a></figure>
 <p class="lesson-takeaway">이 그림은 고정 필터와 학습 필터의 개념적 비교이며, CNN의 실제 학습된 필터 값을 보여주는 것은 아닙니다.</p></div></section>
 <section class="slide" data-topic="CNN" data-level="basic">
@@ -354,7 +323,7 @@
 <h2 class="slide-title">높은 점수만으로 판단 근거가 맞다고 보장할 수 없습니다</h2>
 <p class="slide-subtitle">Vision AI에서 배경·조명·설비의 차이가 Class·Box·Mask 결과에 어떤 영향을 주는지 확인해야 합니다. 다른 조건의 이미지로도 판단 근거가 유지되는지 비교합니다.</p>
 <figure class="lesson-figure"><a href="assets/lesson/shortcut_professional.svg?v=professional-20261006-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/shortcut_professional.svg?v=professional-20261006-2" alt="높은 점수만으로 판단 근거가 맞다고 보장할 수 없습니다"></a></figure>
-<p class="lesson-takeaway">분류 오판뿐 아니라 Box 위치·Mask 경계의 실패도 구분합니다. 설비별·조명별 오류 유형을 모아 모델이 바라본 단서를 점검합니다.</p><details class="lesson-reference"><summary>Figure · 논문 근거</summary><div>설명 Figure는 직접 만든 합성 사례이며 실제 모델 예측이 아닙니다. 관련 논문: <a href="https://www.nature.com/articles/s42256-020-00257-z" target="_blank" rel="noopener">Geirhos et al., Shortcut learning in deep neural networks (2020)</a>.</div></details></div></section>
+<p class="lesson-takeaway">분류 오판뿐 아니라 Box 위치·Mask 경계의 실패도 구분합니다. 설비별·조명별 오류 유형을 모아 모델이 바라본 단서를 점검합니다.</p><details class="lesson-reference"><summary>출처 · 근거</summary><div>사진: AI 생성 교육용 예시 · 실제 측정/실험 결과가 아님</div></details></div></section>
 <section class="slide" data-topic="운영 Cycle" data-level="basic">
 <div class="slide-inner"><div class="lesson-meta"><span>39 · 운영 Cycle</span>
 <span class="lesson-level">핵심 개념</span></div>
