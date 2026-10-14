@@ -193,6 +193,7 @@
 
   addEventListener("keydown", (event) => {
     const target = event.target;
+    if (target instanceof Element && target.closest(".lesson-inline-lab")) return;
     if (
       target instanceof HTMLInputElement ||
       target instanceof HTMLTextAreaElement ||
@@ -224,6 +225,7 @@
   });
 
   addEventListener("wheel", (event) => {
+    if (event.target instanceof Element && event.target.closest(".lesson-inline-lab")) return;
     if (wheelLocked || Math.abs(event.deltaY) < 25) return;
     event.preventDefault();
     wheelLocked = true;
