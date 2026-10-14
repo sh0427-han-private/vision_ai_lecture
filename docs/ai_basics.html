@@ -5,7 +5,9 @@
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="slide.css?v=generatedfigfit-20260927-27">
 <link rel="stylesheet" href="lesson.css?v=professional-20261006-2">
+<link rel="stylesheet" href="interactive_lessons.css?v=20261014-1">
 <script src="slide.js?v=generatedfigfit-20260927-27" defer></script>
+<script src="interactive_lessons.js?v=20261014-1" defer></script>
 </head><body class="deck-page lesson-deck" data-prev-page="intro.html" data-next-page="vision_ai.html">
 <header class="site-header"><nav class="nav"><a class="brand" href="index.html">Vision AI</a>
 <div class="nav-links"><a href="index.html">목차</a><a href="intro.html">01 Intro</a><a href="ai_basics.html">02 AI Basics</a>
@@ -110,11 +112,34 @@
 <div class="slide-inner"><div class="lesson-meta"><span>14 · 학습의 의미</span>
 <span class="lesson-level">핵심 개념</span></div>
 <h2 class="slide-title">학습은 예측 오차가 줄도록 계산 기준을 바꾸는 과정입니다</h2>
-<p class="slide-subtitle">입력 x=2, 정답 y=4일 때 모델 ŷ=w×x의 가중치 w를 직접 움직여 봅니다. ‘학습 한 단계’를 누르면 제곱 오차를 줄이는 Gradient Descent 업데이트가 적용됩니다.</p>
-<figure class="lesson-figure" style="margin:5px 0 0;">
-<iframe src="demos/weight_lab.html" title="가중치를 조절하여 예측값과 Loss가 변하는 과정을 체험하는 실습" loading="lazy" height="440" style="display:block;width:100%;height:min(51dvh,440px);border:1px solid #d9e5e9;border-radius:6px;background:#fff;" sandbox="allow-scripts allow-same-origin"></iframe>
-<figcaption style="text-align:right;margin-top:5px;font-size:12px;color:#63798b;"><a href="demos/weight_lab.html" target="_blank" rel="noopener" style="color:#187d78;">실습 전체 화면 ↗</a> · <a href="assets/lesson/learning_update.svg?v=professional-20261006-2" target="_blank" rel="noopener" style="color:#627c8c;">기존 설명 Figure 보기 ↗</a></figcaption></figure>
-<p class="lesson-takeaway">정답 4에 가까운 예측을 만들수록 Loss=(ŷ−4)²가 작아집니다. 한 단계 학습은 학습률 0.1, x=2, Bias=0인 실제 Gradient Descent 계산입니다.</p></div></section>
+<p class="slide-subtitle">입력 x=2, 정답 y=4를 고정하고 학습을 진행합니다. 모델이 예측 오차를 줄이도록 가중치를 자동으로 수정하는 과정을 관찰하세요.</p>
+<figure class="lesson-figure lesson-inline-lab" data-training-lesson aria-label="Gradient Descent에 따라 예측 오차가 줄어드는 과정">
+  <div class="lab-toolbar"><span class="lab-prompt">정답 4를 맞히도록 모델을 학습시키면?</span><span class="lab-step">학습 횟수 <strong data-iteration>0</strong> / 8</span></div>
+  <div class="lab-training">
+    <div class="lab-training-left">
+      <div class="lab-training-flow"><span>입력 x=2</span><b>→</b><span>모델 ŷ=wx</span><b>→</b><span>정답 y=4</span></div>
+      <div class="lab-training-eq" data-training-equation>ŷ = 0.5 × 2 = 1.0</div>
+      <div class="lab-training-actions">
+        <button type="button" data-train-step>한 단계 학습</button>
+        <button type="button" data-train-run>자동 학습</button>
+        <button type="button" class="alt" data-train-reset>초기화</button>
+      </div>
+      <p class="lab-learning-note">학습된 가중치 w = <strong data-weight>0.5</strong></p>
+      <p class="lab-learning-note">제곱 오차 Loss = <strong class="lab-emphasis" data-loss>9</strong></p>
+      <p class="lab-hint">입력과 정답은 그대로 두고, 모델이 오차를 줄이도록 w를 자동으로 수정합니다.</p>
+    </div>
+    <div class="lab-training-right">
+      <div class="lab-caption">예측이 정답에 가까워지는 과정 <em>값이 가까워질수록 오차 감소</em></div>
+      <div class="lab-bars" role="img" aria-label="정답은 4로 고정, 학습이 진행될수록 예측값이 정답에 접근합니다">
+        <div class="lab-bar-wrap"><strong class="lab-bar-value">4</strong><div class="lab-bar" style="--bar-height:100%"></div><span class="lab-bar-label">정답 (고정)</span></div>
+        <div class="lab-bar-wrap prediction"><strong class="lab-bar-value" data-prediction>1</strong><div class="lab-bar" data-pred-bar style="--bar-height:25%"></div><span class="lab-bar-label">모델 예측</span></div>
+      </div>
+      <p class="lab-learning-note" data-training-status aria-live="polite">처음에는 예측과 정답 사이에 차이가 큽니다.</p>
+    </div>
+  </div>
+  <figcaption class="lab-footnote">실제 수치: 단일 데이터 (x=2,y=4) · 제곱 오차 · 학습률 0.1 · Bias 0 · 경사하강법</figcaption>
+</figure>
+<p class="lesson-takeaway">학습의 목적은 사람이 Weight를 임의로 조작하는 것이 아니라, 예측과 정답의 오차를 줄이도록 알고리즘이 Parameter를 갱신하는 것입니다.</p></div></section>
 <section class="slide" data-topic="Loss" data-level="basic">
 <div class="slide-inner"><div class="lesson-meta"><span>15 · Loss</span>
 <span class="lesson-level">핵심 개념</span></div>
