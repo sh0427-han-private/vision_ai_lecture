@@ -1,0 +1,66 @@
+/* Inline interactive figures: same visual language as lesson slide figures. */
+.lesson-deck .lesson-inline-lab {
+  width:100%; border-top:1px solid #e1e9ed; border-bottom:1px solid #e1e9ed;
+  padding:10px 2px 6px; color:#224353; font-size:13px;
+}
+.lesson-inline-lab * {box-sizing:border-box}
+.lesson-inline-lab button {font:inherit;cursor:pointer;border-radius:5px}
+.lesson-inline-lab button:focus-visible,
+.lesson-inline-lab input:focus-visible,
+.lesson-inline-lab canvas:focus-visible {outline:3px solid #59b6ae;outline-offset:2px}
+.lesson-inline-lab .lab-toolbar {display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:9px;flex-wrap:wrap}
+.lesson-inline-lab .lab-prompt {font-weight:800;font-size:15px;color:#1b5768}
+.lesson-inline-lab .lab-options {display:flex;gap:5px;flex-wrap:wrap;align-items:center}
+.lesson-inline-lab .lab-choice {padding:5px 10px;border:1px solid #d6e2e7;background:#fff;color:#3a6575;font-size:12px;font-weight:750;line-height:1.5}
+.lesson-inline-lab .lab-choice[aria-pressed="true"] {background:#e4f4ef;border-color:#1c8579;color:#126c61}
+.lesson-inline-lab .lab-three {display:grid;grid-template-columns:minmax(0,1fr) minmax(190px,.83fr) minmax(0,1fr);gap:14px;align-items:start}
+.lesson-inline-lab .lab-caption {font-size:13px;font-weight:800;color:#315466;margin-bottom:6px;display:flex;align-items:center;justify-content:space-between;gap:6px}
+.lesson-inline-lab .lab-caption em {font-size:11px;font-weight:600;font-style:normal;color:#76909b}
+.lesson-inline-lab .lab-image {display:block;width:100%;max-height:30dvh;aspect-ratio:3 / 2;object-fit:contain;border:1px solid #d9e4e7;background:#edf3f5;border-radius:2px}
+.lesson-inline-lab .lab-image[data-role="source"] {cursor:crosshair}
+.lesson-inline-lab .lab-hint {font-size:12px;line-height:1.4;color:#6d8794;margin:5px 0 0}
+.lesson-inline-lab .lab-kernel {display:grid;grid-template-columns:repeat(var(--kernel-size,5),minmax(0,1fr));gap:2px;max-width:255px;margin:auto}
+.lesson-inline-lab .lab-kernel span {height:30px;display:flex;align-items:center;justify-content:center;border:1px solid #dbe6e9;border-radius:2px;color:#285b65;font:700 12px ui-monospace,Consolas,monospace;font-variant-numeric:tabular-nums}
+.lesson-inline-lab .lab-settings {display:flex;align-items:center;gap:8px;margin-top:9px;justify-content:center}
+.lesson-inline-lab .lab-settings label {white-space:nowrap;font-size:12px;font-weight:750;color:#376978}
+.lesson-inline-lab .lab-settings input[type="range"] {width:120px;max-width:42%;accent-color:#168679;cursor:pointer}
+.lesson-inline-lab .lab-settings .lab-value {min-width:28px;font-variant-numeric:tabular-nums;color:#167e75;font-weight:800}
+.lesson-inline-lab .lab-check {display:flex;align-items:center;gap:6px;font-size:12px;color:#527381}
+.lesson-inline-lab .lab-check input {accent-color:#168579}
+.lesson-inline-lab .lab-math {font-size:12px;font-weight:650;line-height:1.45;color:#356370;margin:8px 0 0;text-align:center;min-height:35px}
+.lesson-inline-lab .lab-emphasis {color:#0c8277;font-weight:850}
+.lesson-inline-lab .lab-footnote {font-size:11px;color:#78909a;margin-top:7px}
+.lesson-inline-lab .lab-training {display:grid;grid-template-columns:minmax(275px,.88fr) minmax(0,1.12fr);gap:22px;align-items:start}
+.lesson-inline-lab .lab-training-flow {display:flex;align-items:center;gap:8px;margin-bottom:11px}
+.lesson-inline-lab .lab-training-flow span {padding:7px 10px;background:#eff7f6;border:1px solid #d1e5df;color:#2f6469;font-weight:750;border-radius:3px}
+.lesson-inline-lab .lab-training-flow b {color:#8cabae}
+.lesson-inline-lab .lab-training-eq {padding:10px 13px;font-size:21px;font-weight:850;background:#f4f8f9;color:#245568;border-radius:3px;text-align:center;font-variant-numeric:tabular-nums}
+.lesson-inline-lab .lab-training-actions {display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.lesson-inline-lab .lab-training-actions button {padding:9px 13px;background:#177e76;border:1px solid #177e76;color:#fff;font-weight:760}
+.lesson-inline-lab .lab-training-actions button.alt {background:#fff;color:#426e7e;border-color:#cedee3}
+.lesson-inline-lab .lab-training-actions button:disabled {opacity:.5;cursor:default}
+.lesson-inline-lab .lab-bars {display:flex;align-items:end;justify-content:center;gap:40px;height:205px;padding:12px 0 0;border-bottom:1px solid #ccdce0}
+.lesson-inline-lab .lab-bar-wrap {display:flex;flex-direction:column;align-items:center;gap:5px;width:100px;height:100%;justify-content:flex-end}
+.lesson-inline-lab .lab-bar {width:70px;height:var(--bar-height,0%);max-height:148px;min-height:1px;background:#228b82;transition:height .35s ease-out;border-radius:3px 3px 0 0}
+.lesson-inline-lab .lab-bar-wrap.prediction .lab-bar {background:#d99854}
+.lesson-inline-lab .lab-bar-value {font-size:19px;font-weight:900;color:#225366;font-variant-numeric:tabular-nums}
+.lesson-inline-lab .lab-bar-label {font-size:12px;font-weight:700;color:#66808c;white-space:nowrap}
+.lesson-inline-lab .lab-learning-note {margin:10px 0 0;font-size:13px;color:#476877;font-variant-numeric:tabular-nums;line-height:1.5}
+.lesson-inline-lab .lab-step {font-size:12px;color:#54717e;font-weight:750;line-height:1.5}
+@media (max-width:900px) {
+  .lesson-inline-lab .lab-three {gap:9px;grid-template-columns:minmax(0,1fr) minmax(160px,.8fr) minmax(0,1fr)}
+  .lesson-inline-lab .lab-kernel span {height:24px;font-size:10px}
+  .lesson-inline-lab .lab-bars {height:170px}
+}
+@media(max-width:680px) {
+  .lesson-inline-lab .lab-three {grid-template-columns:1fr 1fr}
+  .lesson-inline-lab .lab-middle {grid-column:1/-1;grid-row:2}
+  .lesson-inline-lab .lab-image {max-height:24dvh}
+  .lesson-inline-lab .lab-kernel {max-width:200px}
+  .lesson-inline-lab .lab-kernel span {height:23px}
+  .lesson-inline-lab .lab-training {grid-template-columns:1fr;gap:8px}
+  .lesson-inline-lab .lab-bars {height:120px}
+  .lesson-inline-lab .lab-training-eq {font-size:17px}
+  .lesson-inline-lab .lab-bar {max-height:83px}
+  .lesson-inline-lab .lab-bar-value {font-size:15px}
+}
