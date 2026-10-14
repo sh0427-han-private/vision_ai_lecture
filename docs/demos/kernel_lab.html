@@ -74,7 +74,7 @@ canvas{width:100%;height:auto;aspect-ratio:3/2;display:block;border:1px solid #d
     <p class="note">선택한 출력 Pixel: <span class="val" id="pixel-value">—</span> · 가중치 합 <span id="weight-sum">1.000</span></p>
   </section>
 </div>
-<p class="status" id="status">Stride 1 · 가장자리는 가장 가까운 Pixel로 확장 · Bias 0 · 8-bit 결과는 0~255로 제한</p>
+<p class="status" id="status">CNN식 Cross-correlation · Stride 1 · 가장자리 Pixel 복제 · Bias 0</p>
 <script>
 (() => {
   "use strict";
@@ -191,8 +191,8 @@ canvas{width:100%;height:auto;aspect-ratio:3/2;display:block;border:1px solid #d
     document.getElementById("pixel-value").textContent = String(shown);
     document.getElementById("weight-sum").textContent = weights.reduce((a, b) => a + b, 0).toFixed(3);
     document.getElementById("status").textContent = edgeMagnitude
-      ? "경계 추출: signed 응답의 절댓값을 밝기로 표시합니다. Stride 1 · 가장자리 복제 · Bias 0"
-      : "Stride 1 · 가장자리 복제 Padding · Bias 0 · 출력 0~255 Clipping (별도 자동 정규화 없음)";
+      ? "경계 추출: signed 응답의 절댓값을 밝기로 표시합니다. Cross-correlation · Stride 1 · 가장자리 복제"
+      : "Cross-correlation (커널 뒤집지 않음) · Stride 1 · 가장자리 복제 · 출력 0~255 Clipping · 자동 정규화 없음";
   }
   function choosePreset(key) {
     if (key === "reset") key = "gaussian";
