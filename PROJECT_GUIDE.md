@@ -94,6 +94,19 @@ Vision AI를 처음 접하는 사람을 대상으로 하는 입문 강의자료 
 - 초보자가 그림만 보고도 개념의 대략적인 의미를 이해할 수 있도록 구성합니다.
 - 각 슬라이드는 발표 화면 한 Viewport 안에 들어오도록 구성하며, 세로 스크롤 없이 보이도록 자동 Fit을 적용합니다. 콘텐츠가 과도하게 길다면 축소에만 의존하지 말고 내용을 분리하거나 단순화합니다.
 
+## Interactive Teaching (2026-10-14)
+
+**핵심 원칙: 학습자가 값을 바꾸면 화면의 계산·수식·그래프·영상이 같은 입력으로 재계산되어야 합니다.** 정적 슬라이드만으로는 원인과 결과를 확인하기 어려운 주제는 인터랙티브 실습을 우선 검토합니다.
+
+- 적합한 주제: Pixel/Channel 숫자, 3×3 Kernel과 Spatial Filtering, Weight/Bias, Activation, Gradient/Learning Rate, Decision Threshold와 Confusion Matrix, Stride/Padding.
+- 한 화면은 **입력/조절 → 실제 계산 → 출력 변화** 흐름으로 배치합니다. 초보자도 처음 열었을 때 학습 목표와 조작 방법을 알 수 있어야 합니다.
+- 값은 가능한 범위와 단위를 명시하고, **Preset + 직접 입력 + 초기화**를 제공합니다. 단순 Animation보다 조작 결과를 정확히 비교할 수 있는 것을 우선합니다.
+- Kernel 실습은 실제 이웃 3×3의 숫자와 가중치를 연결하고, 연산 방식·Padding·Clipping/Normalization·signed 응답 표현을 명시합니다.
+- 임의로 색을 바꾼 가짜 '필터 결과'를 사용하지 않습니다. 원본 영상에 실제 계산을 적용하여 출력합니다. 실제 모델 추론 결과는 직접 계산한 데모와 명확히 구분합니다.
+- Keyboard/Touch, 화면 크기 변경, Load 실패 등 기본 사용성을 고려합니다.
+- 외부 CDN이나 서버 없이 GitHub Pages에서 작동하는 자체 포함 데모를 권장합니다. 기존 정적 Figure 및 강의 번호·manifest 호환성을 되도록 보존합니다.
+- 현재 통합 예: docs/demos/kernel_lab.html (Vision AI), docs/demos/weight_lab.html (AI Basics).
+
 ## AI / HTML 작업 지침
 
 Repository를 수정하는 AI coding agent와 HTML 작성 작업은 다음 문서를 함께 사용합니다.
