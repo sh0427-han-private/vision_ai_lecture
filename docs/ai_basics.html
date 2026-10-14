@@ -5,7 +5,6 @@
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="slide.css?v=generatedfigfit-20260927-27">
 <link rel="stylesheet" href="lesson.css?v=professional-20261006-2">
-<link rel="stylesheet" href="photo_evidence.css?v=realphotos-20261014-1">
 <link rel="stylesheet" href="interactive_lessons.css?v=20261014-1">
 <script src="slide.js?v=generatedfigfit-20260927-27" defer></script>
 <script src="interactive_lessons.js?v=20261014-1" defer></script>
@@ -237,15 +236,8 @@
 <span class="lesson-level">핵심 개념</span></div>
 <h2 class="slide-title">데이터는 실제 사용할 조건을 대표해야 합니다</h2>
 <p class="slide-subtitle">Dataset(데이터셋)은 학습·평가에 사용하는 데이터 모음입니다. 조명·크기·배경·설비·시간대와 일관된 정답 기준을 확인합니다.</p>
-<figure class="lesson-figure photo-evidence" aria-label="실제 사과 사진과 데이터 수집 조건의 관계를 함께 설명">
- <div class="evidence-duo">
- <div class="evidence-unit"><div class="evidence-head">실제 촬영 1장 <small>데이터의 한 사례</small></div>
- <div class="evidence-shot contain"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Red_Apple.jpg/960px-Red_Apple.jpg" alt="실제 카메라로 촬영한 빨간 사과" loading="eager" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='assets/vision_task_apple_reference.jpg';this.alt='원본 사진 실패: 기존 교육용 사진';"></div>
- <span class="evidence-credit">Abhijit Tembhekar · <a href="https://commons.wikimedia.org/wiki/File:Red_Apple.jpg" target="_blank" rel="noopener noreferrer">촬영 원본</a> · <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank" rel="noopener noreferrer">CC BY 2.0</a> · CSS 시각 변형 명시</span><p class="evidence-text">이 사진 1장만 반복해서 학습한다면, 조명·배경·카메라 변화에 대응하기 어렵습니다.</p></div>
- <div class="evidence-unit"><div class="evidence-head">Dataset에 필요한 조건 <small>개념별 설명 Figure</small></div>
- <a href="assets/lesson/capture_conditions.svg?v=professional-20261006-2" target="_blank" rel="noopener" title="다양한 촬영 조건 Figure 확대"><img class="evidence-tech" src="assets/lesson/capture_conditions.svg?v=professional-20261006-2" alt="조명·거리·설비 조건을 다양하게 수집해야 하는 이유를 그린 개념도"></a>
- <p class="evidence-text">실제 사용 환경의 변화와 일관된 Label을 함께 확보해야 합니다.</p></div></div></figure>
-<p class="lesson-takeaway">특정 배경만 정답과 함께 반복되면, 모델이 물체 대신 배경으로 판단할 수 있습니다.</p><details class="lesson-reference"><summary>이미지 · Figure 출처</summary><div>실사: Abhijit Tembhekar, CC BY 2.0 (<a href="https://commons.wikimedia.org/wiki/File:Red_Apple.jpg" target="_blank" rel="noopener">Wikimedia Commons</a>). 오른쪽 Figure는 기존의 직접 제작한 교육용 개념도이며, 실제 학습 결과가 아닙니다.</div></details></div></section>
+<figure class="lesson-figure"><a href="assets/lesson/capture_conditions.svg?v=professional-20261006-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/capture_conditions.svg?v=professional-20261006-2" alt="데이터는 실제 사용할 조건을 대표해야 합니다"></a></figure>
+<p class="lesson-takeaway">특정 배경만 정답과 함께 반복되면, 모델이 물체 대신 배경으로 판단할 수 있습니다.</p><details class="lesson-reference"><summary>출처 · 근거</summary><div>사진: AI 생성 교육용 예시 · 실제 측정/실험 결과가 아님</div></details></div></section>
 <section class="slide" data-topic="데이터 분리" data-level="basic">
 <div class="slide-inner"><div class="lesson-meta"><span>29 · 데이터 분리</span>
 <span class="lesson-level">핵심 개념</span></div>
@@ -271,20 +263,16 @@
 <div class="slide-inner"><div class="lesson-meta"><span>32 · 전처리</span>
 <span class="lesson-level">핵심 개념</span></div>
 <h2 class="slide-title">모델이 기대하는 크기·값 범위·채널 순서를 맞춥니다</h2>
-<p class="slide-subtitle">입력 1920×1080을 모델 크기 640×640으로 바꿀 때, 비율을 유지한 Padding과 화면을 잘라내는 Crop은 서로 다른 결과를 만듭니다.</p>
+<p class="slide-subtitle">Preprocessing(전처리)은 입력 형식을 맞추는 과정입니다. 1920×1080을 640×640으로 맞출 때는 Resize·Crop·Padding의 차이를 고려합니다.</p>
 <figure class="lesson-figure"><a href="assets/lesson/preprocess_basic.svg?v=professional-20261006-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/preprocess_basic.svg?v=professional-20261006-2" alt="모델이 기대하는 크기·값 범위·채널 순서를 맞춥니다"></a></figure>
-<p class="lesson-takeaway">핵심은 이미지가 찌그러지지 않게 비율을 관리하고, RGB/BGR · 0~255/정규화 · HWC/CHW 순서를 학습과 추론에서 일치시키는 것입니다.</p></div></section>
+<p class="lesson-takeaway">RGB/BGR, 0~255/정규화 값, HWC/CHW를 확인하고 Train·Inference의 기본 규칙을 맞춥니다.</p></div></section>
 <section class="slide" data-topic="Data Augmentation" data-level="basic">
 <div class="slide-inner"><div class="lesson-meta"><span>33 · Data Augmentation</span>
 <span class="lesson-level">핵심 개념</span></div>
 <h2 class="slide-title">의미를 유지하는 변화를 학습 중에 보여줍니다</h2>
-<p class="slide-subtitle">같은 실제 사과 사진에 밝기·회전·가림을 가한 예시입니다. 다양하게 보이더라도 정답 의미가 유지되는 범위에서만 증강합니다.</p>
-<figure class="lesson-figure photo-evidence" aria-label="실제 사과 한 장을 이용한 데이터 증강 시각 예시">
- <div class="evidence-grid-4"><div class="evidence-unit"><div class="evidence-head">원본<small>원본 사진</small></div><div class="evidence-shot compact contain"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Red_Apple.jpg/960px-Red_Apple.jpg" class="" alt="변환 전 촬영 영상" referrerpolicy="no-referrer" loading="eager" onerror="this.onerror=null;this.src='assets/vision_task_apple_reference.jpg';"></div></div><div class="evidence-unit"><div class="evidence-head">밝기 낮춤<small>변환 시각 예시</small></div><div class="evidence-shot compact contain"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Red_Apple.jpg/960px-Red_Apple.jpg" class="is-dark" alt="밝기 변형 예시" referrerpolicy="no-referrer" loading="eager" onerror="this.onerror=null;this.src='assets/vision_task_apple_reference.jpg';"></div></div><div class="evidence-unit"><div class="evidence-head">회전<small>변환 시각 예시</small></div><div class="evidence-shot compact contain"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Red_Apple.jpg/960px-Red_Apple.jpg" class="is-rotated" alt="회전 변형 예시" referrerpolicy="no-referrer" loading="eager" onerror="this.onerror=null;this.src='assets/vision_task_apple_reference.jpg';"></div></div><div class="evidence-unit"><div class="evidence-head">일부 가림<small>변환 시각 예시</small></div><div class="evidence-shot compact contain"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Red_Apple.jpg/960px-Red_Apple.jpg" class="" alt="일부 가린 변형 예시" referrerpolicy="no-referrer" loading="eager" onerror="this.onerror=null;this.src='assets/vision_task_apple_reference.jpg';"><span class="evidence-cover" aria-hidden="true"></span></div></div></div>
- <figcaption class="evidence-text" style="margin-top:9px"><strong>왼쪽부터 같은 원본 1장:</strong> 밝기·회전·가림을 CSS로 시각화했습니다. 실제 학습용 Augmentation 결과 이미지를 저장한 것은 아닙니다.</figcaption>
- <span class="evidence-credit">Abhijit Tembhekar · <a href="https://commons.wikimedia.org/wiki/File:Red_Apple.jpg" target="_blank" rel="noopener noreferrer">촬영 원본</a> · <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank" rel="noopener noreferrer">CC BY 2.0</a> · CSS 시각 변형 명시</span>
- </figure>
-<p class="lesson-takeaway">증강된 이미지는 새 촬영 데이터가 아닙니다. 검출·분할에서는 회전 등 공간 변환 시 Box·Mask Label도 함께 바꿔야 합니다.</p></div></section>
+<p class="slide-subtitle">Data Augmentation(데이터 증강)은 밝기·회전·가림 같은 변화를 적용하는 방법입니다. 현실적인 변화 범위와 정답 유지 여부를 확인합니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/augmentation_basic.svg?v=professional-20261006-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/augmentation_basic.svg?v=professional-20261006-2" alt="의미를 유지하는 변화를 학습 중에 보여줍니다"></a></figure>
+<p class="lesson-takeaway">검출·분할에서는 이미지와 Box·Mask에 같은 공간 변환을 적용해야 합니다.</p></div></section>
 <section class="slide" data-topic="Overfitting" data-level="basic">
 <div class="slide-inner"><div class="lesson-meta"><span>34 · Overfitting</span>
 <span class="lesson-level">핵심 개념</span></div>
