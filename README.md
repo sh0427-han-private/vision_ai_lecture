@@ -23,6 +23,15 @@ Vision AI를 처음 접하는 사람도 **현실 세계 → Sensor → 숫자 �
 
 기본 상태는 **전체 과정**이며, URL의 `?mode=core`는 핵심 과정입니다. 강의 목차의 버튼 또는 슬라이드 하단의 **핵심만 보기 / 심화 포함 전체 보기**에서 모드를 바꿀 수 있습니다. 기존 번호와 슬라이드 직접 링크는 유지합니다.
 
+## 직접 조작하는 Interactive 실습
+
+슬라이드의 정적인 Figure를 먼저 보고, 같은 화면에서 숫자를 조절해 계산 결과를 확인할 수 있습니다. 브라우저에서만 실행되는 HTML/JavaScript 데모로 별도 설치가 필요 없습니다.
+
+- **[Weight → Prediction → Loss 실습](docs/demos/weight_lab.html)** — 입력 x=2, 정답 y=4를 고정하고 Weight w를 슬라이더로 바꿉니다. '학습 한 단계'는 실제 기울기를 사용해 w를 갱신합니다.
+- **[3×3 Kernel → 결과 영상 실습](docs/demos/kernel_lab.html)** — Mean, Gaussian, Sharpen, Edge preset과 9개 개별 가중치 입력을 제공합니다. 동일한 사과 사진에 실제 Grayscale 3×3 연산을 적용하고 사진을 클릭해 선택 Pixel의 숫자와 계산을 추적합니다.
+
+실습은 AI Basics와 Vision AI 강의 본문에 포함되어 있으며 웹 목차에서도 바로 접근할 수 있습니다. 기존 그림은 참고용으로 유지합니다.
+
 ## 학습 순서
 
 ```text
