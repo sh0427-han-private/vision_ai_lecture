@@ -30,6 +30,12 @@ h1{font-size:clamp(34px,4.5vw,57px);margin:13px 0 17px;letter-spacing:-.06em;lin
 .path-link:hover,.path-link:focus-visible{border-color:#238b97;outline:2px solid #badce1;outline-offset:2px}
 .guide{margin-top:38px;color:#6a8190;font-size:15px}
 @media(max-width:860px){.learning-path-selector{flex-direction:column;align-items:stretch;padding:17px;margin:0 0 25px}.path-links{max-width:none;width:100%;flex-wrap:wrap}.path-link{flex-basis:190px}main{padding:45px 23px}.cards{grid-template-columns:1fr}.card{min-height:255px}.site-head .inner{padding:0 23px}.flow{gap:8px}.flow span{font-size:15px}}
+
+.hands-on{margin-top:25px;padding:22px 24px;border:1px solid #dce8eb;border-radius:12px;display:flex;gap:30px;justify-content:space-between;align-items:center;background:#fbfdfd}
+.hands-on h2{font-size:23px;letter-spacing:-.04em;margin:5px 0}.hands-on p{color:#6a8090;font-size:14px;margin:0}
+.hands-on-links{display:flex;gap:10px;flex:1;max-width:600px}.hands-on-links a{flex:1;min-width:0;text-decoration:none;color:#1e5666;background:#fff;border:1px solid #cbdfe5;padding:14px;border-radius:6px}.hands-on-links a:hover{border-color:#298c8b;background:#f1faf8}
+.hands-on-links strong,.hands-on-links span{display:block;font-size:15px}.hands-on-links span{font-size:12px;margin-top:7px;color:#668190}
+@media(max-width:900px){.hands-on{flex-direction:column;align-items:stretch;padding:16px}.hands-on-links{max-width:none;width:100%;flex-wrap:wrap}.hands-on-links a{flex-basis:220px}}
 </style>
 </head>
 <body>
@@ -50,6 +56,14 @@ h1{font-size:clamp(34px,4.5vw,57px);margin:13px 0 17px;letter-spacing:-.06em;lin
 <a class="card" href="intro.html"><div class="num">01 · 15 SLIDES</div><h2>Intro</h2><p>이미지를 컴퓨터는 어떻게 표현할까요? 사람의 시각과 Pixel 숫자의 차이를 확인합니다.</p><div class="topics"><span>Grayscale</span><span>RGB·Channel</span><span>Noise</span><span>Sensor</span></div><div class="card-foot"><span>이미지와 컴퓨터 시각</span><strong>강의 열기 ↗</strong></div></a>
 <a class="card" href="ai_basics.html"><div class="num">02 · 44 SLIDES</div><h2>AI Basics</h2><p>신경망은 왜 오차를 내고, 어떤 계산으로 가중치를 고쳐 배우는지 알아봅니다.</p><div class="topics"><span>Neuron·Weight</span><span>Loss</span><span>Optimizer</span><span>평가</span></div><div class="card-foot"><span>학습 원리와 데이터 검증</span><strong>강의 열기 ↗</strong></div></a>
 <a class="card" href="vision_ai.html"><div class="num">03 · 40 SLIDES</div><h2>Vision AI</h2><p>분류·검출·분할 문제부터 주변 Pixel 연산, 필터와 CNN 구조까지 이어집니다.</p><div class="topics"><span>Vision Task</span><span>Filtering</span><span>Convolution</span><span>CNN</span></div><div class="card-foot"><span>영상처리부터 모델 활용까지</span><strong>강의 열기 ↗</strong></div></a>
+</section>
+
+<section class="hands-on" aria-label="직접 조작하는 실습">
+  <div><span class="eyebrow">HANDS-ON LABS</span><h2>숫자를 바꾸고, 결과를 바로 확인하세요</h2><p>강의 슬라이드에 포함된 동일한 실습을 큰 화면으로 열 수 있습니다.</p></div>
+  <div class="hands-on-links">
+    <a href="demos/weight_lab.html"><strong>AI Basics · Weight와 Loss</strong><span>가중치를 움직이고 학습 한 단계를 실행 →</span></a>
+    <a href="demos/kernel_lab.html"><strong>Vision AI · 3×3 Kernel</strong><span>9개 가중치를 편집하고 결과 이미지를 비교 →</span></a>
+  </div>
 </section>
 <p class="guide">기본 학습은 핵심 과정에서 시작하세요. AI Basics와 Vision AI 강의 하단에서 언제든 심화 포함 여부를 전환할 수 있습니다. 화살표 키 또는 이전·다음 버튼으로 이동합니다.</p>
 </main>
