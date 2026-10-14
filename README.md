@@ -31,6 +31,10 @@ Vision AI의 **Gaussian 필터** 슬라이드에서는 원본·Mean·Gaussian·M
 
 **실습은 별도 페이지가 아니라 기존 강의 슬라이드 안에 배치됩니다.** [강의 목차](docs/index.html)에서 AI Basics 또는 Vision AI를 선택해 해당 개념의 슬라이드로 이동하세요.
 
+## 사진과 Figure 출처
+
+원근감·센서·Dataset·Data Augmentation·Vision Task의 일부 슬라이드에는 저작권이 확인된 실제 사진을 적용하고, 수치·모델 구조 Figure는 검산 가능한 자체 SVG를 유지했습니다. [사진별 저작자·라이선스·활용 범위](assets/SOURCES.md)를 확인할 수 있습니다. 현재 외부 사진은 Wikimedia Commons에서 직접 로드하며, 연결에 실패하면 기존 강의용 이미지로 대체됩니다.
+
 ## 학습 순서
 
 ```text
