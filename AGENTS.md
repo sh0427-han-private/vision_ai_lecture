@@ -37,11 +37,11 @@
 
 ## Interactive Lesson Rules
 
-- Kernel/Weight/Threshold처럼 파라미터와 출력의 인과관계가 중요한 페이지에서는 편집 가능한 컨트롤과 실시간 계산 Figure 도입을 검토합니다.
-- Input → 실제 계산 → Output이 같은 프레임에서 보여야 합니다. 숫자와 결과 그래프/픽셀 사이의 일관성을 테스트합니다.
-- Preset, 직접 수정, 초기화, 접근 가능한 Label, 키보드/터치 조작을 우선합니다.
-- UI가 추가되어도 기존 슬라이드 수·manifest 제목·Hash Deep Link와 강의용 시각적 일관성을 유지합니다.
-- 재현 가능한 실습 구현 사례: docs/demos/kernel_lab.html 및 docs/demos/weight_lab.html.
+- 실습은 독립적인 Lab 페이지가 아니라 **관련 개념의 슬라이드 안에 직접 구성**합니다. 별도 iframe/목차는 만들지 않습니다.
+- Kernel은 필터 종류, Gaussian σ, 잡음 조건 등 의미 있는 조작을 적용하고 행렬 Weight는 읽기 전용으로 표시합니다. Median처럼 가중합이 아닌 알고리즘을 혼동하지 않게 구분합니다.
+- 학습 원리 시각화에서는 Weight 값을 사용자에게 직접 변경시키지 않습니다. 실제 Gradient Descent가 학습을 수행하도록 합니다.
+- 실제 Input → Process → Output 대응을 계산으로 검증하고, 기존 manifest 제목·슬라이드 수·Deep Link를 보존합니다.
+- 구현은 docs/interactive_lessons.js, docs/interactive_lessons.css를 재사용합니다.
 
 ## Before Editing
 
