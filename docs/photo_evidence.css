@@ -56,3 +56,9 @@
  .intro-real-three p{font-size:11px}
  .intro-real-three .evidence-shot{height:24dvh}
 }
+/* Intro originally crops a three-panel composite; licensed photos are separate files. */
+body[data-next-page="ai_basics.html"] .sensor-life-crop img{
+ position:absolute;inset:0;width:100%;height:100%;max-width:100%;object-fit:cover;
+}
+body[data-next-page="ai_basics.html"] .sensor-life-crop--rgb img,
+body[data-next-page="ai_basics.html"] .sensor-life-crop--ir img{left:0}
