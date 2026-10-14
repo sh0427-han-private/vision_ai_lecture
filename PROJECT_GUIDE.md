@@ -96,16 +96,13 @@ Vision AI를 처음 접하는 사람을 대상으로 하는 입문 강의자료 
 
 ## Interactive Teaching (2026-10-14)
 
-**핵심 원칙: 학습자가 값을 바꾸면 화면의 계산·수식·그래프·영상이 같은 입력으로 재계산되어야 합니다.** 정적 슬라이드만으로는 원인과 결과를 확인하기 어려운 주제는 인터랙티브 실습을 우선 검토합니다.
-
-- 적합한 주제: Pixel/Channel 숫자, 3×3 Kernel과 Spatial Filtering, Weight/Bias, Activation, Gradient/Learning Rate, Decision Threshold와 Confusion Matrix, Stride/Padding.
-- 한 화면은 **입력/조절 → 실제 계산 → 출력 변화** 흐름으로 배치합니다. 초보자도 처음 열었을 때 학습 목표와 조작 방법을 알 수 있어야 합니다.
-- 값은 가능한 범위와 단위를 명시하고, **Preset + 직접 입력 + 초기화**를 제공합니다. 단순 Animation보다 조작 결과를 정확히 비교할 수 있는 것을 우선합니다.
-- Kernel 실습은 실제 이웃 3×3의 숫자와 가중치를 연결하고, 연산 방식·Padding·Clipping/Normalization·signed 응답 표현을 명시합니다.
-- 임의로 색을 바꾼 가짜 '필터 결과'를 사용하지 않습니다. 원본 영상에 실제 계산을 적용하여 출력합니다. 실제 모델 추론 결과는 직접 계산한 데모와 명확히 구분합니다.
-- Keyboard/Touch, 화면 크기 변경, Load 실패 등 기본 사용성을 고려합니다.
-- 외부 CDN이나 서버 없이 GitHub Pages에서 작동하는 자체 포함 데모를 권장합니다. 기존 정적 Figure 및 강의 번호·manifest 호환성을 되도록 보존합니다.
-- 현재 통합 예: docs/demos/kernel_lab.html (Vision AI), docs/demos/weight_lab.html (AI Basics).
+- 기존 강의 흐름에서 해당 개념이 등장하는 **바로 그 슬라이드**에 Interactive Figure를 통합합니다. 별도 실습 목차, 외부 페이지, 과도한 Dashboard UI를 만들지 않습니다.
+- 초보자에게는 임의의 Kernel Weight 숫자를 바꾸게 하는 대신, **Mean/Gaussian/Median/Sobel 종류, Gaussian σ, Noise On/Off** 등 실제 해석할 수 있는 조작을 우선합니다.
+- Kernel 행렬은 **읽기 전용**이며 선택한 필터의 실제 계산값을 표시합니다. Median은 가중합 방식이 아니라 중앙값 연산임을 명시합니다.
+- 학습 원리를 보여줄 때는 가중치 수동 입력보다 **데이터 → 예측 → 오차 → Gradient로 Parameter 자동 갱신** 흐름을 보여줍니다.
+- Input과 Output은 같은 이미지와 Pixel 위치를 사용하며, 표시된 수치와 실제 계산 결과가 반드시 일치해야 합니다.
+- 일반 강의 스타일(흰 배경, 큰 영상, 충분한 여백)을 유지하고, 키보드·터치 조작과 viewport fit을 고려합니다.
+- 현재 통합 구현: docs/vision_ai.html의 Gaussian 필터, docs/ai_basics.html의 학습의 의미. 구현 소스는 docs/interactive_lessons.css 및 docs/interactive_lessons.js 입니다.
 
 ## AI / HTML 작업 지침
 
