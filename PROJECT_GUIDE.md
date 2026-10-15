@@ -233,3 +233,15 @@ GitHub Pages:
 - 기존 원본보다 큰 Raster로 Upscale한다고 원본에 없던 새로운 디테일이 생성되는 것은 아닙니다. 화질 개선 효과를 원본 해상도와 무관하게 보장하는 표현은 하지 않습니다.
 - Intro 8 추가로 기존 Intro 8~16의 번호는 9~17로 이동합니다. 기존 Intro 3, 5, 6, 7 직접 링크는 그대로 유지합니다.
 - 모듈: `docs/intro_resolution_demo.js`, `docs/intro_resolution_demo.css`. `scripts/verify_intro_pixel_interactive.py`에서 사진 로딩, 정확한 출력 Raster, 같은 확대 영역의 정상 렌더링을 검사합니다.
+
+
+## 2026-10-15 · Intro 'What / Where' 시각 이해와 3D 역문제 (최신)
+
+- 최신 장수: Intro **19장**, AI Basics **44장**, Vision AI **40장** = 전체 **103장**; 핵심 경로 **83장**.
+- 기존 Intro 1의 메시지는 사람은 사진을 보고 의미·공간관계를 빠르게 추론하지만 컴퓨터가 처음 받는 입력은 **Pixel 숫자 배열**이라는 것입니다.
+- Intro 9 신규: **Recognition(무엇인지)** / **Spatial Understanding(어디에 있고 어떤 공간관계인지)**를 실제 건축 사진과 분리된 두 시각 결과로 표시합니다. Marr(1982) 원문 **'to know what is where by looking'** 을 짧게 인용하고 MIT Foundations Ch.1과 Marr & Nishihara (1978)를 출처로 명시합니다.
+- Intro 10 신규: 3D 물체를 2D 이미지로 투영할 때 정보가 손실되어 **가까운 작은 물체와 멀리 있는 큰 물체가 동일한 영상 높이로 보일 수 있음**을 정확한 원근비 예시로 설명합니다. Marr & Nishihara(1978), DOI 10.1098/rspb.1978.0020 논문 내용을 간단히 인용합니다.
+- 공간 재구성은 대표적인 시각 이해 과제이며 **모든 Vision AI 모델이 반드시 3D를 재구성하지는 않습니다**. 이미지 형성, 3D 추론, Model 출력은 구별해 설명합니다.
+- 원문 인용은 짧고 정확하게 하며 책의 문구를 논문 인용처럼 표기하지 않습니다. SVG 도식은 직접 작성한 교육용 개념도이며 실제 측정·모델 추론 결과가 아닙니다.
+- 신규 슬라이드는 기존 Intro 8 뒤에 삽입해 **Intro 1~8 딥링크를 보존**합니다. 이전 Intro 9~17은 11~19로 이동합니다.
+- 새 자산은 `docs/assets/lesson/intro_inverse_2d_3d_ambiguity.svg`, 스타일은 `docs/intro_vision_foundations.css`. 전체 206 화면의 레이아웃·이미지 자산·슬라이드 수·논문 인용·투영 비율 회귀 검사를 수행합니다.
