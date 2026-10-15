@@ -5,6 +5,8 @@
   if (filterRoot) initFilter(filterRoot);
   const trainRoot = document.querySelector("[data-training-lesson]");
   if (trainRoot) initTraining(trainRoot);
+  document.querySelectorAll('[data-grayscale-lesson]').forEach(initGrayscale);
+  document.querySelectorAll('[data-rgb-lesson]').forEach(initRgbPixel);
 
   function initFilter(root) {
     const width = 300, height = 200;
@@ -232,4 +234,158 @@
     document.addEventListener("visibilitychange",()=>{if(document.hidden)stop();});
     render();
   }
+
+  // 48x32 downsampled photo -> BT.601 grayscale -> brightness multiplier.
+  function initGrayscale(root) {
+    const size = 6, width = 48, height = 32;
+    const button = root.querySelector('[data-gray-photo]');
+    const image = button.querySelector('img');
+    const marker = root.querySelector('[data-gray-selection]');
+    const caption = root.querySelector('[data-gray-coordinate]');
+    const slider = root.querySelector('[data-gray-brightness]');
+    const factor = root.querySelector('[data-gray-factor]');
+    const example = root.querySelector('[data-gray-example]');
+    const source = new Uint8Array(width * height);
+    const grids = ['[data-gray-values]', '[data-gray-tones]'].map(selector => {
+      const parent = root.querySelector(selector), cells = [];
+      for (let i = 0; i < size * size; i++) {
+        const cell = document.createElement('span');
+        parent.appendChild(cell);
+        cells.push(cell);
+      }
+      return cells;
+    });
+    const clamp = (n, maximum) => Math.min(maximum, Math.max(0, n));
+    let x = 18, y = 10, loaded = false;
+
+    function render() {
+      if (!loaded) return;
+      const k = Number(slider.value);
+      factor.textContent = k.toFixed(1) + '×';
+      image.style.filter = 'grayscale(1) brightness(' + k + ')';
+      marker.style.left = (100 * x / width) + '%';
+      marker.style.top = (100 * y / height) + '%';
+      caption.textContent = '선택 영역: x=' + x + '–' + (x+5) +
+        ', y=' + y + '–' + (y+5);
+      for (let row=0; row<size; row++) {
+        for (let col=0; col<size; col++) {
+          const index = row*size+col;
+          const origin = source[(y+row)*width+x+col];
+          const output = Math.min(255, Math.round(k*origin));
+          grids[0][index].textContent = String(output);
+          const tone = grids[1][index];
+          tone.textContent = String(output);
+          tone.style.backgroundColor = 'rgb('+output+','+output+','+output+')';
+          tone.style.color = output >= 145 ? '#17243b' : '#fff';
+        }
+      }
+      const before = source[y*width+x];
+      example.textContent = '좌상단 Pixel: '+before+' × '+k.toFixed(1)+
+        ' → '+Math.min(255,Math.round(k*before));
+    }
+    function select(left, top) {
+      x = clamp(left,width-size);
+      y = clamp(top,height-size);
+      render();
+    }
+    button.addEventListener('click', event => {
+      const bounds = image.getBoundingClientRect();
+      if (!bounds.width || !bounds.height) return;
+      const px = Math.floor((event.clientX-bounds.left)/bounds.width*width);
+      const py = Math.floor((event.clientY-bounds.top)/bounds.height*height);
+      select(px-3,py-3);
+    });
+    button.addEventListener('keydown', event => {
+      const keys = {ArrowLeft:[-1,0],ArrowRight:[1,0],
+        ArrowUp:[0,-1],ArrowDown:[0,1]};
+      const delta = keys[event.key];
+      if (!delta) return;
+      event.preventDefault();
+      select(x+delta[0],y+delta[1]);
+    });
+    slider.addEventListener('input', render);
+    root.querySelector('[data-gray-reset]').addEventListener('click', () => {
+      slider.value = '1'; render();
+    });
+    function load() {
+      if (loaded) return;
+      try {
+        const canvas = document.createElement('canvas');
+        canvas.width = width; canvas.height = height;
+        const ctx = canvas.getContext('2d',{willReadFrequently:true});
+        ctx.drawImage(image,0,0,width,height);
+        const data = ctx.getImageData(0,0,width,height).data;
+        for(let i=0; i<source.length; i++) {
+          const p = i*4;
+          source[i] = Math.round(.299*data[p]+.587*data[p+1]+.114*data[p+2]);
+        }
+        loaded = true; render();
+      } catch (err) {
+        caption.textContent = '사진의 픽셀을 읽을 수 없습니다.';
+      }
+    }
+    image.addEventListener('load',load,{once:true});
+    image.addEventListener('error',()=>{caption.textContent='사진 로드 실패';},{once:true});
+    if(image.complete && image.naturalWidth) load();
+  }
+
+  // Read original, unresized RGB data from the local photo.
+  function initRgbPixel(root) {
+    const image=root.querySelector('[data-rgb-photo]');
+    const button=root.querySelector('[data-rgb-selector]');
+    const marker=root.querySelector('[data-rgb-target]');
+    const label=root.querySelector('[data-rgb-coordinate]');
+    const shape=root.querySelector('[data-rgb-shape]');
+    const swatch=root.querySelector('[data-rgb-swatch]');
+    const rgbLabels=['r','g','b'].map(c=>root.querySelector('[data-rgb-'+c+']'));
+    const tuple=root.querySelector('[data-rgb-tuple]');
+    let width=0,height=0,x=0,y=0,data=null;
+    const clamp=(n,max)=>Math.max(0,Math.min(n,max));
+    function render() {
+      if (!data) return;
+      const p=4*(y*width+x), colors=[data[p],data[p+1],data[p+2]];
+      label.textContent='image[y='+y+', x='+x+']';
+      colors.forEach((n,i)=>{rgbLabels[i].textContent=String(n);});
+      tuple.textContent='['+colors.join(', ')+']';
+      swatch.style.backgroundColor='rgb('+colors.join(',')+')';
+      marker.style.left=(100*(x+.5)/width)+'%';
+      marker.style.top=(100*(y+.5)/height)+'%';
+    }
+    button.addEventListener('click',event=>{
+      if(!data)return;
+      const box=image.getBoundingClientRect();
+      if(!box.width||!box.height)return;
+      x=clamp(Math.floor((event.clientX-box.left)/box.width*width),width-1);
+      y=clamp(Math.floor((event.clientY-box.top)/box.height*height),height-1);
+      render();
+    });
+    button.addEventListener('keydown',event=>{
+      const keys={ArrowLeft:[-1,0],ArrowRight:[1,0],
+        ArrowUp:[0,-1],ArrowDown:[0,1]};
+      const delta=keys[event.key];
+      if(!delta||!data)return;
+      event.preventDefault();
+      x=clamp(x+delta[0],width-1);
+      y=clamp(y+delta[1],height-1);
+      render();
+    });
+    function load() {
+      if(data)return;
+      try{
+        width=image.naturalWidth; height=image.naturalHeight;
+        const canvas=document.createElement('canvas');
+        canvas.width=width;canvas.height=height;
+        const ctx=canvas.getContext('2d',{willReadFrequently:true});
+        ctx.drawImage(image,0,0);
+        data=ctx.getImageData(0,0,width,height).data;
+        x=Math.floor(width*.62);y=Math.floor(height*.35);
+        shape.textContent=height+' × '+width+' × 3';
+        render();
+      }catch(err){shape.textContent='RGB 값을 읽을 수 없습니다.';}
+    }
+    image.addEventListener('load',load,{once:true});
+    image.addEventListener('error',()=>{shape.textContent='사진 로드 실패';},{once:true});
+    if(image.complete&&image.naturalWidth)load();
+  }
+
 })();
