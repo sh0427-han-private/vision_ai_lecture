@@ -18,6 +18,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Verify slide numbers, HWC shapes and resolution examples
+        run: python scripts/verify_curriculum_overhaul.py
       - name: Install Playwright
         run: |
           python -m pip install playwright pillow
@@ -44,7 +46,7 @@ jobs:
           if blocking:
               print(json.dumps(blocking, ensure_ascii=False, indent=2))
               raise SystemExit(f"{len(blocking)} slide layout errors remain")
-          print("198 viewport captures verified; no visible intersections.")
+          print("200 viewport captures verified; no visible intersections.")
           PY
 
       - name: Upload geometry report
