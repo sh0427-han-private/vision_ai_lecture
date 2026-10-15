@@ -67,6 +67,7 @@ def main():
 
         # Vision tasks must come before the AI theory section.
         page.click(".lecture-toc-toggle")
+        page.locator(".lecture-toc-unit").nth(1).locator("summary").click()
         page.locator('.lecture-toc-link[href="vision_ai_course.html#slide-4"]').click()
         position(page,"vision_ai_course",4,81)
         check("객체나 결함" in page.locator(".slide.active").inner_text(),
@@ -74,6 +75,7 @@ def main():
         check(page.locator(".slide.active").get_attribute("data-source-deck") == "vision_ai",
               "Vision content did not come first")
         page.click(".lecture-toc-toggle")
+        page.locator(".lecture-toc-unit").nth(2).locator("summary").click()
         page.locator('.lecture-toc-link[href="vision_ai_course.html#slide-10"]').click()
         position(page,"vision_ai_course",10,81)
         check(page.locator(".slide.active").get_attribute("data-source-deck") == "ai_basics",
@@ -102,8 +104,8 @@ def main():
               "Final slide must end course")
 
         # Old query strings must not activate the removed core-only feature.
-        page.goto(BASE+"/vision_ai_course.html?mode=core#slide-16")
-        position(page,"vision_ai_course",16,81)
+        page.goto(BASE+"/vision_ai_course.html?mode=core#slide-17")
+        position(page,"vision_ai_course",17,81)
         check("mode=core" not in page.url,"Legacy core param persists")
         check(page.locator(".slide.active").get_attribute("data-level") == "detail",
               "Advanced lessons must remain visible")
