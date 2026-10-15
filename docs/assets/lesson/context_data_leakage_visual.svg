@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 105 1200 495" role="img" aria-label="대표적인 Data Leakage 세 가지를 보여주는 그림">
-<defs><marker id="redArrow" markerWidth="9" markerHeight="9" refX="8" refY="3" orient="auto"><path d="M0 0L0 6L9 3z" fill="#e11d48"/></marker></defs>
+<defs><marker id="redArrow" markerWidth="6" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0 0L0 6L9 3z" fill="#e11d48"/></marker></defs>
 <rect width="1200" height="600" rx="28" fill="#f8fafc"/>
 <g transform="translate(55 145)" font-family="Arial, Noto Sans KR, sans-serif">
   <g transform="translate(0 0)">
@@ -28,7 +28,7 @@
     <text x="24" y="42" font-size="21" font-weight="700" fill="#be123c">③ Test를 보며 계속 수정</text>
     <rect x="45" y="82" width="105" height="62" rx="10" fill="#e0f2fe"/><text x="98" y="120" text-anchor="middle" font-size="18" fill="#0369a1">Model</text>
     <rect x="190" y="82" width="105" height="62" rx="10" fill="#fef3c7"/><text x="242" y="120" text-anchor="middle" font-size="18" fill="#92400e">Test</text>
-    <path d="M152 112h28" stroke="#64748b" stroke-width="4" marker-end="url(#redArrow)" fill="none"/>
+    <path d="M160 112h22" stroke="#64748b" stroke-width="4" marker-end="url(#redArrow)" fill="none"/>
     <path d="M242 152 C242 215 98 215 98 153" fill="none" stroke="#e11d48" stroke-width="5" marker-end="url(#redArrow)"/>
     <text x="53" y="252" font-size="18" font-weight="700" fill="#be123c">Test Score 확인 → 수정 반복</text>
     <text x="53" y="287" font-size="18" fill="#64748b">Test가 사실상 Validation이 됨</text>
