@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="500" viewBox="0 0 1200 500" role="img" aria-label="동일한 16대9 비율 영상의 해상도를 비교. 360p는 가로 640 세로 360, 720p는 가로 1280 세로 720, 1080p는 가로 1920 세로 1080 픽셀이며 p는 세로 픽셀 수를 뜻한다.">
+  <rect width="1200" height="500" fill="#fff"/>
+  <text x="56" y="29" font-family="Noto Sans KR,Malgun Gothic,sans-serif" font-size="22" font-weight="700" fill="#284b60">화면 비율이 같아도, 가로·세로를 이루는 Pixel 개수는 다릅니다</text>
+  <!-- All nested rectangles preserve exactly 16:9. Width ratio: 240:480:720 = 640:1280:1920. -->
+  <rect x="56" y="47" width="720" height="405" fill="#f0f4f7" stroke="#8da5b8" stroke-width="3"/>
+  <rect x="56" y="47" width="480" height="270" fill="#e6f4ef" stroke="#6aab96" stroke-width="3"/>
+  <rect x="56" y="47" width="240" height="135" fill="#dcebf5" stroke="#478bad" stroke-width="3"/>
+  <text x="176" y="107" text-anchor="middle" font-family="Noto Sans KR,Malgun Gothic,sans-serif" font-size="30" font-weight="800" fill="#245e80">360p</text>
+  <text x="176" y="145" text-anchor="middle" font-family="Noto Sans KR,Malgun Gothic,sans-serif" font-size="21" font-weight="650" fill="#385c71">640 × 360</text>
+  <text x="408" y="237" text-anchor="middle" font-family="Noto Sans KR,Malgun Gothic,sans-serif" font-size="30" font-weight="800" fill="#176f5e">720p</text>
+  <text x="408" y="274" text-anchor="middle" font-family="Noto Sans KR,Malgun Gothic,sans-serif" font-size="21" font-weight="650" fill="#306657">1280 × 720</text>
+  <text x="657" y="358" text-anchor="middle" font-family="Noto Sans KR,Malgun Gothic,sans-serif" font-size="30" font-weight="800" fill="#485d73">1080p</text>
+  <text x="657" y="395" text-anchor="middle" font-family="Noto Sans KR,Malgun Gothic,sans-serif" font-size="21" font-weight="650" fill="#485d73">1920 × 1080</text>
+  <path d="M802 45V450" stroke="#dce4e8" stroke-width="2"/>
+  <text x="830" y="85" font-family="Noto Sans KR,Malgun Gothic,sans-serif" font-size="26" font-weight="800" fill="#22455b">p = 세로 Pixel 수</text>
+  <text x="830" y="130" font-family="Noto Sans KR,Malgun Gothic,sans-serif" font-size="19" fill="#61788a">720p 영상의 경우</text>
+  <text x="830" y="177" font-family="Noto Sans KR,Malgun Gothic,sans-serif" font-size="34" font-weight="800" fill="#176f5e">720p</text>
+  <text x="830" y="222" font-family="Noto Sans KR,Malgun Gothic,sans-serif" font-size="24" font-weight="680" fill="#29596c">가로 W = 1280px</text>
+  <text x="830" y="257" font-family="Noto Sans KR,Malgun Gothic,sans-serif" font-size="24" font-weight="680" fill="#29596c">세로 H = 720px</text>
+  <path d="M830 278H1157" stroke="#c5d7dd" stroke-width="2"/>
+  <text x="830" y="321" font-family="Noto Sans KR,Malgun Gothic,sans-serif" font-size="21" font-weight="720" fill="#385a6b">RGB 배열 (H × W × C)</text>
+  <text x="830" y="359" font-family="Noto Sans KR,Malgun Gothic,sans-serif" font-size="30" font-weight="800" fill="#175b71">720 × 1280 × 3</text>
+  <text x="830" y="407" font-family="Noto Sans KR,Malgun Gothic,sans-serif" font-size="19" fill="#647989">1280은 가로, 720은 세로입니다.</text>
+  <text x="56" y="485" font-family="Noto Sans KR,Malgun Gothic,sans-serif" font-size="19" fill="#667f8e">16:9 영상의 대표적인 예시 · 상자는 실제 Pixel 격자 대신 크기의 비율을 표시합니다.</text>
+</svg>

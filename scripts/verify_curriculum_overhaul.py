@@ -12,7 +12,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DOCS = ROOT / "docs"
 manifest = json.loads((DOCS / "assets/lesson/manifest.json").read_text("utf-8"))
 
-expected = {"intro": 15, "ai_basics": 44, "vision_ai": 40}
+expected = {"intro": 16, "ai_basics": 44, "vision_ai": 40}
 
 for name, count in expected.items():
     document = (DOCS / f"{name}.html").read_text("utf-8")
@@ -300,3 +300,37 @@ for output_number in ("-6", "12", "16", "8", "15", "-4", "2", "7"):
     assert output_number in ppt_data, output_number
 assert (ROOT / "slides/pptx_sources/Vision_AI_Convolution_PPT_Source.pptx").is_file()
 print("PPT slide source and 16:9 lecture SVG are present and mathematically aligned.")
+
+
+# Intro: the real apple JPEG is width 960, height 640. Shape is H x W x C.
+intro_page = (DOCS / "intro.html").read_text("utf-8")
+assert "640 × 960 × 3" in intro_page, "Intro 6 must show H640 W960 C3"
+assert "720 × 1280 × 3" in intro_page, "Intro 7 must show H720 W1280 C3"
+intro_slides = re.findall(
+    r'<section class="slide(?: [^"]+)?"[^>]*>.*?</section>',
+    intro_page, flags=re.DOTALL
+)
+assert len(intro_slides) == 16
+assert "RGB 이미지의 세 번째 차원은 거리 정보가 아닙니다" in intro_slides[5]
+assert "해상도는 가로·세로 Pixel 개수로 정해집니다" in intro_slides[6]
+labels = [int(x) for x in re.findall(
+    r'<span class="slide-number">(\d+)</span>', intro_page
+)]
+assert labels == list(range(3, 17)), labels
+channel_svg = (DOCS / "assets/lesson/lecture_rgb_channel_stack.svg").read_text("utf-8")
+assert 'viewBox="0 0 960 640"' in channel_svg
+assert "H × W × C = 640 × 960 × 3" in channel_svg
+res_file = DOCS / "assets/lesson/intro_resolution_comparison.svg"
+res_root = ET.parse(res_file).getroot()
+res_labels = "".join(node.text or "" for node in res_root.iter()
+                     if node.tag.endswith("text"))
+for label in ("640 × 360", "1280 × 720", "1920 × 1080",
+              "720 × 1280 × 3"):
+    assert label in res_labels, label
+for w, h in ((640, 360), (1280, 720), (1920, 1080)):
+    assert w * 9 == h * 16
+and_svg = (DOCS / "assets/lesson/lesson_and_xor_separability.svg").read_text("utf-8")
+assert 'stroke="#d2652f" stroke-width="7"' in and_svg
+assert 'stroke="#fbe1d0" stroke-width="17"' in and_svg
+assert "결정 경계" in and_svg
+print("Intro HWC, resolution, deck numbering, AND boundary validated.")
