@@ -331,6 +331,33 @@ for w, h in ((640, 360), (1280, 720), (1920, 1080)):
     assert w * 9 == h * 16
 and_svg = (DOCS / "assets/lesson/lesson_and_xor_separability.svg").read_text("utf-8")
 assert 'stroke="#d2652f" stroke-width="7"' in and_svg
-assert 'stroke="#fbe1d0" stroke-width="17"' in and_svg
+assert 'stroke="#fbe1d0" stroke-width="18"' in and_svg
 assert "결정 경계" in and_svg
-print("Intro HWC, resolution, deck numbering, AND boundary validated.")
+and_root = ET.fromstring(and_svg)
+ns = "{http://www.w3.org/2000/svg}"
+plots = [node for node in and_root.iter(ns + "g")
+         if node.get("data-plot") in ("and", "xor")]
+assert sorted(node.get("data-plot") for node in plots) == ["and", "xor"]
+for plot in plots:
+    assert (plot.get("data-x-max"), plot.get("data-y-max")) == ("2", "2")
+    gate = plot.get("data-plot")
+    circles = [node for node in plot.iter(ns + "circle")]
+    assert len(circles) == 4, (gate, len(circles))
+    for dot in circles:
+        x, y = int(dot.get("data-x")), int(dot.get("data-y"))
+        predicted = int(dot.get("data-class"))
+        expected_class = (x & y) if gate == "and" else (x ^ y)
+        assert predicted == expected_class, (gate, x, y, predicted)
+        x0 = 175 if gate == "and" else 765
+        assert float(dot.get("cx")) == x0 + 100 * x
+        assert float(dot.get("cy")) == 354 - 100 * y
+lines = [node for node in and_root.iter(ns + "path")
+         if node.get("data-decision-boundary-main") == "and"]
+assert len(lines) == 1
+assert lines[0].get("d") == "M175 204 L325 354"
+# Every point lies on the correct side of x1+x2=1.5.
+assert all(
+    (x + y > 1.5) == bool(x & y)
+    for x in (0, 1) for y in (0, 1)
+)
+print("Intro HWC, resolution, deck numbering, AND/XOR boundary validated.")
