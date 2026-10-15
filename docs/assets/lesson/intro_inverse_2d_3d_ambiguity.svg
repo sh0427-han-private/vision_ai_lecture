@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="445" viewBox="0 0 1200 445" role="img" aria-label="카메라에서 같은 방향으로 본 가까운 작은 물체 A와 먼 큰 물체 B는 똑같은 영상 크기로 투영됩니다. 따라서 하나의 2D 영상만으로는 물체의 실제 크기와 깊이를 항상 구분할 수 없습니다.">
+  <rect width="1200" height="445" rx="12" fill="#f8fbfd"/>
+  <text x="54" y="39" font-family="Malgun Gothic,Noto Sans KR,sans-serif" font-size="24" font-weight="750" fill="#244f65">같은 화면 크기라도 실제 장면은 여러 가지일 수 있습니다</text>
+  <rect x="46" y="63" width="855" height="330" rx="12" fill="#fff" stroke="#d5e4eb" stroke-width="2"/>
+  <rect x="925" y="63" width="237" height="330" rx="12" fill="#edf6f2" stroke="#c3ded3" stroke-width="2"/>
+  <!-- optical center and two rays: relative heights are proportional to distance -->
+  <path d="M145 260L925 130M145 260L925 390" stroke="#80a1b2" stroke-width="2.3" stroke-dasharray="9 7" fill="none"/>
+  <line x1="145" y1="260" x2="860" y2="260" stroke="#b8cbd5" stroke-width="2" stroke-dasharray="5 9"/>
+  <circle cx="145" cy="260" r="17" fill="#365a70" stroke="#24495f" stroke-width="3"/>
+  <circle cx="145" cy="260" r="5" fill="#fff"/>
+  <text x="145" y="300" text-anchor="middle" font-family="Malgun Gothic,Noto Sans KR,sans-serif" font-size="19" font-weight="700" fill="#365a70">카메라</text>
+  <!-- same image plane projection -->
+  <rect x="412" y="143" width="25" height="232" rx="5" fill="#e5eff6" stroke="#a3bfcc" stroke-width="2"/>
+  <line x1="424" y1="141" x2="424" y2="378" stroke="#98b5c3" stroke-width="1" stroke-dasharray="4 5"/>
+  <line x1="424" y1="213.33" x2="424" y2="306.67" stroke="#da763a" stroke-width="11" stroke-linecap="round"/>
+  <text x="424" y="125" text-anchor="middle" font-family="Malgun Gothic,Noto Sans KR,sans-serif" font-size="19" font-weight="780" fill="#b76230">같은 투영 크기</text>
+  <text x="424" y="408" text-anchor="middle" font-family="Malgun Gothic,Noto Sans KR,sans-serif" font-size="18" font-weight="690" fill="#667e8c">2D 영상면</text>
+  <!-- object A: distance from camera 480; height 160 -->
+  <rect x="616" y="180" width="18" height="160" rx="4" fill="#2a9b95" stroke="#167970" stroke-width="2"/>
+  <text x="625" y="160" text-anchor="middle" font-family="Malgun Gothic,Noto Sans KR,sans-serif" font-size="23" font-weight="760" fill="#167970">A</text>
+  <text x="625" y="373" text-anchor="middle" font-family="Malgun Gothic,Noto Sans KR,sans-serif" font-size="17" font-weight="700" fill="#167970">가까운 작은 물체</text>
+  <!-- object B: distance 780; scaled height 260 -->
+  <rect x="916" y="130" width="18" height="260" rx="4" fill="#776cad" stroke="#605592" stroke-width="2"/>
+  <text x="942" y="120" font-family="Malgun Gothic,Noto Sans KR,sans-serif" font-size="23" font-weight="760" fill="#605592">B</text>
+  <text x="818" y="408" text-anchor="middle" font-family="Malgun Gothic,Noto Sans KR,sans-serif" font-size="18" font-weight="720" fill="#605592">멀리 있는 큰 물체</text>
+  <!-- side formula and interpretation -->
+  <text x="1043" y="120" text-anchor="middle" font-family="Malgun Gothic,Noto Sans KR,sans-serif" font-size="20" font-weight="720" fill="#295c66">2D 영상만으로는</text>
+  <text x="1043" y="165" text-anchor="middle" font-family="Malgun Gothic,Noto Sans KR,sans-serif" font-size="21" font-weight="760" fill="#b4683b">실제 크기?</text>
+  <text x="1043" y="203" text-anchor="middle" font-family="Malgun Gothic,Noto Sans KR,sans-serif" font-size="21" font-weight="760" fill="#b4683b">거리(깊이)?</text>
+  <path d="M966 224H1120" stroke="#c2d8cc" stroke-width="2"/>
+  <text x="1043" y="263" text-anchor="middle" font-family="Malgun Gothic,Noto Sans KR,sans-serif" font-size="19" font-weight="690" fill="#315a62">둘을 따로</text>
+  <text x="1043" y="296" text-anchor="middle" font-family="Malgun Gothic,Noto Sans KR,sans-serif" font-size="19" font-weight="690" fill="#315a62">결정하기 어렵습니다</text>
+  <text x="1043" y="347" text-anchor="middle" font-family="Malgun Gothic,Noto Sans KR,sans-serif" font-size="16" fill="#5d787d">단서·여러 시점·</text>
+  <text x="1043" y="373" text-anchor="middle" font-family="Malgun Gothic,Noto Sans KR,sans-serif" font-size="16" fill="#5d787d">사전지식이 도움</text>
+  <text x="55" y="430" font-family="Malgun Gothic,Noto Sans KR,sans-serif" font-size="18" font-weight="650" fill="#677f8f">원근투영 개념도 · 3D 장면 → 2D 투영은 다대일일 수 있습니다. 실제 측정 결과가 아닌 기하학적 예시입니다.</text>
+</svg>
