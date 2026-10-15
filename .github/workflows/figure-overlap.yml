@@ -50,7 +50,7 @@ jobs:
           if blocking:
               print(json.dumps(blocking, ensure_ascii=False, indent=2))
               raise SystemExit(f"{len(blocking)} slide layout errors remain")
-          print("206 viewport captures verified; no visible intersections.")
+          print("204 viewport captures verified; no visible intersections.")
           PY
 
       - name: Upload geometry report
