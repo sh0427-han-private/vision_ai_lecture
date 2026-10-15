@@ -34,7 +34,7 @@ def main() -> None:
               "homepage full route missing")
 
         # Core path begins with Intro (all Intro slides are essential).
-        page.goto(f"{BASE}/intro.html?mode=core#slide-17")
+        page.goto(f"{BASE}/intro.html?mode=core#slide-19")
         page.click("[data-slide-next]")
         page.wait_for_url("**/ai_basics.html?mode=core#slide-1")
         check(page.locator("[data-slide-total]").inner_text() == "36",
@@ -110,8 +110,8 @@ def main() -> None:
             )
 
         browser.close()
-        print("CORE_FULL_LEARNING_ROUTE_QA_PASSED: Intro17 + AI36 + Vision28 = 81")
-        print("FULL_ROUTE_LENGTH: Intro17 + AI44 + Vision40 = 101")
+        print("CORE_FULL_LEARNING_ROUTE_QA_PASSED: Intro19 + AI36 + Vision28 = 83")
+        print("FULL_ROUTE_LENGTH: Intro19 + AI44 + Vision40 = 103")
 
 
 if __name__ == "__main__":
