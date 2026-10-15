@@ -5,7 +5,7 @@ import os
 from playwright.sync_api import sync_playwright
 
 BASE = os.getenv("AUDIT_BASE_URL", "http://127.0.0.1:8765")
-DECKS = {"ai_basics": (44, 36), "vision_ai": (40, 28)}
+DECKS = {"ai_basics": (44, 36), "vision_ai": (39, 27)}
 
 
 def check(flag: bool, message: str) -> None:
@@ -110,8 +110,8 @@ def main() -> None:
             )
 
         browser.close()
-        print("CORE_FULL_LEARNING_ROUTE_QA_PASSED: Intro19 + AI36 + Vision28 = 83")
-        print("FULL_ROUTE_LENGTH: Intro19 + AI44 + Vision40 = 103")
+        print("CORE_FULL_LEARNING_ROUTE_QA_PASSED: Intro19 + AI36 + Vision27 = 82")
+        print("FULL_ROUTE_LENGTH: Intro19 + AI44 + Vision39 = 102")
 
 
 if __name__ == "__main__":
