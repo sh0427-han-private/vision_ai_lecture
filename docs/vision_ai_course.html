@@ -1,0 +1,648 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vision AI 중심 통합 강의 · 81장</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="slide.css?v=generatedfigfit-20260927-27">
+<link rel="stylesheet" href="lesson.css?v=single-track-20261015-1">
+<link rel="stylesheet" href="interactive_lessons.css?v=20261015-2">
+<script src="slide.js?v=vision-first-20261015-1" defer></script>
+<script src="interactive_lessons.js?v=20261015-1" defer></script>
+<link rel="stylesheet" href="lecture_sidebar.css?v=20261015-1">
+<script src="lecture_outline.js?v=20261015-1" defer></script>
+<script src="lecture_sidebar.js?v=20261015-1" defer></script>
+</head><body class="deck-page lesson-deck" data-prev-page="intro.html" data-next-page="">
+<header class="site-header"><nav class="nav"><a class="brand" href="intro.html#slide-1">Vision AI Lecture</a></nav></header>
+<main class="deck" aria-live="polite">
+<section class="slide active" data-source-deck="vision_ai" data-source-slide="1" data-outline-unit="Vision AI · 문제와 출력"><div class="slide-inner">
+<div class="lesson-meta">03. Vision AI</div>
+<h1 class="slide-title">이미지에서 필요한 패턴을 찾아 결과로 바꿉니다</h1>
+<div class="lesson-outline"><article><strong>결과 정하기</strong><p>분류·검출·분할과 Label</p></article><article><strong>이미지 계산하기</strong><p>작은 영역·필터·특징 지도</p></article><article><strong>학습하고 적용하기</strong><p>모델 구조·전이학습·운영</p></article></div></div></section>
+<section class="slide" data-topic="문제 정의" data-level="basic" data-source-deck="vision_ai" data-source-slide="2" data-outline-unit="Vision AI · 문제와 출력">
+<div class="slide-inner"><div class="lesson-meta"><span>02 · 문제 정의</span>
+<span class="lesson-level">핵심 개념</span></div>
+<h2 class="slide-title">필요한 결과부터 정하면 Vision Task가 정해집니다</h2>
+<p class="slide-subtitle">이미지 전체가 불량인지, 결함이 어디에 있는지, 정확한 면적이 얼마인지에 따라 필요한 결과가 다릅니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/context_vision_task_selection.svg?v=professional-20261006-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/context_vision_task_selection.svg?v=professional-20261006-2" alt="필요한 결과부터 정하면 Vision Task가 정해집니다"></a></figure>
+<p class="lesson-takeaway">질문 → 결과 형태 → Task → Label → 평가 기준과 모델 순으로 연결합니다.</p></div></section>
+<section class="slide" data-topic="Classification" data-level="basic" data-source-deck="vision_ai" data-source-slide="3" data-outline-unit="Vision AI · 문제와 출력">
+<div class="slide-inner"><div class="lesson-meta"><span>03 · Classification</span>
+<span class="lesson-level">핵심 개념</span></div>
+<h2 class="slide-title">이미지 전체의 상태나 종류를 예측합니다</h2>
+<p class="slide-subtitle">Classification(분류)은 이미지 단위의 클래스와 점수를 출력합니다. 아래 예시는 사과 사진 전체의 불량 여부입니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/context_task_classification.svg?v=professional-20261006-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/context_task_classification.svg?v=professional-20261006-2" alt="이미지 전체의 상태나 종류를 예측합니다"></a></figure>
+<p class="lesson-takeaway">이 예시는 단일 Label 분류입니다. 위치나 정확한 결함 영역은 출력하지 않습니다.</p></div></section>
+<section class="slide" data-topic="Object Detection" data-level="basic" data-source-deck="vision_ai" data-source-slide="4" data-outline-unit="Vision AI · 문제와 출력">
+<div class="slide-inner"><div class="lesson-meta"><span>04 · Object Detection</span>
+<span class="lesson-level">핵심 개념</span></div>
+<h2 class="slide-title">객체나 결함의 위치를 사각형으로 찾습니다</h2>
+<p class="slide-subtitle">Object Detection(객체 검출)은 클래스·Bounding Box(경계 상자)·점수를 출력합니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/context_task_detection.svg?v=professional-20261006-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/context_task_detection.svg?v=professional-20261006-2" alt="객체나 결함의 위치를 사각형으로 찾습니다"></a></figure>
+<p class="lesson-takeaway">Box 내부 전체가 결함인 것은 아닙니다. 상자는 위치를 둘러싸는 표현입니다.</p></div></section>
+<section class="slide" data-topic="Segmentation" data-level="basic" data-source-deck="vision_ai" data-source-slide="5" data-outline-unit="Vision AI · 문제와 출력">
+<div class="slide-inner"><div class="lesson-meta"><span>05 · Segmentation</span>
+<span class="lesson-level">핵심 개념</span></div>
+<h2 class="slide-title">어느 Pixel이 관심 영역인지 구분합니다</h2>
+<p class="slide-subtitle">Segmentation(분할)은 Pixel별 클래스나 Mask(영역 표시)를 출력합니다. 아래 예시는 결함 영역입니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/context_task_segmentation.svg?v=professional-20261006-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/context_task_segmentation.svg?v=professional-20261006-2" alt="어느 Pixel이 관심 영역인지 구분합니다"></a></figure>
+<p class="lesson-takeaway">형상·면적·경계가 필요하면 Box보다 Mask가 적합합니다.</p></div></section>
+<section class="slide" data-topic="Label" data-level="basic" data-source-deck="vision_ai" data-source-slide="6" data-outline-unit="Vision AI · 문제와 출력">
+<div class="slide-inner"><div class="lesson-meta"><span>06 · Label</span>
+<span class="lesson-level">핵심 개념</span></div>
+<h2 class="slide-title">같은 사진이라도 Task가 바뀌면 정답 형태가 바뀝니다</h2>
+<p class="slide-subtitle">분류는 이미지 클래스, 검출은 클래스와 Box, 분할은 Pixel Mask를 정답으로 사용합니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/task_labels_three_outputs.svg?v=visual-20261013-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/task_labels_three_outputs.svg?v=visual-20261013-2" alt="같은 사진이라도 Task가 바뀌면 정답 형태가 바뀝니다"></a></figure>
+<p class="lesson-takeaway">여기서 결과 그림을 정답으로 작성한 것이 Label이고, 모델이 계산한 것이 Prediction입니다.</p></div></section>
+<section class="slide" data-topic="IoU" data-level="basic" data-source-deck="vision_ai" data-source-slide="7" data-outline-unit="Vision AI · 문제와 출력">
+<div class="slide-inner"><div class="lesson-meta"><span>07 · IoU</span>
+<span class="lesson-level">핵심 개념</span></div>
+<h2 class="slide-title">위치와 영역은 정답과 얼마나 겹치는지 평가합니다</h2>
+<p class="slide-subtitle">IoU(Intersection over Union, 교집합/합집합 비율)는 정답 영역과 예측 영역의 겹침 정도입니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/context_iou_visual.svg?v=professional-20261006-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/context_iou_visual.svg?v=professional-20261006-2" alt="위치와 영역은 정답과 얼마나 겹치는지 평가합니다"></a></figure>
+<p class="lesson-takeaway">완전 일치하면 1, 겹치는 영역이 없으면 0입니다.</p></div></section>
+<section class="slide" data-topic="IoU" data-level="detail" data-source-deck="vision_ai" data-source-slide="8" data-outline-unit="Vision AI · 문제와 출력">
+<div class="slide-inner"><div class="lesson-meta"><span>08 · IoU</span>
+<span class="lesson-level lesson-level--detail">심화 학습</span></div>
+<h2 class="slide-title">겹친 칸 수를 전체 합집합 칸 수로 나눕니다</h2>
+<p class="slide-subtitle">정답 12칸과 예측 12칸이 4칸 겹치면, 합집합은 12+12−4=20칸입니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/iou_detail.svg?v=professional-20261006-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/iou_detail.svg?v=professional-20261006-2" alt="겹친 칸 수를 전체 합집합 칸 수로 나눕니다"></a></figure>
+<p class="lesson-takeaway">IoU = 4/20 = 0.2. 검출은 Box, 분할은 Mask의 영역으로 계산합니다.</p><details class="lesson-reference"><summary>출처 · 근거</summary><div>개념 참고: <a href="https://cs231n.github.io/convolutional-networks/" target="_blank" rel="noopener">Stanford CS231n</a> · 직접 재구성한 설명용 Figure</div></details></div></section>
+<section class="slide" data-source-deck="ai_basics" data-source-slide="1" data-outline-unit="AI 원리 · 무엇을 학습하나"><div class="slide-inner">
+<div class="lesson-meta">02. AI Basics</div>
+<h1 class="slide-title">AI는 오차를 줄이며 판단 기준을 배웁니다</h1>
+<div class="lesson-outline"><article><strong>예측하고 배우기</strong><p>입력·정답·오차·가중치 수정</p></article><article><strong>신경망 이해하기</strong><p>작은 계산을 층으로 연결</p></article><article><strong>제대로 평가하기</strong><p>데이터 분리·실패 사례·지표</p></article></div></div></section>
+<section class="slide" data-topic="AI의 범위" data-level="basic" data-source-deck="ai_basics" data-source-slide="2" data-outline-unit="AI 원리 · 무엇을 학습하나">
+<div class="slide-inner"><div class="lesson-meta"><span>10 · AI의 범위</span>
+<span class="lesson-level">핵심 개념</span></div>
+<h2 class="slide-title">AI·머신러닝·딥러닝은 어떻게 다를까요?</h2>
+<p class="slide-subtitle">AI는 넓은 기술 영역입니다. 머신러닝은 데이터에서 배우고, 딥러닝은 여러 층의 신경망으로 학습합니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/ai_methods_scope.svg?v=professional-20261006-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/ai_methods_scope.svg?v=professional-20261006-2" alt="AI·머신러닝·딥러닝은 어떻게 다를까요?"></a></figure>
+<p class="lesson-takeaway">Computer Vision(컴퓨터 비전)은 이미지·영상 문제를 다루는 분야입니다.</p></div></section>
+<section class="slide" data-topic="규칙과 학습" data-level="basic" data-source-deck="ai_basics" data-source-slide="3" data-outline-unit="AI 원리 · 무엇을 학습하나">
+<div class="slide-inner"><div class="lesson-meta"><span>11 · 규칙과 학습</span>
+<span class="lesson-level">핵심 개념</span></div>
+<h2 class="slide-title">판단 기준을 사람이 쓰거나, 데이터에서 배웁니다</h2>
+<p class="slide-subtitle">규칙 기반은 사람이 조건을 정합니다. 학습 기반은 사진과 정답에서 판단 기준을 학습합니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/rule_learning_comparison.svg?v=professional-20261006-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/rule_learning_comparison.svg?v=professional-20261006-2" alt="판단 기준을 사람이 쓰거나, 데이터에서 배웁니다"></a></figure>
+<p class="lesson-takeaway">실제 시스템에서는 영상처리 규칙과 학습 모델을 함께 사용하기도 합니다.</p></div></section>
+<section class="slide" data-topic="지도학습과 비지도학습" data-level="basic" data-source-deck="ai_basics" data-source-slide="4" data-outline-unit="AI 원리 · 무엇을 학습하나">
+<div class="slide-inner"><div class="lesson-meta"><span>12 · 지도학습과 비지도학습</span>
+<span class="lesson-level">핵심 개념</span></div>
+<h2 class="slide-title">지도학습과 비지도학습은 학습 목표가 다릅니다</h2>
+<p class="slide-subtitle">지도학습은 사진과 정답을 함께 사용합니다. 비지도학습은 정답 이름표 없이 데이터의 공통 구조를 찾습니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/learning_basic.svg?v=professional-20261006-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/learning_basic.svg?v=professional-20261006-2" alt="지도학습과 비지도학습은 학습 목표가 다릅니다"></a></figure>
+<p class="lesson-takeaway">정답 Label(라벨)은 모델이 배워야 할 목표를 알려주는 데이터입니다.</p><details class="lesson-reference"><summary>출처 · 근거</summary><div>사진: AI 생성 교육용 예시 · 실제 측정/실험 결과가 아님</div></details></div></section>
+<section class="slide" data-topic="지도학습과 비지도학습" data-level="detail" data-source-deck="ai_basics" data-source-slide="5" data-outline-unit="AI 원리 · 무엇을 학습하나">
+<div class="slide-inner"><div class="lesson-meta"><span>13 · 지도학습과 비지도학습</span>
+<span class="lesson-level lesson-level--detail">심화 학습</span></div>
+<h2 class="slide-title">사진을 숫자로 표현하면 경계와 군집으로 설명할 수 있습니다</h2>
+<p class="slide-subtitle">Feature(특징)는 판단에 유용한 단서입니다. 특징 공간은 각 데이터를 그 단서들의 숫자로 배치한 공간입니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/learning_detail.svg?v=professional-20261006-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/learning_detail.svg?v=professional-20261006-2" alt="사진을 숫자로 표현하면 경계와 군집으로 설명할 수 있습니다"></a></figure>
+<p class="lesson-takeaway">점의 색은 지도학습의 정답, 오른쪽 원은 비슷한 데이터의 군집을 나타냅니다.</p><details class="lesson-reference"><summary>출처 · 근거</summary><div>개념 참고: <a href="https://cs231n.github.io/" target="_blank" rel="noopener">Stanford CS231n</a> · 직접 재구성한 설명용 Figure</div></details></div></section>
+<section class="slide" data-topic="분류와 회귀" data-level="basic" data-source-deck="ai_basics" data-source-slide="6" data-outline-unit="AI 원리 · 무엇을 학습하나">
+<div class="slide-inner"><div class="lesson-meta"><span>14 · 분류와 회귀</span>
+<span class="lesson-level">핵심 개념</span></div>
+<h2 class="slide-title">분류는 이름을, 회귀는 연속적인 숫자를 예측합니다</h2>
+<p class="slide-subtitle">Classification(분류)은 사과·오렌지 같은 범주를, Regression(회귀)은 입력 숫자에서 3.6 같은 연속적인 값을 예측합니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/classification_basic.svg?v=professional-20261006-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/classification_basic.svg?v=professional-20261006-2" alt="분류는 이름을, 회귀는 연속적인 숫자를 예측합니다"></a></figure>
+<p class="lesson-takeaway">먼저 어떤 형태의 결과가 필요한지 정하면 학습 목표가 분명해집니다.</p></div></section>
+<section class="slide" data-topic="분류의 출력" data-level="basic" data-source-deck="ai_basics" data-source-slide="7" data-outline-unit="AI 원리 · 무엇을 학습하나">
+<div class="slide-inner"><div class="lesson-meta"><span>15 · 분류의 출력</span>
+<span class="lesson-level">핵심 개념</span></div>
+<h2 class="slide-title">두 종류 또는 여러 종류 중에서 점수를 비교합니다</h2>
+<p class="slide-subtitle">Binary Classification(이진 분류)은 두 Class, Multi-class Classification(다중 클래스 분류)은 세 개 이상을 구분합니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/classification_outputs.svg?v=professional-20261006-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/classification_outputs.svg?v=professional-20261006-2" alt="두 종류 또는 여러 종류 중에서 점수를 비교합니다"></a></figure>
+<p class="lesson-takeaway">그림은 확률 형식의 점수 예시입니다. 높은 점수가 현실의 정확한 확률이나 정답을 보장하지는 않습니다.</p></div></section>
+<section class="slide" data-topic="영상처리의 기본" data-level="basic" data-source-deck="vision_ai" data-source-slide="9" data-outline-unit="영상처리 · Pixel과 필터">
+<div class="slide-inner"><div class="lesson-meta"><span>16 · 영상처리의 기본</span>
+<span class="lesson-level">핵심 개념</span></div>
+<h2 class="slide-title">한 Pixel을 바꿀 수도, 주변 Pixel을 함께 볼 수도 있습니다</h2>
+<p class="slide-subtitle">Point Operation은 픽셀 255를 min(255, 200)=200으로 제한합니다. Spatial Filtering은 중심 주변 3×3 값을 함께 사용합니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/lecture_point_neighborhood.svg?v=layout-20261015-1" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/lecture_point_neighborhood.svg?v=layout-20261015-1" alt="한 Pixel을 바꿀 수도, 주변 Pixel을 함께 볼 수도 있습니다"></a></figure>
+<p class="lesson-takeaway">밝기 변환은 해당 Pixel 값으로 계산하고, 필터는 주변 값도 사용합니다. 이 연산 자체가 물체 이름을 예측하지는 않습니다.</p><details class="lesson-reference"><summary>출처 · 근거</summary><div>참고: <a href="https://szeliski.org/Book/1stEdition.htm" target="_blank" rel="noopener">Szeliski · Ch. 3 §3.1–3.2</a> · 기존 AI 생성 사진 / 합성 데이터에 실제 연산 적용</div></details></div></section>
+<section class="slide" data-topic="Kernel의 이동" data-level="detail" data-source-deck="vision_ai" data-source-slide="10" data-outline-unit="영상처리 · Pixel과 필터">
+<div class="slide-inner"><div class="lesson-meta"><span>17 · Kernel의 이동</span>
+<span class="lesson-level lesson-level--detail">심화 학습</span></div>
+<h2 class="slide-title">3×3 Kernel은 움직이며 출력 Pixel을 하나씩 만듭니다</h2>
+<p class="slide-subtitle">동일한 5×5 배열에서 Kernel을 오른쪽으로 한 칸씩 세 번 이동하며 출력 첫 행을 만듭니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/lecture_kernel_slide.svg?v=visual-20261013-1" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/lecture_kernel_slide.svg?v=visual-20261013-1" alt="3×3 Kernel은 움직이며 출력 Pixel을 하나씩 만듭니다"></a></figure>
+<p class="lesson-takeaway">Kernel을 옮길 때마다 선택되는 9개 값이 달라지고, 출력 Pixel도 순서대로 달라집니다. 구체적인 산술평균 계산은 다음 장에서 다룹니다.</p>
+<details class="lesson-reference"><summary>출처 · 근거</summary><div>참고: <a href="https://cs.brown.edu/courses/csci1430/2020_Spring/lectures/2020Spring_02_ImageFiltering.pdf" target="_blank" rel="noopener">Brown CSCI1430 Image Filtering</a> · <a href="https://docs.opencv.org/4.x/d4/d13/tutorial_py_filtering.html" target="_blank" rel="noopener">OpenCV Filtering</a> · 직접 계산한 교육용 도식</div></details></div></section>
+<section class="slide" data-topic="평균 필터 계산" data-level="detail" data-source-deck="vision_ai" data-source-slide="11" data-outline-unit="영상처리 · Pixel과 필터">
+<div class="slide-inner"><div class="lesson-meta"><span>18 · 평균 필터 계산</span>
+<span class="lesson-level lesson-level--detail">심화 학습</span></div>
+<h2 class="slide-title">주변 9개 값을 평균해 출력 한 칸을 계산합니다</h2>
+<p class="slide-subtitle">3×3 평균 필터는 주변 9개 Pixel에 각각 1/9의 가중치를 적용합니다. 중심 값 255를 포함한 9개의 합은 1053입니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/lecture_mean_calculation.svg?v=solid-arrows-20261015-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/lecture_mean_calculation.svg?v=solid-arrows-20261015-2" alt="주변 9개 값을 평균해 출력 한 칸을 계산합니다"></a></figure>
+<p class="lesson-takeaway">평균 필터는 사람이 정한 고정 가중치입니다. CNN은 같은 가중합 구조의 필터 값을 데이터에서 학습할 수 있습니다.</p><details class="lesson-reference"><summary>출처 · 근거</summary><div>참고: <a href="https://szeliski.org/Book/1stEdition.htm" target="_blank" rel="noopener">Szeliski · Ch. 3 §3.2</a> · 기존 AI 생성 사진 / 합성 데이터에 실제 연산 적용</div></details></div></section>
+<section class="slide" data-topic="Gaussian 필터" data-level="basic" data-source-deck="vision_ai" data-source-slide="12" data-outline-unit="영상처리 · Pixel과 필터">
+<div class="slide-inner"><div class="lesson-meta"><span>19 · Gaussian 필터</span>
+<span class="lesson-level">핵심 개념</span></div>
+<h2 class="slide-title">잡음을 줄이면 작은 변화도 함께 흐려질 수 있습니다</h2>
+<p class="slide-subtitle">Mean(평균) 필터는 이웃 Pixel에 같은 가중치를 주고, Gaussian은 가까운 Pixel에 더 큰 가중치를 줍니다. σ(시그마)는 가중치가 퍼지는 정도를 정합니다.</p>
+<figure class="lesson-figure lesson-inline-lab" data-filter-lesson aria-label="실제 이미지에 필터를 적용하며 비교하기">
+  <div class="lab-toolbar">
+    <span class="lab-prompt">같은 사진에 다른 필터를 적용하면 어떻게 달라질까요?</span>
+    <div class="lab-options" role="group" aria-label="공간 필터 종류">
+      <button type="button" class="lab-choice" data-filter-mode="original">원본</button>
+      <button type="button" class="lab-choice" data-filter-mode="mean">Mean</button>
+      <button type="button" class="lab-choice" data-filter-mode="gaussian" aria-pressed="true">Gaussian</button>
+      <button type="button" class="lab-choice" data-filter-mode="median">Median</button>
+      <button type="button" class="lab-choice" data-filter-mode="sobel">Sobel</button>
+    </div>
+    <label class="lab-check"><input type="checkbox" data-noise checked> 점 잡음 추가</label>
+  </div>
+  <div class="lab-three">
+    <div class="lab-visual">
+      <div class="lab-caption">01 · 입력 사진 <em data-selection>Pixel 선택 가능</em></div>
+      <canvas class="lab-image" data-role="source" width="300" height="200" tabindex="0" role="button" aria-label="계산할 입력 픽셀 선택"></canvas>
+      <p class="lab-hint">사진을 클릭하면 해당 위치의 실제 입력·출력 값을 비교합니다.</p>
+    </div>
+    <div class="lab-middle">
+      <div class="lab-caption">02 · 필터 계산 <em data-kernel-label>읽기 전용 Kernel</em></div>
+      <div class="lab-kernel" data-kernel style="--kernel-size:5;" aria-label="선택된 필터의 실제 커널 값"></div>
+      <div class="lab-settings" data-sigma-box><label for="lecture-gaussian-sigma">Gaussian σ</label><input id="lecture-gaussian-sigma" type="range" data-sigma min="0.5" max="2.5" step="0.1" value="1.0"><output class="lab-value" data-sigma-text for="lecture-gaussian-sigma">1.0</output></div>
+      <p class="lab-math" data-math aria-live="polite">이웃 Pixel × Kernel → 출력 Pixel</p>
+    </div>
+    <div class="lab-visual">
+      <div class="lab-caption">03 · 출력 영상 <em>같은 위치 · 같은 크기</em></div>
+      <canvas class="lab-image" data-role="output" width="300" height="200" aria-label="선택된 필터로 실제 계산한 결과 사진"></canvas>
+      <p class="lab-hint">선택 Pixel 결과: <strong class="lab-emphasis" data-output-label>—</strong></p>
+    </div>
+  </div>
+  <figcaption class="lab-footnote" data-processing-note>Kernel 값은 직접 입력하지 않습니다. 필터 종류 및 σ에서 자동 계산됩니다.</figcaption>
+</figure>
+<p class="lesson-takeaway">σ는 Pixel 단위입니다. σ가 커지면 5×5 안에서 먼 Pixel도 더 큰 비중을 갖습니다. 잡음과 세부 정보의 변화를 함께 살펴보세요.</p><details class="lesson-reference"><summary>출처 · 근거</summary><div>참고: <a href="https://szeliski.org/Book/1stEdition.htm" target="_blank" rel="noopener">Szeliski · Ch. 3 §3.2.2</a> · 동일 이미지에 실제 필터 연산 적용</div></details></div></section>
+<section class="slide" data-topic="중앙값 필터" data-level="basic" data-source-deck="vision_ai" data-source-slide="13" data-outline-unit="영상처리 · Pixel과 필터">
+<div class="slide-inner"><div class="lesson-meta"><span>20 · 중앙값 필터</span>
+<span class="lesson-level">핵심 개념</span></div>
+<h2 class="slide-title">튀는 점 잡음에는 중앙값이 유용할 수 있습니다</h2>
+<p class="slide-subtitle">Median(중앙값) 필터는 주변 3×3 Pixel 값을 크기순으로 정렬해 가운데 값을 선택합니다. 평균처럼 모두 더하지 않으므로 튀는 점 잡음에 강할 수 있습니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/processing_median.svg?v=core-qa-20261013-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/processing_median.svg?v=core-qa-20261013-2" alt="튀는 점 잡음에는 중앙값이 유용할 수 있습니다"></a></figure>
+<p class="lesson-takeaway">중앙값은 선형 가중합이 아닌 비선형 연산입니다. 얇은 선이나 작은 결함도 없어질 수 있어 모든 잡음에 최선인 것은 아닙니다.</p><details class="lesson-reference"><summary>출처 · 근거</summary><div>참고: <a href="https://szeliski.org/Book/1stEdition.htm" target="_blank" rel="noopener">Szeliski · Ch. 3 §3.3.1</a> · 기존 AI 생성 사진 / 합성 데이터에 실제 연산 적용</div></details></div></section>
+<section class="slide" data-topic="필터 비교" data-level="detail" data-source-deck="vision_ai" data-source-slide="14" data-outline-unit="영상처리 · Pixel과 필터">
+<div class="slide-inner"><div class="lesson-meta"><span>21 · 필터 비교</span>
+<span class="lesson-level lesson-level--detail">심화 학습</span></div>
+<h2 class="slide-title">동일 입력에서도 Mean·Gaussian·Median 결과는 다릅니다</h2>
+<p class="slide-subtitle">중앙 값만 255로 튄 동일한 3×3 입력을 서로 다른 필터로 계산했습니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/lecture_filter_comparison.svg?v=visual-20261013-1" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/lecture_filter_comparison.svg?v=visual-20261013-1" alt="동일 입력에서도 Mean·Gaussian·Median 결과는 다릅니다"></a></figure>
+<p class="lesson-takeaway">Mean 117, Gaussian 약 138.69, Median 100. 점 잡음에는 Median이 유리할 수 있습니다.</p>
+<details class="lesson-reference"><summary>출처 · 근거</summary><div>참고: <a href="https://cs.brown.edu/courses/csci1430/2020_Spring/lectures/2020Spring_02_ImageFiltering.pdf" target="_blank" rel="noopener">Brown CSCI1430 Image Filtering</a> · <a href="https://docs.opencv.org/4.x/d4/d13/tutorial_py_filtering.html" target="_blank" rel="noopener">OpenCV Filtering</a> · 직접 계산한 교육용 도식</div></details></div></section>
+<section class="slide" data-topic="Sobel 직관" data-level="basic" data-source-deck="vision_ai" data-source-slide="15" data-outline-unit="영상처리 · Pixel과 필터">
+<div class="slide-inner"><div class="lesson-meta"><span>22 · Sobel 직관</span>
+<span class="lesson-level">핵심 개념</span></div>
+<h2 class="slide-title">Sobel은 잡음을 지우기보다 경계 반응을 계산합니다</h2>
+<p class="slide-subtitle">Sobel Gx의 3×3 가중치를 사용해 좌우 밝기 차이를 계산합니다. 특히 세로 경계에서 큰 반응이 나타나는 이유를 살펴봅니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/lecture_sobel_concept.svg?v=solid-arrows-20261015-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/lecture_sobel_concept.svg?v=solid-arrows-20261015-2" alt="Sobel은 잡음을 지우기보다 경계 반응을 계산합니다"></a></figure>
+<p class="lesson-takeaway">이 장의 Gx는 이미지 밝기의 가로 방향 변화량입니다. 다음 장에서는 Gx와 Gy를 합쳐 경계 반응을 시각화합니다.</p>
+<details class="lesson-reference"><summary>출처 · 근거</summary><div>참고: <a href="https://cs.brown.edu/courses/csci1430/2020_Spring/lectures/2020Spring_02_ImageFiltering.pdf" target="_blank" rel="noopener">Brown CSCI1430 Image Filtering</a> · <a href="https://docs.opencv.org/4.x/d4/d13/tutorial_py_filtering.html" target="_blank" rel="noopener">OpenCV Filtering</a> · 직접 계산한 교육용 도식</div></details></div></section>
+<section class="slide" data-topic="영상 기울기" data-level="basic" data-source-deck="vision_ai" data-source-slide="16" data-outline-unit="영상처리 · Pixel과 필터">
+<div class="slide-inner"><div class="lesson-meta"><span>23 · 영상 기울기</span>
+<span class="lesson-level">핵심 개념</span></div>
+<h2 class="slide-title">밝기가 급격히 바뀌는 위치에서 경계 단서를 얻습니다</h2>
+<p class="slide-subtitle">Sobel(소벨) 필터로 좌우·상하 밝기 변화를 계산합니다. 부호 있는 값을 계산한 뒤 절댓값과 크기로 시각화합니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/processing_gradient.svg?v=processing-20261006-1" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/processing_gradient.svg?v=processing-20261006-1" alt="밝기가 급격히 바뀌는 위치에서 경계 단서를 얻습니다"></a></figure>
+<p class="lesson-takeaway">두 기울기 그림은 같은 최대값으로 표시했습니다. 경계 반응은 밝기 변화의 단서이며, 그 자체가 물체나 결함의 정답은 아닙니다.</p><details class="lesson-reference"><summary>출처 · 근거</summary><div>참고: <a href="https://szeliski.org/Book/1stEdition.htm" target="_blank" rel="noopener">Szeliski · Ch. 3 §3.2.1–3.2.2</a> · 기존 AI 생성 사진 / 합성 데이터에 실제 연산 적용</div></details></div></section>
+<section class="slide" data-topic="고정 필터와 학습 필터" data-level="basic" data-source-deck="vision_ai" data-source-slide="17" data-outline-unit="영상처리 · Pixel과 필터">
+<div class="slide-inner"><div class="lesson-meta"><span>24 · 고정 필터와 학습 필터</span>
+<span class="lesson-level">핵심 개념</span></div>
+<h2 class="slide-title">Spatial Filtering의 Kernel 개념은 CNN으로 연결됩니다</h2>
+<p class="slide-subtitle">두 방법 모두 주변 Pixel을 계산하지만, 평균·Gaussian은 사람이 정한 고정 가중치이고 CNN 가중치는 데이터 학습으로 갱신됩니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/lecture_filter_to_cnn_bridge.svg?v=solid-arrows-20261015-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/lecture_filter_to_cnn_bridge.svg?v=solid-arrows-20261015-2" alt="고정 영상 필터와 학습되는 CNN 필터의 원리 비교"></a></figure>
+<p class="lesson-takeaway">이 그림은 고정 필터와 학습 필터의 개념적 비교이며, CNN의 실제 학습된 필터 값을 보여주는 것은 아닙니다.</p></div></section>
+<section class="slide" data-topic="전처리" data-level="basic" data-source-deck="ai_basics" data-source-slide="33" data-outline-unit="입력 준비 · 전처리와 증강">
+<div class="slide-inner"><div class="lesson-meta"><span>25 · 전처리</span>
+<span class="lesson-level">핵심 개념</span></div>
+<h2 class="slide-title">모델이 기대하는 크기·값 범위·채널 순서를 맞춥니다</h2>
+<p class="slide-subtitle">Preprocessing(전처리)은 입력 형식을 맞추는 과정입니다. 1920×1080을 640×640으로 맞출 때는 Resize·Crop·Padding의 차이를 고려합니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/preprocess_basic.svg?v=solid-arrows-20261015-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/preprocess_basic.svg?v=solid-arrows-20261015-2" alt="모델이 기대하는 크기·값 범위·채널 순서를 맞춥니다"></a></figure>
+<p class="lesson-takeaway">RGB/BGR, 0~255/정규화 값, HWC/CHW를 확인하고 Train·Inference의 기본 규칙을 맞춥니다.</p></div></section>
+<section class="slide" data-topic="Data Augmentation" data-level="basic" data-source-deck="ai_basics" data-source-slide="34" data-outline-unit="입력 준비 · 전처리와 증강">
+<div class="slide-inner"><div class="lesson-meta"><span>26 · Data Augmentation</span>
+<span class="lesson-level">핵심 개념</span></div>
+<h2 class="slide-title">의미를 유지하는 변화를 학습 중에 보여줍니다</h2>
+<p class="slide-subtitle">Data Augmentation(데이터 증강)은 밝기·회전·가림 같은 변화를 적용하는 방법입니다. 현실적인 변화 범위와 정답 유지 여부를 확인합니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/augmentation_basic.svg?v=professional-20261006-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/augmentation_basic.svg?v=professional-20261006-2" alt="의미를 유지하는 변화를 학습 중에 보여줍니다"></a></figure>
+<p class="lesson-takeaway">검출·분할에서는 이미지와 Box·Mask에 같은 공간 변환을 적용해야 합니다.</p></div></section>
+<section class="slide" data-topic="Perceptron" data-level="basic" data-source-deck="ai_basics" data-source-slide="8" data-outline-unit="AI 원리 · 신경망 기초">
+<div class="slide-inner"><div class="lesson-meta"><span>27 · Perceptron</span>
+<span class="lesson-level">핵심 개념</span></div>
+<h2 class="slide-title">입력마다 가중치를 곱하고, 더해서 하나의 판정을 만듭니다</h2>
+<p class="slide-subtitle">Perceptron(퍼셉트론)은 입력에 가중치를 곱하고 Bias를 더해 판정합니다. 밝기와 모양을 사용한 가상 수치를 직접 계산합니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/lesson_perceptron_numeric_flow.svg?v=solid-arrows-20261015-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/lesson_perceptron_numeric_flow.svg?v=solid-arrows-20261015-2" alt="두 입력 0.5와 1.0에 가중치 0.2와 0.8을 곱한 뒤 Bias −0.6을 더해 0.3을 얻고, 임계값 0 이상이므로 1로 판정하는 흐름"></a></figure>
+<p class="lesson-takeaway">Weight는 입력의 기여도를, Bias는 합계의 기준 위치를 조절합니다.</p></div></section>
+<section class="slide" data-topic="Perceptron" data-level="detail" data-source-deck="ai_basics" data-source-slide="9" data-outline-unit="AI 원리 · 신경망 기초">
+<div class="slide-inner"><div class="lesson-meta"><span>28 · Perceptron</span>
+<span class="lesson-level lesson-level--detail">심화 학습</span></div>
+<h2 class="slide-title">입력·가중합·판정 함수를 계산 그래프로 연결합니다</h2>
+<p class="slide-subtitle">z는 가중합, b는 Bias(편향) Parameter입니다. 여기서는 z≥0이면 1을 출력하는 임계값 판정을 사용합니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/perceptron_detail.svg?v=professional-20261006-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/perceptron_detail.svg?v=professional-20261006-2" alt="입력·가중합·판정 함수를 계산 그래프로 연결합니다"></a></figure>
+<p class="lesson-takeaway">가중치의 영향은 부호·절댓값과 입력의 크기를 함께 봐야 합니다.</p><details class="lesson-reference"><summary>출처 · 근거</summary><div>개념 참고: <a href="https://cs231n.github.io/" target="_blank" rel="noopener">Stanford CS231n</a> · 직접 재구성한 설명용 Figure</div></details></div></section>
+<section class="slide" data-topic="Parameter와 Hyperparameter" data-level="basic" data-source-deck="ai_basics" data-source-slide="10" data-outline-unit="AI 원리 · 신경망 기초">
+<div class="slide-inner"><div class="lesson-meta"><span>29 · Parameter와 Hyperparameter</span>
+<span class="lesson-level">핵심 개념</span></div>
+<h2 class="slide-title">모델이 배우는 값과, 학습을 설정하는 값은 다릅니다</h2>
+<p class="slide-subtitle">Parameter(파라미터)는 Weight·Bias처럼 학습하는 값입니다. Hyperparameter(하이퍼파라미터)는 학습률·Batch 크기 등 설정입니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/parameters_basic.svg?v=professional-20261006-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/parameters_basic.svg?v=professional-20261006-2" alt="모델이 배우는 값과, 학습을 설정하는 값은 다릅니다"></a></figure>
+<p class="lesson-takeaway">Bias Parameter와 데이터가 한쪽으로 치우쳤다는 의미의 Data Bias는 다른 개념입니다.</p></div></section>
+<section class="slide" data-topic="Neural Network" data-level="basic" data-source-deck="ai_basics" data-source-slide="11" data-outline-unit="AI 원리 · 신경망 기초">
+<div class="slide-inner"><div class="lesson-meta"><span>30 · Neural Network</span>
+<span class="lesson-level">핵심 개념</span></div>
+<h2 class="slide-title">여러 계산을 Layer로 연결하면 신경망이 됩니다</h2>
+<p class="slide-subtitle">Neural Network(신경망)의 각 Layer(층)는 앞에서 받은 숫자를 조합해 다음 층으로 전달합니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/network_basic.svg?v=professional-20261006-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/network_basic.svg?v=professional-20261006-2" alt="여러 계산을 Layer로 연결하면 신경망이 됩니다"></a></figure>
+<p class="lesson-takeaway">그림의 노드·연결은 계산 구조를 나타내며, 실제 모델의 뉴런 수와는 다릅니다. 사진 1장을 입력하는 예시입니다.</p><details class="lesson-reference"><summary>출처 · 근거</summary><div>사진: AI 생성 교육용 예시 · 실제 측정/실험 결과가 아님</div></details></div></section>
+<section class="slide" data-topic="AND와 XOR" data-level="basic" data-source-deck="ai_basics" data-source-slide="12" data-outline-unit="AI 원리 · 신경망 기초">
+<div class="slide-inner"><div class="lesson-meta"><span>31 · AND와 XOR</span>
+<span class="lesson-level">핵심 개념</span></div>
+<h2 class="slide-title">하나의 직선으로 나눌 수 없는 문제도 있습니다</h2>
+<p class="slide-subtitle">AND는 두 입력 모두 1일 때만 1입니다. XOR는 두 입력이 서로 다를 때 1입니다. 파란 점은 출력 1, 흰 점은 출력 0입니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/lesson_and_xor_separability.svg?v=axes-0-to-2-20261015-1" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/lesson_and_xor_separability.svg?v=axes-0-to-2-20261015-1" alt="두 그래프 모두 x1, x2 축을 0부터 2까지 표시하지만 입력점은 0과 1만 사용합니다. AND는 (0,1.5)에서 (1.5,0)까지 이어진 굵은 직선 x1+x2=1.5로 (1,1)만 출력 1로 구분하고, XOR는 직선 하나로 구분할 수 없습니다."></a></figure>
+<p class="lesson-takeaway">AND의 경계는 x₁+x₂=1.5입니다. XOR의 파란 점 두 개는 직선 하나로 분리할 수 없습니다.</p></div></section>
+<section class="slide" data-topic="Activation" data-level="basic" data-source-deck="ai_basics" data-source-slide="13" data-outline-unit="AI 원리 · 신경망 기초">
+<div class="slide-inner"><div class="lesson-meta"><span>32 · Activation</span>
+<span class="lesson-level">핵심 개념</span></div>
+<h2 class="slide-title">Layer를 쌓을 때 비선형 계산도 필요합니다</h2>
+<p class="slide-subtitle">Activation Function(활성화 함수)은 계산에 비선형성을 넣습니다. ReLU는 입력이 0보다 작으면 0, 크면 입력값을 그대로 출력합니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/lesson_relu_value_graph.svg?v=solid-arrows-20261015-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/lesson_relu_value_graph.svg?v=solid-arrows-20261015-2" alt="ReLU 함수는 입력 −2, −1, 0을 0으로 바꾸고 1, 2는 그대로 내보내며 원점에서 꺾이는 그래프"></a></figure>
+<p class="lesson-takeaway">ReLU f(x)=max(0,x)는 x=0에서 그래프가 꺾입니다. 이것이 여러 Layer의 계산을 단순한 직선에서 벗어나게 할 수 있습니다.</p></div></section>
+<section class="slide" data-topic="선형 Layer의 한계" data-level="detail" data-source-deck="ai_basics" data-source-slide="14" data-outline-unit="AI 원리 · 신경망 기초">
+<div class="slide-inner"><div class="lesson-meta"><span>33 · 선형 Layer의 한계</span>
+<span class="lesson-level lesson-level--detail">심화 학습</span></div>
+<h2 class="slide-title">비선형성이 없으면 여러 Layer도 하나로 합쳐집니다</h2>
+<p class="slide-subtitle">예시: h=2x+1, y=3h−2라면 활성화가 없을 때 y=6x+1로 합쳐집니다. 중간에 ReLU를 넣으면 x=−0.5에서 기울기가 달라집니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/lesson_affine_relu_comparison.svg?v=solid-arrows-20261015-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/lesson_affine_relu_comparison.svg?v=solid-arrows-20261015-2" alt="비선형성이 없으면 여러 Layer도 하나로 합쳐집니다"></a></figure>
+<p class="lesson-takeaway">Affine 연산만 연속하면 다시 Affine 연산입니다. 비선형 Activation이 있어야 선형으로 표현할 수 없는 관계를 학습할 가능성이 생깁니다.</p><details class="lesson-reference"><summary>출처 · 근거</summary><div>개념 참고: <a href="https://cs231n.github.io/" target="_blank" rel="noopener">Stanford CS231n</a> · 직접 재구성한 설명용 Figure</div></details></div></section>
+<section class="slide" data-topic="CNN" data-level="basic" data-source-deck="vision_ai" data-source-slide="18" data-outline-unit="CNN · 특징 추출">
+<div class="slide-inner"><div class="lesson-meta"><span>34 · CNN</span>
+<span class="lesson-level">핵심 개념</span></div>
+<h2 class="slide-title">CNN은 작은 영역을 보고 같은 가중치를 재사용합니다</h2>
+<p class="slide-subtitle">Convolutional Neural Network(합성곱 신경망)는 지역 연결과 가중치 공유로 이미지의 공간적 패턴을 계산합니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/context_cnn_why_local.svg?v=professional-20261006-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/context_cnn_why_local.svg?v=professional-20261006-2" alt="CNN은 작은 영역을 보고 같은 가중치를 재사용합니다"></a></figure>
+<p class="lesson-takeaway">Flatten은 값과 순서를 유지하지만, 완전연결층에는 공간 이웃 관계와 가중치 공유가 명시되어 있지 않습니다.</p></div></section>
+<section class="slide" data-topic="Kernel" data-level="basic" data-source-deck="vision_ai" data-source-slide="19" data-outline-unit="CNN · 특징 추출">
+<div class="slide-inner"><div class="lesson-meta"><span>35 · Kernel</span>
+<span class="lesson-level">핵심 개념</span></div>
+<h2 class="slide-title">같은 필터도 이미지 영역에 따라 반응이 달라집니다</h2>
+<p class="slide-subtitle">Kernel 또는 Filter(커널·필터)는 작은 가중치 배열입니다. 세로 밝기 변화가 있는 영역과 평평한 영역의 반응을 비교합니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/kernel_basic.svg?v=professional-20261006-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/kernel_basic.svg?v=professional-20261006-2" alt="같은 필터도 이미지 영역에 따라 반응이 달라집니다"></a></figure>
+<p class="lesson-takeaway">그림은 사람이 정한 경계 필터 예시입니다. CNN의 필터 값은 학습으로 정해집니다.</p></div></section>
+<section class="slide ppt-replaced" data-topic="Convolution" data-level="detail" data-source-deck="vision_ai" data-source-slide="20" data-outline-unit="CNN · 특징 추출">
+<div class="slide-inner ppt-slide-inner">
+  <div class="ppt-screenreader-only">
+    <div class="lesson-meta"><span>36 · Convolution</span><span class="lesson-level lesson-level--detail">심화 학습</span></div>
+    <h2 class="slide-title">같은 위치끼리 곱하고 더해 출력 한 칸을 만듭니다</h2>
+    <p class="slide-subtitle">5×5 입력의 3×3 영역과 필터를 위치별로 곱하고 더합니다. 첫 위치의 결과는 −6이며 Kernel을 이동해 3×3 Feature Map을 만듭니다.</p>
+    <p class="lesson-takeaway">Stride 1, Padding 0, Bias 0인 CNN식 Cross-correlation 예시입니다. ReLU를 적용하지 않아 음수가 남습니다.</p>
+  </div>
+  <figure class="ppt-slide-figure lesson-figure">
+    <a href="assets/ppt_slides/vision_ai_convolution_ppt.svg?v=ppt-source-20261013-1" target="_blank" rel="noopener" title="Convolution 강의 슬라이드 크게 보기">
+      <img src="assets/ppt_slides/vision_ai_convolution_ppt.svg?v=ppt-source-20261013-1" alt="입력 5×5의 왼쪽 위 3×3을 강조하고 가중치 1·0·−1의 Kernel과 곱해 세 행 모두 −2를 얻습니다. 합계 −6을 출력 첫 칸에 기록하고, 필터를 한 칸씩 옮겨 −6 12 16 / −6 8 15 / −4 2 7의 출력 Feature Map을 만듭니다.">
+    </a>
+  </figure>
+</div></section>
+<section class="slide" data-topic="Feature Map" data-level="basic" data-source-deck="vision_ai" data-source-slide="21" data-outline-unit="CNN · 특징 추출">
+<div class="slide-inner"><div class="lesson-meta"><span>37 · Feature Map</span>
+<span class="lesson-level">핵심 개념</span></div>
+<h2 class="slide-title">반응값을 위치대로 모으면 특징 지도가 됩니다</h2>
+<p class="slide-subtitle">5×5 입력에서 3×3 필터를 한 칸씩 이동하며 계산하면 3×3개의 반응값이 생깁니다. 이 값을 같은 위치에 모은 것이 Feature Map입니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/lesson_featuremap_numeric_continuation.svg?v=solid-arrows-20261015-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/lesson_featuremap_numeric_continuation.svg?v=solid-arrows-20261015-2" alt="5×5 입력에 3×3 필터를 이동해 얻은 3×3 반응값을 같은 위치에 놓아 Feature Map이 되며 음수와 양수의 차이도 보여주는 격자"></a></figure>
+<p class="lesson-takeaway">Feature Map은 한 필터의 위치별 반응입니다. 이 예시에는 활성화 함수(ReLU)를 적용하지 않아 음수도 남아 있습니다.</p></div></section>
+<section class="slide" data-topic="특징 학습" data-level="basic" data-source-deck="ai_basics" data-source-slide="24" data-outline-unit="CNN · 특징 추출">
+<div class="slide-inner"><div class="lesson-meta"><span>38 · 특징 학습</span>
+<span class="lesson-level">핵심 개념</span></div>
+<h2 class="slide-title">딥러닝은 특징을 만드는 계산도 학습합니다</h2>
+<p class="slide-subtitle">전통적 ML의 한 예는 사람이 특징을 설계한 뒤 분류기를 학습합니다. 딥러닝은 특징 층과 분류 층을 함께 학습할 수 있습니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/survey_feature_learning.svg?v=survey-20261006-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/survey_feature_learning.svg?v=survey-20261006-2" alt="딥러닝은 특징을 만드는 계산도 학습합니다"></a></figure>
+<p class="lesson-takeaway">자동 특징 학습도 데이터·정답·학습 목표의 설계가 필요합니다. 모든 ML 방법을 이 비교로 나눌 수는 없습니다.</p><details class="lesson-reference"><summary>출처 · 근거</summary><div>참고: <a href="https://link.springer.com/article/10.1186/s40537-021-00444-8" target="_blank" rel="noopener">Alzubaidi et al. (2021) · Fig. 3 · 특징 학습</a> · <a href="https://www.nature.com/articles/nature14539" target="_blank" rel="noopener">LeCun et al. (2015)</a> · 강의용 재구성</div></details></div></section>
+<section class="slide" data-topic="Feature와 Representation" data-level="basic" data-source-deck="ai_basics" data-source-slide="25" data-outline-unit="CNN · 특징 추출">
+<div class="slide-inner"><div class="lesson-meta"><span>39 · Feature와 Representation</span>
+<span class="lesson-level">핵심 개념</span></div>
+<h2 class="slide-title">이미지 숫자는 판단에 유용한 내부 표현으로 바뀝니다</h2>
+<p class="slide-subtitle">Feature는 판단에 유용한 단서이고, Representation(표현)은 모델 내부에서 이를 담는 숫자입니다. 여기서는 이미지가 수치적 특징 표현으로 바뀐다는 개념을 살펴봅니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/hierarchy_professional.svg?v=solid-arrows-20261015-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/hierarchy_professional.svg?v=solid-arrows-20261015-2" alt="이미지 숫자는 판단에 유용한 내부 표현으로 바뀝니다"></a></figure>
+<p class="lesson-takeaway">특징을 숫자로 표현한다는 개념을 익힙니다. Convolution으로 Feature Map을 실제 계산하는 과정은 Vision AI 강의에서 이어집니다.</p><details class="lesson-reference"><summary>출처 · 근거</summary><div>사진: AI 생성 교육용 예시 · 실제 측정/실험 결과가 아님</div></details></div></section>
+<section class="slide" data-topic="Feature Map과 Channel" data-level="detail" data-source-deck="vision_ai" data-source-slide="22" data-outline-unit="CNN · 특징 추출">
+<div class="slide-inner"><div class="lesson-meta"><span>40 · Feature Map과 Channel</span>
+<span class="lesson-level lesson-level--detail">심화 학습</span></div>
+<h2 class="slide-title">RGB 전체를 보는 필터 하나가 출력 Channel 하나를 만듭니다</h2>
+<p class="slide-subtitle">일반적인 Conv2d에서 필터 하나는 입력 Channel 전체를 곱해 합산합니다. 출력 Channel 수는 필터 수입니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/lesson_multichannel_filter_to_maps.svg?v=solid-arrows-20261015-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/lesson_multichannel_filter_to_maps.svg?v=solid-arrows-20261015-2" alt="RGB 전체를 보는 필터 하나가 출력 Channel 하나를 만듭니다"></a></figure>
+<p class="lesson-takeaway">3×3×3 필터 64개라면 가중치 1,728개와 Bias 64개이며, Stride 1·Padding 1의 출력은 224×224×64입니다.</p><details class="lesson-reference"><summary>출처 · 근거</summary><div>개념 참고: <a href="https://cs231n.github.io/convolutional-networks/" target="_blank" rel="noopener">Stanford CS231n</a> · 직접 재구성한 설명용 Figure</div></details></div></section>
+<section class="slide" data-topic="Stride" data-level="basic" data-source-deck="vision_ai" data-source-slide="23" data-outline-unit="CNN · 특징 추출">
+<div class="slide-inner"><div class="lesson-meta"><span>41 · Stride</span>
+<span class="lesson-level">핵심 개념</span></div>
+<h2 class="slide-title">필터를 몇 칸씩 이동할지 정합니다</h2>
+<p class="slide-subtitle">Stride(이동 간격)가 1이면 한 칸, 2이면 두 칸씩 이동합니다. 같은 입력과 필터에서 이동 간격이 크면 출력 크기가 작아집니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/stride_basic.svg?v=professional-20261006-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/stride_basic.svg?v=professional-20261006-2" alt="필터를 몇 칸씩 이동할지 정합니다"></a></figure>
+<p class="lesson-takeaway">5×5 입력과 3×3 필터, Padding 0: Stride 1은 3×3, Stride 2는 2×2 출력입니다.</p></div></section>
+<section class="slide" data-topic="Padding" data-level="basic" data-source-deck="vision_ai" data-source-slide="24" data-outline-unit="CNN · 특징 추출">
+<div class="slide-inner"><div class="lesson-meta"><span>42 · Padding</span>
+<span class="lesson-level">핵심 개념</span></div>
+<h2 class="slide-title">가장자리 주변에 값을 채워 계산 범위를 조절합니다</h2>
+<p class="slide-subtitle">Padding(패딩)은 입력 주위를 채우는 방법입니다. 아래는 가장자리 한 칸에 0을 채우는 Zero Padding입니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/padding_basic.svg?v=professional-20261006-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/padding_basic.svg?v=professional-20261006-2" alt="가장자리 주변에 값을 채워 계산 범위를 조절합니다"></a></figure>
+<p class="lesson-takeaway">5×5 입력, Kernel 3·Stride 1·Padding 1이면 출력의 공간 크기가 5×5로 유지됩니다.</p></div></section>
+<section class="slide" data-topic="Downsampling" data-level="basic" data-source-deck="vision_ai" data-source-slide="25" data-outline-unit="CNN · 특징 추출">
+<div class="slide-inner"><div class="lesson-meta"><span>43 · Downsampling</span>
+<span class="lesson-level">핵심 개념</span></div>
+<h2 class="slide-title">공간 해상도를 줄여 더 작은 특징 지도를 만듭니다</h2>
+<p class="slide-subtitle">Downsampling(다운샘플링)은 가로·세로 크기를 줄이는 과정입니다. 아래는 2×2에서 최댓값을 남기는 Max Pooling 예시입니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/downsampling_basic.svg?v=professional-20261006-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/downsampling_basic.svg?v=professional-20261006-2" alt="공간 해상도를 줄여 더 작은 특징 지도를 만듭니다"></a></figure>
+<p class="lesson-takeaway">8×8 → 4×4는 위치 수가 64개에서 16개로 줄어듭니다. 작은 결함이나 경계의 위치 정보가 일부 사라질 수 있습니다.</p></div></section>
+<section class="slide" data-topic="이미지 피라미드" data-level="detail" data-source-deck="vision_ai" data-source-slide="26" data-outline-unit="CNN · 특징 추출">
+<div class="slide-inner"><div class="lesson-meta"><span>44 · 이미지 피라미드</span>
+<span class="lesson-level lesson-level--detail">심화 학습</span></div>
+<h2 class="slide-title">평활화 후 축소해 여러 해상도의 영상을 만듭니다</h2>
+<p class="slide-subtitle">Gaussian Pyramid(가우시안 피라미드)는 평활화 후 가로·세로를 절반으로 줄입니다. 축소 전 평활화는 Aliasing(가짜 패턴)을 줄이는 데 쓰입니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/processing_pyramid.svg?v=processing-20261006-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/processing_pyramid.svg?v=processing-20261006-2" alt="평활화 후 축소해 여러 해상도의 영상을 만듭니다"></a></figure>
+<p class="lesson-takeaway">사진의 Gaussian 피라미드와 CNN의 Max Pooling은 계산이 다릅니다. 가로·세로가 절반이면 Pixel 수는 1/4이 됩니다.</p><details class="lesson-reference"><summary>출처 · 근거</summary><div>참고: <a href="https://szeliski.org/Book/1stEdition.htm" target="_blank" rel="noopener">Szeliski · Ch. 3 §3.5.2–3.5.3</a> · 기존 AI 생성 사진 / 합성 데이터에 실제 연산 적용</div></details></div></section>
+<section class="slide" data-topic="출력 크기 계산" data-level="detail" data-source-deck="vision_ai" data-source-slide="27" data-outline-unit="CNN · 특징 추출">
+<div class="slide-inner"><div class="lesson-meta"><span>45 · 출력 크기 계산</span>
+<span class="lesson-level lesson-level--detail">심화 학습</span></div>
+<h2 class="slide-title">Kernel·Stride·Padding으로 출력 크기를 계산합니다</h2>
+<p class="slide-subtitle">H는 입력 높이, K는 필터 크기, S는 Stride, P는 양쪽 Padding입니다. floor는 소수점 아래를 버립니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/spatial_detail.svg?v=professional-20261006-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/spatial_detail.svg?v=professional-20261006-2" alt="Kernel·Stride·Padding으로 출력 크기를 계산합니다"></a></figure>
+<p class="lesson-takeaway">Dilation 1 기준 식입니다. Channel 수는 공간 크기와 별도로 필터 수가 결정합니다.</p><details class="lesson-reference"><summary>출처 · 근거</summary><div>개념 참고: <a href="https://cs231n.github.io/convolutional-networks/" target="_blank" rel="noopener">Stanford CS231n</a> · 직접 재구성한 설명용 Figure</div></details></div></section>
+<section class="slide" data-topic="특징의 조합" data-level="basic" data-source-deck="vision_ai" data-source-slide="28" data-outline-unit="CNN · 특징 추출">
+<div class="slide-inner"><div class="lesson-meta"><span>46 · 특징의 조합</span>
+<span class="lesson-level">핵심 개념</span></div>
+<h2 class="slide-title">Layer는 앞의 특징을 조합해 더 복잡한 표현을 만듭니다</h2>
+<p class="slide-subtitle">사과 이미지를 예시로 국소 밝기 반응 → 곡선·무늬의 조합 → 더 넓은 형태의 단서로 이어지는 개념적 특징 표현을 살펴봅니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/lesson_cnn_feature_hierarchy.svg?v=solid-arrows-20261015-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/lesson_cnn_feature_hierarchy.svg?v=solid-arrows-20261015-2" alt="사과 사진에서 작은 경계 반응이 곡선과 형태의 단서로 조합되는 CNN 특징 계층 개념도이며 실제 모델 Feature Map 측정 결과는 아님"></a></figure>
+<p class="lesson-takeaway">국소 반응을 여러 Layer에서 조합한 개념도입니다. 실제 학습된 Feature Map이 항상 이 순서로 사람에게 해석되는 것은 아닙니다.</p><details class="lesson-reference"><summary>출처 · 근거</summary><div>사진: AI 생성 교육용 예시 · 실제 측정/실험 결과가 아님</div></details></div></section>
+<section class="slide" data-topic="Receptive Field" data-level="detail" data-source-deck="vision_ai" data-source-slide="29" data-outline-unit="CNN · 특징 추출">
+<div class="slide-inner"><div class="lesson-meta"><span>47 · Receptive Field</span>
+<span class="lesson-level lesson-level--detail">심화 학습</span></div>
+<h2 class="slide-title">깊은 층의 한 위치는 더 넓은 입력 범위의 영향을 받습니다</h2>
+<p class="slide-subtitle">동일한 원본 7×7 위치를 기준으로 3×3 Convolution을 3개 Layer에 쌓을 때 한 출력 위치에 영향을 주는 이론적 입력 범위를 비교합니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/lesson_receptive_field_growth.svg?v=solid-arrows-20261015-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/lesson_receptive_field_growth.svg?v=solid-arrows-20261015-2" alt="동일한 7×7 입력 격자 위에서 3×3 합성곱 층이 1개 2개 3개 쌓일 때 이론적 수용영역이 3×3, 5×5, 7×7로 커지는 비교"></a></figure>
+<p class="lesson-takeaway">3×3 Conv, Stride 1, Dilation 1의 이론적 수용영역은 3×3 → 5×5 → 7×7입니다. 실제 강하게 반응한 영역과는 다릅니다.</p><details class="lesson-reference"><summary>출처 · 근거</summary><div>개념 참고: <a href="https://cs231n.github.io/convolutional-networks/" target="_blank" rel="noopener">Stanford CS231n</a> · 직접 재구성한 설명용 Figure</div></details></div></section>
+<section class="slide" data-topic="CNN 전체 흐름" data-level="basic" data-source-deck="vision_ai" data-source-slide="30" data-outline-unit="CNN · 특징 추출">
+<div class="slide-inner"><div class="lesson-meta"><span>48 · CNN 전체 흐름</span>
+<span class="lesson-level">핵심 개념</span></div>
+<h2 class="slide-title">작은 연산들을 연결하면 이미지 분류기가 됩니다</h2>
+<p class="slide-subtitle">224×224×3 입력을 특징 지도로 바꾸고, 전역 평균 풀링으로 요약한 뒤 분류 점수를 계산합니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/survey_cnn_pipeline.svg?v=survey-20261006-1" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/survey_cnn_pipeline.svg?v=survey-20261006-1" alt="작은 연산들을 연결하면 이미지 분류기가 됩니다"></a></figure>
+<p class="lesson-takeaway">H×W×C 순서의 설명용 작은 CNN입니다. 검출·분할 모델에는 위치를 보존하거나 복원하는 추가 구조가 필요합니다.</p><details class="lesson-reference"><summary>출처 · 근거</summary><div>참고: <a href="https://link.springer.com/article/10.1186/s40537-021-00444-8" target="_blank" rel="noopener">Alzubaidi et al. (2021) · Fig. 7 · CNN layers</a> · <a href="https://docs.pytorch.org/docs/stable/generated/torch.nn.Conv2d.html" target="_blank" rel="noopener">PyTorch Conv2d</a> · 강의용 재구성</div></details></div></section>
+<section class="slide" data-topic="Backbone과 Head" data-level="basic" data-source-deck="vision_ai" data-source-slide="31" data-outline-unit="CNN · 특징 추출">
+<div class="slide-inner"><div class="lesson-meta"><span>49 · Backbone과 Head</span>
+<span class="lesson-level">핵심 개념</span></div>
+<h2 class="slide-title">특징을 만드는 부분과, 결과를 만드는 부분을 나눠 봅니다</h2>
+<p class="slide-subtitle">같은 입력 특징을 추출하는 Backbone과, Classification·Detection·Segmentation 가운데 필요한 결과를 만드는 Task Head를 구분합니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/lesson_backbone_head_roles.svg?v=solid-arrows-20261015-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/lesson_backbone_head_roles.svg?v=solid-arrows-20261015-2" alt="사과 사진 입력에서 Backbone이 공통 특징을 추출하고 분류 Head는 Class 점수, 검출 Head는 Box, 분할 Head는 Pixel Mask를 출력하는 선택형 구조"></a></figure>
+<p class="lesson-takeaway">세 가지 Head는 구조 비교를 위한 개념도입니다. 실제 한 모델이 항상 세 Task를 동시에 출력하는 것은 아닙니다.</p></div></section>
+<section class="slide" data-topic="Backbone과 Head" data-level="detail" data-source-deck="vision_ai" data-source-slide="32" data-outline-unit="CNN · 특징 추출">
+<div class="slide-inner"><div class="lesson-meta"><span>50 · Backbone과 Head</span>
+<span class="lesson-level lesson-level--detail">심화 학습</span></div>
+<h2 class="slide-title">블록을 연결하고 각 단계의 특징 크기를 표시합니다</h2>
+<p class="slide-subtitle">224×224×3 입력에서 Conv 단계의 공간 크기가 112→56→28→14로 감소하는 예시입니다. Task별 Head는 같은 특징을 서로 다른 출력으로 바꿉니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/lesson_backbone_tensor_head_options.svg?v=solid-arrows-20261015-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/lesson_backbone_tensor_head_options.svg?v=solid-arrows-20261015-2" alt="블록을 연결하고 각 단계의 특징 크기를 표시합니다"></a></figure>
+<p class="lesson-takeaway">분류는 Pooling과 Class logits, 검출은 Box·Class·Score, 분할은 Pixel Mask를 만듭니다. 검출·분할에는 Neck·Decoder 등이 추가될 수 있습니다.</p><details class="lesson-reference"><summary>출처 · 근거</summary><div>개념 참고: <a href="https://cs231n.github.io/convolutional-networks/" target="_blank" rel="noopener">Stanford CS231n</a> · 직접 재구성한 설명용 Figure</div></details></div></section>
+<section class="slide" data-topic="학습의 의미" data-level="basic" data-source-deck="ai_basics" data-source-slide="15" data-outline-unit="AI 원리 · 학습과 최적화">
+<div class="slide-inner"><div class="lesson-meta"><span>51 · 학습의 의미</span>
+<span class="lesson-level">핵심 개념</span></div>
+<h2 class="slide-title">학습은 예측 오차가 줄도록 계산 기준을 바꾸는 과정입니다</h2>
+<p class="slide-subtitle">입력 x=2, 정답 y=4를 고정하고 학습을 진행합니다. 모델이 예측 오차를 줄이도록 가중치를 자동으로 수정하는 과정을 관찰하세요.</p>
+<figure class="lesson-figure lesson-inline-lab" data-training-lesson aria-label="Gradient Descent에 따라 예측 오차가 줄어드는 과정">
+  <div class="lab-toolbar"><span class="lab-prompt">정답 4를 맞히도록 모델을 학습시키면?</span><span class="lab-step">학습 횟수 <strong data-iteration>0</strong> / 8</span></div>
+  <div class="lab-training">
+    <div class="lab-training-left">
+      <div class="lab-training-flow"><span>입력 x=2</span><b>→</b><span>모델 ŷ=wx</span><b>→</b><span>정답 y=4</span></div>
+      <div class="lab-training-eq" data-training-equation>ŷ = 0.5 × 2 = 1.0</div>
+      <div class="lab-training-actions">
+        <button type="button" data-train-step>한 단계 학습</button>
+        <button type="button" data-train-run>자동 학습</button>
+        <button type="button" class="alt" data-train-reset>초기화</button>
+      </div>
+      <p class="lab-learning-note">학습된 가중치 w = <strong data-weight>0.5</strong></p>
+      <p class="lab-learning-note">제곱 오차 Loss = <strong class="lab-emphasis" data-loss>9</strong></p>
+      <p class="lab-hint">입력과 정답은 그대로 두고, 모델이 오차를 줄이도록 w를 자동으로 수정합니다.</p>
+    </div>
+    <div class="lab-training-right">
+      <div class="lab-caption">예측이 정답에 가까워지는 과정 <em>값이 가까워질수록 오차 감소</em></div>
+      <div class="lab-bars" role="img" aria-label="정답은 4로 고정, 학습이 진행될수록 예측값이 정답에 접근합니다">
+        <div class="lab-bar-wrap"><strong class="lab-bar-value">4</strong><div class="lab-bar" style="--bar-height:100%"></div><span class="lab-bar-label">정답 (고정)</span></div>
+        <div class="lab-bar-wrap prediction"><strong class="lab-bar-value" data-prediction>1</strong><div class="lab-bar" data-pred-bar style="--bar-height:25%"></div><span class="lab-bar-label">모델 예측</span></div>
+      </div>
+      <p class="lab-learning-note" data-training-status aria-live="polite">처음에는 예측과 정답 사이에 차이가 큽니다.</p>
+    </div>
+  </div>
+  <figcaption class="lab-footnote">실제 수치: 단일 데이터 (x=2,y=4) · 제곱 오차 · 학습률 0.1 · Bias 0 · 경사하강법</figcaption>
+</figure>
+<p class="lesson-takeaway">학습의 목적은 사람이 Weight를 임의로 조작하는 것이 아니라, 예측과 정답의 오차를 줄이도록 알고리즘이 Parameter를 갱신하는 것입니다.</p></div></section>
+<section class="slide" data-topic="Loss" data-level="basic" data-source-deck="ai_basics" data-source-slide="16" data-outline-unit="AI 원리 · 학습과 최적화">
+<div class="slide-inner"><div class="lesson-meta"><span>52 · Loss</span>
+<span class="lesson-level">핵심 개념</span></div>
+<h2 class="slide-title">Loss는 예측과 정답의 차이를 학습용 숫자로 바꿉니다</h2>
+<p class="slide-subtitle">정답 y=4를 고정하고 후보 예측 2·3.6·4를 비교합니다. 회귀용 제곱오차는 차이의 부호를 없애고, 큰 오차에 더 큰 Loss를 부여합니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/loss_basic.svg?v=loss-optimizer-20261006-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/loss_basic.svg?v=loss-optimizer-20261006-2" alt="Loss는 예측과 정답의 차이를 학습용 숫자로 바꿉니다"></a></figure>
+<p class="lesson-takeaway">여러 샘플의 제곱오차를 평균하면 MSE(Mean Squared Error, 평균제곱오차)입니다. 문제에 따라 다른 Loss를 사용합니다.</p><details class="lesson-reference"><summary>출처 · 근거</summary><div>개념 참고: <a href="https://cs231n.github.io/optimization-1/" target="_blank" rel="noopener">Stanford CS231n · Optimization</a> · 실제 계산한 단일 샘플 회귀 예시</div></details></div></section>
+<section class="slide" data-topic="Loss와 Metric" data-level="basic" data-source-deck="ai_basics" data-source-slide="17" data-outline-unit="AI 원리 · 학습과 최적화">
+<div class="slide-inner"><div class="lesson-meta"><span>53 · Loss와 Metric</span>
+<span class="lesson-level">핵심 개념</span></div>
+<h2 class="slide-title">학습할 때 줄이는 값과, 평가할 때 보는 값은 역할이 다릅니다</h2>
+<p class="slide-subtitle">Loss는 가중치를 갱신하는 목적함수입니다. Metric(평가지표)은 실제 문제에서 성능을 해석하고 비교하는 기준입니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/loss_metric_basic.svg?v=professional-20261006-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/loss_metric_basic.svg?v=professional-20261006-2" alt="학습할 때 줄이는 값과, 평가할 때 보는 값은 역할이 다릅니다"></a></figure>
+<p class="lesson-takeaway">Loss가 줄었다고 원하는 Metric이나 운영 성능이 항상 개선되는 것은 아닙니다.</p></div></section>
+<section class="slide" data-topic="Gradient" data-level="basic" data-source-deck="ai_basics" data-source-slide="18" data-outline-unit="AI 원리 · 학습과 최적화">
+<div class="slide-inner"><div class="lesson-meta"><span>54 · Gradient</span>
+<span class="lesson-level">핵심 개념</span></div>
+<h2 class="slide-title">기울기는 가중치를 어느 방향으로 바꿀지 알려줍니다</h2>
+<p class="slide-subtitle">입력 x=2와 정답 y=4는 고정하고, 가중치 w만 바꿉니다. 현재 w=1에서 기울기가 음수이므로, w를 조금 늘리면 Loss가 줄어듭니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/gradient_basic.svg?v=loss-optimizer-20261006-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/gradient_basic.svg?v=loss-optimizer-20261006-2" alt="기울기는 가중치를 어느 방향으로 바꿀지 알려줍니다"></a></figure>
+<p class="lesson-takeaway">가로축은 예측값이나 학습 시간이 아닌 가중치 w입니다. 이 곡선은 한 가중치를 사용하는 회귀 예시입니다.</p><details class="lesson-reference"><summary>출처 · 근거</summary><div>개념 참고: <a href="https://cs231n.github.io/optimization-1/" target="_blank" rel="noopener">Stanford CS231n · Optimization</a> · 실제 계산한 단일 샘플 회귀 예시</div></details></div></section>
+<section class="slide" data-topic="Gradient와 Learning Rate" data-level="detail" data-source-deck="ai_basics" data-source-slide="19" data-outline-unit="AI 원리 · 학습과 최적화">
+<div class="slide-inner"><div class="lesson-meta"><span>55 · Gradient와 Learning Rate</span>
+<span class="lesson-level lesson-level--detail">심화 학습</span></div>
+<h2 class="slide-title">기울기 계산 → 가중치 수정 → Loss 재계산을 연결합니다</h2>
+<p class="slide-subtitle">Gradient는 −8, Learning Rate(학습률) η는 0.1입니다. SGD(Stochastic Gradient Descent, 확률적 경사하강법)의 기본 갱신식으로 w를 1에서 1.8로 바꿉니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/lesson_sgd_update_flow.svg?v=solid-arrows-20261015-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/lesson_sgd_update_flow.svg?v=solid-arrows-20261015-2" alt="기울기 계산 → 가중치 수정 → Loss 재계산을 연결합니다"></a></figure>
+<p class="lesson-takeaway">같은 x=2에서 예측은 2 → 3.6, Loss는 4 → 0.16입니다. Bias는 0으로 고정하고 Momentum·Weight Decay는 사용하지 않습니다.</p><details class="lesson-reference"><summary>출처 · 근거</summary><div>개념 참고: <a href="https://cs231n.github.io/optimization-1/" target="_blank" rel="noopener">Stanford CS231n · Optimization</a> · 실제 계산한 단일 샘플 회귀 예시</div></details></div></section>
+<section class="slide" data-topic="Optimizer" data-level="basic" data-source-deck="ai_basics" data-source-slide="20" data-outline-unit="AI 원리 · 학습과 최적화">
+<div class="slide-inner"><div class="lesson-meta"><span>56 · Optimizer</span>
+<span class="lesson-level">핵심 개념</span></div>
+<h2 class="slide-title">같은 수정 규칙도 학습률에 따라 결과가 달라집니다</h2>
+<p class="slide-subtitle">Optimizer(최적화 알고리즘)는 가중치의 갱신 규칙입니다. 여기서는 SGD를 고정하고 학습률 η만 0.025·0.1·0.3으로 바꿔 Loss 변화를 실제 계산했습니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/optimizer_learning_rates.svg?v=loss-optimizer-20261006-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/optimizer_learning_rates.svg?v=loss-optimizer-20261006-2" alt="같은 수정 규칙도 학습률에 따라 결과가 달라집니다"></a></figure>
+<p class="lesson-takeaway">Loss는 줄일 목표, Gradient는 변화율, Optimizer는 수정 규칙입니다. 적절한 학습률은 문제에 따라 다르며 0.1이 항상 최선인 것은 아닙니다.</p><details class="lesson-reference"><summary>출처 · 근거</summary><div>개념 참고: <a href="https://cs231n.github.io/optimization-1/" target="_blank" rel="noopener">Stanford CS231n · Optimization</a> · 실제 계산한 단일 샘플 회귀 예시</div></details></div></section>
+<section class="slide" data-topic="Training Loop" data-level="basic" data-source-deck="ai_basics" data-source-slide="21" data-outline-unit="AI 원리 · 학습과 최적화">
+<div class="slide-inner"><div class="lesson-meta"><span>57 · Training Loop</span>
+<span class="lesson-level">핵심 개념</span></div>
+<h2 class="slide-title">예측 → 오차 → Gradient → 수정을 반복합니다</h2>
+<p class="slide-subtitle">Training(학습)은 한 번의 계산으로 끝나지 않습니다. 바뀐 가중치로 다음 예측을 계산하고 다시 오차를 줄입니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/training_basic.svg?v=professional-20261006-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/training_basic.svg?v=professional-20261006-2" alt="예측 → 오차 → Gradient → 수정을 반복합니다"></a></figure>
+<p class="lesson-takeaway">Forward는 예측 계산, Backward는 Gradient 계산, Update는 가중치 수정입니다.</p></div></section>
+<section class="slide" data-topic="Training과 Inference" data-level="basic" data-source-deck="ai_basics" data-source-slide="22" data-outline-unit="AI 원리 · 학습과 최적화">
+<div class="slide-inner"><div class="lesson-meta"><span>58 · Training과 Inference</span>
+<span class="lesson-level">핵심 개념</span></div>
+<h2 class="slide-title">배울 때는 Weight를 바꾸고, 사용할 때는 고정합니다</h2>
+<p class="slide-subtitle">Inference(추론)는 학습된 모델에 새 입력을 넣어 결과를 얻는 과정입니다. 정답 없이도 예측할 수 있습니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/training_inference_basic.svg?v=professional-20261006-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/training_inference_basic.svg?v=professional-20261006-2" alt="배울 때는 Weight를 바꾸고, 사용할 때는 고정합니다"></a></figure>
+<p class="lesson-takeaway">추론 과정 자체는 새로운 데이터로 가중치를 학습하는 과정이 아닙니다.</p></div></section>
+<section class="slide" data-topic="분류용 Loss" data-level="detail" data-source-deck="ai_basics" data-source-slide="23" data-outline-unit="AI 원리 · 학습과 최적화">
+<div class="slide-inner"><div class="lesson-meta"><span>59 · 분류용 Loss</span>
+<span class="lesson-level lesson-level--detail">심화 학습</span></div>
+<h2 class="slide-title">분류에서는 정답 클래스의 확률을 이용할 수 있습니다</h2>
+<p class="slide-subtitle">Cross-entropy(교차 엔트로피)는 정답 클래스에 낮은 확률을 주면 큰 Loss를 부여합니다. 회귀에서 사용한 제곱오차와 구분합니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/survey_classification_loss.svg?v=survey-20261006-1" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/survey_classification_loss.svg?v=survey-20261006-1" alt="분류에서는 정답 클래스의 확률을 이용할 수 있습니다"></a></figure>
+<p class="lesson-takeaway">단일 정답·단일 샘플에서 L=−ln(p정답)입니다. PyTorch CrossEntropyLoss에는 Softmax 확률 대신 원래 Logit(정규화 전 점수)을 입력합니다.</p><details class="lesson-reference"><summary>출처 · 근거</summary><div>참고: <a href="https://link.springer.com/article/10.1186/s40537-021-00444-8" target="_blank" rel="noopener">Alzubaidi et al. (2021) · CNN layers · Loss</a> · <a href="https://docs.pytorch.org/docs/stable/generated/torch.nn.CrossEntropyLoss.html" target="_blank" rel="noopener">PyTorch CrossEntropyLoss</a> · 강의용 재구성</div></details></div></section>
+<section class="slide" data-topic="Backpropagation" data-level="basic" data-source-deck="ai_basics" data-source-slide="26" data-outline-unit="AI 원리 · 학습과 최적화">
+<div class="slide-inner"><div class="lesson-meta"><span>60 · Backpropagation</span>
+<span class="lesson-level">핵심 개념</span></div>
+<h2 class="slide-title">오차에서 각 가중치의 Gradient를 뒤로 계산합니다</h2>
+<p class="slide-subtitle">Backpropagation(역전파)은 출력의 오차가 각 가중치에 얼마나 민감한지 계산합니다. 가중치 수정은 Optimizer가 수행합니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/context_backpropagation_visual.svg?v=professional-20261006-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/context_backpropagation_visual.svg?v=professional-20261006-2" alt="오차에서 각 가중치의 Gradient를 뒤로 계산합니다"></a></figure>
+<p class="lesson-takeaway">오차를 뒤로 보내는 그림은 Gradient 계산 흐름을 표현합니다.</p></div></section>
+<section class="slide" data-topic="Backpropagation" data-level="detail" data-source-deck="ai_basics" data-source-slide="27" data-outline-unit="AI 원리 · 학습과 최적화">
+<div class="slide-inner"><div class="lesson-meta"><span>61 · Backpropagation</span>
+<span class="lesson-level lesson-level--detail">심화 학습</span></div>
+<h2 class="slide-title">Chain Rule로 각 Parameter의 변화율을 계산합니다</h2>
+<p class="slide-subtitle">같은 x=2, y=4 예제에 Bias를 추가합니다. w=1, b=0에서 가중치와 Bias의 Gradient를 계산합니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/lesson_chain_rule_graph.svg?v=solid-arrows-20261015-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/lesson_chain_rule_graph.svg?v=solid-arrows-20261015-2" alt="Chain Rule로 각 Parameter의 변화율을 계산합니다"></a></figure>
+<p class="lesson-takeaway">이 장에서는 w와 b를 모두 학습합니다. 앞의 Gradient 예제에서는 b를 0으로 고정했습니다.</p><details class="lesson-reference"><summary>출처 · 근거</summary><div>개념 참고: <a href="https://cs231n.github.io/" target="_blank" rel="noopener">Stanford CS231n</a> · 직접 재구성한 설명용 Figure</div></details></div></section>
+<section class="slide" data-topic="Batch·Iteration·Epoch" data-level="basic" data-source-deck="ai_basics" data-source-slide="28" data-outline-unit="AI 원리 · 학습과 최적화">
+<div class="slide-inner"><div class="lesson-meta"><span>62 · Batch·Iteration·Epoch</span>
+<span class="lesson-level">핵심 개념</span></div>
+<h2 class="slide-title">데이터를 작은 묶음으로 나누어 반복해서 봅니다</h2>
+<p class="slide-subtitle">Batch는 한 번에 처리하는 묶음, Iteration은 보통 한 묶음의 처리, Epoch은 학습 데이터 전체를 한 번 보는 주기입니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/context_batch_epoch.svg?v=professional-20261006-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/context_batch_epoch.svg?v=professional-20261006-2" alt="데이터를 작은 묶음으로 나누어 반복해서 봅니다"></a></figure>
+<p class="lesson-takeaway">이미지 10장, batch_size=4, 마지막 묶음을 버리지 않으면 4+4+2의 3번 처리가 1 Epoch입니다.</p></div></section>
+<section class="slide" data-topic="CNN 학습" data-level="basic" data-source-deck="vision_ai" data-source-slide="33" data-outline-unit="CNN · 전이학습">
+<div class="slide-inner"><div class="lesson-meta"><span>63 · CNN 학습</span>
+<span class="lesson-level">핵심 개념</span></div>
+<h2 class="slide-title">CNN의 필터도 오차를 줄이는 방향으로 학습합니다</h2>
+<p class="slide-subtitle">Forward로 예측하고 Label과 Loss를 비교한 뒤, Backpropagation으로 Gradient를 계산하고 Optimizer가 필터를 갱신합니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/context_cnn_training.svg?v=professional-20261006-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/context_cnn_training.svg?v=professional-20261006-2" alt="CNN의 필터도 오차를 줄이는 방향으로 학습합니다"></a></figure>
+<p class="lesson-takeaway">기본 학습 원리는 AI Basics와 같습니다. 학습하는 Parameter에 Kernel 가중치가 포함됩니다.</p></div></section>
+<section class="slide" data-topic="Transfer Learning" data-level="basic" data-source-deck="vision_ai" data-source-slide="34" data-outline-unit="CNN · 전이학습">
+<div class="slide-inner"><div class="lesson-meta"><span>64 · Transfer Learning</span>
+<span class="lesson-level">핵심 개념</span></div>
+<h2 class="slide-title">이미 배운 가중치에서 내 Task의 학습을 시작합니다</h2>
+<p class="slide-subtitle">사전학습으로 얻은 Backbone 가중치를 새 Task의 출발점으로 사용합니다. 새로운 Label에 맞춘 Head를 준비하고 대상 데이터에서 추가 학습합니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/lesson_transfer_pretraining_to_task.svg?v=solid-arrows-20261015-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/lesson_transfer_pretraining_to_task.svg?v=solid-arrows-20261015-2" alt="이미 배운 가중치에서 내 Task의 학습을 시작합니다"></a></figure>
+<p class="lesson-takeaway">내 데이터가 사전학습 데이터와 다르면 효과가 달라질 수 있으므로 별도 평가가 필요합니다.</p></div></section>
+<section class="slide" data-topic="Freeze와 Fine-tuning" data-level="detail" data-source-deck="vision_ai" data-source-slide="35" data-outline-unit="CNN · 전이학습">
+<div class="slide-inner"><div class="lesson-meta"><span>65 · Freeze와 Fine-tuning</span>
+<span class="lesson-level lesson-level--detail">심화 학습</span></div>
+<h2 class="slide-title">고정할 부분과 추가 학습할 부분을 구분합니다</h2>
+<p class="slide-subtitle">Freeze 방식은 Backbone 가중치를 고정하고 Head를 학습합니다. Fine-tuning에서는 선택한 Backbone 가중치까지 업데이트합니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/lesson_transfer_freeze_vs_finetune.svg?v=solid-arrows-20261015-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/lesson_transfer_freeze_vs_finetune.svg?v=solid-arrows-20261015-2" alt="Freeze에서는 사전학습 Backbone을 고정하고 Head만 학습하며 Fine-tuning에서는 선택한 Backbone 가중치도 함께 업데이트하는 구조"></a></figure>
+<p class="lesson-takeaway">같은 대상 데이터로 두 방식을 검증하고, 데이터 양·도메인 차이·Validation 성능에 따라 업데이트 범위를 선택합니다.</p><details class="lesson-reference"><summary>출처 · 근거</summary><div>개념 참고: <a href="https://cs231n.github.io/convolutional-networks/" target="_blank" rel="noopener">Stanford CS231n</a> · 직접 재구성한 설명용 Figure</div></details></div></section>
+<section class="slide" data-topic="Dataset" data-level="basic" data-source-deck="ai_basics" data-source-slide="29" data-outline-unit="데이터 · 학습과 검증">
+<div class="slide-inner"><div class="lesson-meta"><span>66 · Dataset</span>
+<span class="lesson-level">핵심 개념</span></div>
+<h2 class="slide-title">데이터는 실제 사용할 조건을 대표해야 합니다</h2>
+<p class="slide-subtitle">Dataset(데이터셋)은 학습·평가에 사용하는 데이터 모음입니다. 조명·크기·배경·설비·시간대와 일관된 정답 기준을 확인합니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/capture_conditions.svg?v=professional-20261006-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/capture_conditions.svg?v=professional-20261006-2" alt="데이터는 실제 사용할 조건을 대표해야 합니다"></a></figure>
+<p class="lesson-takeaway">특정 배경만 정답과 함께 반복되면, 모델이 물체 대신 배경으로 판단할 수 있습니다.</p><details class="lesson-reference"><summary>출처 · 근거</summary><div>사진: AI 생성 교육용 예시 · 실제 측정/실험 결과가 아님</div></details></div></section>
+<section class="slide" data-topic="데이터 분리" data-level="basic" data-source-deck="ai_basics" data-source-slide="30" data-outline-unit="데이터 · 학습과 검증">
+<div class="slide-inner"><div class="lesson-meta"><span>67 · 데이터 분리</span>
+<span class="lesson-level">핵심 개념</span></div>
+<h2 class="slide-title">학습·모델 선택·최종 평가의 데이터를 나눕니다</h2>
+<p class="slide-subtitle">Train은 가중치 학습, Validation은 모델·설정·Threshold 선택, Test는 최종 일반화 평가에 사용합니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/context_dataset_split.svg?v=professional-20261006-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/context_dataset_split.svg?v=professional-20261006-2" alt="학습·모델 선택·최종 평가의 데이터를 나눕니다"></a></figure>
+<p class="lesson-takeaway">예: 1,000장의 70/15/15 분리. 비율보다 서로 독립적인 평가 데이터 확보가 중요합니다.</p></div></section>
+<section class="slide" data-topic="Group Split" data-level="basic" data-source-deck="ai_basics" data-source-slide="31" data-outline-unit="데이터 · 학습과 검증">
+<div class="slide-inner"><div class="lesson-meta"><span>68 · Group Split</span>
+<span class="lesson-level">핵심 개념</span></div>
+<h2 class="slide-title">같은 영상의 비슷한 Frame은 통째로 분리합니다</h2>
+<p class="slide-subtitle">동일한 원본 영상 A·B·C에서 각각 3개 Frame을 뽑은 예시입니다. 무작위 Frame 분할과 원본 Video를 통째로 나누는 Group Split을 비교합니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/lesson_video_group_split_comparison.svg?v=pedagogic-20261013-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/lesson_video_group_split_comparison.svg?v=pedagogic-20261013-2" alt="9개 프레임을 무작위로 나누면 영상 A B C가 Train Validation Test에 중복되지만 영상별 Group Split에서는 원본 영상이 서로 겹치지 않는 비교"></a></figure>
+<p class="lesson-takeaway">같은 원본 영상의 Frame이 Train·Validation·Test에 동시에 들어가지 않게 합니다. 새 설비 성능을 평가하려면 설비 자체로 Group을 정합니다.</p></div></section>
+<section class="slide" data-topic="Data Leakage" data-level="basic" data-source-deck="ai_basics" data-source-slide="32" data-outline-unit="데이터 · 학습과 검증">
+<div class="slide-inner"><div class="lesson-meta"><span>69 · Data Leakage</span>
+<span class="lesson-level">핵심 개념</span></div>
+<h2 class="slide-title">평가 데이터의 정보가 학습·선택에 새어들면 점수가 왜곡됩니다</h2>
+<p class="slide-subtitle">앞 장의 Random Frame Split처럼 같은 원본 장면이 서로 다른 데이터 세트에 섞이면 평가가 왜곡될 수 있습니다. 전체 데이터 통계를 사용하는 전처리나 Test를 보며 반복 수정하는 경우도 점검합니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/context_data_leakage_visual.svg?v=solid-arrows-20261015-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/context_data_leakage_visual.svg?v=solid-arrows-20261015-2" alt="평가 데이터의 정보가 학습·선택에 새어들면 점수가 왜곡됩니다"></a></figure>
+<p class="lesson-takeaway">학습하는 전처리 통계는 Train에서 계산합니다. 미리 정한 255 나누기는 통계를 학습하는 과정이 아닙니다.</p></div></section>
+<section class="slide" data-topic="Overfitting" data-level="basic" data-source-deck="ai_basics" data-source-slide="35" data-outline-unit="데이터 · 학습과 검증">
+<div class="slide-inner"><div class="lesson-meta"><span>70 · Overfitting</span>
+<span class="lesson-level">핵심 개념</span></div>
+<h2 class="slide-title">Train에서 잘하는 것과 새 데이터에서 잘하는 것은 다릅니다</h2>
+<p class="slide-subtitle">Overfitting(과적합)은 학습 데이터에 지나치게 맞춰 새 데이터 성능이 떨어지는 현상입니다. Validation 추세와 실패 사례를 함께 봅니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/context_overfit_leakage.svg?v=professional-20261006-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/context_overfit_leakage.svg?v=professional-20261006-2" alt="Train에서 잘하는 것과 새 데이터에서 잘하는 것은 다릅니다"></a></figure>
+<p class="lesson-takeaway">Generalization(일반화)은 직접 학습하지 않은 데이터에서도 성능을 유지하는 능력입니다.</p></div></section>
+<section class="slide" data-topic="과적합 대응" data-level="basic" data-source-deck="ai_basics" data-source-slide="36" data-outline-unit="데이터 · 학습과 검증">
+<div class="slide-inner"><div class="lesson-meta"><span>71 · 과적합 대응</span>
+<span class="lesson-level">핵심 개념</span></div>
+<h2 class="slide-title">새 데이터에서도 잘하도록 학습을 조절합니다</h2>
+<p class="slide-subtitle">증강·Dropout·Early Stopping은 서로 다른 방식으로 과적합을 줄입니다. 각 방법의 효과는 Validation에서 비교합니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/survey_regularization.svg?v=survey-20261006-1" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/survey_regularization.svg?v=survey-20261006-1" alt="새 데이터에서도 잘하도록 학습을 조절합니다"></a></figure>
+<p class="lesson-takeaway">Early Stopping은 Validation을 사용합니다. 증강 강도와 Dropout 확률을 높인다고 항상 성능이 좋아지는 것은 아닙니다.</p><details class="lesson-reference"><summary>출처 · 근거</summary><div>참고: <a href="https://link.springer.com/article/10.1186/s40537-021-00444-8" target="_blank" rel="noopener">Alzubaidi et al. (2021) · Regularization</a> · <a href="https://jmlr.org/papers/v15/srivastava14a.html" target="_blank" rel="noopener">Dropout 원 논문</a> · 강의용 재구성</div></details></div></section>
+<section class="slide" data-topic="K-Fold" data-level="detail" data-source-deck="ai_basics" data-source-slide="37" data-outline-unit="데이터 · 학습과 검증">
+<div class="slide-inner"><div class="lesson-meta"><span>72 · K-Fold</span>
+<span class="lesson-level lesson-level--detail">심화 학습</span></div>
+<h2 class="slide-title">평가 대상을 바꾸어 성능의 변동도 확인합니다</h2>
+<p class="slide-subtitle">K-Fold Cross Validation(교차검증)은 데이터 부분집합을 번갈아 Validation으로 사용하며 모델을 각각 새로 학습합니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/context_kfold_visual.svg?v=professional-20261006-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/context_kfold_visual.svg?v=professional-20261006-2" alt="평가 대상을 바꾸어 성능의 변동도 확인합니다"></a></figure>
+<p class="lesson-takeaway">같은 원본을 공유하는 샘플은 Group K-Fold로 분리하고, 최종 Test는 별도로 유지합니다.</p><details class="lesson-reference"><summary>출처 · 근거</summary><div>개념 참고: <a href="https://cs231n.github.io/" target="_blank" rel="noopener">Stanford CS231n</a> · 직접 재구성한 설명용 Figure</div></details></div></section>
+<section class="slide" data-topic="Threshold" data-level="basic" data-source-deck="ai_basics" data-source-slide="38" data-outline-unit="평가 · 현장 적용">
+<div class="slide-inner"><div class="lesson-meta"><span>73 · Threshold</span>
+<span class="lesson-level">핵심 개념</span></div>
+<h2 class="slide-title">점수에 기준을 적용하면 실제 판정이 됩니다</h2>
+<p class="slide-subtitle">설명용 불량 점수 0.82를 기준 0.50과 0.90에 각각 적용합니다. 점수는 같아도 판정 결과는 바뀝니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/lesson_threshold_score_decision.svg?v=lesson-metrics-20261013-1" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/lesson_threshold_score_decision.svg?v=lesson-metrics-20261013-1" alt="점수에 기준을 적용하면 실제 판정이 됩니다"></a></figure>
+<p class="lesson-takeaway">임계값을 바꾸면 불량 미검과 오알람 수가 달라질 수 있습니다. 기준은 Validation에서 선택하며, 점수 0.82는 다음 100개 평가 사례와 별개입니다.</p></div></section>
+<section class="slide" data-topic="Confusion Matrix" data-level="basic" data-source-deck="ai_basics" data-source-slide="39" data-outline-unit="평가 · 현장 적용">
+<div class="slide-inner"><div class="lesson-meta"><span>74 · Confusion Matrix</span>
+<span class="lesson-level">핵심 개념</span></div>
+<h2 class="slide-title">정답과 판정을 비교해 네 가지 결과를 셉니다</h2>
+<p class="slide-subtitle">총 100건의 같은 평가 데이터를 다음 지표 계산까지 이어갑니다. 실제 불량 20건 중 18건을 찾고, 정상 80건 중 4건을 잘못 알렸습니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/lesson_confusion_100cases.svg?v=lesson-metrics-20261013-1" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/lesson_confusion_100cases.svg?v=lesson-metrics-20261013-1" alt="총 100건에서 실제 불량 20건의 TP 18 FN 2와 실제 정상 80건의 FP 4 TN 76을 배치한 2×2 혼동행렬"></a></figure>
+<p class="lesson-takeaway">TP: 찾은 불량 / FN: 놓친 불량 / FP: 오알람 / TN: 정상 통과.</p></div></section>
+<section class="slide" data-topic="Precision과 Recall" data-level="basic" data-source-deck="ai_basics" data-source-slide="40" data-outline-unit="평가 · 현장 적용">
+<div class="slide-inner"><div class="lesson-meta"><span>75 · Precision과 Recall</span>
+<span class="lesson-level">핵심 개념</span></div>
+<h2 class="slide-title">알람의 정확성과 불량을 찾는 비율을 구분합니다</h2>
+<p class="slide-subtitle">직전 혼동행렬의 TP=18·FP=4·FN=2를 그대로 사용합니다. Precision은 불량이라고 알린 22건, Recall은 실제 불량 20건을 분모로 계산합니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/lesson_precision_recall_sharedcase.svg?v=lesson-metrics-20261013-1" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/lesson_precision_recall_sharedcase.svg?v=lesson-metrics-20261013-1" alt="정밀도는 TP 18개를 불량 판정 22개로 나눠 81.8%, 재현율은 TP 18개를 실제 불량 20개로 나눠 90%가 되는 비교"></a></figure>
+<p class="lesson-takeaway">동일한 TP=18이어도 Precision=18/22=81.8%, Recall=18/20=90%입니다. 임계값이 바뀌면 두 지표도 변할 수 있습니다.</p></div></section>
+<section class="slide" data-topic="Accuracy와 F1" data-level="detail" data-source-deck="ai_basics" data-source-slide="41" data-outline-unit="평가 · 현장 적용">
+<div class="slide-inner"><div class="lesson-meta"><span>76 · Accuracy와 F1</span>
+<span class="lesson-level lesson-level--detail">심화 학습</span></div>
+<h2 class="slide-title">전체 정답률과 Precision·Recall의 균형을 함께 봅니다</h2>
+<p class="slide-subtitle">동일한 100건에서 Accuracy=(18+76)/100=94%, F1=2×18/(2×18+4+2)=85.7%를 계산합니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/lesson_accuracy_f1_same100.svg?v=lesson-metrics-20261013-1" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/lesson_accuracy_f1_same100.svg?v=lesson-metrics-20261013-1" alt="혼동행렬 TP18 FP4 FN2 TN76으로 Accuracy는 94/100=94%, F1은 36/42=85.7%가 되는 계산"></a></figure>
+<p class="lesson-takeaway">F1은 Precision·Recall의 조화평균이며 TN은 포함하지 않습니다. 다음 장의 극단적 클래스 불균형 사례는 별도 가상 데이터입니다.</p><details class="lesson-reference"><summary>출처 · 근거</summary><div>개념 참고: <a href="https://cs231n.github.io/" target="_blank" rel="noopener">Stanford CS231n</a> · 직접 재구성한 설명용 Figure</div></details></div></section>
+<section class="slide" data-topic="클래스 불균형" data-level="basic" data-source-deck="ai_basics" data-source-slide="42" data-outline-unit="평가 · 현장 적용">
+<div class="slide-inner"><div class="lesson-meta"><span>77 · 클래스 불균형</span>
+<span class="lesson-level">핵심 개념</span></div>
+<h2 class="slide-title">불량이 적을수록 학습과 평가를 함께 점검합니다</h2>
+<p class="slide-subtitle">정상 95장·불량 5장처럼 Class 수가 다르면 소수 Class의 오류가 가려질 수 있습니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/survey_class_imbalance.svg?v=survey-20261006-1" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/survey_class_imbalance.svg?v=survey-20261006-1" alt="불량이 적을수록 학습과 평가를 함께 점검합니다"></a></figure>
+<p class="lesson-takeaway">Accuracy는 전체 정답률, F1은 Precision·Recall의 조화평균입니다. Test는 운영 분포를 유지하고 불량 Recall·Precision·오알람을 함께 봅니다.</p><details class="lesson-reference"><summary>출처 · 근거</summary><div>참고: <a href="https://link.springer.com/article/10.1186/s40537-021-00444-8" target="_blank" rel="noopener">Alzubaidi et al. (2021) · Imbalanced data</a> · <a href="https://docs.pytorch.org/docs/stable/generated/torch.nn.CrossEntropyLoss.html" target="_blank" rel="noopener">클래스별 Loss 가중치</a> · 강의용 재구성</div></details></div></section>
+<section class="slide" data-topic="평가와 실패 사례" data-level="basic" data-source-deck="vision_ai" data-source-slide="36" data-outline-unit="평가 · 현장 적용">
+<div class="slide-inner"><div class="lesson-meta"><span>78 · 평가와 실패 사례</span>
+<span class="lesson-level">핵심 개념</span></div>
+<h2 class="slide-title">높은 점수만으로 판단 근거가 맞다고 보장할 수 없습니다</h2>
+<p class="slide-subtitle">Vision AI에서 배경·조명·설비의 차이가 Class·Box·Mask 결과에 어떤 영향을 주는지 확인해야 합니다. 다른 조건의 이미지로도 판단 근거가 유지되는지 비교합니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/shortcut_professional.svg?v=professional-20261006-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/shortcut_professional.svg?v=professional-20261006-2" alt="높은 점수만으로 판단 근거가 맞다고 보장할 수 없습니다"></a></figure>
+<p class="lesson-takeaway">분류 오판뿐 아니라 Box 위치·Mask 경계의 실패도 구분합니다. 설비별·조명별 오류 유형을 모아 모델이 바라본 단서를 점검합니다.</p><details class="lesson-reference"><summary>출처 · 근거</summary><div>사진: AI 생성 교육용 예시 · 실제 측정/실험 결과가 아님</div></details></div></section>
+<section class="slide" data-topic="Shortcut Learning" data-level="basic" data-source-deck="ai_basics" data-source-slide="43" data-outline-unit="평가 · 현장 적용">
+<div class="slide-inner"><div class="lesson-meta"><span>79 · Shortcut Learning</span>
+<span class="lesson-level">핵심 개념</span></div>
+<h2 class="slide-title">모델이 우리가 원한 단서를 사용했는지도 확인합니다</h2>
+<p class="slide-subtitle">Shortcut Learning(지름길 학습)은 물체 형태 대신 배경처럼 쉬운 단서로 정답을 맞추는 현상입니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/shortcut_professional.svg?v=professional-20261006-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/shortcut_professional.svg?v=professional-20261006-2" alt="모델이 우리가 원한 단서를 사용했는지도 확인합니다"></a></figure>
+<p class="lesson-takeaway">Leakage는 정보가 새는 문제, Shortcut은 입력의 원치 않는 상관관계를 이용하는 문제입니다.</p><details class="lesson-reference"><summary>출처 · 근거</summary><div>사진: AI 생성 교육용 예시 · 실제 측정/실험 결과가 아님</div></details></div></section>
+<section class="slide" data-topic="운영 Cycle" data-level="basic" data-source-deck="vision_ai" data-source-slide="37" data-outline-unit="평가 · 현장 적용">
+<div class="slide-inner"><div class="lesson-meta"><span>80 · 운영 Cycle</span>
+<span class="lesson-level">핵심 개념</span></div>
+<h2 class="slide-title">문제 정의부터 운영 관찰까지 연결해 개선합니다</h2>
+<p class="slide-subtitle">Vision Task별 성공 기준(분류 판정·Box 위치·Mask 품질)을 정하고, 운영 중 수집한 오류를 Label 검토 및 재평가로 연결합니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/context_vision_project_pipeline.svg?v=professional-20261006-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/context_vision_project_pipeline.svg?v=professional-20261006-2" alt="문제 정의부터 운영 관찰까지 연결해 개선합니다"></a></figure>
+<p class="lesson-takeaway">운영 Cycle에서는 Task별 Metric·오류 이미지·촬영 조건을 함께 추적하고, 개선 전후를 같은 기준으로 다시 평가합니다.</p></div></section>
+<section class="slide" data-topic="개발과 운영" data-level="basic" data-source-deck="ai_basics" data-source-slide="44" data-outline-unit="평가 · 현장 적용">
+<div class="slide-inner"><div class="lesson-meta"><span>81 · 개발과 운영</span>
+<span class="lesson-level">핵심 개념</span></div>
+<h2 class="slide-title">운영의 실패 사례를 다음 데이터와 학습에 연결합니다</h2>
+<p class="slide-subtitle">배포 후에도 조명·설비·제품 조건이 바뀔 수 있습니다. 실패 이미지를 모으고 정답 기준과 평가 조건을 다시 확인합니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/workflow_basic.svg?v=solid-arrows-20261015-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/workflow_basic.svg?v=solid-arrows-20261015-2" alt="운영의 실패 사례를 다음 데이터와 학습에 연결합니다"></a></figure>
+<p class="lesson-takeaway">데이터 수집 → 학습 → 평가 → 배포 → 관찰을 반복하며 개선합니다.</p></div></section>
+</main><div class="deck-controls"><div class="deck-controls-inner">
+<button class="deck-button" type="button" data-slide-prev>← 이전</button>
+<div class="deck-status"><span class="deck-counter"><span data-slide-current>1</span> / <span data-slide-total>1</span></span>
+<div class="deck-progress"><div class="deck-progress-bar" data-slide-progress></div></div></div>
+<button class="deck-button" type="button" data-slide-next>다음 →</button></div></div></body></html>
