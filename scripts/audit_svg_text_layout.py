@@ -85,9 +85,32 @@ JS_GEOMETRY = r"""() => {
       });
     }
   }
+  // Bounding-box text/text tests do not catch labels hitting plotted dots.
+  // Opt in per SVG so circles used as decorative legends are not misreported.
+  const pointTextCollisions=[];
+  if(svg.dataset.checkPointLabels === 'true'){
+    const circles=[...svg.querySelectorAll('circle')];
+    for(const circle of circles){
+      const r=circle.getBoundingClientRect();
+      const cx=(r.left+r.right)/2-frame.left;
+      const cy=(r.top+r.bottom)/2-frame.top;
+      const radius=Math.max(r.width,r.height)/2;
+      for(const t of visible){
+        const nearestX=Math.max(t.x,Math.min(cx,t.right));
+        const nearestY=Math.max(t.y,Math.min(cy,t.bottom));
+        const gap=Math.hypot(cx-nearestX,cy-nearestY)-radius;
+        if(gap<4){
+          pointTextCollisions.push({
+            label:t.text,pointX:+cx.toFixed(1),pointY:+cy.toFixed(1),
+            clearance:+gap.toFixed(1)
+          });
+        }
+      }
+    }
+  }
   return {
     texts:visible.length,width:+frame.width.toFixed(1),
-    height:+frame.height.toFixed(1),overlaps,clipped
+    height:+frame.height.toFixed(1),overlaps,clipped,pointTextCollisions
   };
 }"""
 
@@ -113,7 +136,8 @@ def main() -> None:
     )
     suspect = [
         item for item in records
-        if item.get("overlaps") or item.get("clipped") or item.get("error")
+        if (item.get("overlaps") or item.get("clipped") or
+            item.get("pointTextCollisions") or item.get("error"))
     ]
     print("SVG_TEXT_AUDIT", json.dumps({
         "assets": len(assets),
@@ -121,12 +145,16 @@ def main() -> None:
         "suspect_assets": len(suspect),
         "text_pairs": sum(len(item.get("overlaps", [])) for item in records),
         "clipped_labels": sum(len(item.get("clipped", [])) for item in records),
+        "point_text_collisions": sum(
+            len(item.get("pointTextCollisions", [])) for item in records
+        ),
     }, ensure_ascii=False))
     for item in suspect:
         print("SVG_TEXT_ISSUE", json.dumps({
             "asset": item["asset"], "slides": item["slides"],
             "overlaps": item.get("overlaps", [])[:12],
             "clipped": item.get("clipped", [])[:8],
+            "point_text_collisions": item.get("pointTextCollisions", [])[:12],
         }, ensure_ascii=False))
     if suspect:
         raise SystemExit(f"SVG figure label issues remain in {len(suspect)} assets")
