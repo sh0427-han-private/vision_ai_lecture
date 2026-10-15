@@ -296,3 +296,12 @@ GitHub Pages:
 - 발표 슬라이드를 침범하지 않도록 기본 상태는 목차가 닫힌 상태이며, 열었을 때만 왼쪽 오버레이로 나타납니다. 모바일과 키보드 조작 접근성을 지원합니다. 이전에 제거한 전체 페이지 목차, '핵심만 보기' 모드는 다시 추가하지 않습니다.
 - 새 파일: `docs/vision_ai_course.html`, `docs/lecture_outline.js`, `docs/lecture_sidebar.js`, `docs/lecture_sidebar.css`. 이전 링크 `docs/ai_basics.html`, `docs/vision_ai.html`은 원본 참고를 위해 유지합니다.
 - 필수 검증: 101개 목차 링크·주제 이동·접힘/펼침·양방향 챕터 전환, 원본 Vision 37/AI 44 슬라이드의 정확한 한 번씩 재사용, 전체 202화면 레이아웃/이미지 경로·SVG·실습 상호작용 검사. 공유 JS 변경 시 cache key를 갱신합니다.
+
+
+## 2026-10-15 · Vision AI 6번 Label 그림과 3·4·5번 사과 예시 일치
+
+- 통합 Vision AI 강의 3번 Classification / 4번 Object Detection / 5번 Segmentation에서 사용하는 **동일한 960×640 사과 JPEG**와 결함 위치를 6번 Label 비교 Figure에서도 그대로 사용합니다.
+- `docs/assets/lesson/task_labels_three_outputs.svg`에는 원본 JPEG를 한 번만 담고, 세 카드에서 동일 사진을 `<use>`로 재사용합니다. 검출 Box 좌표와 분할 Mask 경로는 각각 `context_task_detection.svg`와 `context_task_segmentation.svg`에 그려진 작은 결함의 좌표·경계를 옮긴 것입니다. 별도의 큰 사과 전체 Mask나 상이한 결함 표시를 임의로 사용하지 않습니다.
+- 분류 Label은 이미지 전체 클래스, 검출 Label은 결함 Class와 Bounding Box, 분할 Label은 결함 Class와 Pixel Mask라는 핵심 메시지를 유지합니다. Box와 Mask는 강의용 개념 오버레이로, 실제 수작업 라벨 또는 모델 Prediction이라고 주장하지 않습니다.
+- 통합 `docs/vision_ai_course.html#slide-6` 및 이전 링크 호환용 `docs/vision_ai.html#slide-6`이 동일 Figure를 참조하며 버전 query를 변경해 캐시를 갱신했습니다. 슬라이드 수·목차·공통 CSS/JS는 변경하지 않습니다.
+- 검증 시 동일 원본 이미지 데이터, 검출 Box 변환 좌표, 분할 Path 일치, 202개 viewport의 렌더링을 점검합니다.
