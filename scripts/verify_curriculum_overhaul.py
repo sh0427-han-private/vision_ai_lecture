@@ -306,9 +306,13 @@ print("PPT slide source and 16:9 lecture SVG are present and mathematically alig
 intro_page = (DOCS / "intro.html").read_text("utf-8")
 assert "640 × 960 × 3" in intro_page, "Intro 6 must show H640 W960 C3"
 assert "720 × 1280 × 3" in intro_page, "Intro 7 must show H720 W1280 C3"
-intro_titles = re.findall(r'<h2 class="slide-title">([^<]+)</h2>', intro_page)
-assert intro_titles[5] == "RGB 이미지의 세 번째 차원은 거리 정보가 아닙니다"
-assert intro_titles[6] == "해상도는 가로·세로 Pixel 개수로 정해집니다"
+intro_slides = re.findall(
+    r'<section class="slide(?: [^"]+)?"[^>]*>[\\s\\S]*?</section>',
+    intro_page
+)
+assert len(intro_slides) == 16
+assert "RGB 이미지의 세 번째 차원은 거리 정보가 아닙니다" in intro_slides[5]
+assert "해상도는 가로·세로 Pixel 개수로 정해집니다" in intro_slides[6]
 labels = [int(x) for x in re.findall(
     r'<span class="slide-number">(\d+)</span>', intro_page
 )]
