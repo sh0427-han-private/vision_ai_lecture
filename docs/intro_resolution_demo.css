@@ -1,26 +1,24 @@
 /* Intro 8: real raster resolution vs magnified pixel-grid comparison. */
 .resolution-example{width:100%;max-width:1160px;margin:0 auto}
-.resolution-example .resolution-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px;margin:14px 0}
-.resolution-example .resolution-card{min-width:0;border:1px solid #d9e5ea;border-radius:12px;padding:14px;background:#fff;box-shadow:0 3px 12px #244a5c0b}
-.resolution-example .resolution-card-header{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:0 0 9px}
+.resolution-example .resolution-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:8px 0}
+.resolution-example .resolution-card{min-width:0;border:1px solid #d9e5ea;border-radius:12px;padding:10px;background:#fff;box-shadow:0 3px 12px #244a5c0b}
+.resolution-example .resolution-card-header{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:0 0 6px}
 .resolution-example .resolution-card-header strong{font-size:25px;line-height:1.2;color:#1c536a}
 .resolution-example .resolution-card-header span{font-size:17px;font-weight:680;color:#6b8190}
-.resolution-example .resolution-photo{position:relative;aspect-ratio:16/9;background:#edf3f6;border-radius:6px;overflow:hidden}
+ .resolution-example .resolution-photo{position:relative;max-width:290px;margin-inline:auto;aspect-ratio:16/9;background:#edf3f6;border-radius:6px;overflow:hidden}
 .resolution-example .resolution-photo canvas{width:100%;height:100%;display:block;object-fit:cover}
 .resolution-example .resolution-locator{position:absolute;border:2px solid #ffe16d;box-shadow:0 0 0 1px #294351;pointer-events:none}
-.resolution-example .resolution-zoom-title{font-size:17px;font-weight:720;color:#31556b;margin:12px 0 6px}
-.resolution-example .resolution-zoom{width:100%;height:auto;aspect-ratio:300/126;display:block;background:#edf3f6;border-radius:5px}
-.resolution-example .resolution-card-note{font-size:16px;line-height:1.4;color:#6a7f8c;margin:8px 0 0}
-.resolution-example .resolution-status{font-size:15px;text-align:center;color:#5d7786;margin:7px 0 0}
+.resolution-example .resolution-zoom-title{font-size:17px;font-weight:720;color:#31556b;margin:7px 0 4px}
+ .resolution-example .resolution-zoom{width:100%;max-width:290px;margin-inline:auto;height:auto;aspect-ratio:300/126;display:block;background:#edf3f6;border-radius:5px}
+.resolution-example .resolution-status{font-size:15px;text-align:center;color:#5d7786;margin:3px 0 0}
 .resolution-example .resolution-card:nth-child(1) .resolution-card-header strong{color:#ae6836}
 .resolution-example .resolution-card:nth-child(3) .resolution-card-header strong{color:#16796d}
-.resolution-example .resolution-footnote{font-size:16px;color:#6a7f8c;margin:5px 0 0;line-height:1.4}
+.resolution-example .resolution-footnote{font-size:16px;color:#6a7f8c;margin:3px 0 0;line-height:1.4}
 @media (max-height:850px){
  .resolution-example .resolution-grid{margin:9px 0;gap:14px}
  .resolution-example .resolution-card{padding:12px}
  .resolution-example .resolution-card-header strong{font-size:22px}
  .resolution-example .resolution-card-header span{font-size:15px}
- .resolution-example .resolution-card-note{font-size:14px}
 }
 @media (max-width:700px){
  .resolution-example .resolution-grid{gap:6px}
@@ -28,6 +26,6 @@
  .resolution-example .resolution-card-header{flex-direction:column;align-items:flex-start;gap:1px}
  .resolution-example .resolution-card-header strong{font-size:16px}
  .resolution-example .resolution-card-header span{font-size:11px}
- .resolution-example .resolution-zoom-title,.resolution-example .resolution-card-note{font-size:11px}
+ .resolution-example .resolution-zoom-title{font-size:11px}
  .resolution-example .resolution-footnote{font-size:12px}
 }
