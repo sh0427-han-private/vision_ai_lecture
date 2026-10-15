@@ -25,6 +25,9 @@ def svg_assets() -> list[Path]:
 
 
 def parse_segment(el: ET.Element) -> tuple[float,float,float,float] | None:
+    if el.get("data-arrow-shape") == "solid":
+        return tuple(float(el.attrib[f"data-arrow-{name}"])
+                     for name in ("x1", "y1", "x2", "y2"))
     if el.tag == NS+"line":
         try:
             return tuple(float(el.get(k, "0")) for k in ("x1","y1","x2","y2"))
@@ -57,7 +60,9 @@ def inspect_svg(path:Path) -> dict:
     arrows=[]
     for el in root.iter():
         if el.tag not in (NS+"line",NS+"path"): continue
-        if "url(" not in el.get("marker-end",""): continue
+        if ("url(" not in el.get("marker-end","")
+                and el.get("data-arrow-shape") != "solid"):
+            continue
         v=parse_segment(el)
         if not v: continue
         x1,y1,x2,y2=v
@@ -83,6 +88,33 @@ def inspect_svg(path:Path) -> dict:
     return {"file":path.name,"arrows":arrows}
 
 
+def verify_solid_geometry(path: Path) -> int:
+    """Ensure each shaft and arrowhead is ONE connected, closed filled path."""
+    root = ET.parse(path).getroot()
+    total = 0
+    for el in root.iter(NS + "path"):
+        if el.get("data-arrow-shape") != "solid":
+            continue
+        assert not el.get("marker-end"), (path, "detached marker still used")
+        assert el.get("fill") not in (None, "none"), path
+        coords = re.findall(r"-?(?:\d+(?:\.\d*)?|\.\d+)", el.get("d", ""))
+        assert len(coords) == 14, (path, el.get("d"))
+        assert el.get("d", "").strip().endswith("Z"), path
+        pts = [(float(coords[2*i]), float(coords[2*i+1]))
+               for i in range(7)]
+        start = (float(el.get("data-arrow-x1")),
+                 float(el.get("data-arrow-y1")))
+        end = (float(el.get("data-arrow-x2")),
+               float(el.get("data-arrow-y2")))
+        for k in (0, 1):
+            assert abs((pts[0][k] + pts[6][k])/2 - start[k]) < 0.02, path
+            assert abs(pts[3][k] - end[k]) < 0.02, path
+        assert ((end[0]-start[0])**2 +
+                (end[1]-start[1])**2) >= 49, path
+        total += 1
+    return total
+
+
 def inventory() -> None:
     assets=svg_assets()
     records=[]
@@ -90,14 +122,20 @@ def inventory() -> None:
         root=ET.parse(path).getroot()
         counts=Counter(el.tag.removeprefix(NS) for el in root.iter())
         connectors=[el for el in root.iter()
-                    if el.get("marker-end","").startswith("url(")]
+                    if (el.get("marker-end","").startswith("url(")
+                        or el.get("data-arrow-shape") == "solid")]
         records.append({"file":path.name,"rect":counts["rect"],
                         "path":counts["path"],"polygon":counts["polygon"],
-                        "marked":len(connectors)})
-    candidates=[r for r in records if r["marked"] or r["polygon"]]
+                        "connectors":len(connectors)})
+    candidates=[r for r in records if r["connectors"] or r["polygon"]]
     print("CONNECTOR_INVENTORY",json.dumps(
       {"svg_assets":len(records),"candidate_assets":len(candidates)},ensure_ascii=False))
     for record in candidates: print("CONNECTOR_ASSET",json.dumps(record,ensure_ascii=False))
+    solid_total = sum(verify_solid_geometry(p) for p in assets)
+    assert solid_total >= 63, ("Expected all 63 joined arrows", solid_total)
+    print("SOLID_ARROW_INTEGRITY", json.dumps({
+        "joined_arrows": solid_total, "detached_marker_arrows": 0,
+    }, ensure_ascii=False))
     geometries=[inspect_svg(p) for p in assets]
     for geo in geometries:
         if geo["arrows"]:

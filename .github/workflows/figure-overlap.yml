@@ -5,6 +5,8 @@ on:
       - "scripts/audit_svg_text_layout.py"
       - "scripts/audit_svg_connectors.py"
       - "scripts/audit_visual_slides.py"
+      - "scripts/verify_curriculum_overhaul.py"
+      - "scripts/verify_learning_routes.py"
       - "docs/**"
       - ".github/workflows/figure-overlap.yml"
   workflow_dispatch:
@@ -50,7 +52,7 @@ jobs:
           if blocking:
               print(json.dumps(blocking, ensure_ascii=False, indent=2))
               raise SystemExit(f"{len(blocking)} slide layout errors remain")
-          print("206 viewport captures verified; no visible intersections.")
+          print("204 viewport captures verified; no visible intersections.")
           PY
 
       - name: Upload geometry report

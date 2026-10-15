@@ -17,7 +17,7 @@ ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "visual_audit_output"
 OUTPUT.mkdir(exist_ok=True)
 BASE_URL = os.getenv("AUDIT_BASE_URL", "http://127.0.0.1:8765")
-DECKS = {"intro": 19, "ai_basics": 44, "vision_ai": 40}
+DECKS = {"intro": 19, "ai_basics": 44, "vision_ai": 39}
 VIEWPORTS = [(1920, 1080), (1366, 768)]
 
 

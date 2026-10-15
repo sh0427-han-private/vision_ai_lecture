@@ -12,7 +12,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DOCS = ROOT / "docs"
 manifest = json.loads((DOCS / "assets/lesson/manifest.json").read_text("utf-8"))
 
-expected = {"intro": 19, "ai_basics": 44, "vision_ai": 40}
+expected = {"intro": 19, "ai_basics": 44, "vision_ai": 39}
 
 for name, count in expected.items():
     document = (DOCS / f"{name}.html").read_text("utf-8")
@@ -219,7 +219,7 @@ print("Metrics (100 cases), threshold decision, backbone tensor sizes, transfer 
 
 
 # Essential-only route: a basic lesson must not rely on a neighboring
-# advanced slide, because 79-slide mode intentionally skips all such pages.
+# advanced slide, because the 82-slide mode intentionally skips all such pages.
 for deck in ("ai_basics", "vision_ai"):
     registry = manifest[deck]
     page = (DOCS / f"{deck}.html").read_text("utf-8")
@@ -248,9 +248,9 @@ for deck in ("ai_basics", "vision_ai"):
                 deck, item["number"], "refers to skipped following advanced slide"
             )
 assert (
-    15 + 1 + sum(x["level"] == "basic" for x in manifest["ai_basics"])
+    19 + 1 + sum(x["level"] == "basic" for x in manifest["ai_basics"])
     + 1 + sum(x["level"] == "basic" for x in manifest["vision_ai"])
-) == 79
+) == 82
 assert "직전 Convolution" not in (
     DOCS / "assets/lesson/lesson_featuremap_numeric_continuation.svg"
 ).read_text("utf-8")
@@ -384,3 +384,19 @@ assert all(
     for x in (0, 1) for y in (0, 1)
 )
 print("Intro HWC, raster resolution comparison, 17-slide numbering, AND/XOR boundary validated.")
+
+
+# Vision AI 9 is now the point-versus-neighborhood operation slide.
+vision_html = (DOCS / "vision_ai.html").read_text("utf-8")
+vision_slides = re.findall(
+    r'<section class="slide(?: [^"]+)?"[^>]*>.*?</section>',
+    vision_html, flags=re.DOTALL
+)
+assert len(vision_slides) == 39
+assert "한 Pixel을 바꿀 수도, 주변 Pixel을 함께 볼 수도 있습니다" in vision_slides[8]
+assert not any("Opening" in slide or "Closing" in slide
+               for slide in vision_slides)
+assert not any(x.get("asset", "").endswith("processing_morphology.svg")
+               for x in manifest["vision_ai"])
+assert [x["number"] for x in manifest["vision_ai"]] == list(range(1, 39))
+print("Morphological Opening/Closing slide removed; Vision 9 and manifest renumbering verified.")
