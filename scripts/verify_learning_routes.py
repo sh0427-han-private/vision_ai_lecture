@@ -7,7 +7,7 @@ from playwright.sync_api import sync_playwright
 
 BASE = os.getenv("AUDIT_BASE_URL","http://127.0.0.1:8765")
 OUT = Path(__file__).resolve().parents[1] / "visual_audit_output"
-DECKS = (("intro",20),("vision_ai_course",81))
+DECKS = (("intro",18),("vision_ai_course",81))
 
 
 def check(flag, why):
@@ -40,7 +40,7 @@ def main():
         page.on("pageerror",lambda e: errors.append(str(e)))
 
         page.goto(BASE + "/index.html")
-        position(page,"intro",1,20)
+        position(page,"intro",1,18)
         check(page.locator("[data-slide-prev]").is_disabled(),
               "Intro 1 previous button not disabled")
         check(page.locator(".lecture-toc-toggle").is_visible(),
@@ -54,12 +54,12 @@ def main():
               "TOC toggle did not open")
         check(page.locator("#lecture-toc-drawer").get_attribute("aria-hidden") == "false",
               "TOC drawer is not accessible when open")
-        check(page.locator(".lecture-toc-link").count() == 101,
-              "TOC must list all 101 slides")
+        check(page.locator(".lecture-toc-link").count() == 99,
+              "TOC must list all 99 slides")
         check(page.locator('.lecture-toc-link[aria-current="page"]').count() == 1,
               "TOC active link missing")
         page.locator('.lecture-toc-link[href="intro.html#slide-3"]').click()
-        position(page,"intro",3,20)
+        position(page,"intro",3,18)
         check(page.locator(".lecture-toc-toggle").get_attribute("aria-expanded") == "false",
               "Selecting slide should close sidebar")
         page.click(".lecture-toc-toggle")
@@ -91,7 +91,7 @@ def main():
         check(page.locator(".lecture-toc-toggle").get_attribute("aria-expanded") == "false",
               "TOC close button failed")
 
-        # All 101 course slides are reachable by next, no AI chapter detour.
+        # All 99 course slides are reachable by next, no AI chapter detour.
         for deck,total in DECKS:
             page.goto(f"{BASE}/{deck}.html#slide-1")
             position(page,deck,1,total)
@@ -100,11 +100,11 @@ def main():
             for i in range(2,total+1):
                 page.click("[data-slide-next]")
                 position(page,deck,i,total)
-        page.goto(BASE+"/intro.html#slide-20")
+        page.goto(BASE+"/intro.html#slide-18")
         page.click("[data-slide-next]")
         position(page,"vision_ai_course",1,81)
         page.click("[data-slide-prev]")
-        position(page,"intro",20,20)
+        position(page,"intro",18,18)
         page.goto(BASE+"/vision_ai_course.html#slide-81")
         check(page.locator("[data-slide-next]").is_disabled(),
               "Final slide must end course")
@@ -117,13 +117,13 @@ def main():
               "Advanced lessons must remain visible")
         page.goto(BASE+"/vision_ai_course.html#slide-57")
         page.click("header a.brand")
-        position(page,"intro",1,20)
+        position(page,"intro",1,18)
         check(not errors,"Browser JS errors: "+repr(errors))
         page.screenshot(path=str(OUT/"vision_first_sidebar_navigation.jpg"),
                         type="jpeg",quality=80)
         browser.close()
-        print("VISION_FIRST_NAV_QA_PASSED: Intro20 -> integrated Vision+AI81 = 101")
-        print("RETRACTABLE_TOC_QA_PASSED: 101 links, click, close, outside and Escape")
+        print("VISION_FIRST_NAV_QA_PASSED: Intro18 -> integrated Vision+AI81 = 99")
+        print("RETRACTABLE_TOC_QA_PASSED: 99 links, click, close, outside and Escape")
 
 
 if __name__ == "__main__":

@@ -305,3 +305,12 @@ GitHub Pages:
 - 분류 Label은 이미지 전체 클래스, 검출 Label은 결함 Class와 Bounding Box, 분할 Label은 결함 Class와 Pixel Mask라는 핵심 메시지를 유지합니다. Box와 Mask는 강의용 개념 오버레이로, 실제 수작업 라벨 또는 모델 Prediction이라고 주장하지 않습니다.
 - 통합 `docs/vision_ai_course.html#slide-6` 및 이전 링크 호환용 `docs/vision_ai.html#slide-6`이 동일 Figure를 참조하며 버전 query를 변경해 캐시를 갱신했습니다. 슬라이드 수·목차·공통 CSS/JS는 변경하지 않습니다.
 - 검증 시 동일 원본 이미지 데이터, 검출 Box 변환 좌표, 분할 Path 일치, 202개 viewport의 렌더링을 점검합니다.
+
+
+## 2026-10-16 · Intro 3 대비 픽토그램 / 이미지 이해의 어려움 순서
+
+- 현재 공개 학습 경로는 Intro **18장** → Vision AI 중심 통합 **81장**, 총 **99장**입니다. 기존 Intro 13·14의 Noise / Signal 예시는 Intro에서 제거했으며, 후속 Vision AI 영상처리·Filtering 단원은 유지합니다.
+- Intro 3에서 실제 동일한 사과 사진의 **12×8 Grayscale 숫자 배열**을 보존하되, 사람과 컴퓨터 아이콘·말풍선을 추가해 **“아, 사과구나!” / “?! 그냥 숫자 배열이네”**를 대비합니다. 아이콘·말풍선은 교육용 도식이며 실제 AI 모델의 추론 결과가 아닙니다.
+- 이전 Intro 15 (밝기·색감 변화)와 16 (평면 회전·축소·가림·블러)를 새로운 **Intro 4·5**로 옮깁니다. 새 Intro 6에서 원본 Pixel 계산을 도입하므로 앞선 Intro 4는 수식이 이미 설명되었다는 표현을 사용하지 않습니다.
+- Intro 6~14는 이전 Intro 4~12에 해당하며, 이전 Intro 17~20은 새 Intro 15~18입니다. 딥링크 `#slide-N`은 항상 **현재 위치 기반**입니다. 이동된 내용에 대해 목차·슬라이드 번호를 최신으로 갱신합니다.
+- 목차 `docs/lecture_outline.js`를 99개로 재생성하고, 공유 목차 JS를 읽는 Intro·통합 Vision HTML 양쪽에 cache key를 갱신합니다. 브라우저 탐색/픽셀 실습 검증은 새 번호를 사용합니다.

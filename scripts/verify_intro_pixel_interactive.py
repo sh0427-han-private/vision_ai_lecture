@@ -64,6 +64,10 @@ def main() -> None:
             };
         }""")
         assert bridge["dims"] == [960, 640], bridge
+        assert page.locator(".meaning-reaction svg").count() == 2
+        assert page.locator(".meaning-speech").all_text_contents() == [
+            "“아, 사과구나!”", "“?! 그냥 숫자 배열이네”"
+        ]
         assert bridge["count"] == 96, bridge
         assert bridge["actual"] == bridge["expected"], bridge
         assert len(set(bridge["actual"])) > 10, bridge
@@ -75,7 +79,7 @@ def main() -> None:
         page.click("[data-slide-next]")
         assert page.url.endswith("#slide-4")
 
-        page.goto(BASE_URL + "#slide-4", wait_until="networkidle")
+        page.goto(BASE_URL + "#slide-6", wait_until="networkidle")
         page.locator("[data-gray-coordinate]").wait_for()
         page.wait_for_function(
             "() => document.querySelector('[data-gray-values]')"
@@ -111,7 +115,7 @@ def main() -> None:
         page.locator("[data-gray-reset]").click()
         assert numbers(page, "[data-gray-values]") == second_values
 
-        page.goto(BASE_URL + "#slide-6", wait_until="networkidle")
+        page.goto(BASE_URL + "#slide-8", wait_until="networkidle")
         page.wait_for_function(
             "() => document.querySelector('[data-rgb-shape]').textContent"
             ".includes('× 3')"
@@ -147,7 +151,7 @@ def main() -> None:
         ]
         assert result == expected, (result, expected)
         # Same source image must generate three real output rasters.
-        page.goto(BASE_URL + "#slide-9", wait_until="networkidle")
+        page.goto(BASE_URL + "#slide-11", wait_until="networkidle")
         page.wait_for_function(
             "() => document.querySelector('[data-resolution-comparison]')"
             "?.dataset.resolutionReady === 'true'",
@@ -192,7 +196,7 @@ def main() -> None:
         assert not errors, errors
         browser.close()
 
-    print("Intro interactive QA passed: actual 12x8 apple number matrix, 2-to-4 continuity, region click, matching 6x6 cells, "
+    print("Intro interactive QA passed: actual 12x8 apple number matrix, 2-to-3 pictogram continuity, region click, matching 6x6 cells, "
           "brightness arithmetic, reset, true RGB sampling, "
           "and 360p/720p/1080p raster comparison.")
 

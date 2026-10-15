@@ -38,3 +38,44 @@
  .intro-meaning-bridge .meaning-subtitle{font-size:14px}
  .intro-meaning-bridge .meaning-insight{font-size:15px}
 }
+
+/* Human vs computer pictogram: explanation through illustrated reactions. */
+.intro-meaning-bridge .meaning-reaction{
+  display:flex;align-items:center;justify-content:center;gap:12px;
+  min-height:66px;margin:0 0 11px;
+}
+.intro-meaning-bridge .meaning-reaction svg{
+  width:64px;height:64px;flex:0 0 64px;
+}
+.intro-meaning-bridge .meaning-speech{
+  position:relative;display:inline-flex;align-items:center;justify-content:center;
+  min-height:51px;min-width:0;padding:9px 20px;
+  border:2px solid #add0c6;border-radius:15px;background:#ffffff;
+  color:#155b54;font-size:clamp(19px,1.9vw,26px);line-height:1.25;
+  font-weight:800;letter-spacing:-.045em;text-align:center;word-break:keep-all;
+}
+.intro-meaning-bridge .meaning-speech::before{
+  content:"";position:absolute;left:-9px;top:50%;width:14px;height:14px;
+  background:#fff;border-left:2px solid currentColor;border-bottom:2px solid currentColor;
+  transform:translateY(-50%) rotate(45deg);color:#add0c6;
+}
+.intro-meaning-bridge .meaning-reaction--computer .meaning-speech{
+  color:#355c7d;border-color:#b2c9dc;background:#fbfdff;
+}
+.intro-meaning-bridge .meaning-reaction--computer .meaning-speech::before{
+  background:#fbfdff;color:#b2c9dc;
+}
+@media(max-height:850px){
+  .intro-meaning-bridge .meaning-reaction{min-height:51px;margin-bottom:6px;gap:8px}
+  .intro-meaning-bridge .meaning-reaction svg{width:46px;height:46px;flex-basis:46px}
+  .intro-meaning-bridge .meaning-speech{min-height:40px;padding:6px 12px;font-size:19px}
+}
+@media(max-width:700px){
+  .intro-meaning-bridge .meaning-reaction{gap:6px;min-height:44px;margin-bottom:5px}
+  .intro-meaning-bridge .meaning-reaction svg{width:34px;height:34px;flex-basis:34px}
+  .intro-meaning-bridge .meaning-speech{
+    min-height:35px;padding:5px 6px;border-radius:9px;
+    font-size:clamp(12px,2.7vw,16px);
+  }
+  .intro-meaning-bridge .meaning-speech::before{width:9px;height:9px;left:-6px}
+}
