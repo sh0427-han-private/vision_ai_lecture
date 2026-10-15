@@ -307,8 +307,8 @@ intro_page = (DOCS / "intro.html").read_text("utf-8")
 assert "640 × 960 × 3" in intro_page, "Intro 6 must show H640 W960 C3"
 assert "720 × 1280 × 3" in intro_page, "Intro 7 must show H720 W1280 C3"
 intro_slides = re.findall(
-    r'<section class="slide(?: [^"]+)?"[^>]*>[\\s\\S]*?</section>',
-    intro_page
+    r'<section class="slide(?: [^"]+)?"[^>]*>.*?</section>',
+    intro_page, flags=re.DOTALL
 )
 assert len(intro_slides) == 16
 assert "RGB 이미지의 세 번째 차원은 거리 정보가 아닙니다" in intro_slides[5]
