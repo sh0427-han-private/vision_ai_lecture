@@ -1,7 +1,6 @@
 """Inventory and audit diagram connectors used in the published lecture decks."""
 from __future__ import annotations
 
-import argparse
 from collections import Counter
 from pathlib import Path
 import json
@@ -17,7 +16,7 @@ def svg_assets() -> list[Path]:
     seen: set[Path] = set()
     for name in ("intro", "ai_basics", "vision_ai"):
         content = (DOCS / (name + ".html")).read_text("utf-8")
-        for asset in re.findall(r'(?:src|href)="(assets/[^"?]+\\.svg)', content):
+        for asset in re.findall(r'(?:src|href)="(assets/[^"?]+[.]svg)', content):
             path = DOCS / asset
             if path.exists():
                 seen.add(path)
