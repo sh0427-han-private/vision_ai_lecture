@@ -130,6 +130,9 @@ def inventory() -> None:
         "lesson_chain_rule_graph.svg",
         "lecture_mean_calculation.svg",
         "lecture_sobel_concept.svg",
+        # The next 720px-wide card is excluded from small-rectangle inventory;
+        # its actual left edge is x=444 (12px after the arrow endpoint x=432).
+        "lecture_filter_to_cnn_bridge.svg",
     }
     failures = []
     for geo in geometries:
