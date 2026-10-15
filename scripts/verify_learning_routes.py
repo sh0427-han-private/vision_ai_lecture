@@ -17,6 +17,12 @@ def check(flag, why):
 
 def position(page, deck, slide, total):
     page.wait_for_url(f"**/{deck}.html#slide-{slide}")
+    # A TOC anchor changes the hash before the browser fires hashchange;
+    # wait for the actual slide render rather than only URL navigation.
+    page.wait_for_function(
+        "n => document.querySelector('[data-slide-current]')?.textContent"
+        ".trim() === String(n)", arg=slide
+    )
     check(page.locator(".slide.active").count() == 1, "active slide count")
     check(page.locator("[data-slide-current]").inner_text() == str(slide),
           f"{deck} current {slide}")
