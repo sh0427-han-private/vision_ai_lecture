@@ -128,6 +128,8 @@ def main() -> None:
             "overlaps": item.get("overlaps", [])[:12],
             "clipped": item.get("clipped", [])[:8],
         }, ensure_ascii=False))
+    if suspect:
+        raise SystemExit(f"SVG figure label issues remain in {len(suspect)} assets")
 
 
 if __name__ == "__main__":
