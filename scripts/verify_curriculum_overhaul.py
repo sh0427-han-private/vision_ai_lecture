@@ -219,7 +219,7 @@ print("Metrics (100 cases), threshold decision, backbone tensor sizes, transfer 
 
 
 # Essential-only route: a basic lesson must not rely on a neighboring
-# advanced slide, because 79-slide mode intentionally skips all such pages.
+# advanced slide, because the 82-slide mode intentionally skips all such pages.
 for deck in ("ai_basics", "vision_ai"):
     registry = manifest[deck]
     page = (DOCS / f"{deck}.html").read_text("utf-8")
@@ -248,9 +248,9 @@ for deck in ("ai_basics", "vision_ai"):
                 deck, item["number"], "refers to skipped following advanced slide"
             )
 assert (
-    15 + 1 + sum(x["level"] == "basic" for x in manifest["ai_basics"])
+    19 + 1 + sum(x["level"] == "basic" for x in manifest["ai_basics"])
     + 1 + sum(x["level"] == "basic" for x in manifest["vision_ai"])
-) == 79
+) == 82
 assert "직전 Convolution" not in (
     DOCS / "assets/lesson/lesson_featuremap_numeric_continuation.svg"
 ).read_text("utf-8")
