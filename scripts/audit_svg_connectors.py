@@ -23,27 +23,85 @@ def svg_assets() -> list[Path]:
     return sorted(seen)
 
 
+
+def parse_segment(el: ET.Element) -> tuple[float,float,float,float] | None:
+    if el.tag == NS+"line":
+        try:
+            return tuple(float(el.get(k, "0")) for k in ("x1","y1","x2","y2"))
+        except ValueError:
+            return None
+    if el.tag != NS+"path":
+        return None
+    d=el.get("d", "")
+    num=r"(-?(?:\d+(?:\.\d*)?|\.\d+))"
+    p=re.fullmatch(rf"\s*M\s*{num}[,\s]+{num}\s*L\s*{num}[,\s]+{num}\s*",d,re.I)
+    if p: return tuple(map(float,p.groups()))
+    p=re.fullmatch(rf"\s*M\s*{num}[,\s]+{num}\s*([HVhv])\s*{num}\s*",d)
+    if p:
+        x,y=float(p[1]),float(p[2]);v=float(p[4])
+        op=p[3]
+        return (x,y, v if op=="H" else x+v if op=="h" else x,
+                      v if op=="V" else y+v if op=="v" else y)
+    return None
+
+
+def inspect_svg(path:Path) -> dict:
+    root=ET.parse(path).getroot()
+    rects=[]
+    for el in root.iter(NS+"rect"):
+        try:
+            x,y,w,h=(float(el.get(q,"0")) for q in ("x","y","width","height"))
+        except ValueError: continue
+        if w<35 or h<30 or w>440 or h>350: continue
+        rects.append((x,y,x+w,y+h))
+    arrows=[]
+    for el in root.iter():
+        if el.tag not in (NS+"line",NS+"path"): continue
+        if "url(" not in el.get("marker-end",""): continue
+        v=parse_segment(el)
+        if not v: continue
+        x1,y1,x2,y2=v
+        horizontal=(abs(y1-y2)<2 and abs(x1-x2)>5)
+        vertical=(abs(x1-x2)<2 and abs(y1-y2)>5)
+        if not(horizontal or vertical): continue
+        if horizontal:
+            d=1 if x2>x1 else -1
+            source=[abs(x1-(r[2] if d==1 else r[0])) for r in rects
+                    if r[1]-5<=y1<=r[3]+5 and abs(x1-(r[2] if d==1 else r[0]))<55]
+            dest=[(r[0]-x2 if d==1 else x2-r[2]) for r in rects
+                  if r[1]-5<=y2<=r[3]+5 and -30<= (r[0]-x2 if d==1 else x2-r[2])<=50]
+        else:
+            d=1 if y2>y1 else -1
+            source=[abs(y1-(r[3] if d==1 else r[1])) for r in rects
+                    if r[0]-5<=x1<=r[2]+5 and abs(y1-(r[3] if d==1 else r[1]))<55]
+            dest=[(r[1]-y2 if d==1 else y2-r[3]) for r in rects
+                  if r[0]-5<=x2<=r[2]+5 and -30<= (r[1]-y2 if d==1 else y2-r[3])<=50]
+        if source or dest:
+            arrows.append({"d":el.get("d") or f"M{x1},{y1} L{x2},{y2}",
+             "start_gap":round(min(source),1) if source else None,
+             "end_gap":round(min(dest,key=abs),1) if dest else None})
+    return {"file":path.name,"arrows":arrows}
+
+
 def inventory() -> None:
-    records = []
-    for path in svg_assets():
-        root = ET.parse(path).getroot()
-        counts = Counter(el.tag.removeprefix(NS) for el in root.iter())
-        connectors = []
-        for el in root.iter():
-            tag = el.tag.removeprefix(NS)
-            if tag not in ("path", "line", "polyline", "polygon"):
-                continue
-            marker = [el.get(x, "") for x in ("marker-end", "marker-start")]
-            if any("url(" in value for value in marker):
-                connectors.append({"tag": tag, "shape": str(el.get("d") or el.get("points") or "")[:100], "marker": marker})
-        records.append({"file":path.name,
-          "rect": counts["rect"], "path":counts["path"], "line":counts["line"],
-          "polyline":counts["polyline"],"polygon":counts["polygon"],
-          "marked":len(connectors),"examples":connectors[:2]})
-    targets = [r for r in records if r["marked"] or r["polygon"] or r["polyline"]]
-    print("CONNECTOR_INVENTORY",json.dumps({"svg_assets":len(records),"candidate_assets":len(targets)},ensure_ascii=False))
-    for r in targets:
-        print("CONNECTOR_ASSET",json.dumps(r,ensure_ascii=False))
+    assets=svg_assets()
+    records=[]
+    for path in assets:
+        root=ET.parse(path).getroot()
+        counts=Counter(el.tag.removeprefix(NS) for el in root.iter())
+        connectors=[el for el in root.iter()
+                    if el.get("marker-end","").startswith("url(")]
+        records.append({"file":path.name,"rect":counts["rect"],
+                        "path":counts["path"],"polygon":counts["polygon"],
+                        "marked":len(connectors)})
+    candidates=[r for r in records if r["marked"] or r["polygon"]]
+    print("CONNECTOR_INVENTORY",json.dumps(
+      {"svg_assets":len(records),"candidate_assets":len(candidates)},ensure_ascii=False))
+    for record in candidates: print("CONNECTOR_ASSET",json.dumps(record,ensure_ascii=False))
+    geometries=[inspect_svg(p) for p in assets]
+    for geo in geometries:
+        if geo["arrows"]:
+            print("CONNECTOR_GEOMETRY",json.dumps(geo,ensure_ascii=False))
 
 
 if __name__ == "__main__":
