@@ -55,6 +55,9 @@ jobs:
           print("204 viewport captures verified; no visible intersections.")
           PY
 
+      - name: Check core/full navigation and slide continuity
+        run: python scripts/verify_learning_routes.py
+
       - name: Upload geometry report
         uses: actions/upload-artifact@v4
         if: always()

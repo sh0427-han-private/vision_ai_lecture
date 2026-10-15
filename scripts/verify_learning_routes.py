@@ -89,14 +89,14 @@ def main() -> None:
         page.goto(f"{BASE}/ai_basics.html?mode=core#slide-44")
         page.click("[data-slide-next]")
         page.wait_for_url("**/vision_ai.html?mode=core#slide-1")
-        check(page.locator("[data-slide-total]").inner_text() == "28",
+        check(page.locator("[data-slide-total]").inner_text() == "27",
               "core mode lost at AI -> Vision handoff")
 
         # New essential-route regression tests: these lessons must not
         # refer to advanced slides skipped by mode=core.
         for physical_slide, filename, banned in [
-            (14, "median", "다음 장"),
-            (22, "feature_map", "직전"),
+            (13, "median", "다음 장"),
+            (21, "feature_map", "직전"),
         ]:
             page.goto(f"{BASE}/vision_ai.html?mode=core#slide-{physical_slide}")
             wait_slide(page, physical_slide)
