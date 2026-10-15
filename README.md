@@ -18,8 +18,8 @@ Vision AI를 처음 접하는 사람도 **현실 세계 → Sensor → 숫자 �
 
 ## 학습 경로 선택
 
-- **[핵심 과정 · 82장](https://sh0427-han.github.io/vision_ai_lecture/docs/intro.html?mode=core#slide-1)** — Intro 19장 + AI Basics 36장(표지 포함) + Vision AI 27장(표지 포함). 정량 계산·심화 해설 20장을 건너뛰며 먼저 큰 흐름을 익힙니다.
-- **[전체 과정 · 102장](https://sh0427-han.github.io/vision_ai_lecture/docs/intro.html#slide-1)** — 기존 모든 슬라이드 보존. 강의 하단 버튼으로 어느 과정에서든 핵심/전체를 전환합니다.
+- **[핵심 과정 · 81장](https://sh0427-han.github.io/vision_ai_lecture/docs/intro.html?mode=core#slide-1)** — Intro 19장 + AI Basics 36장(표지 포함) + Vision AI 26장(표지 포함). 정량 계산·심화 해설 20장을 건너뛰며 먼저 큰 흐름을 익힙니다.
+- **[전체 과정 · 100장](https://sh0427-han.github.io/vision_ai_lecture/docs/intro.html#slide-1)** — 기존 모든 슬라이드 보존. 강의 하단 버튼으로 어느 과정에서든 핵심/전체를 전환합니다.
 
 기본 상태는 **전체 과정**이며, URL의 `?mode=core`는 핵심 과정입니다. 강의 목차의 버튼 또는 슬라이드 하단의 **핵심만 보기 / 심화 포함 전체 보기**에서 모드를 바꿀 수 있습니다. 기존 번호와 슬라이드 직접 링크는 유지합니다.
 
@@ -141,6 +141,6 @@ vision_ai_lecture/
 
 ## Web Lecture
 
-정적 강의 사이트는 [강의 목차](docs/index.html)에서 시작합니다. Intro 19장 → AI Basics 44장 → Vision AI 39장, 총 102장입니다.
+정적 강의 사이트는 [강의 목차](docs/index.html)에서 시작합니다. Intro 19장 → AI Basics 44장 → Vision AI 37장, 총 100장입니다.
 
 디자인은 **흰색 배경, 한 화면 한 슬라이드, 최소한의 포인트 컬러**를 기본으로 합니다.
