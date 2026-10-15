@@ -62,7 +62,8 @@ for page in ("intro.html", "ai_basics.html", "vision_ai.html"):
     assert "data-lesson-mode-summary" not in markup, page
     assert '>목차</a>' not in markup and 'class="nav-links"' not in markup, page
     assert 'href="intro.html#slide-1"' in markup, page
-    assert 'slide.js?v=single-track-20261015-1' in markup, page
+    assert ('slide.js?v=vision-first-20261015-1' if page == "intro.html"
+            else 'slide.js?v=single-track-20261015-1') in markup, page
 intro_markup = (DOCS / "intro.html").read_text("utf-8")
 assert 'data-prev-page=""' in intro_markup
 assert 'data-next-page="vision_ai_course.html"' in intro_markup
