@@ -28,7 +28,54 @@ def main() -> None:
         errors: list[str] = []
         page.on("pageerror", lambda error: errors.append(str(error)))
 
+        # New Intro 3: the numbers must be computed from the same photo
+        # displayed on Intro 2, not fabricated, and represent 8x12 grayscale.
         page.goto(BASE_URL + "#slide-3", wait_until="networkidle")
+        page.wait_for_function(
+            "() => document.querySelector('[data-apple-matrix-bridge]')"
+            "?.dataset.appleMatrixReady === 'true'"
+        )
+        bridge = page.evaluate("""() => {
+            const root = document.querySelector('[data-apple-matrix-bridge]');
+            const img = root.querySelector('[data-apple-matrix-source]');
+            const grid = root.querySelector('[data-apple-matrix-grid]');
+            const canvas = document.createElement('canvas');
+            canvas.width = 12;
+            canvas.height = 8;
+            const context = canvas.getContext('2d');
+            context.imageSmoothingEnabled = true;
+            context.imageSmoothingQuality = 'high';
+            context.drawImage(img, 0, 0, 12, 8);
+            const pixels = context.getImageData(0,0,12,8).data;
+            const expected = [];
+            for (let i = 0; i < 96; i++) {
+                const j = i * 4;
+                expected.push(Math.round(
+                    .299*pixels[j] + .587*pixels[j+1] + .114*pixels[j+2]
+                ));
+            }
+            return {
+                src: img.getAttribute('src'),
+                dims: [img.naturalWidth,img.naturalHeight],
+                mode: root.dataset.appleMatrixReady,
+                count: grid.children.length,
+                actual: [...grid.children].map(el=>Number(el.textContent)),
+                expected,
+            };
+        }""")
+        assert bridge["dims"] == [960, 640], bridge
+        assert bridge["count"] == 96, bridge
+        assert bridge["actual"] == bridge["expected"], bridge
+        assert len(set(bridge["actual"])) > 10, bridge
+        assert all(0 <= x <= 255 for x in bridge["actual"]), bridge
+        page.goto(BASE_URL + "#slide-2", wait_until="networkidle")
+        assert page.locator(".slide.active img").get_attribute("src").split("?")[0] == bridge["src"]
+        page.click("[data-slide-next]")
+        assert page.url.endswith("#slide-3")
+        page.click("[data-slide-next]")
+        assert page.url.endswith("#slide-4")
+
+        page.goto(BASE_URL + "#slide-4", wait_until="networkidle")
         page.locator("[data-gray-coordinate]").wait_for()
         page.wait_for_function(
             "() => document.querySelector('[data-gray-values]')"
@@ -64,7 +111,7 @@ def main() -> None:
         page.locator("[data-gray-reset]").click()
         assert numbers(page, "[data-gray-values]") == second_values
 
-        page.goto(BASE_URL + "#slide-5", wait_until="networkidle")
+        page.goto(BASE_URL + "#slide-6", wait_until="networkidle")
         page.wait_for_function(
             "() => document.querySelector('[data-rgb-shape]').textContent"
             ".includes('× 3')"
@@ -100,7 +147,7 @@ def main() -> None:
         ]
         assert result == expected, (result, expected)
         # Same source image must generate three real output rasters.
-        page.goto(BASE_URL + "#slide-8", wait_until="networkidle")
+        page.goto(BASE_URL + "#slide-9", wait_until="networkidle")
         page.wait_for_function(
             "() => document.querySelector('[data-resolution-comparison]')"
             "?.dataset.resolutionReady === 'true'",
@@ -145,7 +192,7 @@ def main() -> None:
         assert not errors, errors
         browser.close()
 
-    print("Intro interactive QA passed: region click, matching 6x6 cells, "
+    print("Intro interactive QA passed: actual 12x8 apple number matrix, 2-to-4 continuity, region click, matching 6x6 cells, "
           "brightness arithmetic, reset, true RGB sampling, "
           "and 360p/720p/1080p raster comparison.")
 

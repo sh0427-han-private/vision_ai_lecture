@@ -12,7 +12,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DOCS = ROOT / "docs"
 manifest = json.loads((DOCS / "assets/lesson/manifest.json").read_text("utf-8"))
 
-expected = {"intro": 19, "ai_basics": 44, "vision_ai": 37}
+expected = {"intro": 20, "ai_basics": 44, "vision_ai": 37}
 
 for name, count in expected.items():
     document = (DOCS / f"{name}.html").read_text("utf-8")
@@ -325,42 +325,59 @@ print("PPT slide source and 16:9 lecture SVG are present and mathematically alig
 
 # Intro: the real apple JPEG is width 960, height 640. Shape is H x W x C.
 intro_page = (DOCS / "intro.html").read_text("utf-8")
-assert "640 × 960 × 3" in intro_page, "Intro 6 must show H640 W960 C3"
-assert "720 × 1280 × 3" in intro_page, "Intro 7 must show H720 W1280 C3"
 intro_slides = re.findall(
     r'<section class="slide(?: [^"]+)?"[^>]*>.*?</section>',
     intro_page, flags=re.DOTALL
 )
-assert len(intro_slides) == 19
-assert "RGB 이미지의 세 번째 차원은 거리 정보가 아닙니다" in intro_slides[5]
-assert "해상도는 가로·세로 Pixel 개수로 정해집니다" in intro_slides[6]
-assert "같은 사진도 해상도에 따라 Pixel 개수가 달라집니다" in intro_slides[7]
-assert "‘본다’는 것은 무엇(What)과 어디(Where)를 이해하는 일" in intro_slides[8]
-assert "2D 이미지에서 3D 공간을 알아내기는 어렵습니다" in intro_slides[9]
-assert "to know what is where by looking" in intro_slides[8]
-assert "Marr &amp; Nishihara (1978)" in intro_slides[9]
-assert "https://doi.org/10.1098/rspb.1978.0020" in intro_slides[9]
-assert "intro_inverse_2d_3d_ambiguity.svg?v=what-where-20261015-1" in intro_slides[9]
+assert len(intro_slides) == 20
+assert "이 이미지는 무엇으로 보이나요?" in intro_slides[1]
+assert "사람에게는 사과, 컴퓨터와 AI에게는 숫자 배열" in intro_slides[2]
+assert 'data-apple-matrix-bridge' in intro_slides[2]
+assert 'data-apple-matrix-grid' in intro_slides[2]
+assert 'assets/vision_task_apple_reference.jpg' in intro_slides[1]
+assert 'assets/vision_task_apple_reference.jpg' in intro_slides[2]
+assert "Vision AI가 어려운 이유:" in intro_slides[2]
+assert "사진의 위치를 바꾸면 Pixel 숫자도 바뀝니다" in intro_slides[3]
+assert 'data-grayscale-lesson' in intro_slides[3]
+assert "RGB 이미지에서는 Pixel 한 칸에 숫자 3개가 있습니다" in intro_slides[5]
+assert "RGB 이미지의 세 번째 차원은 거리 정보가 아닙니다" in intro_slides[6]
+assert "해상도는 가로·세로 Pixel 개수로 정해집니다" in intro_slides[7]
+assert "같은 사진도 해상도에 따라 Pixel 개수가 달라집니다" in intro_slides[8]
+assert "‘본다’는 것은 무엇(What)과 어디(Where)를 이해하는 일" in intro_slides[9]
+assert "2D 이미지에서 3D 공간을 알아내기는 어렵습니다" in intro_slides[10]
+assert "to know what is where by looking" in intro_slides[9]
+assert "Marr &amp; Nishihara (1978)" in intro_slides[10]
+assert "https://doi.org/10.1098/rspb.1978.0020" in intro_slides[10]
+assert "intro_inverse_2d_3d_ambiguity.svg?v=what-where-20261015-1" in intro_slides[10]
 assert "intro_vision_foundations.css?v=20261015-1" in intro_page
-# Mathematically coherent perspective scene: apparent height h / distance d
+assert "640 × 960 × 3" in intro_slides[6], "RGB H × W × C definition changed"
+assert "720 × 1280 × 3" in intro_slides[7], "resolution H × W × C changed"
+assert 'data-resolution-source="assets/generated/apple_studio.webp"' in intro_slides[8]
+for p, w, h in ((360, 640, 360), (720, 1280, 720), (1080, 1920, 1080)):
+    assert f'data-resolution-p="{p}"' in intro_slides[8]
+    assert f'width="{w}" height="{h}" data-resolution-full' in intro_slides[8]
+for path in ("intro_resolution_demo.js", "intro_resolution_demo.css",
+             "intro_apple_number_bridge.js", "intro_apple_number_bridge.css"):
+    assert (DOCS / path).is_file(), path
+assert "intro_resolution_demo.js?v=20261015-1" in intro_page
+assert "intro_apple_number_bridge.js?v=20261015-1" in intro_page
+assert "intro_apple_number_bridge.css?v=20261015-1" in intro_page
+bridge_script = (DOCS / "intro_apple_number_bridge.js").read_text("utf-8")
+assert "const width = 12, height = 8;" in bridge_script
+for channel_weight in ("0.299", "0.587", "0.114"):
+    assert channel_weight in bridge_script
+
+# Perspective illustration shows equal apparent height for scaled size/distance.
 assert 160 / (625 - 145) == 220 / (805 - 145)
 inverse_svg = DOCS / "assets/lesson/intro_inverse_2d_3d_ambiguity.svg"
 inverse_root = ET.parse(inverse_svg).getroot()
 assert inverse_root.get("viewBox") == "0 0 1200 445"
 assert inverse_root.tag == "{http://www.w3.org/2000/svg}svg"
 
-assert 'data-resolution-source="assets/generated/apple_studio.webp"' in intro_slides[7]
-for p, w, h in ((360, 640, 360), (720, 1280, 720), (1080, 1920, 1080)):
-    assert f'data-resolution-p="{p}"' in intro_slides[7]
-    assert f'width="{w}" height="{h}" data-resolution-full' in intro_slides[7]
-assert (DOCS / "intro_resolution_demo.js").is_file()
-assert (DOCS / "intro_resolution_demo.css").is_file()
-assert "intro_resolution_demo.js?v=20261015-1" in intro_page
-
 labels = [int(x) for x in re.findall(
     r'<span class="slide-number">(\d+)</span>', intro_page
 )]
-assert labels == list(range(3, 20)), labels
+assert labels == list(range(3, 21)), labels
 channel_svg = (DOCS / "assets/lesson/lecture_rgb_channel_stack.svg").read_text("utf-8")
 assert 'viewBox="0 0 960 640"' in channel_svg
 assert "H × W × C = 640 × 960 × 3" in channel_svg
@@ -404,7 +421,7 @@ assert all(
     (x + y > 1.5) == bool(x & y)
     for x in (0, 1) for y in (0, 1)
 )
-print("Intro HWC, raster resolution comparison, 17-slide numbering, AND/XOR boundary validated.")
+print("Intro apple-to-number bridge, HWC, 20-slide numbering and AND/XOR verified.")
 
 
 # Vision AI 9 is now the point-versus-neighborhood operation slide.
