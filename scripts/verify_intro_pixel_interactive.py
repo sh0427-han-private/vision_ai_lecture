@@ -69,7 +69,14 @@ def main() -> None:
             "() => document.querySelector('[data-rgb-shape]').textContent"
             ".includes('× 3')"
         )
+        # Match the live JPEG dimensions with H x W x RGB channel order.
+        image_shape = page.locator("[data-rgb-shape]").inner_text()
+        assert "640" in image_shape and "960" in image_shape, image_shape
         image = page.locator("[data-rgb-photo]")
+        dimensions = image.evaluate(
+            "(el) => [el.naturalWidth, el.naturalHeight]"
+        )
+        assert dimensions == [960, 640], dimensions
         image.click(position={"x": 180, "y": 130})
         selected = page.locator("[data-rgb-coordinate]").inner_text()
         match = re.fullmatch(r"image\[y=(\d+), x=(\d+)\]", selected)
