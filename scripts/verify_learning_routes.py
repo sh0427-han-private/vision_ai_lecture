@@ -1,11 +1,14 @@
-"""Browser QA for core/full navigation, including deep links and chapter handoffs."""
+"""Browser QA for a single continuous Intro -> AI Basics -> Vision AI course."""
 from __future__ import annotations
 
 import os
+from pathlib import Path
+
 from playwright.sync_api import sync_playwright
 
 BASE = os.getenv("AUDIT_BASE_URL", "http://127.0.0.1:8765")
-DECKS = {"ai_basics": (44, 36), "vision_ai": (37, 26)}
+DECKS = (("intro", 19), ("ai_basics", 44), ("vision_ai", 37))
+OUT = Path(__file__).resolve().parents[1] / "visual_audit_output"
 
 
 def check(flag: bool, message: str) -> None:
@@ -13,105 +16,89 @@ def check(flag: bool, message: str) -> None:
         raise AssertionError(message)
 
 
-def wait_slide(page, number: int) -> None:
-    page.wait_for_function(
-        "(n) => location.hash === '#slide-' + n && "
-        "document.querySelector('.slide.active') !== null", arg=number
-    )
+def verify_position(page, deck: str, current: int, total: int) -> None:
+    page.wait_for_url(f"**/{deck}.html#slide-{current}")
+    check(page.locator(".slide.active").count() == 1,
+          f"{deck} slide {current}: one active slide expected")
+    check(page.locator("[data-slide-current]").inner_text() == str(current),
+          f"{deck} slide {current}: current page counter incorrect")
+    check(page.locator("[data-slide-total]").inner_text() == str(total),
+          f"{deck} slide {current}: total page counter incorrect")
 
 
 def main() -> None:
+    OUT.mkdir(exist_ok=True)
     with sync_playwright() as p:
         browser = p.chromium.launch(
             headless=True,
             args=["--no-sandbox", "--disable-dev-shm-usage"]
         )
         page = browser.new_page(viewport={"width": 1366, "height": 768})
+
+        # The former contents page now redirects immediately to Intro 1.
         page.goto(f"{BASE}/index.html")
-        check(page.locator('a[href="intro.html?mode=core#slide-1"]').count() == 1,
-              "homepage core route missing")
-        check(page.locator('a[href="intro.html#slide-1"]').count() == 1,
-              "homepage full route missing")
+        verify_position(page, "intro", 1, 19)
+        check("AI는 세상을 어떻게 볼까?" in page.locator(".slide.active").inner_text(),
+              "homepage did not open the original Intro first slide")
+        check(page.locator("[data-slide-prev]").is_disabled(),
+              "Intro 1 must be the beginning of the course")
 
-        # Core path begins with Intro (all Intro slides are essential).
-        page.goto(f"{BASE}/intro.html?mode=core#slide-19")
-        page.click("[data-slide-next]")
-        page.wait_for_url("**/ai_basics.html?mode=core#slide-1")
-        check(page.locator("[data-slide-total]").inner_text() == "36",
-              "Intro to AI Basics core handoff lost route")
-        check(page.locator("[data-lesson-mode-toggle]").get_attribute("aria-pressed") == "true",
-              "AI core toggle not active")
-        check("mode=core" in page.locator('.nav-links a[href^="vision_ai.html"]').get_attribute("href"),
-              "chapter header link lost selected core route")
+        # There is no contents page, chapter picker, or basic/advanced mode.
+        for deck, total in DECKS:
+            page.goto(f"{BASE}/{deck}.html#slide-1")
+            verify_position(page, deck, 1, total)
+            check(page.locator(".nav-links").count() == 0,
+                  f"{deck}: contents/chapter shortcut navigation still present")
+            check(page.locator('[data-lesson-mode-toggle]').count() == 0,
+                  f"{deck}: core-only toggle still present")
+            check(page.locator('[data-lesson-mode-summary]').count() == 0,
+                  f"{deck}: obsolete route label still present")
+            check(page.locator('a:has-text("목차")').count() == 0,
+                  f"{deck}: contents link still present")
+            for i in range(1, total):
+                page.click("[data-slide-next]")
+                verify_position(page, deck, i + 1, total)
+            # Previously skipped detail slides must be included.
+            check(page.locator(".slide.active").count() == 1,
+                  f"{deck}: final slide missing")
 
-        for deck, (full, core) in DECKS.items():
-            page.goto(f"{BASE}/{deck}.html?mode=core#slide-1")
-            check(page.locator("[data-slide-total]").inner_text() == str(core),
-                  f"{deck}: unexpected core length")
-            check(page.locator("[data-lesson-mode-toggle]").count() == 1,
-                  f"{deck}: core/full toggle missing")
-            page.screenshot(
-                path=str(__import__("pathlib").Path(__file__).resolve().parents[1]
-                         / "visual_audit_output" / f"learning_route_{deck}_core.jpg"),
-                type="jpeg", quality=80
-            )
-            for i in range(core):
-                level = page.locator(".slide.active").get_attribute("data-level")
-                check(level != "detail", f"{deck}: detail visited in core mode")
-                check(page.locator("[data-slide-current]").inner_text() == str(i + 1),
-                      f"{deck}: progress counter mismatch")
-                if i < core - 1:
-                    page.click("[data-slide-next]")
-            # The last essential slide should be the last physical slide.
-            check(page.url.endswith(f"#slide-{full}"),
-                  f"{deck}: did not arrive at final slide")
-            page.click("[data-lesson-mode-toggle]")
-            check(page.locator("[data-slide-total]").inner_text() == str(full),
-                  f"{deck}: full mode not restored")
-            check("mode=core" not in page.url, f"{deck}: URL core flag retained")
-            check("mode=core" not in page.locator('.nav-links a[href^="intro.html"]').get_attribute("href"),
-                  f"{deck}: chapter header link retained core flag")
-            page.click("[data-lesson-mode-toggle]")
-            check(page.locator("[data-slide-total]").inner_text() == str(core),
-                  f"{deck}: core mode toggle failed")
+        # Both chapter boundaries work in either direction, without a menu.
+        for src, src_total, dst, dst_total in (
+            ("intro", 19, "ai_basics", 44),
+            ("ai_basics", 44, "vision_ai", 37),
+        ):
+            page.goto(f"{BASE}/{src}.html#slide-{src_total}")
+            page.click("[data-slide-next]")
+            verify_position(page, dst, 1, dst_total)
+            page.click("[data-slide-prev]")
+            verify_position(page, src, src_total, src_total)
 
-        # A deep link to an advanced slide in core mode resolves to the next
-        # essential slide. For AI Basics, physical slide 5 is "detail".
-        page.goto(f"{BASE}/ai_basics.html?mode=core#slide-5")
-        wait_slide(page, 6)
-        check(page.locator(".slide.active").get_attribute("data-level") == "basic",
-              "advanced deep link should resolve to next essential slide")
-        page.click("[data-lesson-mode-toggle]")
-        page.click("[data-slide-prev]")
-        wait_slide(page, 5)
-        check(page.locator(".slide.active").get_attribute("data-level") == "detail",
-              "full path must preserve detailed slide")
-        page.goto(f"{BASE}/ai_basics.html?mode=core#slide-44")
-        page.click("[data-slide-next]")
-        page.wait_for_url("**/vision_ai.html?mode=core#slide-1")
-        check(page.locator("[data-slide-total]").inner_text() == "26",
-              "core mode lost at AI -> Vision handoff")
+        page.goto(f"{BASE}/vision_ai.html#slide-37")
+        check(page.locator("[data-slide-next]").is_disabled(),
+              "Vision AI 37 should be the final slide")
 
-        # New essential-route regression tests: these lessons must not
-        # refer to advanced slides skipped by mode=core.
-        for physical_slide, filename, banned in [
-            (13, "median", "다음 장"),
-            (21, "feature_map", "직전"),
-        ]:
-            page.goto(f"{BASE}/vision_ai.html?mode=core#slide-{physical_slide}")
-            wait_slide(page, physical_slide)
-            subtitle = page.locator(".slide.active .slide-subtitle").inner_text()
-            check(banned not in subtitle,
-                  f"vision_ai slide {physical_slide} still depends on skipped detail")
-            page.screenshot(
-                path=str(__import__("pathlib").Path(__file__).resolve().parents[1]
-                         / "visual_audit_output" / f"core_continuity_{filename}.jpg"),
-                type="jpeg", quality=80
-            )
+        # Old bookmarks with ?mode=core must not filter any slides.
+        for deck, slide_number, total in (
+            ("ai_basics", 5, 44),
+            ("vision_ai", 32, 37),
+        ):
+            page.goto(f"{BASE}/{deck}.html?mode=core#slide-{slide_number}")
+            verify_position(page, deck, slide_number, total)
+            check("mode=core" not in page.url,
+                  f"{deck}: removed mode parameter persists")
+            check(page.locator(".slide.active").get_attribute("data-level") == "detail",
+                  f"{deck}: existing deep link to detail slide must work")
+
+        # Site branding always returns to the first Intro slide.
+        page.goto(f"{BASE}/vision_ai.html#slide-4")
+        page.click("header a.brand")
+        verify_position(page, "intro", 1, 19)
+        page.screenshot(path=str(OUT / "learning_route_single_track.jpg"),
+                        type="jpeg", quality=80)
 
         browser.close()
-        print("CORE_FULL_LEARNING_ROUTE_QA_PASSED: Intro19 + AI36 + Vision26 = 81")
-        print("FULL_ROUTE_LENGTH: Intro19 + AI44 + Vision37 = 100")
+        print("SINGLE_TRACK_NAVIGATION_QA_PASSED: Intro19 -> AI44 -> Vision37 = 100")
+        print("NO_CONTENTS_OR_CORE_MODE_QA_PASSED: old core links show full lesson")
 
 
 if __name__ == "__main__":

@@ -38,7 +38,7 @@ jobs:
       - name: Test interactive Intro grayscale and RGB pixels
         run: python scripts/verify_intro_pixel_interactive.py
 
-      - name: Test core/full navigation
+      - name: Test direct Intro start and complete course navigation
         run: python scripts/verify_learning_routes.py
 
       - name: Upload full slides and contact sheets

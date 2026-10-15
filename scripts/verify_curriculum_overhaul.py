@@ -46,10 +46,31 @@ for name, count in expected.items():
 
     print(f"{name}: {actual} slides and local resources verified")
 
+# Both published entrypoints must go straight to Intro 1, not a contents menu.
 home = (DOCS / "index.html").read_text("utf-8")
-assert home.count('class="card"') == 3, "course landing page"
+repo_home = (ROOT / "index.html").read_text("utf-8")
+assert 'location.replace("./intro.html#slide-1")' in home
+assert 'location.replace("./docs/intro.html#slide-1")' in repo_home
+assert 'class="card"' not in home and 'mode=core' not in home
+nav_js = (DOCS / "slide.js").read_text("utf-8")
+assert 'coreMode' not in nav_js and 'nearbyIncluded' not in nav_js
+assert 'if (currentIndex > 0) return goTo(currentIndex - 1)' in nav_js
+assert 'if (currentIndex < slides.length - 1) return goTo(currentIndex + 1)' in nav_js
 for page in ("intro.html", "ai_basics.html", "vision_ai.html"):
-    assert f'href="{page}"' in home
+    markup = (DOCS / page).read_text("utf-8")
+    assert "data-lesson-mode-toggle" not in markup, page
+    assert "data-lesson-mode-summary" not in markup, page
+    assert '>목차</a>' not in markup and 'class="nav-links"' not in markup, page
+    assert 'href="intro.html#slide-1"' in markup, page
+    assert 'slide.js?v=single-track-20261015-1' in markup, page
+intro_markup = (DOCS / "intro.html").read_text("utf-8")
+assert 'data-prev-page=""' in intro_markup
+assert 'data-next-page="ai_basics.html"' in intro_markup
+assert 'data-prev-page="intro.html"' in (DOCS / "ai_basics.html").read_text("utf-8")
+assert 'data-next-page="vision_ai.html"' in (DOCS / "ai_basics.html").read_text("utf-8")
+assert 'data-prev-page="ai_basics.html"' in (DOCS / "vision_ai.html").read_text("utf-8")
+assert 'data-next-page=""' in (DOCS / "vision_ai.html").read_text("utf-8")
+print("Landing redirects and single-track controls validated.")
 
 figures = sorted((DOCS / "assets/lesson").glob("lecture_*.svg"))
 assert len(figures) >= 9, "missing new lesson illustrations"
