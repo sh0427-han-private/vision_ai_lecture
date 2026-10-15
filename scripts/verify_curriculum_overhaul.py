@@ -115,7 +115,7 @@ outline_source = (DOCS / "lecture_outline.js").read_text("utf-8")
 outline = json.loads(outline_source.split(" = ", 1)[1].strip().rstrip(";"))
 items = [item for group in outline["groups"] for item in group["items"]]
 assert len(items) == 99
-assert [item["global"] for item in items] == list(range(1, 102))
+assert [item["global"] for item in items] == list(range(1, 100))
 assert [(item["page"], item["slide"]) for item in items[:18]] == [
     ("intro.html", n) for n in range(1, 19)
 ]
