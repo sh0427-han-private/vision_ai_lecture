@@ -99,11 +99,55 @@ def main() -> None:
             for color in ("r", "g", "b")
         ]
         assert result == expected, (result, expected)
+        # Same source image must generate three real output rasters.
+        page.goto(BASE_URL + "#slide-8", wait_until="networkidle")
+        page.wait_for_function(
+            "() => document.querySelector('[data-resolution-comparison]')"
+            "?.dataset.resolutionReady === 'true'",
+            timeout=20000,
+        )
+        data = page.evaluate("""() => {
+            const root = document.querySelector('[data-resolution-comparison]');
+            const values = [360, 720, 1080].map(p => {
+                const card = root.querySelector('[data-resolution-p="' + p + '"]');
+                const full = card.querySelector('[data-resolution-full]');
+                const zoom = card.querySelector('[data-resolution-zoom]');
+                const z = zoom.getContext('2d').getImageData(
+                    0, 0, zoom.width, zoom.height).data;
+                let colored = 0;
+                let signature = 0;
+                for (let i = 0; i < z.length; i += 4) {
+                    if (z[i] || z[i+1] || z[i+2]) colored++;
+                    if (i % 160 === 0) signature +=
+                        z[i]*3 + z[i+1]*5 + z[i+2]*7;
+                }
+                return {
+                    p, size:[full.width,full.height],
+                    zoomSize:[zoom.width,zoom.height],
+                    colored, signature,
+                    locator:card.querySelector('[data-resolution-locator]')
+                        .getBoundingClientRect().width,
+                };
+            });
+            return {
+                src:[Number(root.dataset.sourceWidth),
+                     Number(root.dataset.sourceHeight)],
+                values
+            };
+        }""")
+        assert all(x > 0 for x in data["src"]), data
+        assert [v["size"] for v in data["values"]] == [
+            [640, 360], [1280, 720], [1920, 1080]
+        ], data
+        assert all(v["colored"] > 0 and v["locator"] > 0
+                   for v in data["values"]), data
+        assert len(set(v["signature"] for v in data["values"])) > 1, data
         assert not errors, errors
         browser.close()
 
     print("Intro interactive QA passed: region click, matching 6x6 cells, "
-          "brightness arithmetic, reset, and true RGB sampling.")
+          "brightness arithmetic, reset, true RGB sampling, "
+          "and 360p/720p/1080p raster comparison.")
 
 
 if __name__ == "__main__":
