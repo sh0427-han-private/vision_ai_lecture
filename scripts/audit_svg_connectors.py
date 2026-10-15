@@ -104,5 +104,44 @@ def inventory() -> None:
             print("CONNECTOR_GEOMETRY",json.dumps(geo,ensure_ascii=False))
 
 
+    reviewed = {
+        "lesson_affine_relu_comparison.svg",
+        "lesson_cnn_feature_hierarchy.svg",
+        "lesson_backbone_tensor_head_options.svg",
+        "lesson_featuremap_numeric_continuation.svg",
+        "lesson_multichannel_filter_to_maps.svg",
+        "lesson_perceptron_numeric_flow.svg",
+        "lesson_sgd_update_flow.svg",
+        "lesson_chain_rule_graph.svg",
+        "workflow_basic.svg",
+        "lesson_transfer_freeze_vs_finetune.svg",
+        "lesson_transfer_pretraining_to_task.svg",
+        "lesson_relu_value_graph.svg",
+        "preprocess_basic.svg",
+        "hierarchy_professional.svg",
+        "lesson_backbone_head_roles.svg",
+        "lesson_receptive_field_growth.svg",
+        "lecture_mean_calculation.svg",
+    }
+    failures = []
+    for geo in geometries:
+        if geo["file"] not in reviewed:
+            continue
+        if not geo["arrows"]:
+            failures.append({"file": geo["file"], "error": "no connectors checked"})
+        for arrow in geo["arrows"]:
+            for side in ("start_gap", "end_gap"):
+                gap = arrow.get(side)
+                if gap is not None and gap < 7:
+                    failures.append({"file": geo["file"], "arrow": arrow, "side": side})
+    print("CONNECTOR_SPACING_AUDIT", json.dumps({
+        "reviewed_assets": len(reviewed), "flagged_connectors": len(failures),
+    }, ensure_ascii=False))
+    for item in failures:
+        print("CONNECTOR_SPACING_ISSUE", json.dumps(item, ensure_ascii=False))
+    if failures:
+        raise SystemExit("Connector-to-box spacing regression detected")
+
+
 if __name__ == "__main__":
     inventory()
