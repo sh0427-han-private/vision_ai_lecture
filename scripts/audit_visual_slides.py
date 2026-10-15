@@ -47,8 +47,16 @@ def inspect_slide(page):
             '.apple-variation-grid,.generalization-visual,' +
             '.intro-visual,.visual-panel,.lesson-reference'
           )].filter(x => x.getBoundingClientRect().height > 1);
-          const visibleNodes = nodes.filter(x => !nodes.some(y =>
-            y!==x && y.contains(x)));
+          // Visually hidden accessibility-only content has no visual overlap.
+          const visuallyPresent = nodes.filter(node => {
+            if (node.closest('.ppt-screenreader-only,[aria-hidden="true"]'))
+              return false;
+            const cs = getComputedStyle(node);
+            return cs.display !== 'none' && cs.visibility !== 'hidden' &&
+              cs.opacity !== '0';
+          });
+          const visibleNodes = visuallyPresent.filter(x =>
+            !visuallyPresent.some(y => y !== x && y.contains(x)));
           const elements = visibleNodes.map(node => ({
             name: node.className || node.tagName, bounds:rect(node)
           }));
