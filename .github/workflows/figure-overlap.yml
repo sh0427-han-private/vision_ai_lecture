@@ -3,6 +3,7 @@ on:
   pull_request:
     paths:
       - "scripts/audit_svg_text_layout.py"
+      - "scripts/audit_svg_connectors.py"
       - "scripts/audit_visual_slides.py"
       - "docs/**"
       - ".github/workflows/figure-overlap.yml"
@@ -20,6 +21,8 @@ jobs:
         uses: actions/checkout@v4
       - name: Verify slide numbers, HWC shapes and resolution examples
         run: python scripts/verify_curriculum_overhaul.py
+      - name: Audit SVG connectors
+        run: python scripts/audit_svg_connectors.py
       - name: Install Playwright
         run: |
           python -m pip install playwright pillow
