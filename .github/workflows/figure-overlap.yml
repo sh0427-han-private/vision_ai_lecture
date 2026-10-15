@@ -33,8 +33,6 @@ jobs:
         run: |
           python -m http.server 8765 --directory docs >/tmp/figure-http.log 2>&1 &
           python scripts/audit_svg_text_layout.py
-      - name: Diagnose Intro fit impact of retractable sidebar
-        run: python scripts/diagnose_sidebar_fit.py
       - name: Render every slide and assert no visible intersections
         run: |
           python scripts/audit_visual_slides.py
