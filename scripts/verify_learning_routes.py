@@ -7,7 +7,7 @@ from pathlib import Path
 from playwright.sync_api import sync_playwright
 
 BASE = os.getenv("AUDIT_BASE_URL", "http://127.0.0.1:8765")
-DECKS = (("intro", 19), ("ai_basics", 44), ("vision_ai", 37))
+DECKS = (("intro", 20), ("ai_basics", 44), ("vision_ai", 37))
 OUT = Path(__file__).resolve().parents[1] / "visual_audit_output"
 
 
@@ -37,7 +37,7 @@ def main() -> None:
 
         # The former contents page now redirects immediately to Intro 1.
         page.goto(f"{BASE}/index.html")
-        verify_position(page, "intro", 1, 19)
+        verify_position(page, "intro", 1, 20)
         check("AI는 세상을 어떻게 볼까?" in page.locator(".slide.active").inner_text(),
               "homepage did not open the original Intro first slide")
         check(page.locator("[data-slide-prev]").is_disabled(),
@@ -64,7 +64,7 @@ def main() -> None:
 
         # Both chapter boundaries work in either direction, without a menu.
         for src, src_total, dst, dst_total in (
-            ("intro", 19, "ai_basics", 44),
+            ("intro", 20, "ai_basics", 44),
             ("ai_basics", 44, "vision_ai", 37),
         ):
             page.goto(f"{BASE}/{src}.html#slide-{src_total}")
@@ -92,12 +92,12 @@ def main() -> None:
         # Site branding always returns to the first Intro slide.
         page.goto(f"{BASE}/vision_ai.html#slide-4")
         page.click("header a.brand")
-        verify_position(page, "intro", 1, 19)
+        verify_position(page, "intro", 1, 20)
         page.screenshot(path=str(OUT / "learning_route_single_track.jpg"),
                         type="jpeg", quality=80)
 
         browser.close()
-        print("SINGLE_TRACK_NAVIGATION_QA_PASSED: Intro19 -> AI44 -> Vision37 = 100")
+        print("SINGLE_TRACK_NAVIGATION_QA_PASSED: Intro20 -> AI44 -> Vision37 = 101")
         print("NO_CONTENTS_OR_CORE_MODE_QA_PASSED: old core links show full lesson")
 
 
