@@ -509,3 +509,60 @@ assert [int(x) for x in re.findall(
 )] == list(range(1, 37))
 assert sum(x["level"] == "basic" for x in manifest["vision_ai"]) == 25
 print("Vision 33/34 removed; Vision 33 is CNN training; 37 full / 26 core slides verified.")
+
+
+# Slide 6 must literally reuse the apple photo and the localized defect
+# annotations shown in Vision AI slides 3, 4 and 5.
+task_sources = {
+    name: (DOCS / f"assets/lesson/context_task_{name}.svg").read_text("utf-8")
+    for name in ("classification", "detection", "segmentation")
+}
+label_svg_path = DOCS / "assets/lesson/task_labels_three_outputs.svg"
+label_markup = label_svg_path.read_text("utf-8")
+embedded = re.compile(r'<image[^>]*href="data:image/jpeg;base64,([^"]+)"')
+canonical_photo = embedded.search(task_sources["classification"]).group(1)
+assert all(embedded.search(src).group(1) == canonical_photo
+           for src in task_sources.values())
+assert embedded.findall(label_markup) == [canonical_photo], (
+    "Use the same original apple image exactly once, not similar stock fruit"
+)
+for kind in ("classification", "detection", "segmentation"):
+    assert f'data-apple-figure="{kind}"' in label_markup
+    assert f'data-reuse-source="context_task_{kind}.svg"' in label_markup
+assert label_markup.count('<use href="#apple-reference"') == 3
+source_box = re.search(
+    r'<rect x="399.25" y="232.05" width="34.45" height="37.050000000000004"',
+    task_sources["detection"]
+)
+assert source_box is not None
+box_el = ET.parse(label_svg_path).getroot().find(
+    ".//*[@data-reused-bbox='true']"
+)
+assert box_el is not None
+for key, expected in {
+    "x": (399.25 - 32) / .65,
+    "y": (232.05 - 104) / .65,
+    "width": 34.45 / .65,
+    "height": 37.05 / .65,
+}.items():
+    assert abs(float(box_el.get(key)) - expected) < 0.00001, key
+source_mask = re.search(
+    r'<path transform="translate\(32 104\) scale\(0.65\)" d="([^"]+)"',
+    task_sources["segmentation"]
+)
+mask_el = ET.parse(label_svg_path).getroot().find(
+    ".//*[@data-reused-mask='true']"
+)
+assert source_mask is not None and mask_el is not None
+assert mask_el.get("d") == source_mask.group(1), (
+    "Mask must follow the same localized apple defect outline"
+)
+for page_name, idx in (("vision_ai_course", 5), ("vision_ai", 5)):
+    markup = (DOCS / f"{page_name}.html").read_text("utf-8")
+    slides = re.findall(
+        r'<section class="slide(?: [^"]+)?"[^>]*>.*?</section>',
+        markup, flags=re.DOTALL
+    )
+    assert "같은 사진이라도 Task가 바뀌면 정답 형태가 바뀝니다" in slides[idx]
+    assert "task_labels_three_outputs.svg?v=shared-apple-20261015-1" in slides[idx]
+print("Vision AI slide 6 apple, defect Box and Pixel Mask match slides 3-5.")
