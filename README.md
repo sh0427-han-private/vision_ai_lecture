@@ -8,7 +8,7 @@
 
 
 
-Vision AI를 처음 접하는 사람도 **현실 세계 → Sensor → 숫자 데이터 → AI 학습 → Vision Task → CNN** 순서로 이해할 수 있도록 만든 완전 기초 강의 자료입니다.
+Vision AI를 처음 접하는 사람도 **현실 세계 → Sensor → 숫자 데이터 → Vision Task → 영상처리·CNN → 필요한 AI 학습 원리 → 평가·운영** 순서로 이해할 수 있도록 만든 완전 기초 강의 자료입니다.
 
 이 저장소는 세 가지를 함께 목표로 합니다.
 
@@ -20,7 +20,9 @@ Vision AI를 처음 접하는 사람도 **현실 세계 → Sensor → 숫자 �
 
 **[Vision AI Lecture · Intro 1번부터 보기](https://sh0427-han.github.io/vision_ai_lecture/)**
 
-사이트 주소를 열면 목차 화면 없이 Intro의 첫 슬라이드가 바로 표시됩니다. **Intro 20장 → AI Basics 44장 → Vision AI 37장**, 총 **101장**을 이전·다음 버튼, 방향키 또는 스크롤로 순서대로 학습합니다. 핵심/전체 과정 선택 기능은 제거했으며 모든 슬라이드를 항상 보여줍니다.
+사이트 주소를 열면 Intro의 첫 슬라이드가 바로 표시됩니다. **Intro 20장 → Vision AI를 중심으로 AI 원리를 필요한 위치에 배치한 통합 강의 81장**, 총 **101장**을 순서대로 학습합니다. AI Basics를 먼저 모두 설명하지 않고, Vision Task → 영상처리 → CNN → 학습 → 데이터·평가로 이어집니다.
+
+왼쪽 상단의 **☰ 강의 목차**를 클릭하면 101개 슬라이드가 주제별로 표시되어 원하는 장으로 바로 이동할 수 있습니다. 목차 버튼을 다시 누르거나 **✕ 닫기**, 패널 바깥 클릭, **Esc** 키로 목차를 숨길 수 있습니다.
 
 ## 강의 슬라이드 안에서 직접 확인하는 Interactive Figure
 
@@ -28,7 +30,7 @@ AI Basics의 **학습의 의미** 슬라이드에서는 '한 단계 학습' 또�
 
 Vision AI의 **Gaussian 필터** 슬라이드에서는 원본·Mean·Gaussian·Median·Sobel을 선택하고, Gaussian의 σ 및 잡음 유무에 따라 실제 이미지가 어떻게 처리되는지 비교합니다. 커널 가중치는 필터 설정에서 자동으로 계산하며 읽기 전용으로 표시합니다.
 
-**실습은 별도 페이지가 아니라 기존 강의 슬라이드 안에 배치됩니다.** Intro 1번부터 넘기면 AI Basics와 Vision AI의 해당 개념에 자연스럽게 이어집니다.
+**실습은 별도 페이지가 아니라 기존 강의 슬라이드 안에 배치됩니다.** Intro 1번부터 넘기면 Vision AI 과제를 먼저 살펴보고, 해당 개념에 필요한 AI 원리를 그 자리에서 배웁니다.
 
 ## 학습 순서
 
@@ -140,6 +142,6 @@ vision_ai_lecture/
 
 ## Web Lecture
 
-정적 강의 사이트는 [Intro 1번](https://sh0427-han.github.io/vision_ai_lecture/)에서 바로 시작합니다. Intro 20장 → AI Basics 44장 → Vision AI 37장, 총 101장입니다.
+정적 강의 사이트는 [Intro 1번](https://sh0427-han.github.io/vision_ai_lecture/)에서 바로 시작합니다. Intro 20장 → [통합 Vision AI 강의 81장](docs/vision_ai_course.html), 총 101장입니다. 기존 [AI Basics](docs/ai_basics.html) 및 [Vision AI](docs/vision_ai.html) 개별 슬라이드는 이전 직접 링크의 호환성을 위해 원본으로 유지합니다.
 
 디자인은 **흰색 배경, 한 화면 한 슬라이드, 최소한의 포인트 컬러**를 기본으로 합니다.

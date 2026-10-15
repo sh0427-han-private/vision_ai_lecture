@@ -62,15 +62,73 @@ for page in ("intro.html", "ai_basics.html", "vision_ai.html"):
     assert "data-lesson-mode-summary" not in markup, page
     assert '>목차</a>' not in markup and 'class="nav-links"' not in markup, page
     assert 'href="intro.html#slide-1"' in markup, page
-    assert 'slide.js?v=single-track-20261015-1' in markup, page
+    assert ('slide.js?v=vision-first-20261015-1' if page == "intro.html"
+            else 'slide.js?v=single-track-20261015-1') in markup, page
 intro_markup = (DOCS / "intro.html").read_text("utf-8")
 assert 'data-prev-page=""' in intro_markup
-assert 'data-next-page="ai_basics.html"' in intro_markup
+assert 'data-next-page="vision_ai_course.html"' in intro_markup
 assert 'data-prev-page="intro.html"' in (DOCS / "ai_basics.html").read_text("utf-8")
 assert 'data-next-page="vision_ai.html"' in (DOCS / "ai_basics.html").read_text("utf-8")
 assert 'data-prev-page="ai_basics.html"' in (DOCS / "vision_ai.html").read_text("utf-8")
 assert 'data-next-page=""' in (DOCS / "vision_ai.html").read_text("utf-8")
 print("Landing redirects and single-track controls validated.")
+
+# Public course keeps every original slide but reorders vision topics BEFORE
+# AI concepts, interleaving AI training only near relevant vision topics.
+course_page = (DOCS / "vision_ai_course.html").read_text("utf-8")
+course_slides = re.findall(
+    r'<section class="slide(?: [^"]+)?"[^>]*>.*?</section>',
+    course_page, flags=re.DOTALL
+)
+assert len(course_slides) == 81, "Vision-first course must contain V37 + AI44"
+assert course_page.count('class="slide active"') == 1
+assert course_slides[0].find('data-source-deck="vision_ai"') != -1
+assert course_slides[0].find('data-source-slide="1"') != -1
+sources = [
+    (deck, int(index))
+    for deck, index in re.findall(
+        r'data-source-deck="([^"]+)" data-source-slide="(\d+)"', course_page
+    )
+]
+assert len(sources) == 81 and len(set(sources)) == 81
+assert sorted(i for d, i in sources if d == "vision_ai") == list(range(1, 38))
+assert sorted(i for d, i in sources if d == "ai_basics") == list(range(1, 45))
+assert sources[:8] == [("vision_ai", n) for n in range(1, 9)]
+assert sources[8:15] == [("ai_basics", n) for n in range(1, 8)]
+assert 'data-prev-page="intro.html"' in course_page
+assert 'data-next-page=""' in course_page
+assert 'slide.js?v=vision-first-20261015-1' in course_page
+assert 'slide.js?v=vision-first-20261015-1' in intro_markup
+for markup in (intro_markup, course_page):
+    for path in ("lecture_sidebar.css", "lecture_outline.js",
+                 "lecture_sidebar.js"):
+        assert path in markup, path
+for url in re.findall(r'(?:src|href)="([^"]+)"', course_page):
+    if url.startswith(("http:", "https:", "#", "mailto:", "data:")):
+        continue
+    target = url.split("?", 1)[0].split("#", 1)[0]
+    if target:
+        assert (DOCS / target).is_file(), target
+
+# Titles and position numbers of ALL sidebar entries must match content.
+outline_source = (DOCS / "lecture_outline.js").read_text("utf-8")
+outline = json.loads(outline_source.split(" = ", 1)[1].strip().rstrip(";"))
+items = [item for group in outline["groups"] for item in group["items"]]
+assert len(items) == 101
+assert [item["global"] for item in items] == list(range(1, 102))
+assert [(item["page"], item["slide"]) for item in items[:20]] == [
+    ("intro.html", n) for n in range(1, 21)
+]
+assert [(item["page"], item["slide"]) for item in items[20:]] == [
+    ("vision_ai_course.html", n) for n in range(1, 82)
+]
+assert [item["original"] for item in items[20:28]] == [
+    f"V{i}" for i in range(1, 9)
+]
+assert len(outline["groups"]) >= 8
+assert "lecture-toc-drawer" in (DOCS / "lecture_sidebar.js").read_text("utf-8")
+print("Vision-first 81 slides and 101-item retractable sidebar validated.")
+
 
 figures = sorted((DOCS / "assets/lesson").glob("lecture_*.svg"))
 assert len(figures) >= 9, "missing new lesson illustrations"
