@@ -5,6 +5,8 @@ on:
     paths:
       - "docs/intro.html"
       - "docs/interactive_lessons.js"
+      - "docs/intro_resolution_demo.js"
+      - "docs/intro_resolution_demo.css"
       - "docs/interactive_lessons.css"
       - "scripts/verify_intro_pixel_interactive.py"
       - ".github/workflows/intro-pixel-check.yml"
