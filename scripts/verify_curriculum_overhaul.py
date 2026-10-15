@@ -12,7 +12,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DOCS = ROOT / "docs"
 manifest = json.loads((DOCS / "assets/lesson/manifest.json").read_text("utf-8"))
 
-expected = {"intro": 19, "ai_basics": 44, "vision_ai": 40}
+expected = {"intro": 19, "ai_basics": 44, "vision_ai": 39}
 
 for name, count in expected.items():
     document = (DOCS / f"{name}.html").read_text("utf-8")
