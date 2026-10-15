@@ -20,7 +20,7 @@ Vision AI를 처음 접하는 사람도 **현실 세계 → Sensor → 숫자 �
 
 **[Vision AI Lecture · Intro 1번부터 보기](https://sh0427-han.github.io/vision_ai_lecture/)**
 
-사이트 주소를 열면 목차 화면 없이 Intro의 첫 슬라이드가 바로 표시됩니다. **Intro 19장 → AI Basics 44장 → Vision AI 37장**, 총 **100장**을 이전·다음 버튼, 방향키 또는 스크롤로 순서대로 학습합니다. 핵심/전체 과정 선택 기능은 제거했으며 모든 슬라이드를 항상 보여줍니다.
+사이트 주소를 열면 목차 화면 없이 Intro의 첫 슬라이드가 바로 표시됩니다. **Intro 20장 → AI Basics 44장 → Vision AI 37장**, 총 **101장**을 이전·다음 버튼, 방향키 또는 스크롤로 순서대로 학습합니다. 핵심/전체 과정 선택 기능은 제거했으며 모든 슬라이드를 항상 보여줍니다.
 
 ## 강의 슬라이드 안에서 직접 확인하는 Interactive Figure
 
@@ -140,6 +140,6 @@ vision_ai_lecture/
 
 ## Web Lecture
 
-정적 강의 사이트는 [Intro 1번](https://sh0427-han.github.io/vision_ai_lecture/)에서 바로 시작합니다. Intro 19장 → AI Basics 44장 → Vision AI 37장, 총 100장입니다.
+정적 강의 사이트는 [Intro 1번](https://sh0427-han.github.io/vision_ai_lecture/)에서 바로 시작합니다. Intro 20장 → AI Basics 44장 → Vision AI 37장, 총 101장입니다.
 
 디자인은 **흰색 배경, 한 화면 한 슬라이드, 최소한의 포인트 컬러**를 기본으로 합니다.
