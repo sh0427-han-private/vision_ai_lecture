@@ -528,48 +528,34 @@
     },
     {
       "number": 32,
-      "topic": "CNN 구조의 설계",
-      "level": "basic",
-      "title": "순차·병렬·우회 연결로 서로 다른 구조를 만듭니다",
-      "asset": "assets/lesson/survey_architecture_patterns.svg"
-    },
-    {
-      "number": 33,
-      "topic": "Residual 연결",
-      "level": "detail",
-      "title": "입력을 그대로 전달하는 경로와 변환 경로를 더합니다",
-      "asset": "assets/lesson/survey_residual_detail.svg"
-    },
-    {
-      "number": 34,
       "topic": "CNN 학습",
       "level": "basic",
       "title": "CNN의 필터도 오차를 줄이는 방향으로 학습합니다",
       "asset": "assets/lesson/context_cnn_training.svg"
     },
     {
-      "number": 35,
+      "number": 33,
       "topic": "Transfer Learning",
       "level": "basic",
       "title": "이미 배운 가중치에서 내 Task의 학습을 시작합니다",
       "asset": "assets/lesson/lesson_transfer_pretraining_to_task.svg"
     },
     {
-      "number": 36,
+      "number": 34,
       "topic": "Freeze와 Fine-tuning",
       "level": "detail",
       "title": "고정할 부분과 추가 학습할 부분을 구분합니다",
       "asset": "assets/lesson/lesson_transfer_freeze_vs_finetune.svg"
     },
     {
-      "number": 37,
+      "number": 35,
       "topic": "평가와 실패 사례",
       "level": "basic",
       "title": "높은 점수만으로 판단 근거가 맞다고 보장할 수 없습니다",
       "asset": "assets/lesson/shortcut_professional.svg"
     },
     {
-      "number": 38,
+      "number": 36,
       "topic": "운영 Cycle",
       "level": "basic",
       "title": "문제 정의부터 운영 관찰까지 연결해 개선합니다",

@@ -5,7 +5,7 @@ import os
 from playwright.sync_api import sync_playwright
 
 BASE = os.getenv("AUDIT_BASE_URL", "http://127.0.0.1:8765")
-DECKS = {"ai_basics": (44, 36), "vision_ai": (39, 27)}
+DECKS = {"ai_basics": (44, 36), "vision_ai": (37, 26)}
 
 
 def check(flag: bool, message: str) -> None:
@@ -89,7 +89,7 @@ def main() -> None:
         page.goto(f"{BASE}/ai_basics.html?mode=core#slide-44")
         page.click("[data-slide-next]")
         page.wait_for_url("**/vision_ai.html?mode=core#slide-1")
-        check(page.locator("[data-slide-total]").inner_text() == "27",
+        check(page.locator("[data-slide-total]").inner_text() == "26",
               "core mode lost at AI -> Vision handoff")
 
         # New essential-route regression tests: these lessons must not
@@ -110,8 +110,8 @@ def main() -> None:
             )
 
         browser.close()
-        print("CORE_FULL_LEARNING_ROUTE_QA_PASSED: Intro19 + AI36 + Vision27 = 82")
-        print("FULL_ROUTE_LENGTH: Intro19 + AI44 + Vision39 = 102")
+        print("CORE_FULL_LEARNING_ROUTE_QA_PASSED: Intro19 + AI36 + Vision26 = 81")
+        print("FULL_ROUTE_LENGTH: Intro19 + AI44 + Vision37 = 100")
 
 
 if __name__ == "__main__":

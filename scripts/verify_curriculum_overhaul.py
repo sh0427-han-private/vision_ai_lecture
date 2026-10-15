@@ -12,7 +12,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DOCS = ROOT / "docs"
 manifest = json.loads((DOCS / "assets/lesson/manifest.json").read_text("utf-8"))
 
-expected = {"intro": 19, "ai_basics": 44, "vision_ai": 39}
+expected = {"intro": 19, "ai_basics": 44, "vision_ai": 37}
 
 for name, count in expected.items():
     document = (DOCS / f"{name}.html").read_text("utf-8")
@@ -250,7 +250,7 @@ for deck in ("ai_basics", "vision_ai"):
 assert (
     19 + 1 + sum(x["level"] == "basic" for x in manifest["ai_basics"])
     + 1 + sum(x["level"] == "basic" for x in manifest["vision_ai"])
-) == 82
+) == 81
 assert "직전 Convolution" not in (
     DOCS / "assets/lesson/lesson_featuremap_numeric_continuation.svg"
 ).read_text("utf-8")
@@ -392,11 +392,24 @@ vision_slides = re.findall(
     r'<section class="slide(?: [^"]+)?"[^>]*>.*?</section>',
     vision_html, flags=re.DOTALL
 )
-assert len(vision_slides) == 39
+assert len(vision_slides) == 37
 assert "한 Pixel을 바꿀 수도, 주변 Pixel을 함께 볼 수도 있습니다" in vision_slides[8]
 assert not any("Opening" in slide or "Closing" in slide
                for slide in vision_slides)
 assert not any(x.get("asset", "").endswith("processing_morphology.svg")
                for x in manifest["vision_ai"])
-assert [x["number"] for x in manifest["vision_ai"]] == list(range(1, 39))
-print("Morphological Opening/Closing slide removed; Vision 9 and manifest renumbering verified.")
+assert [x["number"] for x in manifest["vision_ai"]] == list(range(1, 37))
+# Physical Vision 33 and 34 were removed simultaneously from the prior 39-slide deck.
+# The former Vision 35, CNN training, must now become Vision 33.
+assert "CNN의 필터도 오차를 줄이는 방향으로 학습합니다" in vision_slides[32]
+assert "data-topic=\"CNN 학습\"" in vision_slides[32]
+assert "survey_architecture_patterns.svg" not in vision_html
+assert "survey_residual_detail.svg" not in vision_html
+removed_assets = {"survey_architecture_patterns.svg", "survey_residual_detail.svg"}
+assert not any(x.get("asset", "").rsplit("/", 1)[-1] in removed_assets
+               for x in manifest["vision_ai"])
+assert [int(x) for x in re.findall(
+    r'<div class="lesson-meta"><span>(\d{2}) · ', vision_html
+)] == list(range(1, 37))
+assert sum(x["level"] == "basic" for x in manifest["vision_ai"]) == 25
+print("Vision 33/34 removed; Vision 33 is CNN training; 37 full / 26 core slides verified.")
