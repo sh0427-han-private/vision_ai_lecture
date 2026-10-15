@@ -284,3 +284,15 @@ GitHub Pages:
 - 숫자 입력은 `docs/intro_apple_number_bridge.js`에서 **실제 같은 `vision_task_apple_reference.jpg`** 를 12×8로 축소한 후 `round(0.299R + 0.587G + 0.114B)`로 계산합니다. 생성하거나 임의로 만든 숫자를 그리지 않습니다. 로컬 CSS는 `docs/intro_apple_number_bridge.css`입니다.
 - Intro는 20장으로 증가, 기존 Intro 3~19가 새 Intro 4~20으로 이동합니다. AI Basics 44, Vision AI 37은 그대로이며 총 **101장**입니다. 단일 순차 경로로 Intro 20 → AI Basics 1이 이어집니다.
 - 실시간 브라우저에서는 사과 사진과 숫자의 정확한 일치, 96개 값 범위와 실제 이미지 사이즈, Intro 2→3→4 이동을 확인합니다. 전체 **202개 발표 viewport** 겹침·잘림 검사도 수행합니다.
+
+
+## 2026-10-15 · Vision AI 주도 통합 강의와 접이식 왼쪽 목차 (최신)
+
+- **실제 공개 학습 경로:** Intro **20장** → `docs/vision_ai_course.html` Vision AI 중심 통합 **81장** = **101장**입니다. 기존 'Intro → AI Basics → Vision AI' 연속 수업은 종료했습니다.
+- 단순히 챕터 순서를 뒤집지 않고, Vision AI의 **과제·출력(Classification/Detection/Segmentation)** 설명으로 시작합니다. 필요한 AI 이론은 관계 있는 흐름에 배치합니다: Task 출력 → AI 개념/분류, 영상처리 → 전처리·증강, CNN → Perceptron/Activation/Feature, CNN 학습 → Loss/Gradient/Backpropagation, Transfer Learning → Dataset·평가·현장.
+- 기존 AI Basics 44장·Vision AI 37장은 원본 HTML과 `manifest.json`을 보존하며, 신규 통합 페이지에서 내용과 그림을 재사용합니다. 새 페이지는 원본 슬라이드 메타 `data-source-deck`, `data-source-slide`로 출처 위치를 추적해 각 슬라이드의 손실·누락·중복을 검사합니다.
+- 현재 Intro의 다음 챕터는 `vision_ai_course.html`; 통합 마지막 장에서 강의를 종료하고 이전 버튼으로 Intro 마지막 장까지 돌아갈 수 있습니다.
+- **왼쪽 목차 UI**는 Intro와 통합 강의의 상단 '☰ 강의 목차' 버튼으로 열 수 있습니다. 목차는 주제별 `details`로 101개 제목을 나누고, 모든 항목은 개별 `#slide-N`으로 직접 이동합니다. 목차 열기/닫기, 내부의 닫기 버튼, 바깥 클릭, Escape 키를 지원합니다.
+- 발표 슬라이드를 침범하지 않도록 기본 상태는 목차가 닫힌 상태이며, 열었을 때만 왼쪽 오버레이로 나타납니다. 모바일과 키보드 조작 접근성을 지원합니다. 이전에 제거한 전체 페이지 목차, '핵심만 보기' 모드는 다시 추가하지 않습니다.
+- 새 파일: `docs/vision_ai_course.html`, `docs/lecture_outline.js`, `docs/lecture_sidebar.js`, `docs/lecture_sidebar.css`. 이전 링크 `docs/ai_basics.html`, `docs/vision_ai.html`은 원본 참고를 위해 유지합니다.
+- 필수 검증: 101개 목차 링크·주제 이동·접힘/펼침·양방향 챕터 전환, 원본 Vision 37/AI 44 슬라이드의 정확한 한 번씩 재사용, 전체 202화면 레이아웃/이미지 경로·SVG·실습 상호작용 검사. 공유 JS 변경 시 cache key를 갱신합니다.
