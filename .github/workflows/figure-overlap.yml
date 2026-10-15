@@ -44,7 +44,8 @@ jobs:
               x for x in issues
               if any(flag in x["issues"]
                      for flag in ("overlap", "bottom_overflow",
-                                  "right_overflow", "broken_image"))
+                                  "right_overflow", "broken_image",
+                                  "shrink"))
           ]
           if blocking:
               print(json.dumps(blocking, ensure_ascii=False, indent=2))
