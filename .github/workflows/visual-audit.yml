@@ -35,6 +35,9 @@ jobs:
           python -m http.server 8765 --directory docs > /tmp/lecture-http.log 2>&1 &
           python scripts/audit_visual_slides.py
 
+      - name: Test interactive Intro grayscale and RGB pixels
+        run: python scripts/verify_intro_pixel_interactive.py
+
       - name: Test core/full navigation
         run: python scripts/verify_learning_routes.py
 
