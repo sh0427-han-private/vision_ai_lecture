@@ -26,3 +26,6 @@
 .iv-revision .iv-noise{position:absolute;inset:0;width:100%;height:100%;opacity:.5;pointer-events:none}
 @media(max-height:850px){.iv-revision .iv-image{height:235px}.iv-revision .iv-two .iv-image,.iv-revision .iv-surface img{height:280px}.iv-revision h3{font-size:21px}}
 @media(max-width:700px){.iv-revision .iv-grid,.iv-revision .iv-two{gap:10px}.iv-revision .iv-image{height:165px}.iv-revision h3{font-size:17px}.iv-revision article p{font-size:15px}}
+
+/* Simulated narrower field of view on the same source image; not optical measurement. */
+.iv-revision .iv-fov img{transform:scale(1.45)}
