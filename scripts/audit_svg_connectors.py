@@ -122,6 +122,14 @@ def inventory() -> None:
         "lesson_backbone_head_roles.svg",
         "lesson_receptive_field_growth.svg",
         "lecture_mean_calculation.svg",
+        "lecture_filter_to_cnn_bridge.svg",
+        "lecture_sobel_concept.svg",
+    }
+    balanced = reviewed - {
+        "lesson_backbone_head_roles.svg",
+        "lesson_chain_rule_graph.svg",
+        "lecture_mean_calculation.svg",
+        "lecture_sobel_concept.svg",
     }
     failures = []
     for geo in geometries:
@@ -134,6 +142,13 @@ def inventory() -> None:
                 gap = arrow.get(side)
                 if gap is not None and gap < 7:
                     failures.append({"file": geo["file"], "arrow": arrow, "side": side})
+            if geo["file"] in balanced and all(
+                    arrow[k] is not None for k in ("start_gap", "end_gap")):
+                if abs(arrow["start_gap"] - arrow["end_gap"]) > 6:
+                    failures.append({
+                        "file": geo["file"], "arrow": arrow,
+                        "error": "uneven connector margins",
+                    })
     print("CONNECTOR_SPACING_AUDIT", json.dumps({
         "reviewed_assets": len(reviewed), "flagged_connectors": len(failures),
     }, ensure_ascii=False))
