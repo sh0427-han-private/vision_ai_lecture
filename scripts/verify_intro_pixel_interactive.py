@@ -72,7 +72,7 @@ def main() -> None:
         image = page.locator("[data-rgb-photo]")
         image.click(position={"x": 180, "y": 130})
         selected = page.locator("[data-rgb-coordinate]").inner_text()
-        match = re.fullmatch(r"image\\[y=(\\d+), x=(\\d+)\\]", selected)
+        match = re.fullmatch(r"image\[y=(\d+), x=(\d+)\]", selected)
         assert match, selected
         selected_y, selected_x = map(int, match.groups())
         expected = image.evaluate(
