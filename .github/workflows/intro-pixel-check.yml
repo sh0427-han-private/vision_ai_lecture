@@ -1,0 +1,31 @@
+name: Intro pixel interaction check
+
+on:
+  pull_request:
+    paths:
+      - "docs/intro.html"
+      - "docs/interactive_lessons.js"
+      - "docs/interactive_lessons.css"
+      - "scripts/verify_intro_pixel_interactive.py"
+      - ".github/workflows/intro-pixel-check.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install browser test tools
+        run: |
+          python -m pip install playwright
+          python -m playwright install --with-deps chromium
+
+      - name: Check intro pixel interactions
+        run: |
+          python -m http.server 8765 --directory docs >/tmp/intro-test.log 2>&1 &
+          python scripts/verify_intro_pixel_interactive.py
