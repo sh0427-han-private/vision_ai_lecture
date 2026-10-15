@@ -409,7 +409,7 @@ removed_assets = {"survey_architecture_patterns.svg", "survey_residual_detail.sv
 assert not any(x.get("asset", "").rsplit("/", 1)[-1] in removed_assets
                for x in manifest["vision_ai"])
 assert [int(x) for x in re.findall(
-    r'<div class="lesson-meta"><span>(\\d{2}) · ', vision_html
+    r'<div class="lesson-meta"><span>(\d{2}) · ', vision_html
 )] == list(range(1, 37))
 assert sum(x["level"] == "basic" for x in manifest["vision_ai"]) == 25
 print("Vision 33/34 removed; Vision 33 is CNN training; 37 full / 26 core slides verified.")
