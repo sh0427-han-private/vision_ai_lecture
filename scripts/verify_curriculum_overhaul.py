@@ -12,7 +12,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DOCS = ROOT / "docs"
 manifest = json.loads((DOCS / "assets/lesson/manifest.json").read_text("utf-8"))
 
-expected = {"intro": 16, "ai_basics": 44, "vision_ai": 40}
+expected = {"intro": 17, "ai_basics": 44, "vision_ai": 40}
 
 for name, count in expected.items():
     document = (DOCS / f"{name}.html").read_text("utf-8")
@@ -310,13 +310,22 @@ intro_slides = re.findall(
     r'<section class="slide(?: [^"]+)?"[^>]*>.*?</section>',
     intro_page, flags=re.DOTALL
 )
-assert len(intro_slides) == 16
+assert len(intro_slides) == 17
 assert "RGB 이미지의 세 번째 차원은 거리 정보가 아닙니다" in intro_slides[5]
 assert "해상도는 가로·세로 Pixel 개수로 정해집니다" in intro_slides[6]
+assert "같은 사진도 해상도에 따라 Pixel 개수가 달라집니다" in intro_slides[7]
+assert 'data-resolution-source="assets/generated/apple_studio.webp"' in intro_slides[7]
+for p, w, h in ((360, 640, 360), (720, 1280, 720), (1080, 1920, 1080)):
+    assert f'data-resolution-p="{p}"' in intro_slides[7]
+    assert f'width="{w}" height="{h}" data-resolution-full' in intro_slides[7]
+assert (DOCS / "intro_resolution_demo.js").is_file()
+assert (DOCS / "intro_resolution_demo.css").is_file()
+assert "intro_resolution_demo.js?v=20261015-1" in intro_page
+
 labels = [int(x) for x in re.findall(
     r'<span class="slide-number">(\d+)</span>', intro_page
 )]
-assert labels == list(range(3, 17)), labels
+assert labels == list(range(3, 18)), labels
 channel_svg = (DOCS / "assets/lesson/lecture_rgb_channel_stack.svg").read_text("utf-8")
 assert 'viewBox="0 0 960 640"' in channel_svg
 assert "H × W × C = 640 × 960 × 3" in channel_svg
@@ -360,4 +369,4 @@ assert all(
     (x + y > 1.5) == bool(x & y)
     for x in (0, 1) for y in (0, 1)
 )
-print("Intro HWC, resolution, deck numbering, AND/XOR boundary validated.")
+print("Intro HWC, raster resolution comparison, 17-slide numbering, AND/XOR boundary validated.")
