@@ -80,7 +80,7 @@ def main() -> None:
         # Old bookmarks with ?mode=core must not filter any slides.
         for deck, slide_number, total in (
             ("ai_basics", 5, 44),
-            ("vision_ai", 31, 37),
+            ("vision_ai", 32, 37),
         ):
             page.goto(f"{BASE}/{deck}.html?mode=core#slide-{slide_number}")
             verify_position(page, deck, slide_number, total)
