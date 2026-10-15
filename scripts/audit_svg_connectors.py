@@ -97,7 +97,7 @@ def verify_solid_geometry(path: Path) -> int:
             continue
         assert not el.get("marker-end"), (path, "detached marker still used")
         assert el.get("fill") not in (None, "none"), path
-        coords = re.findall(r"-?(?:\\d+(?:\\.\\d*)?|\\.\\d+)", el.get("d", ""))
+        coords = re.findall(r"-?(?:\d+(?:\.\d*)?|\.\d+)", el.get("d", ""))
         assert len(coords) == 14, (path, el.get("d"))
         assert el.get("d", "").strip().endswith("Z"), path
         pts = [(float(coords[2*i]), float(coords[2*i+1]))
