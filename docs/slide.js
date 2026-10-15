@@ -9,11 +9,14 @@
   const progressBar = document.querySelector("[data-slide-progress]");
   const nextPage = document.body.dataset.nextPage || "";
   const prevPage = document.body.dataset.prevPage || "";
-  const modeToggle = document.querySelector("[data-lesson-mode-toggle]");
-  const modeLabel = document.querySelector("[data-lesson-mode-summary]");
-  // "전체" remains the default to preserve all existing deep links.
-  // Core mode skips only slides explicitly marked data-level="detail".
-  let coreMode = new URLSearchParams(location.search).get("mode") === "core";
+  // The lecture always shows every slide. Legacy ?mode=core links now open
+  // the same complete course and are normalized to the canonical URL.
+  const canonicalUrl = new URL(location.href);
+  if (canonicalUrl.searchParams.has("mode")) {
+    canonicalUrl.searchParams.delete("mode");
+    history.replaceState(null, "", canonicalUrl.pathname +
+      canonicalUrl.search + canonicalUrl.hash);
+  }
 
   let currentIndex = 0;
   let wheelLocked = false;
@@ -25,47 +28,18 @@
     return Math.min(Math.max(value, min), max);
   }
 
-  function included(index) {
-    return !coreMode || slides[index]?.dataset.level !== "detail";
-  }
-
-  function nearbyIncluded(index, preferNext = true) {
-    const start = clamp(index, 0, slides.length - 1);
-    if (included(start)) return start;
-    if (preferNext) {
-      for (let i = start + 1; i < slides.length; i++) {
-        if (included(i)) return i;
-      }
-    }
-    for (let i = start - 1; i >= 0; i--) {
-      if (included(i)) return i;
-    }
-    return 0;
-  }
-
-  function pathTo(page) {
+  function pathTo(page, toLast = false) {
     const target = new URL(page, location.href);
-    if (coreMode) target.searchParams.set("mode", "core");
-    else target.searchParams.delete("mode");
-    target.hash = "#slide-1";
+    target.searchParams.delete("mode");
+    target.hash = toLast ? "#slide-last" : "#slide-1";
     return target.href;
   }
 
-  function syncChapterLinks() {
-    document.querySelectorAll(".nav-links a[href]").forEach(link => {
-      const raw = link.getAttribute("href") || "";
-      if (!/^(intro|ai_basics|vision_ai)\.html(?:\?.*)?$/.test(raw)) return;
-      const url = new URL(raw, location.href);
-      if (coreMode) url.searchParams.set("mode", "core");
-      else url.searchParams.delete("mode");
-      link.setAttribute("href", url.pathname.split("/").pop() + url.search);
-    });
-  }
-
   function indexFromHash() {
+    if (location.hash === "#slide-last") return slides.length - 1;
     const match = location.hash.match(/^#slide-(\d+)$/);
     if (!match) return 0;
-    return nearbyIncluded(Number(match[1]) - 1);
+    return clamp(Number(match[1]) - 1, 0, slides.length - 1);
   }
 
   function fitActiveSlide() {
@@ -129,24 +103,10 @@
       }
     });
 
-    const pathIndices = slides
-      .map((_, i) => i)
-      .filter(included);
-    const pathPosition = Math.max(0, pathIndices.indexOf(currentIndex)) + 1;
-    if (currentLabel) currentLabel.textContent = String(pathPosition);
-    if (totalLabel) totalLabel.textContent = String(pathIndices.length);
+    if (currentLabel) currentLabel.textContent = String(currentIndex + 1);
+    if (totalLabel) totalLabel.textContent = String(slides.length);
     if (progressBar) {
-      progressBar.style.width = ((pathPosition / pathIndices.length) * 100) + "%";
-    }
-    if (modeToggle) {
-      modeToggle.textContent = coreMode ? "심화 포함 전체 보기" : "핵심만 보기";
-      modeToggle.setAttribute("aria-pressed", String(coreMode));
-    }
-    if (modeLabel) {
-      const detailCount = slides.length - slides.filter(s => s.dataset.level === "detail").length;
-      modeLabel.textContent = coreMode
-        ? "핵심 과정 · 심화 " + (slides.length - detailCount) + "장 제외"
-        : "전체 과정 · 심화 포함";
+      progressBar.style.width = (((currentIndex + 1) / slides.length) * 100) + "%";
     }
 
     if (prevButton) prevButton.disabled = currentIndex === 0 && !prevPage;
@@ -154,42 +114,27 @@
       nextButton.disabled = currentIndex === slides.length - 1 && !nextPage;
     }
 
-    syncChapterLinks();
     history.replaceState(null, "", "#slide-" + (currentIndex + 1));
     scheduleFit();
   }
 
   function goTo(index) {
-    currentIndex = nearbyIncluded(index);
+    currentIndex = clamp(index, 0, slides.length - 1);
     render();
   }
 
   function next() {
-    for (let i = currentIndex + 1; i < slides.length; i++) {
-      if (included(i)) return goTo(i);
-    }
+    if (currentIndex < slides.length - 1) return goTo(currentIndex + 1);
     if (nextPage) location.href = pathTo(nextPage);
   }
 
   function previous() {
-    for (let i = currentIndex - 1; i >= 0; i--) {
-      if (included(i)) return goTo(i);
-    }
-    if (prevPage) location.href = pathTo(prevPage);
+    if (currentIndex > 0) return goTo(currentIndex - 1);
+    if (prevPage) location.href = pathTo(prevPage, true);
   }
 
   prevButton?.addEventListener("click", previous);
   nextButton?.addEventListener("click", next);
-
-  modeToggle?.addEventListener("click", () => {
-    coreMode = !coreMode;
-    const url = new URL(location.href);
-    if (coreMode) url.searchParams.set("mode", "core");
-    else url.searchParams.delete("mode");
-    history.replaceState(null, "", url.pathname + url.search + url.hash);
-    currentIndex = nearbyIncluded(currentIndex);
-    render();
-  });
 
   addEventListener("keydown", (event) => {
     const target = event.target;
