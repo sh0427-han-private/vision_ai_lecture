@@ -12,7 +12,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DOCS = ROOT / "docs"
 manifest = json.loads((DOCS / "assets/lesson/manifest.json").read_text("utf-8"))
 
-expected = {"intro": 17, "ai_basics": 44, "vision_ai": 40}
+expected = {"intro": 19, "ai_basics": 44, "vision_ai": 40}
 
 for name, count in expected.items():
     document = (DOCS / f"{name}.html").read_text("utf-8")
@@ -310,10 +310,24 @@ intro_slides = re.findall(
     r'<section class="slide(?: [^"]+)?"[^>]*>.*?</section>',
     intro_page, flags=re.DOTALL
 )
-assert len(intro_slides) == 17
+assert len(intro_slides) == 19
 assert "RGB 이미지의 세 번째 차원은 거리 정보가 아닙니다" in intro_slides[5]
 assert "해상도는 가로·세로 Pixel 개수로 정해집니다" in intro_slides[6]
 assert "같은 사진도 해상도에 따라 Pixel 개수가 달라집니다" in intro_slides[7]
+assert "‘본다’는 것은 무엇(What)과 어디(Where)를 이해하는 일" in intro_slides[8]
+assert "2D 이미지에서 3D 공간을 알아내기는 어렵습니다" in intro_slides[9]
+assert "to know what is where by looking" in intro_slides[8]
+assert "Marr &amp; Nishihara (1978)" in intro_slides[9]
+assert "https://doi.org/10.1098/rspb.1978.0020" in intro_slides[9]
+assert "intro_inverse_2d_3d_ambiguity.svg?v=what-where-20261015-1" in intro_slides[9]
+assert "intro_vision_foundations.css?v=20261015-1" in intro_page
+# Mathematically coherent perspective scene: apparent height h / distance d
+assert 160 / (625 - 145) == 220 / (805 - 145)
+inverse_svg = DOCS / "assets/lesson/intro_inverse_2d_3d_ambiguity.svg"
+inverse_root = ET.parse(inverse_svg).getroot()
+assert inverse_root.get("viewBox") == "0 0 1200 445"
+assert inverse_root.tag == "{http://www.w3.org/2000/svg}svg"
+
 assert 'data-resolution-source="assets/generated/apple_studio.webp"' in intro_slides[7]
 for p, w, h in ((360, 640, 360), (720, 1280, 720), (1080, 1920, 1080)):
     assert f'data-resolution-p="{p}"' in intro_slides[7]
@@ -325,7 +339,7 @@ assert "intro_resolution_demo.js?v=20261015-1" in intro_page
 labels = [int(x) for x in re.findall(
     r'<span class="slide-number">(\d+)</span>', intro_page
 )]
-assert labels == list(range(3, 18)), labels
+assert labels == list(range(3, 20)), labels
 channel_svg = (DOCS / "assets/lesson/lecture_rgb_channel_stack.svg").read_text("utf-8")
 assert 'viewBox="0 0 960 640"' in channel_svg
 assert "H × W × C = 640 × 960 × 3" in channel_svg
