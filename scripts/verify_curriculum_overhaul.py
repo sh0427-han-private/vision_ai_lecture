@@ -384,3 +384,19 @@ assert all(
     for x in (0, 1) for y in (0, 1)
 )
 print("Intro HWC, raster resolution comparison, 17-slide numbering, AND/XOR boundary validated.")
+
+
+# Vision AI 9 is now the point-versus-neighborhood operation slide.
+vision_html = (DOCS / "vision_ai.html").read_text("utf-8")
+vision_slides = re.findall(
+    r'<section class="slide(?: [^"]+)?"[^>]*>.*?</section>',
+    vision_html, flags=re.DOTALL
+)
+assert len(vision_slides) == 39
+assert "한 Pixel을 바꿀 수도, 주변 Pixel을 함께 볼 수도 있습니다" in vision_slides[8]
+assert not any("Opening" in slide or "Closing" in slide
+               for slide in vision_slides)
+assert not any(x.get("asset", "").endswith("processing_morphology.svg")
+               for x in manifest["vision_ai"])
+assert [x["number"] for x in manifest["vision_ai"]] == list(range(1, 39))
+print("Morphological Opening/Closing slide removed; Vision 9 and manifest renumbering verified.")
