@@ -6,6 +6,7 @@ python scripts/verify_intro_pixel_interactive.py (requires Playwright Chromium).
 from __future__ import annotations
 
 import math
+import re
 
 from playwright.sync_api import sync_playwright
 
@@ -70,20 +71,21 @@ def main() -> None:
         )
         image = page.locator("[data-rgb-photo]")
         image.click(position={"x": 180, "y": 130})
+        selected = page.locator("[data-rgb-coordinate]").inner_text()
+        match = re.fullmatch(r"image\\[y=(\\d+), x=(\\d+)\\]", selected)
+        assert match, selected
+        selected_y, selected_x = map(int, match.groups())
         expected = image.evaluate(
-            """element => {
+            """(element, position) => {
                 const canvas = document.createElement('canvas');
                 canvas.width = element.naturalWidth;
                 canvas.height = element.naturalHeight;
                 const ctx = canvas.getContext('2d');
                 ctx.drawImage(element, 0, 0);
-                const bounds = element.getBoundingClientRect();
-                const x = Math.min(canvas.width-1,
-                    Math.floor(180 / bounds.width * canvas.width));
-                const y = Math.min(canvas.height-1,
-                    Math.floor(130 / bounds.height * canvas.height));
-                return Array.from(ctx.getImageData(x,y,1,1).data).slice(0,3);
-            }"""
+                return Array.from(ctx.getImageData(
+                    position.x, position.y, 1, 1).data).slice(0, 3);
+            }""",
+            {"x": selected_x, "y": selected_y},
         )
         result = [
             int(page.locator(f"[data-rgb-{color}]").inner_text())
