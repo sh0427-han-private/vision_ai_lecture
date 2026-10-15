@@ -4,7 +4,7 @@
   <rect x="46" y="63" width="855" height="330" rx="12" fill="#fff" stroke="#d5e4eb" stroke-width="2"/>
   <rect x="925" y="63" width="237" height="330" rx="12" fill="#edf6f2" stroke="#c3ded3" stroke-width="2"/>
   <!-- optical center and two rays: relative heights are proportional to distance -->
-  <path d="M145 260L925 130M145 260L925 390" stroke="#80a1b2" stroke-width="2.3" stroke-dasharray="9 7" fill="none"/>
+  <path d="M145 260L805 150M145 260L805 370" stroke="#80a1b2" stroke-width="2.3" stroke-dasharray="9 7" fill="none"/>
   <line x1="145" y1="260" x2="860" y2="260" stroke="#b8cbd5" stroke-width="2" stroke-dasharray="5 9"/>
   <circle cx="145" cy="260" r="17" fill="#365a70" stroke="#24495f" stroke-width="3"/>
   <circle cx="145" cy="260" r="5" fill="#fff"/>
@@ -20,9 +20,9 @@
   <text x="625" y="160" text-anchor="middle" font-family="Malgun Gothic,Noto Sans KR,sans-serif" font-size="23" font-weight="760" fill="#167970">A</text>
   <text x="625" y="373" text-anchor="middle" font-family="Malgun Gothic,Noto Sans KR,sans-serif" font-size="17" font-weight="700" fill="#167970">가까운 작은 물체</text>
   <!-- object B: distance 780; scaled height 260 -->
-  <rect x="916" y="130" width="18" height="260" rx="4" fill="#776cad" stroke="#605592" stroke-width="2"/>
-  <text x="942" y="120" font-family="Malgun Gothic,Noto Sans KR,sans-serif" font-size="23" font-weight="760" fill="#605592">B</text>
-  <text x="818" y="408" text-anchor="middle" font-family="Malgun Gothic,Noto Sans KR,sans-serif" font-size="18" font-weight="720" fill="#605592">멀리 있는 큰 물체</text>
+  <rect x="796" y="150" width="18" height="220" rx="4" fill="#776cad" stroke="#605592" stroke-width="2"/>
+  <text x="824" y="138" font-family="Malgun Gothic,Noto Sans KR,sans-serif" font-size="23" font-weight="760" fill="#605592">B</text>
+  <text x="805" y="408" text-anchor="middle" font-family="Malgun Gothic,Noto Sans KR,sans-serif" font-size="18" font-weight="720" fill="#605592">멀리 있는 큰 물체</text>
   <!-- side formula and interpretation -->
   <text x="1043" y="120" text-anchor="middle" font-family="Malgun Gothic,Noto Sans KR,sans-serif" font-size="20" font-weight="720" fill="#295c66">2D 영상만으로는</text>
   <text x="1043" y="165" text-anchor="middle" font-family="Malgun Gothic,Noto Sans KR,sans-serif" font-size="21" font-weight="760" fill="#b4683b">실제 크기?</text>
