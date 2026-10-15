@@ -8,6 +8,8 @@
   <link rel="stylesheet" href="slide.css?v=generatedfigfit-20260927-27">
   <script src="slide.js?v=generatedfigfit-20260927-27" defer></script>
   <link rel="stylesheet" href="intro_photos.css?v=20261014">
+  <link rel="stylesheet" href="interactive_lessons.css?v=20261015-1">
+  <script src="interactive_lessons.js?v=20261015-1" defer></script>
 </head>
 <body class="deck-page" data-prev-page="index.html" data-next-page="ai_basics.html">
 <header class="site-header">
@@ -48,70 +50,88 @@
     </div>
   </section>
 <section class="slide">
-  <div class="slide-inner">
+  <div class="slide-inner intro-pixel-lesson" data-grayscale-lesson>
     <span class="slide-number">3</span>
-    <h2 class="slide-title">같은 숫자를 밝기로 표현하면 사진의 형태가 나타납니다</h2>
-    <p class="slide-subtitle">48×32 흑백 사진의 동일한 6×6 위치를 숫자와 밝기로 표현했습니다.</p>
-    <div class="figure figure--generated-lecture">
-      <a href="assets/intro_grayscale_crop_6x6.svg?v=qa-20261013-3" target="_blank" rel="noopener" title="숫자 행렬 확대 보기">
-        <img src="assets/intro_grayscale_crop_6x6.svg?v=qa-20261013-3" alt="흑백 사과 사진에서 선택한 실제 6×6 Pixel 값을 숫자 행렬과 밝기 칸으로 함께 표현">
-      </a>
+    <h2 class="slide-title">사진의 위치를 바꾸면 Pixel 숫자도 바뀝니다</h2>
+    <p class="slide-subtitle">사과 사진을 48 × 32 크기로 축소해 흑백(Grayscale) 숫자로 변환했습니다. 사진을 클릭하여 다른 6 × 6 영역을 살펴보세요.</p>
+    <div class="intro-grayscale-board">
+      <div class="intro-pixel-column intro-pixel-column--photo">
+        <div class="intro-pixel-heading"><strong>① 사진에서 영역 선택</strong><span>48 × 32 분석용 축소</span></div>
+        <button class="intro-photo-selector" type="button" data-gray-photo aria-label="사진에서 6×6 픽셀 영역 선택. 방향키로 한 픽셀씩 이동">
+          <img src="assets/vision_task_apple_reference.jpg" alt="분석 대상인 실제 사과 사진">
+          <span class="intro-pixel-selection" data-gray-selection aria-hidden="true"></span>
+        </button>
+        <p class="intro-pixel-location" data-gray-coordinate aria-live="polite">사진을 불러오는 중입니다.</p>
+      </div>
+      <div class="intro-pixel-column">
+        <div class="intro-pixel-heading"><strong>② Pixel 숫자</strong><span>6 × 6 행렬</span></div>
+        <div class="intro-value-grid" data-gray-values aria-label="선택한 영역의 Grayscale 숫자 36개"></div>
+        <p class="intro-pixel-hint">한 칸 = 밝기를 나타내는 정수 1개</p>
+      </div>
+      <div class="intro-pixel-column">
+        <div class="intro-pixel-heading"><strong>③ 숫자를 밝기로 표시</strong><span>동일한 36개 값</span></div>
+        <div class="intro-value-grid intro-value-grid--tones" data-gray-tones aria-label="같은 Grayscale 숫자와 밝기 시각화"></div>
+        <p class="intro-pixel-hint">0 = 검정 · 255 = 흰색</p>
+      </div>
     </div>
-    <div class="callout"><strong>핵심:</strong> 컴퓨터 입력은 숫자 배열입니다. 흑백 영상은 Pixel마다 밝기 값 하나를 가지며, 이 예시는 <code>32 × 48 × 1</code>입니다.</div>
+    <div class="intro-brightness-toolbar">
+      <label for="intro-brightness">밝기 배율 <output data-gray-factor for="intro-brightness">1.0×</output></label>
+      <input id="intro-brightness" data-gray-brightness type="range" min="0.5" max="1.6" step="0.1" value="1" aria-label="밝기 배율 변경">
+      <button type="button" data-gray-reset>원본 밝기</button>
+      <strong data-gray-example aria-live="polite">원본 Pixel × 1.0 = 결과 Pixel</strong>
+    </div>
+    <p class="intro-pixel-equation">
+      <strong>Grayscale 변환:</strong> Y = round(0.299R + 0.587G + 0.114B)
+      <span aria-hidden="true">·</span>
+      <strong>밝기 조정:</strong> Y′ = min(255, round(k × Y))
+    </p>
+    <p class="intro-pixel-footnote">숫자는 실제 사진을 48 × 32로 축소한 뒤 계산합니다. k는 밝기 배율이며, 결과는 8-bit 정수(0~255)로 제한합니다.</p>
   </div>
 </section>
 <section class="slide">
 <div class="slide-inner iv-revision"><span class="slide-number">4</span><h2 class="slide-title">화면에서 크게 보인다고 실제로 더 큰 물체라는 뜻은 아닙니다</h2><p class="slide-subtitle">실제 사진의 원근 단서와, 같은 크기 물체의 투영 원리를 함께 봅니다.</p><div class="iv-two"><article><a class="iv-image " href="assets/intro_photos/perspective.webp" target="_blank" rel="noopener"><img src="assets/intro_photos/perspective.webp" alt="Palazzo Spada의 강제 원근법 회랑 사진"></a><p>스파다 궁전 회랑: 건축물 자체도 원근감을 과장하도록 설계됨</p></article><article class="iv-principle"><h3>같은 실제 크기라도</h3><svg viewBox="0 0 480 250" role="img" aria-label="동일 높이 물체가 거리가 두 배이면 영상 높이는 절반이 되는 투영 원리"><path d="M55 190 L200 80 M55 190 L400 80 M55 190 L410 190" fill="none" stroke="#94a3b8" stroke-width="2"/><circle cx="55" cy="190" r="9" fill="#334155"/><path d="M200 80 V190 M400 80 V190" stroke="#168078" stroke-width="12"/><text x="25" y="225">카메라</text><text x="165" y="60">2 m</text><text x="365" y="60">4 m</text></svg><div class="iv-equation">영상 높이 ∝ 실제 높이 ÷ 거리</div><p>같은 물체·같은 카메라 예시<br><b>거리 2배 → 영상 높이 ½</b></p></article></div><div class="callout"><strong>사진 속 크기 ≠ 실제 크기.</strong> 거리와 실제 크기는 단일 RGB 값만으로 직접 주어지지 않습니다.</div><div class="iv-credit"><a href="https://commons.wikimedia.org/wiki/File:Forced_perspective_gallery_by_Francesco_Borromini.jpg" target="_blank" rel="noopener">Livioandronico2013 · CC BY-SA 4.0</a> · <a href="assets/intro_photos/SOURCES.html" target="_blank" rel="noopener">출처·라이선스·변형 내역</a></div></div>
 </section>
 <section class="slide">
-    <div class="slide-inner">
-      <span class="slide-number">5</span>
-      <h2 class="slide-title">Pixel 하나는 “위치 + R · G · B 값”입니다</h2>
-      <p class="slide-subtitle">
-        Pixel은 이미지의 한 위치입니다. 일반적인 8-bit RGB 이미지에서는 각 위치에
-        Red · Green · Blue 세 값이 있고, 각 Channel 값은 보통 0~255 범위입니다.
-      </p>
-
-      <div class="intro-visual pixel-structure-visual">
-        <article class="visual-panel pixel-photo-panel">
-          <div class="apple-photo-frame apple-photo-frame--pixel">
-            <img src="assets/vision_task_apple_reference.jpg?v=generatedfigfit-20260927-27" alt="픽셀 위치가 표시된 사과 사진">
-            <span class="pixel-target" aria-hidden="true"></span>
-            <span class="pixel-target-label">Pixel (x=590, y=225)</span>
-          </div>
-        </article>
-
-        <div class="visual-flow-arrow" aria-hidden="true">→</div>
-
-        <article class="visual-panel pixel-value-panel">
-          <div class="visual-panel-heading">
-            <span class="visual-panel-index">선택한 1 Pixel</span>
-            <h3>image[y=225, x=590]</h3>
-          </div>
-
-          <div class="channel-value-list">
-            <div><span class="channel-chip rgb-r">R</span><strong>98</strong><small>Red intensity</small></div>
-            <div><span class="channel-chip rgb-g">G</span><strong>67</strong><small>Green intensity</small></div>
-            <div><span class="channel-chip rgb-b">B</span><strong>38</strong><small>Blue intensity</small></div>
-          </div>
-
-          <div class="pixel-range-note">
-            <span>8-bit Channel 값</span>
-            <strong>0</strong>
-            <div class="pixel-range-bar" aria-hidden="true"></div>
-            <strong>255</strong>
-            <small>값이 클수록 해당 색 Channel의 강도가 큽니다.</small>
-          </div>
-
-          <div class="image-shape">
-            <span>실제 원본 이미지 크기</span>
-            <strong>640 × 960 × 3</strong>
-            <small>Height × Width × RGB Channel</small>
-          </div>
-        </article>
-      </div>
+  <div class="slide-inner intro-rgb-lesson" data-rgb-lesson>
+    <span class="slide-number">5</span>
+    <h2 class="slide-title">RGB 이미지에서는 Pixel 한 칸에 숫자 3개가 있습니다</h2>
+    <p class="slide-subtitle">사진의 한 점을 클릭해 실제 Red · Green · Blue 값을 확인해 보세요. 각각 0~255인 8-bit 값입니다.</p>
+    <div class="intro-visual pixel-structure-visual">
+      <article class="visual-panel pixel-photo-panel">
+        <div class="apple-photo-frame apple-photo-frame--pixel">
+          <button type="button" class="intro-rgb-selector" data-rgb-selector aria-label="사과 사진의 픽셀을 선택. 방향키로 위치 이동">
+            <img src="assets/vision_task_apple_reference.jpg" data-rgb-photo alt="RGB 픽셀을 선택할 실제 사과 사진">
+            <span class="pixel-target" data-rgb-target aria-hidden="true"></span>
+          </button>
+        </div>
+        <p class="intro-rgb-hint">사진 클릭 또는 방향키: Pixel 좌표 선택</p>
+      </article>
+      <div class="visual-flow-arrow" aria-hidden="true">→</div>
+      <article class="visual-panel pixel-value-panel">
+        <div class="visual-panel-heading">
+          <span class="visual-panel-index">선택한 실제 Pixel</span>
+          <h3 data-rgb-coordinate aria-live="polite">image[y, x]</h3>
+        </div>
+        <div class="channel-value-list">
+          <div><span class="channel-chip rgb-r">R</span><strong data-rgb-r>—</strong><small>Red</small></div>
+          <div><span class="channel-chip rgb-g">G</span><strong data-rgb-g>—</strong><small>Green</small></div>
+          <div><span class="channel-chip rgb-b">B</span><strong data-rgb-b>—</strong><small>Blue</small></div>
+        </div>
+        <div class="intro-rgb-result">
+          <span>선택한 Pixel 색상</span>
+          <span data-rgb-swatch class="intro-rgb-swatch" aria-hidden="true"></span>
+          <code data-rgb-tuple>[R, G, B]</code>
+        </div>
+        <div class="image-shape">
+          <span>원본 이미지 배열 크기 (H × W × C)</span>
+          <strong data-rgb-shape>불러오는 중</strong>
+          <small>Height × Width × Channel · C=3 (RGB)</small>
+        </div>
+      </article>
     </div>
-  </section>
+    <p class="intro-pixel-equation">한 Pixel의 값: <strong>I(y, x) = [R(y, x), G(y, x), B(y, x)]</strong></p>
+  </div>
+</section>
 <section class="slide">
   <div class="slide-inner">
     <span class="slide-number">6</span>
@@ -141,7 +161,7 @@
   </div>
 </section>
 <section class="slide">
-<div class="slide-inner iv-revision"><span class="slide-number">10</span><h2 class="slide-title">같은 사과도 조명이 바뀌면 Pixel의 밝기와 색이 달라집니다</h2><p class="slide-subtitle">동일한 실제 사진에 적용한 교육용 변형입니다. 조명을 바꾸어 재촬영한 사진은 아닙니다.</p><div class="iv-grid iv-four"><article><h3>원본</h3><a class="iv-image " href="assets/intro_photos/apple.webp" target="_blank" rel="noopener"><img src="assets/intro_photos/apple.webp" alt="기준 사과 원본"></a><p>기준 입력</p></article><article><h3>어둡게</h3><a class="iv-image iv-dark" href="assets/intro_photos/apple.webp" target="_blank" rel="noopener"><img src="assets/intro_photos/apple.webp" alt="밝기를 낮춘 같은 사진"></a><p>표시 밝기 ×0.45</p></article><article><h3>밝게</h3><a class="iv-image iv-bright" href="assets/intro_photos/apple.webp" target="_blank" rel="noopener"><img src="assets/intro_photos/apple.webp" alt="밝기를 높인 같은 사진"></a><p>표시 밝기 ×1.6 · 일부 포화</p></article><article><h3>따뜻한 색감</h3><a class="iv-image iv-warm" href="assets/intro_photos/apple.webp" target="_blank" rel="noopener"><img src="assets/intro_photos/apple.webp" alt="따뜻한 색감을 합성한 같은 사진"></a><p>RGB 균형 변화</p></article></div><div class="callout"><strong>대상은 같아도 밝기와 색이 바뀝니다.</strong> 색감 변형은 색온도·화이트밸런스 영향의 개념 예시이며, 특정 Kelvin 값의 물리적 재현은 아닙니다.</div><div class="iv-credit"><a href="https://commons.wikimedia.org/wiki/File:Red_Apple.jpg" target="_blank" rel="noopener">Abhijit Tembhekar · CC BY 2.0</a> · <a href="assets/intro_photos/SOURCES.html" target="_blank" rel="noopener">출처·라이선스·변형 내역</a></div></div>
+<div class="slide-inner iv-revision"><span class="slide-number">10</span><h2 class="slide-title">같은 사과도 조명이 바뀌면 Pixel의 밝기와 색이 달라집니다</h2><p class="slide-subtitle">동일한 실제 사진에 적용한 교육용 변형입니다. 조명을 바꾸어 재촬영한 사진은 아닙니다.</p><div class="iv-grid iv-four"><article><h3>원본</h3><a class="iv-image " href="assets/intro_photos/apple.webp" target="_blank" rel="noopener"><img src="assets/intro_photos/apple.webp" alt="기준 사과 원본"></a><p>기준 입력</p></article><article><h3>어둡게</h3><a class="iv-image iv-dark" href="assets/intro_photos/apple.webp" target="_blank" rel="noopener"><img src="assets/intro_photos/apple.webp" alt="밝기를 낮춘 같은 사진"></a><p>표시 밝기 ×0.45</p></article><article><h3>밝게</h3><a class="iv-image iv-bright" href="assets/intro_photos/apple.webp" target="_blank" rel="noopener"><img src="assets/intro_photos/apple.webp" alt="밝기를 높인 같은 사진"></a><p>표시 밝기 ×1.6 · 일부 포화</p></article><article><h3>따뜻한 색감</h3><a class="iv-image iv-warm" href="assets/intro_photos/apple.webp" target="_blank" rel="noopener"><img src="assets/intro_photos/apple.webp" alt="따뜻한 색감을 합성한 같은 사진"></a><p>RGB 균형 변화</p></article></div><div class="callout"><strong>수치와 연결:</strong> 앞서 사용한 밝기 계산 Y′ = min(255, round(k × Y))에서 Y=80, k=1.5라면 Y′=120입니다. RGB 세 채널에 동일 배율을 적용할 수도 있으며, 255에 도달하면 값이 포화됩니다. 따뜻한 색감은 채널별 변화의 개념 예시입니다.</div><div class="iv-credit"><a href="https://commons.wikimedia.org/wiki/File:Red_Apple.jpg" target="_blank" rel="noopener">Abhijit Tembhekar · CC BY 2.0</a> · <a href="assets/intro_photos/SOURCES.html" target="_blank" rel="noopener">출처·라이선스·변형 내역</a></div></div>
 </section>
 <section class="slide">
 <div class="slide-inner iv-revision"><span class="slide-number">11</span><h2 class="slide-title">촬영 거리·방향·가림·초점도 같은 사과를 다르게 보이게 합니다</h2><p class="slide-subtitle">같은 원본을 회전·축소·가림·흐림 처리했습니다. 3D 시점 변화나 실제 재촬영 결과와는 다릅니다.</p><div class="iv-grid iv-four"><article><h3>평면 회전</h3><a class="iv-image iv-rotate" href="assets/intro_photos/apple.webp" target="_blank" rel="noopener"><img src="assets/intro_photos/apple.webp" alt="화면 안에서 20도 회전한 사과"></a><p>화면 안에서 20° 회전</p></article><article><h3>크기 축소</h3><a class="iv-image iv-small" href="assets/intro_photos/apple.webp" target="_blank" rel="noopener"><img src="assets/intro_photos/apple.webp" alt="원본을 절반 크기로 표시한 사과"></a><p>가로·세로 50%</p></article><article><h3>일부 가림</h3><a class="iv-image iv-occlude" href="assets/intro_photos/apple.webp" target="_blank" rel="noopener"><img src="assets/intro_photos/apple.webp" alt="회색 영역으로 일부를 가린 사과"></a><p>부분 정보 손실</p></article><article><h3>초점 흐림</h3><a class="iv-image iv-blur" href="assets/intro_photos/apple.webp" target="_blank" rel="noopener"><img src="assets/intro_photos/apple.webp" alt="블러를 적용한 사과"></a><p>경계·질감 약화</p></article></div><div class="callout"><strong>같은 물체도 입력 형태가 달라집니다.</strong> 평면 회전은 뒷면을 보여주지 않으며, 크기 축소는 멀리 보이는 상황을 단순화한 예시입니다.</div><div class="iv-credit"><a href="https://commons.wikimedia.org/wiki/File:Red_Apple.jpg" target="_blank" rel="noopener">Abhijit Tembhekar · CC BY 2.0</a> · <a href="assets/intro_photos/SOURCES.html" target="_blank" rel="noopener">출처·라이선스·변형 내역</a></div></div>
@@ -266,6 +286,6 @@
   </div>
 </div>
 
-<!-- Intro RGB tensor: values sampled from the displayed apple image -->
+<!-- Interactive pixel values are sampled in-browser from the local apple photo. -->
 </body>
 </html>
