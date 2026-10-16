@@ -181,7 +181,7 @@ window.LECTURE_OUTLINE = {
       ]
     },
     {
-      "name": "CNN · 전체 구조와 실제 특징",
+      "name": "CNN · 왜 쓰고 무엇을 배우나",
       "items": [
         {
           "page": "vision_ai_course.html",
@@ -214,7 +214,7 @@ window.LECTURE_OUTLINE = {
       ]
     },
     {
-      "name": "Kernel · 특징과 학습 원리",
+      "name": "Kernel · 특징과 가중치",
       "items": [
         {
           "page": "vision_ai_course.html",
@@ -250,19 +250,19 @@ window.LECTURE_OUTLINE = {
           "global": 35,
           "title": "Weight · Bias · 입력의 중요도",
           "original": "A8"
-        },
+        }
+      ]
+    },
+    {
+      "name": "AI 원리 · 선형성·AND·XOR",
+      "items": [
         {
           "page": "vision_ai_course.html",
           "slide": 17,
           "global": 36,
           "title": "Neural Network · 가중치 연결",
           "original": "A11"
-        }
-      ]
-    },
-    {
-      "name": "AI 원리 · 비선형성",
-      "items": [
+        },
         {
           "page": "vision_ai_course.html",
           "slide": 18,
@@ -276,24 +276,14 @@ window.LECTURE_OUTLINE = {
           "global": 38,
           "title": "AND는 직선으로 구분되지만 XOR는 그렇지 않습니다",
           "original": "N3"
-        }
-      ]
-    },
-    {
-      "name": "Kernel · 특징과 학습 원리",
-      "items": [
+        },
         {
           "page": "vision_ai_course.html",
           "slide": 20,
           "global": 39,
           "title": "ReLU · 비선형 특성",
           "original": "A13"
-        }
-      ]
-    },
-    {
-      "name": "AI 원리 · 비선형성",
-      "items": [
+        },
         {
           "page": "vision_ai_course.html",
           "slide": 21,
@@ -304,7 +294,7 @@ window.LECTURE_OUTLINE = {
       ]
     },
     {
-      "name": "Kernel · 특징과 학습 원리",
+      "name": "CNN · 특징 계산과 크기 변화",
       "items": [
         {
           "page": "vision_ai_course.html",
@@ -312,12 +302,7 @@ window.LECTURE_OUTLINE = {
           "global": 41,
           "title": "학습 과정에서 바뀌는 Kernel",
           "original": "V33"
-        }
-      ]
-    },
-    {
-      "name": "CNN · 특징 계산의 핵심",
-      "items": [
+        },
         {
           "page": "vision_ai_course.html",
           "slide": 23,
@@ -370,7 +355,7 @@ window.LECTURE_OUTLINE = {
       ]
     },
     {
-      "name": "모델 학습 · 예측에서 가중치 갱신까지",
+      "name": "모델 학습 · 예측부터 Weight 갱신",
       "items": [
         {
           "page": "vision_ai_course.html",
@@ -450,7 +435,7 @@ window.LECTURE_OUTLINE = {
       ]
     },
     {
-      "name": "전이학습 · 새 환경에 적용",
+      "name": "전이학습 · 새 환경 적용",
       "items": [
         {
           "page": "vision_ai_course.html",
