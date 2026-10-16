@@ -39,6 +39,21 @@ def main():
         errors = []
         page.on("pageerror",lambda e: errors.append(str(e)))
 
+        # Legacy URLs previously shared as /docs/*.html should redirect to
+        # the Pages root while preserving slide numbers and search parameters.
+        page.goto(BASE + "/docs/vision_ai_course.html#slide-25")
+        position(page, "vision_ai_course", 25, 53)
+        check("/docs/" not in page.url, "Legacy course URL not normalized")
+        page.goto(BASE + "/docs/vision_ai_course.html?from=legacy#slide-25")
+        page.wait_for_url("**/vision_ai_course.html?from=legacy#slide-25")
+        check(page.locator("[data-slide-current]").inner_text() == "25",
+              "Legacy course query/hash not retained")
+        page.goto(BASE + "/docs/intro.html#slide-7")
+        position(page, "intro", 7, 19)
+        check("/docs/" not in page.url, "Legacy Intro URL not normalized")
+        page.goto(BASE + "/docs/")
+        position(page, "intro", 1, 19)
+
         page.goto(BASE + "/index.html")
         position(page,"intro",1,19)
         check(page.locator("[data-slide-prev]").is_disabled(),
