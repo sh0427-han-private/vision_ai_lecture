@@ -325,3 +325,11 @@ GitHub Pages:
 - 통합 강의 기존 8번 IoU 수치 계산 슬라이드는 삭제하고, 기존 7번 IoU 개념 슬라이드는 평가 단원 후반으로 이동합니다. 원본 vision_ai.html 및 manifest는 참고용 보존본입니다.
 - 공개 통합 강의 순서: Task·Label(6장) → AI 판단의 학습(7장) → 데이터·분할·전처리(6장) → 공간 필터(9장) → Perceptron·Activation(7장) → CNN(16장) → Loss·Optimizer·Training(12장) → Transfer Learning·Generalization(6장) → 평가·운영(10장).
 - data-source-deck·data-source-slide 원본 식별자는 보존하고, 98개 목차 항목·물리 슬라이드 순서·브라우저 QA 수치·캐시 키를 함께 최신으로 유지합니다.
+
+## 2026-10-16 · 기존 첫 장 복원과 목차 스크롤 독립 처리 (최신)
+
+- 기존 Intro 1 타이틀 **“AI는 세상을 어떻게 볼까?”**의 원래 HTML·문구를 복원하여 공개 강의 맨 앞에 배치합니다. 직전에 추가한 시각 정보와 Vision 중요성 슬라이드는 각각 Intro 2·3에 유지합니다.
+- 공개 장수는 **Intro 20장 + Vision AI 통합 79장 = 총 99장**, 두 발표 화면 기준 **198개 viewport**입니다.
+- 공개 목차는 99개 항목으로 복구하고 global 번호와 Intro #slide-N 순서를 연속화합니다. docs/slide.js에서 목차가 열린 동안 wheel·touchend·슬라이드 이동 keydown을 처리하지 않아 목록 스크롤만으로 슬라이드가 바뀌지 않습니다. 목차 링크 클릭·이전/다음 버튼은 정상 작동합니다.
+- 공통 slide.js 수정에 대해 Intro·통합 Vision AI·기존 AI Basics·Vision AI 페이지의 cache query를 갱신합니다. 공유 lecture_outline.js의 양쪽 공개 페이지 cache query도 함께 갱신합니다.
+- 브라우저 회귀 검사는 목차 휠 스크롤 및 backdrop에서의 휠 입력이 slide hash를 바꾸지 않고 목록 자체가 스크롤되는지 확인합니다.
