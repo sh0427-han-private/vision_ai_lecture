@@ -1,5 +1,10 @@
 name: Render real photo-based image processing examples
 on:
+  push:
+    branches: [course-visual-evidence-short-titles-20261016]
+    paths:
+      - scripts/render_real_vision_examples.py
+      - .github/workflows/generate-real-vision-examples.yml
   workflow_dispatch:
 
 permissions:
