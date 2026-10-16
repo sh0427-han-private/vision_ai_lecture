@@ -1,0 +1,155 @@
+/* Four-figure research pilot: original technical/research images + Korean explanation.
+   Scoped to slide-inner.research-pilot; does not touch Intro or common layouts. */
+.lesson-deck .research-pilot .slide-subtitle {
+  margin-bottom: 8px;
+  line-height: 1.44;
+}
+.lesson-deck .research-pilot .lesson-figure {
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: clamp(8px, 1.1vw, 16px);
+  align-items: stretch;
+}
+.lesson-deck .research-pilot .research-three,
+.lesson-deck .research-pilot .research-sobel,
+.lesson-deck .research-pilot .research-gradcam {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.lesson-deck .research-pilot .research-distill {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.lesson-deck .research-pilot .research-tile,
+.lesson-deck .research-pilot .research-feature {
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding: clamp(7px, 0.8vw, 12px);
+  background: #f8fbfc;
+  border: 1px solid #d5e3e9;
+  border-radius: 9px;
+  overflow: hidden;
+}
+.lesson-deck .research-pilot .research-kicker,
+.lesson-deck .research-pilot .research-feature-head strong {
+  display: block;
+  font-size: clamp(16px, 1.3vw, 19px);
+  color: #20485d;
+  font-weight: 800;
+}
+.lesson-deck .research-pilot .research-tile > a {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.lesson-deck .research-pilot .research-tile > a img {
+  max-height: min(32dvh, 315px);
+  width: 100%;
+  min-height: 0;
+  object-fit: contain;
+  background: #fff;
+  border-radius: 4px;
+}
+.lesson-deck .research-pilot .research-tile-note {
+  display: block;
+  font-size: clamp(13px, 1.07vw, 16px);
+  line-height: 1.4;
+  color: #536b77;
+  word-break: keep-all;
+}
+.lesson-deck .research-pilot .research-feature-head {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 5px 12px;
+}
+.lesson-deck .research-pilot .research-feature-head > span,
+.lesson-deck .research-pilot .research-pair-caption {
+  font-size: clamp(13px, 1vw, 15px);
+  color: #5e7884;
+}
+.lesson-deck .research-pilot .research-feature-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  justify-items: center;
+  align-items: center;
+  min-width: 0;
+}
+.lesson-deck .research-pilot .research-feature-pair a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+}
+.lesson-deck .research-pilot .research-feature-pair img {
+  width: 100%;
+  max-height: min(30dvh, 280px);
+  aspect-ratio: 1 / 1;
+  min-width: 0;
+  object-fit: contain;
+  background: #fff;
+  border-radius: 5px;
+}
+.lesson-deck .research-pilot .research-pair-caption > span {
+  margin: 0 8px;
+  color: #287e87;
+  font-weight: 800;
+}
+.lesson-deck .research-pilot .lesson-takeaway {
+  margin-top: 8px;
+  padding: 9px 13px;
+}
+.lesson-deck .research-pilot .lesson-source {
+  font-size: clamp(11px, 0.9vw, 13px);
+  line-height: 1.35;
+  margin-top: 6px;
+}
+.lesson-deck .research-pilot .research-calculation {
+  font-size: 13px;
+  color: #587482;
+  margin-top: 5px;
+  border-top: 1px solid #dae6eb;
+}
+.lesson-deck .research-pilot .research-calculation summary {
+  cursor: pointer;
+  padding-top: 7px;
+  width: fit-content;
+  font-weight: 650;
+}
+.lesson-deck .research-pilot .research-calculation img {
+  width: 100%;
+  max-height: 38dvh;
+  object-fit: contain;
+  margin-top: 8px;
+}
+.lesson-deck .research-pilot .research-calculation p {
+  margin: 4px 0 0;
+}
+@media (max-height: 820px) {
+  .lesson-deck .research-pilot .research-tile > a img { max-height: 27dvh; }
+  .lesson-deck .research-pilot .research-feature-pair img { max-height: 26dvh; }
+  .lesson-deck .research-pilot .lesson-takeaway { font-size: 15px; line-height: 1.35; }
+  .lesson-deck .research-pilot .research-tile,
+  .lesson-deck .research-pilot .research-feature { gap: 4px; }
+}
+@media (max-width: 750px) {
+  .lesson-deck .research-pilot .research-tile,
+  .lesson-deck .research-pilot .research-feature { padding: 5px; }
+  .lesson-deck .research-pilot .research-tile-note,
+  .lesson-deck .research-pilot .research-pair-caption { font-size: 11px; }
+  .lesson-deck .research-pilot .research-kicker,
+  .lesson-deck .research-pilot .research-feature-head strong { font-size: 12px; }
+  .lesson-deck .research-pilot .research-three,
+  .lesson-deck .research-pilot .research-sobel,
+  .lesson-deck .research-pilot .research-gradcam { gap: 5px; }
+  .lesson-deck .research-pilot .research-distill { gap: 5px; }
+  .lesson-deck .research-pilot .research-feature-pair { gap: 3px; }
+  .lesson-deck .research-pilot .research-feature-pair img { max-height: 23dvh; }
+}

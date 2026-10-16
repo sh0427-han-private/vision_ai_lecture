@@ -403,3 +403,14 @@ GitHub Pages:
 - 본조사 문서의 `후보`는 원본 이미지 파일 URL·Figure 번호·사용 조건 등을 확인하기 전의 제안이며, 공개 슬라이드 반영을 뜻하지 않습니다. 강의 원본을 한 번에 덮어쓰지 않고 2~3장 단위로 샘플을 만들고 렌더링 검증합니다.
 - 기존 16번 얼룩말 CNN 원본, 28번 YOLO 논문 Figure 및 Intro 19장/통합 53장의 강의 흐름, 실제 사과사진·Pixel 계산·인터랙티브 자료는 유지합니다.
 - ResNet/U-Net 상세 아키텍처 추가는 하지 않습니다. CNN 공통 원리 → YOLO Detect/Classify 구별 → 데이터/학습/평가의 초보자 흐름을 지킵니다.
+
+
+
+## 2026-10-16 · 원본 연구 Figure 시범 적용 (현재 10·11·25·51번)
+
+- **10번 Spatial Filtering**: OpenCV 공식 튜토리얼의 `blur.jpg` (Mean), `gaussian.jpg` (Gaussian), `median.jpg` (Median) 원본 영상으로 실제 처리 전후를 비교합니다. 각각 다른 조건(특히 Median은 점 잡음 입력)을 사용하므로 동일 Pixel의 정량 결과처럼 주장하지 않습니다. 기존 단일 3×3 수치 비교 Figure는 별도의 펼침 영역에 보존합니다.
+- **11번 Sobel**: OpenCV의 원본 인물 사진, 위치-밝기 곡선, 미분 곡선을 나란히 사용합니다. 원본 인물 사진에서 실제로 측정한 연속 신호인 것처럼 표현하지 않습니다. 기존의 실제 합성 데이터 Sobel 결과 그림은 펼침 영역에 보존합니다.
+- **25번 CNN Feature Visualization**: Distill (2017) GoogLeNet의 `mixed4a Unit 97`과 `mixed5a Unit 9` 최적화 시각화 및 실제 반응 데이터셋 사진을 그대로 사용합니다. **최적화로 생성된 패턴 이미지**와 **해당 뉴런에 강하게 반응한 데이터셋 실제 사진**을 구분합니다. CNN Feature Map을 실제 이미지에 그대로 투영한 Figure라고 말하지 않습니다.
+- **51번 판단 근거**: jacobgil/pytorch-grad-cam 공개 Classification 예제의 원본 고양이·개 사진과 Dog/Cat 클래스별 Grad-CAM 열지도를 사용합니다. 다른 클래스를 설명할 때 강조 영역이 달라지는 것으로 설명하고, 높은 Confidence와 정답/해석의 신뢰성을 동일시하지 않습니다.
+- 모든 슬라이드의 제목·부제·핵심 문장은 한국어 중심이며, 외부 원본 링크는 출처를 표기합니다. 외부 로드 실패 시 원래 저장소의 로컬 Figure로 대체합니다.
+- 전용 CSS `docs/research_original_figures.css?v=20261016-1`는 `docs/vision_ai_course.html`만 적용됩니다. 공용 CSS/JS는 수정하지 않으며 16번 얼룩말 구조, 31번 YOLO 학습 도식 및 기존 목차·전체 슬라이드 72장을 유지합니다.

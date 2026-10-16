@@ -123,3 +123,16 @@
 - 참고문헌의 상세 링크는 [REFERENCE_VISION_AI_SOURCE_LIBRARY.md](REFERENCE_VISION_AI_SOURCE_LIBRARY.md)에서 R01~R28로 조회합니다.
 - 현재 공개 수업: https://sh0427-han.github.io/vision_ai_lecture/
 - 교육용 원본 데이터 및 기타 기존 그림 인용 목록: [assets/SOURCES.md](assets/SOURCES.md).
+
+
+
+## 2026-10-16 · 시범 적용 완료 후 검토 지점
+
+| 슬라이드 | 실제 적용 | 확인해야 할 점 |
+|---|---|---|
+| Vision 10 | OpenCV Mean·Gaussian·Median 원본 처리영상 3종 + 기존 3×3 수치 예시 펼침 | 필터별 입력 조건 차이를 이해하는가? |
+| Vision 11 | OpenCV Sobel 원본 사진·밝기·미분 원리 Figure + 기존 실제 Sobel 연산 펼침 | 밝기 변화가 왜 경계 단서인지 이해하는가? |
+| Vision 25 | Distill GoogLeNet mixed4a/mixed5a의 최적화 패턴/실제 반응 이미지 비교 | Feature Visualization과 실제 Feature Map을 구분하는가? |
+| Vision 51 | 분류 모델 Dog/Cat Class별 Grad-CAM 원본 3종 | 같은 사진에서 클래스별로 열지도가 왜 달라지는지 이해하는가? |
+
+4개 슬라이드만 우선 수정하고, 다른 49개 Vision AI 슬라이드와 Intro 19장 그림은 그대로 유지합니다. 원본 이미지는 외부 링크이며 네트워크 접근 불가 시 기존 로컬 SVG가 표시됩니다.
