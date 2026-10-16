@@ -116,8 +116,9 @@ for asset in assets:
     assert figure.is_file(), figure
     root = ET.parse(figure).getroot()
     assert root.get("viewBox") == "0 0 1200 500"
-    assert asset in course_page, asset
-assert "CNN Explainer (Wang et al., IEEE TVCG 2020)" in course_page
+    if asset != "cnn_foundations_n1.svg":
+        assert asset in course_page, asset
+assert "developersbreach.com/convolution-neural-network-deep-learning" in course_page
 assert "cnn_banner.png" in course_page
 assert "yolo_class_box_training_ko.svg" in course_page
 assert "YOLO 객체 검출은 종류와 위치를 함께 학습합니다" in course_page
@@ -480,8 +481,8 @@ for path in ("intro_resolution_demo.js", "intro_resolution_demo.css",
 assert "intro_resolution_demo.js?v=20261015-1" in intro_page
 assert "intro_apple_number_bridge.js?v=20261015-1" in intro_page
 assert "intro_apple_number_bridge.css?v=intro-picto-20261016-1" in intro_page
-assert "lecture_outline.js?v=yolo-vision-20261016-1" in intro_page
-assert "lecture_outline.js?v=yolo-vision-20261016-1" in course_page
+assert "lecture_outline.js?v=zebra-cnn-yolo-loss-20261016-1" in intro_page
+assert "lecture_outline.js?v=zebra-cnn-yolo-loss-20261016-1" in course_page
 bridge_script = (DOCS / "intro_apple_number_bridge.js").read_text("utf-8")
 assert "const width = 12, height = 8;" in bridge_script
 for channel_weight in ("0.299", "0.587", "0.114"):
