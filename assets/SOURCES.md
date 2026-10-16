@@ -459,3 +459,10 @@ https://www.nature.com/articles/s42256-020-00257-z
 - `docs/assets/lesson/cnn_real_filter_compare_dog.png`: Stanford CS231n Lecture5에 나온 강아지 사진을 이용한 실제 사진 필터 처리 결과. 같은 RGB 입력 224×224에 결정적 Salt-and-Pepper 잡음 5%를 적용하고 Pillow `BoxBlur(2)`, `GaussianBlur(radius=2)`, `MedianFilter(size=5)`를 각각 적용했습니다. **같은 잡음 입력으로 직접 비교**하므로 OpenCV 웹 튜토리얼의 서로 다른 예시 입력을 직접 비교하는 문제를 해결합니다.
 - `docs/assets/lesson/cnn_real_sobel_dog.png`: 동일 사진을 Grayscale로 변환해 실제 3×3 Sobel X, Sobel Y와 `sqrt(Gx² + Gy²)`을 계산해 222×222 출력으로 표시했습니다. 이는 **고정 필터의 계산 결과**이지 CNN에서 학습된 Feature Map은 아닙니다.
 - 재현 코드: `scripts/render_real_vision_examples.py`, 생성 워크플로는 수동 실행 가능. 공식 방법 출처: https://docs.opencv.org/4.x/d4/d13/tutorial_py_filtering.html , https://docs.opencv.org/4.x/d2/d2c/tutorial_sobel_derivatives.html . 초기 OpenCV 4.13.0 웹 이미지 직접 링크는 네트워크에서 깨져 실제 슬라이드에서는 사용하지 않습니다. 원래 수치 설명 도식은 펼침 안에 보존했습니다.
+
+
+## 2026-10-16 · Filtering 독립 슬라이드 축소 / Kernel 학습 핵심화
+
+- 전통적 영상처리의 실제 비교 자료를 삭제하지 않습니다. `docs/assets/lesson/cnn_real_filter_compare_dog.png` 및 `cnn_real_sobel_dog.png`는 **통합 14번** 선택형 참고로 사용합니다. 같은 강아지 입력과 NumPy/Pillow 계산으로 검증된 **고정 필터** 예시입니다.
+- 기존 참고: Stanford CS231n, https://cs231n.github.io/convolutional-networks/ ; OpenCV Filtering https://docs.opencv.org/4.x/d4/d13/tutorial_py_filtering.html ; PyTorch Conv2d https://pytorch.org/docs/stable/generated/torch.nn.Conv2d.html ; PyTorch Autograd https://docs.pytorch.org/tutorials/beginner/basics/autogradqs_tutorial.html .
+- CNN Filter는 학습이 가능한 가중치(Parameter)이고, Loss의 Gradient와 Optimizer를 이용해 조정됩니다. 이는 Mean/Gaussian/Sobel처럼 고정된 연산과 구별합니다. 독립 필터 강의를 제외해도 이전 연구·계산 출처 기록은 모두 유지합니다.
