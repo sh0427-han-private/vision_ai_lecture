@@ -45,7 +45,7 @@ jobs:
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: visual-audit-69-slides
+          name: visual-audit-67-slides
           path: visual_audit_output/
           retention-days: 14
           if-no-files-found: warn
