@@ -434,3 +434,10 @@ https://www.nature.com/articles/s42256-020-00257-z
 - 동일 원본 PNG 미러: https://github.com/yganalyst/yganalyst.github.io/blob/master/assets/images/cs231n/4/convlayer_4.png .
 - 주의: Conv1_1 · Conv3_2 · Conv5_3 그림은 강아지 한 장이 픽셀 단위로 층별 변환된 결과가 아니라, 각 층에서 학습된 특징을 시각화한 것입니다. 현재 25번 설명에는 이 차이를 명확히 적었습니다.
 - 이전 자체 제작 사과 도식 `cnn_three_stage_apple_ko.svg`는 보존하지만 현재 25번 본문에서는 사용하지 않습니다.
+
+
+## 2026-10-16 · Vision AI 25 실제 활성화 지도와 26 연구 시각화 구분
+
+- **Vision 25 (실제 Activation)**: `docs/assets/lesson/cnn_squeezenet_actual_feature_maps.png`은 `scripts/render_cnn_feature_maps.py`에서 학습된 CNN으로 직접 계산한 실제 데이터입니다. 입력: CS231n Lecture5 Slide37 원본 Figure (`cs231n_vgg16_feature_hierarchy_original.png`)의 좌측 강아지 사진을 Cropping/Resize(224×224), ImageNet 정규화. Model: `torchvision.models.squeezenet1_1(weights=SqueezeNet1_1_Weights.IMAGENET1K_V1).eval()`, 실제 중간 Activation 추출: `features[1]` (111×111×64), `features[7]` (27×27×256), `features[12]` (13×13×512). 각 단계 4개 채널을 변화량 기준으로 선택했고 시각화 대비는 각 채널별 2–99 분위수 정규화하므로 **채널 간 절대값 비교는 불가**합니다. 재현 실행 환경: GitHub Actions `.github/workflows/generate-real-feature-maps.yml` (CPU PyTorch/torchvision + Noto CJK). 모델 문서: https://pytorch.org/vision/stable/models/generated/torchvision.models.squeezenet1_1.html
+- **Vision 26 (Feature Visualization)**: 원본 CS231n 강의 Figure인 VGG-16 Conv1_1/Conv3_2/Conv5_3의 학습 특징 시각화. 원본: https://cs231n.stanford.edu/slides/2017/cs231n_2017_lecture5.pdf . 이 이미지는 **Vision 25의 SqueezeNet Feature Map을 가공한 것이 아니며**, 동일 네트워크의 동일 입력 단계별 이미지 변화로 해석하지 않습니다.
+- 핵심 수업 메시지: Feature Map은 입력 사진에서 각 채널의 공간 위치별 출력 값, Feature Visualization은 학습된 특정 Feature를 강하게 활성화하는 패턴을 보여 주는 별도의 분석입니다.
