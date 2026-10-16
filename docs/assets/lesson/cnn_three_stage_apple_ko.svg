@@ -81,6 +81,6 @@
 <text x="1243" y="477" class="qualifier" text-anchor="middle">→ 구분에 유용한 표현</text>
 <rect x="33" y="507" width="1376" height="54" rx="12" fill="#eaf4f6" stroke="#d7e6ea" />
 <text x="55" y="541" class="kicker" >핵심</text>
-<text x="129" y="541" class="takeaway" >층이 깊어질수록 앞에서 찾은 특징을 조합해 더 복합적인 단서에 반응할 수 있습니다.</text>
-<text x="1393" y="541" class="qualifier" text-anchor="end">※ 학습된 모델의 실제 Feature Map이 아닌 개념도</text>
+<text x="129" y="541" class="takeaway" >앞 층에서 얻은 특징을 조합해 더 복잡한 특징에 반응합니다.</text>
+<text x="1393" y="541" class="qualifier" text-anchor="end">※ 교육용 개념도 · 실제 Feature Map 아님</text>
 </svg>
