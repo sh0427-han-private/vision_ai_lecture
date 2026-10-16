@@ -38,7 +38,7 @@
 | 7 | 판단 기준을 사람이 쓰거나, 데이터에서 배웁니다 | R02 · R04 | 규칙 vs 학습 기존 그림 유지 | 유지 | 한글로 간단히 보완 |
 | 8 | 한 Pixel을 바꿀 수도, 주변 Pixel을 함께 볼 수도 있습니다 | R06 · R08 | 이웃 연산 실제 계산 그림 보존 | 유지 | 독립 Pixel vs Neighborhood |
 | 9 | 3×3 Kernel은 움직이며 출력 Pixel을 하나씩 만듭니다 | R06 · R09 | 기존 Kernel 연산·수치 보존 | 유지 | 행렬 값과 결과 재검산 |
-| 10 | 동일 입력에서도 Mean·Gaussian·Median 결과는 다릅니다 | R06 | OpenCV Mean·Gaussian·Median 원본 처리사진 조사 | 후보 | 원본 필터 처리 사진/실제 수치 대응 |
+| 10 | 평균·가우시안·중앙값 필터는 서로 다른 결과를 만듭니다 | R06 | OpenCV Mean·Gaussian·Median 원본 처리사진 조사 | 후보 | 원본 필터 처리 사진/실제 수치 대응 |
 | 11 | 밝기가 급격히 바뀌는 위치에서 경계 단서를 얻습니다 | R07 | OpenCV Sobel 원본 Before/After 조사 | 후보 | 밝기 변화→경계 반응 이미지 |
 | 12 | Spatial Filtering의 Kernel 개념은 CNN으로 연결됩니다 | R06 · R09 | 필터→CNN 전환 슬라이드 한글 해설 | 보완 | 고정 Kernel↔학습 Kernel |
 | 13 | 입력마다 가중치를 곱하고, 더해서 하나의 판정을 만듭니다 | R03 · R04 | 입력·Weight·출력 계산 유지 | 유지 | 현재 난이도 유지 |
