@@ -424,3 +424,13 @@ https://www.nature.com/articles/s42256-020-00257-z
 - **정확성**: 얕은층 경계 강조는 고정된 3×3 Laplacian 연산의 예시이며 특정 CNN의 실제 Kernel 또는 학습된 Feature Map이 아닙니다. 중간층의 곡선/껍질 무늬 강조선, 깊은층의 사과 형태 실루엣도 학습된 모델에서 실측한 시각화가 아니라 부분 특징과 복합 특징의 관계를 설명하기 위한 도식입니다.
 - **설명 근거**: Stanford CS231n, *Convolutional Neural Networks*, https://cs231n.github.io/convolutional-networks/ (초기 Layer는 Edge/Color Blob, 깊은 Layer는 점차 복합적 Feature). Olah, Mordvintsev & Schubert, *Feature Visualization*, Distill (2017), https://distill.pub/2017/feature-visualization/ , DOI 10.23915/distill.00007. 본 수업 Figure에는 Distill 논문의 연구 시각화를 그대로 복사하지 않았습니다.
 - 수업 메시지: 얕은층(경계·밝기) → 중간층(곡선·질감·부분 형태) → 깊은층(앞 특징의 복합 조합). 깊은층이 원본 전체 사진을 그대로 보거나 모든 뉴런이 하나의 명확한 의미를 학습하는 것은 아닙니다.
+
+
+## 2026-10-16 · Vision 25: Stanford CS231n 원본 VGG-16 특징 시각화
+
+- 원본 무수정 파일: `docs/assets/lesson/cs231n_vgg16_feature_hierarchy_original.png`. 저장한 PNG는 미러 원본과 Git Blob SHA `bb2d7a7033c7139bc68cd5fe619eba7b58ea71f3`이 동일하며, 외부 CDN 없이 수업에 표시됩니다.
+- 강의 원문: Stanford CS231n, Fei-Fei Li · Justin Johnson · Serena Yeung, Lecture 5: Convolutional Neural Networks (2017), Slide 37, https://cs231n.stanford.edu/slides/2017/cs231n_2017_lecture5.pdf .
+- Figure 원 크레딧: Visualization of VGG-16 by Lane McIntosh. 관련 논문: Zeiler and Fergus, Visualizing and Understanding Convolutional Networks, ECCV 2014, https://cs.nyu.edu/~fergus/papers/zeilerECCV2014.pdf . VGG-16 아키텍처는 Simonyan and Zisserman (2014)을 인용한 CS231n 자료입니다.
+- 동일 원본 PNG 미러: https://github.com/yganalyst/yganalyst.github.io/blob/master/assets/images/cs231n/4/convlayer_4.png .
+- 주의: Conv1_1 · Conv3_2 · Conv5_3 그림은 강아지 한 장이 픽셀 단위로 층별 변환된 결과가 아니라, 각 층에서 학습된 특징을 시각화한 것입니다. 현재 25번 설명에는 이 차이를 명확히 적었습니다.
+- 이전 자체 제작 사과 도식 `cnn_three_stage_apple_ko.svg`는 보존하지만 현재 25번 본문에서는 사용하지 않습니다.
