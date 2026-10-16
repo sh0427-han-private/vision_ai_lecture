@@ -1,4 +1,4 @@
-/* Vision-first essentials and CNN architecture: Intro 19 + integrated course 58 = 77 slides. */
+/* Vision-first CNN course outline: 19 Intro slides and 58 integrated slides (77 total). */
 window.LECTURE_OUTLINE = {
   "version": "20261016-vision-focused-cnn-58",
   "groups": [
