@@ -162,7 +162,7 @@ def main() -> None:
         assert page.locator(".intro-rgb-data-figure img").count() == 1
         assert page.locator(".slide.active .callout").count() == 0
         page.goto(BASE_URL + "#slide-11", wait_until="networkidle")
-        assert "해상도가 높을수록" in page.locator(".slide.active").inner_text()
+        assert "해상도와 Pixel 수" in page.locator(".slide.active").inner_text()
         page.goto(BASE_URL + "#slide-12", wait_until="networkidle")
         page.wait_for_function(
             "() => document.querySelector('[data-resolution-comparison]')"
