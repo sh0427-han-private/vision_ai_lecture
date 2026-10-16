@@ -63,3 +63,14 @@
  .lesson-deck .op-arrow{font-size:18px}
  .lesson-deck .op-flow{grid-template-columns:1fr 17px 1fr 17px 1fr}
 }
+
+
+/* Padding teaching: the 5x5 padded data and resulting 3x3 are side by side. */
+.lesson-deck .padding-compare{display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:9px}
+.lesson-deck .padding-compare .concept-matrix{width:min(100%,225px);margin:6px auto}
+.lesson-deck .padding-compare .matrix-label{font-size:clamp(12px,.87vw,15px);margin:5px 0}
+.lesson-deck .concept-scalar{width:76px;height:58px;display:grid;place-items:center;margin:10px auto;border:2px solid #8fcbbd;border-radius:10px;background:#e1f4ec;color:#176f5c;font-size:28px;font-weight:800}
+@media(max-height:850px){
+ .lesson-deck .padding-compare .concept-matrix{width:min(100%,190px)}
+ .lesson-deck .concept-scalar{height:45px;width:65px;font-size:24px;margin:6px auto}
+}
