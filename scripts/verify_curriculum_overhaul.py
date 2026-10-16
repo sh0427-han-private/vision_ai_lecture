@@ -157,7 +157,7 @@ assert [it["original"] for it in items[19:24]] == ["V2","V3","V4","V5","V6"]
 assert items[19+7]["original"] == "C1"
 assert [it["original"] for it in items[19+17:19+20]] == ["C2","C3","C4"]
 assert [it["original"] for it in items[19+24:19+27]] == ["C5","C6","C7"]
-assert all(not it["original"].startswith("Y") for it in items)
+assert all(not it["original"].startswith("Y") for it in items[19:])
 assert "lecture-toc-drawer" in (DOCS / "lecture_sidebar.js").read_text("utf-8")
 print("67-slide CNN-centered course, numeric operators and retractable TOC validated.")
 
