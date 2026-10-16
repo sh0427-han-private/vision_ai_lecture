@@ -1,12 +1,6 @@
 name: Produce pretrained CNN feature-map demonstration
 
 on:
-  push:
-    branches:
-      - cnn-real-featuremaps-two-slides-20261016
-    paths:
-      - scripts/render_cnn_feature_maps.py
-      - .github/workflows/generate-real-feature-maps.yml
   workflow_dispatch:
 
 permissions:
@@ -17,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:
-      - name: Checkout feature branch
+      - name: Checkout selected branch
         uses: actions/checkout@v4
         with:
           persist-credentials: true
@@ -41,5 +35,5 @@ jobs:
           git add docs/assets/lesson/cnn_squeezenet_actual_feature_maps.png
           if ! git diff --cached --quiet; then
             git commit -m "Add computed pretrained SqueezeNet feature maps from dog photo"
-            git push origin HEAD:cnn-real-featuremaps-two-slides-20261016
+            git push origin HEAD:${{ github.ref_name }}
           fi
