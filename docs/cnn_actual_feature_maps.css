@@ -1,0 +1,29 @@
+/* Actual pretrained SqueezeNet feature-map outputs; Vision AI slide 25 only. */
+.lesson-deck .cnn-real-featuremaps .slide-subtitle { margin: 0 0 8px; line-height: 1.45; }
+.lesson-deck .cnn-real-featuremaps .cnn-real-image {
+  display: flex; align-items: center; justify-content: center;
+  width: 100%; padding: 0; margin: 1px 0 6px;
+}
+.lesson-deck .cnn-real-featuremaps .cnn-real-image a {
+  display: flex; align-items: center; justify-content: center; width: 100%;
+  cursor: zoom-in;
+}
+.lesson-deck .cnn-real-featuremaps .cnn-real-image img {
+  display: block; width: 100%; max-height: min(50dvh, 540px);
+  height: auto; object-fit: contain; margin: 0 auto;
+  background: #fff; border: 0;
+}
+.lesson-deck .cnn-real-featuremaps .lesson-takeaway {
+  font-size: clamp(15px, 1.25vw, 18px); line-height: 1.4; margin: 7px 0;
+  padding: 9px 13px;
+}
+.lesson-deck .cnn-real-featuremaps .lesson-source {
+  font-size: clamp(10px, .92vw, 13px);
+  line-height: 1.4; margin: 5px 0;
+}
+@media (max-height: 790px) {
+  .lesson-deck .cnn-real-featuremaps .cnn-real-image img { max-height: 44dvh; }
+  .lesson-deck .cnn-real-featuremaps .lesson-takeaway {
+    font-size: 15px; padding: 7px 10px; margin: 5px 0;
+  }
+}

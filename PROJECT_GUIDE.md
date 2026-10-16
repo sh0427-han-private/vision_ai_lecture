@@ -438,3 +438,11 @@ GitHub Pages:
 - Vision AI 25번의 직접 제작 사과 개념도는 원본 Stanford CS231n의 VGG-16 학습 특징 시각화로 교체했습니다. 원본 PNG는 `docs/assets/lesson/cs231n_vgg16_feature_hierarchy_original.png`로 저장하고 픽셀을 수정하지 않았습니다.
 - 3단계 얕은층/중간층/깊은층의 한글 설명을 그림 아래에 표시합니다. 원본 강의 2017 Lecture 5 Slide 37, 시각화 크레딧 Lane McIntosh.
 - 별도 CSS `docs/cs231n_feature_hierarchy.css`는 Vision AI 25번에만 적용합니다. 기존 사과 도식은 기록으로 보존합니다. 전체 강의는 Intro 19장 + Vision AI 53장, 합계 72장입니다.
+
+
+## 2026-10-16 · CNN 실제 Feature Map → 특징 시각화 2장 구성 (현재 최신)
+
+- Vision AI **25번**: CS231n의 강아지 사진을 **사전학습된 SqueezeNet1.1**에 입력해 실제 중간 출력(Feature Map)을 얻어 같은 사진과 비교합니다. 이미지 `docs/assets/lesson/cnn_squeezenet_actual_feature_maps.png`, 재현 스크립트 `scripts/render_cnn_feature_maps.py`. 입력 및 학습 정규화, 선택 채널, 실제 Feature Map의 공간 해상도를 모두 표시합니다.
+- Vision AI **26번**: 이전 25번 Stanford CS231n VGG-16 학습 특징 시각화 Figure를 원본 그대로 보존하고, Learned Feature Pattern이 무엇인지를 한글로 설명합니다. **Vision 25(SqueezeNet)와 Vision 26(VGG-16)은 서로 다른 모델**이며 Feature Map(입력 반응)과 Feature Visualization(학습 특징 분석)도 서로 다른 개념입니다.
+- CNN층이 깊다고 원본 강아지가 만화 그림으로 바뀌는 것이 아닙니다. 구체적 입력 → 실제 모델 중간 출력 → 특징을 연구하는 Figure 순서입니다.
+- 새 슬라이드 삽입에 따라 Intro 19 + Vision 54 = 전체 **73장**. 공개 딥링크는 `https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-25`와 `#slide-26`이며 `/docs/`를 포함하지 않습니다. 강의 구성의 이전 내용 번호는 26번 이후 +1씩 이동합니다. 공통 CSS는 변경하지 않습니다.

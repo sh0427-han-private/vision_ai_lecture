@@ -80,7 +80,7 @@ course_slides = re.findall(
     r'<section class="slide(?: [^"]+)?"[^>]*>.*?</section>',
     course_page, flags=re.DOTALL
 )
-assert len(course_slides) == 53, "Public Vision AI course must contain 53 slides"
+assert len(course_slides) == 54, "Public Vision AI course must contain 54 slides"
 assert course_page.count('class="slide active"') == 1
 sources = [
     (deck, int(index))
@@ -88,13 +88,15 @@ sources = [
         r'data-source-deck="([^"]+)" data-source-slide="(\d+)"', course_page
     )
 ]
-assert len(sources) == 53 and len(set(sources)) == 53
+assert len(sources) == 54 and len(set(sources)) == 54
 assert sources[:5] == [("vision_ai", n) for n in range(2, 7)]
 assert sources[5:7] == [("ai_basics", 2), ("ai_basics", 3)]
 assert sources[7:12] == [("vision_ai", n) for n in (9,10,14,16,17)]
 assert sources[15:17] == [("cnn_expansion", 1), ("cnn_expansion", 2)]
-assert sources[26:32] == [("yolo_intro", n) for n in (1, 2, 3, 4, 6, 5)]
-assert sources[49] == ("vision_ai", 7), "IoU belongs in evaluation"
+assert sources[24] == ("cnn_featuremaps", 1), "Actual feature maps must precede CS231n"
+assert sources[25] == ("vision_ai", 28), "CS231n Figure must follow real feature maps"
+assert sources[27:33] == [("yolo_intro", n) for n in (1, 2, 3, 4, 6, 5)]
+assert sources[50] == ("vision_ai", 7), "IoU belongs in evaluation"
 assert sources[-1] == ("ai_basics", 44)
 assert sorted(i for d,i in sources if d=="cnn_expansion") == [1,2]
 assert not any(d=="cnn_expansion" and i>=3 for d,i in sources), (
@@ -121,6 +123,9 @@ for asset in assets:
 assert "developersbreach.com/convolution-neural-network-deep-learning" in course_page
 assert "cnn_banner.png" in course_page
 assert "yolo_class_box_training_ko.svg" in course_page
+assert "cnn_squeezenet_actual_feature_maps.png" in course_page
+assert (DOCS / "assets/lesson/cnn_squeezenet_actual_feature_maps.png").is_file()
+assert (DOCS.parent / "scripts/render_cnn_feature_maps.py").is_file()
 assert "YOLO 객체 검출은 종류와 위치를 함께 학습합니다" in course_page
 assert (DOCS / "assets/lesson/yolo_class_box_training_ko.svg").is_file()
 assert "https://docs.ultralytics.com/ko/guides/yolo-architecture" in course_page
@@ -148,13 +153,13 @@ for url in re.findall(r'(?:src|href)="([^"]+)"', course_page):
 outline_source = (DOCS / "lecture_outline.js").read_text("utf-8")
 outline = json.loads(outline_source.split(" = ", 1)[1].strip().rstrip(";"))
 items = [item for group in outline["groups"] for item in group["items"]]
-assert len(items) == 72
-assert [it["global"] for it in items] == list(range(1, 73))
+assert len(items) == 73
+assert [it["global"] for it in items] == list(range(1, 74))
 assert [(it["page"], it["slide"]) for it in items[:19]] == [
     ("intro.html", n) for n in range(1,20)
 ]
 assert [(it["page"], it["slide"]) for it in items[19:]] == [
-    ("vision_ai_course.html", n) for n in range(1,54)
+    ("vision_ai_course.html", n) for n in range(1,55)
 ]
 assert [it["original"] for it in items[19:24]] == ["V2","V3","V4","V5","V6"]
 assert [it["title"] for it in items[:3]] == [
@@ -163,13 +168,13 @@ assert [it["title"] for it in items[:3]] == [
     "그래서 Vision은 일상과 기술 모두에서 중요합니다",
 ]
 assert items[19+15]["original"] == "N1", "CNN full architecture overview"
-assert [it["original"] for it in items[19+26:19+32]] == [
+assert [it["original"] for it in items[19+27:19+33]] == [
     "Y1","Y2","Y3","Y4","Y6","Y5"
 ]
-assert items[19+49]["original"] == "V7", "IoU evaluation"
+assert items[19+50]["original"] == "V7", "IoU evaluation"
 assert len(outline["groups"]) == 11
 assert "lecture-toc-drawer" in (DOCS / "lecture_sidebar.js").read_text("utf-8")
-print("Vision-first 53 slides and 72-item YOLO-centered sidebar validated.")
+print("Vision-first 54 slides and 73-item YOLO-centered sidebar validated.")
 
 
 figures = sorted((DOCS / "assets/lesson").glob("lecture_*.svg"))
