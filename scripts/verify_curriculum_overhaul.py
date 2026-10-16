@@ -464,8 +464,8 @@ for path in ("intro_resolution_demo.js", "intro_resolution_demo.css",
 assert "intro_resolution_demo.js?v=20261015-1" in intro_page
 assert "intro_apple_number_bridge.js?v=20261015-1" in intro_page
 assert "intro_apple_number_bridge.css?v=intro-picto-20261016-1" in intro_page
-assert "lecture_outline.js?v=rgb-resolution-20261016-1" in intro_page
-assert "lecture_outline.js?v=rgb-resolution-20261016-1" in course_page
+assert "lecture_outline.js?v=cnn-focus-20261016-1" in intro_page
+assert "lecture_outline.js?v=cnn-focus-20261016-1" in course_page
 bridge_script = (DOCS / "intro_apple_number_bridge.js").read_text("utf-8")
 assert "const width = 12, height = 8;" in bridge_script
 for channel_weight in ("0.299", "0.587", "0.114"):
