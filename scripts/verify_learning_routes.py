@@ -7,7 +7,7 @@ from playwright.sync_api import sync_playwright
 
 BASE = os.getenv("AUDIT_BASE_URL","http://127.0.0.1:8765")
 OUT = Path(__file__).resolve().parents[1] / "visual_audit_output"
-DECKS = (("intro",19),("vision_ai_course",54))
+DECKS = (("intro",19),("vision_ai_course",50))
 
 
 def check(flag, why):
@@ -41,11 +41,11 @@ def main():
 
         # Legacy URLs previously shared as /docs/*.html should redirect to
         # the Pages root while preserving slide numbers and search parameters.
-        page.goto(BASE + "/docs/vision_ai_course.html#slide-25")
-        position(page, "vision_ai_course", 25, 54)
+        page.goto(BASE + "/docs/vision_ai_course.html#slide-9")
+        position(page, "vision_ai_course", 9, 50)
         check("/docs/" not in page.url, "Legacy course URL not normalized")
-        page.goto(BASE + "/docs/vision_ai_course.html?from=legacy#slide-25")
-        page.wait_for_url("**/vision_ai_course.html?from=legacy#slide-25")
+        page.goto(BASE + "/docs/vision_ai_course.html?from=legacy#slide-9")
+        page.wait_for_url("**/vision_ai_course.html?from=legacy#slide-9")
         check(page.locator("[data-slide-current]").inner_text() == "25",
               "Legacy course query/hash not retained")
         page.goto(BASE + "/docs/intro.html#slide-7")
@@ -69,8 +69,8 @@ def main():
               "TOC toggle did not open")
         check(page.locator("#lecture-toc-drawer").get_attribute("aria-hidden") == "false",
               "TOC drawer is not accessible when open")
-        check(page.locator(".lecture-toc-link").count() == 73,
-              "TOC must list all 73 slides")
+        check(page.locator(".lecture-toc-link").count() == 69,
+              "TOC must list all 69 slides")
         # Wheel scrolls the outline contents, but never advances the lecture.
         toc = page.locator(".lecture-toc-sections")
         toc.evaluate("(el) => { el.scrollTop = 0; }")
@@ -108,7 +108,7 @@ def main():
         page.click(".lecture-toc-toggle")
         page.locator(".lecture-toc-unit").nth(1).locator("summary").click()
         page.locator('.lecture-toc-link[href="vision_ai_course.html#slide-3"]').click()
-        position(page,"vision_ai_course",3,54)
+        position(page,"vision_ai_course",3,50)
         check("Detection · 위치와 종류 찾기" in page.locator(".slide.active").inner_text(),
               "Expected object detection before general AI")
         check(page.locator(".slide.active").get_attribute("data-source-deck") == "vision_ai",
@@ -116,18 +116,18 @@ def main():
         page.click(".lecture-toc-toggle")
         page.locator(".lecture-toc-unit").nth(2).locator("summary").click()
         page.locator('.lecture-toc-link[href="vision_ai_course.html#slide-7"]').click()
-        position(page,"vision_ai_course",7,54)
+        position(page,"vision_ai_course",7,50)
         check(page.locator(".slide.active").get_attribute("data-source-deck") == "ai_basics",
               "AI theory is not interleaved after vision tasks")
         page.click(".lecture-toc-toggle")
         page.locator(".lecture-toc-sections").hover(position={"x": 100, "y": 170})
         page.mouse.wheel(0, 630)
-        position(page,"vision_ai_course",7,54)
+        position(page,"vision_ai_course",7,50)
         page.locator(".lecture-toc-close").click()
         check(page.locator(".lecture-toc-toggle").get_attribute("aria-expanded") == "false",
               "TOC close button failed")
 
-        # All 73 published slides are reachable by next, no AI chapter detour.
+        # All 69 published slides are reachable by next, no AI chapter detour.
         for deck,total in DECKS:
             page.goto(f"{BASE}/{deck}.html#slide-1")
             position(page,deck,1,total)
@@ -138,40 +138,53 @@ def main():
                 position(page,deck,i,total)
         page.goto(BASE+"/intro.html#slide-19")
         page.click("[data-slide-next]")
-        position(page,"vision_ai_course",1,54)
+        position(page,"vision_ai_course",1,50)
         page.click("[data-slide-prev]")
         position(page,"intro",19,19)
-        page.goto(BASE+"/vision_ai_course.html#slide-54")
+        page.goto(BASE+"/vision_ai_course.html#slide-50")
         check(page.locator("[data-slide-next]").is_disabled(),
               "Final slide must end course")
 
+        # Sequence: whole CNN first, then real maps, learned features and Kernel.
+        page.goto(BASE + "/vision_ai_course.html#slide-8")
+        position(page,"vision_ai_course",8,50)
+        check("CNN 전체 구조" in page.locator(".slide.active").inner_text(),
+              "CNN architecture must precede Kernel arithmetic")
+        page.goto(BASE + "/vision_ai_course.html#slide-12")
+        position(page,"vision_ai_course",12,50)
+        check("Kernel" in page.locator(".slide.active").inner_text(),
+              "Kernel concept must follow CNN overview")
+        page.goto(BASE + "/vision_ai_course.html#slide-14")
+        position(page,"vision_ai_course",14,50)
+        check(page.locator(".slide.active .kernel-optional-images").count()==1,
+              "Fixed-filter examples must be optional")
         # Two distinct explanations: actual activation maps vs. learned patterns.
-        page.goto(BASE + "/vision_ai_course.html#slide-25")
-        position(page,"vision_ai_course",25,54)
+        page.goto(BASE + "/vision_ai_course.html#slide-9")
+        position(page,"vision_ai_course",9,50)
         check("SqueezeNet" in page.locator(".slide.active").inner_text(),
               "Actual CNN map slide missing")
         check(page.locator(".slide.active .cnn-real-image img").count() == 1,
               "Real feature map figure missing")
-        page.goto(BASE + "/vision_ai_course.html#slide-26")
-        position(page,"vision_ai_course",26,54)
+        page.goto(BASE + "/vision_ai_course.html#slide-10")
+        position(page,"vision_ai_course",10,50)
         check("VGG-16" in page.locator(".slide.active").inner_text(),
               "CS231n visualisation should follow actual feature maps")
 
         # Old query strings must not activate the removed core-only feature.
         page.goto(BASE+"/vision_ai_course.html?mode=core#slide-21")
-        position(page,"vision_ai_course",21,54)
+        position(page,"vision_ai_course",21,50)
         check("mode=core" not in page.url,"Legacy core param persists")
-        check(page.locator(".slide.active").get_attribute("data-level") == "detail",
-              "Selected detailed CNN output-size lesson must remain visible")
-        page.goto(BASE+"/vision_ai_course.html#slide-39")
+        check(page.locator(".slide.active").get_attribute("data-level") in ("basic","detail"),
+              "Legacy core mode cannot hide content")
+        page.goto(BASE+"/vision_ai_course.html#slide-18")
         page.click("header a.brand")
         position(page,"intro",1,19)
         check(not errors,"Browser JS errors: "+repr(errors))
         page.screenshot(path=str(OUT/"vision_first_sidebar_navigation.jpg"),
                         type="jpeg",quality=80)
         browser.close()
-        print("VISION_FIRST_NAV_QA_PASSED: Intro19 -> integrated Vision+CNN54 = 73")
-        print("RETRACTABLE_TOC_QA_PASSED: 73 links, click, close, outside and Escape")
+        print("VISION_FIRST_NAV_QA_PASSED: Intro19 -> integrated Vision+CNN50 = 69")
+        print("RETRACTABLE_TOC_QA_PASSED: 69 links, click, close, outside and Escape")
 
 
 if __name__ == "__main__":
