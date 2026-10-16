@@ -461,3 +461,13 @@ GitHub Pages:
 
 - 외부 OpenCV 이미지 직접 로드는 브라우저/CI에서 깨질 수 있어, 강의 10·11번의 주요 이미지를 실제 동일 강아지 사진에서 계산한 로컬 PNG로 교체합니다 (`cnn_real_filter_compare_dog.png`, `cnn_real_sobel_dog.png`). OpenCV 공식 문서 링크는 원리/출처로 유지하며 외부 jpg 직접 로딩은 없앴습니다.
 - NumPy·Pillow 계산 스크립트 `scripts/render_real_vision_examples.py`에서 모든 7개 실제 이미지 도식을 생성합니다. 10·11번과 22·23·24·43·44번으로 총 **7장**에 동일 실사 기반 연산을 연결하고, 예전 숫자 예시도 펼쳐 볼 수 있습니다. 전체 73장 제목은 간결한 개념형으로 통일합니다.
+
+
+## 2026-10-16 · CNN 개념 우선·필터 세부사항 축소 (최신 적용)
+
+- 본 강의는 **Vision Task → AI와 학습 차이 → CNN 전체 구조 → 실제 Feature Map → 학습된 특징 시각화 → Kernel의 존재 이유·역할 → 가중치 공유와 학습 → 기초 Neural Network → CNN 핵심 연산 → YOLO → 데이터·평가** 순서로 진행합니다.
+- **과도한 Spatial Filtering 세부 설명을 강의 시작에서 제거**합니다. 기존 통합 강의 8번 Pixel vs 이웃연산, 10번 Mean/Gaussian/Median, 11번 Sobel, 12번 Spatial Filtering 다리 슬라이드는 독립 강의에서 제외합니다. 실제 필터 처리 결과는 통합 14번의 접기/펼치기 참고 이미지로 남깁니다. 기존 SVG/PNG 자산 자체는 유지합니다.
+- **핵심 학습 목표**: Kernel=작은 가중치 배열, 국소 Pixel 계산, 같은 가중치의 반복 사용, 위치별 Feature Map, 학습 과정에서 Loss를 줄이기 위해 Kernel 가중치 수정. Mean·Gaussian·Sobel은 **고정된 사람의 규칙**이라는 대비용으로만 사용합니다.
+- 실제 모델 계산 이미지를 예시로 제시한 9번은 SqueezeNet Feature Map, 10번은 VGG-16 특징 최적화 시각화로 **다른 네트워크·다른 분석 결과**임을 표시해야 합니다.
+- 번호: Intro 19, 통합 Vision AI **50**, 전체 목차 **69**. 실제 바로가기: `https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-8` (CNN 개요), `#slide-9` (실제 Feature Map), `#slide-12` (Kernel), `#slide-14` (고정 vs 학습), `#slide-18` (Kernel 가중치 학습). 공개 주소에서 `/docs/`를 중복 사용하지 않습니다.
+- `docs/cnn_kernel_foundations.css`는 선택형 고정 필터 참고 패널에만 적용되며 공통 CSS/JS는 수정하지 않습니다. 제목/목차/수치/이미지 경로 검증과 GitHub Actions/Pages 확인 필수입니다.
