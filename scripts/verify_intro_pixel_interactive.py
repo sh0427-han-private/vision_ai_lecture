@@ -32,7 +32,7 @@ def main() -> None:
         # displayed on Intro 4, not fabricated, and represent 8x12 grayscale.
         page.goto(BASE_URL + "#slide-1", wait_until="networkidle")
         assert "AI는 세상을 어떻게 볼까?" in page.locator(".slide.active").inner_text()
-        page.goto(BASE_URL + "#slide-3", wait_until="networkidle")
+        page.goto(BASE_URL + "#slide-2", wait_until="networkidle")
         assert "사람은 눈으로" in page.locator(".slide.active").inner_text()
         page.goto(BASE_URL + "#slide-3", wait_until="networkidle")
         assert "그래서 Vision은" in page.locator(".slide.active").inner_text()
