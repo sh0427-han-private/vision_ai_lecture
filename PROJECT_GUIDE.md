@@ -446,3 +446,18 @@ GitHub Pages:
 - Vision AI **26번**: 이전 25번 Stanford CS231n VGG-16 학습 특징 시각화 Figure를 원본 그대로 보존하고, Learned Feature Pattern이 무엇인지를 한글로 설명합니다. **Vision 25(SqueezeNet)와 Vision 26(VGG-16)은 서로 다른 모델**이며 Feature Map(입력 반응)과 Feature Visualization(학습 특징 분석)도 서로 다른 개념입니다.
 - CNN층이 깊다고 원본 강아지가 만화 그림으로 바뀌는 것이 아닙니다. 구체적 입력 → 실제 모델 중간 출력 → 특징을 연구하는 Figure 순서입니다.
 - 새 슬라이드 삽입에 따라 Intro 19 + Vision 54 = 전체 **73장**. 공개 딥링크는 `https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-25`와 `#slide-26`이며 `/docs/`를 포함하지 않습니다. 강의 구성의 이전 내용 번호는 26번 이후 +1씩 이동합니다. 공통 CSS는 변경하지 않습니다.
+
+## 2026-10-16 · 전체 제목 간결화 + 실제 사진 계산 기반 강의 (최신)
+
+- 전체 공개 강의 **Intro 19장 + 통합 Vision AI 54장 = 73장**의 제목을 **간결한 개념형 명사구**로 정리했습니다. `~입니다`, `~합니다`와 같은 완성문 대신 슬라이드 핵심을 바로 파악할 수 있는 제목을 사용합니다. 한글 설명은 기존대로 유지하고 필요한 영어 기술 용어만 병기합니다.
+- 슬라이드 22·23·24·43·44번은 기존 삽화만 보는 방식에서 동일한 **실제 강아지 사진**을 직접 연산한 **실제 계산 결과 이미지**로 전면 교체합니다. 기존 정확한 Kernel·Stride·Padding·Pooling·Preprocessing·Augmentation 설명 도식은 펼침 영역에서 계속 확인할 수 있습니다. 
+- 실제 이미지 자산: `docs/assets/lesson/cnn_real_stride_dog.png`, `cnn_real_padding_dog.png`, `cnn_real_maxpool_dog.png`, `cnn_real_preprocess_dog.png`, `cnn_real_augment_dog.png`. NumPy와 Pillow를 이용한 재현 코드는 `scripts/render_real_vision_examples.py`; 생성 워크플로는 `.github/workflows/generate-real-vision-examples.yml`.
+- Stride·Padding의 반응도는 **학습 CNN 출력이 아니라 고정 Sobel Filter의 실제 계산 결과**입니다. Pooling은 실제 Gray 영상값에 적용한 2×2 Max Pooling이며 학습 Feature Map이 아닙니다. 전처리는 실제 Resize/Letterbox, 증강은 실제 밝기·회전·가림 처리 결과입니다. 이 구분을 그림과 본문에서 명시합니다.
+- 기존 **동일 사과 사진의 Classification/Detection/Segmentation 비교**, **정확한 수치 계산**, **CNN 25·26번 실제 Feature Map 및 CS231n 논문 Figure**, **YOLO 실제 구조 논문 Figure**, **학습 인터랙티브**, **Grad-CAM 연구 예시**는 무작정 교체하지 않습니다. 원본 연구 Figure와 실제 계산값을 우선 사용하되, 필요한 상황에서는 재구성 도식도 사용합니다.
+- 관련 수정은 `docs/scientific_photo_figures.css`에 5개 슬라이드 범위로 한정했습니다. `docs/lecture_outline.js`의 73개 제목을 Intro/Vision AI 파일과 동기화하고 URL에 `/docs/`를 삽입하지 않습니다. 배포 후 정적/시각 검증을 필수로 수행합니다.
+
+
+## 2026-10-16 · 추가 개선: Filtering 10번·Sobel 11번 실제 계산 로컬화
+
+- 외부 OpenCV 이미지 직접 로드는 브라우저/CI에서 깨질 수 있어, 강의 10·11번의 주요 이미지를 실제 동일 강아지 사진에서 계산한 로컬 PNG로 교체합니다 (`cnn_real_filter_compare_dog.png`, `cnn_real_sobel_dog.png`). OpenCV 공식 문서 링크는 원리/출처로 유지하며 외부 jpg 직접 로딩은 없앴습니다.
+- NumPy·Pillow 계산 스크립트 `scripts/render_real_vision_examples.py`에서 모든 7개 실제 이미지 도식을 생성합니다. 10·11번과 22·23·24·43·44번으로 총 **7장**에 동일 실사 기반 연산을 연결하고, 예전 숫자 예시도 펼쳐 볼 수 있습니다. 전체 73장 제목은 간결한 개념형으로 통일합니다.

@@ -126,7 +126,7 @@ assert "yolo_class_box_training_ko.svg" in course_page
 assert "cnn_squeezenet_actual_feature_maps.png" in course_page
 assert (DOCS / "assets/lesson/cnn_squeezenet_actual_feature_maps.png").is_file()
 assert (DOCS.parent / "scripts/render_cnn_feature_maps.py").is_file()
-assert "YOLO 객체 검출은 종류와 위치를 함께 학습합니다" in course_page
+assert "YOLO 검출 학습 · 종류와 위치" in course_page
 assert (DOCS / "assets/lesson/yolo_class_box_training_ko.svg").is_file()
 assert "https://docs.ultralytics.com/ko/guides/yolo-architecture" in course_page
 assert "https://openaccess.thecvf.com/content_cvpr_2016/" in course_page
@@ -163,9 +163,9 @@ assert [(it["page"], it["slide"]) for it in items[19:]] == [
 ]
 assert [it["original"] for it in items[19:24]] == ["V2","V3","V4","V5","V6"]
 assert [it["title"] for it in items[:3]] == [
-    "AI는 세상을 어떻게 볼까?",
-    "사람은 눈으로 주변 세상의 많은 정보를 파악합니다",
-    "그래서 Vision은 일상과 기술 모두에서 중요합니다",
+    "AI와 시각의 출발점",
+    "사람의 시각 · 장면 이해",
+    "일상 속 Vision 기술",
 ]
 assert items[19+15]["original"] == "N1", "CNN full architecture overview"
 assert [it["original"] for it in items[19+27:19+33]] == [
@@ -435,14 +435,14 @@ intro_slides = re.findall(
     intro_page, flags=re.DOTALL
 )
 assert len(intro_slides) == 19
-assert "AI는 세상을 어떻게 볼까?" in intro_slides[0]
-assert "사람은 눈으로 주변 세상의 많은 정보를 파악합니다" in intro_slides[1]
-assert "그래서 Vision은 일상과 기술 모두에서 중요합니다" in intro_slides[2]
+assert "AI와 시각의 출발점" in intro_slides[0]
+assert "사람의 시각 · 장면 이해" in intro_slides[1]
+assert "일상 속 Vision 기술" in intro_slides[2]
 assert "assets/intro_photos/perspective.webp" in intro_slides[1]
 for photo in ("cctv.webp", "robot.webp", "thermal.webp"):
     assert f"assets/intro_photos/{photo}" in intro_slides[2]
-assert "이 이미지는 무엇으로 보이나요?" in intro_slides[3]
-assert "사람에게는 사과, 컴퓨터와 AI에게는 숫자 배열" in intro_slides[4]
+assert "사진 속 객체 인식" in intro_slides[3]
+assert "사람의 의미 인식 vs Pixel 숫자" in intro_slides[4]
 assert 'data-apple-matrix-bridge' in intro_slides[4]
 assert 'data-apple-matrix-grid' in intro_slides[4]
 assert 'assets/vision_task_apple_reference.jpg' in intro_slides[3]
@@ -450,23 +450,23 @@ assert 'assets/vision_task_apple_reference.jpg' in intro_slides[4]
 assert "Vision AI가 어려운 이유:" in intro_slides[4]
 assert "“아, 사과구나!”" in intro_slides[4]
 assert "“?! 그냥 숫자 배열이네”" in intro_slides[4]
-assert "밝기와 색감이 바뀌면 Pixel 값이 달라집니다" in intro_slides[5]
-assert "화각·회전·가림·초점도 같은 사과의 Pixel을 바꿉니다" in intro_slides[6]
+assert "조명·색감에 따른 Pixel 변화" in intro_slides[5]
+assert "시점·회전·가림·초점 변화" in intro_slides[6]
 assert 'class="iv-image iv-fov"' in intro_slides[6]
-assert "사진의 위치를 바꾸면 Pixel 숫자도 바뀝니다" in intro_slides[7]
+assert "위치 변화와 Pixel 배열" in intro_slides[7]
 assert 'data-grayscale-lesson' in intro_slides[7]
-assert "RGB 이미지에서는 Pixel 한 칸에 숫자 3개가 있습니다" in intro_slides[8]
-assert "컴퓨터는 컬러 이미지 한 장을 수많은 숫자로 입력받습니다" in intro_slides[9]
+assert "RGB · Pixel당 세 숫자" in intro_slides[8]
+assert "RGB 이미지와 숫자 배열" in intro_slides[9]
 assert "640 × 960 ×" in intro_slides[9]
 assert "1,843,200" in intro_slides[9]
 assert "<strong>핵심:</strong>" not in intro_slides[9]
 assert "lecture_rgb_channel_stack.svg?v=rgb-total-20261016-1" in intro_slides[9]
-assert "해상도가 높을수록 더 많은 Pixel로 장면을 표현합니다" in intro_slides[10]
+assert "해상도와 Pixel 수" in intro_slides[10]
 assert "더 세밀한 정보를 기록할 수 있습니다" in intro_slides[10]
-assert "같은 장면도 해상도에 따라 담을 수 있는 정보가 달라집니다" in intro_slides[11]
+assert "해상도에 따른 정보 차이" in intro_slides[11]
 assert "저해상도 원본을 확대 저장해도" in intro_slides[11]
-assert "‘본다’는 것은 무엇(What)과 어디(Where)를 이해하는 일" in intro_slides[12]
-assert "2D 이미지에서 3D 공간을 알아내기는 어렵습니다" in intro_slides[13]
+assert "시각 이해 · What과 Where" in intro_slides[12]
+assert "2D 이미지와 3D 공간의 모호함" in intro_slides[13]
 assert "to know what is where by looking" in intro_slides[12]
 assert "Marr &amp; Nishihara (1978)" in intro_slides[13]
 assert "https://doi.org/10.1098/rspb.1978.0020" in intro_slides[13]

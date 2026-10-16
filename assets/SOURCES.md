@@ -441,3 +441,21 @@ https://www.nature.com/articles/s42256-020-00257-z
 - **Vision 25 (실제 Activation)**: `docs/assets/lesson/cnn_squeezenet_actual_feature_maps.png`은 `scripts/render_cnn_feature_maps.py`에서 학습된 CNN으로 직접 계산한 실제 데이터입니다. 입력: CS231n Lecture5 Slide37 원본 Figure (`cs231n_vgg16_feature_hierarchy_original.png`)의 좌측 강아지 사진을 Cropping/Resize(224×224), ImageNet 정규화. Model: `torchvision.models.squeezenet1_1(weights=SqueezeNet1_1_Weights.IMAGENET1K_V1).eval()`, 실제 중간 Activation 추출: `features[1]` (111×111×64), `features[7]` (27×27×256), `features[12]` (13×13×512). 각 단계 4개 채널을 변화량 기준으로 선택했고 시각화 대비는 각 채널별 2–99 분위수 정규화하므로 **채널 간 절대값 비교는 불가**합니다. 재현 실행 환경: GitHub Actions `.github/workflows/generate-real-feature-maps.yml` (CPU PyTorch/torchvision + Noto CJK). 모델 문서: https://pytorch.org/vision/stable/models/generated/torchvision.models.squeezenet1_1.html
 - **Vision 26 (Feature Visualization)**: 원본 CS231n 강의 Figure인 VGG-16 Conv1_1/Conv3_2/Conv5_3의 학습 특징 시각화. 원본: https://cs231n.stanford.edu/slides/2017/cs231n_2017_lecture5.pdf . 이 이미지는 **Vision 25의 SqueezeNet Feature Map을 가공한 것이 아니며**, 동일 네트워크의 동일 입력 단계별 이미지 변화로 해석하지 않습니다.
 - 핵심 수업 메시지: Feature Map은 입력 사진에서 각 채널의 공간 위치별 출력 값, Feature Visualization은 학습된 특정 Feature를 강하게 활성화하는 패턴을 보여 주는 별도의 분석입니다.
+
+## 2026-10-16 · 실제 이미지 연산 기반 추가 Figure 5장 (Vision 22·23·24·43·44)
+
+- **원본 실사 입력**: Stanford CS231n 2017 Lecture5 Slide37에서 이미 로컬 저장한 원본 강아지 사진을 Cropping/Resize해 사용했습니다. 출처 https://cs231n.stanford.edu/slides/2017/cs231n_2017_lecture5.pdf . 사용 파일 `docs/assets/lesson/cs231n_vgg16_feature_hierarchy_original.png`.
+- **재현 가능한 계산 코드**: `scripts/render_real_vision_examples.py` (Python NumPy + Pillow). `docs/assets/lesson/cnn_real_stride_dog.png`: 실제 Gray(224×224) 영상에서 3×3 Sobel Kernel, Padding 0, Stride 1→222×222, Stride 2→111×111; 비교할 때 반응 크기에 같은 값 범위를 적용합니다.
+- `cnn_real_padding_dog.png`: 같은 Gray 입력에 3×3 Sobel / Stride1 사용; Padding0→222×222, Padding1→224×224. Padding1은 경계에 실제 0 값을 넣고 계산합니다.
+- `cnn_real_maxpool_dog.png`: RGB 사진의 실제 Gray 값에 2×2 Max Pooling을 수행해 224×224→112×112→56×56. **CNN 내부 학습된 Feature Map 출력이라고 주장하지 않습니다.**
+- `cnn_real_preprocess_dog.png`: 원본에서 실제 3:2 비율로 사진을 Crop한 뒤, 강제 320×320 Resize와 비율을 보존한 320×320 Letterbox (회색 Padding)을 직접 생성했습니다. 잘못된 가로세로 비율을 입력이라고 표기하지 않습니다.
+- `cnn_real_augment_dog.png`: 같은 강아지 사진에 밝기 감소 0.58배, 실제 13도 회전, 부분 가림을 적용했습니다. 이미지 전체 Class는 유지되지만 검출 Box·Segmentation Mask에 기하학적 변화를 적용하면 Label도 함께 수정해야 합니다.
+- 전제: 이미지 계산 모두 **고정 이미지 처리 연산**이며 사전학습 CNN 활성화 지도와는 다릅니다. 실제 사전학습 CNN의 Layer Feature Map은 별도 Vision 25번을 참고합니다. 원본 5장 도식은 그림 아래의 펼침 영역에 보존했습니다.
+- 방법론 출처: OpenCV 공식 Filtering https://docs.opencv.org/4.x/d4/d13/tutorial_py_filtering.html ; Dive into Deep Learning CNN https://d2l.ai/chapter_convolutional-neural-networks/index.html ; PyTorch/Torchvision transforms https://docs.pytorch.org/vision/stable/transforms.html . 각 슬라이드 하단에 사진 출처와 재현 코드를 연결했습니다.
+
+
+## 2026-10-16 · 10·11번 OpenCV 외부 로딩 문제 → 실제 계산한 로컬 Figure
+
+- `docs/assets/lesson/cnn_real_filter_compare_dog.png`: Stanford CS231n Lecture5에 나온 강아지 사진을 이용한 실제 사진 필터 처리 결과. 같은 RGB 입력 224×224에 결정적 Salt-and-Pepper 잡음 5%를 적용하고 Pillow `BoxBlur(2)`, `GaussianBlur(radius=2)`, `MedianFilter(size=5)`를 각각 적용했습니다. **같은 잡음 입력으로 직접 비교**하므로 OpenCV 웹 튜토리얼의 서로 다른 예시 입력을 직접 비교하는 문제를 해결합니다.
+- `docs/assets/lesson/cnn_real_sobel_dog.png`: 동일 사진을 Grayscale로 변환해 실제 3×3 Sobel X, Sobel Y와 `sqrt(Gx² + Gy²)`을 계산해 222×222 출력으로 표시했습니다. 이는 **고정 필터의 계산 결과**이지 CNN에서 학습된 Feature Map은 아닙니다.
+- 재현 코드: `scripts/render_real_vision_examples.py`, 생성 워크플로는 수동 실행 가능. 공식 방법 출처: https://docs.opencv.org/4.x/d4/d13/tutorial_py_filtering.html , https://docs.opencv.org/4.x/d2/d2c/tutorial_sobel_derivatives.html . 초기 OpenCV 4.13.0 웹 이미지 직접 링크는 네트워크에서 깨져 실제 슬라이드에서는 사용하지 않습니다. 원래 수치 설명 도식은 펼침 안에 보존했습니다.

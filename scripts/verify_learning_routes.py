@@ -109,7 +109,7 @@ def main():
         page.locator(".lecture-toc-unit").nth(1).locator("summary").click()
         page.locator('.lecture-toc-link[href="vision_ai_course.html#slide-3"]').click()
         position(page,"vision_ai_course",3,54)
-        check("객체나 결함" in page.locator(".slide.active").inner_text(),
+        check("Detection · 위치와 종류 찾기" in page.locator(".slide.active").inner_text(),
               "Expected object detection before general AI")
         check(page.locator(".slide.active").get_attribute("data-source-deck") == "vision_ai",
               "Vision content did not come first")
