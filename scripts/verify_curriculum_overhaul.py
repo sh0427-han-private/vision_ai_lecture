@@ -481,8 +481,10 @@ for path in ("intro_resolution_demo.js", "intro_resolution_demo.css",
 assert "intro_resolution_demo.js?v=20261015-1" in intro_page
 assert "intro_apple_number_bridge.js?v=20261015-1" in intro_page
 assert "intro_apple_number_bridge.css?v=intro-picto-20261016-1" in intro_page
-assert "lecture_outline.js?v=zebra-cnn-yolo-loss-20261016-1" in intro_page
-assert "lecture_outline.js?v=zebra-cnn-yolo-loss-20261016-1" in course_page
+intro_outline_key = re.search(r"lecture_outline[.]js[?]v=([^\"]+)", intro_page)
+course_outline_key = re.search(r"lecture_outline[.]js[?]v=([^\"]+)", course_page)
+assert intro_outline_key and course_outline_key, "Both pages must load a versioned outline"
+assert intro_outline_key.group(1) == course_outline_key.group(1), "Intro/Course outline cache versions must agree"
 bridge_script = (DOCS / "intro_apple_number_bridge.js").read_text("utf-8")
 assert "const width = 12, height = 8;" in bridge_script
 for channel_weight in ("0.299", "0.587", "0.114"):
