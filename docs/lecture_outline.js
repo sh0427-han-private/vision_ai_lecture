@@ -292,7 +292,7 @@ window.LECTURE_OUTLINE = {
       ]
     },
     {
-      "name": "Kernel · 특징과 학습 원리",
+      "name": "CNN · Kernel 학습",
       "items": [
         {
           "page": "vision_ai_course.html",
