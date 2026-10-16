@@ -368,3 +368,11 @@ GitHub Pages:
 - 라이선스·원문·그림 URL은 assets/SOURCES.md에 기록합니다. 논문 원본을 수정하지 않으며 표시 크기만 CSS로 조절합니다.
 - 사내 환경에서 외부 이미지가 차단될 경우 기존 Repository 내부 SVG를 fallback으로 보이게 해 강의가 중단되지 않게 합니다. 완전한 오프라인 재현을 위해서는 적법한 원본 이미지 로컬 저장과 경로 교체가 추가로 필요합니다.
 - ResNet·U-Net 등 개별 CNN 아키텍처 상세 소개는 공개 강의에서 제외하고, YOLO의 역할·데이터·검출 결과에 집중합니다.
+
+
+## 2026-10-16 · Dragon1 CNN 기초 설명 참고 (최신)
+
+- 사용자 지정 참고자료: https://www.dragon1.com/terms/convolutional-neural-networks-definition
+- 통합 강의 **16번**: 학술 Figure(Yamashita et al., 2018)를 유지하면서 **Input → Convolution → ReLU → Pooling → Flatten/Fully Connected → Output** 단계 해설을 붙입니다. 설명은 전형적인 분류 CNN 예시이며 모든 CNN 구조가 고정 순서를 갖지는 않습니다.
+- 별도로 재사용 허가를 확인할 수 없는 Dragon1 그림은 복제하지 않습니다. 출처는 본문과 assets/SOURCES.md에 명시합니다.
+- YOLO 5장, ResNet·U-Net 제외 원칙, 논문 이미지가 차단되면 로컬 SVG를 표시하는 방식을 보존합니다.
