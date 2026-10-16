@@ -8,7 +8,7 @@
 
 
 
-Vision AI를 처음 접하는 사람도 **현실 세계 → Sensor → 숫자 데이터 → Vision Task → 영상처리·CNN → 필요한 AI 학습 원리 → 평가·운영** 순서로 이해할 수 있도록 만든 완전 기초 강의 자료입니다.
+Vision AI를 처음 접하는 사람도 **현실 세계 → Sensor → 숫자 데이터 → Vision Task → CNN 전체 구조·Kernel 역할 → 필요한 AI 학습 원리 → 평가·운영** 순서로 이해할 수 있도록 만든 완전 기초 강의 자료입니다.
 
 이 저장소는 세 가지를 함께 목표로 합니다.
 
@@ -20,7 +20,7 @@ Vision AI를 처음 접하는 사람도 **현실 세계 → Sensor → 숫자 �
 
 - **[Intro 처음부터 보기](https://sh0427-han.github.io/vision_ai_lecture/)**
 - **[통합 Vision AI 바로 보기](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html)**
-- **[실제 Feature Map 25번 보기](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-25)** · **[CS231n 특징 시각화 26번 보기](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-26)**
+- **[CNN 전체 구조 8번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-8)** · **[실제 Feature Map 9번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-9)** · **[Kernel과 학습 12~18번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-12)**
 
 > 배포 URL 주의: 저장소 파일은 `docs/vision_ai_course.html`이지만 GitHub Pages는 `docs/` 디렉터리 자체를 웹사이트의 루트로 게시합니다. 따라서 공개 링크에는 `/docs/`를 넣으면 안 됩니다. 과거에 공유된 `/docs/vision_ai_course.html#slide-N` 링크는 자동으로 올바른 경로로 이동하도록 호환 페이지를 제공합니다.
 
@@ -28,15 +28,15 @@ Vision AI를 처음 접하는 사람도 **현실 세계 → Sensor → 숫자 �
 
 **[Vision AI Lecture · Intro 1번부터 보기](https://sh0427-han.github.io/vision_ai_lecture/)**
 
-사이트 주소를 열면 Intro의 첫 슬라이드가 바로 표시됩니다. **Intro 19장 → Vision AI를 중심으로 AI 원리를 필요한 위치에 배치한 통합 강의 54장**, 총 **73장**을 순서대로 학습합니다. AI Basics를 먼저 모두 설명하지 않고, Vision Task → 영상처리 → CNN → 학습 → 데이터·평가로 이어집니다.
+사이트 주소를 열면 Intro의 첫 슬라이드가 바로 표시됩니다. **Intro 19장 → Vision AI를 중심으로 AI 원리를 필요한 위치에 배치한 통합 강의 50장**, 총 **69장**을 순서대로 학습합니다. AI Basics를 먼저 모두 설명하지 않고, Vision Task → CNN 구조·실제 Feature Map → Kernel의 역할과 학습 → YOLO → 데이터·평가로 이어집니다.
 
-왼쪽 상단의 **☰ 강의 목차**를 클릭하면 73개 슬라이드가 주제별로 표시되어 원하는 장으로 바로 이동할 수 있습니다. 목차 버튼을 다시 누르거나 **✕ 닫기**, 패널 바깥 클릭, **Esc** 키로 목차를 숨길 수 있습니다.
+왼쪽 상단의 **☰ 강의 목차**를 클릭하면 69개 슬라이드가 주제별로 표시되어 원하는 장으로 바로 이동할 수 있습니다. 목차 버튼을 다시 누르거나 **✕ 닫기**, 패널 바깥 클릭, **Esc** 키로 목차를 숨길 수 있습니다.
 
 ## 강의 슬라이드 안에서 직접 확인하는 Interactive Figure
 
 AI Basics의 **학습의 의미** 슬라이드에서는 '한 단계 학습' 또는 '자동 학습' 버튼을 누르면 모델이 예측 오차에 따라 가중치를 갱신하고 정답에 접근하는 장면을 볼 수 있습니다. 가중치를 직접 수정하는 입력창은 사용하지 않습니다.
 
-Vision AI의 **Gaussian 필터** 슬라이드에서는 원본·Mean·Gaussian·Median·Sobel을 선택하고, Gaussian의 σ 및 잡음 유무에 따라 실제 이미지가 어떻게 처리되는지 비교합니다. 커널 가중치는 필터 설정에서 자동으로 계산하며 읽기 전용으로 표시합니다.
+CNN Kernel 설명에서는 **고정 필터와 학습되는 필터**를 비교합니다. Mean·Gaussian·Sobel의 실제 처리 사진은 선택적으로 펼쳐 보는 참고자료로 두고, 복잡한 필터 계산은 본강의에서 생략합니다.
 
 **실습은 별도 페이지가 아니라 기존 강의 슬라이드 안에 배치됩니다.** Intro 1번부터 넘기면 Vision AI 과제를 먼저 살펴보고, 해당 개념에 필요한 AI 원리를 그 자리에서 배웁니다.
 
@@ -150,7 +150,7 @@ vision_ai_lecture/
 
 ## Web Lecture
 
-정적 강의 사이트는 [Intro 1번](https://sh0427-han.github.io/vision_ai_lecture/)에서 바로 시작합니다. Intro 19장 → [통합 Vision AI 강의 54장](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html), 총 73장입니다. 기존 [AI Basics](docs/ai_basics.html) 및 [Vision AI](docs/vision_ai.html) 개별 슬라이드는 이전 직접 링크의 호환성을 위해 원본으로 유지합니다.
+정적 강의 사이트는 [Intro 1번](https://sh0427-han.github.io/vision_ai_lecture/)에서 바로 시작합니다. Intro 19장 → [통합 Vision AI 강의 50장](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html), 총 69장입니다. 기존 [AI Basics](docs/ai_basics.html) 및 [Vision AI](docs/vision_ai.html) 개별 슬라이드는 이전 직접 링크의 호환성을 위해 원본으로 유지합니다.
 
 디자인은 **흰색 배경, 한 화면 한 슬라이드, 최소한의 포인트 컬러**를 기본으로 합니다.
 
@@ -158,3 +158,8 @@ vision_ai_lecture/
 ### 실제 사진·계산 결과로 보는 핵심 슬라이드
 
 기존 그림과 실제 연산의 차이가 보이도록, [Stride 22번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-22), [Padding 23번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-23), [Max Pooling 24번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-24), [전처리 43번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-43), [증강 44번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-44)에 같은 강아지 실사 사진의 실제 계산 결과를 연결했습니다. 모든 공개 슬라이드 제목은 간결한 개념형 제목으로 정리했습니다.
+
+
+### 최신 초급자 CNN 학습 순서
+
+통합 강의의 8~10번에서 CNN의 전체 구조와 실제 Feature Map을 먼저 본 뒤, **11~14번에서 Kernel의 역할·공유·고정/학습 차이**를 배웁니다. 15~18번에서는 Weight·Neural Network·ReLU를 거쳐 Kernel 값이 학습으로 바뀌는 이유를 이해합니다. Mean·Gaussian·Sobel의 세부 계산 네 장은 본강의에서 제거하고 참고 그림으로 남겼습니다. **Intro 19장 + Vision AI 50장 = 총 69장**입니다.
