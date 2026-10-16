@@ -394,3 +394,12 @@ GitHub Pages:
 - YOLO 파트 신규 31번: 'YOLO 객체 검출은 종류와 위치를 함께 학습합니다'. 로컬 Figure: docs/assets/lesson/yolo_class_box_training_ko.svg.
 - 'YOLO는 Classification만 학습한다'는 표현은 부정확합니다. YOLO Detect는 Class와 Bounding Box를 함께 예측하고 정답에 맞춰 학습합니다. Classification만 하는 YOLO Classify 모델은 별도 Task입니다.
 - 이번 구성: Intro 19장 + 통합 53장 = 총 72장. 31번 삽입에 따른 목차 슬라이드 번호·Outline 캐시 버전도 함께 갱신합니다.
+
+
+## 2026-10-16 · 검증된 외부 Figure / 강의자료 조사 기반 수업 개편
+
+- 현재 참고 자료 조사와 슬라이드별 구성안은 루트의 [REFERENCE_VISION_AI_SOURCE_LIBRARY.md](REFERENCE_VISION_AI_SOURCE_LIBRARY.md) 및 [REFERENCE_SLIDE_SOURCE_MAP.md](REFERENCE_SLIDE_SOURCE_MAP.md)에 기록합니다. 대표 28건을 우선 검토하며 **모든 Computer Vision 논문을 다 찾았다고 주장하지 않습니다**.
+- 강의자료의 우선순위: **실제 이미지/원본 Figure → 한국어 그림 해설 → 정확한 계산 → 출처 표기**입니다. 사용자 선호는 16번과 같은 명료한 Figure 배치이며 영어 본문이 아닙니다. 영어는 기술 용어에 한해 사용합니다.
+- 본조사 문서의 `후보`는 원본 이미지 파일 URL·Figure 번호·사용 조건 등을 확인하기 전의 제안이며, 공개 슬라이드 반영을 뜻하지 않습니다. 강의 원본을 한 번에 덮어쓰지 않고 2~3장 단위로 샘플을 만들고 렌더링 검증합니다.
+- 기존 16번 얼룩말 CNN 원본, 28번 YOLO 논문 Figure 및 Intro 19장/통합 53장의 강의 흐름, 실제 사과사진·Pixel 계산·인터랙티브 자료는 유지합니다.
+- ResNet/U-Net 상세 아키텍처 추가는 하지 않습니다. CNN 공통 원리 → YOLO Detect/Classify 구별 → 데이터/학습/평가의 초보자 흐름을 지킵니다.
