@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="slide.css?v=vision-first-introfit-20261015-1">
 <link rel="stylesheet" href="lesson.css?v=yolo-vision-20261016-1">
-<link rel="stylesheet" href="cnn_structure_ref.css?v=dragon1-20261016-1">
+<link rel="stylesheet" href="cnn_structure_ref.css?v=cnn-local-20261016-1">
 <link rel="stylesheet" href="interactive_lessons.css?v=20261015-2">
 <script src="slide.js?v=prevent-toc-wheel-20261016-1" defer></script>
 <script src="interactive_lessons.js?v=20261015-1" defer></script>
@@ -126,18 +126,14 @@
 <div class="slide-inner cnn-dragon-reference">
   <div class="lesson-meta"><span>16 · CNN 구조</span><span class="lesson-level">핵심 개념</span></div>
   <h2 class="slide-title">CNN은 작은 영역에서 특징을 추출하고 조합합니다</h2>
-  <p class="slide-subtitle">CNN(Convolutional Neural Network, 합성곱 신경망)은 3×3처럼 작은 Kernel을 여러 위치에 적용하고, 여러 층에서 특징을 조합해 결과를 예측합니다.</p>
-  <figure class="lesson-figure"><a href="https://media.springernature.com/lw685/springer-static/image/art%3A10.1007%2Fs13244-018-0639-9/MediaObjects/13244_2018_639_Fig1_HTML.png" target="_blank" rel="noopener" title="2018년 논문 Figure 원본 확대"><img src="https://media.springernature.com/lw685/springer-static/image/art%3A10.1007%2Fs13244-018-0639-9/MediaObjects/13244_2018_639_Fig1_HTML.png" alt="Yamashita et al. (2018) Figure 1. 입력 영상, 합성곱과 활성화, 풀링, 전결합 분류 출력 및 역전파 학습 흐름" onerror="this.onerror=null;this.src='assets/lesson/cnn_foundations_n1.svg?v=yolo-vision-20261016-1';this.alt='원본 논문 그림을 불러올 수 없어 표시한 자체 제작 CNN 구조 대체 그림';"></a></figure>
-<div class="cnn-dragon-stages" aria-label="전형적인 분류 CNN 처리 단계">
-<div class="cnn-dragon-stage"><span class="cnn-dragon-stage-no">01</span><strong>Input</strong><span>이미지를 숫자로 입력</span></div>
-<div class="cnn-dragon-stage"><span class="cnn-dragon-stage-no">02</span><strong>Convolution</strong><span>작은 영역에서 특징 추출</span></div>
-<div class="cnn-dragon-stage"><span class="cnn-dragon-stage-no">03</span><strong>ReLU</strong><span>비선형 변환</span></div>
-<div class="cnn-dragon-stage"><span class="cnn-dragon-stage-no">04</span><strong>Pooling</strong><span>특징 지도 크기 축소</span></div>
-<div class="cnn-dragon-stage"><span class="cnn-dragon-stage-no">05</span><strong>Flatten + FC</strong><span>특징을 모아 분류</span></div>
-<div class="cnn-dragon-stage"><span class="cnn-dragon-stage-no">06</span><strong>Output</strong><span>예측 결과 출력</span></div>
-</div>
-  <p class="lesson-takeaway">사람이 경계 필터를 직접 정하는 대신, CNN은 데이터와 Label로 유용한 Kernel Weight를 학습합니다. 이 그림은 <strong>분류 CNN 예시</strong>이며 YOLO의 Detection Head는 다릅니다.</p>
-<p class="lesson-source">구조 설명: <a href="https://www.dragon1.com/terms/convolutional-neural-networks-definition" target="_blank" rel="noopener">Dragon1 · CNN Definition</a> · 그림: <a href="https://doi.org/10.1007/s13244-018-0639-9" target="_blank" rel="noopener">Yamashita et al. (2018), Fig. 1</a> (<a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>). Dragon1 원본 그림은 복제하지 않았습니다.</p></div></section>
+  <p class="slide-subtitle">Input → Convolution → ReLU → Pooling → Flatten / Fully Connected → Output을 하나의 그림에서 살펴봅니다. Kernel은 이미지의 작은 영역에서 반응을 만들고, 여러 층을 거쳐 특징을 결합합니다.</p>
+  <figure class="lesson-figure">
+<a href="assets/lesson/cnn_dragon1_lecture.svg?v=cnn-local-20261016-1" target="_blank" rel="noopener" title="CNN 구조 그림 확대">
+<img src="assets/lesson/cnn_dragon1_lecture.svg?v=cnn-local-20261016-1" alt="CNN 6단계 구조. 사과 입력, Convolution 특징 지도, ReLU, Max Pooling, Flatten·Fully Connected, 분류 출력. 2×2 최대값 7과 분류 예시가 포함된 교육용 자체 제작 도식">
+</a></figure>
+
+  <p class="lesson-takeaway">Spatial Filtering에서는 필터를 사람이 정의하지만, CNN에서는 데이터·Label을 바탕으로 Kernel Weight를 학습합니다. 그림은 <strong>분류 CNN의 대표적 구성 예시</strong>이며, YOLO의 검출 Head와 동일하지 않습니다.</p>
+<p class="lesson-source">Adapted from: <a href="https://www.dragon1.com/terms/convolutional-neural-networks-definition" target="_blank" rel="noopener">Dragon1 · Convolutional Neural Networks Definition</a> · <strong>직접 제작한 로컬 SVG</strong> · 값·점수는 개념 설명용 예시이며 실제 학습/추론 결과가 아닙니다.</p></div></section>
 <section class="slide" data-topic="CNN 구조" data-level="basic" data-source-deck="cnn_expansion" data-source-slide="2" data-outline-unit="CNN · 이미지에서 특징을 찾는 원리">
 <div class="slide-inner">
   <div class="lesson-meta"><span>17 · CNN 구조</span><span class="lesson-level">핵심 개념</span></div>

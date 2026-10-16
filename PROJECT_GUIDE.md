@@ -376,3 +376,12 @@ GitHub Pages:
 - 통합 강의 **16번**: 학술 Figure(Yamashita et al., 2018)를 유지하면서 **Input → Convolution → ReLU → Pooling → Flatten/Fully Connected → Output** 단계 해설을 붙입니다. 설명은 전형적인 분류 CNN 예시이며 모든 CNN 구조가 고정 순서를 갖지는 않습니다.
 - 별도로 재사용 허가를 확인할 수 없는 Dragon1 그림은 복제하지 않습니다. 출처는 본문과 assets/SOURCES.md에 명시합니다.
 - YOLO 5장, ResNet·U-Net 제외 원칙, 논문 이미지가 차단되면 로컬 SVG를 표시하는 방식을 보존합니다.
+
+
+## 2026-10-16 · CNN Figure GitHub 로컬 자산으로 전환 (현재)
+
+- 공개 통합 강의 16번의 외부 CNN 논문 이미지를 **`docs/assets/lesson/cnn_dragon1_lecture.svg`** 로 대체했습니다. Dragon1 CNN 설명 순서를 참고한 **직접 제작 SVG**이며, 이미지 로드·확대 링크에서 해당 저장소 내부 파일만 참조합니다.
+- 입력 사과/특징 지도/Convolution/활성화/Pooling/Flatten/FC/출력이 연결된 큰 단일 Figure로 보여지게 하며, 이전 여섯 개의 보조 설명 카드를 제거했습니다.
+- 계산 예시는 ReLU(x)=max(0,x), 2×2 Max Pooling 및 총합 100%의 가상 분류 점수와 일치해야 합니다. 실제 모델에서 추출한 Activation 또는 Prediction이 아닙니다.
+- 새 Figure는 CNN 입문용 **분류 구조 예시**이고 YOLO detection Head와 동일하지 않습니다. ResNet·U-Net 등의 독립 설명은 계속 제외합니다. YOLO 슬라이드와 전체 목차 구성은 유지합니다.
+- `docs/cnn_structure_ref.css`를 새 단일 그림에 맞춰 정리하고 버전 쿼리를 갱신합니다. 외부 레퍼런스: https://www.dragon1.com/terms/convolutional-neural-networks-definition
