@@ -1,6 +1,6 @@
 /* Public lecture: 19 Intro plus 53 Vision AI and YOLO slides (72 total). */
 window.LECTURE_OUTLINE = {
-  "version": "20261016-original-figure-pilot-53",
+  "version": "20261016-cnn-three-stage-53",
   "groups": [
     {
       "name": "Intro · 시각의 중요성에서 숫자까지",
@@ -316,7 +316,7 @@ window.LECTURE_OUTLINE = {
           "page": "vision_ai_course.html",
           "slide": 25,
           "global": 44,
-          "title": "Layer는 앞의 특징을 조합해 더 복잡한 표현을 만듭니다",
+          "title": "CNN은 얕은층에서 깊은층으로 더 복잡한 특징을 학습합니다",
           "original": "V28"
         },
         {
