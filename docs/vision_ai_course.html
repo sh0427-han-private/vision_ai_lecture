@@ -1,18 +1,19 @@
 <!doctype html>
 <html lang="ko"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Vision AI 중심 통합 강의 · 53장</title>
+<title>Vision AI 중심 통합 강의 · 54장</title>
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="slide.css?v=vision-first-introfit-20261015-1">
 <link rel="stylesheet" href="lesson.css?v=yolo-vision-20261016-1">
 <link rel="stylesheet" href="cnn_structure_ref.css?v=cnn-local-20261016-1">
 <link rel="stylesheet" href="research_original_figures.css?v=20261016-1">
 <link rel="stylesheet" href="cs231n_feature_hierarchy.css?v=cs231n-20261016-1">
+<link rel="stylesheet" href="cnn_actual_feature_maps.css?v=cnn-actual-20261016-1">
 <link rel="stylesheet" href="interactive_lessons.css?v=20261015-2">
 <script src="slide.js?v=prevent-toc-wheel-20261016-1" defer></script>
 <script src="interactive_lessons.js?v=20261015-1" defer></script>
 <link rel="stylesheet" href="lecture_sidebar.css?v=20261015-1">
-<script src="lecture_outline.js?v=cnn-three-stage-20261016-1" defer></script>
+<script src="lecture_outline.js?v=cnn-actual-54-20261016-1" defer></script>
 <script src="lecture_sidebar.js?v=20261015-1" defer></script>
 </head><body class="deck-page lesson-deck" data-prev-page="intro.html" data-next-page="">
 <header class="site-header"><nav class="nav"><a class="brand" href="intro.html#slide-1">Vision AI Lecture</a></nav></header>
@@ -198,10 +199,19 @@
 <p class="slide-subtitle">Downsampling(다운샘플링)은 가로·세로 크기를 줄이는 과정입니다. 아래는 2×2에서 최댓값을 남기는 Max Pooling 예시입니다.</p>
 <figure class="lesson-figure"><a href="assets/lesson/downsampling_basic.svg?v=professional-20261006-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/downsampling_basic.svg?v=professional-20261006-2" alt="공간 해상도를 줄여 더 작은 특징 지도를 만듭니다"></a></figure>
 <p class="lesson-takeaway">8×8 → 4×4는 위치 수가 64개에서 16개로 줄어듭니다. 작은 결함이나 경계의 위치 정보가 일부 사라질 수 있습니다.</p></div></section>
+<section class="slide" data-topic="실제 Feature Map" data-level="basic" data-source-deck="cnn_featuremaps" data-source-slide="1" data-outline-unit="CNN · 이미지에서 특징을 찾는 원리">
+<div class="slide-inner cnn-real-featuremaps">
+<div class="lesson-meta"><span>25 · 실제 Feature Map</span><span class="lesson-level">핵심 개념</span></div>
+<h2 class="slide-title">한 장의 사진에서 층마다 다른 Feature Map이 나옵니다</h2>
+<p class="slide-subtitle">동일한 강아지 사진을 <strong>사전학습된 SqueezeNet 1.1</strong>에 입력해 얻은 <strong>실제 활성화 지도</strong>입니다. 출력 채널마다 이미지의 서로 다른 위치·특징에 반응합니다.</p>
+<figure class="lesson-figure cnn-real-image"><a href="assets/lesson/cnn_squeezenet_actual_feature_maps.png?v=cnn-actual-20261016-1" target="_blank" rel="noopener" title="실제 CNN Feature Map 결과를 크게 보기"><img src="assets/lesson/cnn_squeezenet_actual_feature_maps.png?v=cnn-actual-20261016-1" alt="동일 강아지 사진의 실제 SqueezeNet1.1 활성화 지도. 얕은층 111×111×64, 중간층 27×27×256, 깊은층 13×13×512 중 각 네 채널을 선택하여 원본 입력 사진과 비교한 계산 결과"></a></figure>
+<p class="lesson-takeaway"><strong>얕은층도 RGB 사진을 그대로 출력하지는 않습니다.</strong> 하지만 초반에는 공간적 위치가 비교적 남아 있고, 뒤쪽에서는 특징이 조합되며 지도의 크기도 줄어듭니다. <strong>다음 장의 패턴 그림은 이 Feature Map과 다른 시각화입니다.</strong></p>
+<p class="lesson-source">직접 계산: <a href="https://pytorch.org/vision/stable/models/generated/torchvision.models.squeezenet1_1.html" target="_blank" rel="noopener">torchvision SqueezeNet 1.1 · ImageNet 사전학습</a> · <a href="https://github.com/sh0427-han/vision_ai_lecture/blob/main/scripts/render_cnn_feature_maps.py" target="_blank" rel="noopener">재현 코드</a> · 입력 사진: <a href="https://cs231n.stanford.edu/slides/2017/cs231n_2017_lecture5.pdf" target="_blank" rel="noopener">Stanford CS231n 2017 Lecture 5</a>. 채널 4개만 선택, 색상은 채널별 상대값으로 정규화했습니다. 다음 장의 VGG-16과는 <strong>서로 다른 모델</strong>입니다.</p>
+</div></section>
 <section class="slide" data-topic="특징의 조합" data-level="basic" data-source-deck="vision_ai" data-source-slide="28" data-outline-unit="CNN · 이미지에서 특징을 찾는 원리">
-<div class="slide-inner cs231n-hierarchy"><div class="lesson-meta"><span>25 · 특징의 조합</span><span class="lesson-level">핵심 개념</span></div>
-<h2 class="slide-title">CNN은 얕은층에서 깊은층으로 더 복잡한 특징을 학습합니다</h2>
-<p class="slide-subtitle">Stanford CS231n의 실제 <strong>VGG-16</strong> 특징 시각화입니다. 한 번에 강아지 사진에서 출발해 얕은층·중간층·깊은층의 차이를 비교합니다.</p>
+<div class="slide-inner cs231n-hierarchy"><div class="lesson-meta"><span>26 · 특징의 조합</span><span class="lesson-level">핵심 개념</span></div>
+<h2 class="slide-title">학습된 특징은 얕은층에서 깊은층으로 복잡해집니다</h2>
+<p class="slide-subtitle">앞 장의 Feature Map은 <strong>사진을 CNN에 넣었을 때 나온 실제 반응</strong>입니다. 이 CS231n 그림은 <strong>VGG-16 각 층에서 학습한 특징이 어떤 패턴에 반응하는지</strong> 따로 시각화한 원본 자료입니다.</p>
 <figure class="lesson-figure cs231n-original-figure">
 <a href="assets/lesson/cs231n_vgg16_feature_hierarchy_original.png?v=cs231n-vgg-20261016-1" target="_blank" rel="noopener" title="Stanford CS231n VGG-16 원본 특징 시각화 확대"><img src="assets/lesson/cs231n_vgg16_feature_hierarchy_original.png?v=cs231n-vgg-20261016-1" alt="Stanford CS231n 원본 Figure. 강아지 사진에서 Low-level VGG-16 Conv1_1의 간단한 색상·경계, Mid-level Conv3_2의 곡선·질감, High-level Conv5_3의 복합적 패턴을 나란히 보여 주는 학습된 특징 시각화"></a>
 <figcaption>Stanford CS231n, Lecture 5 (2017), Slide 37 · VGG-16 특징 시각화: Lane McIntosh · 원본 PNG 그대로 사용</figcaption>
@@ -211,18 +221,18 @@
 <div><strong>② 중간층 · Conv3_2</strong><span>곡선·질감 등 특징의 조합</span></div>
 <div><strong>③ 깊은층 · Conv5_3</strong><span>더 복잡한 형태와 객체 관련 단서</span></div>
 </div>
-<p class="lesson-takeaway"><strong>핵심: 앞쪽에서 학습한 단순한 특징들을 뒤쪽에서 조합합니다.</strong> 그림 속 색상 패턴은 강아지 사진이 변해 가는 영상이 아니라, 각 층에서 학습된 특징을 시각화한 결과입니다.</p>
+<p class="lesson-takeaway"><strong>Feature Map ≠ Feature Visualization.</strong> 사진 입력의 위치별 활성화와, 학습된 특징을 강하게 자극하는 패턴을 구분하세요. 각 층의 색상 패턴을 동일 사진의 단계별 변환 영상으로 이해하면 안 됩니다.</p>
 <p class="lesson-source">원본 Figure: <a href="https://cs231n.stanford.edu/slides/2017/cs231n_2017_lecture5.pdf" target="_blank" rel="noopener">Stanford CS231n · Lecture 5, Slide 37 (2017)</a> · 연구 배경: <a href="https://cs.nyu.edu/~fergus/papers/zeilerECCV2014.pdf" target="_blank" rel="noopener">Zeiler &amp; Fergus, ECCV 2014</a> · <a href="https://github.com/yganalyst/yganalyst.github.io/blob/master/assets/images/cs231n/4/convlayer_4.png" target="_blank" rel="noopener">원본 Figure 미러</a></p>
 </div></section>
 <section class="slide" data-topic="Backbone과 Head" data-level="basic" data-source-deck="vision_ai" data-source-slide="31" data-outline-unit="CNN · 이미지에서 특징을 찾는 원리">
-<div class="slide-inner"><div class="lesson-meta"><span>26 · Backbone과 Head</span>
+<div class="slide-inner"><div class="lesson-meta"><span>27 · Backbone과 Head</span>
 <span class="lesson-level">핵심 개념</span></div>
 <h2 class="slide-title">특징을 만드는 부분과, 결과를 만드는 부분을 나눠 봅니다</h2>
 <p class="slide-subtitle">같은 입력 특징을 추출하는 Backbone과, Classification·Detection·Segmentation 가운데 필요한 결과를 만드는 Task Head를 구분합니다.</p>
 <figure class="lesson-figure"><a href="assets/lesson/lesson_backbone_head_roles.svg?v=solid-arrows-20261015-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/lesson_backbone_head_roles.svg?v=solid-arrows-20261015-2" alt="사과 사진 입력에서 Backbone이 공통 특징을 추출하고 분류 Head는 Class 점수, 검출 Head는 Box, 분할 Head는 Pixel Mask를 출력하는 선택형 구조"></a></figure>
 <p class="lesson-takeaway">세 가지 Head는 구조 비교를 위한 개념도입니다. 실제 한 모델이 항상 세 Task를 동시에 출력하는 것은 아닙니다.</p></div></section>
 <section class="slide" data-topic="YOLO" data-level="basic" data-source-deck="yolo_intro" data-source-slide="1" data-outline-unit="YOLO · 학습한 필터로 이미지 이해">
-<div class="slide-inner"><div class="lesson-meta"><span>27 · YOLO</span><span class="lesson-level">실전 개념</span></div>
+<div class="slide-inner"><div class="lesson-meta"><span>28 · YOLO</span><span class="lesson-level">실전 개념</span></div>
 <h2 class="slide-title">고정 필터는 사람이 정하고, YOLO의 필터는 학습합니다</h2>
 <p class="slide-subtitle">Mean·Sobel처럼 사람이 설정하는 필터와 달리 YOLO의 합성곱(Convolution) 필터 가중치는 사진과 정답(Label)을 이용한 학습으로 조정됩니다.</p>
 <figure class="lesson-figure"><a href="assets/lesson/yolo_learned_filters.svg?v=yolo-vision-20261016-1" target="_blank" rel="noopener" title="YOLO 설명 Figure 확대"><img src="assets/lesson/yolo_learned_filters.svg?v=yolo-vision-20261016-1" alt="고정 필터는 사람이 정하고, YOLO의 필터는 학습합니다를 실제 사과 사진으로 보여주는 학습용 구조 그림"></a></figure>
@@ -230,7 +240,7 @@
 <p class="lesson-source">그림 참고: <a href="https://docs.ultralytics.com/ko/guides/yolo-architecture" target="_blank" rel="noopener">CNN Explainer · Ultralytics YOLO Architecture</a> · 강의용 재구성</p>
 </div></section>
 <section class="slide" data-topic="YOLO" data-level="basic" data-source-deck="yolo_intro" data-source-slide="2" data-outline-unit="YOLO · 학습한 필터로 이미지 이해">
-<div class="slide-inner"><div class="lesson-meta"><span>28 · YOLO</span><span class="lesson-level">실전 개념</span></div>
+<div class="slide-inner"><div class="lesson-meta"><span>29 · YOLO</span><span class="lesson-level">실전 개념</span></div>
 <h2 class="slide-title">YOLO는 Backbone → Neck → Head로 검출합니다</h2>
 <p class="slide-subtitle">실제 YOLOv8 아키텍처 논문 Figure를 통해 Backbone(특징 추출), Neck(크기가 다른 특징 결합), Head(검출)의 연결을 확인합니다. 세부 모듈은 버전에 따라 다릅니다.</p>
 <figure class="lesson-figure"><a href="https://www.mdpi.com/electronics/electronics-13-04411/article_deploy/html/images/electronics-13-04411-g001.png" target="_blank" rel="noopener" title="YOLOv8 논문 Figure 원본 확대"><img src="https://www.mdpi.com/electronics/electronics-13-04411/article_deploy/html/images/electronics-13-04411-g001.png" alt="Electronics 2024 Figure 1. YOLOv8의 Backbone 특징 추출, Neck 다중 해상도 융합, Head 검출 출력 아키텍처 원본" onerror="this.onerror=null;this.src='assets/lesson/yolo_backbone_neck_head.svg?v=yolo-vision-20261016-1';this.alt='외부 이미지가 차단되어 표시한 기존 YOLO Backbone Neck Head 개념도';"></a></figure>
@@ -238,7 +248,7 @@
 <p class="lesson-source">외부 논문 Figure (수정 없음): <a href="https://doi.org/10.3390/electronics13224411" target="_blank" rel="noopener">Electronics (2024), 13(22), 4411, Fig. 1 · YOLOv8 구조</a> · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a> · 외부 이미지 차단 시 기존 로컬 도표로 대체</p>
 </div></section>
 <section class="slide" data-topic="YOLO" data-level="basic" data-source-deck="yolo_intro" data-source-slide="3" data-outline-unit="YOLO · 학습한 필터로 이미지 이해">
-<div class="slide-inner"><div class="lesson-meta"><span>29 · YOLO</span><span class="lesson-level">실전 개념</span></div>
+<div class="slide-inner"><div class="lesson-meta"><span>30 · YOLO</span><span class="lesson-level">실전 개념</span></div>
 <h2 class="slide-title">YOLO Detection의 출력은 Class·Box·Score입니다</h2>
 <p class="slide-subtitle">사진 전체에서 물체의 종류(Class), 위치(Bounding Box, 경계 상자), 예측 점수(Score)를 함께 얻습니다. 그림의 결과는 실제 추론이 아닌 개념 예시입니다.</p>
 <figure class="lesson-figure"><a href="assets/lesson/yolo_detection_example.svg?v=yolo-vision-20261016-1" target="_blank" rel="noopener" title="YOLO 설명 Figure 확대"><img src="assets/lesson/yolo_detection_example.svg?v=yolo-vision-20261016-1" alt="YOLO Detection의 출력은 Class·Box·Score입니다를 실제 사과 사진으로 보여주는 학습용 구조 그림"></a></figure>
@@ -246,7 +256,7 @@
 <p class="lesson-source">그림 참고: <a href="https://openaccess.thecvf.com/content_cvpr_2016/html/Redmon_You_Only_Look_CVPR_2016_paper.html" target="_blank" rel="noopener">Redmon et al. · You Only Look Once · CVPR 2016</a> · 강의용 재구성</p>
 </div></section>
 <section class="slide" data-topic="YOLO" data-level="basic" data-source-deck="yolo_intro" data-source-slide="4" data-outline-unit="YOLO · 학습한 필터로 이미지 이해">
-<div class="slide-inner"><div class="lesson-meta"><span>30 · YOLO</span><span class="lesson-level">실전 개념</span></div>
+<div class="slide-inner"><div class="lesson-meta"><span>31 · YOLO</span><span class="lesson-level">실전 개념</span></div>
 <h2 class="slide-title">YOLO에서도 목적에 따라 Classify·Detect·Segment 모델을 선택합니다</h2>
 <p class="slide-subtitle">이미지 전체의 종류가 필요하면 Classify, 사각형 위치가 필요하면 Detect, Pixel 영역이 필요하면 Segment 모델을 사용합니다.</p>
 <figure class="lesson-figure"><a href="assets/lesson/yolo_three_tasks.svg?v=yolo-vision-20261016-1" target="_blank" rel="noopener" title="YOLO 설명 Figure 확대"><img src="assets/lesson/yolo_three_tasks.svg?v=yolo-vision-20261016-1" alt="YOLO에서도 목적에 따라 Classify·Detect·Segment 모델을 선택합니다를 실제 사과 사진으로 보여주는 학습용 구조 그림"></a></figure>
@@ -254,7 +264,7 @@
 <p class="lesson-source">그림 참고: <a href="https://docs.ultralytics.com/tasks/" target="_blank" rel="noopener">Ultralytics 공식 Task 문서 · Classify / Detect / Segment</a> · 강의용 재구성</p>
 </div></section>
 <section class="slide" data-topic="YOLO 검출 학습" data-level="basic" data-source-deck="yolo_intro" data-source-slide="6" data-outline-unit="YOLO · 학습한 필터로 이미지 이해">
-<div class="slide-inner"><div class="lesson-meta"><span>31 · YOLO</span><span class="lesson-level">실전 개념</span></div>
+<div class="slide-inner"><div class="lesson-meta"><span>32 · YOLO</span><span class="lesson-level">실전 개념</span></div>
 <h2 class="slide-title">YOLO 객체 검출은 종류와 위치를 함께 학습합니다</h2>
 <p class="slide-subtitle">YOLO Detection은 객체가 <strong>무엇인지(Classification)</strong>와 <strong>어디에 있는지(Bounding Box)</strong>를 동시에 예측하고, 학습 중 각각의 정답과 비교해 오차를 줄입니다.</p>
 <figure class="lesson-figure"><a href="assets/lesson/yolo_class_box_training_ko.svg?v=yolo-dual-loss-20261016-1" target="_blank" rel="noopener" title="YOLO 검출 학습 도식 확대"><img src="assets/lesson/yolo_class_box_training_ko.svg?v=yolo-dual-loss-20261016-1" alt="YOLO 검출 학습에서 사진과 정답 Label을 입력받아 Backbone·Neck 특징 추출 뒤 클래스 분류와 박스 위치 회귀를 함께 학습하는 한글 그림"></a></figure>
@@ -262,7 +272,7 @@
 <p class="lesson-source">출처: <a href="https://docs.ultralytics.com/ko/tasks/detect" target="_blank" rel="noopener">Ultralytics 공식 YOLO Detection 문서</a> · <a href="https://docs.ultralytics.com/tasks/classify" target="_blank" rel="noopener">Classification 문서</a> · 공식 설명 기반 강의용 개념도(실측 출력 아님)</p>
 </div></section>
 <section class="slide" data-topic="YOLO" data-level="basic" data-source-deck="yolo_intro" data-source-slide="5" data-outline-unit="YOLO · 학습한 필터로 이미지 이해">
-<div class="slide-inner"><div class="lesson-meta"><span>32 · YOLO</span><span class="lesson-level">실전 개념</span></div>
+<div class="slide-inner"><div class="lesson-meta"><span>33 · YOLO</span><span class="lesson-level">실전 개념</span></div>
 <h2 class="slide-title">YOLO를 활용해도 데이터·Label·검증은 직접 준비해야 합니다</h2>
 <p class="slide-subtitle">실제 사진과 정확한 Label을 모은 뒤 사전학습된 YOLO 모델을 내 데이터로 추가 학습하고, 새로운 조건의 영상으로 성능을 확인합니다.</p>
 <figure class="lesson-figure"><a href="assets/lesson/yolo_workflow.svg?v=yolo-vision-20261016-1" target="_blank" rel="noopener" title="YOLO 설명 Figure 확대"><img src="assets/lesson/yolo_workflow.svg?v=yolo-vision-20261016-1" alt="YOLO를 활용해도 데이터·Label·검증은 직접 준비해야 합니다를 실제 사과 사진으로 보여주는 학습용 구조 그림"></a></figure>
@@ -270,7 +280,7 @@
 <p class="lesson-source">그림 참고: <a href="https://docs.ultralytics.com/modes/train/" target="_blank" rel="noopener">Ultralytics Train / Val / Predict 안내</a> · 강의용 재구성</p>
 </div></section>
 <section class="slide" data-topic="학습의 의미" data-level="basic" data-source-deck="ai_basics" data-source-slide="15" data-outline-unit="학습 · YOLO가 필터를 배우는 과정">
-<div class="slide-inner"><div class="lesson-meta"><span>33 · 학습의 의미</span>
+<div class="slide-inner"><div class="lesson-meta"><span>34 · 학습의 의미</span>
 <span class="lesson-level">핵심 개념</span></div>
 <h2 class="slide-title">학습은 예측 오차가 줄도록 계산 기준을 바꾸는 과정입니다</h2>
 <p class="slide-subtitle">입력 x=2, 정답 y=4를 고정하고 학습을 진행합니다. 모델이 예측 오차를 줄이도록 가중치를 자동으로 수정하는 과정을 관찰하세요.</p>
@@ -302,126 +312,126 @@
 </figure>
 <p class="lesson-takeaway">학습의 목적은 사람이 Weight를 임의로 조작하는 것이 아니라, 예측과 정답의 오차를 줄이도록 알고리즘이 Parameter를 갱신하는 것입니다.</p></div></section>
 <section class="slide" data-topic="Loss" data-level="basic" data-source-deck="ai_basics" data-source-slide="16" data-outline-unit="학습 · YOLO가 필터를 배우는 과정">
-<div class="slide-inner"><div class="lesson-meta"><span>34 · Loss</span>
+<div class="slide-inner"><div class="lesson-meta"><span>35 · Loss</span>
 <span class="lesson-level">핵심 개념</span></div>
 <h2 class="slide-title">Loss는 예측과 정답의 차이를 학습용 숫자로 바꿉니다</h2>
 <p class="slide-subtitle">정답 y=4를 고정하고 후보 예측 2·3.6·4를 비교합니다. 회귀용 제곱오차는 차이의 부호를 없애고, 큰 오차에 더 큰 Loss를 부여합니다.</p>
 <figure class="lesson-figure"><a href="assets/lesson/loss_basic.svg?v=loss-optimizer-20261006-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/loss_basic.svg?v=loss-optimizer-20261006-2" alt="Loss는 예측과 정답의 차이를 학습용 숫자로 바꿉니다"></a></figure>
 <p class="lesson-takeaway">여러 샘플의 제곱오차를 평균하면 MSE(Mean Squared Error, 평균제곱오차)입니다. 문제에 따라 다른 Loss를 사용합니다.</p><details class="lesson-reference"><summary>출처 · 근거</summary><div>개념 참고: <a href="https://cs231n.github.io/optimization-1/" target="_blank" rel="noopener">Stanford CS231n · Optimization</a> · 실제 계산한 단일 샘플 회귀 예시</div></details></div></section>
 <section class="slide" data-topic="Training Loop" data-level="basic" data-source-deck="ai_basics" data-source-slide="21" data-outline-unit="학습 · YOLO가 필터를 배우는 과정">
-<div class="slide-inner"><div class="lesson-meta"><span>35 · Training Loop</span>
+<div class="slide-inner"><div class="lesson-meta"><span>36 · Training Loop</span>
 <span class="lesson-level">핵심 개념</span></div>
 <h2 class="slide-title">예측 → 오차 → Gradient → 수정을 반복합니다</h2>
 <p class="slide-subtitle">Training(학습)은 한 번의 계산으로 끝나지 않습니다. 바뀐 가중치로 다음 예측을 계산하고 다시 오차를 줄입니다.</p>
 <figure class="lesson-figure"><a href="assets/lesson/training_basic.svg?v=professional-20261006-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/training_basic.svg?v=professional-20261006-2" alt="예측 → 오차 → Gradient → 수정을 반복합니다"></a></figure>
 <p class="lesson-takeaway">Forward는 예측 계산, Backward는 Gradient 계산, Update는 가중치 수정입니다.</p></div></section>
 <section class="slide" data-topic="Training과 Inference" data-level="basic" data-source-deck="ai_basics" data-source-slide="22" data-outline-unit="학습 · YOLO가 필터를 배우는 과정">
-<div class="slide-inner"><div class="lesson-meta"><span>36 · Training과 Inference</span>
+<div class="slide-inner"><div class="lesson-meta"><span>37 · Training과 Inference</span>
 <span class="lesson-level">핵심 개념</span></div>
 <h2 class="slide-title">배울 때는 Weight를 바꾸고, 사용할 때는 고정합니다</h2>
 <p class="slide-subtitle">Inference(추론)는 학습된 모델에 새 입력을 넣어 결과를 얻는 과정입니다. 정답 없이도 예측할 수 있습니다.</p>
 <figure class="lesson-figure"><a href="assets/lesson/training_inference_basic.svg?v=professional-20261006-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/training_inference_basic.svg?v=professional-20261006-2" alt="배울 때는 Weight를 바꾸고, 사용할 때는 고정합니다"></a></figure>
 <p class="lesson-takeaway">추론 과정 자체는 새로운 데이터로 가중치를 학습하는 과정이 아닙니다.</p></div></section>
 <section class="slide" data-topic="Batch·Iteration·Epoch" data-level="basic" data-source-deck="ai_basics" data-source-slide="28" data-outline-unit="학습 · YOLO가 필터를 배우는 과정">
-<div class="slide-inner"><div class="lesson-meta"><span>37 · Batch·Iteration·Epoch</span>
+<div class="slide-inner"><div class="lesson-meta"><span>38 · Batch·Iteration·Epoch</span>
 <span class="lesson-level">핵심 개념</span></div>
 <h2 class="slide-title">데이터를 작은 묶음으로 나누어 반복해서 봅니다</h2>
 <p class="slide-subtitle">Batch는 한 번에 처리하는 묶음, Iteration은 보통 한 묶음의 처리, Epoch은 학습 데이터 전체를 한 번 보는 주기입니다.</p>
 <figure class="lesson-figure"><a href="assets/lesson/context_batch_epoch.svg?v=professional-20261006-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/context_batch_epoch.svg?v=professional-20261006-2" alt="데이터를 작은 묶음으로 나누어 반복해서 봅니다"></a></figure>
 <p class="lesson-takeaway">이미지 10장, batch_size=4, 마지막 묶음을 버리지 않으면 4+4+2의 3번 처리가 1 Epoch입니다.</p></div></section>
 <section class="slide" data-topic="CNN 학습" data-level="basic" data-source-deck="vision_ai" data-source-slide="33" data-outline-unit="학습 · YOLO가 필터를 배우는 과정">
-<div class="slide-inner"><div class="lesson-meta"><span>38 · CNN 학습</span>
+<div class="slide-inner"><div class="lesson-meta"><span>39 · CNN 학습</span>
 <span class="lesson-level">핵심 개념</span></div>
 <h2 class="slide-title">CNN의 필터도 오차를 줄이는 방향으로 학습합니다</h2>
 <p class="slide-subtitle">Forward로 예측하고 Label과 Loss를 비교한 뒤, Backpropagation으로 Gradient를 계산하고 Optimizer가 필터를 갱신합니다.</p>
 <figure class="lesson-figure"><a href="assets/lesson/context_cnn_training.svg?v=professional-20261006-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/context_cnn_training.svg?v=professional-20261006-2" alt="CNN의 필터도 오차를 줄이는 방향으로 학습합니다"></a></figure>
 <p class="lesson-takeaway">기본 학습 원리는 AI Basics와 같습니다. 학습하는 Parameter에 Kernel 가중치가 포함됩니다.</p></div></section>
 <section class="slide" data-topic="Dataset" data-level="basic" data-source-deck="ai_basics" data-source-slide="29" data-outline-unit="데이터 · YOLO 모델 준비">
-<div class="slide-inner"><div class="lesson-meta"><span>39 · Dataset</span>
+<div class="slide-inner"><div class="lesson-meta"><span>40 · Dataset</span>
 <span class="lesson-level">핵심 개념</span></div>
 <h2 class="slide-title">데이터는 실제 사용할 조건을 대표해야 합니다</h2>
 <p class="slide-subtitle">Dataset(데이터셋)은 학습·평가에 사용하는 데이터 모음입니다. 조명·크기·배경·설비·시간대와 일관된 정답 기준을 확인합니다.</p>
 <figure class="lesson-figure"><a href="assets/lesson/capture_conditions.svg?v=professional-20261006-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/capture_conditions.svg?v=professional-20261006-2" alt="데이터는 실제 사용할 조건을 대표해야 합니다"></a></figure>
 <p class="lesson-takeaway">특정 배경만 정답과 함께 반복되면, 모델이 물체 대신 배경으로 판단할 수 있습니다.</p><details class="lesson-reference"><summary>출처 · 근거</summary><div>사진: AI 생성 교육용 예시 · 실제 측정/실험 결과가 아님</div></details></div></section>
 <section class="slide" data-topic="데이터 분리" data-level="basic" data-source-deck="ai_basics" data-source-slide="30" data-outline-unit="데이터 · YOLO 모델 준비">
-<div class="slide-inner"><div class="lesson-meta"><span>40 · 데이터 분리</span>
+<div class="slide-inner"><div class="lesson-meta"><span>41 · 데이터 분리</span>
 <span class="lesson-level">핵심 개념</span></div>
 <h2 class="slide-title">학습·모델 선택·최종 평가의 데이터를 나눕니다</h2>
 <p class="slide-subtitle">Train은 가중치 학습, Validation은 모델·설정·Threshold 선택, Test는 최종 일반화 평가에 사용합니다.</p>
 <figure class="lesson-figure"><a href="assets/lesson/context_dataset_split.svg?v=professional-20261006-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/context_dataset_split.svg?v=professional-20261006-2" alt="학습·모델 선택·최종 평가의 데이터를 나눕니다"></a></figure>
 <p class="lesson-takeaway">예: 1,000장의 70/15/15 분리. 비율보다 서로 독립적인 평가 데이터 확보가 중요합니다.</p></div></section>
 <section class="slide" data-topic="Group Split" data-level="basic" data-source-deck="ai_basics" data-source-slide="31" data-outline-unit="데이터 · YOLO 모델 준비">
-<div class="slide-inner"><div class="lesson-meta"><span>41 · Group Split</span>
+<div class="slide-inner"><div class="lesson-meta"><span>42 · Group Split</span>
 <span class="lesson-level">핵심 개념</span></div>
 <h2 class="slide-title">같은 영상의 비슷한 Frame은 통째로 분리합니다</h2>
 <p class="slide-subtitle">동일한 원본 영상 A·B·C에서 각각 3개 Frame을 뽑은 예시입니다. 무작위 Frame 분할과 원본 Video를 통째로 나누는 Group Split을 비교합니다.</p>
 <figure class="lesson-figure"><a href="assets/lesson/lesson_video_group_split_comparison.svg?v=pedagogic-20261013-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/lesson_video_group_split_comparison.svg?v=pedagogic-20261013-2" alt="9개 프레임을 무작위로 나누면 영상 A B C가 Train Validation Test에 중복되지만 영상별 Group Split에서는 원본 영상이 서로 겹치지 않는 비교"></a></figure>
 <p class="lesson-takeaway">같은 원본 영상의 Frame이 Train·Validation·Test에 동시에 들어가지 않게 합니다. 새 설비 성능을 평가하려면 설비 자체로 Group을 정합니다.</p></div></section>
 <section class="slide" data-topic="전처리" data-level="basic" data-source-deck="ai_basics" data-source-slide="33" data-outline-unit="데이터 · YOLO 모델 준비">
-<div class="slide-inner"><div class="lesson-meta"><span>42 · 전처리</span>
+<div class="slide-inner"><div class="lesson-meta"><span>43 · 전처리</span>
 <span class="lesson-level">핵심 개념</span></div>
 <h2 class="slide-title">모델이 기대하는 크기·값 범위·채널 순서를 맞춥니다</h2>
 <p class="slide-subtitle">Preprocessing(전처리)은 입력 형식을 맞추는 과정입니다. 1920×1080을 640×640으로 맞출 때는 Resize·Crop·Padding의 차이를 고려합니다.</p>
 <figure class="lesson-figure"><a href="assets/lesson/preprocess_basic.svg?v=solid-arrows-20261015-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/preprocess_basic.svg?v=solid-arrows-20261015-2" alt="모델이 기대하는 크기·값 범위·채널 순서를 맞춥니다"></a></figure>
 <p class="lesson-takeaway">RGB/BGR, 0~255/정규화 값, HWC/CHW를 확인하고 Train·Inference의 기본 규칙을 맞춥니다.</p></div></section>
 <section class="slide" data-topic="Data Augmentation" data-level="basic" data-source-deck="ai_basics" data-source-slide="34" data-outline-unit="데이터 · YOLO 모델 준비">
-<div class="slide-inner"><div class="lesson-meta"><span>43 · Data Augmentation</span>
+<div class="slide-inner"><div class="lesson-meta"><span>44 · Data Augmentation</span>
 <span class="lesson-level">핵심 개념</span></div>
 <h2 class="slide-title">의미를 유지하는 변화를 학습 중에 보여줍니다</h2>
 <p class="slide-subtitle">Data Augmentation(데이터 증강)은 밝기·회전·가림 같은 변화를 적용하는 방법입니다. 현실적인 변화 범위와 정답 유지 여부를 확인합니다.</p>
 <figure class="lesson-figure"><a href="assets/lesson/augmentation_basic.svg?v=professional-20261006-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/augmentation_basic.svg?v=professional-20261006-2" alt="의미를 유지하는 변화를 학습 중에 보여줍니다"></a></figure>
 <p class="lesson-takeaway">검출·분할에서는 이미지와 Box·Mask에 같은 공간 변환을 적용해야 합니다.</p></div></section>
 <section class="slide" data-topic="Transfer Learning" data-level="basic" data-source-deck="vision_ai" data-source-slide="34" data-outline-unit="전이학습 · 새 현장에 적용">
-<div class="slide-inner"><div class="lesson-meta"><span>44 · Transfer Learning</span>
+<div class="slide-inner"><div class="lesson-meta"><span>45 · Transfer Learning</span>
 <span class="lesson-level">핵심 개념</span></div>
 <h2 class="slide-title">이미 배운 가중치에서 내 Task의 학습을 시작합니다</h2>
 <p class="slide-subtitle">사전학습으로 얻은 Backbone 가중치를 새 Task의 출발점으로 사용합니다. 새로운 Label에 맞춘 Head를 준비하고 대상 데이터에서 추가 학습합니다.</p>
 <figure class="lesson-figure"><a href="assets/lesson/lesson_transfer_pretraining_to_task.svg?v=solid-arrows-20261015-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/lesson_transfer_pretraining_to_task.svg?v=solid-arrows-20261015-2" alt="이미 배운 가중치에서 내 Task의 학습을 시작합니다"></a></figure>
 <p class="lesson-takeaway">내 데이터가 사전학습 데이터와 다르면 효과가 달라질 수 있으므로 별도 평가가 필요합니다.</p></div></section>
 <section class="slide" data-topic="Freeze와 Fine-tuning" data-level="detail" data-source-deck="vision_ai" data-source-slide="35" data-outline-unit="전이학습 · 새 현장에 적용">
-<div class="slide-inner"><div class="lesson-meta"><span>45 · Freeze와 Fine-tuning</span>
+<div class="slide-inner"><div class="lesson-meta"><span>46 · Freeze와 Fine-tuning</span>
 <span class="lesson-level lesson-level--detail">심화 학습</span></div>
 <h2 class="slide-title">고정할 부분과 추가 학습할 부분을 구분합니다</h2>
 <p class="slide-subtitle">Freeze 방식은 Backbone 가중치를 고정하고 Head를 학습합니다. Fine-tuning에서는 선택한 Backbone 가중치까지 업데이트합니다.</p>
 <figure class="lesson-figure"><a href="assets/lesson/lesson_transfer_freeze_vs_finetune.svg?v=solid-arrows-20261015-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/lesson_transfer_freeze_vs_finetune.svg?v=solid-arrows-20261015-2" alt="Freeze에서는 사전학습 Backbone을 고정하고 Head만 학습하며 Fine-tuning에서는 선택한 Backbone 가중치도 함께 업데이트하는 구조"></a></figure>
 <p class="lesson-takeaway">같은 대상 데이터로 두 방식을 검증하고, 데이터 양·도메인 차이·Validation 성능에 따라 업데이트 범위를 선택합니다.</p><details class="lesson-reference"><summary>출처 · 근거</summary><div>개념 참고: <a href="https://cs231n.github.io/convolutional-networks/" target="_blank" rel="noopener">Stanford CS231n</a> · 직접 재구성한 설명용 Figure</div></details></div></section>
 <section class="slide" data-topic="Overfitting" data-level="basic" data-source-deck="ai_basics" data-source-slide="35" data-outline-unit="전이학습 · 새 현장에 적용">
-<div class="slide-inner"><div class="lesson-meta"><span>46 · Overfitting</span>
+<div class="slide-inner"><div class="lesson-meta"><span>47 · Overfitting</span>
 <span class="lesson-level">핵심 개념</span></div>
 <h2 class="slide-title">Train에서 잘하는 것과 새 데이터에서 잘하는 것은 다릅니다</h2>
 <p class="slide-subtitle">Overfitting(과적합)은 학습 데이터에 지나치게 맞춰 새 데이터 성능이 떨어지는 현상입니다. Validation 추세와 실패 사례를 함께 봅니다.</p>
 <figure class="lesson-figure"><a href="assets/lesson/context_overfit_leakage.svg?v=professional-20261006-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/context_overfit_leakage.svg?v=professional-20261006-2" alt="Train에서 잘하는 것과 새 데이터에서 잘하는 것은 다릅니다"></a></figure>
 <p class="lesson-takeaway">Generalization(일반화)은 직접 학습하지 않은 데이터에서도 성능을 유지하는 능력입니다.</p></div></section>
 <section class="slide" data-topic="Threshold" data-level="basic" data-source-deck="ai_basics" data-source-slide="38" data-outline-unit="평가 · 현장 적용">
-<div class="slide-inner"><div class="lesson-meta"><span>47 · Threshold</span>
+<div class="slide-inner"><div class="lesson-meta"><span>48 · Threshold</span>
 <span class="lesson-level">핵심 개념</span></div>
 <h2 class="slide-title">점수에 기준을 적용하면 실제 판정이 됩니다</h2>
 <p class="slide-subtitle">설명용 불량 점수 0.82를 기준 0.50과 0.90에 각각 적용합니다. 점수는 같아도 판정 결과는 바뀝니다.</p>
 <figure class="lesson-figure"><a href="assets/lesson/lesson_threshold_score_decision.svg?v=lesson-metrics-20261013-1" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/lesson_threshold_score_decision.svg?v=lesson-metrics-20261013-1" alt="점수에 기준을 적용하면 실제 판정이 됩니다"></a></figure>
 <p class="lesson-takeaway">임계값을 바꾸면 불량 미검과 오알람 수가 달라질 수 있습니다. 기준은 Validation에서 선택하며, 점수 0.82는 다음 100개 평가 사례와 별개입니다.</p></div></section>
 <section class="slide" data-topic="Confusion Matrix" data-level="basic" data-source-deck="ai_basics" data-source-slide="39" data-outline-unit="평가 · 현장 적용">
-<div class="slide-inner"><div class="lesson-meta"><span>48 · Confusion Matrix</span>
+<div class="slide-inner"><div class="lesson-meta"><span>49 · Confusion Matrix</span>
 <span class="lesson-level">핵심 개념</span></div>
 <h2 class="slide-title">정답과 판정을 비교해 네 가지 결과를 셉니다</h2>
 <p class="slide-subtitle">총 100건의 같은 평가 데이터를 다음 지표 계산까지 이어갑니다. 실제 불량 20건 중 18건을 찾고, 정상 80건 중 4건을 잘못 알렸습니다.</p>
 <figure class="lesson-figure"><a href="assets/lesson/lesson_confusion_100cases.svg?v=lesson-metrics-20261013-1" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/lesson_confusion_100cases.svg?v=lesson-metrics-20261013-1" alt="총 100건에서 실제 불량 20건의 TP 18 FN 2와 실제 정상 80건의 FP 4 TN 76을 배치한 2×2 혼동행렬"></a></figure>
 <p class="lesson-takeaway">TP: 찾은 불량 / FN: 놓친 불량 / FP: 오알람 / TN: 정상 통과.</p></div></section>
 <section class="slide" data-topic="Precision과 Recall" data-level="basic" data-source-deck="ai_basics" data-source-slide="40" data-outline-unit="평가 · 현장 적용">
-<div class="slide-inner"><div class="lesson-meta"><span>49 · Precision과 Recall</span>
+<div class="slide-inner"><div class="lesson-meta"><span>50 · Precision과 Recall</span>
 <span class="lesson-level">핵심 개념</span></div>
 <h2 class="slide-title">알람의 정확성과 불량을 찾는 비율을 구분합니다</h2>
 <p class="slide-subtitle">직전 혼동행렬의 TP=18·FP=4·FN=2를 그대로 사용합니다. Precision은 불량이라고 알린 22건, Recall은 실제 불량 20건을 분모로 계산합니다.</p>
 <figure class="lesson-figure"><a href="assets/lesson/lesson_precision_recall_sharedcase.svg?v=lesson-metrics-20261013-1" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/lesson_precision_recall_sharedcase.svg?v=lesson-metrics-20261013-1" alt="정밀도는 TP 18개를 불량 판정 22개로 나눠 81.8%, 재현율은 TP 18개를 실제 불량 20개로 나눠 90%가 되는 비교"></a></figure>
 <p class="lesson-takeaway">동일한 TP=18이어도 Precision=18/22=81.8%, Recall=18/20=90%입니다. 임계값이 바뀌면 두 지표도 변할 수 있습니다.</p></div></section>
 <section class="slide" data-topic="IoU" data-level="basic" data-source-deck="vision_ai" data-source-slide="7" data-outline-unit="평가 · 현장 적용">
-<div class="slide-inner"><div class="lesson-meta"><span>50 · IoU</span>
+<div class="slide-inner"><div class="lesson-meta"><span>51 · IoU</span>
 <span class="lesson-level">핵심 개념</span></div>
 <h2 class="slide-title">위치와 영역은 정답과 얼마나 겹치는지 평가합니다</h2>
 <p class="slide-subtitle">IoU(Intersection over Union, 교집합/합집합 비율)는 정답 영역과 예측 영역의 겹침 정도입니다.</p>
 <figure class="lesson-figure"><a href="assets/lesson/context_iou_visual.svg?v=professional-20261006-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/context_iou_visual.svg?v=professional-20261006-2" alt="위치와 영역은 정답과 얼마나 겹치는지 평가합니다"></a></figure>
 <p class="lesson-takeaway">완전 일치하면 1, 겹치는 영역이 없으면 0입니다.</p></div></section>
 <section class="slide" data-topic="평가와 실패 사례" data-level="basic" data-source-deck="vision_ai" data-source-slide="36" data-outline-unit="평가 · 현장 적용">
-<div class="slide-inner research-pilot"><div class="lesson-meta"><span>51 · 평가와 실패 사례</span>
+<div class="slide-inner research-pilot"><div class="lesson-meta"><span>52 · 평가와 실패 사례</span>
 <span class="lesson-level">핵심 개념</span></div>
 <h2 class="slide-title">높은 점수만으로 판단 근거가 맞다고 보장할 수 없습니다</h2>
 <p class="slide-subtitle">같은 사진을 보더라도 모델에 ‘개’와 ‘고양이’ 중 무엇을 설명하도록 요청하는지에 따라 강조되는 영역이 달라집니다. 실제 공개 Grad-CAM 구현 결과를 비교합니다.</p>
@@ -432,14 +442,14 @@
 </figure>
 <p class="lesson-takeaway">높은 Score만으로 올바른 근거를 사용했다고 보장할 수 없습니다. Grad-CAM은 분류 결정과 관련된 영역을 살펴보는 보조 도구이며, 결함의 정답 Box·Mask를 뜻하지 않습니다.</p><p class="lesson-source">연구: <a href="https://openaccess.thecvf.com/content_iccv_2017/html/Selvaraju_Grad-CAM_Visual_Explanations_ICCV_2017_paper.html" target="_blank" rel="noopener">Selvaraju et al., Grad-CAM, ICCV 2017</a> · 실제 Figure: <a href="https://github.com/jacobgil/pytorch-grad-cam#classification" target="_blank" rel="noopener">jacobgil/pytorch-grad-cam 공식 구현 예시</a> · 모델 출력 점수는 이 그림에 표시하지 않았습니다.</p></div></section>
 <section class="slide" data-topic="운영 Cycle" data-level="basic" data-source-deck="vision_ai" data-source-slide="37" data-outline-unit="평가 · 현장 적용">
-<div class="slide-inner"><div class="lesson-meta"><span>52 · 운영 Cycle</span>
+<div class="slide-inner"><div class="lesson-meta"><span>53 · 운영 Cycle</span>
 <span class="lesson-level">핵심 개념</span></div>
 <h2 class="slide-title">문제 정의부터 운영 관찰까지 연결해 개선합니다</h2>
 <p class="slide-subtitle">Vision Task별 성공 기준(분류 판정·Box 위치·Mask 품질)을 정하고, 운영 중 수집한 오류를 Label 검토 및 재평가로 연결합니다.</p>
 <figure class="lesson-figure"><a href="assets/lesson/context_vision_project_pipeline.svg?v=professional-20261006-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/context_vision_project_pipeline.svg?v=professional-20261006-2" alt="문제 정의부터 운영 관찰까지 연결해 개선합니다"></a></figure>
 <p class="lesson-takeaway">운영 Cycle에서는 Task별 Metric·오류 이미지·촬영 조건을 함께 추적하고, 개선 전후를 같은 기준으로 다시 평가합니다.</p></div></section>
 <section class="slide" data-topic="개발과 운영" data-level="basic" data-source-deck="ai_basics" data-source-slide="44" data-outline-unit="평가 · 현장 적용">
-<div class="slide-inner"><div class="lesson-meta"><span>53 · 개발과 운영</span>
+<div class="slide-inner"><div class="lesson-meta"><span>54 · 개발과 운영</span>
 <span class="lesson-level">핵심 개념</span></div>
 <h2 class="slide-title">운영의 실패 사례를 다음 데이터와 학습에 연결합니다</h2>
 <p class="slide-subtitle">배포 후에도 조명·설비·제품 조건이 바뀔 수 있습니다. 실패 이미지를 모으고 정답 기준과 평가 조건을 다시 확인합니다.</p>
