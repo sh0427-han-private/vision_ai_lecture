@@ -351,3 +351,12 @@ GitHub Pages:
 - 대표 CNN 확장 개념: Residual/Skip Connection(ResNet), Standard/Grouped/Depthwise/Pointwise(1×1) Convolution, Dilated Convolution, Upsampling/Transposed Convolution, U-Net Encoder–Decoder와 Skip, FPN 멀티스케일 특징 및 Classification/Detection/Segmentation Head. 전체 CNN 모델 계보가 아니라 초보자가 구조를 이해하는 데 필요한 대표 구성요소입니다.
 - 각 새 Figure는 `docs/assets/lesson/cnn_foundations_n1.svg` ~ `cnn_foundations_n8.svg` 로컬 SVG 파일입니다. `src/href`는 Repository 로컬 상대경로를 사용하고 CDN은 이용하지 않습니다.
 - 77개 좌측 목차 링크, 페이지 간 이동, 앵커, 해상도, 이미지 로드, SVG 문법과 154개 레이아웃 점검을 함께 검증합니다.
+
+## 2026-10-16 · YOLO 중심 개편: CNN의 원리까지만, 모델 예시는 YOLO 하나 (최신)
+
+- 공개 강의는 Intro **19장**(원본 유지) + Vision AI 통합 **52장** = 전체 **71장**입니다. 이전 통합 58장은 이력이며 사용자 피드백에 따라 세부 아키텍처 ResNet·U-Net·FPN, Depthwise·Dilated, Transposed Convolution 독립 강의와 상세 출력 크기 계산 등을 제거했습니다. 해당 기존 SVG는 보존만 하며 공개 목차에서 더는 참조하지 않습니다.
+- CNN 핵심은 **실제 사과 사진의 작은 영역 → Kernel의 이동 → Feature Map(입체적 Channel 스택) → 여러 층의 특징 → Head**로 표현합니다. 단순 상자 연결 그림 대신 입체 Feature Map 개념 Figure로 교체하고, 참고 자료 **CNN Explainer — Wang et al. (IEEE TVCG 2020), https://poloclub.github.io/cnn-explainer/** 를 공개 슬라이드에서 인용합니다. Figure는 실제 모델 Activation 측정이 아닌 개념 재구성임을 명시합니다.
+- YOLO(You Only Look Once)는 물체 검출을 위해 등장한 모델 계열이며, 현대 Ultralytics 제품군은 Classify/Detect/Segment 등 Task별 모델을 지원합니다. 한 검출 모델이 Mask까지 자동으로 반환한다고 혼동하지 말아야 합니다. 참고 출처: Redmon et al., CVPR 2016 https://openaccess.thecvf.com/content_cvpr_2016/html/Redmon_You_Only_Look_CVPR_2016_paper.html , Ultralytics 아키텍처 https://docs.ultralytics.com/ko/guides/yolo-architecture , Task 문서 https://docs.ultralytics.com/tasks/.
+- **YOLO 신규 5장**: 사람이 정한 고정 영상 필터 vs 학습되는 CNN Weight → YOLO Backbone/Neck/Head → 검출 예시(Class·Box·Score) → Classify/Detect/Segment에 맞는 모델·Label 선택 → 사전학습 YOLO + 데이터/Label + Train/Val/Predict와 현장 검증. 모든 예시 score/Box/Feature Map은 실제 추론값이 아닌 개념 예시입니다.
+- “YOLO가 알아서 Filter를 학습한다”는 뜻은 **Convolution Weight가 Label/Loss에 의해 바뀐다**는 의미이지 데이터 품질·정답 라벨링·Train/Test 분리·환경 차이·운영 실패 검증도 완전히 자동화된다는 뜻이 아닙니다. 필요에 따라 전통 영상 필터/다른 모델도 사용될 수 있습니다.
+- 강의 구성은 Task 5 / AI 차이 2 / Filter 5 / 신경망 3 / CNN 핵심 11 / YOLO 5 / 학습 6 / 데이터 5 / 전이학습 3 / 평가 7장입니다. 71개 목차·142개 두 해상도 화면·슬라이드 경계 이동·SVG 및 외부 출처 링크를 검증합니다.
