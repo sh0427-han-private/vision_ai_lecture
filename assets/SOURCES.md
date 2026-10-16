@@ -468,3 +468,6 @@ https://www.nature.com/articles/s42256-020-00257-z
 - CNN Filter는 학습이 가능한 가중치(Parameter)이고, Loss의 Gradient와 Optimizer를 이용해 조정됩니다. 이는 Mean/Gaussian/Sobel처럼 고정된 연산과 구별합니다. 독립 필터 강의를 제외해도 이전 연구·계산 출처 기록은 모두 유지합니다.
 
 - **CNN 12번 새 Kernel 그림**: `docs/assets/lesson/cnn_kernel_role_beginner_ko.svg`. 사진: CS231n Lecture 5 원본 강아지 사진 (`cs231n_vgg16_feature_hierarchy_original.png`)의 무수정 PNG를 **SVG 안에 Base64로 포함**해 외부 사진 파일 요청 없이 표시합니다. 오른쪽 Feature Map은 커널 이동에 따른 공간 반응을 개념적으로 재구성한 그림이며 실제 학습 모델의 activation 기록이 아닙니다. Kernel 가중치 `w1…w9`도 숫자 표시를 위한 기호입니다. 출처 개념: https://cs231n.github.io/convolutional-networks/ . 선택 숫자 계산: `lecture_kernel_slide.svg`.
+
+
+- **2026-10-16, Grad-CAM 원본 이미지 사내망 로드 개선**: `jacobgil/pytorch-grad-cam` 원본 `examples/dog_cat.jfif`, `resnet50_dog_gradcam_cam.jpg`, `resnet50_cat_gradcam_cam.jpg`를 픽셀 변경 없이 `docs/assets/lesson/gradcam_dog_cat_input.jfif`, `gradcam_resnet50_dog.jpg`, `gradcam_resnet50_cat.jpg`에 저장했습니다. 원본 Git Blob SHA도 각각 일치합니다. 출처: https://github.com/jacobgil/pytorch-grad-cam . 통합 슬라이드 48번에 사용하며 외부 GitHub Raw 이미지 주소의 네트워크 차단을 피합니다.
