@@ -121,7 +121,7 @@ def main() -> None:
         page.locator("[data-gray-reset]").click()
         assert numbers(page, "[data-gray-values]") == second_values
 
-        page.goto(BASE_URL + "#slide-10", wait_until="networkidle")
+        page.goto(BASE_URL + "#slide-9", wait_until="networkidle")
         page.wait_for_function(
             "() => document.querySelector('[data-rgb-shape]').textContent"
             ".includes('× 3')"
@@ -157,7 +157,13 @@ def main() -> None:
         ]
         assert result == expected, (result, expected)
         # Same source image must generate three real output rasters.
-        page.goto(BASE_URL + "#slide-13", wait_until="networkidle")
+        page.goto(BASE_URL + "#slide-10", wait_until="networkidle")
+        assert "1,843,200" in page.locator(".slide.active").inner_text()
+        assert page.locator(".intro-rgb-data-figure img").count() == 1
+        assert page.locator(".slide.active .callout").count() == 0
+        page.goto(BASE_URL + "#slide-11", wait_until="networkidle")
+        assert "해상도가 높을수록" in page.locator(".slide.active").inner_text()
+        page.goto(BASE_URL + "#slide-12", wait_until="networkidle")
         page.wait_for_function(
             "() => document.querySelector('[data-resolution-comparison]')"
             "?.dataset.resolutionReady === 'true'",
