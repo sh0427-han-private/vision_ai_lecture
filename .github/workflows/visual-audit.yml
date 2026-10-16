@@ -30,7 +30,7 @@ jobs:
           python -m pip install playwright pillow
           python -m playwright install --with-deps chromium
 
-      - name: Render 69 slides at two resolutions
+      - name: Render 67 slides at two resolutions
         run: |
           python -m http.server 8765 --directory docs > /tmp/lecture-http.log 2>&1 &
           python scripts/audit_visual_slides.py
