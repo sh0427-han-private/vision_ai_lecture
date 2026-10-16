@@ -384,3 +384,10 @@ https://www.nature.com/articles/s42256-020-00257-z
 - **CNN 기본 구조 / Forward & Backpropagation**: Yamashita, Nishio, Do, et al., *Convolutional neural networks: an overview and application in radiology*, *Insights into Imaging* 9, 611–629 (2018), **Fig. 1**. 원문: https://doi.org/10.1007/s13244-018-0639-9 ; 이미지: https://media.springernature.com/lw685/springer-static/image/art%3A10.1007%2Fs13244-018-0639-9/MediaObjects/13244_2018_639_Fig1_HTML.png ; 라이선스: https://creativecommons.org/licenses/by/4.0/ (CC BY 4.0). 일반적인 분류 CNN Figure로, YOLO 모델의 실제 Detection Head라고 주장하지 않습니다.
 - **YOLOv8 Backbone / Neck / Head**: *Enhancing YOLOv8’s Performance in Complex Traffic Scenarios: Optimization Design for Handling Long-Distance Dependencies and Complex Feature Relationships*, *Electronics* 13(22), 4411 (2024), **Fig. 1**. 원문: https://doi.org/10.3390/electronics13224411 ; 이미지: https://www.mdpi.com/electronics/electronics-13-04411/article_deploy/html/images/electronics-13-04411-g001.png ; 라이선스: https://creativecommons.org/licenses/by/4.0/ (CC BY 4.0). 해당 그림은 YOLOv8 예시이며 모든 YOLO 버전의 세부 구조가 동일하다는 뜻이 아닙니다.
 - 강의 화면의 외부 학술 Figure는 기관 네트워크에서 차단될 수 있으므로 이미지 로드 실패 시 원래 Repository에 있는 로컬 개념 SVG로 대체합니다. 출처 링크와 학술 자료 인용은 남습니다. 외부 Figure 로컬 영구 보관은 현재 수행하지 않았습니다.
+
+
+## 2026-10-16 · Dragon1 기반 CNN 기본 구조 설명
+
+- CNN 교육 흐름 참고: [Dragon1 — Convolutional Neural Networks Definition](https://www.dragon1.com/terms/convolutional-neural-networks-definition), 2026-10-16 확인. Input → Convolution → ReLU → Pooling → Flatten/Fully Connected → Output 순서로 전형적인 **분류 CNN**을 설명합니다.
+- 논문 Figure 출처는 기존 Yamashita et al. (2018), *Insights into Imaging*, Fig. 1(CC BY 4.0)을 유지합니다. Dragon1 원본 이미지는 파일·재사용 권한이 확인되지 않아 복제하지 않았으며, 기사에 따라 단계 이름과 별도의 한국어 해설을 작성했습니다.
+- 위 순서는 일반적인 CNN 분류 예시이며 실제 모델의 블록과 순서는 다를 수 있습니다. 특히 YOLO 검출 Head를 Flatten/FC 분류기와 동일시하지 않습니다.
