@@ -391,3 +391,12 @@ https://www.nature.com/articles/s42256-020-00257-z
 - CNN 교육 흐름 참고: [Dragon1 — Convolutional Neural Networks Definition](https://www.dragon1.com/terms/convolutional-neural-networks-definition), 2026-10-16 확인. Input → Convolution → ReLU → Pooling → Flatten/Fully Connected → Output 순서로 전형적인 **분류 CNN**을 설명합니다.
 - 논문 Figure 출처는 기존 Yamashita et al. (2018), *Insights into Imaging*, Fig. 1(CC BY 4.0)을 유지합니다. Dragon1 원본 이미지는 파일·재사용 권한이 확인되지 않아 복제하지 않았으며, 기사에 따라 단계 이름과 별도의 한국어 해설을 작성했습니다.
 - 위 순서는 일반적인 CNN 분류 예시이며 실제 모델의 블록과 순서는 다를 수 있습니다. 특히 YOLO 검출 Head를 Flatten/FC 분류기와 동일시하지 않습니다.
+
+
+## 2026-10-16 · CNN 구조 로컬 SVG로 완전 교체 (현재 공개 슬라이드)
+
+- 파일: `docs/assets/lesson/cnn_dragon1_lecture.svg`. GitHub Pages의 통합 강의 16번 CNN 구조 슬라이드에서 직접 로딩합니다. 외부 이미지 서버 또는 CDN에 의존하지 않습니다.
+- 개념·구조 참고: [Dragon1 — Convolutional Neural Networks Definition](https://www.dragon1.com/terms/convolutional-neural-networks-definition), Input → Convolution → ReLU → Pooling → Flatten / Fully Connected → Output.
+- **직접 제작한 강의용 그림**입니다. Dragon1의 원본 이미지를 복제한 것이 아니라 입력 사과, Kernel/Feature Map, ReLU 변환, Pooling, Dense, 클래스 출력을 같은 순서로 다시 시각화했습니다.
+- ReLU 예시에서는 음수를 0으로 변환하고 양수를 유지합니다. Max Pooling 예시는 `[[1,4],[3,7]] → 7`, 전체 출력 `[[7,6],[8,9]]`; 분류 점수 `92% + 5% + 3% = 100%`는 **임의의 교육용 값**이며 실제 모델 추론 결과가 아닙니다.
+- 원문 Yamashita et al. Figure는 과거 강의 버전의 기록으로 보존하지만, 현재 16번 슬라이드는 **오직 로컬 SVG**만 로드합니다. Flatten / FC는 대표적인 분류 CNN의 예시이며 YOLO 검출 Head를 뜻하지 않습니다.
