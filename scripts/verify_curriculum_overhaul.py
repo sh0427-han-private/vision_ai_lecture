@@ -12,7 +12,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DOCS = ROOT / "docs"
 manifest = json.loads((DOCS / "assets/lesson/manifest.json").read_text("utf-8"))
 
-expected = {"intro": 18, "ai_basics": 44, "vision_ai": 37}
+expected = {"intro": 19, "ai_basics": 44, "vision_ai": 37}
 
 for name, count in expected.items():
     document = (DOCS / f"{name}.html").read_text("utf-8")
@@ -80,7 +80,7 @@ course_slides = re.findall(
     r'<section class="slide(?: [^"]+)?"[^>]*>.*?</section>',
     course_page, flags=re.DOTALL
 )
-assert len(course_slides) == 81, "Vision-first course must contain V37 + AI44"
+assert len(course_slides) == 79, "Published course must contain 79 lessons"
 assert course_page.count('class="slide active"') == 1
 assert course_slides[0].find('data-source-deck="vision_ai"') != -1
 assert course_slides[0].find('data-source-slide="1"') != -1
@@ -90,11 +90,19 @@ sources = [
         r'data-source-deck="([^"]+)" data-source-slide="(\d+)"', course_page
     )
 ]
-assert len(sources) == 81 and len(set(sources)) == 81
-assert sorted(i for d, i in sources if d == "vision_ai") == list(range(1, 38))
+assert len(sources) == 79 and len(set(sources)) == 79
+assert sorted(i for d, i in sources if d == "vision_ai") == [
+    i for i in range(1, 38) if i not in (8, 20)
+]
 assert sorted(i for d, i in sources if d == "ai_basics") == list(range(1, 45))
-assert sources[:8] == [("vision_ai", n) for n in range(1, 9)]
-assert sources[8:15] == [("ai_basics", n) for n in range(1, 8)]
+assert sources[:6] == [("vision_ai", n) for n in range(1, 7)]
+assert sources[6:13] == [
+    ("ai_basics", n) for n in (1, 2, 3, 4, 6, 7, 5)
+]
+assert sources[13:19] == [("ai_basics", n) for n in (29, 30, 31, 32, 33, 34)]
+assert sources[19:28] == [("vision_ai", n) for n in range(9, 18)]
+assert sources[74] == ("vision_ai", 7), "IoU concept belongs in evaluation"
+assert ('data-source-deck="vision_ai" data-source-slide="8"') not in course_page
 assert 'data-prev-page="intro.html"' in course_page
 assert 'data-next-page=""' in course_page
 assert 'slide.js?v=vision-first-20261015-1' in course_page
@@ -114,20 +122,25 @@ for url in re.findall(r'(?:src|href)="([^"]+)"', course_page):
 outline_source = (DOCS / "lecture_outline.js").read_text("utf-8")
 outline = json.loads(outline_source.split(" = ", 1)[1].strip().rstrip(";"))
 items = [item for group in outline["groups"] for item in group["items"]]
-assert len(items) == 99
-assert [item["global"] for item in items] == list(range(1, 100))
-assert [(item["page"], item["slide"]) for item in items[:18]] == [
-    ("intro.html", n) for n in range(1, 19)
+assert len(items) == 98
+assert [item["global"] for item in items] == list(range(1, 99))
+assert [(item["page"], item["slide"]) for item in items[:19]] == [
+    ("intro.html", n) for n in range(1, 20)
 ]
-assert [(item["page"], item["slide"]) for item in items[18:]] == [
-    ("vision_ai_course.html", n) for n in range(1, 82)
+assert [(item["page"], item["slide"]) for item in items[19:]] == [
+    ("vision_ai_course.html", n) for n in range(1, 80)
 ]
-assert [item["original"] for item in items[18:26]] == [
-    f"V{i}" for i in range(1, 9)
+assert [item["original"] for item in items[19:25]] == [
+    f"V{i}" for i in range(1, 7)
 ]
+assert [item["title"] for item in items[:2]] == [
+    "사람은 눈으로 주변 세상의 많은 정보를 파악합니다",
+    "그래서 Vision은 일상과 기술 모두에서 중요합니다",
+]
+assert items[19 + 74]["original"] == "V7", "IoU concept in evaluation"
 assert len(outline["groups"]) >= 8
 assert "lecture-toc-drawer" in (DOCS / "lecture_sidebar.js").read_text("utf-8")
-print("Vision-first 81 slides and 99-item retractable sidebar validated.")
+print("Vision-first 79 slides and 98-item retractable sidebar validated.")
 
 
 figures = sorted((DOCS / "assets/lesson").glob("lecture_*.svg"))
@@ -387,46 +400,53 @@ intro_slides = re.findall(
     r'<section class="slide(?: [^"]+)?"[^>]*>.*?</section>',
     intro_page, flags=re.DOTALL
 )
-assert len(intro_slides) == 18
-assert "이 이미지는 무엇으로 보이나요?" in intro_slides[1]
-assert "사람에게는 사과, 컴퓨터와 AI에게는 숫자 배열" in intro_slides[2]
-assert 'data-apple-matrix-bridge' in intro_slides[2]
-assert 'data-apple-matrix-grid' in intro_slides[2]
-assert 'assets/vision_task_apple_reference.jpg' in intro_slides[1]
+assert len(intro_slides) == 19
+assert "사람은 눈으로 주변 세상의 많은 정보를 파악합니다" in intro_slides[0]
+assert "그래서 Vision은 일상과 기술 모두에서 중요합니다" in intro_slides[1]
+assert "assets/intro_photos/perspective.webp" in intro_slides[0]
+for photo in ("cctv.webp", "robot.webp", "thermal.webp"):
+    assert f"assets/intro_photos/{photo}" in intro_slides[1]
+assert "이 이미지는 무엇으로 보이나요?" in intro_slides[2]
+assert "사람에게는 사과, 컴퓨터와 AI에게는 숫자 배열" in intro_slides[3]
+assert 'data-apple-matrix-bridge' in intro_slides[3]
+assert 'data-apple-matrix-grid' in intro_slides[3]
 assert 'assets/vision_task_apple_reference.jpg' in intro_slides[2]
-assert "Vision AI가 어려운 이유:" in intro_slides[2]
-assert "“아, 사과구나!”" in intro_slides[2]
-assert "“?! 그냥 숫자 배열이네”" in intro_slides[2]
-assert 'class="meaning-reaction meaning-reaction--human"' in intro_slides[2]
-assert "밝기와 색감이 바뀌면 Pixel 값이 달라집니다" in intro_slides[3]
-assert "회전·크기·가림·흐림도 같은 사과의 Pixel을 바꿉니다" in intro_slides[4]
-assert "사진의 위치를 바꾸면 Pixel 숫자도 바뀝니다" in intro_slides[5]
-assert 'data-grayscale-lesson' in intro_slides[5]
-assert "RGB 이미지에서는 Pixel 한 칸에 숫자 3개가 있습니다" in intro_slides[7]
-assert "RGB 이미지의 세 번째 차원은 거리 정보가 아닙니다" in intro_slides[8]
-assert "해상도는 가로·세로 Pixel 개수로 정해집니다" in intro_slides[9]
-assert "같은 사진도 해상도에 따라 Pixel 개수가 달라집니다" in intro_slides[10]
-assert "‘본다’는 것은 무엇(What)과 어디(Where)를 이해하는 일" in intro_slides[11]
-assert "2D 이미지에서 3D 공간을 알아내기는 어렵습니다" in intro_slides[12]
-assert "to know what is where by looking" in intro_slides[11]
-assert "Marr &amp; Nishihara (1978)" in intro_slides[12]
-assert "https://doi.org/10.1098/rspb.1978.0020" in intro_slides[12]
-assert "intro_inverse_2d_3d_ambiguity.svg?v=what-where-20261015-1" in intro_slides[12]
+assert 'assets/vision_task_apple_reference.jpg' in intro_slides[3]
+assert "Vision AI가 어려운 이유:" in intro_slides[3]
+assert "“아, 사과구나!”" in intro_slides[3]
+assert "“?! 그냥 숫자 배열이네”" in intro_slides[3]
+assert "밝기와 색감이 바뀌면 Pixel 값이 달라집니다" in intro_slides[4]
+assert "화각·회전·가림·초점도 같은 사과의 Pixel을 바꿉니다" in intro_slides[5]
+assert 'class="iv-image iv-fov"' in intro_slides[5]
+assert "사진의 위치를 바꾸면 Pixel 숫자도 바뀝니다" in intro_slides[6]
+assert 'data-grayscale-lesson' in intro_slides[6]
+assert "RGB 이미지에서는 Pixel 한 칸에 숫자 3개가 있습니다" in intro_slides[8]
+assert "RGB 이미지의 세 번째 차원은 거리 정보가 아닙니다" in intro_slides[9]
+assert "해상도는 가로·세로 Pixel 개수로 정해집니다" in intro_slides[10]
+assert "같은 사진도 해상도에 따라 Pixel 개수가 달라집니다" in intro_slides[11]
+assert "‘본다’는 것은 무엇(What)과 어디(Where)를 이해하는 일" in intro_slides[12]
+assert "2D 이미지에서 3D 공간을 알아내기는 어렵습니다" in intro_slides[13]
+assert "to know what is where by looking" in intro_slides[12]
+assert "Marr &amp; Nishihara (1978)" in intro_slides[13]
+assert "https://doi.org/10.1098/rspb.1978.0020" in intro_slides[13]
+assert "intro_inverse_2d_3d_ambiguity.svg?v=what-where-20261015-1" in intro_slides[13]
 assert "intro_vision_foundations.css?v=20261015-1" in intro_page
-assert "640 × 960 × 3" in intro_slides[8], "RGB H × W × C definition changed"
-assert "720 × 1280 × 3" in intro_slides[9], "resolution H × W × C changed"
-assert 'data-resolution-source="assets/generated/apple_studio.webp"' in intro_slides[10]
+assert "intro_vision_story.css?v=20261016-1" in intro_page
+assert (DOCS / "intro_vision_story.css").is_file()
+assert "640 × 960 × 3" in intro_slides[9], "RGB H × W × C definition changed"
+assert "720 × 1280 × 3" in intro_slides[10], "resolution H × W × C changed"
+assert 'data-resolution-source="assets/generated/apple_studio.webp"' in intro_slides[11]
 for p, w, h in ((360, 640, 360), (720, 1280, 720), (1080, 1920, 1080)):
-    assert f'data-resolution-p="{p}"' in intro_slides[10]
-    assert f'width="{w}" height="{h}" data-resolution-full' in intro_slides[10]
+    assert f'data-resolution-p="{p}"' in intro_slides[11]
+    assert f'width="{w}" height="{h}" data-resolution-full' in intro_slides[11]
 for path in ("intro_resolution_demo.js", "intro_resolution_demo.css",
              "intro_apple_number_bridge.js", "intro_apple_number_bridge.css"):
     assert (DOCS / path).is_file(), path
 assert "intro_resolution_demo.js?v=20261015-1" in intro_page
 assert "intro_apple_number_bridge.js?v=20261015-1" in intro_page
 assert "intro_apple_number_bridge.css?v=intro-picto-20261016-1" in intro_page
-assert "lecture_outline.js?v=intro-flow-20261016-1" in intro_page
-assert "lecture_outline.js?v=intro-flow-20261016-1" in course_page
+assert "lecture_outline.js?v=vision-story-20261016-1" in intro_page
+assert "lecture_outline.js?v=vision-story-20261016-1" in course_page
 bridge_script = (DOCS / "intro_apple_number_bridge.js").read_text("utf-8")
 assert "const width = 12, height = 8;" in bridge_script
 for channel_weight in ("0.299", "0.587", "0.114"):
@@ -442,7 +462,7 @@ assert inverse_root.tag == "{http://www.w3.org/2000/svg}svg"
 labels = [int(x) for x in re.findall(
     r'<span class="slide-number">(\d+)</span>', intro_page
 )]
-assert labels == list(range(3, 19)), labels
+assert labels == list(range(4, 20)), labels
 channel_svg = (DOCS / "assets/lesson/lecture_rgb_channel_stack.svg").read_text("utf-8")
 assert 'viewBox="0 0 960 640"' in channel_svg
 assert "H × W × C = 640 × 960 × 3" in channel_svg
@@ -486,7 +506,7 @@ assert all(
     (x + y > 1.5) == bool(x & y)
     for x in (0, 1) for y in (0, 1)
 )
-print("Intro apple-to-number bridge, HWC, 18-slide numbering and AND/XOR verified.")
+print("Intro apple-to-number bridge, HWC, 19-slide numbering and AND/XOR verified.")
 
 
 # Vision AI 9 is now the point-versus-neighborhood operation slide.
