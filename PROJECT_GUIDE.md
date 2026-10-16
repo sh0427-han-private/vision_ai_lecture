@@ -422,3 +422,12 @@ GitHub Pages:
 - 사용 파일: `docs/assets/lesson/cnn_three_stage_apple_ko.svg`; 기존 사과 사진 재사용 및 자체 도형/경계 강조 예시를 조합한 **개념 설명 Figure**입니다. 실제 CNN 실험 결과처럼 설명하지 않습니다.
 - Stanford CS231n과 Distill (2017) 논문을 이론 출처로 표기합니다. 기존 논문 원본 Figure를 그냥 나열하는 대신 학습 목표를 먼저 파악할 수 있는 구조로 사용합니다.
 - 기존 10번 OpenCV Filtering, 11번 Sobel, 16번 얼룩말 CNN, 31번 YOLO 학습, 51번 Grad-CAM은 변경하지 않으며 **Intro 19장 + 통합 53장 = 총 72장**을 유지합니다.
+
+
+## 2026-10-16 · Pages 공개 URL과 이전 주소 호환 (최신, 필수)
+
+- **Pages 배포 설정**: `.github/workflows/deploy-pages.yml`에서 `actions/upload-pages-artifact`의 `path: ./docs`를 사용합니다. 따라서 **저장소 경로** `docs/vision_ai_course.html`의 공개 URL은 `https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html`입니다. 웹 주소에 **`/docs/`를 중복 삽입하지 않습니다.**
+- 전체 강의 시작 주소: `https://sh0427-han.github.io/vision_ai_lecture/` (Intro 1번으로 자동 이동). Vision AI 25번 고정 링크: `https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-25`.
+- 예전에 잘못 보낸 `https://sh0427-han.github.io/vision_ai_lecture/docs/vision_ai_course.html#slide-N`, `/docs/intro.html#slide-N`, `/docs/` 경로는 `docs/docs/*.html`에 설치한 **호환 리디렉션**으로 처리하며 **Query와 Hash(슬라이드 번호)**를 유지해 이동합니다.
+- 외부에서 배포 URL을 줄 때 Repository의 `docs/` 디렉터리 경로와 Pages의 URL 경로를 반드시 구분합니다. 실제 GitHub Pages 도메인은 보안 정책/사내 프록시 등의 이유로 일부 환경에서 접근이 차단될 수 있으므로, URL 오류와 네트워크 차단은 구분해 안내합니다.
+- 강의 슬라이드 수는 Intro 19장, Vision AI 53장, 합계 72장입니다.
