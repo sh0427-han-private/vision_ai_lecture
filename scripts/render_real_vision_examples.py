@@ -123,7 +123,8 @@ panel("Max Pooling · 최댓값만 남기는 공간 축소",
 
 # 4. Actual preprocessing of same landscape dog crop: input -> distorted
 # square resize -> letterbox that preserves original aspect ratio.
-landscape=dog.resize((390,260),Image.Resampling.LANCZOS)
+# Make a genuine 3:2 photo crop (not an aspect-distorted resize).
+landscape=dog.crop((0,11,164,120)).resize((390,260),Image.Resampling.LANCZOS)
 stretched=landscape.resize((320,320),Image.Resampling.LANCZOS)
 boxed=letterbox(landscape,(320,320))
 panel("Preprocessing · 같은 사진, 다른 크기 조정",
