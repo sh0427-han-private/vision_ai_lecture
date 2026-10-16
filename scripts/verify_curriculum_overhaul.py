@@ -93,7 +93,7 @@ assert sources[:5] == [("vision_ai", n) for n in range(2, 7)]
 assert sources[5:7] == [("ai_basics", 2), ("ai_basics", 3)]
 assert sources[7:12] == [("vision_ai", n) for n in (9,10,14,16,17)]
 assert sources[15:17] == [("cnn_expansion", 1), ("cnn_expansion", 2)]
-assert sources[26:32] == [("yolo_intro", n) for n in range(1, 7)]
+assert sources[26:32] == [("yolo_intro", n) for n in (1, 2, 3, 4, 6, 5)]
 assert sources[49] == ("vision_ai", 7), "IoU belongs in evaluation"
 assert sources[-1] == ("ai_basics", 44)
 assert sorted(i for d,i in sources if d=="cnn_expansion") == [1,2]
