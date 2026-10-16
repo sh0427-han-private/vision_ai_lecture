@@ -360,3 +360,11 @@ GitHub Pages:
 - **YOLO 신규 5장**: 사람이 정한 고정 영상 필터 vs 학습되는 CNN Weight → YOLO Backbone/Neck/Head → 검출 예시(Class·Box·Score) → Classify/Detect/Segment에 맞는 모델·Label 선택 → 사전학습 YOLO + 데이터/Label + Train/Val/Predict와 현장 검증. 모든 예시 score/Box/Feature Map은 실제 추론값이 아닌 개념 예시입니다.
 - “YOLO가 알아서 Filter를 학습한다”는 뜻은 **Convolution Weight가 Label/Loss에 의해 바뀐다**는 의미이지 데이터 품질·정답 라벨링·Train/Test 분리·환경 차이·운영 실패 검증도 완전히 자동화된다는 뜻이 아닙니다. 필요에 따라 전통 영상 필터/다른 모델도 사용될 수 있습니다.
 - 강의 구성은 Task 5 / AI 차이 2 / Filter 5 / 신경망 3 / CNN 핵심 11 / YOLO 5 / 학습 6 / 데이터 5 / 전이학습 3 / 평가 7장입니다. 71개 목차·142개 두 해상도 화면·슬라이드 경계 이동·SVG 및 외부 출처 링크를 검증합니다.
+
+
+## 2026-10-16 · CNN과 YOLO 구조 Figure의 출처 우선 적용
+
+- 공개 통합 강의의 CNN 구조(16번)와 YOLO 아키텍처(28번)는 직접 제작한 구조 SVG 대신 인용 가능한 학술 논문 Figure를 우선 표시합니다. CNN은 Yamashita et al. (2018) Fig. 1, YOLO는 *Electronics* (2024) Fig. 1의 YOLOv8 아키텍처입니다.
+- 라이선스·원문·그림 URL은 assets/SOURCES.md에 기록합니다. 논문 원본을 수정하지 않으며 표시 크기만 CSS로 조절합니다.
+- 사내 환경에서 외부 이미지가 차단될 경우 기존 Repository 내부 SVG를 fallback으로 보이게 해 강의가 중단되지 않게 합니다. 완전한 오프라인 재현을 위해서는 적법한 원본 이미지 로컬 저장과 경로 교체가 추가로 필요합니다.
+- ResNet·U-Net 등 개별 CNN 아키텍처 상세 소개는 공개 강의에서 제외하고, YOLO의 역할·데이터·검출 결과에 집중합니다.
