@@ -46,7 +46,7 @@ def main():
         check("/docs/" not in page.url, "Legacy course URL not normalized")
         page.goto(BASE + "/docs/vision_ai_course.html?from=legacy#slide-9")
         page.wait_for_url("**/vision_ai_course.html?from=legacy#slide-9")
-        check(page.locator("[data-slide-current]").inner_text() == "25",
+        check(page.locator("[data-slide-current]").inner_text() == "9",
               "Legacy course query/hash not retained")
         page.goto(BASE + "/docs/intro.html#slide-7")
         position(page, "intro", 7, 19)
