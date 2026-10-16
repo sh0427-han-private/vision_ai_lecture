@@ -42,3 +42,24 @@
  .intro-vision-scope .vision-theory-quote{font-size:17px}
  .intro-vision-scope .vision-literature,.intro-inverse-lesson .vision-literature{font-size:12px}
 }
+
+/* RGB image volume: one explicit formula instead of a per-Pixel worked example. */
+.intro-rgb-data .slide-subtitle{margin-bottom:12px}
+.intro-rgb-data-figure{margin:10px 0 12px}
+.intro-rgb-data .intro-rgb-data-figure img{width:100%;max-height:min(51dvh,450px);object-fit:contain}
+.intro-rgb-data-formula{margin:13px auto 0;max-width:1040px;display:flex;flex-direction:column;align-items:center;gap:7px;line-height:1.35}
+.intro-rgb-data-formula-main{white-space:nowrap;text-align:center;color:#294d60;font-size:clamp(30px,3vw,43px);font-weight:770;font-variant-numeric:tabular-nums}
+.intro-rgb-data-formula-main span{color:#1f8276}
+.intro-rgb-data-formula-main strong{color:#176c65;font-weight:850}
+.intro-rgb-data-formula-caption{font-size:clamp(16px,1.53vw,21px);color:#54707a;text-align:center}
+.intro-rgb-data-formula-caption strong{color:#2b5e67}
+@media(max-height:850px){
+ .intro-rgb-data .intro-rgb-data-figure img{max-height:45dvh}
+ .intro-rgb-data-formula{margin-top:6px}
+ .intro-rgb-data-formula-main{font-size:clamp(26px,2.45vw,35px)}
+ .intro-rgb-data-formula-caption{font-size:16px}
+}
+@media(max-width:760px){
+ .intro-rgb-data-formula-main{font-size:clamp(19px,3.2vw,30px)}
+ .intro-rgb-data-formula-caption{font-size:clamp(12px,2.1vw,16px)}
+}
