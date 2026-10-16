@@ -52,7 +52,7 @@ jobs:
           if blocking:
               print(json.dumps(blocking, ensure_ascii=False, indent=2))
               raise SystemExit(f"{len(blocking)} slide layout errors remain")
-          print("146 viewport captures verified; no visible intersections.")
+          print("138 viewport captures verified; no visible intersections.")
           PY
 
       - name: Check single-track navigation and chapter continuity
