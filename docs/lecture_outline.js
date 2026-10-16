@@ -1,6 +1,6 @@
 /* Public lecture: 19 Intro plus 53 Vision AI and YOLO slides (72 total). */
 window.LECTURE_OUTLINE = {
-  "version": "20261016-zebra-cnn-yolo-dual-target-53",
+  "version": "20261016-original-figure-pilot-53",
   "groups": [
     {
       "name": "Intro · 시각의 중요성에서 숫자까지",
@@ -201,7 +201,7 @@ window.LECTURE_OUTLINE = {
           "page": "vision_ai_course.html",
           "slide": 10,
           "global": 29,
-          "title": "동일 입력에서도 Mean·Gaussian·Median 결과는 다릅니다",
+          "title": "평균·가우시안·중앙값 필터는 서로 다른 결과를 만듭니다",
           "original": "V14"
         },
         {
