@@ -20,7 +20,7 @@ Vision AI를 처음 접하는 사람도 **현실 세계 → Sensor → 숫자 �
 
 - **[Intro 처음부터 보기](https://sh0427-han.github.io/vision_ai_lecture/)**
 - **[통합 Vision AI 바로 보기](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html)**
-- **[CNN 전체 구조 8번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-8)** · **[실제 Feature Map 9번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-9)** · **[Kernel과 학습 12~18번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-12)**
+- **[CNN을 사용하는 이유 8번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-8)** · **[CNN 전체 구조 9번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-9)** · **[AND/XOR와 비선형성 18~20번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-18) · [Stride·Padding·Pooling 25~27번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-25)**
 
 > 배포 URL 주의: 저장소 파일은 `docs/vision_ai_course.html`이지만 GitHub Pages는 `docs/` 디렉터리 자체를 웹사이트의 루트로 게시합니다. 따라서 공개 링크에는 `/docs/`를 넣으면 안 됩니다. 과거에 공유된 `/docs/vision_ai_course.html#slide-N` 링크는 자동으로 올바른 경로로 이동하도록 호환 페이지를 제공합니다.
 
@@ -28,9 +28,9 @@ Vision AI를 처음 접하는 사람도 **현실 세계 → Sensor → 숫자 �
 
 **[Vision AI Lecture · Intro 1번부터 보기](https://sh0427-han.github.io/vision_ai_lecture/)**
 
-사이트 주소를 열면 Intro의 첫 슬라이드가 바로 표시됩니다. **Intro 19장 → Vision AI를 중심으로 AI 원리를 필요한 위치에 배치한 통합 강의 50장**, 총 **69장**을 순서대로 학습합니다. AI Basics를 먼저 모두 설명하지 않고, Vision Task → CNN 구조·실제 Feature Map → Kernel의 역할과 학습 → YOLO → 데이터·평가로 이어집니다.
+사이트 주소를 열면 Intro의 첫 슬라이드가 바로 표시됩니다. **Intro 19장 → Vision AI를 중심으로 AI 원리를 필요한 위치에 배치한 통합 강의 48장**, 총 **67장**을 순서대로 학습합니다. AI Basics를 먼저 모두 설명하지 않고, Vision Task → CNN 구조·실제 Feature Map → Kernel의 역할과 학습 → 비선형성·XOR → Stride·Padding·Pooling → 데이터·평가로 이어집니다.
 
-왼쪽 상단의 **☰ 강의 목차**를 클릭하면 69개 슬라이드가 주제별로 표시되어 원하는 장으로 바로 이동할 수 있습니다. 목차 버튼을 다시 누르거나 **✕ 닫기**, 패널 바깥 클릭, **Esc** 키로 목차를 숨길 수 있습니다.
+왼쪽 상단의 **☰ 강의 목차**를 클릭하면 67개 슬라이드가 주제별로 표시되어 원하는 장으로 바로 이동할 수 있습니다. 목차 버튼을 다시 누르거나 **✕ 닫기**, 패널 바깥 클릭, **Esc** 키로 목차를 숨길 수 있습니다.
 
 ## 강의 슬라이드 안에서 직접 확인하는 Interactive Figure
 
@@ -150,7 +150,7 @@ vision_ai_lecture/
 
 ## Web Lecture
 
-정적 강의 사이트는 [Intro 1번](https://sh0427-han.github.io/vision_ai_lecture/)에서 바로 시작합니다. Intro 19장 → [통합 Vision AI 강의 50장](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html), 총 69장입니다. 기존 [AI Basics](docs/ai_basics.html) 및 [Vision AI](docs/vision_ai.html) 개별 슬라이드는 이전 직접 링크의 호환성을 위해 원본으로 유지합니다.
+정적 강의 사이트는 [Intro 1번](https://sh0427-han.github.io/vision_ai_lecture/)에서 바로 시작합니다. Intro 19장 → [통합 Vision AI 강의 50장](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html), 총 67장입니다. 기존 [AI Basics](docs/ai_basics.html) 및 [Vision AI](docs/vision_ai.html) 개별 슬라이드는 이전 직접 링크의 호환성을 위해 원본으로 유지합니다.
 
 디자인은 **흰색 배경, 한 화면 한 슬라이드, 최소한의 포인트 컬러**를 기본으로 합니다.
 
@@ -162,4 +162,4 @@ vision_ai_lecture/
 
 ### 최신 초급자 CNN 학습 순서
 
-통합 강의의 8~10번에서 CNN의 전체 구조와 실제 Feature Map을 먼저 본 뒤, **11~14번에서 Kernel의 역할·공유·고정/학습 차이**를 배웁니다. 15~18번에서는 Weight·Neural Network·ReLU를 거쳐 Kernel 값이 학습으로 바뀌는 이유를 이해합니다. Mean·Gaussian·Sobel의 세부 계산 네 장은 본강의에서 제거하고 참고 그림으로 남겼습니다. **Intro 19장 + Vision AI 50장 = 총 69장**입니다.
+통합 강의 **8번에서 왜 CNN이 필요한지** 위치와 무관한 국소 패턴을 같은 Kernel로 검출하는 수치 Figure를 보고, **9~11번은 CNN 전체 구조·실제 Feature Map·학습된 특징**을 구분합니다. **18~20번은 AND/XOR의 결정 경계, ReLU를 이용한 XOR 구현, 비선형성 없는 Affine Layer의 합성**을 숫자로 배웁니다. **25~27번은 Stride·Padding·Max Pooling의 사용 목적과 입력→출력의 정확한 배열 크기 및 값 변화**를 보여줍니다. Mean·Gaussian·Sobel의 세부 계산 네 장은 본강의에서 제거하고 참고 그림으로 남겼습니다. **Intro 19장 + Vision AI 48장 = 총 67장**입니다.
