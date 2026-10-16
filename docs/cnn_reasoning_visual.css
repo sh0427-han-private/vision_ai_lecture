@@ -31,6 +31,9 @@
 .cnn-two-kernels{display:flex;align-items:center;justify-content:center;gap:12px;min-height:165px}
 .cnn-kernel-grid{display:grid;grid-template-columns:repeat(3,36px);grid-template-rows:repeat(3,36px);gap:3px}
 .cnn-kernel-grid span{display:grid;place-items:center;background:#dcefeb;border:1px solid #a2ccc1;border-radius:4px;color:#236f64;font:700 17px ui-monospace,monospace}
+.matrix-triple{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:10px 0 9px;align-items:stretch}
+.matrix-triple .matrix-card{min-width:0;min-height:275px}
+.matrix-triple .matrix-card h3{text-align:center}
 .matrix-flow{display:grid;grid-template-columns:1fr 56px 1fr;gap:10px;align-items:center;margin:10px 0 9px}
 .matrix-card{border:1px solid #d2e3e9;border-radius:12px;padding:13px 14px;background:#f9fcfd;min-width:0}
 .matrix-card h3{margin:0 0 6px;font-size:21px;color:#26566c;line-height:1.24}
@@ -72,6 +75,7 @@
  .cnn-two-kernels{min-height:136px}
  .cnn-kernel-grid{grid-template-columns:repeat(3,29px);grid-template-rows:repeat(3,29px)}
  .matrix-card{padding:9px}
+ .matrix-triple .matrix-card{min-height:240px}
  .matrix-card h3{font-size:18px}
  .matrix-flow .matrix-card{min-height:242px}
  .matrix-grid span{width:37px;height:31px;font-size:15px}
@@ -98,6 +102,7 @@
  .matrix-grid span{width:26px;height:23px;font-size:12px}
  .matrix-grid.compact span,.matrix-grid.tiny span{width:22px;height:20px;font-size:10px}
  .matrix-flow{grid-template-columns:1fr 22px 1fr;gap:4px}
+ .matrix-triple{gap:5px}
  .matrix-arrow{font-size:24px}
  .matrix-card h3{font-size:14px}
  .matrix-card .matrix-note{font-size:11px}
