@@ -606,7 +606,7 @@ assert source_mask is not None and mask_el is not None
 assert mask_el.get("d") == source_mask.group(1), (
     "Mask must follow the same localized apple defect outline"
 )
-for page_name, idx in (("vision_ai_course", 5), ("vision_ai", 5)):
+for page_name, idx in (("vision_ai_course", 4), ("vision_ai", 5)):
     markup = (DOCS / f"{page_name}.html").read_text("utf-8")
     slides = re.findall(
         r'<section class="slide(?: [^"]+)?"[^>]*>.*?</section>',
