@@ -85,7 +85,7 @@ assert course_page.count('class="slide active"') == 1
 sources = [
     (deck, int(index))
     for deck, index in re.findall(
-        r'data-source-deck="([^"]+)" data-source-slide="(\\d+)"', course_page
+        r'data-source-deck="([^"]+)" data-source-slide="(\d+)"', course_page
     )
 ]
 assert len(sources) == 48 and len(set(sources)) == 48
