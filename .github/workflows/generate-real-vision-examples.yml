@@ -32,5 +32,6 @@ jobs:
           git add docs/assets/lesson/cnn_real_*.png
           if ! git diff --cached --quiet; then
             git commit -m "Add five real-image computer vision computation figures"
+            git pull --rebase origin course-visual-evidence-short-titles-20261016
             git push origin HEAD:course-visual-evidence-short-titles-20261016
           fi
