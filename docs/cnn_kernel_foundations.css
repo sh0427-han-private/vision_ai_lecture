@@ -31,3 +31,11 @@
   .lesson-deck .kernel-optional-images {margin-top: 4px;font-size: 12px}
   .lesson-deck .kernel-optional-images .kernel-optional-row img {max-height: 23dvh}
 }
+
+.lesson-deck .kernel-optional-images .kernel-numeric-reference {
+  display: block; margin: 8px 0 4px; text-align: center;
+}
+.lesson-deck .kernel-optional-images .kernel-numeric-reference img {
+  max-height: 34dvh; width: 100%; object-fit: contain;
+  border: 1px solid #dae6ec; border-radius: 6px;
+}
