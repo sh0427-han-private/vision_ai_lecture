@@ -1,4 +1,4 @@
-/* Public lecture outline: 19 Intro + 52 Vision AI / YOLO slides = 71. */
+/* Public lecture: 19 Intro plus 52 Vision AI and YOLO slides (71 total). */
 window.LECTURE_OUTLINE = {
   "version": "20261016-vision-cnn-to-yolo-52",
   "groups": [
