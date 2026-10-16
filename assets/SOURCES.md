@@ -375,3 +375,12 @@ https://www.nature.com/articles/s42256-020-00257-z
 - pcp: Meinard Müller / AudioLabs · PCP Unit 5 · MIT — https://www.audiolabs-erlangen.de/resources/MIR/PCP/PCP_05_vis.html
 
 사진은 축소·WebP 변환. CC BY-SA 변환본은 동일 라이선스. PCP Figure는 MIT (동봉 원문 참조), 2D 패널만 크롭. 8/10/11 변형은 교육용이며 실제 재촬영/모델 예측이 아님.
+
+
+## 2026-10-16 · CNN / YOLO 공개 논문 Figure 인용
+
+공개 통합 강의의 CNN 구조 및 YOLO 구조 설명은 검증된 외부 학술 Figure 원본을 인용합니다. 두 Figure 모두 그대로 표시하며 크기만 반응형으로 조정합니다.
+
+- **CNN 기본 구조 / Forward & Backpropagation**: Yamashita, Nishio, Do, et al., *Convolutional neural networks: an overview and application in radiology*, *Insights into Imaging* 9, 611–629 (2018), **Fig. 1**. 원문: https://doi.org/10.1007/s13244-018-0639-9 ; 이미지: https://media.springernature.com/lw685/springer-static/image/art%3A10.1007%2Fs13244-018-0639-9/MediaObjects/13244_2018_639_Fig1_HTML.png ; 라이선스: https://creativecommons.org/licenses/by/4.0/ (CC BY 4.0). 일반적인 분류 CNN Figure로, YOLO 모델의 실제 Detection Head라고 주장하지 않습니다.
+- **YOLOv8 Backbone / Neck / Head**: *Enhancing YOLOv8’s Performance in Complex Traffic Scenarios: Optimization Design for Handling Long-Distance Dependencies and Complex Feature Relationships*, *Electronics* 13(22), 4411 (2024), **Fig. 1**. 원문: https://doi.org/10.3390/electronics13224411 ; 이미지: https://www.mdpi.com/electronics/electronics-13-04411/article_deploy/html/images/electronics-13-04411-g001.png ; 라이선스: https://creativecommons.org/licenses/by/4.0/ (CC BY 4.0). 해당 그림은 YOLOv8 예시이며 모든 YOLO 버전의 세부 구조가 동일하다는 뜻이 아닙니다.
+- 강의 화면의 외부 학술 Figure는 기관 네트워크에서 차단될 수 있으므로 이미지 로드 실패 시 원래 Repository에 있는 로컬 개념 SVG로 대체합니다. 출처 링크와 학술 자료 인용은 남습니다. 외부 Figure 로컬 영구 보관은 현재 수행하지 않았습니다.
