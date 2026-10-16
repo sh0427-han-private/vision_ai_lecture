@@ -1,5 +1,5 @@
 /* Real grayscale matrix derived from the very same local apple image on
-   Intro 3. The 12×8 raster is a legible illustration, NOT model inference. */
+   Intro 4. The 12×8 raster is a legible illustration, NOT model inference. */
 (() => {
   "use strict";
   const root = document.querySelector("[data-apple-matrix-bridge]");

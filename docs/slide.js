@@ -137,6 +137,8 @@
   nextButton?.addEventListener("click", next);
 
   addEventListener("keydown", (event) => {
+    // While the outline is open, keys must act on the outline, not the deck.
+    if (document.body.classList.contains("lecture-toc-open")) return;
     const target = event.target;
     if (target instanceof Element && target.closest(".lesson-inline-lab")) return;
     if (
@@ -170,6 +172,9 @@
   });
 
   addEventListener("wheel", (event) => {
+    // Let the open sidebar scroll freely; wheel movement alone must never
+    // change the current slide (even when the cursor is over the backdrop).
+    if (document.body.classList.contains("lecture-toc-open")) return;
     if (event.target instanceof Element && event.target.closest(".lesson-inline-lab")) return;
     if (wheelLocked || Math.abs(event.deltaY) < 25) return;
     event.preventDefault();
@@ -188,6 +193,7 @@
   }, { passive: true });
 
   addEventListener("touchend", (event) => {
+    if (document.body.classList.contains("lecture-toc-open")) return;
     const touch = event.changedTouches[0];
     const deltaX = touch.clientX - touchStartX;
     const deltaY = touch.clientY - touchStartY;
