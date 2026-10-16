@@ -6,11 +6,12 @@
 <link rel="stylesheet" href="slide.css?v=vision-first-introfit-20261015-1">
 <link rel="stylesheet" href="lesson.css?v=yolo-vision-20261016-1">
 <link rel="stylesheet" href="cnn_structure_ref.css?v=cnn-local-20261016-1">
+<link rel="stylesheet" href="research_original_figures.css?v=20261016-1">
 <link rel="stylesheet" href="interactive_lessons.css?v=20261015-2">
 <script src="slide.js?v=prevent-toc-wheel-20261016-1" defer></script>
 <script src="interactive_lessons.js?v=20261015-1" defer></script>
 <link rel="stylesheet" href="lecture_sidebar.css?v=20261015-1">
-<script src="lecture_outline.js?v=zebra-cnn-yolo-loss-20261016-1" defer></script>
+<script src="lecture_outline.js?v=original-figures-20261016-1" defer></script>
 <script src="lecture_sidebar.js?v=20261015-1" defer></script>
 </head><body class="deck-page lesson-deck" data-prev-page="intro.html" data-next-page="">
 <header class="site-header"><nav class="nav"><a class="brand" href="intro.html#slide-1">Vision AI Lecture</a></nav></header>
@@ -80,20 +81,28 @@
 <p class="lesson-takeaway">Kernel을 옮길 때마다 선택되는 9개 값이 달라지고, 출력 Pixel도 순서대로 달라집니다. 구체적인 산술평균 계산은 다음 장에서 다룹니다.</p>
 <details class="lesson-reference"><summary>출처 · 근거</summary><div>참고: <a href="https://cs.brown.edu/courses/csci1430/2020_Spring/lectures/2020Spring_02_ImageFiltering.pdf" target="_blank" rel="noopener">Brown CSCI1430 Image Filtering</a> · <a href="https://docs.opencv.org/4.x/d4/d13/tutorial_py_filtering.html" target="_blank" rel="noopener">OpenCV Filtering</a> · 직접 계산한 교육용 도식</div></details></div></section>
 <section class="slide" data-topic="필터 비교" data-level="detail" data-source-deck="vision_ai" data-source-slide="14" data-outline-unit="Spatial Filtering · Pixel에서 특징 단서까지">
-<div class="slide-inner"><div class="lesson-meta"><span>10 · 필터 비교</span>
+<div class="slide-inner research-pilot"><div class="lesson-meta"><span>10 · 필터 비교</span>
 <span class="lesson-level lesson-level--detail">심화 학습</span></div>
-<h2 class="slide-title">동일 입력에서도 Mean·Gaussian·Median 결과는 다릅니다</h2>
-<p class="slide-subtitle">중앙 값만 255로 튄 동일한 3×3 입력을 서로 다른 필터로 계산했습니다.</p>
-<figure class="lesson-figure"><a href="assets/lesson/lecture_filter_comparison.svg?v=visual-20261013-1" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/lecture_filter_comparison.svg?v=visual-20261013-1" alt="동일 입력에서도 Mean·Gaussian·Median 결과는 다릅니다"></a></figure>
-<p class="lesson-takeaway">Mean 117, Gaussian 약 138.69, Median 100. 점 잡음에는 Median이 유리할 수 있습니다.</p>
-<details class="lesson-reference"><summary>출처 · 근거</summary><div>참고: <a href="https://cs.brown.edu/courses/csci1430/2020_Spring/lectures/2020Spring_02_ImageFiltering.pdf" target="_blank" rel="noopener">Brown CSCI1430 Image Filtering</a> · <a href="https://docs.opencv.org/4.x/d4/d13/tutorial_py_filtering.html" target="_blank" rel="noopener">OpenCV Filtering</a> · 직접 계산한 교육용 도식</div></details></div></section>
+<h2 class="slide-title">평균·가우시안·중앙값 필터는 서로 다른 결과를 만듭니다</h2>
+<p class="slide-subtitle">OpenCV 공식 원본 예시입니다. 왼쪽 두 영상은 일반적인 Blur를 비교하고, 오른쪽은 점 잡음이 많은 영상에서 Median의 효과를 보여 줍니다.</p>
+<figure class="lesson-figure research-gallery research-three" aria-label="OpenCV 공식 튜토리얼 원본 이미지 필터 비교">
+<div class="research-tile"><span class="research-kicker">Mean · 평균 필터</span><a href="https://docs.opencv.org/4.13.0/blur.jpg" target="_blank" rel="noopener"><img src="https://docs.opencv.org/4.13.0/blur.jpg" alt="OpenCV Mean 필터 공식 예시: 원본 로고와 평균 필터로 흐려진 로고를 좌우 비교" loading="lazy" onerror="this.onerror=null;this.src='assets/lesson/lecture_filter_comparison.svg?v=visual-20261013-1';this.alt='원본 이미지 로드 실패로 표시된 기존 로컬 도식';"></a><span class="research-tile-note">주변 Pixel의 평균 → 전체적으로 흐려짐</span></div>
+<div class="research-tile"><span class="research-kicker">Gaussian · 가우시안</span><a href="https://docs.opencv.org/4.13.0/gaussian.jpg" target="_blank" rel="noopener"><img src="https://docs.opencv.org/4.13.0/gaussian.jpg" alt="OpenCV Gaussian Blur 공식 예시: 원본 로고와 가우시안 평활화된 로고 좌우 비교" loading="lazy" onerror="this.onerror=null;this.src='assets/lesson/lecture_filter_comparison.svg?v=visual-20261013-1';this.alt='원본 이미지 로드 실패로 표시된 기존 로컬 도식';"></a><span class="research-tile-note">거리에 따라 다른 가중 평균 → 부드러워짐</span></div>
+<div class="research-tile"><span class="research-kicker">Median · 중앙값</span><a href="https://docs.opencv.org/4.13.0/median.jpg" target="_blank" rel="noopener"><img src="https://docs.opencv.org/4.13.0/median.jpg" alt="OpenCV Median 필터 공식 예시: Salt-and-Pepper 잡음이 많은 원본 로고와 중앙값 필터 처리 결과 좌우 비교" loading="lazy" onerror="this.onerror=null;this.src='assets/lesson/lecture_filter_comparison.svg?v=visual-20261013-1';this.alt='원본 이미지 로드 실패로 표시된 기존 로컬 도식';"></a><span class="research-tile-note">이웃의 중앙값 → 점 잡음 감소에 유리</span></div>
+</figure>
+<p class="lesson-takeaway">Mean·Gaussian은 평균에 기반한 평활화이므로 경계도 흐려질 수 있습니다. Median은 이웃의 중앙값을 선택해 점 잡음에 효과적이지만 모든 종류의 Noise에 최적인 것은 아닙니다.</p>
+<p class="lesson-source">원본 이미지: <a href="https://docs.opencv.org/4.x/d4/d13/tutorial_py_filtering.html" target="_blank" rel="noopener">OpenCV 공식 Smoothing Images 튜토리얼</a> · 세 그림은 <strong>서로 다른 실험 입력</strong>도 포함하므로 동일 픽셀에 대한 정량 비교는 아닙니다.</p><details class="research-calculation"><summary>기존 3×3 수치 계산 예시 펼쳐 보기</summary><img src="assets/lesson/lecture_filter_comparison.svg?v=visual-20261013-1" alt="기존의 같은 3×3 숫자 입력에 Mean, Gaussian, Median을 적용한 정확한 계산 예시"><p>별도 동일 입력 계산 예시: Mean 117, Gaussian 약 138.69, Median 100.</p></details></div></section>
 <section class="slide" data-topic="영상 기울기" data-level="basic" data-source-deck="vision_ai" data-source-slide="16" data-outline-unit="Spatial Filtering · Pixel에서 특징 단서까지">
-<div class="slide-inner"><div class="lesson-meta"><span>11 · 영상 기울기</span>
+<div class="slide-inner research-pilot"><div class="lesson-meta"><span>11 · 영상 기울기</span>
 <span class="lesson-level">핵심 개념</span></div>
 <h2 class="slide-title">밝기가 급격히 바뀌는 위치에서 경계 단서를 얻습니다</h2>
-<p class="slide-subtitle">Sobel(소벨) 필터로 좌우·상하 밝기 변화를 계산합니다. 부호 있는 값을 계산한 뒤 절댓값과 크기로 시각화합니다.</p>
-<figure class="lesson-figure"><a href="assets/lesson/processing_gradient.svg?v=processing-20261006-1" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/processing_gradient.svg?v=processing-20261006-1" alt="밝기가 급격히 바뀌는 위치에서 경계 단서를 얻습니다"></a></figure>
-<p class="lesson-takeaway">두 기울기 그림은 같은 최대값으로 표시했습니다. 경계 반응은 밝기 변화의 단서이며, 그 자체가 물체나 결함의 정답은 아닙니다.</p><details class="lesson-reference"><summary>출처 · 근거</summary><div>참고: <a href="https://szeliski.org/Book/1stEdition.htm" target="_blank" rel="noopener">Szeliski · Ch. 3 §3.2.1–3.2.2</a> · 기존 AI 생성 사진 / 합성 데이터에 실제 연산 적용</div></details></div></section>
+<p class="slide-subtitle">실제 사진에서 주변 Pixel의 밝기 변화가 크면 경계 후보가 됩니다. OpenCV 원본 Figure의 사진 → 밝기 변화 곡선 → 미분 반응 순서로 보세요.</p>
+<figure class="lesson-figure research-gallery research-sobel" aria-label="OpenCV 공식 Sobel 밝기 변화 원리 Figure">
+<div class="research-tile"><span class="research-kicker">① 원본 영상의 경계</span><a href="https://docs.opencv.org/4.13.0/Sobel_Derivatives_Tutorial_Theory_0.jpg" target="_blank" rel="noopener"><img src="https://docs.opencv.org/4.13.0/Sobel_Derivatives_Tutorial_Theory_0.jpg" alt="OpenCV 공식 Sobel 튜토리얼의 흑백 인물 사진, 원으로 표시된 밝기 변화 경계" loading="lazy" onerror="this.onerror=null;this.src='assets/lesson/processing_gradient.svg?v=processing-20261006-1';this.alt='원본 이미지 로드 실패로 표시된 기존 로컬 도식';"></a><span class="research-tile-note">표시된 부분에서 Pixel 밝기가 바뀝니다.</span></div>
+<div class="research-tile"><span class="research-kicker">② 밝기 신호</span><a href="https://docs.opencv.org/4.13.0/Sobel_Derivatives_Tutorial_Theory_Intensity_Function.jpg" target="_blank" rel="noopener"><img src="https://docs.opencv.org/4.13.0/Sobel_Derivatives_Tutorial_Theory_Intensity_Function.jpg" alt="OpenCV 원본 Figure: 위치에 따라 변하는 픽셀 밝기를 나타낸 S자형 그래프" loading="lazy" onerror="this.onerror=null;this.src='assets/lesson/processing_gradient.svg?v=processing-20261006-1';this.alt='원본 이미지 로드 실패로 표시된 기존 로컬 도식';"></a><span class="research-tile-note">위치에 따른 밝기의 변화</span></div>
+<div class="research-tile"><span class="research-kicker">③ 변화량(Gradient)</span><a href="https://docs.opencv.org/4.13.0/Sobel_Derivatives_Tutorial_Theory_dIntensity_Function.jpg" target="_blank" rel="noopener"><img src="https://docs.opencv.org/4.13.0/Sobel_Derivatives_Tutorial_Theory_dIntensity_Function.jpg" alt="OpenCV 원본 Figure: 밝기 변화가 가파른 위치에서 크게 나타나는 1차 미분값 곡선" loading="lazy" onerror="this.onerror=null;this.src='assets/lesson/processing_gradient.svg?v=processing-20261006-1';this.alt='원본 이미지 로드 실패로 표시된 기존 로컬 도식';"></a><span class="research-tile-note">급격히 바뀌는 위치에서 반응이 커집니다.</span></div>
+</figure>
+<p class="lesson-takeaway">Sobel은 좌우·상하 방향의 밝기 기울기를 근사합니다. 기울기가 큰 곳은 경계 후보이며, 그 자체가 물체나 결함의 정답 영역은 아닙니다.</p><p class="lesson-source">원본 Figure: <a href="https://docs.opencv.org/4.x/d2/d2c/tutorial_sobel_derivatives.html" target="_blank" rel="noopener">OpenCV 공식 Sobel Derivatives (Ana Huamán)</a> · ②·③은 사진 전체의 실제 측정값이 아니라 <strong>경계 원리 설명용 1차원 곡선</strong>입니다.</p><details class="research-calculation"><summary>기존 실제 Sobel 결과 그림 펼쳐 보기</summary><img src="assets/lesson/processing_gradient.svg?v=processing-20261006-1" alt="기존 영상에 실제 Sobel 연산을 적용한 Gx와 Gy 결과 비교"><p>이 그림에는 별도의 기존 합성 영상으로 계산한 실제 Sobel 수치와 결과가 담겨 있습니다.</p></details></div></section>
 <section class="slide" data-topic="고정 필터와 학습 필터" data-level="basic" data-source-deck="vision_ai" data-source-slide="17" data-outline-unit="Spatial Filtering · Pixel에서 특징 단서까지">
 <div class="slide-inner"><div class="lesson-meta"><span>12 · 고정 필터와 학습 필터</span>
 <span class="lesson-level">핵심 개념</span></div>
@@ -189,12 +198,25 @@
 <figure class="lesson-figure"><a href="assets/lesson/downsampling_basic.svg?v=professional-20261006-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/downsampling_basic.svg?v=professional-20261006-2" alt="공간 해상도를 줄여 더 작은 특징 지도를 만듭니다"></a></figure>
 <p class="lesson-takeaway">8×8 → 4×4는 위치 수가 64개에서 16개로 줄어듭니다. 작은 결함이나 경계의 위치 정보가 일부 사라질 수 있습니다.</p></div></section>
 <section class="slide" data-topic="특징의 조합" data-level="basic" data-source-deck="vision_ai" data-source-slide="28" data-outline-unit="CNN · 이미지에서 특징을 찾는 원리">
-<div class="slide-inner"><div class="lesson-meta"><span>25 · 특징의 조합</span>
+<div class="slide-inner research-pilot"><div class="lesson-meta"><span>25 · 특징의 조합</span>
 <span class="lesson-level">핵심 개념</span></div>
 <h2 class="slide-title">Layer는 앞의 특징을 조합해 더 복잡한 표현을 만듭니다</h2>
-<p class="slide-subtitle">사과 이미지를 예시로 국소 밝기 반응 → 곡선·무늬의 조합 → 더 넓은 형태의 단서로 이어지는 개념적 특징 표현을 살펴봅니다.</p>
-<figure class="lesson-figure"><a href="assets/lesson/lesson_cnn_feature_hierarchy.svg?v=solid-arrows-20261015-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/lesson_cnn_feature_hierarchy.svg?v=solid-arrows-20261015-2" alt="사과 사진에서 작은 경계 반응이 곡선과 형태의 단서로 조합되는 CNN 특징 계층 개념도이며 실제 모델 Feature Map 측정 결과는 아님"></a></figure>
-<p class="lesson-takeaway">국소 반응을 여러 Layer에서 조합한 개념도입니다. 실제 학습된 Feature Map이 항상 이 순서로 사람에게 해석되는 것은 아닙니다.</p><details class="lesson-reference"><summary>출처 · 근거</summary><div>사진: AI 생성 교육용 예시 · 실제 측정/실험 결과가 아님</div></details></div></section>
+<p class="slide-subtitle">연구자가 실제 학습된 CNN의 내부 반응을 조사한 결과입니다. 왼쪽은 특징을 강조하도록 만든 합성 이미지, 오른쪽은 그 특징에 반응한 실제 사진들입니다.</p>
+<figure class="lesson-figure research-gallery research-distill" aria-label="Distill 원본 GoogLeNet 중간층과 깊은층 시각화와 실제 데이터셋에서 반응한 이미지 사례">
+<div class="research-feature">
+<div class="research-feature-head"><strong>중간 층 (mixed4a)</strong><span>굽은 선·반복 무늬</span></div>
+<div class="research-feature-pair"><a href="https://distill.pub/2017/feature-visualization/images/diversity/mixed4a_97_optimized.png" target="_blank" rel="noopener"><img src="https://distill.pub/2017/feature-visualization/images/diversity/mixed4a_97_optimized.png" alt="Distill 원본 GoogLeNet mixed4a Unit 97의 최적화 특징 시각화: 굽고 반복되는 추상 패턴" loading="lazy" onerror="this.onerror=null;this.src='assets/lesson/lesson_cnn_feature_hierarchy.svg?v=solid-arrows-20261015-2';this.alt='원본 이미지 로드 실패로 표시된 기존 로컬 도식';"></a>
+<a href="https://distill.pub/2017/feature-visualization/images/diversity/mixed4a_97_examples.jpg" target="_blank" rel="noopener"><img src="https://distill.pub/2017/feature-visualization/images/diversity/mixed4a_97_examples.jpg" alt="Distill 원본 mixed4a Unit 97에 반응한 실제 데이터셋 사례: 새, 굽은 물체, 질감 등의 사진 모음" loading="lazy" onerror="this.onerror=null;this.src='assets/lesson/lesson_cnn_feature_hierarchy.svg?v=solid-arrows-20261015-2';this.alt='원본 이미지 로드 실패로 표시된 기존 로컬 도식';"></a></div>
+<span class="research-pair-caption">학습된 특징을 강조한 합성 그림 <span>↔</span> 실제 반응 이미지</span>
+</div>
+<div class="research-feature">
+<div class="research-feature-head"><strong>더 깊은 층 (mixed5a)</strong><span>공과 닮은 복합 무늬</span></div>
+<div class="research-feature-pair"><a href="https://distill.pub/2017/feature-visualization/images/diversity/mixed5a_9_optimized.png" target="_blank" rel="noopener"><img src="https://distill.pub/2017/feature-visualization/images/diversity/mixed5a_9_optimized.png" alt="Distill 원본 GoogLeNet mixed5a Unit 9의 최적화 특징 시각화: 여러 종류의 공 형태가 섞인 패턴" loading="lazy" onerror="this.onerror=null;this.src='assets/lesson/lesson_cnn_feature_hierarchy.svg?v=solid-arrows-20261015-2';this.alt='원본 이미지 로드 실패로 표시된 기존 로컬 도식';"></a>
+<a href="https://distill.pub/2017/feature-visualization/images/diversity/mixed5a_9_examples.jpg" target="_blank" rel="noopener"><img src="https://distill.pub/2017/feature-visualization/images/diversity/mixed5a_9_examples.jpg" alt="Distill 원본 mixed5a Unit 9에 반응한 실제 데이터셋 사례: 축구공 야구공 테니스공 등 다양한 공 사진" loading="lazy" onerror="this.onerror=null;this.src='assets/lesson/lesson_cnn_feature_hierarchy.svg?v=solid-arrows-20261015-2';this.alt='원본 이미지 로드 실패로 표시된 기존 로컬 도식';"></a></div>
+<span class="research-pair-caption">특징 활성화 합성 그림 <span>↔</span> 실제 반응 이미지</span>
+</div>
+</figure>
+<p class="lesson-takeaway">깊어질수록 작은 무늬가 조합되어 더 복합적인 대상에 반응할 수 있습니다. 다만 모든 뉴런이 사람에게 이해되는 하나의 의미를 가진다는 뜻은 아닙니다.</p><p class="lesson-source">Olah, Mordvintsev &amp; Schubert, <a href="https://distill.pub/2017/feature-visualization/" target="_blank" rel="noopener">Feature Visualization, Distill (2017)</a> · 실제 GoogLeNet <a href="https://distill.pub/2017/feature-visualization/appendix/" target="_blank" rel="noopener">Layer 자료</a> (mixed4a Unit 97, mixed5a Unit 9) · 합성 시각화는 사진에 직접 적용된 Feature Map이 아닙니다.</p></div></section>
 <section class="slide" data-topic="Backbone과 Head" data-level="basic" data-source-deck="vision_ai" data-source-slide="31" data-outline-unit="CNN · 이미지에서 특징을 찾는 원리">
 <div class="slide-inner"><div class="lesson-meta"><span>26 · Backbone과 Head</span>
 <span class="lesson-level">핵심 개념</span></div>
@@ -402,12 +424,16 @@
 <figure class="lesson-figure"><a href="assets/lesson/context_iou_visual.svg?v=professional-20261006-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/context_iou_visual.svg?v=professional-20261006-2" alt="위치와 영역은 정답과 얼마나 겹치는지 평가합니다"></a></figure>
 <p class="lesson-takeaway">완전 일치하면 1, 겹치는 영역이 없으면 0입니다.</p></div></section>
 <section class="slide" data-topic="평가와 실패 사례" data-level="basic" data-source-deck="vision_ai" data-source-slide="36" data-outline-unit="평가 · 현장 적용">
-<div class="slide-inner"><div class="lesson-meta"><span>51 · 평가와 실패 사례</span>
+<div class="slide-inner research-pilot"><div class="lesson-meta"><span>51 · 평가와 실패 사례</span>
 <span class="lesson-level">핵심 개념</span></div>
 <h2 class="slide-title">높은 점수만으로 판단 근거가 맞다고 보장할 수 없습니다</h2>
-<p class="slide-subtitle">Vision AI에서 배경·조명·설비의 차이가 Class·Box·Mask 결과에 어떤 영향을 주는지 확인해야 합니다. 다른 조건의 이미지로도 판단 근거가 유지되는지 비교합니다.</p>
-<figure class="lesson-figure"><a href="assets/lesson/shortcut_professional.svg?v=professional-20261006-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/shortcut_professional.svg?v=professional-20261006-2" alt="높은 점수만으로 판단 근거가 맞다고 보장할 수 없습니다"></a></figure>
-<p class="lesson-takeaway">분류 오판뿐 아니라 Box 위치·Mask 경계의 실패도 구분합니다. 설비별·조명별 오류 유형을 모아 모델이 바라본 단서를 점검합니다.</p><details class="lesson-reference"><summary>출처 · 근거</summary><div>사진: AI 생성 교육용 예시 · 실제 측정/실험 결과가 아님</div></details></div></section>
+<p class="slide-subtitle">같은 사진을 보더라도 모델에 ‘개’와 ‘고양이’ 중 무엇을 설명하도록 요청하는지에 따라 강조되는 영역이 달라집니다. 실제 공개 Grad-CAM 구현 결과를 비교합니다.</p>
+<figure class="lesson-figure research-gallery research-gradcam" aria-label="같은 사진에 고양이와 개 서로 다른 클래스를 대상으로 계산한 Grad-CAM 실제 구현 결과">
+<div class="research-tile"><span class="research-kicker">① 같은 입력 사진</span><a href="https://raw.githubusercontent.com/jacobgil/pytorch-grad-cam/master/examples/dog_cat.jfif" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/jacobgil/pytorch-grad-cam/master/examples/dog_cat.jfif" alt="Grad-CAM 공식 구현 관련 공개 예시의 고양이와 개가 함께 있는 원본 입력 사진" loading="lazy" onerror="this.onerror=null;this.src='assets/lesson/shortcut_professional.svg?v=professional-20261006-2';this.alt='원본 이미지 로드 실패로 표시된 기존 로컬 도식';"></a><span class="research-tile-note">한 장의 사진에 개와 고양이가 모두 있습니다.</span></div>
+<div class="research-tile"><span class="research-kicker">② 개(Class: Dog)를 설명</span><a href="https://raw.githubusercontent.com/jacobgil/pytorch-grad-cam/master/examples/resnet50_dog_gradcam_cam.jpg" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/jacobgil/pytorch-grad-cam/master/examples/resnet50_dog_gradcam_cam.jpg" alt="원본과 같은 사진에서 Dog 클래스를 대상으로 얻은 실제 Grad-CAM 열지도" loading="lazy" onerror="this.onerror=null;this.src='assets/lesson/shortcut_professional.svg?v=professional-20261006-2';this.alt='원본 이미지 로드 실패로 표시된 기존 로컬 도식';"></a><span class="research-tile-note">개 클래스 근거를 강조한 시각화</span></div>
+<div class="research-tile"><span class="research-kicker">③ 고양이(Class: Cat)를 설명</span><a href="https://raw.githubusercontent.com/jacobgil/pytorch-grad-cam/master/examples/resnet50_cat_gradcam_cam.jpg" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/jacobgil/pytorch-grad-cam/master/examples/resnet50_cat_gradcam_cam.jpg" alt="원본과 같은 사진에서 Cat 클래스를 대상으로 얻은 실제 Grad-CAM 열지도" loading="lazy" onerror="this.onerror=null;this.src='assets/lesson/shortcut_professional.svg?v=professional-20261006-2';this.alt='원본 이미지 로드 실패로 표시된 기존 로컬 도식';"></a><span class="research-tile-note">고양이 클래스 근거를 강조한 시각화</span></div>
+</figure>
+<p class="lesson-takeaway">높은 Score만으로 올바른 근거를 사용했다고 보장할 수 없습니다. Grad-CAM은 분류 결정과 관련된 영역을 살펴보는 보조 도구이며, 결함의 정답 Box·Mask를 뜻하지 않습니다.</p><p class="lesson-source">연구: <a href="https://openaccess.thecvf.com/content_iccv_2017/html/Selvaraju_Grad-CAM_Visual_Explanations_ICCV_2017_paper.html" target="_blank" rel="noopener">Selvaraju et al., Grad-CAM, ICCV 2017</a> · 실제 Figure: <a href="https://github.com/jacobgil/pytorch-grad-cam#classification" target="_blank" rel="noopener">jacobgil/pytorch-grad-cam 공식 구현 예시</a> · 모델 출력 점수는 이 그림에 표시하지 않았습니다.</p></div></section>
 <section class="slide" data-topic="운영 Cycle" data-level="basic" data-source-deck="vision_ai" data-source-slide="37" data-outline-unit="평가 · 현장 적용">
 <div class="slide-inner"><div class="lesson-meta"><span>52 · 운영 Cycle</span>
 <span class="lesson-level">핵심 개념</span></div>
