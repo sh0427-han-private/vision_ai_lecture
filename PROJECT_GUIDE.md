@@ -341,3 +341,13 @@ GitHub Pages:
 - RGB Figure에서 오른쪽 개별 Pixel의 R/G/B 값 98/67/38 예시를 제거하고 사진과 전체 R/G/B 채널 배열의 대응만 보입니다. 원본 사과 JPEG의 인라인 데이터는 그대로 보존합니다. 슬라이드의 '핵심' 콜아웃도 제거합니다.
 - 이후 Intro 11·12는 해상도가 증가할수록 같은 장면을 더 촘촘한 Pixel로 표현하여 **기존 원본에 있는 미세한 정보**를 보존할 수 있음을 강조합니다. 단순 업스케일은 사라진 디테일을 복원하지 않는다고 명시합니다.
 - 레이아웃/SVG/상호작용 회귀 테스트를 Intro 19장·통합 79장 및 196개 viewport 기준으로 동기화합니다.
+
+## 2026-10-16 · Vision AI 중심 CNN 아키텍처 개편 (최신)
+
+- **공개 순서:** Intro 19장(변경 없음) + Vision AI 통합 **58장** = 총 **77장**, 2개 발표 화면 기준 **154개 렌더링**입니다.
+- 기존 통합 강의 79장에서 Vision AI와 직접 관련성이 낮은 AI 일반론·Gradient/Chain Rule 수학 계산·중복 지표·K-Fold 등 **29장 제외**, CNN 기초·구성·대표 확장을 설명하는 새 Figure **8장**을 추가합니다. 기존 AI Basics와 Vision AI 독립 파일 및 lesson manifest는 원본 참고 자료로 보존합니다.
+- 1. Vision Task/Label 5장 → 2. AI 기초 3장 → 3. Spatial Filtering 5장 → 4. 최소 신경망 기초 3장 → 5. CNN 구성 요소 16장 → 6. CNN 확장 구조 5장 → 7. 학습 6장 → 8. 데이터 5장 → 9. 전이학습 3장 → 10. 평가·운영 7장 순서입니다.
+- 기본 CNN 단면 설명: RGB 입력 → Convolution/Batch Normalization/ReLU → Stride·Padding·Pooling → Feature Map/Channel → GAP/Flatten → Dense/Task Head. 실제 숫자 크기 예시는 모든 Layer의 Stride/Padding 설정에 종속됩니다.
+- 대표 CNN 확장 개념: Residual/Skip Connection(ResNet), Standard/Grouped/Depthwise/Pointwise(1×1) Convolution, Dilated Convolution, Upsampling/Transposed Convolution, U-Net Encoder–Decoder와 Skip, FPN 멀티스케일 특징 및 Classification/Detection/Segmentation Head. 전체 CNN 모델 계보가 아니라 초보자가 구조를 이해하는 데 필요한 대표 구성요소입니다.
+- 각 새 Figure는 `docs/assets/lesson/cnn_foundations_n1.svg` ~ `cnn_foundations_n8.svg` 로컬 SVG 파일입니다. `src/href`는 Repository 로컬 상대경로를 사용하고 CDN은 이용하지 않습니다.
+- 77개 좌측 목차 링크, 페이지 간 이동, 앵커, 해상도, 이미지 로드, SVG 문법과 154개 레이아웃 점검을 함께 검증합니다.

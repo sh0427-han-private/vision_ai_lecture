@@ -73,36 +73,45 @@ assert 'data-prev-page="ai_basics.html"' in (DOCS / "vision_ai.html").read_text(
 assert 'data-next-page=""' in (DOCS / "vision_ai.html").read_text("utf-8")
 print("Landing redirects and single-track controls validated.")
 
-# Public course keeps every original slide but reorders vision topics BEFORE
-# AI concepts, interleaving AI training only near relevant vision topics.
+# Public Vision AI core: only relevant AI foundations, detailed CNN components.
+# Reference ai_basics.html and vision_ai.html retain the archived original material.
 course_page = (DOCS / "vision_ai_course.html").read_text("utf-8")
 course_slides = re.findall(
     r'<section class="slide(?: [^"]+)?"[^>]*>.*?</section>',
     course_page, flags=re.DOTALL
 )
-assert len(course_slides) == 79, "Published course must contain 79 lessons"
+assert len(course_slides) == 58, "Published Vision AI course is 58 slides"
 assert course_page.count('class="slide active"') == 1
-assert course_slides[0].find('data-source-deck="vision_ai"') != -1
-assert course_slides[0].find('data-source-slide="1"') != -1
 sources = [
     (deck, int(index))
     for deck, index in re.findall(
         r'data-source-deck="([^"]+)" data-source-slide="(\d+)"', course_page
     )
 ]
-assert len(sources) == 79 and len(set(sources)) == 79
-assert sorted(i for d, i in sources if d == "vision_ai") == [
-    i for i in range(1, 38) if i not in (8, 20)
-]
-assert sorted(i for d, i in sources if d == "ai_basics") == list(range(1, 45))
-assert sources[:6] == [("vision_ai", n) for n in range(1, 7)]
-assert sources[6:13] == [
-    ("ai_basics", n) for n in (1, 2, 3, 4, 6, 7, 5)
-]
-assert sources[13:19] == [("ai_basics", n) for n in (29, 30, 31, 32, 33, 34)]
-assert sources[19:28] == [("vision_ai", n) for n in range(9, 18)]
-assert sources[74] == ("vision_ai", 7), "IoU concept belongs in evaluation"
-assert ('data-source-deck="vision_ai" data-source-slide="8"') not in course_page
+assert len(sources) == 58 and len(set(sources)) == 58
+assert sources[:5] == [("vision_ai", n) for n in range(2, 7)]
+assert sources[5:8] == [("ai_basics", n) for n in (2, 3, 4)]
+assert sources[8:13] == [("vision_ai", n) for n in (9, 10, 14, 16, 17)]
+assert sources[16:18] == [("cnn_expansion", 1), ("cnn_expansion", 2)]
+assert sources[32:37] == [("cnn_expansion", n) for n in range(4, 9)]
+assert sources[54] == ("vision_ai", 7), "IoU belongs to the evaluation section"
+assert sources[-1] == ("ai_basics", 44)
+assert [i for d,i in sources if d=="cnn_expansion"] == list(range(1, 9))
+assert ("vision_ai", 8) not in sources, "Detailed IoU arithmetic must stay removed"
+assert ("ai_basics", 27) not in sources, "Chain Rule is beyond entry-level Vision AI"
+assert ("ai_basics", 37) not in sources, "K-fold is outside the introductory core"
+for n in range(1, 9):
+    file = DOCS / f"assets/lesson/cnn_foundations_n{n}.svg"
+    assert file.is_file(), file
+    root = ET.parse(file).getroot()
+    assert root.get("viewBox") == "0 0 1200 500"
+    assert f"cnn_foundations_n{n}.svg?v=cnn-focus-20261016-1" in course_slides[
+        sources.index(("cnn_expansion", n))
+    ]
+# Architecture relationships and numeric examples must remain correct.
+assert 224 // 2 == 112 and 112 // 2 == 56
+assert 3 * 3 * 32 * 64 == 18432
+assert 3 * 3 * 32 + 32 * 64 == 2336
 assert 'data-prev-page="intro.html"' in course_page
 assert 'data-next-page=""' in course_page
 assert 'slide.js?v=prevent-toc-wheel-20261016-1' in course_page
@@ -122,26 +131,28 @@ for url in re.findall(r'(?:src|href)="([^"]+)"', course_page):
 outline_source = (DOCS / "lecture_outline.js").read_text("utf-8")
 outline = json.loads(outline_source.split(" = ", 1)[1].strip().rstrip(";"))
 items = [item for group in outline["groups"] for item in group["items"]]
-assert len(items) == 98
-assert [item["global"] for item in items] == list(range(1, 99))
+assert len(items) == 77
+assert [item["global"] for item in items] == list(range(1, 78))
 assert [(item["page"], item["slide"]) for item in items[:19]] == [
     ("intro.html", n) for n in range(1, 20)
 ]
 assert [(item["page"], item["slide"]) for item in items[19:]] == [
-    ("vision_ai_course.html", n) for n in range(1, 80)
+    ("vision_ai_course.html", n) for n in range(1, 59)
 ]
-assert [item["original"] for item in items[19:25]] == [
-    f"V{i}" for i in range(1, 7)
+assert [item["original"] for item in items[19:24]] == [
+    f"V{i}" for i in range(2, 7)
 ]
 assert [item["title"] for item in items[:3]] == [
     "AI는 세상을 어떻게 볼까?",
     "사람은 눈으로 주변 세상의 많은 정보를 파악합니다",
     "그래서 Vision은 일상과 기술 모두에서 중요합니다",
 ]
-assert items[19 + 74]["original"] == "V7", "IoU concept in evaluation"
+assert items[19 + 16]["original"] == "N1", "CNN overview opens structural lesson"
+assert items[19 + 54]["original"] == "V7", "IoU concept in evaluation"
+assert len(outline["groups"]) == 11, "Intro plus ten coherent core sections"
 assert len(outline["groups"]) >= 8
 assert "lecture-toc-drawer" in (DOCS / "lecture_sidebar.js").read_text("utf-8")
-print("Vision-first 79 slides and 98-item retractable sidebar validated.")
+print("Vision-focused 58 slides and 77-item CNN-centered sidebar validated.")
 
 
 figures = sorted((DOCS / "assets/lesson").glob("lecture_*.svg"))
@@ -453,8 +464,8 @@ for path in ("intro_resolution_demo.js", "intro_resolution_demo.css",
 assert "intro_resolution_demo.js?v=20261015-1" in intro_page
 assert "intro_apple_number_bridge.js?v=20261015-1" in intro_page
 assert "intro_apple_number_bridge.css?v=intro-picto-20261016-1" in intro_page
-assert "lecture_outline.js?v=rgb-resolution-20261016-1" in intro_page
-assert "lecture_outline.js?v=rgb-resolution-20261016-1" in course_page
+assert "lecture_outline.js?v=cnn-focus-20261016-1" in intro_page
+assert "lecture_outline.js?v=cnn-focus-20261016-1" in course_page
 bridge_script = (DOCS / "intro_apple_number_bridge.js").read_text("utf-8")
 assert "const width = 12, height = 8;" in bridge_script
 for channel_weight in ("0.299", "0.587", "0.114"):
@@ -595,7 +606,7 @@ assert source_mask is not None and mask_el is not None
 assert mask_el.get("d") == source_mask.group(1), (
     "Mask must follow the same localized apple defect outline"
 )
-for page_name, idx in (("vision_ai_course", 5), ("vision_ai", 5)):
+for page_name, idx in (("vision_ai_course", 4), ("vision_ai", 5)):
     markup = (DOCS / f"{page_name}.html").read_text("utf-8")
     slides = re.findall(
         r'<section class="slide(?: [^"]+)?"[^>]*>.*?</section>',
