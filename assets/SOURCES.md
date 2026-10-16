@@ -452,3 +452,10 @@ https://www.nature.com/articles/s42256-020-00257-z
 - `cnn_real_augment_dog.png`: 같은 강아지 사진에 밝기 감소 0.58배, 실제 13도 회전, 부분 가림을 적용했습니다. 이미지 전체 Class는 유지되지만 검출 Box·Segmentation Mask에 기하학적 변화를 적용하면 Label도 함께 수정해야 합니다.
 - 전제: 이미지 계산 모두 **고정 이미지 처리 연산**이며 사전학습 CNN 활성화 지도와는 다릅니다. 실제 사전학습 CNN의 Layer Feature Map은 별도 Vision 25번을 참고합니다. 원본 5장 도식은 그림 아래의 펼침 영역에 보존했습니다.
 - 방법론 출처: OpenCV 공식 Filtering https://docs.opencv.org/4.x/d4/d13/tutorial_py_filtering.html ; Dive into Deep Learning CNN https://d2l.ai/chapter_convolutional-neural-networks/index.html ; PyTorch/Torchvision transforms https://docs.pytorch.org/vision/stable/transforms.html . 각 슬라이드 하단에 사진 출처와 재현 코드를 연결했습니다.
+
+
+## 2026-10-16 · 10·11번 OpenCV 외부 로딩 문제 → 실제 계산한 로컬 Figure
+
+- `docs/assets/lesson/cnn_real_filter_compare_dog.png`: Stanford CS231n Lecture5에 나온 강아지 사진을 이용한 실제 사진 필터 처리 결과. 같은 RGB 입력 224×224에 결정적 Salt-and-Pepper 잡음 5%를 적용하고 Pillow `BoxBlur(2)`, `GaussianBlur(radius=2)`, `MedianFilter(size=5)`를 각각 적용했습니다. **같은 잡음 입력으로 직접 비교**하므로 OpenCV 웹 튜토리얼의 서로 다른 예시 입력을 직접 비교하는 문제를 해결합니다.
+- `docs/assets/lesson/cnn_real_sobel_dog.png`: 동일 사진을 Grayscale로 변환해 실제 3×3 Sobel X, Sobel Y와 `sqrt(Gx² + Gy²)`을 계산해 222×222 출력으로 표시했습니다. 이는 **고정 필터의 계산 결과**이지 CNN에서 학습된 Feature Map은 아닙니다.
+- 재현 코드: `scripts/render_real_vision_examples.py`, 생성 워크플로는 수동 실행 가능. 공식 방법 출처: https://docs.opencv.org/4.x/d4/d13/tutorial_py_filtering.html , https://docs.opencv.org/4.x/d2/d2c/tutorial_sobel_derivatives.html . 초기 OpenCV 4.13.0 웹 이미지 직접 링크는 네트워크에서 깨져 실제 슬라이드에서는 사용하지 않습니다. 원래 수치 설명 도식은 펼침 안에 보존했습니다.
