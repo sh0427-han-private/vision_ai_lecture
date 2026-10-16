@@ -73,14 +73,14 @@ assert 'data-prev-page="ai_basics.html"' in (DOCS / "vision_ai.html").read_text(
 assert 'data-next-page=""' in (DOCS / "vision_ai.html").read_text("utf-8")
 print("Landing redirects and single-track controls validated.")
 
-# Public learning path keeps the CNN essentials and teaches a practical YOLO workflow.
+# Public learning path starts with CNN essentials; duplicate YOLO chapters are removed.
 # Original ai_basics / vision_ai files are retained for optional deep study.
 course_page = (DOCS / "vision_ai_course.html").read_text("utf-8")
 course_slides = re.findall(
     r'<section class="slide(?: [^"]+)?"[^>]*>.*?</section>',
     course_page, flags=re.DOTALL
 )
-assert len(course_slides) == 50, "Public Vision AI course must contain 50 slides"
+assert len(course_slides) == 49, "49 core CNN/AI slides after YOLO removal"
 assert course_page.count('class="slide active"') == 1
 sources = [
     (deck, int(index))
@@ -88,55 +88,37 @@ sources = [
         r'data-source-deck="([^"]+)" data-source-slide="(\d+)"', course_page
     )
 ]
-assert len(sources) == 50 and len(set(sources)) == 50
+assert len(sources) == 49 and len(set(sources)) == 49, "Sources must be unique"
 assert sources[:5] == [("vision_ai", n) for n in range(2, 7)]
 assert sources[5:7] == [("ai_basics", 2), ("ai_basics", 3)]
-assert sources[7:10] == [("cnn_expansion",1), ("cnn_featuremaps",1), ("vision_ai",28)], "CNN first"
-assert sources[10:14] == [("vision_ai",18), ("vision_ai",10), ("vision_ai",19), ("yolo_intro",1)], "Kernel concept and filters"
-assert sources[14:18] == [("ai_basics",8), ("ai_basics",11), ("ai_basics",13), ("vision_ai",33)], "Weights and Kernel learning"
-assert sources[18] == ("cnn_expansion", 2), "Detailed CNN block after Kernel explanation"
-assert sources[8] == ("cnn_featuremaps", 1), "Real CNN map before numeric Kernel"
-assert sources[9] == ("vision_ai", 28), "CS231n follows real map"
-assert sources[25:30] == [("yolo_intro", n) for n in (2, 3, 4, 6, 5)]
-assert sources[46] == ("vision_ai", 7), "IoU belongs in evaluation"
-assert sources[-1] == ("ai_basics", 44)
-assert not any((d,i) in [("vision_ai",9),("vision_ai",14),("vision_ai",16),("vision_ai",17)] for d,i in sources), "Detailed fixed-filter chapters must be optional"
-assert sorted(i for d,i in sources if d=="cnn_expansion") == [1,2]
-assert not any(d=="cnn_expansion" and i>=3 for d,i in sources), (
-    "ResNet, U-Net and niche architecture sections must not appear in public lecture"
-)
-assert ("vision_ai", 8) not in sources
-assert ("vision_ai", 27) not in sources, "Detailed output-size math no longer needed"
-assert ("ai_basics", 27) not in sources
-assets = [
-    "cnn_foundations_n1.svg",
-    "yolo_learned_filters.svg",
-    "yolo_backbone_neck_head.svg",
-    "yolo_detection_example.svg",
-    "yolo_three_tasks.svg",
-    "yolo_workflow.svg",
+assert sources[7:11] == [
+    ("new_lessons",1), ("cnn_expansion",1),
+    ("cnn_featuremaps",1), ("vision_ai",28)
 ]
-for asset in assets:
-    figure = DOCS / "assets/lesson" / asset
-    assert figure.is_file(), figure
-    root = ET.parse(figure).getroot()
-    assert root.get("viewBox") == "0 0 1200 500"
-    if asset != "cnn_foundations_n1.svg":
-        assert asset in course_page, asset
-assert "developersbreach.com/convolution-neural-network-deep-learning" in course_page
-assert "cnn_banner.png" in course_page
-assert "yolo_class_box_training_ko.svg" in course_page
+assert sources[11:16] == [
+    ("vision_ai",18), ("vision_ai",10),
+    ("vision_ai",19), ("cnn_contrast",1), ("ai_basics",8)
+]
+assert sources[16:21] == [
+    ("ai_basics",11), ("new_lessons",2), ("new_lessons",3),
+    ("ai_basics",13), ("new_lessons",4)
+]
+assert sources[25:29] == [
+    ("vision_ai",23), ("vision_ai",24),
+    ("vision_ai",25), ("vision_ai",31)
+]
+assert sources[-1] == ("ai_basics",44)
+assert not any(d.startswith("yolo") for d,i in sources)
+assert not re.search(r"\bYOLO\b|yolo_", course_page, flags=re.IGNORECASE)
+assert ("vision_ai",7) in sources, "IoU still appears in evaluation section"
+assert sorted(i for d,i in sources if d=="cnn_expansion") == [1,2]
+assert all(d!="cnn_expansion" or i<=2 for d,i in sources)
+assert ("vision_ai", 27) not in sources
+assert ("ai_basics", 27) not in sources
 assert "cnn_squeezenet_actual_feature_maps.png" in course_page
 assert (DOCS / "assets/lesson/cnn_squeezenet_actual_feature_maps.png").is_file()
-assert (DOCS.parent / "scripts/render_cnn_feature_maps.py").is_file()
-assert "YOLO 검출 학습 · 종류와 위치" in course_page
-assert (DOCS / "assets/lesson/yolo_class_box_training_ko.svg").is_file()
-assert "https://docs.ultralytics.com/ko/guides/yolo-architecture" in course_page
-assert "https://openaccess.thecvf.com/content_cvpr_2016/" in course_page
-assert "하나의 Detect Weight가 자동으로 Segment Mask를 주지는 않습니다." in course_page
-assert "실제 YOLO 모델로 계산한 검출 결과는 아닙니다." in (
-    DOCS / "assets/lesson/yolo_detection_example.svg"
-).read_text("utf-8")
+assert (ROOT / "scripts/render_cnn_feature_maps.py").is_file()
+assert "cnn_numeric_why_logic.css?v=20261016-1" in course_page
 assert 'data-prev-page="intro.html"' in course_page
 assert 'data-next-page=""' in course_page
 assert 'slide.js?v=prevent-toc-wheel-20261016-1' in course_page
@@ -152,33 +134,69 @@ for url in re.findall(r'(?:src|href)="([^"]+)"', course_page):
     if target:
         assert (DOCS / target).is_file(), target
 
-# Titles and position numbers of ALL sidebar entries must match content.
+# Exactly 68 public links: Intro 19 + CNN/AI 49.
 outline_source = (DOCS / "lecture_outline.js").read_text("utf-8")
 outline = json.loads(outline_source.split(" = ", 1)[1].strip().rstrip(";"))
 items = [item for group in outline["groups"] for item in group["items"]]
-assert len(items) == 69
-assert [it["global"] for it in items] == list(range(1, 70))
+assert len(items) == 68
+assert [it["global"] for it in items] == list(range(1,69))
 assert [(it["page"], it["slide"]) for it in items[:19]] == [
     ("intro.html", n) for n in range(1,20)
 ]
 assert [(it["page"], it["slide"]) for it in items[19:]] == [
-    ("vision_ai_course.html", n) for n in range(1,51)
+    ("vision_ai_course.html", n) for n in range(1,50)
 ]
-assert [it["original"] for it in items[19:24]] == ["V2","V3","V4","V5","V6"]
-assert [it["title"] for it in items[:3]] == [
-    "AI와 시각의 출발점",
-    "사람의 시각 · 장면 이해",
-    "일상 속 Vision 기술",
-]
-assert items[19+7]["original"] == "N1", "CNN full architecture overview"
-assert [it["original"] for it in items[19+25:19+30]] == [
-    "Y2","Y3","Y4","Y6","Y5"
-]
-assert items[19+13]["original"] == "Y1", "Fixed filters before YOLO"
-assert items[19+46]["original"] == "V7", "IoU evaluation"
 assert len(outline["groups"]) == 11
+assert [it["title"] for it in items[19:]] == [
+    html.unescape(re.sub(r"<[^>]+>","",re.search(
+        r'<h2 class="slide-title">([^<]+)</h2>', slide
+    ).group(1))) for slide in course_slides
+], "Sidebar titles must exactly match visible slide titles"
+assert all(not it.get("original","").startswith("Y") for it in items)
+assert items[19+7]["original"] == "N1"
+assert items[19+14]["original"] == "F1"
+assert [items[19+i]["original"] for i in (17,18,20)] == [
+    "N2","N3","N4"
+]
 assert "lecture-toc-drawer" in (DOCS / "lecture_sidebar.js").read_text("utf-8")
-print("CNN-first 50 slides and 69-item beginner sidebar validated.")
+
+# Numerical convolution, padding, max pooling, AND/XOR must all be correct.
+for idx, phrase in [
+    (7,"1,048,576"), (17,"W₂W₁"), (18,"AND Gate"),
+    (20,"h₁ = ReLU"), (25,"3×3 = 9칸"), (26,"3×3 → 1×1"),
+    (27,"4×4 (16칸) → 2×2")
+]:
+    assert phrase in course_slides[idx], (idx+1,phrase)
+assert "x₁+x₂ = 1.5" in course_slides[18]
+assert "XOR Gate" in course_slides[18]
+assert "기울기" not in course_slides[18], "Gate slide is geometry, not gradient"
+assert course_slides[17].count("W₂") >= 3
+assert all(
+    max(0,x-y)+max(0,y-x) == (x^y)
+    for x in (0,1) for y in (0,1)
+)
+# 5x5 with center-only 3x3 kernel, valid convolutions:
+input5 = [[1+5*y+x for x in range(5)] for y in range(5)]
+assert [[input5[y+1][x+1] for x in range(3)]
+        for y in range(3)] == [[7,8,9],[12,13,14],[17,18,19]]
+assert [[input5[y*2+1][x*2+1] for x in range(2)]
+        for y in range(2)] == [[7,9],[17,19]]
+original3 = [[1,2,3],[4,5,6],[7,8,9]]
+padded = [[0]*5] + [[0]+line+[0] for line in original3] + [[0]*5]
+assert sum(sum(row) for row in original3) == 45
+padding_result = [
+    [sum(padded[y+i][x+j] for i in range(3) for j in range(3))
+     for x in range(3)] for y in range(3)
+]
+assert padding_result == [[12,21,16],[27,45,33],[24,39,28]]
+pool_input = [[1,3,2,4],[5,6,1,2],[4,2,9,3],[0,7,8,1]]
+pooled = [[max(pool_input[2*y+i][2*x+j]
+               for i in range(2) for j in range(2))
+           for x in range(2)] for y in range(2)]
+assert pooled == [[6,4],[7,9]]
+assert 32*32*32*32 == 1_048_576
+assert 3*3 == 9
+print("CNN motivation, ReLU/XOR, numeric Stride/Padding/Pooling and 68 sidebar entries validated.")
 
 
 figures = sorted((DOCS / "assets/lesson").glob("lecture_*.svg"))
