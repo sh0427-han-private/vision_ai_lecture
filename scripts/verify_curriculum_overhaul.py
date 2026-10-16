@@ -110,6 +110,7 @@ assert sources[25:29] == [
 assert sources[-1] == ("ai_basics",44)
 assert not any(d.startswith("yolo") for d,i in sources)
 assert not re.search(r"\bYOLO\b|yolo_", course_page, flags=re.IGNORECASE)
+assert not re.search(r"\*\*[^*]+\*\*", course_page), "Raw Markdown bold is not rendered in HTML slides"
 assert ("vision_ai",7) in sources, "IoU still appears in evaluation section"
 assert sorted(i for d,i in sources if d=="cnn_expansion") == [1,2]
 assert all(d!="cnn_expansion" or i<=2 for d,i in sources)
