@@ -473,3 +473,17 @@ GitHub Pages:
 - `docs/cnn_kernel_foundations.css`는 선택형 고정 필터 참고 패널에만 적용되며 공통 CSS/JS는 수정하지 않습니다. 제목/목차/수치/이미지 경로 검증과 GitHub Actions/Pages 확인 필수입니다.
 
 - 추가로 **12번**에는 `docs/assets/lesson/cnn_kernel_role_beginner_ko.svg`를 사용하여 CS231n 실제 강아지 입력 사진의 작은 영역 → 3×3 Kernel → 위치별 특징 반응을 보여줍니다. **오른쪽 반응 지도는 학습 CNN 실측값이 아닌 설명용 도식**이고, 기존 수치 계산 Figure는 펼침 참고로 남깁니다.
+
+
+## 2026-10-16 · CNN 사용 이유·AND/XOR·숫자 기반 Stride/Padding/Max Pooling (최신)
+
+- 최신 공개 강의: Intro **19장** + Vision AI 통합 **48장** = **67장**. 왼쪽 목차도 67개 링크로 동기화합니다.
+- 중복되던 공개 통합 강의 **YOLO 전용 5장(구 26~30번)**을 제거했습니다. 원본 YOLO 논문 Figure 및 SVG는 Repository에서 삭제하지 않습니다. 구 14번 '고정 필터와 학습 Kernel'은 YOLO 설명을 제거하고, 일반 고정 Mean Filter와 학습 가능한 CNN Kernel의 숫자 배열로 재구성했습니다.
+- CNN에 들어가기 전 **8번**에서 지역 연결(Local Connectivity), 가중치 공유(Weight Sharing), 위치별 Feature Map이 왜 필요한지 도식과 32×32 단일 채널·3×3 가중치 9개 재사용 예시로 설명합니다. 컬러 RGB의 첫 층이면 가중치 수가 다름을 전제로 예시 조건을 명시합니다.
+- **18번** AND/XOR: 4개의 진리표 좌표에서 AND는 직선 x₁+x₂>1.5로 분리, XOR는 하나의 직선으로 분리 불가. **19번** Affine Layer만 연속 적용하면 W₂(W₁x+b₁)+b₂ = (W₂W₁)x+(W₂b₁+b₂)이므로 단일 Affine Layer와 같은 표현력. **20번** h₁=ReLU(x₁−x₂), h₂=ReLU(x₂−x₁), y=h₁+h₂를 사용하여 모든 이진 입력에서 XOR [0,1,1,0]을 직접 계산해 비선형성의 역할을 설명합니다.
+- **25번 Stride**: 5×5 입력(1~25), Center-only 3×3 Kernel로 S=1의 3×3 수치 [7..19]와 S=2의 2×2 수치 [7,9;17,19]를 실제 계산. 왜: 출력 공간 수 및 연산량 감소, 대신 위치 해상도 손실.
+- **26번 Padding**: 3×3 원본 [1..9], 모든 원소가 1인 3×3 Kernel, S=1. P=0은 1×1 출력[45], Zero Padding P=1은 0테두리를 포함한 5×5 입력으로 계산한 3×3 출력 [[12,21,16],[27,45,33],[24,39,28]]. 왜: 경계 계산/공간 크기 유지.
+- **27번 Max Pooling**: 4×4 [[1,1,2,4],[5,6,7,8],[3,2,1,0],[1,2,3,4]]를 2×2 window, Stride2의 Max로 2×2 [[6,8],[3,4]] 생성. 왜: 강한 반응 보존·축소, 위치 정보 일부 손실, Pooling 자체 학습 가중치 없음.
+- 숫자 예시는 모든 사용자가 동일한 입력·연산·출력과 근거를 읽을 수 있도록 `docs/cnn_numerical_teaching.css`와 HTML 내 구조화 숫자 행렬로 구현합니다. 기존 실제 강아지 사진으로 계산한 결과와 별개로, **설명용 수치 예시가 실제 CNN 모델의 예측 결과인 것처럼 표기하지 않습니다**.
+- 학술 근거: https://cs231n.github.io/convolutional-networks/ 및 https://www.deeplearningbook.org/contents/mlp.html. 기존의 YOLO 중심 설계/장수 기록은 과거 이력이며 최신 공개 강의 기준이 아닙니다.
+- 검증: 목차 67개, 통합 48개 레슨의 원본 추적·번호, 2개 발표 크기 총 134 viewport, XOR 및 Stride/Padding/MaxPool 수치 일치, 목차 토글·챕터 경계·Deep Link, 이미지 경로/HTML/CSS 구조. 공통 CSS는 유지하고 Outline cache key를 갱신합니다.
