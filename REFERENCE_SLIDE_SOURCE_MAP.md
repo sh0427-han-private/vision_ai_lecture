@@ -53,7 +53,7 @@
 | 22 | 필터를 몇 칸씩 이동할지 정합니다 | R08 | D2L Stride 그림과 수치 비교 | 보완 | Output shape 검산 |
 | 23 | 가장자리 주변에 값을 채워 계산 범위를 조절합니다 | R08 | D2L Padding 원본 예시 검사 | 보완 | 경계 계산 영역 크기 |
 | 24 | 공간 해상도를 줄여 더 작은 특징 지도를 만듭니다 | R08 | D2L Pooling Before/After Figure 조사 | 후보 | Pooling vs Gaussian Downsampling 주의 |
-| 25 | CNN은 얕은층에서 깊은층으로 더 복잡한 특징을 학습합니다 | R03 · R12 | 사과 사진 1장으로 얕은층·중간층·깊은층 3단계 한글 Figure 적용 | 완료 | 개념도와 실제 CNN 특징 지도 구분 |
+| 25 | CNN은 얕은층에서 깊은층으로 더 복잡한 특징을 학습합니다 | R03 · R12 | CS231n 원본 VGG-16 특징 Figure(Conv1_1 / Conv3_2 / Conv5_3)와 한글 3단계 해설 | 완료 | 실제 특징 시각화와 입력 사진의 활성지도 구별 |
 | 26 | 특징을 만드는 부분과, 결과를 만드는 부분을 나눠 봅니다 | R03 · R16 | Backbone/Head 역할 설명 유지 | 유지 | CNN 공통 Feature와 task 출력 분리 |
 | 27 | 고정 필터는 사람이 정하고, YOLO의 필터는 학습합니다 | R07 · R08 · R17 | 고정 Sobel과 학습 Filter 대비 | 보완 | 사람이 정한 값 ↔ 학습한 값 |
 | 28 | YOLO는 Backbone → Neck → Head로 검출합니다 | R17 · R27 | 기존 YOLOv8 원본 Figure 유지 | 유지 | 과도한 모듈 강의 피하기 |
@@ -144,3 +144,9 @@
 - 새 Figure: `docs/assets/lesson/cnn_three_stage_apple_ko.svg`. 사과 사진은 기존 `lesson_cnn_feature_hierarchy.svg`에 내장된 동일한 사진을 그대로 재사용합니다. 사진의 새 복제본이나 외부 이미지 CDN은 필요하지 않습니다.
 - 얕은층은 실제 고정 경계 강조 연산(학습된 CNN Filter 결과 아님)을 개념 예시로 보여주며, 중간층과 깊은층은 같은 사과에서 관찰 가능한 곡선·부분 형태와 그 조합을 명확한 주석으로 표시합니다. **세 패널은 실제 학습 모델의 Layer Activation이 아닌 교육용 도식**입니다.
 - 기술 설명 근거: CS231n CNN 강의자료 (R03) 및 Distill Feature Visualization (R12). 실제 Feature Visualization 결과를 직접 측정한 것처럼 표기하지 않습니다.
+
+
+## 2026-10-16 · Vision AI 25번 CS231n 원본 Figure 반영
+
+- 현재 강의 25번: `docs/assets/lesson/cs231n_vgg16_feature_hierarchy_original.png` 원본 PNG와 한국어 3단계 해설(얕은층 Conv1_1 / 중간층 Conv3_2 / 깊은층 Conv5_3)을 사용합니다.
+- 기존 사과 3단계 직접 제작 SVG 대신 실제 학습 특징 연구 시각화로 교체합니다. 원본 이미지는 변경하지 않았습니다. 그림 출처는 CS231n 2017 Lecture 5 Slide 37입니다.
