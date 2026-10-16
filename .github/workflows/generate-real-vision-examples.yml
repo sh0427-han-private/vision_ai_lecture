@@ -1,0 +1,36 @@
+name: Render real photo-based image processing examples
+on:
+  push:
+    branches: [course-visual-evidence-short-titles-20261016]
+    paths:
+      - scripts/render_real_vision_examples.py
+      - .github/workflows/generate-real-vision-examples.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: |
+          python -m pip install pillow numpy
+          sudo apt-get update -qq
+          sudo apt-get install -y fonts-noto-cjk
+      - name: Render actual pixel processing examples
+        run: python scripts/render_real_vision_examples.py
+      - name: Commit reproducible PNGs
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add docs/assets/lesson/cnn_real_*.png
+          if ! git diff --cached --quiet; then
+            git commit -m "Add five real-image computer vision computation figures"
+            git push origin HEAD:course-visual-evidence-short-titles-20261016
+          fi
