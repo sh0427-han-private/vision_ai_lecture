@@ -1,4 +1,4 @@
-# Vision AI 73장: 유명 논문·강의·공식 원본 Figure 활용 매핑
+# Vision AI 69장: 유명 논문·강의·공식 원본 Figure 활용 매핑
 
 > 2026-10-16 · **설계/조사 문서**입니다. 여기서 '후보'는 원본 이미지 파일 URL·권리·표시 가능성을 확인하기 전 단계이며 현재 공개 강의 슬라이드가 변경되었다는 의미가 아닙니다.
 
@@ -25,7 +25,7 @@
 | 3 | Detection · 위치와 종류 찾기 | Ultralytics Metrics (R22) | Threshold/Precision/Recall/IoU를 같은 사례로 묶기 |
 | 유지 | 1~5번, 16번, 28번, 33번 등 | 이미 좋은 사진·원본·인터랙티브 | 설명에 오류가 있는 경우만 수리 |
 
-## 통합 강의 54장 매핑
+## 통합 강의 50장 매핑
 
 | 슬라이드 | 현재 메시지 | 주요 출처 ID | 활용할 구체적 시각자료 | 상태 | 초보자 관점 메모 |
 |---|---|---|---|---|---|
@@ -36,53 +36,49 @@
 | 5 | 같은 사진, 다른 정답 형태 | R15 · R18 · R19 | 기존 동일 사과·Task 변형 3종 유지 | 유지 | 동일 대상/다른 라벨 장점 보존 |
 | 6 | AI · 머신러닝 · 딥러닝의 관계 | R02 · R04 | AI·ML·DL 기존 관계 그림 유지 | 유지 | 대학 강의의 개념 순서만 참고 |
 | 7 | 규칙 기반과 데이터 학습 | R02 · R04 | 규칙 vs 학습 기존 그림 유지 | 유지 | 한글로 간단히 보완 |
-| 8 | Pixel 연산과 주변 영역 연산 | R06 · R08 | 이웃 연산 실제 계산 그림 보존 | 유지 | 독립 Pixel vs Neighborhood |
-| 9 | 이동하는 3×3 Kernel | R06 · R09 | 기존 Kernel 연산·수치 보존 | 유지 | 행렬 값과 결과 재검산 |
-| 10 | Mean · Gaussian · Median 비교 | R06 | OpenCV Mean·Gaussian·Median 원본 처리사진 조사 | 후보 | 원본 필터 처리 사진/실제 수치 대응 |
-| 11 | Sobel · 밝기 변화와 경계 | R07 | OpenCV Sobel 원본 Before/After 조사 | 후보 | 밝기 변화→경계 반응 이미지 |
-| 12 | Spatial Filtering에서 CNN으로 | R06 · R09 | 필터→CNN 전환 슬라이드 한글 해설 | 보완 | 고정 Kernel↔학습 Kernel |
-| 13 | Perceptron · 가중합과 Bias | R03 · R04 | 입력·Weight·출력 계산 유지 | 유지 | 현재 난이도 유지 |
-| 14 | Neural Network · 층별 계산 | R02 · R04 | 신경망 기본 그림 유지 | 유지 | Layer와 Weight 관계 직관적으로 |
-| 15 | ReLU · 비선형 활성화 | R03 · R08 | ReLU 값 계산 시각화 유지 | 유지 | 비선형성이 필요한 이유 |
-| 16 | CNN 아키텍처 · 특징 추출과 분류 | R26 | 사용자가 지정한 얼룩말 원본 Figure 유지 | 유지 | 왼쪽 특징 추출 / 오른쪽 분류 강조 |
-| 17 | CNN 기본 블록 · Conv · BN · ReLU | R03 · R10 · R11 | CNN Explainer 단계별 구조 후보 검토 | 후보 | Conv·BN·ReLU 도식은 순서 일반화 주의 |
-| 18 | CNN · 지역 연결과 가중치 공유 | R03 · R11 | 공유 Kernel의 이동 Figure 조사 | 후보 | 하나의 Weight 세트가 위치마다 반복 |
-| 19 | Kernel 위치별 반응 | R09 | 동일 필터·서로 다른 Patch의 수치 비교 | 보완 | 원문 계산값과 현재 그림 검산 |
-| 20 | 숫자 배열에서 Feature Map까지 | R09 · R10 | CNN Explainer Feature Map 연산 Figure 후보 | 후보 | 작은 영역→한 Pixel 계산 확대 |
-| 21 | RGB 입력과 출력 Channel | R03 · R08 | RGB 채널↔출력 Feature Map 구조 참조 | 보완 | 3채널 입력 Kernel과 2D 출력 관계 |
-| 22 | Stride · 이동 간격과 출력 크기 | R08 | D2L Stride 그림과 수치 비교 | 보완 | Output shape 검산 |
-| 23 | Padding · 가장자리 계산 | R08 | D2L Padding 원본 예시 검사 | 보완 | 경계 계산 영역 크기 |
-| 24 | Max Pooling · 공간 정보 축소 | R08 | D2L Pooling Before/After Figure 조사 | 후보 | Pooling vs Gaussian Downsampling 주의 |
-| 25 | 실제 CNN Feature Map · 층별 반응 | R02 · R03 · R08 | ImageNet 사전학습 SqueezeNet1.1의 실제 3단계 활성화 지도(동일 강아지 입력) | 완료 | 실제 공간별 Feature Map / 채널별 상대값 |
-| 26 | Feature Visualization · 층별 학습 패턴 | R03 · R12 | Stanford CS231n 원본 VGG-16 Feature Visualization | 완료 | 특징을 자극하는 패턴과 실제 Feature Map 구분 |
-| 27 | Backbone과 Task Head | R03 · R16 | Backbone/Head 역할 설명 유지 | 유지 | CNN 공통 Feature와 task 출력 분리 |
-| 28 | 고정 필터와 학습 필터 | R07 · R08 · R17 | 고정 Sobel과 학습 Filter 대비 | 보완 | 사람이 정한 값 ↔ 학습한 값 |
-| 29 | YOLO 구조 · Backbone / Neck / Head | R17 · R27 | 기존 YOLOv8 원본 Figure 유지 | 유지 | 과도한 모듈 강의 피하기 |
-| 30 | YOLO Detection · Class / Box / Score | R16 · R18 | 공식 YOLO 실제 검출 이미지 후보 | 후보 | Class·Box·Score 실제 샘플은 추론 출처 명확히 |
-| 31 | YOLO Task · Classify / Detect / Segment | R18 · R19 | Classify/Detect/Segment 비교 기존 사과 재사용 | 유지 | Task별 출력 형식이 다름 |
-| 32 | YOLO 검출 학습 · 종류와 위치 | R16 · R18 | 신규 한글 Class+Box 학습 그림 유지 | 유지 | YOLO 검출은 분류만 학습 X |
-| 33 | YOLO 데이터·Label·검증 | R20 · R21 | YOLO Dataset Label 실물 1줄 예시 보완 | 보완 | class cx cy w h 정규화 |
-| 34 | 모델 학습 · 오차를 줄이는 반복 | R08 · R21 | 기존 학습 Interactive 유지 | 유지 | Weight는 Gradient가 수정 |
-| 35 | Loss · 예측과 정답의 차이 | R04 · R05 | Loss와 정답 비교 계산 유지 | 유지 | 학습 loss vs 성능지표 구분 |
-| 36 | Forward · Gradient · Weight 갱신 | R04 · R05 | Forward/Backward 과정 한글 해설 | 보완 | 실제 학습 오차를 이용한 업데이트 |
-| 37 | Training과 Inference의 차이 | R04 · R21 | Training vs Inference 그림 유지 | 유지 | 언제 Weight가 변경되는지 |
-| 38 | Batch · Iteration · Epoch | R21 | Batch/Epoch 실습 예시 유지 | 유지 | 10장/Batch4 예시처럼 수치 검증 |
-| 39 | CNN Filter 가중치 학습 | R08 · R11 | 학습 Kernel Weight를 그림에 표현 | 보완 | CNN Kernel이 학습되는 과정 |
-| 40 | 데이터셋 · 촬영 조건과 Label | R01 · R24 | 현장 변화(조명/시점/가림) 기존 사진 유지 | 유지 | 현장 이미지가 실감 남 |
-| 41 | Train · Validation · Test | R21 · R25 | Train/Val/Test 구분 설명 유지 | 유지 | 독립 데이터 기준 설명 |
-| 42 | Video Group Split · 데이터 누출 방지 | R25 | Video/LOT 그룹 분할 사례 강화 | 보완 | 동일 촬영 그룹이 Train/Test로 새면 누출 |
-| 43 | Preprocessing · 입력 규격 맞추기 | R21 | Letterbox/Resize 예시·이미지 유지 | 유지 | 비율과 패딩 구분 |
-| 44 | Data Augmentation · 조건 변화 만들기 | R21 | Augmentation 실제 사진 비교 유지 | 유지 | Label 함께 변형 주의 |
-| 45 | Transfer Learning · 사전학습 활용 | R23 | PyTorch 전이학습 본문 Figure 선별 | 후보 | 사전학습→내 Task Fine-tune |
-| 46 | Freeze와 Fine-tuning | R23 | Freeze/Unfreeze 구조 유지 | 유지 | 기존 Backbone / Task Head 사용 |
-| 47 | Overfitting · 새 데이터 일반화 | R24 | Shortcut 학습 실제 사례 Figure 선별 | 후보 | 학습 점수와 현장 성능 불일치 |
-| 48 | Score Threshold · 판정 기준 | R22 | Confidence threshold 예시 유지 | 유지 | 점수≠성공확률 |
-| 49 | Confusion Matrix · 100건 평가 | R22 | Confusion Matrix 한글·수치 보존 | 유지 | TP/FP/FN/TN 실제 동일 조건 |
-| 50 | Precision과 Recall | R22 | Precision/Recall 수치 예시 보존 | 유지 | 검출 문제에도 다른 Matching 조건 필요 |
-| 51 | IoU · 박스 겹침 비율 | R22 | IoU 실제 Box 중첩 Figure 후보 | 후보 | 교집합/합집합 이미지 |
-| 52 | Grad-CAM · 클래스별 판단 근거 | R13 · R24 | Grad-CAM/Shortcut 실제 원본 Figure 후보 | 최우선 | 높은 점수≠옳은 근거 직관화 |
-| 53 | Vision AI 프로젝트 전체 흐름 | R21 · R24 | 운영 Loop 기존 한글 그림 유지 | 유지 | 현장 실패 수집→재평가 |
-| 54 | 운영 데이터와 재학습 | R21 · R24 | 기존 재학습/모니터링 결론 유지 | 유지 | 성능 변화는 환경·운영까지 감안 |
+| 8 | CNN 전체 구조와 특징 추출 | R26 | 사용자가 지정한 얼룩말 원본 Figure 유지 | 유지 | 왼쪽 특징 추출 / 오른쪽 분류 강조 |
+| 9 | 실제 Feature Map · CNN 내부 반응 | R02 · R03 · R08 | ImageNet 사전학습 SqueezeNet1.1의 실제 3단계 활성화 지도(동일 강아지 입력) | 완료 | 실제 공간별 Feature Map / 채널별 상대값 |
+| 10 | Feature Visualization · 학습된 특징 | R03 · R12 | Stanford CS231n 원본 VGG-16 Feature Visualization | 완료 | 특징을 자극하는 패턴과 실제 Feature Map 구분 |
+| 11 | CNN의 지역 연결과 가중치 공유 | R03 · R11 | 공유 Kernel의 이동 Figure 조사 | 후보 | 하나의 Weight 세트가 위치마다 반복 |
+| 12 | Kernel · 작은 영역을 반복 탐색 | R06 · R09 | Kernel이 작은 영역에서 값을 계산하는 이유와 역할 | 유지 | 행렬 값과 결과 재검산 |
+| 13 | Kernel 반응 · 패턴에 따른 차이 | R09 | 동일 필터·서로 다른 Patch의 수치 비교 | 보완 | 원문 계산값과 현재 그림 검산 |
+| 14 | 고정 필터와 학습 Kernel | R07 · R08 · R17 | 고정 필터와 데이터로 학습하는 Kernel 비교 | 보완 | 사람이 정한 값 ↔ 학습한 값 |
+| 15 | Weight · Bias · 입력의 중요도 | R03 · R04 | 입력·Weight·출력 계산 유지 | 유지 | 현재 난이도 유지 |
+| 16 | Neural Network · 가중치 연결 | R02 · R04 | 신경망 기본 그림 유지 | 유지 | Layer와 Weight 관계 직관적으로 |
+| 17 | ReLU · 비선형 특성 | R03 · R08 | ReLU 값 계산 시각화 유지 | 유지 | 비선형성이 필요한 이유 |
+| 18 | 학습 과정에서 바뀌는 Kernel | R08 · R11 | 입력→예측→Loss→가중치 갱신 과정 | 보완 | CNN Kernel이 학습되는 과정 |
+| 19 | CNN 블록 · Conv와 활성화 | R03 · R10 · R11 | CNN Explainer 단계별 구조 후보 검토 | 후보 | Conv·BN·ReLU 도식은 순서 일반화 주의 |
+| 20 | Feature Map · 위치별 반응값 | R09 · R10 | CNN Explainer Feature Map 연산 Figure 후보 | 후보 | 작은 영역→한 Pixel 계산 확대 |
+| 21 | RGB Channel과 학습 필터 | R03 · R08 | RGB 채널↔출력 Feature Map 구조 참조 | 보완 | 3채널 입력 Kernel과 2D 출력 관계 |
+| 22 | Stride · 필터의 이동 간격 | R08 | D2L Stride 그림과 수치 비교 | 보완 | Output shape 검산 |
+| 23 | Padding · 이미지의 가장자리 | R08 | D2L Padding 원본 예시 검사 | 보완 | 경계 계산 영역 크기 |
+| 24 | Max Pooling · 정보 축소 | R08 | D2L Pooling Before/After Figure 조사 | 후보 | Pooling vs Gaussian Downsampling 주의 |
+| 25 | Backbone과 Task Head | R03 · R16 | Backbone/Head 역할 설명 유지 | 유지 | CNN 공통 Feature와 task 출력 분리 |
+| 26 | YOLO 구조 · Backbone / Neck / Head | R17 · R27 | 기존 YOLOv8 원본 Figure 유지 | 유지 | 과도한 모듈 강의 피하기 |
+| 27 | YOLO Detection · Class / Box / Score | R16 · R18 | 공식 YOLO 실제 검출 이미지 후보 | 후보 | Class·Box·Score 실제 샘플은 추론 출처 명확히 |
+| 28 | YOLO Task · Classify / Detect / Segment | R18 · R19 | Classify/Detect/Segment 비교 기존 사과 재사용 | 유지 | Task별 출력 형식이 다름 |
+| 29 | YOLO 검출 학습 · 종류와 위치 | R16 · R18 | 신규 한글 Class+Box 학습 그림 유지 | 유지 | YOLO 검출은 분류만 학습 X |
+| 30 | YOLO 데이터·Label·검증 | R20 · R21 | YOLO Dataset Label 실물 1줄 예시 보완 | 보완 | class cx cy w h 정규화 |
+| 31 | 모델 학습 · 오차를 줄이는 반복 | R08 · R21 | 기존 학습 Interactive 유지 | 유지 | Weight는 Gradient가 수정 |
+| 32 | Loss · 예측과 정답의 차이 | R04 · R05 | Loss와 정답 비교 계산 유지 | 유지 | 학습 loss vs 성능지표 구분 |
+| 33 | Forward · Gradient · Weight 갱신 | R04 · R05 | Forward/Backward 과정 한글 해설 | 보완 | 실제 학습 오차를 이용한 업데이트 |
+| 34 | Training과 Inference의 차이 | R04 · R21 | Training vs Inference 그림 유지 | 유지 | 언제 Weight가 변경되는지 |
+| 35 | Batch · Iteration · Epoch | R21 | Batch/Epoch 실습 예시 유지 | 유지 | 10장/Batch4 예시처럼 수치 검증 |
+| 36 | 데이터셋 · 촬영 조건과 Label | R01 · R24 | 현장 변화(조명/시점/가림) 기존 사진 유지 | 유지 | 현장 이미지가 실감 남 |
+| 37 | Train · Validation · Test | R21 · R25 | Train/Val/Test 구분 설명 유지 | 유지 | 독립 데이터 기준 설명 |
+| 38 | Video Group Split · 데이터 누출 방지 | R25 | Video/LOT 그룹 분할 사례 강화 | 보완 | 동일 촬영 그룹이 Train/Test로 새면 누출 |
+| 39 | Preprocessing · 입력 규격 맞추기 | R21 | Letterbox/Resize 예시·이미지 유지 | 유지 | 비율과 패딩 구분 |
+| 40 | Data Augmentation · 조건 변화 만들기 | R21 | Augmentation 실제 사진 비교 유지 | 유지 | Label 함께 변형 주의 |
+| 41 | Transfer Learning · 사전학습 활용 | R23 | PyTorch 전이학습 본문 Figure 선별 | 후보 | 사전학습→내 Task Fine-tune |
+| 42 | Freeze와 Fine-tuning | R23 | Freeze/Unfreeze 구조 유지 | 유지 | 기존 Backbone / Task Head 사용 |
+| 43 | Overfitting · 새 데이터 일반화 | R24 | Shortcut 학습 실제 사례 Figure 선별 | 후보 | 학습 점수와 현장 성능 불일치 |
+| 44 | Score Threshold · 판정 기준 | R22 | Confidence threshold 예시 유지 | 유지 | 점수≠성공확률 |
+| 45 | Confusion Matrix · 100건 평가 | R22 | Confusion Matrix 한글·수치 보존 | 유지 | TP/FP/FN/TN 실제 동일 조건 |
+| 46 | Precision과 Recall | R22 | Precision/Recall 수치 예시 보존 | 유지 | 검출 문제에도 다른 Matching 조건 필요 |
+| 47 | IoU · 박스 겹침 비율 | R22 | IoU 실제 Box 중첩 Figure 후보 | 후보 | 교집합/합집합 이미지 |
+| 48 | Grad-CAM · 클래스별 판단 근거 | R13 · R24 | Grad-CAM/Shortcut 실제 원본 Figure 후보 | 최우선 | 높은 점수≠옳은 근거 직관화 |
+| 49 | Vision AI 프로젝트 전체 흐름 | R21 · R24 | 운영 Loop 기존 한글 그림 유지 | 유지 | 현장 실패 수집→재평가 |
+| 50 | 운영 데이터와 재학습 | R21 · R24 | 기존 재학습/모니터링 결론 유지 | 유지 | 성능 변화는 환경·운영까지 감안 |
 
 ## Intro 19장 참고 매핑
 
@@ -172,3 +168,12 @@
 - 배포/PR 브라우저 검사에서 10번·11번 외부 이미지가 로드되지 않아 `broken_image`가 검출되었습니다. 이에 동일한 실제 강아지 사진으로 연산한 로컬 PNG 두 장을 10·11번의 **주요 Figure**로 사용합니다.
 - 10번: `docs/assets/lesson/cnn_real_filter_compare_dog.png` (잡음 추가 후 Mean/Gaussian/Median, **모두 동일한 입력**). 11번: `cnn_real_sobel_dog.png` (실제 Sobel Gx·Gy·크기). 기존 정확한 3×3 및 Sobel 개념 Figure는 펼침에서 유지합니다.
 - OpenCV 공식 문서는 **연산 원리 출처**로 링크하고, 기존 OpenCV 원본 이미지 404 링크는 실제 수업 이미지에서는 제거했습니다.
+
+
+## 2026-10-16 · 최신: CNN 중심 재구성 / 상세 Filtering 축소
+
+- 통합 Vision AI 기존 54장 중 **원래 8·10·11·12번의 세부 필터 4장**을 독립 슬라이드에서 제외해 50장으로 정리합니다. **기존 9번의 Kernel 이동 원리만 짧게 유지**하며, Mean·Gaussian·Median·Sobel 실제 동일 강아지 사진 처리 예시는 새 **14번**의 펼침 참고자료로 보존합니다. 이미지 자산과 재현 코드를 삭제하지 않습니다.
+- 새로운 **8·9·10번**: CNN 아키텍처(원본 얼룩말 Figure) → 실제 SqueezeNet Feature Map → CS231n VGG-16 Feature Visualization. 학습된 CNN의 실제 출력과 연구 시각화 차이를 보이면서 **서로 다른 모델**임을 명확히 표시합니다.
+- **11~14번**: 지역 연결·가중치 공유 → 작은 Kernel 이동 → 위치별 반응 → 고정 필터와 학습 Kernel 차이. **15~18번**: Weight/Bias → Neural Network → ReLU → Loss 기반 Kernel 가중치 수정.
+- **19~25번**은 RGB Channel, Stride, Padding, Pooling 등 CNN 계산의 기본 개념을 실제 계산 Figure와 함께 학습하며, 심화 계산은 펼침으로 분리합니다.
+- YOLO(26~30), 모델 학습(31~35), 데이터(36~40), 전이학습(41~43), 평가(44~50) 순서. Intro 19 + 통합 50 = **69장**. 목차 링크와 번호를 현재 상태로 동기화합니다.
