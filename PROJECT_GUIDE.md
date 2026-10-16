@@ -471,3 +471,5 @@ GitHub Pages:
 - 실제 모델 계산 이미지를 예시로 제시한 9번은 SqueezeNet Feature Map, 10번은 VGG-16 특징 최적화 시각화로 **다른 네트워크·다른 분석 결과**임을 표시해야 합니다.
 - 번호: Intro 19, 통합 Vision AI **50**, 전체 목차 **69**. 실제 바로가기: `https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-8` (CNN 개요), `#slide-9` (실제 Feature Map), `#slide-12` (Kernel), `#slide-14` (고정 vs 학습), `#slide-18` (Kernel 가중치 학습). 공개 주소에서 `/docs/`를 중복 사용하지 않습니다.
 - `docs/cnn_kernel_foundations.css`는 선택형 고정 필터 참고 패널에만 적용되며 공통 CSS/JS는 수정하지 않습니다. 제목/목차/수치/이미지 경로 검증과 GitHub Actions/Pages 확인 필수입니다.
+
+- 추가로 **12번**에는 `docs/assets/lesson/cnn_kernel_role_beginner_ko.svg`를 사용하여 CS231n 실제 강아지 입력 사진의 작은 영역 → 3×3 Kernel → 위치별 특징 반응을 보여줍니다. **오른쪽 반응 지도는 학습 CNN 실측값이 아닌 설명용 도식**이고, 기존 수치 계산 Figure는 펼침 참고로 남깁니다.
