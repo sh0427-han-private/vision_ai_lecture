@@ -20,7 +20,7 @@ Vision AI를 처음 접하는 사람도 **현실 세계 → Sensor → 숫자 �
 
 - **[Intro 처음부터 보기](https://sh0427-han.github.io/vision_ai_lecture/)**
 - **[통합 Vision AI 바로 보기](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html)**
-- **[CNN 전체 구조 8번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-8)** · **[실제 Feature Map 9번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-9)** · **[Kernel과 학습 12~18번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-12)**
+- **[CNN이 필요한 이유 8번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-8)** · **[실제 Feature Map 10번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-10)** · **[Kernel과 학습 13~21번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-13)**
 
 > 배포 URL 주의: 저장소 파일은 `docs/vision_ai_course.html`이지만 GitHub Pages는 `docs/` 디렉터리 자체를 웹사이트의 루트로 게시합니다. 따라서 공개 링크에는 `/docs/`를 넣으면 안 됩니다. 과거에 공유된 `/docs/vision_ai_course.html#slide-N` 링크는 자동으로 올바른 경로로 이동하도록 호환 페이지를 제공합니다.
 
@@ -28,9 +28,9 @@ Vision AI를 처음 접하는 사람도 **현실 세계 → Sensor → 숫자 �
 
 **[Vision AI Lecture · Intro 1번부터 보기](https://sh0427-han.github.io/vision_ai_lecture/)**
 
-사이트 주소를 열면 Intro의 첫 슬라이드가 바로 표시됩니다. **Intro 19장 → Vision AI를 중심으로 AI 원리를 필요한 위치에 배치한 통합 강의 50장**, 총 **69장**을 순서대로 학습합니다. AI Basics를 먼저 모두 설명하지 않고, Vision Task → CNN 구조·실제 Feature Map → Kernel의 역할과 학습 → YOLO → 데이터·평가로 이어집니다.
+사이트 주소를 열면 Intro의 첫 슬라이드가 바로 표시됩니다. **Intro 19장 → Vision AI 통합 강의 48장**, 총 **67장**을 순서대로 학습합니다. Vision Task 다음에 CNN을 왜 쓰는지, 실제 Feature Map과 Kernel 학습, AND/XOR·비선형성, 숫자 행렬로 계산하는 Stride·Padding·Max Pooling, 데이터·평가를 연결합니다. 중복되는 YOLO 전용 5장은 본 강의에서 제외했습니다.
 
-왼쪽 상단의 **☰ 강의 목차**를 클릭하면 69개 슬라이드가 주제별로 표시되어 원하는 장으로 바로 이동할 수 있습니다. 목차 버튼을 다시 누르거나 **✕ 닫기**, 패널 바깥 클릭, **Esc** 키로 목차를 숨길 수 있습니다.
+왼쪽 상단의 **☰ 강의 목차**를 클릭하면 67개 슬라이드가 주제별로 표시되어 원하는 장으로 바로 이동할 수 있습니다. 목차 버튼을 다시 누르거나 **✕ 닫기**, 패널 바깥 클릭, **Esc** 키로 목차를 숨길 수 있습니다.
 
 ## 강의 슬라이드 안에서 직접 확인하는 Interactive Figure
 
@@ -150,16 +150,17 @@ vision_ai_lecture/
 
 ## Web Lecture
 
-정적 강의 사이트는 [Intro 1번](https://sh0427-han.github.io/vision_ai_lecture/)에서 바로 시작합니다. Intro 19장 → [통합 Vision AI 강의 50장](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html), 총 69장입니다. 기존 [AI Basics](docs/ai_basics.html) 및 [Vision AI](docs/vision_ai.html) 개별 슬라이드는 이전 직접 링크의 호환성을 위해 원본으로 유지합니다.
+정적 강의 사이트는 [Intro 1번](https://sh0427-han.github.io/vision_ai_lecture/)에서 바로 시작합니다. Intro 19장 → [통합 Vision AI 강의 48장](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html), 총 67장입니다. 기존 [AI Basics](docs/ai_basics.html) 및 [Vision AI](docs/vision_ai.html) 개별 슬라이드는 이전 직접 링크의 호환성을 위해 원본으로 유지합니다.
 
 디자인은 **흰색 배경, 한 화면 한 슬라이드, 최소한의 포인트 컬러**를 기본으로 합니다.
 
 
-### 실제 사진·계산 결과로 보는 핵심 슬라이드
+### CNN을 이해하기 위한 핵심 슬라이드
 
-기존 그림과 실제 연산의 차이가 보이도록, [Stride 22번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-22), [Padding 23번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-23), [Max Pooling 24번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-24), [전처리 39번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-39), [증강 40번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-40)에 같은 강아지 실사 사진의 실제 계산 결과를 연결했습니다. 모든 공개 슬라이드 제목은 간결한 개념형 제목으로 정리했습니다.
+- **[8번 · CNN을 왜 사용하는가](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-8)**: 지역 연결과 가중치 공유, 3×3 Kernel이 여러 위치에 재사용되는 이유
+- **[18~20번 · AND/XOR와 비선형성](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-18)**: AND의 선형 분리 가능성, XOR가 불가능한 이유, 선형 Layer 합성, ReLU 두 개로 만든 XOR 네 가지 계산
+- **[25번 · Stride](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-25)**: 같은 5×5 입력을 한 칸/두 칸씩 계산해 3×3과 2×2 출력 비교
+- **[26번 · Padding](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-26)**: Zero Padding 0·1에서 3×3 Kernel의 출력이 1×1과 3×3으로 바뀌는 숫자 예시
+- **[27번 · Max Pooling](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-27)**: 4×4 Feature Map의 네 영역별 최댓값으로 2×2를 만드는 실제 숫자 계산
 
-
-### 최신 초급자 CNN 학습 순서
-
-통합 강의의 8~10번에서 CNN의 전체 구조와 실제 Feature Map을 먼저 본 뒤, **11~14번에서 Kernel의 역할·공유·고정/학습 차이**를 배웁니다. 15~18번에서는 Weight·Neural Network·ReLU를 거쳐 Kernel 값이 학습으로 바뀌는 이유를 이해합니다. Mean·Gaussian·Sobel의 세부 계산 네 장은 본강의에서 제거하고 참고 그림으로 남겼습니다. **Intro 19장 + Vision AI 50장 = 총 69장**입니다.
+핵심 연산에는 <a href="https://cs231n.github.io/convolutional-networks/">Stanford CS231n</a> 개념을, XOR와 신경망 비선형성에는 <a href="https://www.deeplearningbook.org/contents/mlp.html">Goodfellow et al., Deep Learning Chapter 6</a>를 출처로 함께 제공합니다. 중복 제거한 YOLO 원본 SVG는 저장소에 남겨 두어 필요할 때만 참고할 수 있습니다.
