@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="590" viewBox="0 0 1440 590" role="img" aria-labelledby="title desc">
+<title id="title">YOLO 객체 검출 학습: 클래스 분류와 박스 위치를 함께 학습</title>
+<desc id="desc">사과 이미지와 클래스 및 Bounding Box 정답 라벨을 받아 특징을 추출한 뒤, 분류 Head에서는 사과인지 예측하고 위치 Head에서는 경계상자 좌표를 예측합니다. 두 예측의 오차가 학습 과정에서 가중치 수정에 사용됩니다.</desc>
+<defs>
+ <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0 L10 5 L0 10Z" fill="#588395"/></marker>
+ <linearGradient id="apple" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#fa9c83"/><stop offset="1" stop-color="#bb3446"/></linearGradient>
+ <style>text{font-family:'Noto Sans KR','Malgun Gothic',Arial,sans-serif;fill:#213e50} .h{font-size:29px;font-weight:800}.sub{font-size:18px;fill:#5b7382} .tag{font-size:17px;font-weight:750;fill:#447788}.step{font-size:25px;font-weight:800} .body{font-size:21px;font-weight:600}.small{font-size:17px;fill:#587384}.arrow{stroke:#588395;stroke-width:3.5;fill:none;marker-end:url(#arrow)}</style>
+</defs>
+<rect width="1440" height="590" fill="#fff"/>
+<text x="48" y="53" class="h">객체 검출 학습은 '무엇인가?'와 '어디에 있는가?'를 함께 배웁니다</text>
+<text x="48" y="89" class="sub">사진과 정답 Label을 이용해 클래스 예측과 위치 예측의 오차를 줄입니다.</text>
+<path d="M48 112 H1392" stroke="#d6e7eb" stroke-width="2"/>
+
+<rect x="48" y="154" width="290" height="294" rx="20" fill="#f4f8f8" stroke="#cbdfe4" stroke-width="2"/>
+<text x="69" y="188" class="tag">01 · 입력 이미지 + 정답</text>
+<rect x="84" y="207" width="214" height="163" rx="12" fill="#e6efec"/>
+<ellipse cx="192" cy="343" rx="74" ry="10" fill="#a5bfb7" opacity=".35"/>
+<path d="M190 248 C148 222 116 247 116 295 C114 339 147 357 185 348 C224 361 265 340 265 295 C265 246 236 226 190 248Z" fill="url(#apple)" stroke="#a93e4c" stroke-width="3"/>
+<path d="M188 249 Q190 226 202 215" stroke="#634632" stroke-width="6" stroke-linecap="round" fill="none"/>
+<path d="M200 234 Q225 202 247 219 Q222 234 200 234Z" fill="#6db184" stroke="#39845b" stroke-width="2"/>
+<rect x="105" y="228" width="177" height="133" fill="none" stroke="#e9ab42" stroke-width="4"/>
+<text x="74" y="398" class="small">정답 클래스: 사과</text>
+<text x="74" y="425" class="small">정답 위치: 사각형 좌표</text>
+
+<path class="arrow" d="M347 294 H413"/>
+<rect x="427" y="181" width="298" height="239" rx="20" fill="#eff6f8" stroke="#c8dfe6" stroke-width="2"/>
+<text x="454" y="221" class="tag">02 · YOLO 특징 학습</text>
+<g>
+<rect x="473" y="270" width="105" height="107" rx="6" fill="#b2d8d0" stroke="#719c9c" stroke-width="2"/>
+<rect x="489" y="253" width="105" height="107" rx="6" fill="#8dc8bd" stroke="#719c9c" stroke-width="2"/>
+<rect x="505" y="236" width="105" height="107" rx="6" fill="#d5eae5" stroke="#719c9c" stroke-width="2"/>
+<path d="M535 236 V343 M575 236 V343 M505 271 H610 M505 307 H610" fill="none" stroke="#9fc9c4" stroke-width="2"/>
+</g>
+<text x="626" y="293" text-anchor="middle" class="body" font-size="18">특징</text>
+<text x="626" y="318" text-anchor="middle" class="body" font-size="18">지도</text>
+<text x="576" y="395" text-anchor="middle" class="small">Backbone · Neck</text>
+
+<path class="arrow" d="M737 290 H786"/>
+<path d="M786 218 V363" stroke="#588395" stroke-width="3.5" fill="none"/>
+<path class="arrow" d="M786 218 H816"/>
+<path class="arrow" d="M786 363 H816"/>
+<rect x="828" y="163" width="545" height="140" rx="18" fill="#edf7f1" stroke="#b9dbc8" stroke-width="2"/>
+<text x="854" y="202" class="tag">03 · 클래스 분류 (Class)</text>
+<text x="854" y="239" class="step">무엇인가?</text>
+<text x="1053" y="239" class="body">예측: 사과</text>
+<text x="854" y="276" class="small">클래스 정답과 비교하여 분류 오차 계산</text>
+
+<rect x="828" y="320" width="545" height="139" rx="18" fill="#eff4f9" stroke="#c2d8e6" stroke-width="2"/>
+<text x="854" y="358" class="tag">04 · 위치 회귀 (Bounding Box)</text>
+<text x="854" y="396" class="step">어디에 있는가?</text>
+<rect x="1108" y="369" width="61" height="44" fill="none" stroke="#d9a343" stroke-width="3"/>
+<text x="1187" y="396" class="body">박스 좌표</text>
+<text x="854" y="438" class="small">정답 Box와 비교하여 위치 오차 계산</text>
+
+<rect x="48" y="493" width="1325" height="65" rx="16" fill="#f1f7f7" stroke="#d2e5e7" stroke-width="2"/>
+<text x="78" y="532" class="body">학습 과정</text>
+<text x="225" y="532" class="body">분류 오차 + 위치 오차 → Loss 계산 → 모델 가중치 수정</text>
+<text x="1071" y="534" class="small">※ 개념도 · 실제 추론값 아님</text>
+</svg>
