@@ -473,3 +473,16 @@ GitHub Pages:
 - `docs/cnn_kernel_foundations.css`는 선택형 고정 필터 참고 패널에만 적용되며 공통 CSS/JS는 수정하지 않습니다. 제목/목차/수치/이미지 경로 검증과 GitHub Actions/Pages 확인 필수입니다.
 
 - 추가로 **12번**에는 `docs/assets/lesson/cnn_kernel_role_beginner_ko.svg`를 사용하여 CS231n 실제 강아지 입력 사진의 작은 영역 → 3×3 Kernel → 위치별 특징 반응을 보여줍니다. **오른쪽 반응 지도는 학습 CNN 실측값이 아닌 설명용 도식**이고, 기존 수치 계산 Figure는 펼침 참고로 남깁니다.
+
+
+## 2026-10-16 · CNN 사용 목적 / AND·XOR 비선형성 / Stride·Padding·Max Pooling (최신)
+
+- **현재 공개 강의:** Intro **19장** → Vision AI 중심 통합 강의 **48장** = **67장**. 기존 통합 강의의 중복 YOLO 26~30번 다섯 장을 삭제합니다. 관련 Figure 자산은 보존하지만 본문에서는 참조하지 않습니다.
+- 과제별 분류·검출·분할은 앞의 Vision Task에서 이미 설명하므로 YOLO 특정 모델의 분류·검출·분할을 반복하지 않습니다. 단, YOLO 소개를 차용했던 기존 14번 '고정 필터와 학습 Kernel'은 YOLO 용어와 Figure를 제거하고 **일반 CNN의 고정 필터 vs 학습 Kernel** 비교로 보존합니다.
+- **CNN을 왜 사용하는지**는 신규 8번에서 먼저 설명합니다. 5×7 입력에 같은 2×2 모양이 서로 다른 위치에 등장하면, 3×3 Kernel의 **동일 가중치 9개**를 모든 위치에 공유하여 두 위치 모두 Feature 반응 4를 검출합니다. 이 도식은 설명용 고정 가중치 수치 계산이며 학습된 모델 실측값은 아닙니다.
+- **AND/XOR와 비선형성**은 신규 18번에서 AND를 한 직선 x₁+x₂=1.5로 분리 가능하지만 XOR는 한 직선으로 분리할 수 없음을 4점으로 비교합니다. 19번에서 정확한 0/1 XOR 계산 `ReLU(x₁-x₂)+ReLU(x₂-x₁)`의 진리표를 보여주고, 신규 20번에서 `W₂(W₁x+b₁)+b₂=(W₂W₁)x+(W₂b₁+b₂)`로 **중간 비선형성이 없는 여러 Affine Layer는 하나의 Affine Layer와 동등**함을 보여 줍니다. 최종 Threshold가 있어도 결정 경계는 한 직선/초평면이고 XOR를 분리하지 못합니다.
+- **Stride 25번:** 고정된 3×3 평균 필터로 5×5 입력(1~25)을 계산합니다. Stride 1 → 3×3 값 [7,8,9;12,13,14;17,18,19], Stride 2 → 2×2 [7,9;17,19]를 실제 숫자로 보여주며 목적은 연산량과 공간 해상도 감소임을 설명합니다.
+- **Padding 26번:** 3×3 입력(1~9) + 3×3 모두 1인 합계 Kernel의 Padding 0 → 1×1 [45], Zero Padding 1 → 3×3 [12,21,16;27,45,33;24,39,28]을 보여 줍니다. 경계에서 계산할 수 있고 입력의 공간 크기를 유지할 수 있으나, 새 이미지 의미를 복원하지 않는다고 명시합니다.
+- **Max Pooling 27번:** Feature Map의 2×2 영역별 최댓값만 유지합니다. 예시 4×4 입력 [1,3,2,4;5,8,7,6;2,1,9,0;3,4,5,6] → 2×2 [8,7;4,9]로 75% 공간 위치를 버리며 채널 수는 유지합니다. 학습 Parameter가 없고 작은 신호가 소실될 수 있다고 설명합니다.
+- 공식 이론 참고: [Stanford CS231n Convolutional Networks](https://cs231n.github.io/convolutional-networks/), [Goodfellow et al., Deep Learning, Ch.6](https://www.deeplearningbook.org/contents/mlp.html).
+- 업데이트 파일: `docs/vision_ai_course.html`, `docs/cnn_reasoning_visual.css`, `docs/lecture_outline.js`, `docs/intro.html`(목차 cache key), 학습 경로/정적·브라우저 검증/README. **67장 × 2 viewport = 134장 실제 렌더 QA**와 누락 이미지, 계산 숫자 일치, 목차 전체 링크 및 배포를 확인합니다.
