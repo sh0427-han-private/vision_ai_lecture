@@ -414,3 +414,11 @@ GitHub Pages:
 - **51번 판단 근거**: jacobgil/pytorch-grad-cam 공개 Classification 예제의 원본 고양이·개 사진과 Dog/Cat 클래스별 Grad-CAM 열지도를 사용합니다. 다른 클래스를 설명할 때 강조 영역이 달라지는 것으로 설명하고, 높은 Confidence와 정답/해석의 신뢰성을 동일시하지 않습니다.
 - 모든 슬라이드의 제목·부제·핵심 문장은 한국어 중심이며, 외부 원본 링크는 출처를 표기합니다. 외부 로드 실패 시 원래 저장소의 로컬 Figure로 대체합니다.
 - 전용 CSS `docs/research_original_figures.css?v=20261016-1`는 `docs/vision_ai_course.html`만 적용됩니다. 공용 CSS/JS는 수정하지 않으며 16번 얼룩말 구조, 31번 YOLO 학습 도식 및 기존 목차·전체 슬라이드 72장을 유지합니다.
+
+
+## 2026-10-16 · CNN 특징 계층 3단계 수정 (최신)
+
+- Vision AI 통합 강의 **25번**은 기존 연구용 추상 이미지만 비교하는 2패널 설명에서 **얕은층 / 중간층 / 깊은층** 3단계 구성으로 변경합니다. 원본 사과 사진 하나가 출발점임을 크게 표시하며, 모든 단계의 설명은 한국어가 원칙입니다.
+- 사용 파일: `docs/assets/lesson/cnn_three_stage_apple_ko.svg`; 기존 사과 사진 재사용 및 자체 도형/경계 강조 예시를 조합한 **개념 설명 Figure**입니다. 실제 CNN 실험 결과처럼 설명하지 않습니다.
+- Stanford CS231n과 Distill (2017) 논문을 이론 출처로 표기합니다. 기존 논문 원본 Figure를 그냥 나열하는 대신 학습 목표를 먼저 파악할 수 있는 구조로 사용합니다.
+- 기존 10번 OpenCV Filtering, 11번 Sobel, 16번 얼룩말 CNN, 31번 YOLO 학습, 51번 Grad-CAM은 변경하지 않으며 **Intro 19장 + 통합 53장 = 총 72장**을 유지합니다.
