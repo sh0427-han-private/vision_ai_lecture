@@ -134,3 +134,8 @@
   .lesson-deck .ppt-replaced.slide { padding: 8px; }
   .lesson-deck .ppt-replaced .ppt-slide-inner { width: 100%; }
 }
+
+/* Visible source citation for paper- and documentation-based CNN/YOLO diagrams. */
+.lesson-deck .lesson-source{margin:7px 0 0;font-size:clamp(12px,1.1vw,15px);color:#617f8b;line-height:1.35}
+.lesson-deck .lesson-source a{color:#346e83;text-decoration:underline;text-underline-offset:2px}
+@media(max-height:850px){.lesson-deck .lesson-source{margin-top:4px;font-size:12px}}
