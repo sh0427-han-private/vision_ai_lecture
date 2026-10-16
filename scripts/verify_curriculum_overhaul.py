@@ -163,9 +163,9 @@ assert [(it["page"], it["slide"]) for it in items[19:]] == [
 ]
 assert [it["original"] for it in items[19:24]] == ["V2","V3","V4","V5","V6"]
 assert [it["title"] for it in items[:3]] == [
-    "AI는 세상을 어떻게 볼까?",
-    "사람은 눈으로 주변 세상의 많은 정보를 파악합니다",
-    "그래서 Vision은 일상과 기술 모두에서 중요합니다",
+    "AI와 시각의 출발점",
+    "사람의 시각 · 장면 이해",
+    "일상 속 Vision 기술",
 ]
 assert items[19+15]["original"] == "N1", "CNN full architecture overview"
 assert [it["original"] for it in items[19+27:19+33]] == [
