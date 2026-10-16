@@ -126,7 +126,7 @@ assert "yolo_class_box_training_ko.svg" in course_page
 assert "cnn_squeezenet_actual_feature_maps.png" in course_page
 assert (DOCS / "assets/lesson/cnn_squeezenet_actual_feature_maps.png").is_file()
 assert (DOCS.parent / "scripts/render_cnn_feature_maps.py").is_file()
-assert "YOLO 객체 검출은 종류와 위치를 함께 학습합니다" in course_page
+assert "YOLO 검출 학습 · 종류와 위치" in course_page
 assert (DOCS / "assets/lesson/yolo_class_box_training_ko.svg").is_file()
 assert "https://docs.ultralytics.com/ko/guides/yolo-architecture" in course_page
 assert "https://openaccess.thecvf.com/content_cvpr_2016/" in course_page
