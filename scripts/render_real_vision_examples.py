@@ -5,7 +5,7 @@ using NumPy/Pillow, not generated as an imaginary trained model output.
 """
 from pathlib import Path
 import numpy as np
-from PIL import Image, ImageDraw, ImageFont, ImageEnhance
+from PIL import Image, ImageDraw, ImageFont, ImageEnhance, ImageFilter
 
 ROOT = Path(__file__).resolve().parents[1]
 DIR = ROOT / "docs/assets/lesson"
@@ -146,3 +146,42 @@ panel("Data Augmentation · 같은 대상의 여러 학습 조건",
     "객체 종류는 유지하되, Bounding Box·Mask는 공간 변환에 맞게 수정해야 합니다.",
     "※ Pillow로 실제 변형 · 현장에 없는 과도한 증강 금지 · 개념 비교용, 모델 추론 아님",
     "cnn_real_augment_dog.png")
+
+
+# 6. Same real photo + deterministic salt-pepper corruption -> compare
+# a mean box filter, Gaussian blur and Median filter on IDENTICAL input.
+rng=np.random.default_rng(20261016)
+noisy=np.array(dog224).copy()
+mask=rng.random((224,224))
+noisy[mask<0.025]=0
+noisy[(mask>=0.025)&(mask<0.05)]=255
+noisy_im=Image.fromarray(noisy,"RGB")
+mean_im=noisy_im.filter(ImageFilter.BoxBlur(2)) # 5×5 box mean.
+gaussian_im=noisy_im.filter(ImageFilter.GaussianBlur(radius=2))
+median_im=noisy_im.filter(ImageFilter.MedianFilter(size=5))
+panel("Mean · Gaussian · Median · 같은 입력 비교",
+    "한 장의 실사 사진에 동일한 점 잡음을 넣고 세 필터를 실제로 적용",
+    [("잡음 입력",noisy_im,"Salt-and-Pepper 5%"),
+     ("Mean 5×5",mean_im,"주변 Pixel의 산술 평균"),
+     ("Gaussian",gaussian_im,"거리 가중치가 있는 Blur"),
+     ("Median 5×5",median_im,"이웃 밝기 중앙값")],
+    "같은 점 잡음 입력에서 Median은 극단적인 점을 제거하는 데 유리합니다.",
+    "※ 동일 잡음 입력 · 직접 계산 · BoxBlur 반경 2 · Gaussian 반경 2 · Median 크기 5",
+    "cnn_real_filter_compare_dog.png")
+
+# 7. Actual horizontal and vertical Sobel of the SAME grayscale dog image.
+kernel_y=np.array([[-1.,-2.,-1.],[0.,0.,0.],[1.,2.,1.]],dtype=np.float32)
+view=np.lib.stride_tricks.sliding_window_view(gray,(3,3))
+gx=sobel(gray,0,1)
+gy=np.einsum("ijkl,kl->ij",view,kernel_y).astype("float32")
+strength=np.hypot(gx,gy)
+assert gx.shape==gy.shape==strength.shape==(222,222)
+panel("Sobel · 사진에서 밝기 변화가 큰 위치",
+    "동일한 Grayscale 강아지 영상에 3×3 Sobel X·Y Kernel을 적용한 실제 결과",
+    [("입력 사진",dog224,"224 × 224 RGB"),
+     ("가로 방향 변화",edge_image(gx),"Gx · 좌우 밝기 변화"),
+     ("세로 방향 변화",edge_image(gy),"Gy · 위아래 밝기 변화"),
+     ("경계 강도",edge_image(strength),"sqrt(Gx² + Gy²)")],
+    "좌우·위아래 밝기 변화량이 큰 위치가 경계 후보로 강조됩니다.",
+    "※ 같은 사진·동일 3×3 Sobel 실제 계산 · 출력 222×222 · 고정 필터, 학습 CNN 아님",
+    "cnn_real_sobel_dog.png")
