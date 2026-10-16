@@ -1,4 +1,4 @@
-/* Public course: Intro 19 + integrated CNN fundamentals 48 = 67 slides. */
+/* Public course: Intro 19 + integrated CNN fundamentals 48 totals 67 slides. */
 window.LECTURE_OUTLINE = {
   "version": "20261016-cnn-reasons-xor-spatial-48",
   "groups": [
