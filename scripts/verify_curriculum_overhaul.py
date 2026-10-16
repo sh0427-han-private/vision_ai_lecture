@@ -73,14 +73,14 @@ assert 'data-prev-page="ai_basics.html"' in (DOCS / "vision_ai.html").read_text(
 assert 'data-next-page=""' in (DOCS / "vision_ai.html").read_text("utf-8")
 print("Landing redirects and single-track controls validated.")
 
-# Public Vision AI core: only relevant AI foundations, detailed CNN components.
-# Reference ai_basics.html and vision_ai.html retain the archived original material.
+# Public learning path keeps the CNN essentials and teaches a practical YOLO workflow.
+# Original ai_basics / vision_ai files are retained for optional deep study.
 course_page = (DOCS / "vision_ai_course.html").read_text("utf-8")
 course_slides = re.findall(
     r'<section class="slide(?: [^"]+)?"[^>]*>.*?</section>',
     course_page, flags=re.DOTALL
 )
-assert len(course_slides) == 58, "Published Vision AI course is 58 slides"
+assert len(course_slides) == 52, "Public Vision AI course must contain 52 slides"
 assert course_page.count('class="slide active"') == 1
 sources = [
     (deck, int(index))
@@ -88,30 +88,42 @@ sources = [
         r'data-source-deck="([^"]+)" data-source-slide="(\d+)"', course_page
     )
 ]
-assert len(sources) == 58 and len(set(sources)) == 58
+assert len(sources) == 52 and len(set(sources)) == 52
 assert sources[:5] == [("vision_ai", n) for n in range(2, 7)]
-assert sources[5:8] == [("ai_basics", n) for n in (2, 3, 4)]
-assert sources[8:13] == [("vision_ai", n) for n in (9, 10, 14, 16, 17)]
-assert sources[16:18] == [("cnn_expansion", 1), ("cnn_expansion", 2)]
-assert sources[32:37] == [("cnn_expansion", n) for n in range(4, 9)]
-assert sources[54] == ("vision_ai", 7), "IoU belongs to the evaluation section"
+assert sources[5:7] == [("ai_basics", 2), ("ai_basics", 3)]
+assert sources[7:12] == [("vision_ai", n) for n in (9,10,14,16,17)]
+assert sources[15:17] == [("cnn_expansion", 1), ("cnn_expansion", 2)]
+assert sources[26:31] == [("yolo_intro", n) for n in range(1, 6)]
+assert sources[48] == ("vision_ai", 7), "IoU belongs in evaluation"
 assert sources[-1] == ("ai_basics", 44)
-assert [i for d,i in sources if d=="cnn_expansion"] == list(range(1, 9))
-assert ("vision_ai", 8) not in sources, "Detailed IoU arithmetic must stay removed"
-assert ("ai_basics", 27) not in sources, "Chain Rule is beyond entry-level Vision AI"
-assert ("ai_basics", 37) not in sources, "K-fold is outside the introductory core"
-for n in range(1, 9):
-    file = DOCS / f"assets/lesson/cnn_foundations_n{n}.svg"
-    assert file.is_file(), file
-    root = ET.parse(file).getroot()
+assert sorted(i for d,i in sources if d=="cnn_expansion") == [1,2]
+assert not any(d=="cnn_expansion" and i>=3 for d,i in sources), (
+    "ResNet, U-Net and niche architecture sections must not appear in public lecture"
+)
+assert ("vision_ai", 8) not in sources
+assert ("vision_ai", 27) not in sources, "Detailed output-size math no longer needed"
+assert ("ai_basics", 27) not in sources
+assets = [
+    "cnn_foundations_n1.svg",
+    "yolo_learned_filters.svg",
+    "yolo_backbone_neck_head.svg",
+    "yolo_detection_example.svg",
+    "yolo_three_tasks.svg",
+    "yolo_workflow.svg",
+]
+for asset in assets:
+    figure = DOCS / "assets/lesson" / asset
+    assert figure.is_file(), figure
+    root = ET.parse(figure).getroot()
     assert root.get("viewBox") == "0 0 1200 500"
-    assert f"cnn_foundations_n{n}.svg?v=cnn-focus-20261016-1" in course_slides[
-        sources.index(("cnn_expansion", n))
-    ]
-# Architecture relationships and numeric examples must remain correct.
-assert 224 // 2 == 112 and 112 // 2 == 56
-assert 3 * 3 * 32 * 64 == 18432
-assert 3 * 3 * 32 + 32 * 64 == 2336
+    assert asset in course_page, asset
+assert "CNN Explainer (Wang et al., IEEE TVCG 2020)" in course_page
+assert "https://docs.ultralytics.com/ko/guides/yolo-architecture" in course_page
+assert "https://openaccess.thecvf.com/content_cvpr_2016/" in course_page
+assert "하나의 Detect Weight가 자동으로 Segment Mask를 주지는 않습니다." in course_page
+assert "실제 YOLO 모델로 계산한 검출 결과는 아닙니다." in (
+    DOCS / "assets/lesson/yolo_detection_example.svg"
+).read_text("utf-8")
 assert 'data-prev-page="intro.html"' in course_page
 assert 'data-next-page=""' in course_page
 assert 'slide.js?v=prevent-toc-wheel-20261016-1' in course_page
@@ -131,28 +143,28 @@ for url in re.findall(r'(?:src|href)="([^"]+)"', course_page):
 outline_source = (DOCS / "lecture_outline.js").read_text("utf-8")
 outline = json.loads(outline_source.split(" = ", 1)[1].strip().rstrip(";"))
 items = [item for group in outline["groups"] for item in group["items"]]
-assert len(items) == 77
-assert [item["global"] for item in items] == list(range(1, 78))
-assert [(item["page"], item["slide"]) for item in items[:19]] == [
-    ("intro.html", n) for n in range(1, 20)
+assert len(items) == 71
+assert [it["global"] for it in items] == list(range(1, 72))
+assert [(it["page"], it["slide"]) for it in items[:19]] == [
+    ("intro.html", n) for n in range(1,20)
 ]
-assert [(item["page"], item["slide"]) for item in items[19:]] == [
-    ("vision_ai_course.html", n) for n in range(1, 59)
+assert [(it["page"], it["slide"]) for it in items[19:]] == [
+    ("vision_ai_course.html", n) for n in range(1,53)
 ]
-assert [item["original"] for item in items[19:24]] == [
-    f"V{i}" for i in range(2, 7)
-]
-assert [item["title"] for item in items[:3]] == [
+assert [it["original"] for it in items[19:24]] == ["V2","V3","V4","V5","V6"]
+assert [it["title"] for it in items[:3]] == [
     "AI는 세상을 어떻게 볼까?",
     "사람은 눈으로 주변 세상의 많은 정보를 파악합니다",
     "그래서 Vision은 일상과 기술 모두에서 중요합니다",
 ]
-assert items[19 + 16]["original"] == "N1", "CNN overview opens structural lesson"
-assert items[19 + 54]["original"] == "V7", "IoU concept in evaluation"
-assert len(outline["groups"]) == 11, "Intro plus ten coherent core sections"
-assert len(outline["groups"]) >= 8
+assert items[19+15]["original"] == "N1", "CNN full architecture overview"
+assert [it["original"] for it in items[19+26:19+31]] == [
+    "Y1","Y2","Y3","Y4","Y5"
+]
+assert items[19+48]["original"] == "V7", "IoU evaluation"
+assert len(outline["groups"]) == 11
 assert "lecture-toc-drawer" in (DOCS / "lecture_sidebar.js").read_text("utf-8")
-print("Vision-focused 58 slides and 77-item CNN-centered sidebar validated.")
+print("Vision-first 52 slides and 71-item YOLO-centered sidebar validated.")
 
 
 figures = sorted((DOCS / "assets/lesson").glob("lecture_*.svg"))
