@@ -156,7 +156,7 @@ for url in re.findall(r'(?:src|href)="([^"]+)"', course_page):
         assert (DOCS / target).is_file(), target
 
 outline_source = (DOCS / "lecture_outline.js").read_text("utf-8")
-outline = json.loads(outline_source.split(" = ",1)[1].strip().rstrip(";"))
+outline = json.loads(outline_source.split("window.LECTURE_OUTLINE = ",1)[1].strip().rstrip(";"))
 items = [item for group in outline["groups"] for item in group["items"]]
 assert len(items) == 67
 assert [it["global"] for it in items] == list(range(1,68))
