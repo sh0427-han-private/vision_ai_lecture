@@ -157,7 +157,7 @@ vision_ai_lecture/
 
 ### 실제 사진·계산 결과로 보는 핵심 슬라이드
 
-기존 그림과 실제 연산의 차이가 보이도록, [Stride 22번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-22), [Padding 23번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-23), [Max Pooling 24번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-24), [전처리 43번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-43), [증강 44번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-44)에 같은 강아지 실사 사진의 실제 계산 결과를 연결했습니다. 모든 공개 슬라이드 제목은 간결한 개념형 제목으로 정리했습니다.
+기존 그림과 실제 연산의 차이가 보이도록, [Stride 22번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-22), [Padding 23번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-23), [Max Pooling 24번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-24), [전처리 39번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-39), [증강 40번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-40)에 같은 강아지 실사 사진의 실제 계산 결과를 연결했습니다. 모든 공개 슬라이드 제목은 간결한 개념형 제목으로 정리했습니다.
 
 
 ### 최신 초급자 CNN 학습 순서
