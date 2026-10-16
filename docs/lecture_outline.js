@@ -1,6 +1,6 @@
 /* Public lecture: 19 Intro plus 52 Vision AI and YOLO slides (71 total). */
 window.LECTURE_OUTLINE = {
-  "version": "20261016-vision-cnn-to-yolo-52",
+  "version": "20261016-sourced-cnn-yolo-figures-52",
   "groups": [
     {
       "name": "Intro · 시각의 중요성에서 숫자까지",
@@ -253,7 +253,7 @@ window.LECTURE_OUTLINE = {
           "page": "vision_ai_course.html",
           "slide": 16,
           "global": 35,
-          "title": "CNN 전체 구조: 이미지에서 판단 결과까지",
+          "title": "CNN의 기본 구조는 특징 추출 → 출력 → 학습입니다",
           "original": "N1"
         },
         {
@@ -342,7 +342,7 @@ window.LECTURE_OUTLINE = {
           "page": "vision_ai_course.html",
           "slide": 28,
           "global": 47,
-          "title": "YOLO는 Backbone → Neck → Head로 특징을 결과로 바꿉니다",
+          "title": "YOLO는 Backbone → Neck → Head로 검출합니다",
           "original": "Y2"
         },
         {
