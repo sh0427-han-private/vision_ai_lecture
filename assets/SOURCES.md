@@ -400,3 +400,17 @@ https://www.nature.com/articles/s42256-020-00257-z
 - **직접 제작한 강의용 그림**입니다. Dragon1의 원본 이미지를 복제한 것이 아니라 입력 사과, Kernel/Feature Map, ReLU 변환, Pooling, Dense, 클래스 출력을 같은 순서로 다시 시각화했습니다.
 - ReLU 예시에서는 음수를 0으로 변환하고 양수를 유지합니다. Max Pooling 예시는 `[[1,4],[3,7]] → 7`, 전체 출력 `[[7,6],[8,9]]`; 분류 점수 `92% + 5% + 3% = 100%`는 **임의의 교육용 값**이며 실제 모델 추론 결과가 아닙니다.
 - 원문 Yamashita et al. Figure는 과거 강의 버전의 기록으로 보존하지만, 현재 16번 슬라이드는 **오직 로컬 SVG**만 로드합니다. Flatten / FC는 대표적인 분류 CNN의 예시이며 YOLO 검출 Head를 뜻하지 않습니다.
+
+
+## 2026-10-16 · Vision CNN 16번 스타일 확장: 29개 로컬 교육용 Figure
+
+- 경로: `docs/assets/lesson/vision_refined_6.svg`, `vision_refined_7.svg`, `vision_refined_14.svg`, `vision_refined_17.svg`~`vision_refined_26.svg`, `vision_refined_28.svg`, `vision_refined_33.svg`~`vision_refined_37.svg`, `vision_refined_39.svg`, `vision_refined_40.svg`, `vision_refined_44.svg`~`vision_refined_49.svg`, `vision_refined_51.svg`, `vision_refined_52.svg`.
+- 제작: 기존 16번의 단계별 예시와 전문 강의 Figure 스타일을 참고하여 **전부 독립적으로 제작한 로컬 SVG**. 구성은 용어·구체 입력·실제 연산 원리·결과의 명확한 대응입니다.
+- 이 그림들의 사과 이미지는 자체 벡터 교육용 일러스트이고, Pixel 값, Activation, YOLO 추론 결과를 측정한 데이터가 아닙니다. 실제 원본 사과 사진과 Label의 대응이 중요한 기존 Task/YOLO 자료는 덮어쓰지 않았습니다.
+- 기초 CNN 개념: Stanford CS231n https://cs231n.github.io/convolutional-networks/ ; PyTorch Conv2d/BatchNorm2d https://pytorch.org/docs/stable/generated/torch.nn.Conv2d.html , https://pytorch.org/docs/stable/generated/torch.nn.BatchNorm2d.html .
+- YOLO Backbone/Neck/Head 구조: Ultralytics https://docs.ultralytics.com/guides/yolo-architecture/ ; 원 논문 Redmon et al. (CVPR 2016) https://openaccess.thecvf.com/content_cvpr_2016/html/Redmon_You_Only_Look_CVPR_2016_paper.html .
+- Train/Loss: PyTorch 공식 https://pytorch.org/tutorials/beginner/basics/autogradqs_tutorial.html , https://pytorch.org/docs/stable/generated/torch.nn.MSELoss.html .
+- 데이터 분리·Group: scikit-learn https://scikit-learn.org/stable/modules/cross_validation.html , https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GroupShuffleSplit.html .
+- Transfer: PyTorch https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html .
+- Precision/Recall/Confusion/IoU: scikit-learn https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_recall_fscore_support.html , Ultralytics https://docs.ultralytics.com/guides/yolo-performance-metrics/ .
+- 개별 슬라이드 하단에 해당 Figure가 참고한 공식 문서 링크를 함께 배치하였습니다.
