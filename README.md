@@ -150,7 +150,7 @@ vision_ai_lecture/
 
 ## Web Lecture
 
-정적 강의 사이트는 [Intro 1번](https://sh0427-han.github.io/vision_ai_lecture/)에서 바로 시작합니다. Intro 19장 → [통합 Vision AI 강의 50장](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html), 총 67장입니다. 기존 [AI Basics](docs/ai_basics.html) 및 [Vision AI](docs/vision_ai.html) 개별 슬라이드는 이전 직접 링크의 호환성을 위해 원본으로 유지합니다.
+정적 강의 사이트는 [Intro 1번](https://sh0427-han.github.io/vision_ai_lecture/)에서 바로 시작합니다. Intro 19장 → [통합 Vision AI 강의 48장](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html), 총 67장입니다. 기존 [AI Basics](docs/ai_basics.html) 및 [Vision AI](docs/vision_ai.html) 개별 슬라이드는 이전 직접 링크의 호환성을 위해 원본으로 유지합니다.
 
 디자인은 **흰색 배경, 한 화면 한 슬라이드, 최소한의 포인트 컬러**를 기본으로 합니다.
 
