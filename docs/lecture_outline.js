@@ -8,7 +8,7 @@ window.LECTURE_OUTLINE = {
         {
           "page": "intro.html",
           "slide": 1,
-          "title": "AI는 세상을 어떻게 볼까?",
+          "title": "AI와 시각의 출발점",
           "global": 1
         },
         {
