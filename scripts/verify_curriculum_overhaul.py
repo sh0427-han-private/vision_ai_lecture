@@ -441,7 +441,7 @@ assert "intro_inverse_2d_3d_ambiguity.svg?v=what-where-20261015-1" in intro_slid
 assert "intro_vision_foundations.css?v=rgb-total-20261016-1" in intro_page
 assert "intro_vision_story.css?v=20261016-1" in intro_page
 assert (DOCS / "intro_vision_story.css").is_file()
-assert "640 × 960 × 3" in intro_slides[9], "RGB H × W × C definition changed"
+assert "640 × 960 × <span>3</span> = <strong>1,843,200</strong>" in intro_slides[9], "RGB numeric array count changed"
 assert "720 × 1280 × 3" in intro_slides[10], "resolution H × W × C changed"
 assert 'data-resolution-source="assets/generated/apple_studio.webp"' in intro_slides[11]
 for p, w, h in ((360, 640, 360), (720, 1280, 720), (1080, 1920, 1080)):
