@@ -11,7 +11,7 @@
 <script src="slide.js?v=prevent-toc-wheel-20261016-1" defer></script>
 <script src="interactive_lessons.js?v=20261015-1" defer></script>
 <link rel="stylesheet" href="lecture_sidebar.css?v=20261015-1">
-<script src="lecture_outline.js?v=original-figures-20261016-1" defer></script>
+<script src="lecture_outline.js?v=cnn-three-stage-20261016-1" defer></script>
 <script src="lecture_sidebar.js?v=20261015-1" defer></script>
 </head><body class="deck-page lesson-deck" data-prev-page="intro.html" data-next-page="">
 <header class="site-header"><nav class="nav"><a class="brand" href="intro.html#slide-1">Vision AI Lecture</a></nav></header>
@@ -198,25 +198,13 @@
 <figure class="lesson-figure"><a href="assets/lesson/downsampling_basic.svg?v=professional-20261006-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/downsampling_basic.svg?v=professional-20261006-2" alt="공간 해상도를 줄여 더 작은 특징 지도를 만듭니다"></a></figure>
 <p class="lesson-takeaway">8×8 → 4×4는 위치 수가 64개에서 16개로 줄어듭니다. 작은 결함이나 경계의 위치 정보가 일부 사라질 수 있습니다.</p></div></section>
 <section class="slide" data-topic="특징의 조합" data-level="basic" data-source-deck="vision_ai" data-source-slide="28" data-outline-unit="CNN · 이미지에서 특징을 찾는 원리">
-<div class="slide-inner research-pilot"><div class="lesson-meta"><span>25 · 특징의 조합</span>
-<span class="lesson-level">핵심 개념</span></div>
-<h2 class="slide-title">Layer는 앞의 특징을 조합해 더 복잡한 표현을 만듭니다</h2>
-<p class="slide-subtitle">연구자가 실제 학습된 CNN의 내부 반응을 조사한 결과입니다. 왼쪽은 특징을 강조하도록 만든 합성 이미지, 오른쪽은 그 특징에 반응한 실제 사진들입니다.</p>
-<figure class="lesson-figure research-gallery research-distill" aria-label="Distill 원본 GoogLeNet 중간층과 깊은층 시각화와 실제 데이터셋에서 반응한 이미지 사례">
-<div class="research-feature">
-<div class="research-feature-head"><strong>중간 층 (mixed4a)</strong><span>굽은 선·반복 무늬</span></div>
-<div class="research-feature-pair"><a href="https://distill.pub/2017/feature-visualization/images/diversity/mixed4a_97_optimized.png" target="_blank" rel="noopener"><img src="https://distill.pub/2017/feature-visualization/images/diversity/mixed4a_97_optimized.png" alt="Distill 원본 GoogLeNet mixed4a Unit 97의 최적화 특징 시각화: 굽고 반복되는 추상 패턴" loading="lazy" onerror="this.onerror=null;this.src='assets/lesson/lesson_cnn_feature_hierarchy.svg?v=solid-arrows-20261015-2';this.alt='원본 이미지 로드 실패로 표시된 기존 로컬 도식';"></a>
-<a href="https://distill.pub/2017/feature-visualization/images/diversity/mixed4a_97_examples.jpg" target="_blank" rel="noopener"><img src="https://distill.pub/2017/feature-visualization/images/diversity/mixed4a_97_examples.jpg" alt="Distill 원본 mixed4a Unit 97에 반응한 실제 데이터셋 사례: 새, 굽은 물체, 질감 등의 사진 모음" loading="lazy" onerror="this.onerror=null;this.src='assets/lesson/lesson_cnn_feature_hierarchy.svg?v=solid-arrows-20261015-2';this.alt='원본 이미지 로드 실패로 표시된 기존 로컬 도식';"></a></div>
-<span class="research-pair-caption">학습된 특징을 강조한 합성 그림 <span>↔</span> 실제 반응 이미지</span>
-</div>
-<div class="research-feature">
-<div class="research-feature-head"><strong>더 깊은 층 (mixed5a)</strong><span>공과 닮은 복합 무늬</span></div>
-<div class="research-feature-pair"><a href="https://distill.pub/2017/feature-visualization/images/diversity/mixed5a_9_optimized.png" target="_blank" rel="noopener"><img src="https://distill.pub/2017/feature-visualization/images/diversity/mixed5a_9_optimized.png" alt="Distill 원본 GoogLeNet mixed5a Unit 9의 최적화 특징 시각화: 여러 종류의 공 형태가 섞인 패턴" loading="lazy" onerror="this.onerror=null;this.src='assets/lesson/lesson_cnn_feature_hierarchy.svg?v=solid-arrows-20261015-2';this.alt='원본 이미지 로드 실패로 표시된 기존 로컬 도식';"></a>
-<a href="https://distill.pub/2017/feature-visualization/images/diversity/mixed5a_9_examples.jpg" target="_blank" rel="noopener"><img src="https://distill.pub/2017/feature-visualization/images/diversity/mixed5a_9_examples.jpg" alt="Distill 원본 mixed5a Unit 9에 반응한 실제 데이터셋 사례: 축구공 야구공 테니스공 등 다양한 공 사진" loading="lazy" onerror="this.onerror=null;this.src='assets/lesson/lesson_cnn_feature_hierarchy.svg?v=solid-arrows-20261015-2';this.alt='원본 이미지 로드 실패로 표시된 기존 로컬 도식';"></a></div>
-<span class="research-pair-caption">특징 활성화 합성 그림 <span>↔</span> 실제 반응 이미지</span>
-</div>
-</figure>
-<p class="lesson-takeaway">깊어질수록 작은 무늬가 조합되어 더 복합적인 대상에 반응할 수 있습니다. 다만 모든 뉴런이 사람에게 이해되는 하나의 의미를 가진다는 뜻은 아닙니다.</p><p class="lesson-source">Olah, Mordvintsev &amp; Schubert, <a href="https://distill.pub/2017/feature-visualization/" target="_blank" rel="noopener">Feature Visualization, Distill (2017)</a> · 실제 GoogLeNet <a href="https://distill.pub/2017/feature-visualization/appendix/" target="_blank" rel="noopener">Layer 자료</a> (mixed4a Unit 97, mixed5a Unit 9) · 합성 시각화는 사진에 직접 적용된 Feature Map이 아닙니다.</p></div></section>
+<div class="slide-inner"><div class="lesson-meta"><span>25 · 특징의 조합</span><span class="lesson-level">핵심 개념</span></div>
+<h2 class="slide-title">CNN은 얕은층에서 깊은층으로 더 복잡한 특징을 학습합니다</h2>
+<p class="slide-subtitle">같은 사과를 보더라도 <strong>얕은층은 경계·밝기 변화</strong>에, <strong>중간층은 곡선·질감·부분 형태</strong>에, <strong>깊은층은 이들을 조합한 복합 특징</strong>에 반응할 수 있습니다.</p>
+<figure class="lesson-figure"><a href="assets/lesson/cnn_three_stage_apple_ko.svg?v=cnn-3stage-20261016-1" target="_blank" rel="noopener" title="CNN 얕은층·중간층·깊은층 개념도 확대"><img src="assets/lesson/cnn_three_stage_apple_ko.svg?v=cnn-3stage-20261016-1" alt="같은 사과 이미지에서 CNN의 얕은층은 경계, 중간층은 곡선·질감·부분 특징, 깊은층은 형태 및 부분 특징의 조합을 활용할 수 있음을 표현한 한글 3단계 개념도. 실제 모델의 Feature Map 측정 결과는 아님"></a></figure>
+<p class="lesson-takeaway"><strong>깊은층이 사과 사진 전체를 그대로 보는 것은 아닙니다.</strong> 앞에서 찾은 단순한 시각적 특징을 조합해 객체 구분에 유용한 복합적인 표현을 학습합니다.</p>
+<p class="lesson-source">개념 출처: <a href="https://cs231n.github.io/convolutional-networks/" target="_blank" rel="noopener">Stanford CS231n · Convolutional Networks</a> · <a href="https://distill.pub/2017/feature-visualization/" target="_blank" rel="noopener">Olah et al., Feature Visualization, Distill (2017)</a> · 기존 사과 사진 재사용, 교육용 Figure 직접 재구성(실제 CNN 활성화 지도 아님)</p>
+</div></section>
 <section class="slide" data-topic="Backbone과 Head" data-level="basic" data-source-deck="vision_ai" data-source-slide="31" data-outline-unit="CNN · 이미지에서 특징을 찾는 원리">
 <div class="slide-inner"><div class="lesson-meta"><span>26 · Backbone과 Head</span>
 <span class="lesson-level">핵심 개념</span></div>
