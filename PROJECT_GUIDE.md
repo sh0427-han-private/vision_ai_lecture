@@ -473,3 +473,18 @@ GitHub Pages:
 - `docs/cnn_kernel_foundations.css`는 선택형 고정 필터 참고 패널에만 적용되며 공통 CSS/JS는 수정하지 않습니다. 제목/목차/수치/이미지 경로 검증과 GitHub Actions/Pages 확인 필수입니다.
 
 - 추가로 **12번**에는 `docs/assets/lesson/cnn_kernel_role_beginner_ko.svg`를 사용하여 CS231n 실제 강아지 입력 사진의 작은 영역 → 3×3 Kernel → 위치별 특징 반응을 보여줍니다. **오른쪽 반응 지도는 학습 CNN 실측값이 아닌 설명용 도식**이고, 기존 수치 계산 Figure는 펼침 참고로 남깁니다.
+
+
+## 2026-10-16 · YOLO 설명 정리 및 CNN/Stride/Padding/Pooling/비선형성 재구성 (현재 최신)
+
+- 공개 통합 강의는 **Intro 19장 + Vision AI Course 49장 = 총 68장**입니다. 기존 YOLO 전용 26~30번 5장은 전부 삭제했으며 Task(분류·검출·분할), Backbone/Head 및 학습·평가의 일반 원리는 보존합니다. 기존 YOLO 명칭이 섞인 '고정 필터 vs 학습 Kernel' 슬라이드는 일반 CNN 설명으로 바꿉니다.
+- 통합 **8번**: CNN을 왜 쓰는지 32×32 입력/출력 한 채널 예시로 명확히 대비합니다. Dense 1024×1024 = 1,048,576 Weight vs 3×3 동일 Kernel 9 Weight (Stride1, Padding1). 두 아키텍처의 표현 가능 범위는 동일하지 않다고 설명합니다.
+- **18번**: Bias를 포함한 순수 Affine Layer 합성 `W₂(W₁x+b₁)+b₂=(W₂W₁)x+(W₂b₁+b₂)`으로 깊은 선형층은 단일 선형층에 흡수될 수 있다고 명확히 합니다.
+- **19번**: AND는 `x₁+x₂ > 1.5`인 직선으로 구분되지만 XOR는 (0,1),(1,0)만 1이라 직선 경계로 분리되지 않음을 정확한 2차원 점 그래프로 보여줍니다.
+- **20~21번**: ReLU의 `max(0,x)`를 소개하고 두 ReLU `h₁=ReLU(x₁-x₂), h₂=ReLU(x₂-x₁), y=h₁+h₂`가 0/1 입력에서 XOR의 진리표와 일치한다는 사실을 실제 숫자로 검증합니다. 모든 함수를 비선형성만으로 자동 구현한다는 뜻은 아닙니다.
+- **26번 Stride**: 5×5 원본과 3×3 중앙 선택 Kernel의 Padding0 계산에서 Stride1→3×3(9개), Stride2→2×2(4개) 정확한 배열을 비교합니다.
+- **27번 Padding**: 3×3 데이터와 모든 값이 1인 3×3 Kernel을 사용해 Padding0→1×1 [45], Zero Padding1→3×3 [[12,21,16],[27,45,33],[24,39,28]]을 비교합니다. Zero는 인공적으로 추가되므로 경계값에 영향을 미침을 설명합니다.
+- **28번 Max Pooling**: 4×4 수치 Feature Map에 2×2 Max, Stride2를 적용해 2×2 [[6,4],[7,9]]를 산출합니다. 위치 정보 손실, 채널 독립 연산, 학습되지 않는 Max 연산임을 명시합니다.
+- 이 수치 예시는 실제 CNN 실측 출력이 아니라 **교육용 계산값**입니다. AI Basics/개별 Vision AI 원본 페이지 및 역사적 SVG/PNG 자산은 유지하되 현재 강의의 참조에서는 제외합니다.
+- 신규 스타일 `docs/cnn_numeric_why_logic.css`는 통합 49장에만 적용하고, `docs/lecture_outline.js`, `README.md`, 정적 검증과 브라우저 검증 모두 68장 기준으로 동기화합니다. 전체 136개 viewport의 글자 잘림·과도 축소 여부를 확인합니다.
+- 기술 출처: Stanford CS231n <https://cs231n.github.io/convolutional-networks/> · <https://cs231n.github.io/neural-networks-1/>; 슬라이드의 해당 계산 옆에 출처 링크 표시합니다.
