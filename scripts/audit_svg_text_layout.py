@@ -20,7 +20,7 @@ DOCS = ROOT / "docs"
 BASE_URL = os.getenv("AUDIT_BASE_URL", "http://127.0.0.1:8765")
 OUTPUT = ROOT / "visual_audit_output"
 OUTPUT.mkdir(exist_ok=True)
-DECKS = ("intro", "ai_basics", "vision_ai")
+DECKS = ("intro", "ai_basics", "vision_ai", "vision_ai_course")
 
 
 def listed_assets() -> dict[str, list[str]]:
