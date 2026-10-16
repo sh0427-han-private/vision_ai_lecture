@@ -400,3 +400,9 @@ https://www.nature.com/articles/s42256-020-00257-z
 - **직접 제작한 강의용 그림**입니다. Dragon1의 원본 이미지를 복제한 것이 아니라 입력 사과, Kernel/Feature Map, ReLU 변환, Pooling, Dense, 클래스 출력을 같은 순서로 다시 시각화했습니다.
 - ReLU 예시에서는 음수를 0으로 변환하고 양수를 유지합니다. Max Pooling 예시는 `[[1,4],[3,7]] → 7`, 전체 출력 `[[7,6],[8,9]]`; 분류 점수 `92% + 5% + 3% = 100%`는 **임의의 교육용 값**이며 실제 모델 추론 결과가 아닙니다.
 - 원문 Yamashita et al. Figure는 과거 강의 버전의 기록으로 보존하지만, 현재 16번 슬라이드는 **오직 로컬 SVG**만 로드합니다. Flatten / FC는 대표적인 분류 CNN의 예시이며 YOLO 검출 Head를 뜻하지 않습니다.
+
+
+## 2026-10-16 · CNN 원본 얼룩말 Figure / YOLO 분류·박스 학습 출처
+- CNN Figure: Swapna K E, Convolutional Neural Network | Deep Learning, Developers Breach (2020). 원문 https://developersbreach.com/convolution-neural-network-deep-learning/ ; 원본 Figure URL https://i0.wp.com/developersbreach.com/wp-content/uploads/2020/08/cnn_banner.png?fit=1200%2C564&ssl=1 . 그림 그대로 표시(외부 네트워크 접근 필요).
+- YOLO Detect: https://docs.ultralytics.com/ko/tasks/detect ; Class와 Bounding Box 예측/학습. YOLO Classify: https://docs.ultralytics.com/tasks/classify ; 이미지 전체의 단일 클래스 예측과 학습.
+- 자체 제작 한글 그림: docs/assets/lesson/yolo_class_box_training_ko.svg. 모델이 Class와 Box를 함께 학습한다는 개념 표현이며 실제 학습 결과 또는 YOLO 추론 출력은 아닙니다.

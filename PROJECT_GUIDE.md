@@ -385,3 +385,12 @@ GitHub Pages:
 - 계산 예시는 ReLU(x)=max(0,x), 2×2 Max Pooling 및 총합 100%의 가상 분류 점수와 일치해야 합니다. 실제 모델에서 추출한 Activation 또는 Prediction이 아닙니다.
 - 새 Figure는 CNN 입문용 **분류 구조 예시**이고 YOLO detection Head와 동일하지 않습니다. ResNet·U-Net 등의 독립 설명은 계속 제외합니다. YOLO 슬라이드와 전체 목차 구성은 유지합니다.
 - `docs/cnn_structure_ref.css`를 새 단일 그림에 맞춰 정리하고 버전 쿼리를 갱신합니다. 외부 레퍼런스: https://www.dragon1.com/terms/convolutional-neural-networks-definition
+
+
+## 2026-10-16 · CNN 얼룩말 원본 그림 + YOLO 학습 목표 (최신)
+- 현재 CNN 16번은 [Developers Breach, Swapna K E (2020)](https://developersbreach.com/convolution-neural-network-deep-learning/)의 원본 얼룩말 CNN Banner를 그대로 외부 이미지로 표시합니다. 원본 https://i0.wp.com/developersbreach.com/wp-content/uploads/2020/08/cnn_banner.png?fit=1200%2C564&ssl=1
+- CNN Figure는 얼룩말 입력 → Conv/ReLU·Pooling 반복 → Flatten → Fully Connected → Softmax → Zebra 분류라는 분류 CNN 예시입니다. 영어가 들어 있는 원본 Figure는 변경하지 않고, 한글 슬라이드 제목·설명과 핵심 문장으로 설명합니다.
+- 사내 네트워크 등으로 원본 로드 실패 시 기존 로컬 cnn_dragon1_lecture.svg로 자동 대체합니다. 원본 PNG를 로컬에 복사한 것이 아니라 외부 이미지 URL을 직접 사용하므로 온라인 접근성에 따라 표시됩니다.
+- YOLO 파트 신규 31번: 'YOLO 객체 검출은 종류와 위치를 함께 학습합니다'. 로컬 Figure: docs/assets/lesson/yolo_class_box_training_ko.svg.
+- 'YOLO는 Classification만 학습한다'는 표현은 부정확합니다. YOLO Detect는 Class와 Bounding Box를 함께 예측하고 정답에 맞춰 학습합니다. Classification만 하는 YOLO Classify 모델은 별도 Task입니다.
+- 이번 구성: Intro 19장 + 통합 53장 = 총 72장. 31번 삽입에 따른 목차 슬라이드 번호·Outline 캐시 버전도 함께 갱신합니다.

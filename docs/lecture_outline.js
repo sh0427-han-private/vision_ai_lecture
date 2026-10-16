@@ -1,6 +1,6 @@
-/* Public lecture: 19 Intro plus 52 Vision AI and YOLO slides (71 total). */
+/* Public lecture: 19 Intro plus 53 Vision AI and YOLO slides (72 total). */
 window.LECTURE_OUTLINE = {
-  "version": "20261016-dragon1-cnn-52",
+  "version": "20261016-zebra-cnn-yolo-dual-target-53",
   "groups": [
     {
       "name": "Intro · 시각의 중요성에서 숫자까지",
@@ -363,6 +363,13 @@ window.LECTURE_OUTLINE = {
           "page": "vision_ai_course.html",
           "slide": 31,
           "global": 50,
+          "title": "YOLO 객체 검출은 종류와 위치를 함께 학습합니다",
+          "original": "Y6"
+        },
+        {
+          "page": "vision_ai_course.html",
+          "slide": 32,
+          "global": 51,
           "title": "YOLO를 활용해도 데이터·Label·검증은 직접 준비해야 합니다",
           "original": "Y5"
         }
@@ -373,43 +380,43 @@ window.LECTURE_OUTLINE = {
       "items": [
         {
           "page": "vision_ai_course.html",
-          "slide": 32,
-          "global": 51,
+          "slide": 33,
+          "global": 52,
           "title": "학습은 예측 오차가 줄도록 계산 기준을 바꾸는 과정입니다",
           "original": "A15"
         },
         {
           "page": "vision_ai_course.html",
-          "slide": 33,
-          "global": 52,
+          "slide": 34,
+          "global": 53,
           "title": "Loss는 예측과 정답의 차이를 학습용 숫자로 바꿉니다",
           "original": "A16"
         },
         {
           "page": "vision_ai_course.html",
-          "slide": 34,
-          "global": 53,
+          "slide": 35,
+          "global": 54,
           "title": "예측 → 오차 → Gradient → 수정을 반복합니다",
           "original": "A21"
         },
         {
           "page": "vision_ai_course.html",
-          "slide": 35,
-          "global": 54,
+          "slide": 36,
+          "global": 55,
           "title": "배울 때는 Weight를 바꾸고, 사용할 때는 고정합니다",
           "original": "A22"
         },
         {
           "page": "vision_ai_course.html",
-          "slide": 36,
-          "global": 55,
+          "slide": 37,
+          "global": 56,
           "title": "데이터를 작은 묶음으로 나누어 반복해서 봅니다",
           "original": "A28"
         },
         {
           "page": "vision_ai_course.html",
-          "slide": 37,
-          "global": 56,
+          "slide": 38,
+          "global": 57,
           "title": "CNN의 필터도 오차를 줄이는 방향으로 학습합니다",
           "original": "V33"
         }
@@ -420,36 +427,36 @@ window.LECTURE_OUTLINE = {
       "items": [
         {
           "page": "vision_ai_course.html",
-          "slide": 38,
-          "global": 57,
+          "slide": 39,
+          "global": 58,
           "title": "데이터는 실제 사용할 조건을 대표해야 합니다",
           "original": "A29"
         },
         {
           "page": "vision_ai_course.html",
-          "slide": 39,
-          "global": 58,
+          "slide": 40,
+          "global": 59,
           "title": "학습·모델 선택·최종 평가의 데이터를 나눕니다",
           "original": "A30"
         },
         {
           "page": "vision_ai_course.html",
-          "slide": 40,
-          "global": 59,
+          "slide": 41,
+          "global": 60,
           "title": "같은 영상의 비슷한 Frame은 통째로 분리합니다",
           "original": "A31"
         },
         {
           "page": "vision_ai_course.html",
-          "slide": 41,
-          "global": 60,
+          "slide": 42,
+          "global": 61,
           "title": "모델이 기대하는 크기·값 범위·채널 순서를 맞춥니다",
           "original": "A33"
         },
         {
           "page": "vision_ai_course.html",
-          "slide": 42,
-          "global": 61,
+          "slide": 43,
+          "global": 62,
           "title": "의미를 유지하는 변화를 학습 중에 보여줍니다",
           "original": "A34"
         }
@@ -460,22 +467,22 @@ window.LECTURE_OUTLINE = {
       "items": [
         {
           "page": "vision_ai_course.html",
-          "slide": 43,
-          "global": 62,
+          "slide": 44,
+          "global": 63,
           "title": "이미 배운 가중치에서 내 Task의 학습을 시작합니다",
           "original": "V34"
         },
         {
           "page": "vision_ai_course.html",
-          "slide": 44,
-          "global": 63,
+          "slide": 45,
+          "global": 64,
           "title": "고정할 부분과 추가 학습할 부분을 구분합니다",
           "original": "V35"
         },
         {
           "page": "vision_ai_course.html",
-          "slide": 45,
-          "global": 64,
+          "slide": 46,
+          "global": 65,
           "title": "Train에서 잘하는 것과 새 데이터에서 잘하는 것은 다릅니다",
           "original": "A35"
         }
@@ -486,50 +493,50 @@ window.LECTURE_OUTLINE = {
       "items": [
         {
           "page": "vision_ai_course.html",
-          "slide": 46,
-          "global": 65,
+          "slide": 47,
+          "global": 66,
           "title": "점수에 기준을 적용하면 실제 판정이 됩니다",
           "original": "A38"
         },
         {
           "page": "vision_ai_course.html",
-          "slide": 47,
-          "global": 66,
+          "slide": 48,
+          "global": 67,
           "title": "정답과 판정을 비교해 네 가지 결과를 셉니다",
           "original": "A39"
         },
         {
           "page": "vision_ai_course.html",
-          "slide": 48,
-          "global": 67,
+          "slide": 49,
+          "global": 68,
           "title": "알람의 정확성과 불량을 찾는 비율을 구분합니다",
           "original": "A40"
         },
         {
           "page": "vision_ai_course.html",
-          "slide": 49,
-          "global": 68,
+          "slide": 50,
+          "global": 69,
           "title": "위치와 영역은 정답과 얼마나 겹치는지 평가합니다",
           "original": "V7"
         },
         {
           "page": "vision_ai_course.html",
-          "slide": 50,
-          "global": 69,
+          "slide": 51,
+          "global": 70,
           "title": "높은 점수만으로 판단 근거가 맞다고 보장할 수 없습니다",
           "original": "V36"
         },
         {
           "page": "vision_ai_course.html",
-          "slide": 51,
-          "global": 70,
+          "slide": 52,
+          "global": 71,
           "title": "문제 정의부터 운영 관찰까지 연결해 개선합니다",
           "original": "V37"
         },
         {
           "page": "vision_ai_course.html",
-          "slide": 52,
-          "global": 71,
+          "slide": 53,
+          "global": 72,
           "title": "운영의 실패 사례를 다음 데이터와 학습에 연결합니다",
           "original": "A44"
         }
