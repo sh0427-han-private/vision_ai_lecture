@@ -466,3 +466,5 @@ https://www.nature.com/articles/s42256-020-00257-z
 - 전통적 영상처리의 실제 비교 자료를 삭제하지 않습니다. `docs/assets/lesson/cnn_real_filter_compare_dog.png` 및 `cnn_real_sobel_dog.png`는 **통합 14번** 선택형 참고로 사용합니다. 같은 강아지 입력과 NumPy/Pillow 계산으로 검증된 **고정 필터** 예시입니다.
 - 기존 참고: Stanford CS231n, https://cs231n.github.io/convolutional-networks/ ; OpenCV Filtering https://docs.opencv.org/4.x/d4/d13/tutorial_py_filtering.html ; PyTorch Conv2d https://pytorch.org/docs/stable/generated/torch.nn.Conv2d.html ; PyTorch Autograd https://docs.pytorch.org/tutorials/beginner/basics/autogradqs_tutorial.html .
 - CNN Filter는 학습이 가능한 가중치(Parameter)이고, Loss의 Gradient와 Optimizer를 이용해 조정됩니다. 이는 Mean/Gaussian/Sobel처럼 고정된 연산과 구별합니다. 독립 필터 강의를 제외해도 이전 연구·계산 출처 기록은 모두 유지합니다.
+
+- **CNN 12번 새 Kernel 그림**: `docs/assets/lesson/cnn_kernel_role_beginner_ko.svg`. 사진: CS231n Lecture 5 원본 강아지 사진 (`cs231n_vgg16_feature_hierarchy_original.png`, 로컬 상대 경로 사용). 오른쪽 Feature Map은 커널 이동에 따른 공간 반응을 개념적으로 재구성한 그림이며 실제 학습 모델의 activation 기록이 아닙니다. Kernel 가중치 `w1…w9`도 숫자 표시를 위한 기호입니다. 출처 개념: https://cs231n.github.io/convolutional-networks/ . 선택 숫자 계산: `lecture_kernel_slide.svg`.
