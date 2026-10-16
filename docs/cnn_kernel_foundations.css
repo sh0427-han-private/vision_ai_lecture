@@ -1,0 +1,41 @@
+/* Beginner CNN: optional fixed-filter reference gallery only.
+   Scoped to one slide; initial hidden content does not consume lecture space. */
+.lesson-deck .kernel-optional-images {
+  margin-top: 8px;
+  color: #566f7f;
+  font-size: clamp(12px, 0.93vw, 15px);
+}
+.lesson-deck .kernel-optional-images > summary {
+  cursor: pointer;
+  font-weight: 700;
+  padding: 6px 0;
+  width: fit-content;
+}
+.lesson-deck .kernel-optional-images .kernel-optional-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 8px 0;
+}
+.lesson-deck .kernel-optional-images .kernel-optional-row > a {
+  display: flex; flex-direction: column; align-items: center;
+  min-width: 0; gap: 5px;
+  color: #296c87; text-decoration: none; font-weight: 650;
+}
+.lesson-deck .kernel-optional-images .kernel-optional-row img {
+  width: 100%; max-height: 28dvh; object-fit: contain;
+  border-radius: 6px; border: 1px solid #dae6ec; background: white;
+}
+.lesson-deck .kernel-optional-images > p {margin: 6px 0;line-height: 1.4}
+@media (max-height: 790px) {
+  .lesson-deck .kernel-optional-images {margin-top: 4px;font-size: 12px}
+  .lesson-deck .kernel-optional-images .kernel-optional-row img {max-height: 23dvh}
+}
+
+.lesson-deck .kernel-optional-images .kernel-numeric-reference {
+  display: block; margin: 8px 0 4px; text-align: center;
+}
+.lesson-deck .kernel-optional-images .kernel-numeric-reference img {
+  max-height: 34dvh; width: 100%; object-fit: contain;
+  border: 1px solid #dae6ec; border-radius: 6px;
+}
