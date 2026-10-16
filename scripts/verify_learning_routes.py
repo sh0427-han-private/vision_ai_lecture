@@ -7,7 +7,7 @@ from playwright.sync_api import sync_playwright
 
 BASE = os.getenv("AUDIT_BASE_URL","http://127.0.0.1:8765")
 OUT = Path(__file__).resolve().parents[1] / "visual_audit_output"
-DECKS = (("intro",19),("vision_ai_course",52))
+DECKS = (("intro",19),("vision_ai_course",53))
 
 
 def check(flag, why):
@@ -54,8 +54,8 @@ def main():
               "TOC toggle did not open")
         check(page.locator("#lecture-toc-drawer").get_attribute("aria-hidden") == "false",
               "TOC drawer is not accessible when open")
-        check(page.locator(".lecture-toc-link").count() == 71,
-              "TOC must list all 71 slides")
+        check(page.locator(".lecture-toc-link").count() == 72,
+              "TOC must list all 72 slides")
         # Wheel scrolls the outline contents, but never advances the lecture.
         toc = page.locator(".lecture-toc-sections")
         toc.evaluate("(el) => { el.scrollTop = 0; }")
@@ -93,7 +93,7 @@ def main():
         page.click(".lecture-toc-toggle")
         page.locator(".lecture-toc-unit").nth(1).locator("summary").click()
         page.locator('.lecture-toc-link[href="vision_ai_course.html#slide-3"]').click()
-        position(page,"vision_ai_course",3,52)
+        position(page,"vision_ai_course",3,53)
         check("객체나 결함" in page.locator(".slide.active").inner_text(),
               "Expected object detection before general AI")
         check(page.locator(".slide.active").get_attribute("data-source-deck") == "vision_ai",
@@ -101,18 +101,18 @@ def main():
         page.click(".lecture-toc-toggle")
         page.locator(".lecture-toc-unit").nth(2).locator("summary").click()
         page.locator('.lecture-toc-link[href="vision_ai_course.html#slide-7"]').click()
-        position(page,"vision_ai_course",7,52)
+        position(page,"vision_ai_course",7,53)
         check(page.locator(".slide.active").get_attribute("data-source-deck") == "ai_basics",
               "AI theory is not interleaved after vision tasks")
         page.click(".lecture-toc-toggle")
         page.locator(".lecture-toc-sections").hover(position={"x": 100, "y": 170})
         page.mouse.wheel(0, 630)
-        position(page,"vision_ai_course",7,52)
+        position(page,"vision_ai_course",7,53)
         page.locator(".lecture-toc-close").click()
         check(page.locator(".lecture-toc-toggle").get_attribute("aria-expanded") == "false",
               "TOC close button failed")
 
-        # All 71 published slides are reachable by next, no AI chapter detour.
+        # All 72 published slides are reachable by next, no AI chapter detour.
         for deck,total in DECKS:
             page.goto(f"{BASE}/{deck}.html#slide-1")
             position(page,deck,1,total)
@@ -123,28 +123,28 @@ def main():
                 position(page,deck,i,total)
         page.goto(BASE+"/intro.html#slide-19")
         page.click("[data-slide-next]")
-        position(page,"vision_ai_course",1,52)
+        position(page,"vision_ai_course",1,53)
         page.click("[data-slide-prev]")
         position(page,"intro",19,19)
-        page.goto(BASE+"/vision_ai_course.html#slide-52")
+        page.goto(BASE+"/vision_ai_course.html#slide-53")
         check(page.locator("[data-slide-next]").is_disabled(),
               "Final slide must end course")
 
         # Old query strings must not activate the removed core-only feature.
         page.goto(BASE+"/vision_ai_course.html?mode=core#slide-21")
-        position(page,"vision_ai_course",21,52)
+        position(page,"vision_ai_course",21,53)
         check("mode=core" not in page.url,"Legacy core param persists")
         check(page.locator(".slide.active").get_attribute("data-level") == "detail",
               "Selected detailed CNN output-size lesson must remain visible")
-        page.goto(BASE+"/vision_ai_course.html#slide-37")
+        page.goto(BASE+"/vision_ai_course.html#slide-38")
         page.click("header a.brand")
         position(page,"intro",1,19)
         check(not errors,"Browser JS errors: "+repr(errors))
         page.screenshot(path=str(OUT/"vision_first_sidebar_navigation.jpg"),
                         type="jpeg",quality=80)
         browser.close()
-        print("VISION_FIRST_NAV_QA_PASSED: Intro19 -> integrated Vision+CNN52 = 71")
-        print("RETRACTABLE_TOC_QA_PASSED: 71 links, click, close, outside and Escape")
+        print("VISION_FIRST_NAV_QA_PASSED: Intro19 -> integrated Vision+CNN53 = 72")
+        print("RETRACTABLE_TOC_QA_PASSED: 72 links, click, close, outside and Escape")
 
 
 if __name__ == "__main__":
