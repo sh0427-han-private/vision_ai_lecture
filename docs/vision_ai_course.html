@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="lesson.css?v=yolo-vision-20261016-1">
 <link rel="stylesheet" href="cnn_structure_ref.css?v=cnn-local-20261016-1">
 <link rel="stylesheet" href="research_original_figures.css?v=20261016-1">
+<link rel="stylesheet" href="cs231n_feature_hierarchy.css?v=cs231n-20261016-1">
 <link rel="stylesheet" href="interactive_lessons.css?v=20261015-2">
 <script src="slide.js?v=prevent-toc-wheel-20261016-1" defer></script>
 <script src="interactive_lessons.js?v=20261015-1" defer></script>
@@ -198,12 +199,20 @@
 <figure class="lesson-figure"><a href="assets/lesson/downsampling_basic.svg?v=professional-20261006-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/downsampling_basic.svg?v=professional-20261006-2" alt="공간 해상도를 줄여 더 작은 특징 지도를 만듭니다"></a></figure>
 <p class="lesson-takeaway">8×8 → 4×4는 위치 수가 64개에서 16개로 줄어듭니다. 작은 결함이나 경계의 위치 정보가 일부 사라질 수 있습니다.</p></div></section>
 <section class="slide" data-topic="특징의 조합" data-level="basic" data-source-deck="vision_ai" data-source-slide="28" data-outline-unit="CNN · 이미지에서 특징을 찾는 원리">
-<div class="slide-inner"><div class="lesson-meta"><span>25 · 특징의 조합</span><span class="lesson-level">핵심 개념</span></div>
+<div class="slide-inner cs231n-hierarchy"><div class="lesson-meta"><span>25 · 특징의 조합</span><span class="lesson-level">핵심 개념</span></div>
 <h2 class="slide-title">CNN은 얕은층에서 깊은층으로 더 복잡한 특징을 학습합니다</h2>
-<p class="slide-subtitle">같은 사과를 보더라도 <strong>얕은층은 경계·밝기 변화</strong>에, <strong>중간층은 곡선·질감·부분 형태</strong>에, <strong>깊은층은 이들을 조합한 복합 특징</strong>에 반응할 수 있습니다.</p>
-<figure class="lesson-figure"><a href="assets/lesson/cnn_three_stage_apple_ko.svg?v=cnn-3stage-20261016-1" target="_blank" rel="noopener" title="CNN 얕은층·중간층·깊은층 개념도 확대"><img src="assets/lesson/cnn_three_stage_apple_ko.svg?v=cnn-3stage-20261016-1" alt="같은 사과 이미지에서 CNN의 얕은층은 경계, 중간층은 곡선·질감·부분 특징, 깊은층은 형태 및 부분 특징의 조합을 활용할 수 있음을 표현한 한글 3단계 개념도. 실제 모델의 Feature Map 측정 결과는 아님"></a></figure>
-<p class="lesson-takeaway"><strong>깊은층이 사과 사진 전체를 그대로 보는 것은 아닙니다.</strong> 앞에서 찾은 단순한 시각적 특징을 조합해 객체 구분에 유용한 복합적인 표현을 학습합니다.</p>
-<p class="lesson-source">개념 출처: <a href="https://cs231n.github.io/convolutional-networks/" target="_blank" rel="noopener">Stanford CS231n · Convolutional Networks</a> · <a href="https://distill.pub/2017/feature-visualization/" target="_blank" rel="noopener">Olah et al., Feature Visualization, Distill (2017)</a> · 기존 사과 사진 재사용, 교육용 Figure 직접 재구성(실제 CNN 활성화 지도 아님)</p>
+<p class="slide-subtitle">Stanford CS231n의 실제 <strong>VGG-16</strong> 특징 시각화입니다. 한 번에 강아지 사진에서 출발해 얕은층·중간층·깊은층의 차이를 비교합니다.</p>
+<figure class="lesson-figure cs231n-original-figure">
+<a href="assets/lesson/cs231n_vgg16_feature_hierarchy_original.png?v=cs231n-vgg-20261016-1" target="_blank" rel="noopener" title="Stanford CS231n VGG-16 원본 특징 시각화 확대"><img src="assets/lesson/cs231n_vgg16_feature_hierarchy_original.png?v=cs231n-vgg-20261016-1" alt="Stanford CS231n 원본 Figure. 강아지 사진에서 Low-level VGG-16 Conv1_1의 간단한 색상·경계, Mid-level Conv3_2의 곡선·질감, High-level Conv5_3의 복합적 패턴을 나란히 보여 주는 학습된 특징 시각화"></a>
+<figcaption>Stanford CS231n, Lecture 5 (2017), Slide 37 · VGG-16 특징 시각화: Lane McIntosh · 원본 PNG 그대로 사용</figcaption>
+</figure>
+<div class="cs231n-layer-notes" aria-label="CNN 층별 특징 수준 설명">
+<div><strong>① 얕은층 · Conv1_1</strong><span>경계·색상·방향처럼 단순한 특징</span></div>
+<div><strong>② 중간층 · Conv3_2</strong><span>곡선·질감 등 특징의 조합</span></div>
+<div><strong>③ 깊은층 · Conv5_3</strong><span>더 복잡한 형태와 객체 관련 단서</span></div>
+</div>
+<p class="lesson-takeaway"><strong>핵심: 앞쪽에서 학습한 단순한 특징들을 뒤쪽에서 조합합니다.</strong> 그림 속 색상 패턴은 강아지 사진이 변해 가는 영상이 아니라, 각 층에서 학습된 특징을 시각화한 결과입니다.</p>
+<p class="lesson-source">원본 Figure: <a href="https://cs231n.stanford.edu/slides/2017/cs231n_2017_lecture5.pdf" target="_blank" rel="noopener">Stanford CS231n · Lecture 5, Slide 37 (2017)</a> · 연구 배경: <a href="https://cs.nyu.edu/~fergus/papers/zeilerECCV2014.pdf" target="_blank" rel="noopener">Zeiler &amp; Fergus, ECCV 2014</a> · <a href="https://github.com/yganalyst/yganalyst.github.io/blob/master/assets/images/cs231n/4/convlayer_4.png" target="_blank" rel="noopener">원본 Figure 미러</a></p>
 </div></section>
 <section class="slide" data-topic="Backbone과 Head" data-level="basic" data-source-deck="vision_ai" data-source-slide="31" data-outline-unit="CNN · 이미지에서 특징을 찾는 원리">
 <div class="slide-inner"><div class="lesson-meta"><span>26 · Backbone과 Head</span>

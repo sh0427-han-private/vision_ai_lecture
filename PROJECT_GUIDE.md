@@ -431,3 +431,10 @@ GitHub Pages:
 - 예전에 잘못 보낸 `https://sh0427-han.github.io/vision_ai_lecture/docs/vision_ai_course.html#slide-N`, `/docs/intro.html#slide-N`, `/docs/` 경로는 `docs/docs/*.html`에 설치한 **호환 리디렉션**으로 처리하며 **Query와 Hash(슬라이드 번호)**를 유지해 이동합니다.
 - 외부에서 배포 URL을 줄 때 Repository의 `docs/` 디렉터리 경로와 Pages의 URL 경로를 반드시 구분합니다. 실제 GitHub Pages 도메인은 보안 정책/사내 프록시 등의 이유로 일부 환경에서 접근이 차단될 수 있으므로, URL 오류와 네트워크 차단은 구분해 안내합니다.
 - 강의 슬라이드 수는 Intro 19장, Vision AI 53장, 합계 72장입니다.
+
+
+## 2026-10-16 · 25번 최신 확정 방향: Stanford CS231n 원본 그림
+
+- Vision AI 25번의 직접 제작 사과 개념도는 원본 Stanford CS231n의 VGG-16 학습 특징 시각화로 교체했습니다. 원본 PNG는 `docs/assets/lesson/cs231n_vgg16_feature_hierarchy_original.png`로 저장하고 픽셀을 수정하지 않았습니다.
+- 3단계 얕은층/중간층/깊은층의 한글 설명을 그림 아래에 표시합니다. 원본 강의 2017 Lecture 5 Slide 37, 시각화 크레딧 Lane McIntosh.
+- 별도 CSS `docs/cs231n_feature_hierarchy.css`는 Vision AI 25번에만 적용합니다. 기존 사과 도식은 기록으로 보존합니다. 전체 강의는 Intro 19장 + Vision AI 53장, 합계 72장입니다.

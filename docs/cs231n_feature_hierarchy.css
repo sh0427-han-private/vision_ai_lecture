@@ -1,0 +1,102 @@
+/* Original CS231n Lecture 5 VGG-16 Feature Hierarchy: Korean beginner teaching panel.
+   This stylesheet affects only integrated Vision AI slide 25. */
+.lesson-deck .cs231n-hierarchy .slide-subtitle {
+  margin: 0 0 7px;
+  line-height: 1.4;
+}
+.lesson-deck .cs231n-hierarchy .cs231n-original-figure {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+.lesson-deck .cs231n-hierarchy .cs231n-original-figure a {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+.lesson-deck .cs231n-hierarchy .cs231n-original-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: min(44dvh, 440px);
+  object-fit: contain;
+  object-position: center center;
+  margin: 0 auto;
+  border-radius: 2px;
+}
+.lesson-deck .cs231n-hierarchy .cs231n-original-figure figcaption {
+  font-size: clamp(11px, 0.9vw, 13px);
+  line-height: 1.35;
+  color: #607787;
+  text-align: center;
+}
+.lesson-deck .cs231n-hierarchy .cs231n-layer-notes {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(6px, 1vw, 13px);
+  margin-top: 9px;
+}
+.lesson-deck .cs231n-hierarchy .cs231n-layer-notes > div {
+  min-width: 0;
+  border: 1px solid #d5e3e9;
+  background: #f6fafb;
+  border-radius: 8px;
+  padding: 10px 13px;
+  line-height: 1.35;
+  word-break: keep-all;
+}
+.lesson-deck .cs231n-hierarchy .cs231n-layer-notes strong {
+  display: block;
+  font-size: clamp(16px, 1.3vw, 19px);
+  font-weight: 800;
+  color: #28536a;
+}
+.lesson-deck .cs231n-hierarchy .cs231n-layer-notes span {
+  display: block;
+  margin-top: 4px;
+  font-size: clamp(13px, 1.05vw, 16px);
+  color: #496677;
+}
+.lesson-deck .cs231n-hierarchy .lesson-takeaway {
+  margin-top: 9px;
+  padding: 8px 13px;
+  font-size: clamp(15px, 1.23vw, 18px);
+  line-height: 1.35;
+}
+.lesson-deck .cs231n-hierarchy .lesson-source {
+  margin-top: 5px;
+  font-size: clamp(11px, 0.9vw, 13px);
+}
+@media (max-height: 790px) {
+  .lesson-deck .cs231n-hierarchy .cs231n-original-figure img {
+    max-height: 42dvh;
+  }
+  .lesson-deck .cs231n-hierarchy .cs231n-layer-notes {
+    margin-top: 5px;
+  }
+  .lesson-deck .cs231n-hierarchy .cs231n-layer-notes > div {
+    padding: 7px 10px;
+  }
+  .lesson-deck .cs231n-hierarchy .lesson-takeaway {
+    margin-top: 6px;
+    padding: 6px 10px;
+  }
+}
+@media (max-width: 740px) {
+  .lesson-deck .cs231n-hierarchy .cs231n-layer-notes {
+    gap: 5px;
+  }
+  .lesson-deck .cs231n-hierarchy .cs231n-layer-notes > div {
+    padding: 5px 6px;
+  }
+  .lesson-deck .cs231n-hierarchy .cs231n-layer-notes strong {
+    font-size: 12px;
+  }
+  .lesson-deck .cs231n-hierarchy .cs231n-layer-notes span {
+    font-size: 10px;
+  }
+}
