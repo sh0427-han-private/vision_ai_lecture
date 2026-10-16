@@ -1,4 +1,4 @@
-/* Public course: 19 Intro + 50 Vision AI = 69 slides. */
+/* Public course: Intro 19, Vision AI 50; total 69 slides. */
 window.LECTURE_OUTLINE = {
   "version": "20261016-cnn-kernel-beginner-50",
   "groups": [
