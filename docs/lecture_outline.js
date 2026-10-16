@@ -1,6 +1,6 @@
-/* Public course: Intro 19, Vision AI 50; total 69 slides. */
+/* Public course: Intro 19, Vision AI integrated 49; total 68 slides. */
 window.LECTURE_OUTLINE = {
-  "version": "20261016-cnn-kernel-beginner-50",
+  "version": "20261016-cnn-numeric-xor-49",
   "groups": [
     {
       "name": "Intro · 시각의 중요성에서 숫자까지",
@@ -187,20 +187,27 @@ window.LECTURE_OUTLINE = {
           "page": "vision_ai_course.html",
           "slide": 8,
           "global": 27,
-          "title": "CNN 전체 구조와 특징 추출",
+          "title": "왜 CNN을 사용할까? · 이미지의 국소 패턴과 가중치 공유",
           "original": "N1"
         },
         {
           "page": "vision_ai_course.html",
           "slide": 9,
           "global": 28,
-          "title": "실제 Feature Map · CNN 내부 반응",
-          "original": "FM1"
+          "title": "CNN 전체 구조와 특징 추출",
+          "original": "C1"
         },
         {
           "page": "vision_ai_course.html",
           "slide": 10,
           "global": 29,
+          "title": "실제 Feature Map · CNN 내부 반응",
+          "original": "M1"
+        },
+        {
+          "page": "vision_ai_course.html",
+          "slide": 11,
+          "global": 30,
           "title": "Feature Visualization · 학습된 특징",
           "original": "V28"
         }
@@ -211,57 +218,98 @@ window.LECTURE_OUTLINE = {
       "items": [
         {
           "page": "vision_ai_course.html",
-          "slide": 11,
-          "global": 30,
+          "slide": 12,
+          "global": 31,
           "title": "CNN의 지역 연결과 가중치 공유",
           "original": "V18"
         },
         {
           "page": "vision_ai_course.html",
-          "slide": 12,
-          "global": 31,
+          "slide": 13,
+          "global": 32,
           "title": "Kernel · 작은 영역을 반복 탐색",
           "original": "V10"
         },
         {
           "page": "vision_ai_course.html",
-          "slide": 13,
-          "global": 32,
+          "slide": 14,
+          "global": 33,
           "title": "Kernel 반응 · 패턴에 따른 차이",
           "original": "V19"
         },
         {
           "page": "vision_ai_course.html",
-          "slide": 14,
-          "global": 33,
-          "title": "고정 필터와 학습 Kernel",
-          "original": "Y1"
-        },
-        {
-          "page": "vision_ai_course.html",
           "slide": 15,
           "global": 34,
-          "title": "Weight · Bias · 입력의 중요도",
-          "original": "A8"
+          "title": "고정된 필터와 학습하는 Kernel의 차이",
+          "original": "F1"
         },
         {
           "page": "vision_ai_course.html",
           "slide": 16,
           "global": 35,
-          "title": "Neural Network · 가중치 연결",
-          "original": "A11"
+          "title": "Weight · Bias · 입력의 중요도",
+          "original": "A8"
         },
         {
           "page": "vision_ai_course.html",
           "slide": 17,
           "global": 36,
-          "title": "ReLU · 비선형 특성",
-          "original": "A13"
-        },
+          "title": "Neural Network · 가중치 연결",
+          "original": "A11"
+        }
+      ]
+    },
+    {
+      "name": "AI 원리 · 비선형성",
+      "items": [
         {
           "page": "vision_ai_course.html",
           "slide": 18,
           "global": 37,
+          "title": "선형층만 여러 개 쌓아도 하나의 선형층과 같습니다",
+          "original": "N2"
+        },
+        {
+          "page": "vision_ai_course.html",
+          "slide": 19,
+          "global": 38,
+          "title": "AND는 직선으로 구분되지만 XOR는 그렇지 않습니다",
+          "original": "N3"
+        }
+      ]
+    },
+    {
+      "name": "Kernel · 특징과 학습 원리",
+      "items": [
+        {
+          "page": "vision_ai_course.html",
+          "slide": 20,
+          "global": 39,
+          "title": "ReLU · 비선형 특성",
+          "original": "A13"
+        }
+      ]
+    },
+    {
+      "name": "AI 원리 · 비선형성",
+      "items": [
+        {
+          "page": "vision_ai_course.html",
+          "slide": 21,
+          "global": 40,
+          "title": "비선형 ReLU를 거치면 XOR도 구분할 수 있습니다",
+          "original": "N4"
+        }
+      ]
+    },
+    {
+      "name": "Kernel · 특징과 학습 원리",
+      "items": [
+        {
+          "page": "vision_ai_course.html",
+          "slide": 22,
+          "global": 41,
           "title": "학습 과정에서 바뀌는 Kernel",
           "original": "V33"
         }
@@ -272,92 +320,52 @@ window.LECTURE_OUTLINE = {
       "items": [
         {
           "page": "vision_ai_course.html",
-          "slide": 19,
-          "global": 38,
-          "title": "CNN 블록 · Conv와 활성화",
-          "original": "N2"
-        },
-        {
-          "page": "vision_ai_course.html",
-          "slide": 20,
-          "global": 39,
-          "title": "Feature Map · 위치별 반응값",
-          "original": "V21"
-        },
-        {
-          "page": "vision_ai_course.html",
-          "slide": 21,
-          "global": 40,
-          "title": "RGB Channel과 학습 필터",
-          "original": "V22"
-        },
-        {
-          "page": "vision_ai_course.html",
-          "slide": 22,
-          "global": 41,
-          "title": "Stride · 필터의 이동 간격",
-          "original": "V23"
-        },
-        {
-          "page": "vision_ai_course.html",
           "slide": 23,
           "global": 42,
-          "title": "Padding · 이미지의 가장자리",
-          "original": "V24"
+          "title": "CNN 블록 · Conv와 활성화",
+          "original": "C2"
         },
         {
           "page": "vision_ai_course.html",
           "slide": 24,
           "global": 43,
-          "title": "Max Pooling · 정보 축소",
-          "original": "V25"
+          "title": "Feature Map · 위치별 반응값",
+          "original": "V21"
         },
         {
           "page": "vision_ai_course.html",
           "slide": 25,
           "global": 44,
-          "title": "Backbone과 Task Head",
-          "original": "V31"
-        }
-      ]
-    },
-    {
-      "name": "YOLO · 찾는 위치와 종류",
-      "items": [
+          "title": "RGB Channel과 학습 필터",
+          "original": "V22"
+        },
         {
           "page": "vision_ai_course.html",
           "slide": 26,
           "global": 45,
-          "title": "YOLO 구조 · Backbone / Neck / Head",
-          "original": "Y2"
+          "title": "Stride를 늘리면 Feature Map의 칸 수가 줄어듭니다",
+          "original": "V23"
         },
         {
           "page": "vision_ai_course.html",
           "slide": 27,
           "global": 46,
-          "title": "YOLO Detection · Class / Box / Score",
-          "original": "Y3"
+          "title": "Padding으로 가장자리도 계산하고 크기를 유지합니다",
+          "original": "V24"
         },
         {
           "page": "vision_ai_course.html",
           "slide": 28,
           "global": 47,
-          "title": "YOLO Task · Classify / Detect / Segment",
-          "original": "Y4"
+          "title": "Max Pooling은 영역의 가장 큰 반응만 남깁니다",
+          "original": "V25"
         },
         {
           "page": "vision_ai_course.html",
           "slide": 29,
           "global": 48,
-          "title": "YOLO 검출 학습 · 종류와 위치",
-          "original": "Y6"
-        },
-        {
-          "page": "vision_ai_course.html",
-          "slide": 30,
-          "global": 49,
-          "title": "YOLO 데이터·Label·검증",
-          "original": "Y5"
+          "title": "Backbone과 Task Head",
+          "original": "V31"
         }
       ]
     },
@@ -366,36 +374,36 @@ window.LECTURE_OUTLINE = {
       "items": [
         {
           "page": "vision_ai_course.html",
-          "slide": 31,
-          "global": 50,
+          "slide": 30,
+          "global": 49,
           "title": "모델 학습 · 오차를 줄이는 반복",
           "original": "A15"
         },
         {
           "page": "vision_ai_course.html",
-          "slide": 32,
-          "global": 51,
+          "slide": 31,
+          "global": 50,
           "title": "Loss · 예측과 정답의 차이",
           "original": "A16"
         },
         {
           "page": "vision_ai_course.html",
-          "slide": 33,
-          "global": 52,
+          "slide": 32,
+          "global": 51,
           "title": "Forward · Gradient · Weight 갱신",
           "original": "A21"
         },
         {
           "page": "vision_ai_course.html",
-          "slide": 34,
-          "global": 53,
+          "slide": 33,
+          "global": 52,
           "title": "Training과 Inference의 차이",
           "original": "A22"
         },
         {
           "page": "vision_ai_course.html",
-          "slide": 35,
-          "global": 54,
+          "slide": 34,
+          "global": 53,
           "title": "Batch · Iteration · Epoch",
           "original": "A28"
         }
@@ -406,36 +414,36 @@ window.LECTURE_OUTLINE = {
       "items": [
         {
           "page": "vision_ai_course.html",
-          "slide": 36,
-          "global": 55,
+          "slide": 35,
+          "global": 54,
           "title": "데이터셋 · 촬영 조건과 Label",
           "original": "A29"
         },
         {
           "page": "vision_ai_course.html",
-          "slide": 37,
-          "global": 56,
+          "slide": 36,
+          "global": 55,
           "title": "Train · Validation · Test",
           "original": "A30"
         },
         {
           "page": "vision_ai_course.html",
-          "slide": 38,
-          "global": 57,
+          "slide": 37,
+          "global": 56,
           "title": "Video Group Split · 데이터 누출 방지",
           "original": "A31"
         },
         {
           "page": "vision_ai_course.html",
-          "slide": 39,
-          "global": 58,
+          "slide": 38,
+          "global": 57,
           "title": "Preprocessing · 입력 규격 맞추기",
           "original": "A33"
         },
         {
           "page": "vision_ai_course.html",
-          "slide": 40,
-          "global": 59,
+          "slide": 39,
+          "global": 58,
           "title": "Data Augmentation · 조건 변화 만들기",
           "original": "A34"
         }
@@ -446,22 +454,22 @@ window.LECTURE_OUTLINE = {
       "items": [
         {
           "page": "vision_ai_course.html",
-          "slide": 41,
-          "global": 60,
+          "slide": 40,
+          "global": 59,
           "title": "Transfer Learning · 사전학습 활용",
           "original": "V34"
         },
         {
           "page": "vision_ai_course.html",
-          "slide": 42,
-          "global": 61,
+          "slide": 41,
+          "global": 60,
           "title": "Freeze와 Fine-tuning",
           "original": "V35"
         },
         {
           "page": "vision_ai_course.html",
-          "slide": 43,
-          "global": 62,
+          "slide": 42,
+          "global": 61,
           "title": "Overfitting · 새 데이터 일반화",
           "original": "A35"
         }
@@ -472,50 +480,50 @@ window.LECTURE_OUTLINE = {
       "items": [
         {
           "page": "vision_ai_course.html",
-          "slide": 44,
-          "global": 63,
+          "slide": 43,
+          "global": 62,
           "title": "Score Threshold · 판정 기준",
           "original": "A38"
         },
         {
           "page": "vision_ai_course.html",
-          "slide": 45,
-          "global": 64,
+          "slide": 44,
+          "global": 63,
           "title": "Confusion Matrix · 100건 평가",
           "original": "A39"
         },
         {
           "page": "vision_ai_course.html",
-          "slide": 46,
-          "global": 65,
+          "slide": 45,
+          "global": 64,
           "title": "Precision과 Recall",
           "original": "A40"
         },
         {
           "page": "vision_ai_course.html",
-          "slide": 47,
-          "global": 66,
+          "slide": 46,
+          "global": 65,
           "title": "IoU · 박스 겹침 비율",
           "original": "V7"
         },
         {
           "page": "vision_ai_course.html",
-          "slide": 48,
-          "global": 67,
+          "slide": 47,
+          "global": 66,
           "title": "Grad-CAM · 클래스별 판단 근거",
           "original": "V36"
         },
         {
           "page": "vision_ai_course.html",
-          "slide": 49,
-          "global": 68,
+          "slide": 48,
+          "global": 67,
           "title": "Vision AI 프로젝트 전체 흐름",
           "original": "V37"
         },
         {
           "page": "vision_ai_course.html",
-          "slide": 50,
-          "global": 69,
+          "slide": 49,
+          "global": 68,
           "title": "운영 데이터와 재학습",
           "original": "A44"
         }
