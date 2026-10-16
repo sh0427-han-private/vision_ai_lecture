@@ -1,4 +1,4 @@
-# Vision AI 72장: 유명 논문·강의·공식 원본 Figure 활용 매핑
+# Vision AI 73장: 유명 논문·강의·공식 원본 Figure 활용 매핑
 
 > 2026-10-16 · **설계/조사 문서**입니다. 여기서 '후보'는 원본 이미지 파일 URL·권리·표시 가능성을 확인하기 전 단계이며 현재 공개 강의 슬라이드가 변경되었다는 의미가 아닙니다.
 
@@ -10,7 +10,7 @@
 - 실제 사진·인터랙티브 자료가 있는 슬라이드는 이유 없이 벡터 그림으로 대체하지 않습니다.
 - 수학/Pixel 숫자표/Kernel 값은 시각자료만 믿지 않고 **계산을 재현해 검증**합니다.
 - ResNet/U-Net 개별 모델 구조, ViT/Tracking/Depth 등은 현재 입문 강의에 추가하지 않습니다.
-- 먼저 기존 **총 72장** 구조를 유지하며 Figure의 적합성부터 평가합니다. 새 슬라이드는 꼭 필요한 경우에만 추가합니다.
+- 먼저 기존 **총 73장** 구조를 유지하며 Figure의 적합성부터 평가합니다. 새 슬라이드는 꼭 필요한 경우에만 추가합니다.
 
 ## 작업 우선순위 (초기 제안)
 
@@ -25,7 +25,7 @@
 | 3 | 47~50번 (평가) | Ultralytics Metrics (R22) | Threshold/Precision/Recall/IoU를 같은 사례로 묶기 |
 | 유지 | 1~5번, 16번, 28번, 33번 등 | 이미 좋은 사진·원본·인터랙티브 | 설명에 오류가 있는 경우만 수리 |
 
-## 통합 강의 53장 매핑
+## 통합 강의 54장 매핑
 
 | 슬라이드 | 현재 메시지 | 주요 출처 ID | 활용할 구체적 시각자료 | 상태 | 초보자 관점 메모 |
 |---|---|---|---|---|---|
@@ -53,35 +53,36 @@
 | 22 | 필터를 몇 칸씩 이동할지 정합니다 | R08 | D2L Stride 그림과 수치 비교 | 보완 | Output shape 검산 |
 | 23 | 가장자리 주변에 값을 채워 계산 범위를 조절합니다 | R08 | D2L Padding 원본 예시 검사 | 보완 | 경계 계산 영역 크기 |
 | 24 | 공간 해상도를 줄여 더 작은 특징 지도를 만듭니다 | R08 | D2L Pooling Before/After Figure 조사 | 후보 | Pooling vs Gaussian Downsampling 주의 |
-| 25 | CNN은 얕은층에서 깊은층으로 더 복잡한 특징을 학습합니다 | R03 · R12 | CS231n 원본 VGG-16 특징 Figure(Conv1_1 / Conv3_2 / Conv5_3)와 한글 3단계 해설 | 완료 | 실제 특징 시각화와 입력 사진의 활성지도 구별 |
-| 26 | 특징을 만드는 부분과, 결과를 만드는 부분을 나눠 봅니다 | R03 · R16 | Backbone/Head 역할 설명 유지 | 유지 | CNN 공통 Feature와 task 출력 분리 |
-| 27 | 고정 필터는 사람이 정하고, YOLO의 필터는 학습합니다 | R07 · R08 · R17 | 고정 Sobel과 학습 Filter 대비 | 보완 | 사람이 정한 값 ↔ 학습한 값 |
-| 28 | YOLO는 Backbone → Neck → Head로 검출합니다 | R17 · R27 | 기존 YOLOv8 원본 Figure 유지 | 유지 | 과도한 모듈 강의 피하기 |
-| 29 | YOLO Detection의 출력은 Class·Box·Score입니다 | R16 · R18 | 공식 YOLO 실제 검출 이미지 후보 | 후보 | Class·Box·Score 실제 샘플은 추론 출처 명확히 |
-| 30 | YOLO에서도 목적에 따라 Classify·Detect·Segment 모델을 선택합니다 | R18 · R19 | Classify/Detect/Segment 비교 기존 사과 재사용 | 유지 | Task별 출력 형식이 다름 |
-| 31 | YOLO 객체 검출은 종류와 위치를 함께 학습합니다 | R16 · R18 | 신규 한글 Class+Box 학습 그림 유지 | 유지 | YOLO 검출은 분류만 학습 X |
-| 32 | YOLO를 활용해도 데이터·Label·검증은 직접 준비해야 합니다 | R20 · R21 | YOLO Dataset Label 실물 1줄 예시 보완 | 보완 | class cx cy w h 정규화 |
-| 33 | 학습은 예측 오차가 줄도록 계산 기준을 바꾸는 과정입니다 | R08 · R21 | 기존 학습 Interactive 유지 | 유지 | Weight는 Gradient가 수정 |
-| 34 | Loss는 예측과 정답의 차이를 학습용 숫자로 바꿉니다 | R04 · R05 | Loss와 정답 비교 계산 유지 | 유지 | 학습 loss vs 성능지표 구분 |
-| 35 | 예측 → 오차 → Gradient → 수정을 반복합니다 | R04 · R05 | Forward/Backward 과정 한글 해설 | 보완 | 실제 학습 오차를 이용한 업데이트 |
-| 36 | 배울 때는 Weight를 바꾸고, 사용할 때는 고정합니다 | R04 · R21 | Training vs Inference 그림 유지 | 유지 | 언제 Weight가 변경되는지 |
-| 37 | 데이터를 작은 묶음으로 나누어 반복해서 봅니다 | R21 | Batch/Epoch 실습 예시 유지 | 유지 | 10장/Batch4 예시처럼 수치 검증 |
-| 38 | CNN의 필터도 오차를 줄이는 방향으로 학습합니다 | R08 · R11 | 학습 Kernel Weight를 그림에 표현 | 보완 | CNN Kernel이 학습되는 과정 |
-| 39 | 데이터는 실제 사용할 조건을 대표해야 합니다 | R01 · R24 | 현장 변화(조명/시점/가림) 기존 사진 유지 | 유지 | 현장 이미지가 실감 남 |
-| 40 | 학습·모델 선택·최종 평가의 데이터를 나눕니다 | R21 · R25 | Train/Val/Test 구분 설명 유지 | 유지 | 독립 데이터 기준 설명 |
-| 41 | 같은 영상의 비슷한 Frame은 통째로 분리합니다 | R25 | Video/LOT 그룹 분할 사례 강화 | 보완 | 동일 촬영 그룹이 Train/Test로 새면 누출 |
-| 42 | 모델이 기대하는 크기·값 범위·채널 순서를 맞춥니다 | R21 | Letterbox/Resize 예시·이미지 유지 | 유지 | 비율과 패딩 구분 |
-| 43 | 의미를 유지하는 변화를 학습 중에 보여줍니다 | R21 | Augmentation 실제 사진 비교 유지 | 유지 | Label 함께 변형 주의 |
-| 44 | 이미 배운 가중치에서 내 Task의 학습을 시작합니다 | R23 | PyTorch 전이학습 본문 Figure 선별 | 후보 | 사전학습→내 Task Fine-tune |
-| 45 | 고정할 부분과 추가 학습할 부분을 구분합니다 | R23 | Freeze/Unfreeze 구조 유지 | 유지 | 기존 Backbone / Task Head 사용 |
-| 46 | Train에서 잘하는 것과 새 데이터에서 잘하는 것은 다릅니다 | R24 | Shortcut 학습 실제 사례 Figure 선별 | 후보 | 학습 점수와 현장 성능 불일치 |
-| 47 | 점수에 기준을 적용하면 실제 판정이 됩니다 | R22 | Confidence threshold 예시 유지 | 유지 | 점수≠성공확률 |
-| 48 | 정답과 판정을 비교해 네 가지 결과를 셉니다 | R22 | Confusion Matrix 한글·수치 보존 | 유지 | TP/FP/FN/TN 실제 동일 조건 |
-| 49 | 알람의 정확성과 불량을 찾는 비율을 구분합니다 | R22 | Precision/Recall 수치 예시 보존 | 유지 | 검출 문제에도 다른 Matching 조건 필요 |
-| 50 | 위치와 영역은 정답과 얼마나 겹치는지 평가합니다 | R22 | IoU 실제 Box 중첩 Figure 후보 | 후보 | 교집합/합집합 이미지 |
-| 51 | 높은 점수만으로 판단 근거가 맞다고 보장할 수 없습니다 | R13 · R24 | Grad-CAM/Shortcut 실제 원본 Figure 후보 | 최우선 | 높은 점수≠옳은 근거 직관화 |
-| 52 | 문제 정의부터 운영 관찰까지 연결해 개선합니다 | R21 · R24 | 운영 Loop 기존 한글 그림 유지 | 유지 | 현장 실패 수집→재평가 |
-| 53 | 운영의 실패 사례를 다음 데이터와 학습에 연결합니다 | R21 · R24 | 기존 재학습/모니터링 결론 유지 | 유지 | 성능 변화는 환경·운영까지 감안 |
+| 25 | 한 장의 사진에서 층마다 다른 Feature Map이 나옵니다 | R02 · R03 · R08 | ImageNet 사전학습 SqueezeNet1.1의 실제 3단계 활성화 지도(동일 강아지 입력) | 완료 | 실제 공간별 Feature Map / 채널별 상대값 |
+| 26 | 학습된 특징은 얕은층에서 깊은층으로 복잡해집니다 | R03 · R12 | Stanford CS231n 원본 VGG-16 Feature Visualization | 완료 | 특징을 자극하는 패턴과 실제 Feature Map 구분 |
+| 27 | 특징을 만드는 부분과, 결과를 만드는 부분을 나눠 봅니다 | R03 · R16 | Backbone/Head 역할 설명 유지 | 유지 | CNN 공통 Feature와 task 출력 분리 |
+| 28 | 고정 필터는 사람이 정하고, YOLO의 필터는 학습합니다 | R07 · R08 · R17 | 고정 Sobel과 학습 Filter 대비 | 보완 | 사람이 정한 값 ↔ 학습한 값 |
+| 29 | YOLO는 Backbone → Neck → Head로 검출합니다 | R17 · R27 | 기존 YOLOv8 원본 Figure 유지 | 유지 | 과도한 모듈 강의 피하기 |
+| 30 | YOLO Detection의 출력은 Class·Box·Score입니다 | R16 · R18 | 공식 YOLO 실제 검출 이미지 후보 | 후보 | Class·Box·Score 실제 샘플은 추론 출처 명확히 |
+| 31 | YOLO에서도 목적에 따라 Classify·Detect·Segment 모델을 선택합니다 | R18 · R19 | Classify/Detect/Segment 비교 기존 사과 재사용 | 유지 | Task별 출력 형식이 다름 |
+| 32 | YOLO 객체 검출은 종류와 위치를 함께 학습합니다 | R16 · R18 | 신규 한글 Class+Box 학습 그림 유지 | 유지 | YOLO 검출은 분류만 학습 X |
+| 33 | YOLO를 활용해도 데이터·Label·검증은 직접 준비해야 합니다 | R20 · R21 | YOLO Dataset Label 실물 1줄 예시 보완 | 보완 | class cx cy w h 정규화 |
+| 34 | 학습은 예측 오차가 줄도록 계산 기준을 바꾸는 과정입니다 | R08 · R21 | 기존 학습 Interactive 유지 | 유지 | Weight는 Gradient가 수정 |
+| 35 | Loss는 예측과 정답의 차이를 학습용 숫자로 바꿉니다 | R04 · R05 | Loss와 정답 비교 계산 유지 | 유지 | 학습 loss vs 성능지표 구분 |
+| 36 | 예측 → 오차 → Gradient → 수정을 반복합니다 | R04 · R05 | Forward/Backward 과정 한글 해설 | 보완 | 실제 학습 오차를 이용한 업데이트 |
+| 37 | 배울 때는 Weight를 바꾸고, 사용할 때는 고정합니다 | R04 · R21 | Training vs Inference 그림 유지 | 유지 | 언제 Weight가 변경되는지 |
+| 38 | 데이터를 작은 묶음으로 나누어 반복해서 봅니다 | R21 | Batch/Epoch 실습 예시 유지 | 유지 | 10장/Batch4 예시처럼 수치 검증 |
+| 39 | CNN의 필터도 오차를 줄이는 방향으로 학습합니다 | R08 · R11 | 학습 Kernel Weight를 그림에 표현 | 보완 | CNN Kernel이 학습되는 과정 |
+| 40 | 데이터는 실제 사용할 조건을 대표해야 합니다 | R01 · R24 | 현장 변화(조명/시점/가림) 기존 사진 유지 | 유지 | 현장 이미지가 실감 남 |
+| 41 | 학습·모델 선택·최종 평가의 데이터를 나눕니다 | R21 · R25 | Train/Val/Test 구분 설명 유지 | 유지 | 독립 데이터 기준 설명 |
+| 42 | 같은 영상의 비슷한 Frame은 통째로 분리합니다 | R25 | Video/LOT 그룹 분할 사례 강화 | 보완 | 동일 촬영 그룹이 Train/Test로 새면 누출 |
+| 43 | 모델이 기대하는 크기·값 범위·채널 순서를 맞춥니다 | R21 | Letterbox/Resize 예시·이미지 유지 | 유지 | 비율과 패딩 구분 |
+| 44 | 의미를 유지하는 변화를 학습 중에 보여줍니다 | R21 | Augmentation 실제 사진 비교 유지 | 유지 | Label 함께 변형 주의 |
+| 45 | 이미 배운 가중치에서 내 Task의 학습을 시작합니다 | R23 | PyTorch 전이학습 본문 Figure 선별 | 후보 | 사전학습→내 Task Fine-tune |
+| 46 | 고정할 부분과 추가 학습할 부분을 구분합니다 | R23 | Freeze/Unfreeze 구조 유지 | 유지 | 기존 Backbone / Task Head 사용 |
+| 47 | Train에서 잘하는 것과 새 데이터에서 잘하는 것은 다릅니다 | R24 | Shortcut 학습 실제 사례 Figure 선별 | 후보 | 학습 점수와 현장 성능 불일치 |
+| 48 | 점수에 기준을 적용하면 실제 판정이 됩니다 | R22 | Confidence threshold 예시 유지 | 유지 | 점수≠성공확률 |
+| 49 | 정답과 판정을 비교해 네 가지 결과를 셉니다 | R22 | Confusion Matrix 한글·수치 보존 | 유지 | TP/FP/FN/TN 실제 동일 조건 |
+| 50 | 알람의 정확성과 불량을 찾는 비율을 구분합니다 | R22 | Precision/Recall 수치 예시 보존 | 유지 | 검출 문제에도 다른 Matching 조건 필요 |
+| 51 | 위치와 영역은 정답과 얼마나 겹치는지 평가합니다 | R22 | IoU 실제 Box 중첩 Figure 후보 | 후보 | 교집합/합집합 이미지 |
+| 52 | 높은 점수만으로 판단 근거가 맞다고 보장할 수 없습니다 | R13 · R24 | Grad-CAM/Shortcut 실제 원본 Figure 후보 | 최우선 | 높은 점수≠옳은 근거 직관화 |
+| 53 | 문제 정의부터 운영 관찰까지 연결해 개선합니다 | R21 · R24 | 운영 Loop 기존 한글 그림 유지 | 유지 | 현장 실패 수집→재평가 |
+| 54 | 운영의 실패 사례를 다음 데이터와 학습에 연결합니다 | R21 · R24 | 기존 재학습/모니터링 결론 유지 | 유지 | 성능 변화는 환경·운영까지 감안 |
 
 ## Intro 19장 참고 매핑
 
@@ -150,3 +151,11 @@
 
 - 현재 강의 25번: `docs/assets/lesson/cs231n_vgg16_feature_hierarchy_original.png` 원본 PNG와 한국어 3단계 해설(얕은층 Conv1_1 / 중간층 Conv3_2 / 깊은층 Conv5_3)을 사용합니다.
 - 기존 사과 3단계 직접 제작 SVG 대신 실제 학습 특징 연구 시각화로 교체합니다. 원본 이미지는 변경하지 않았습니다. 그림 출처는 CS231n 2017 Lecture 5 Slide 37입니다.
+
+
+## 2026-10-16 · 실제 Feature Map과 Feature Visualization 분리(현재)
+
+- **Vision 25**: 사전학습된 torchvision SqueezeNet 1.1에 CS231n 원본 강아지 사진을 직접 입력해 계산한 실제 Feature Map. `docs/assets/lesson/cnn_squeezenet_actual_feature_maps.png`, `scripts/render_cnn_feature_maps.py`로 재현 가능. 네 채널을 선택하며 색은 각 채널별 상대 반응입니다.
+- **Vision 26**: Stanford CS231n 2017 Lecture 5 Slide37 원본 VGG-16 Figure를 보존하고, 입력 사진의 실제 공간별 출력과 각 계층의 학습된 특징을 자극하는 패턴의 차이를 설명합니다.
+- 두 Figure는 SqueezeNet1.1과 VGG-16으로 **다른 CNN**입니다. 같은 사진/같은 모델의 연속 Layer 출력으로 오해시키지 않습니다.
+- Intro 19 + 통합 54 = 총 73장. 이후 번호·목차 일치와 브라우저 QA를 검증합니다.
