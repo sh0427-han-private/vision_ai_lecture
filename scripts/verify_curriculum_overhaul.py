@@ -80,7 +80,7 @@ course_slides = re.findall(
     r'<section class="slide(?: [^"]+)?"[^>]*>.*?</section>',
     course_page, flags=re.DOTALL
 )
-assert len(course_slides) == 52, "Public Vision AI course must contain 52 slides"
+assert len(course_slides) == 53, "Public Vision AI course must contain 53 slides"
 assert course_page.count('class="slide active"') == 1
 sources = [
     (deck, int(index))
@@ -88,13 +88,13 @@ sources = [
         r'data-source-deck="([^"]+)" data-source-slide="(\d+)"', course_page
     )
 ]
-assert len(sources) == 52 and len(set(sources)) == 52
+assert len(sources) == 53 and len(set(sources)) == 53
 assert sources[:5] == [("vision_ai", n) for n in range(2, 7)]
 assert sources[5:7] == [("ai_basics", 2), ("ai_basics", 3)]
 assert sources[7:12] == [("vision_ai", n) for n in (9,10,14,16,17)]
 assert sources[15:17] == [("cnn_expansion", 1), ("cnn_expansion", 2)]
-assert sources[26:31] == [("yolo_intro", n) for n in range(1, 6)]
-assert sources[48] == ("vision_ai", 7), "IoU belongs in evaluation"
+assert sources[26:32] == [("yolo_intro", n) for n in range(1, 7)]
+assert sources[49] == ("vision_ai", 7), "IoU belongs in evaluation"
 assert sources[-1] == ("ai_basics", 44)
 assert sorted(i for d,i in sources if d=="cnn_expansion") == [1,2]
 assert not any(d=="cnn_expansion" and i>=3 for d,i in sources), (
@@ -118,6 +118,10 @@ for asset in assets:
     assert root.get("viewBox") == "0 0 1200 500"
     assert asset in course_page, asset
 assert "CNN Explainer (Wang et al., IEEE TVCG 2020)" in course_page
+assert "cnn_banner.png" in course_page
+assert "yolo_class_box_training_ko.svg" in course_page
+assert "YOLO 객체 검출은 종류와 위치를 함께 학습합니다" in course_page
+assert (DOCS / "assets/lesson/yolo_class_box_training_ko.svg").is_file()
 assert "https://docs.ultralytics.com/ko/guides/yolo-architecture" in course_page
 assert "https://openaccess.thecvf.com/content_cvpr_2016/" in course_page
 assert "하나의 Detect Weight가 자동으로 Segment Mask를 주지는 않습니다." in course_page
@@ -143,13 +147,13 @@ for url in re.findall(r'(?:src|href)="([^"]+)"', course_page):
 outline_source = (DOCS / "lecture_outline.js").read_text("utf-8")
 outline = json.loads(outline_source.split(" = ", 1)[1].strip().rstrip(";"))
 items = [item for group in outline["groups"] for item in group["items"]]
-assert len(items) == 71
-assert [it["global"] for it in items] == list(range(1, 72))
+assert len(items) == 72
+assert [it["global"] for it in items] == list(range(1, 73))
 assert [(it["page"], it["slide"]) for it in items[:19]] == [
     ("intro.html", n) for n in range(1,20)
 ]
 assert [(it["page"], it["slide"]) for it in items[19:]] == [
-    ("vision_ai_course.html", n) for n in range(1,53)
+    ("vision_ai_course.html", n) for n in range(1,54)
 ]
 assert [it["original"] for it in items[19:24]] == ["V2","V3","V4","V5","V6"]
 assert [it["title"] for it in items[:3]] == [
@@ -158,13 +162,13 @@ assert [it["title"] for it in items[:3]] == [
     "그래서 Vision은 일상과 기술 모두에서 중요합니다",
 ]
 assert items[19+15]["original"] == "N1", "CNN full architecture overview"
-assert [it["original"] for it in items[19+26:19+31]] == [
-    "Y1","Y2","Y3","Y4","Y5"
+assert [it["original"] for it in items[19+26:19+32]] == [
+    "Y1","Y2","Y3","Y4","Y6","Y5"
 ]
-assert items[19+48]["original"] == "V7", "IoU evaluation"
+assert items[19+49]["original"] == "V7", "IoU evaluation"
 assert len(outline["groups"]) == 11
 assert "lecture-toc-drawer" in (DOCS / "lecture_sidebar.js").read_text("utf-8")
-print("Vision-first 52 slides and 71-item YOLO-centered sidebar validated.")
+print("Vision-first 53 slides and 72-item YOLO-centered sidebar validated.")
 
 
 figures = sorted((DOCS / "assets/lesson").glob("lecture_*.svg"))
