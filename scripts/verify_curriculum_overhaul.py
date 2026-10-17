@@ -163,7 +163,7 @@ assert "lecture-toc-drawer" in (DOCS / "lecture_sidebar.js").read_text("utf-8")
 
 # Numerical convolution, padding, max pooling, AND/XOR must all be correct.
 for idx, phrase in [
-    (7,"1,048,576"), (16,"W₂W₁"), (17,"AND Gate"),
+    (7,"1,048,576"), (16,"6x + 3"), (17,"AND Gate"),
     (19,"xor_multilayer_gates_ko"), (25,"3×3 = 9칸"), (26,"3×3 → 1×1"),
     (27,"4×4 (16칸) → 2×2")
 ]:
@@ -171,10 +171,10 @@ for idx, phrase in [
 assert "x₁+x₂ = 1.4" in course_slides[17]
 assert "XOR Gate" in course_slides[17]
 assert "기울기" not in course_slides[17], "Gate slide is geometry, not gradient"
-assert course_slides[16].count("W₂") >= 3
+assert "y = z₁ + z₂" in course_slides[16]
 assert "neuron_concept_flow.css?v=20261017-3" in course_page
 assert "z = Wx + b" in course_slides[15]
-assert "2 → 3 → 1 뉴런" in course_slides[16]
+assert "1 → 2 → 2 → 1 뉴런" in course_slides[16]
 assert "W₂φ(W₁x+b₁)+b₂" in course_slides[20]
 assert "perceptron_gate_structure_ko" in course_slides[15]
 assert "nb-network-numbers" in course_slides[16]
@@ -688,3 +688,14 @@ for x1 in (0, 1):
         assert and_y == (x1 & x2)
         assert xor_y == (x1 ^ x2)
 print("Perceptron AND and multilayer XOR: all truth-table rows verified.")
+
+# Scalar input through two hidden affine layers and a sum output.
+for scalar_x in (-5, -1, 0, 0.5, 2, 3, 10):
+    h1, h2 = 2*scalar_x + 1, scalar_x - 1
+    z1, z2 = 2*h1 + h2, h1 - h2
+    assert z1 == 5*scalar_x + 1
+    assert z2 == scalar_x + 2
+    assert z1 + z2 == 6*scalar_x + 3
+assert (2*2+1, 2-1) == (5, 1)
+assert (2*5+1, 5-1, 11+4) == (11, 4, 15)
+print("Scalar 1-2-2-1 network and collapsed y=6x+3 verified.")
