@@ -164,25 +164,25 @@ assert "lecture-toc-drawer" in (DOCS / "lecture_sidebar.js").read_text("utf-8")
 # Numerical convolution, padding, max pooling, AND/XOR must all be correct.
 for idx, phrase in [
     (7,"1,048,576"), (16,"W₂W₁"), (17,"AND Gate"),
-    (19,"h₁ = ReLU"), (25,"3×3 = 9칸"), (26,"3×3 → 1×1"),
+    (19,"xor_multilayer_gates_ko"), (25,"3×3 = 9칸"), (26,"3×3 → 1×1"),
     (27,"4×4 (16칸) → 2×2")
 ]:
     assert phrase in course_slides[idx], (idx+1,phrase)
-assert "x₁+x₂ = 1.5" in course_slides[17]
+assert "x₁+x₂ = 1.4" in course_slides[17]
 assert "XOR Gate" in course_slides[17]
 assert "기울기" not in course_slides[17], "Gate slide is geometry, not gradient"
 assert course_slides[16].count("W₂") >= 3
-assert "neuron_concept_flow.css?v=20261017-2" in course_page
+assert "neuron_concept_flow.css?v=20261017-3" in course_page
 assert "z = Wx + b" in course_slides[15]
 assert "2 → 3 → 1 뉴런" in course_slides[16]
 assert "W₂φ(W₁x+b₁)+b₂" in course_slides[20]
-assert "nb-threshold" in course_slides[15]
+assert "perceptron_gate_structure_ko" in course_slides[15]
 assert "nb-network-numbers" in course_slides[16]
-assert "nb-gate-output" in course_slides[17]
-assert "nb-grid-axis-note" in course_slides[17]
-assert "위쪽 행은 x₂=1" in course_slides[17]
+assert "gate-truth" in course_slides[17]
+assert "and_xor_gate_geometry_ko" in course_slides[17]
+assert "x₁+x₂ = 1.4" in course_slides[17]
 assert "nb-activation-charts" in course_slides[18]
-assert course_slides[19].count("nb-xor-case ") == 4
+assert course_slides[19].count("<tr>") == 5
 assert "nb-activation-role" in course_slides[20]
 assert 'class="concept-source"' not in course_page, "Only actual borrowed images need source labels"
 assert "개념 참고:" not in course_page, "Do not cite sources used only for concepts"
@@ -676,3 +676,15 @@ for page_name, idx in (("vision_ai_course", 4), ("vision_ai", 5)):
     assert "같은 사진이라도 Task가 바뀌면 정답 형태가 바뀝니다" in slides[idx]
     assert "task_labels_three_outputs.svg?v=shared-apple-20261015-1" in slides[idx]
 print("Vision AI slide 6 apple, defect Box and Pixel Mask match slides 3-5.")
+
+# Step convention is consistently z >= 0; verify all displayed gate rows.
+step = lambda z: int(z >= 0)
+for x1 in (0, 1):
+    for x2 in (0, 1):
+        and_y = step(0.5*x1 + 0.5*x2 - 0.7)
+        h1 = step(-0.5*x1 - 0.5*x2 + 0.7)
+        h2 = step(0.5*x1 + 0.5*x2 - 0.2)
+        xor_y = step(0.5*h1 + 0.5*h2 - 0.7)
+        assert and_y == (x1 & x2)
+        assert xor_y == (x1 ^ x2)
+print("Perceptron AND and multilayer XOR: all truth-table rows verified.")

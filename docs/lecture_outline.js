@@ -1,6 +1,6 @@
 /* Public course: Intro 19, Vision AI integrated 49; total 68 slides. */
 window.LECTURE_OUTLINE = {
-  "version": "20261017-neuron-story-49",
+  "version": "20261017-gate-story-49",
   "groups": [
     {
       "name": "Intro · 시각의 중요성에서 숫자까지",
@@ -281,7 +281,7 @@ window.LECTURE_OUTLINE = {
           "page": "vision_ai_course.html",
           "slide": 20,
           "global": 39,
-          "title": "ReLU로 XOR 계산하기",
+          "title": "다층 퍼셉트론 · 게이트 조합으로 XOR",
           "original": "N4"
         },
         {
