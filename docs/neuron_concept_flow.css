@@ -157,3 +157,6 @@
 .lesson-deck .neuron-story .nb-activation-role strong{font-size:11px}
 .lesson-deck .neuron-story .nb-activation-role small{font-size:10px}
 }
+
+.lesson-deck .neuron-story .nb-grid-axis-note{margin:0;text-align:center;font-size:clamp(11px,.88vw,14px);color:#667e88}
+@media(max-height:850px){.lesson-deck .neuron-story .nb-grid-axis-note{font-size:11px}}

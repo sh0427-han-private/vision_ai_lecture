@@ -179,6 +179,8 @@ assert "W₂φ(W₁x+b₁)+b₂" in course_slides[20]
 assert "nb-threshold" in course_slides[15]
 assert "nb-network-numbers" in course_slides[16]
 assert "nb-gate-output" in course_slides[17]
+assert "nb-grid-axis-note" in course_slides[17]
+assert "위쪽 행은 x₂=1" in course_slides[17]
 assert "nb-activation-charts" in course_slides[18]
 assert course_slides[19].count("nb-xor-case ") == 4
 assert "nb-activation-role" in course_slides[20]
