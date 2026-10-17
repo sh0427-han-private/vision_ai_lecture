@@ -119,7 +119,7 @@ assert ("ai_basics", 27) not in sources
 assert "cnn_squeezenet_actual_feature_maps.png" in course_page
 assert (DOCS / "assets/lesson/cnn_squeezenet_actual_feature_maps.png").is_file()
 assert (ROOT / "scripts/render_cnn_feature_maps.py").is_file()
-assert "cnn_numeric_why_logic.css?v=20261016-2" in course_page
+assert "cnn_numeric_why_logic.css?v=20261017-1" in course_page
 assert 'data-prev-page="intro.html"' in course_page
 assert 'data-next-page=""' in course_page
 assert 'slide.js?v=prevent-toc-wheel-20261016-1' in course_page
