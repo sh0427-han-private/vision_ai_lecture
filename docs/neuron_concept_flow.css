@@ -160,3 +160,13 @@
 
 .lesson-deck .neuron-story .nb-grid-axis-note{margin:0;text-align:center;font-size:clamp(11px,.88vw,14px);color:#667e88}
 @media(max-height:850px){.lesson-deck .neuron-story .nb-grid-axis-note{font-size:11px}}
+
+/* Perceptron and gate teaching figures. */
+.lesson-deck .neuron-story .gate-reference-figure{margin:10px 0}
+.lesson-deck .neuron-story .gate-reference-figure img{width:100%;height:auto;max-height:36vh;object-fit:contain}
+.lesson-deck .neuron-story .gate-geometry-layout{display:grid;grid-template-columns:3.4fr 1fr;align-items:center;gap:24px}
+.lesson-deck .neuron-story .gate-truth{width:100%;border-collapse:collapse;text-align:center;font-size:clamp(15px,1.2vw,21px);color:#294e60}
+.lesson-deck .neuron-story .gate-truth th{background:#edf5f2;color:#137b66}
+.lesson-deck .neuron-story .gate-truth th,.lesson-deck .neuron-story .gate-truth td{padding:7px 12px;border-bottom:1px solid #dce5e9}
+.lesson-deck .neuron-story .gate-formula{font-size:clamp(15px,1.25vw,22px);text-align:center;color:#294e60}
+@media(max-height:850px){.lesson-deck .neuron-story .gate-reference-figure img{max-height:31vh}.lesson-deck .neuron-story .gate-truth th,.lesson-deck .neuron-story .gate-truth td{padding:4px 8px}}

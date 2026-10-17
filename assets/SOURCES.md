@@ -471,3 +471,11 @@ https://www.nature.com/articles/s42256-020-00257-z
 
 
 - **2026-10-16, Grad-CAM 원본 이미지 사내망 로드 개선**: `jacobgil/pytorch-grad-cam` 원본 `examples/dog_cat.jfif`, `resnet50_dog_gradcam_cam.jpg`, `resnet50_cat_gradcam_cam.jpg`를 픽셀 변경 없이 `docs/assets/lesson/gradcam_dog_cat_input.jfif`, `gradcam_resnet50_dog.jpg`, `gradcam_resnet50_cat.jpg`에 저장했습니다. 원본 Git Blob SHA도 각각 일치합니다. 출처: https://github.com/jacobgil/pytorch-grad-cam . 통합 슬라이드 48번에 사용하며 외부 GitHub Raw 이미지 주소의 네트워크 차단을 피합니다.
+
+
+## 2026-10-17 · 퍼셉트론 / AND·XOR 시각 설명
+- 통합 16번: 입력 노드 → 가중치 연결선 → 가중합 Σ → Step → 출력. 고정 입력 1과 편향 b를 표시하고 AND의 (1,1) 계산을 연결합니다.
+- 18번: 같은 좌표의 AND/XOR와 네 입력 진리표. AND 가중치 (0.5,0.5), 편향 -0.7에 맞춰 경계는 x₁+x₂=1.4입니다.
+- 20번: NAND와 OR 은닉 뉴런 → AND 출력 뉴런으로 XOR를 구성합니다. 모든 게이트는 Step(z)=1 if z≥0 else 0을 사용합니다. 17번 Affine 합성, 19번 ReLU, 21번 신경망 구조는 보존합니다.
+- 참고: WikiDocs https://wikidocs.net/60680 . 원본 이미지를 복사하지 않고 구조를 참고하여 한국어 SVG를 자체 작성했습니다. 원본 이미지 파일은 사용하지 않으므로 강의 화면에는 외부 이미지 출처를 추가하지 않았습니다.
+- 신규 자산: perceptron_gate_structure_ko.svg, and_xor_gate_geometry_ko.svg, xor_multilayer_gates_ko.svg. Intro 19장 + 통합 49장 = 전체 68장 유지.
