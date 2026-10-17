@@ -185,6 +185,7 @@ assert "nb-activation-charts" in course_slides[18]
 assert course_slides[19].count("nb-xor-case ") == 4
 assert "nb-activation-role" in course_slides[20]
 assert 'class="concept-source"' not in course_page, "Only actual borrowed images need source labels"
+assert "개념 참고:" not in course_page, "Do not cite sources used only for concepts"
 assert all(
     max(0,x-y)+max(0,y-x) == (x^y)
     for x in (0,1) for y in (0,1)
