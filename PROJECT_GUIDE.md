@@ -488,3 +488,11 @@ GitHub Pages:
 - 이 수치 예시는 실제 CNN 실측 출력이 아니라 **교육용 계산값**입니다. AI Basics/개별 Vision AI 원본 페이지 및 역사적 SVG/PNG 자산은 유지하되 현재 강의의 참조에서는 제외합니다.
 - 신규 스타일 `docs/cnn_numeric_why_logic.css`는 통합 49장에만 적용하고, `docs/lecture_outline.js`, `README.md`, 정적 검증과 브라우저 검증 모두 68장 기준으로 동기화합니다. 전체 136개 viewport의 글자 잘림·과도 축소 여부를 확인합니다.
 - 기술 출처: Stanford CS231n <https://cs231n.github.io/convolutional-networks/> · <https://cs231n.github.io/neural-networks-1/>; 슬라이드의 해당 계산 옆에 출처 링크 표시합니다.
+
+
+## 2026-10-17 · 퍼셉트론 → 비선형성 학습 흐름 / AIBook 기반 시각 정리
+- 통합 강의 16~21번은 퍼셉트론 가중합(z=Wx+b)과 고전적 Step 판정 → 여러 Affine Layer의 합성은 단일 Affine과 동등 → AND/XOR의 선형 분리 여부 → ReLU 함수 → ReLU XOR 예시 → 활성화 함수를 포함한 신경망 순서입니다.
+- 고전적 Perceptron을 활성화 없는 Wx+b로 정의하지 않습니다. Wx+b는 pre-activation이며 Step은 출력 판정입니다.
+- 원문 참고: Euiyun Kim, AIBook '뉴런과 신경망' https://aibook.euiyun.com/chapters/neuron.html ; Stanford CS231n https://cs231n.github.io/neural-networks-1/.
+- AIBook에서 개념→핵심 식→간결한 Figure/검산을 잇는 편집 방식을 참고했습니다. 원본 스타일/코드 자산을 복제하지 않고 현재 16:9 강의에 맞춰 로컬 HTML/SVG/CSS로 재구성했습니다.
+- 변경 범위: `docs/vision_ai_course.html`의 16~21번, 전용 `docs/neuron_concept_flow.css`, outline/검증 스크립트/문서. 다른 슬라이드와 공통 CSS/JS는 그대로 유지합니다.

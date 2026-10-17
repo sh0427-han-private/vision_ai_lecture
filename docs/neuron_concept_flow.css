@@ -1,0 +1,84 @@
+/* AIBook-inspired editorial figures, scoped to course slides 16–21.
+   Original layout and diagrams; no external runtime dependencies. */
+.lesson-deck .neuron-story{max-width:1200px}
+.lesson-deck .neuron-story .slide-title{letter-spacing:-.025em;color:#1d3440;font-weight:850}
+.lesson-deck .neuron-story .slide-subtitle,.lesson-deck .neuron-story .concept-lede{color:#526371;line-height:1.45}
+.lesson-deck .neuron-story .nb-perceptron{display:grid;grid-template-columns:1.15fr 40px 1.25fr 40px .95fr;align-items:center;gap:7px;margin:17px 0 18px}
+.lesson-deck .neuron-story .nb-inputs{border-top:2px solid #597c85;border-bottom:1px solid #d9e2e7;padding:19px 9px 11px;min-width:0}
+.lesson-deck .neuron-story .nb-in-row{display:grid;grid-template-columns:1fr 21px 1fr 49px;gap:6px;align-items:center;padding:10px 5px;color:#415d6b;font-size:clamp(14px,1.25vw,19px);font-weight:650}
+.lesson-deck .neuron-story .nb-in-row+ .nb-in-row{border-top:1px solid #e0e7eb}
+.lesson-deck .neuron-story .nb-in-row strong{color:#187767}
+.lesson-deck .neuron-story .nb-inputs p{margin:14px 0 0;font-size:14px;color:#71808c}
+.lesson-deck .neuron-story .nb-p-arrow{font-size:clamp(24px,2.5vw,36px);color:#7b949d;text-align:center}
+.lesson-deck .neuron-story .nb-score,.lesson-deck .neuron-story .nb-decision{display:flex;flex-direction:column;justify-content:center;gap:10px;min-width:0;min-height:203px;padding:15px 8px;text-align:center;border-top:2px solid #74939c;border-bottom:1px solid #d9e2e7}
+.lesson-deck .neuron-story .nb-decision{border-top-color:#198676}
+.lesson-deck .neuron-story .nb-score small,.lesson-deck .neuron-story .nb-decision small{font-size:clamp(12px,.98vw,15px);color:#657785}
+.lesson-deck .neuron-story .nb-score strong,.lesson-deck .neuron-story .nb-decision strong{font-size:clamp(22px,2.2vw,34px);color:#183e4c;white-space:nowrap}
+.lesson-deck .neuron-story .nb-score>span,.lesson-deck .neuron-story .nb-decision>span{font-size:clamp(15px,1.35vw,22px);color:#345e6b;font-weight:660;white-space:nowrap}
+.lesson-deck .neuron-story .nb-score b,.lesson-deck .neuron-story .nb-decision b{font-size:1.32em;color:#158374}
+.lesson-deck .neuron-story .nb-equation-summary{display:flex;justify-content:space-between;gap:28px;padding:15px 4px;border-top:1px solid #dce5e9;border-bottom:1px solid #dce5e9;font-size:clamp(16px,1.45vw,23px);color:#516976}
+.lesson-deck .neuron-story .nb-equation-summary strong{color:#203e4c}
+.lesson-deck .neuron-story .nb-takeaway{margin:14px 0 6px;color:#294d53;font-size:clamp(17px,1.42vw,22px);font-weight:620;line-height:1.48}
+.lesson-deck .neuron-story .nb-takeaway strong{color:#137968}
+.lesson-deck .neuron-story .nb-main-figure{margin:12px 0 4px;border-top:1px solid #dce5e9;border-bottom:1px solid #dce5e9;padding:12px 0}
+.lesson-deck .neuron-story .nb-network-svg{width:100%;max-height:245px;display:block}
+.lesson-deck .neuron-story .nb-svg-title{font-size:21px;font-weight:740;fill:#35586a}
+.lesson-deck .neuron-story .nb-svg-label{font-size:19px;font-weight:760;fill:#214c60}
+.lesson-deck .neuron-story .nb-svg-sub{font-size:18px;fill:#547583;font-weight:650}
+.lesson-deck .neuron-story .nb-svg-eq{font-size:55px;font-weight:750;fill:#258a75}
+.lesson-deck .neuron-story .nb-derivation{display:grid;grid-template-columns:.75fr 1.25fr;gap:14px;align-items:center;padding:12px 0;color:#255365;font-size:clamp(18px,1.6vw,25px);font-weight:730;text-align:center}
+.lesson-deck .neuron-story .nb-derivation>span+span{color:#186f60}
+.lesson-deck .neuron-story .nb-check{display:flex;align-items:center;justify-content:space-between;gap:10px;border-top:1px solid #dde6e9;border-bottom:1px solid #dde6e9;padding:13px 8px;color:#465f6a;font-size:clamp(14px,1.18vw,18px)}
+.lesson-deck .neuron-story .nb-check strong{font-size:clamp(14px,1.14vw,18px);color:#225a68}
+.lesson-deck .neuron-story .nb-deep-flow{display:flex;align-items:center;gap:8px;justify-content:space-between;margin:38px 0 38px}
+.lesson-deck .neuron-story .nb-deep-node{display:flex;flex:1;align-items:center;flex-direction:column;justify-content:center;text-align:center;gap:12px;min-width:0;min-height:132px;border-top:2px solid #7995a1;border-bottom:1px solid #d7e2e7;color:#2c5365;font-size:clamp(15px,1.25vw,20px);font-weight:730}
+.lesson-deck .neuron-story .nb-deep-node small{font-size:clamp(16px,1.34vw,21px);font-weight:690;color:#657989}
+.lesson-deck .neuron-story .nb-deep-node.nb-accent{border-top-color:#158c77;color:#0d7867}
+.lesson-deck .neuron-story .nb-deep-node.nb-accent small{color:#0d7867}
+.lesson-deck .neuron-story .nb-deep-arrow{color:#97a9b1;font-size:clamp(21px,2vw,31px)}
+.lesson-deck .neuron-story .nb-two-formulas{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin:15px 0}
+.lesson-deck .neuron-story .nb-two-formulas>div{display:flex;flex-direction:column;gap:13px;border-top:2px solid #8da7b4;padding:14px 9px}
+.lesson-deck .neuron-story .nb-two-formulas>div+div{border-top-color:#158b78}
+.lesson-deck .neuron-story .nb-two-formulas small{font-size:clamp(14px,1.06vw,17px);color:#657784}
+.lesson-deck .neuron-story .nb-two-formulas strong{font-size:clamp(19px,1.7vw,27px);color:#254e61}
+.lesson-deck .neuron-story .nb-two-formulas span{font-size:clamp(14px,1.06vw,17px);color:#5b6c75}
+.lesson-deck .neuron-story .concept-panel,.lesson-deck .neuron-story .logic-graph{background:#fff;border:1px solid #dae2e7;border-top:2px solid #7c9ba3;border-radius:5px;box-shadow:none}
+.lesson-deck .neuron-story .concept-panel.emphasis{border-top-color:#198675}
+.lesson-deck .neuron-story .concept-takeaway{background:transparent;border:0;border-top:1px solid #d5e2e6;padding:10px 0;margin:12px 0 0;border-radius:0}
+.lesson-deck .neuron-story .concept-equation{background:#f6f8f9;border:0;border-radius:3px}
+.lesson-deck .neuron-story .concept-source{font-size:12px;margin-top:7px}
+@media(max-height:850px){
+.lesson-deck .neuron-story .nb-perceptron{margin:7px 0}
+.lesson-deck .neuron-story .nb-score,.lesson-deck .neuron-story .nb-decision{min-height:138px;padding:8px 4px;gap:6px}
+.lesson-deck .neuron-story .nb-inputs{padding:4px}
+.lesson-deck .neuron-story .nb-in-row{padding:6px 2px}
+.lesson-deck .neuron-story .nb-equation-summary{padding:9px 4px}
+.lesson-deck .neuron-story .nb-network-svg{max-height:176px}
+.lesson-deck .neuron-story .nb-main-figure{padding:6px 0;margin:5px 0}
+.lesson-deck .neuron-story .nb-derivation{padding:5px 0}
+.lesson-deck .neuron-story .nb-check{padding:7px 6px}
+.lesson-deck .neuron-story .nb-takeaway{margin:7px 0 3px;font-size:16px}
+.lesson-deck .neuron-story .nb-deep-flow{margin:18px 0}
+.lesson-deck .neuron-story .nb-deep-node{min-height:88px;gap:5px}
+.lesson-deck .neuron-story .nb-two-formulas{margin:5px 0}
+.lesson-deck .neuron-story .nb-two-formulas>div{padding:7px;gap:7px}
+}
+@media(max-width:800px){
+.lesson-deck .neuron-story .nb-perceptron{grid-template-columns:1fr 17px 1fr 17px .85fr;gap:3px}
+.lesson-deck .neuron-story .nb-score strong,.lesson-deck .neuron-story .nb-decision strong{font-size:15px}
+.lesson-deck .neuron-story .nb-score>span,.lesson-deck .neuron-story .nb-decision>span{font-size:11px;white-space:normal}
+.lesson-deck .neuron-story .nb-in-row{grid-template-columns:1fr 10px 1fr 23px;gap:2px;font-size:10px}
+.lesson-deck .neuron-story .nb-score small,.lesson-deck .neuron-story .nb-decision small{font-size:10px}
+.lesson-deck .neuron-story .nb-equation-summary{font-size:11px;gap:6px}
+.lesson-deck .neuron-story .nb-check{font-size:9px;gap:3px;flex-wrap:wrap}
+.lesson-deck .neuron-story .nb-check strong{font-size:10px}
+.lesson-deck .neuron-story .nb-derivation{font-size:12px;gap:2px}
+.lesson-deck .neuron-story .nb-deep-flow{gap:3px}
+.lesson-deck .neuron-story .nb-deep-node{font-size:11px}
+.lesson-deck .neuron-story .nb-deep-node small{font-size:9px}
+.lesson-deck .neuron-story .nb-deep-arrow{font-size:14px}
+.lesson-deck .neuron-story .nb-two-formulas{gap:6px}
+.lesson-deck .neuron-story .nb-two-formulas strong{font-size:13px}
+.lesson-deck .neuron-story .nb-two-formulas small,.lesson-deck .neuron-story .nb-two-formulas span{font-size:10px}
+.lesson-deck .neuron-story .nb-takeaway{font-size:13px}
+}

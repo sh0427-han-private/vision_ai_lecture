@@ -20,7 +20,7 @@ Vision AI를 처음 접하는 사람도 **현실 세계 → Sensor → 숫자 �
 
 - **[Intro 처음부터 보기](https://sh0427-han.github.io/vision_ai_lecture/)**
 - **[통합 Vision AI 바로 보기](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html)**
-- **[CNN 사용 이유 8번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-8)** · **[비선형성과 AND/XOR 18~21번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-18)** · **[Stride·Padding·Max Pooling 26~28번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-26)**
+- **[CNN 사용 이유 8번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-8)** · **[퍼셉트론과 비선형성 16~21번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-16)** · **[Stride·Padding·Max Pooling 26~28번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-26)**
 
 > 배포 URL 주의: 저장소 파일은 `docs/vision_ai_course.html`이지만 GitHub Pages는 `docs/` 디렉터리 자체를 웹사이트의 루트로 게시합니다. 따라서 공개 링크에는 `/docs/`를 넣으면 안 됩니다. 과거에 공유된 `/docs/vision_ai_course.html#slide-N` 링크는 자동으로 올바른 경로로 이동하도록 호환 페이지를 제공합니다.
 
@@ -162,4 +162,4 @@ vision_ai_lecture/
 
 ### 최신 초급자 CNN 학습 순서
 
-통합 8번에서는 **이미지의 국소 연결·가중치 공유 때문에 CNN을 쓰는 이유**를 비교합니다. 18~21번은 **선형층을 깊이 쌓아도 한 층과 동일한 이유 → AND/XOR의 결정 경계 → ReLU로 XOR 계산**을 설명합니다. 26~28번에서는 Stride·Padding·Max Pooling을 사진 처리 결과가 아니라 **숫자 배열의 Input → Output**으로 비교하여 왜 쓰고 데이터 크기·값이 어떻게 변하는지 보여줍니다. YOLO 관련 중복 설명 5장은 제거하고 Kernel 비교는 일반 CNN 중심으로 바꿨습니다. **Intro 19장 + 통합 49장 = 총 68장**입니다.
+통합 8번에서는 **이미지의 국소 연결·가중치 공유 때문에 CNN을 쓰는 이유**를 비교합니다. 16~21번은 **퍼셉트론의 Wx+b와 계단 활성화 → 활성화 없는 다층 계산의 단층 동등성 → AND/XOR 결정 경계 → ReLU로 XOR 계산 → 신경망 구조**을 설명합니다. 26~28번에서는 Stride·Padding·Max Pooling을 사진 처리 결과가 아니라 **숫자 배열의 Input → Output**으로 비교하여 왜 쓰고 데이터 크기·값이 어떻게 변하는지 보여줍니다. YOLO 관련 중복 설명 5장은 제거하고 Kernel 비교는 일반 CNN 중심으로 바꿨습니다. **Intro 19장 + 통합 49장 = 총 68장**입니다.
