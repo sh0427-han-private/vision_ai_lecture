@@ -18,7 +18,7 @@
 <script src="lecture_outline.js?v=neuron-story-20261017-1" defer></script>
 <script src="lecture_sidebar.js?v=20261015-1" defer></script>
 <link rel="stylesheet" href="cnn_numeric_why_logic.css?v=20261017-1">
-<link rel="stylesheet" href="neuron_concept_flow.css?v=20261017-1">
+<link rel="stylesheet" href="neuron_concept_flow.css?v=20261017-2">
 </head><body class="deck-page lesson-deck" data-prev-page="intro.html" data-next-page="">
 <header class="site-header"><nav class="nav"><a class="brand" href="intro.html#slide-1">Vision AI Lecture</a></nav></header>
 <main class="deck" aria-live="polite">
@@ -81,7 +81,7 @@
 </div>
 <div class="concept-equation">작은 영역 보기(Local Connectivity) + 가중치 공유(Weight Sharing)</div>
 <p class="concept-takeaway"><strong>왜 쓰나요?</strong> 이미지의 공간 구조를 활용하면서 가중치 수를 크게 줄여 국소 특징을 효율적으로 학습하기 위해서입니다. 숫자는 비교 구조를 고정한 예시이며 두 모델의 표현 범위는 다릅니다.</p>
-<p class="concept-source">기술 참고: <a href="https://cs231n.github.io/convolutional-networks/" target="_blank" rel="noopener">Stanford CS231n · Convolutional Networks</a> · 수치·도식은 강의용으로 직접 구성</p>
+
 </div></section>
 <section class="slide" data-topic="CNN 구조" data-level="basic" data-source-deck="cnn_expansion" data-source-slide="1" data-outline-unit="CNN · 전체 구조와 실제 특징">
 <div class="slide-inner cnn-dragon-reference">
@@ -131,7 +131,7 @@
 <p class="slide-subtitle">Kernel(커널)은 작은 숫자 가중치 배열입니다. 사진 위를 이동하면서 이웃 Pixel과 곱하고 더해 위치별 특징 반응을 계산합니다. 그림에서는 같은 3×3 값을 여러 위치에 반복 적용합니다.</p>
 <figure class="lesson-figure"><a href="assets/lesson/cnn_kernel_role_beginner_ko.svg?v=kernel-role-20261016-1" target="_blank" rel="noopener" title="Kernel 역할 그림 크게 보기"><img src="assets/lesson/cnn_kernel_role_beginner_ko.svg?v=kernel-role-20261016-1" alt="실제 강아지 사진의 작은 영역을 3×3 Kernel로 반복 계산해 위치별 Feature Map을 만든다는 CNN 원리. 오른쪽 반응 지도는 실제 모델 실측이 아닌 교육용 개념도"></a></figure>
 <p class="lesson-takeaway"><strong>왜 필요할까?</strong> 사진 전체를 한꺼번에 암기하는 대신 작은 영역의 경계·질감 등 국소 패턴을 반복해서 찾기 위해서입니다. CNN에서는 Kernel의 숫자가 학습으로 조정됩니다.</p>
-<p class="lesson-source">이해 참고: <a href="https://cs231n.github.io/convolutional-networks/" target="_blank" rel="noopener">Stanford CS231n · Convolutional Networks</a> · 입력 강아지 사진은 CS231n 강의 원본, 특징 지도는 원리를 보여주는 <strong>개념도</strong>입니다.</p><details class="kernel-optional-images"><summary>선택: 3×3 Kernel이 실제 숫자를 계산하는 과정</summary><a class="kernel-numeric-reference" href="assets/lesson/lecture_kernel_slide.svg?v=visual-20261013-1" target="_blank" rel="noopener"><img src="assets/lesson/lecture_kernel_slide.svg?v=visual-20261013-1" alt="5×5 픽셀 숫자와 3×3 Kernel을 한 칸씩 이동시켜 위치별 출력값을 계산하는 기존 수치 자료"></a><p>3×3 Kernel은 사진의 위치마다 같은 숫자 가중치를 적용합니다. 본강의에서 결과 숫자를 직접 계산할 필요는 없습니다.</p></details></div></section>
+<p class="lesson-source">이미지 출처: <a href="https://cs231n.stanford.edu/slides/2017/cs231n_2017_lecture5.pdf" target="_blank" rel="noopener">Stanford CS231n (2017) 강의 원본 강아지 사진</a> · 특징 반응 지도는 자체 제작한 <strong>개념도</strong>입니다.</p><details class="kernel-optional-images"><summary>선택: 3×3 Kernel이 실제 숫자를 계산하는 과정</summary><a class="kernel-numeric-reference" href="assets/lesson/lecture_kernel_slide.svg?v=visual-20261013-1" target="_blank" rel="noopener"><img src="assets/lesson/lecture_kernel_slide.svg?v=visual-20261013-1" alt="5×5 픽셀 숫자와 3×3 Kernel을 한 칸씩 이동시켜 위치별 출력값을 계산하는 기존 수치 자료"></a><p>3×3 Kernel은 사진의 위치마다 같은 숫자 가중치를 적용합니다. 본강의에서 결과 숫자를 직접 계산할 필요는 없습니다.</p></details></div></section>
 <section class="slide" data-topic="Kernel" data-level="basic" data-source-deck="vision_ai" data-source-slide="19" data-outline-unit="Kernel · 특징과 학습 원리">
 <div class="slide-inner"><div class="lesson-meta"><span>14 · Kernel</span>
 <span class="lesson-level">핵심 개념</span></div>
@@ -149,7 +149,7 @@
 </div>
 <p class="concept-takeaway">같은 3×3 연산 구조라도 <strong>고정 필터는 설계된 반응</strong>, <strong>학습 Kernel은 데이터에 맞춰 변화하는 반응</strong>을 만듭니다.</p>
 <details class="kernel-optional-images"><summary>참고: 같은 강아지 사진에 고정 필터를 적용한 실제 계산 보기</summary><div class="kernel-optional-row"><a href="assets/lesson/cnn_real_filter_compare_dog.png?v=real-vision-20261016-2" target="_blank" rel="noopener"><img src="assets/lesson/cnn_real_filter_compare_dog.png?v=real-vision-20261016-2" alt="사진에 Mean·Gaussian·Median 필터 실제 적용한 고정 연산"><span>Mean · Gaussian · Median</span></a><a href="assets/lesson/cnn_real_sobel_dog.png?v=real-vision-20261016-2" target="_blank" rel="noopener"><img src="assets/lesson/cnn_real_sobel_dog.png?v=real-vision-20261016-2" alt="같은 사진의 실제 Sobel 계산 결과"><span>Sobel 경계 반응</span></a></div></details>
-<p class="concept-source">참고: <a href="https://cs231n.github.io/convolutional-networks/" target="_blank" rel="noopener">Stanford CS231n · Convolutional Networks</a> · Sobel 값은 정의된 고정 Kernel이며 CNN 학습 결과가 아닙니다.</p>
+
 </div></section>
 <section class="slide" data-topic="Perceptron" data-level="basic" data-source-deck="ai_basics" data-source-slide="8" data-outline-unit="Kernel · 특징과 학습 원리">
 <div class="slide-inner neuron-story">
@@ -167,9 +167,13 @@
   <div class="nb-p-arrow" aria-hidden="true">→</div>
   <div class="nb-decision"><small>계단형 활성화</small><strong>Step(z)</strong><span>z ≥ 0 → <b>1</b></span><small>최종 판정</small></div>
 </div>
+<div class="nb-threshold" role="img" aria-label="계산 점수 z가 0인 판정 기준보다 오른쪽 +0.3에 위치하여 출력 1이 됨">
+<div class="nb-th-label"><span>출력 0 · z &lt; 0</span><strong>판정 기준 z = 0</strong><span>출력 1 · z ≥ 0</span></div>
+<div class="nb-th-line"><span class="nb-th-zero"></span><span class="nb-th-marker">z = +0.3</span></div>
+</div>
 <div class="nb-equation-summary"><span>가중합 <strong>z = w₁x₁ + w₂x₂ + b</strong></span><span>출력 <strong>y = φ(z)</strong></span></div>
 <p class="nb-takeaway">퍼셉트론의 <strong>Wx+b는 계산 단계</strong>입니다. 고전적 퍼셉트론은 여기에 Step(계단) 활성화 함수를 적용해 0 또는 1을 판정합니다.</p>
-<p class="concept-source">원리 참고: <a href="https://aibook.euiyun.com/chapters/neuron.html" target="_blank" rel="noopener">AIBook · 뉴런과 신경망</a> · <a href="https://cs231n.github.io/neural-networks-1/" target="_blank" rel="noopener">Stanford CS231n</a>. 계산·그림은 강의용으로 재구성.</p>
+
 </div></section>
 <section class="slide" data-topic="선형 Layer의 한계" data-level="basic" data-source-deck="new_lessons" data-source-slide="2" data-outline-unit="AI 원리 · 비선형성">
 <div class="slide-inner neuron-story"><div class="lesson-meta"><span>17 · 선형층의 한계</span><span class="lesson-level">핵심 개념</span></div>
@@ -181,43 +185,87 @@
 <line x1="91" y1="85" x2="262" y2="53" stroke="#bccdd6" stroke-width="1.7"/><line x1="91" y1="85" x2="262" y2="125" stroke="#bccdd6" stroke-width="1.7"/><line x1="91" y1="85" x2="262" y2="197" stroke="#bccdd6" stroke-width="1.7"/><line x1="91" y1="163" x2="262" y2="53" stroke="#bccdd6" stroke-width="1.7"/><line x1="91" y1="163" x2="262" y2="125" stroke="#bccdd6" stroke-width="1.7"/><line x1="91" y1="163" x2="262" y2="197" stroke="#bccdd6" stroke-width="1.7"/><line x1="308" y1="53" x2="487" y2="125" stroke="#bccdd6" stroke-width="1.7"/><line x1="308" y1="125" x2="487" y2="125" stroke="#bccdd6" stroke-width="1.7"/><line x1="308" y1="197" x2="487" y2="125" stroke="#bccdd6" stroke-width="1.7"/>
 <circle cx="68" cy="85" r="23" fill="#e9f2f6" stroke="#8da8b5" stroke-width="1.5"/><circle cx="68" cy="163" r="23" fill="#e9f2f6" stroke="#8da8b5" stroke-width="1.5"/><circle cx="285" cy="53" r="23" fill="#e3f0ea" stroke="#8da8b5" stroke-width="1.5"/><circle cx="285" cy="125" r="23" fill="#e3f0ea" stroke="#8da8b5" stroke-width="1.5"/><circle cx="285" cy="197" r="23" fill="#e3f0ea" stroke="#8da8b5" stroke-width="1.5"/><circle cx="510" cy="125" r="23" fill="#e9f2f6" stroke="#8da8b5" stroke-width="1.5"/>
 <text x="68" y="91" text-anchor="middle" class="nb-svg-label">x₁</text><text x="68" y="169" text-anchor="middle" class="nb-svg-label">x₂</text>
-<text x="285" y="59" text-anchor="middle" class="nb-svg-label">z₁</text><text x="285" y="131" text-anchor="middle" class="nb-svg-label">z₂</text><text x="285" y="203" text-anchor="middle" class="nb-svg-label">z₃</text>
-<text x="510" y="131" text-anchor="middle" class="nb-svg-label">y</text>
+<text x="285" y="59" text-anchor="middle" class="nb-svg-label">3</text><text x="285" y="131" text-anchor="middle" class="nb-svg-label">3</text><text x="285" y="203" text-anchor="middle" class="nb-svg-label">3</text>
+<text x="510" y="131" text-anchor="middle" class="nb-svg-label">9</text>
 <text x="202" y="223" text-anchor="middle" class="nb-svg-sub">W₁x + b₁</text><text x="412" y="223" text-anchor="middle" class="nb-svg-sub">W₂z + b₂</text>
 <text x="615" y="137" text-anchor="middle" class="nb-svg-eq">≡</text>
 <line x1="769" y1="85" x2="987" y2="125" stroke="#bccdd6" stroke-width="1.7"/><line x1="769" y1="163" x2="987" y2="125" stroke="#bccdd6" stroke-width="1.7"/>
 <circle cx="746" cy="85" r="23" fill="#e9f2f6" stroke="#8da8b5" stroke-width="1.5"/><circle cx="746" cy="163" r="23" fill="#e9f2f6" stroke="#8da8b5" stroke-width="1.5"/><circle cx="1010" cy="125" r="23" fill="#d7ede4" stroke="#8da8b5" stroke-width="1.5"/>
-<text x="746" y="91" text-anchor="middle" class="nb-svg-label">x₁</text><text x="746" y="169" text-anchor="middle" class="nb-svg-label">x₂</text><text x="1010" y="131" text-anchor="middle" class="nb-svg-label">y</text>
+<text x="746" y="91" text-anchor="middle" class="nb-svg-label">x₁</text><text x="746" y="169" text-anchor="middle" class="nb-svg-label">x₂</text><text x="1010" y="131" text-anchor="middle" class="nb-svg-label">9</text>
 <text x="884" y="223" text-anchor="middle" class="nb-svg-sub">W′x + b′</text></svg></div>
 <div class="nb-derivation"><span>z = W₁x + b₁</span><span>y = W₂z + b₂ = <strong>(W₂W₁)x + (W₂b₁ + b₂)</strong></span></div>
-<div class="nb-check"><span>실제 숫자로 확인 · x=2</span><strong>2 → (3×2+1)=7 → (2×7+4)=18</strong><strong>2 → 6×2+6 = 18</strong></div>
-<p class="nb-takeaway"><strong>같은 입력이면 같은 결과.</strong> 비선형 활성화가 없는 층의 합성은 단일 Affine(선형변환 + Bias)과 동등합니다. <strong>여러 층이 곧 복잡한 함수는 아닙니다.</strong></p>
-<p class="concept-source">원리 참고: <a href="https://aibook.euiyun.com/chapters/neuron.html" target="_blank" rel="noopener">AIBook · 뉴런과 신경망</a> · <a href="https://cs231n.github.io/neural-networks-1/" target="_blank" rel="noopener">Stanford CS231n</a>. 계산·그림은 강의용으로 재구성.</p>
+<div class="nb-network-numbers">
+<span>입력 <b>x=(1, 2)</b></span><span>중간 뉴런 3개 <b>각각 1+2=3</b></span><span>출력 <b>3+3+3=9</b></span>
+<span>합친 뉴런 <b>3×1+3×2=9</b></span>
+</div>
+<p class="nb-config">이 그림의 가중치: 첫 층 3개 뉴런은 각각 w=(1,1), b=0 · 출력층 w=(1,1,1), b=0 · 합친 층 w′=(3,3), b′=0</p>
+<p class="nb-takeaway"><strong>3개 뉴런을 거쳐도 출력 9는 같습니다.</strong> 비선형 활성화가 없는 층의 합성은 단일 Affine(선형변환 + Bias)과 동등합니다. <strong>여러 층이 곧 복잡한 함수는 아닙니다.</strong></p>
+
 </div></section>
 <section class="slide" data-topic="AND와 XOR" data-level="basic" data-source-deck="new_lessons" data-source-slide="3" data-outline-unit="AI 원리 · 비선형성">
 <div class="slide-inner neuron-story concept-lab">
 <div class="lesson-meta"><span>18 · AND와 XOR</span><span class="lesson-level">핵심 개념</span></div>
 <h2 class="slide-title">AND와 XOR · 직선으로 구분할 수 있을까?</h2><p class="concept-lede">입력이 0 또는 1인 네 가지 조합을 그래프에 표시했습니다. <strong>녹색은 출력 1, 회색은 출력 0</strong>입니다.</p>
-<div class="logic-graphs"><div class="logic-graph"><h3>AND Gate</h3><svg viewBox="0 0 290 225" role="img" aria-label="AND 입력 좌표: 0,0과 1,0과 0,1과 1,1. 녹색이 출력 1, 회색이 0"><path d="M50 190H246M80 207V28" stroke="#8ea7b6" stroke-width="2" fill="none"/><path d="M240 184L246 190L240 196M74 34L80 28L86 34" stroke="#8ea7b6" stroke-width="2" fill="none"/><text x="252" y="193" font-size="14" fill="#486778">x₁</text><text x="74" y="20" font-size="14" fill="#486778">x₂</text><text x="76" y="211" font-size="13" fill="#546c7a">0</text><text x="200" y="211" font-size="13" fill="#546c7a">1</text><text x="59" y="74" font-size="13" fill="#546c7a">1</text><path d="M142.5 70L205 130" stroke="#c27543" stroke-width="4" stroke-dasharray="8 5" fill="none"/><circle cx="80" cy="190" r="14" fill="#b7c9d3" stroke="#728fa0" stroke-width="2"/><text x="80" y="195" font-size="14" font-family="sans-serif" text-anchor="middle" fill="#1b4d66" font-weight="800">0</text><circle cx="205" cy="190" r="14" fill="#b7c9d3" stroke="#728fa0" stroke-width="2"/><text x="205" y="195" font-size="14" font-family="sans-serif" text-anchor="middle" fill="#1b4d66" font-weight="800">0</text><circle cx="80" cy="70" r="14" fill="#b7c9d3" stroke="#728fa0" stroke-width="2"/><text x="80" y="75" font-size="14" font-family="sans-serif" text-anchor="middle" fill="#1b4d66" font-weight="800">0</text><circle cx="205" cy="70" r="14" fill="#168d73" stroke="#0e6f59" stroke-width="2"/><text x="205" y="75" font-size="14" font-family="sans-serif" text-anchor="middle" fill="#fff" font-weight="800">1</text></svg><p>직선 x₁+x₂ = 1.5로 나눌 수 있음</p></div><div class="logic-graph"><h3>XOR Gate</h3><svg viewBox="0 0 290 225" role="img" aria-label="XOR 입력 좌표: 0,0과 1,0과 0,1과 1,1. 녹색이 출력 1, 회색이 0"><path d="M50 190H246M80 207V28" stroke="#8ea7b6" stroke-width="2" fill="none"/><path d="M240 184L246 190L240 196M74 34L80 28L86 34" stroke="#8ea7b6" stroke-width="2" fill="none"/><text x="252" y="193" font-size="14" fill="#486778">x₁</text><text x="74" y="20" font-size="14" fill="#486778">x₂</text><text x="76" y="211" font-size="13" fill="#546c7a">0</text><text x="200" y="211" font-size="13" fill="#546c7a">1</text><text x="59" y="74" font-size="13" fill="#546c7a">1</text><circle cx="80" cy="190" r="14" fill="#b7c9d3" stroke="#728fa0" stroke-width="2"/><text x="80" y="195" font-size="14" font-family="sans-serif" text-anchor="middle" fill="#1b4d66" font-weight="800">0</text><circle cx="205" cy="190" r="14" fill="#168d73" stroke="#0e6f59" stroke-width="2"/><text x="205" y="195" font-size="14" font-family="sans-serif" text-anchor="middle" fill="#fff" font-weight="800">1</text><circle cx="80" cy="70" r="14" fill="#168d73" stroke="#0e6f59" stroke-width="2"/><text x="80" y="75" font-size="14" font-family="sans-serif" text-anchor="middle" fill="#fff" font-weight="800">1</text><circle cx="205" cy="70" r="14" fill="#b7c9d3" stroke="#728fa0" stroke-width="2"/><text x="205" y="75" font-size="14" font-family="sans-serif" text-anchor="middle" fill="#1b4d66" font-weight="800">0</text></svg><p>출력 1이 대각선으로 나뉘어 직선 하나로 구분 불가</p></div></div><div class="concept-equation">AND: x₁+x₂ &gt; 1.5 → 1　/　XOR: (0,1), (1,0) → 1</div>
+<div class="logic-graphs"><div class="logic-graph"><h3>AND Gate</h3><svg viewBox="0 0 290 225" role="img" aria-label="AND 입력 좌표: 0,0과 1,0과 0,1과 1,1. 녹색이 출력 1, 회색이 0"><path d="M50 190H246M80 207V28" stroke="#8ea7b6" stroke-width="2" fill="none"/><path d="M240 184L246 190L240 196M74 34L80 28L86 34" stroke="#8ea7b6" stroke-width="2" fill="none"/><text x="252" y="193" font-size="14" fill="#486778">x₁</text><text x="74" y="20" font-size="14" fill="#486778">x₂</text><text x="76" y="211" font-size="13" fill="#546c7a">0</text><text x="200" y="211" font-size="13" fill="#546c7a">1</text><text x="59" y="74" font-size="13" fill="#546c7a">1</text><path d="M142.5 70L205 130" stroke="#c27543" stroke-width="4" stroke-dasharray="8 5" fill="none"/><circle cx="80" cy="190" r="14" fill="#b7c9d3" stroke="#728fa0" stroke-width="2"/><text x="80" y="195" font-size="14" font-family="sans-serif" text-anchor="middle" fill="#1b4d66" font-weight="800">0</text><circle cx="205" cy="190" r="14" fill="#b7c9d3" stroke="#728fa0" stroke-width="2"/><text x="205" y="195" font-size="14" font-family="sans-serif" text-anchor="middle" fill="#1b4d66" font-weight="800">0</text><circle cx="80" cy="70" r="14" fill="#b7c9d3" stroke="#728fa0" stroke-width="2"/><text x="80" y="75" font-size="14" font-family="sans-serif" text-anchor="middle" fill="#1b4d66" font-weight="800">0</text><circle cx="205" cy="70" r="14" fill="#168d73" stroke="#0e6f59" stroke-width="2"/><text x="205" y="75" font-size="14" font-family="sans-serif" text-anchor="middle" fill="#fff" font-weight="800">1</text></svg><p>직선 x₁+x₂ = 1.5로 나눌 수 있음</p></div><div class="logic-graph"><h3>XOR Gate</h3><svg viewBox="0 0 290 225" role="img" aria-label="XOR 입력 좌표: 0,0과 1,0과 0,1과 1,1. 녹색이 출력 1, 회색이 0"><path d="M50 190H246M80 207V28" stroke="#8ea7b6" stroke-width="2" fill="none"/><path d="M240 184L246 190L240 196M74 34L80 28L86 34" stroke="#8ea7b6" stroke-width="2" fill="none"/><text x="252" y="193" font-size="14" fill="#486778">x₁</text><text x="74" y="20" font-size="14" fill="#486778">x₂</text><text x="76" y="211" font-size="13" fill="#546c7a">0</text><text x="200" y="211" font-size="13" fill="#546c7a">1</text><text x="59" y="74" font-size="13" fill="#546c7a">1</text><circle cx="80" cy="190" r="14" fill="#b7c9d3" stroke="#728fa0" stroke-width="2"/><text x="80" y="195" font-size="14" font-family="sans-serif" text-anchor="middle" fill="#1b4d66" font-weight="800">0</text><circle cx="205" cy="190" r="14" fill="#168d73" stroke="#0e6f59" stroke-width="2"/><text x="205" y="195" font-size="14" font-family="sans-serif" text-anchor="middle" fill="#fff" font-weight="800">1</text><circle cx="80" cy="70" r="14" fill="#168d73" stroke="#0e6f59" stroke-width="2"/><text x="80" y="75" font-size="14" font-family="sans-serif" text-anchor="middle" fill="#fff" font-weight="800">1</text><circle cx="205" cy="70" r="14" fill="#b7c9d3" stroke="#728fa0" stroke-width="2"/><text x="205" y="75" font-size="14" font-family="sans-serif" text-anchor="middle" fill="#1b4d66" font-weight="800">0</text></svg><p>출력 1이 대각선으로 나뉘어 직선 하나로 구분 불가</p></div></div><div class="nb-gate-output"><div><strong>AND · 결과 행렬</strong><div class="nb-binary-grid" role="img" aria-label="왼쪽 위 좌표 (0,1)은 0, 오른쪽 위 (1,1)은 1, 왼쪽 아래 (0,0)은 0, 오른쪽 아래 (1,0)은 0"><span>0</span><span class="nb-one">1</span><span>0</span><span>0</span></div><small>(1,1)만 출력 1</small></div>
+ <div><strong>XOR · 결과 행렬</strong><div class="nb-binary-grid" role="img" aria-label="왼쪽 위 좌표 (0,1)은 1, 오른쪽 위 (1,1)은 0, 왼쪽 아래 (0,0)은 0, 오른쪽 아래 (1,0)은 1"><span class="nb-one">1</span><span>0</span><span>0</span><span class="nb-one">1</span></div><small>출력 1이 대각선 두 곳</small></div></div>
+<p class="nb-grid-axis-note">그래프와 같은 방향: 위쪽 행은 x₂=1, 아래쪽 행은 x₂=0 · 왼쪽 열은 x₁=0, 오른쪽 열은 x₁=1</p>
 <p class="concept-takeaway"><strong>차이:</strong> AND는 단일 선형 분류기로 표현할 수 있지만 XOR는 하나의 직선 결정 경계로 표현할 수 없습니다. 비선형성을 추가할 이유가 여기 있습니다.</p>
-<p class="concept-source">기술 참고: <a href="https://cs231n.github.io/neural-networks-1/" target="_blank" rel="noopener">Stanford CS231n · Neural Networks</a> · 수치·도식은 강의용으로 직접 구성</p>
+
 </div></section>
 <section class="slide" data-topic="Activation" data-level="basic" data-source-deck="ai_basics" data-source-slide="13" data-outline-unit="Kernel · 특징과 학습 원리">
 <div class="slide-inner neuron-story"><div class="lesson-meta"><span>19 · 활성화 함수</span>
 <span class="lesson-level">핵심 개념</span></div>
 <h2 class="slide-title">ReLU · 비선형성의 시작</h2>
 <p class="slide-subtitle">Activation Function(활성화 함수)은 계산에 비선형성을 넣습니다. ReLU는 입력이 0보다 작으면 0, 크면 입력값을 그대로 출력합니다.</p>
-<figure class="lesson-figure"><a href="assets/lesson/lesson_relu_value_graph.svg?v=solid-arrows-20261015-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/lesson_relu_value_graph.svg?v=solid-arrows-20261015-2" alt="ReLU 함수는 입력 −2, −1, 0을 0으로 바꾸고 1, 2는 그대로 내보내며 원점에서 꺾이는 그래프"></a></figure>
-<p class="lesson-takeaway">ReLU f(x)=max(0,x)는 x=0에서 그래프가 꺾입니다. 이것이 여러 Layer의 계산을 단순한 직선에서 벗어나게 할 수 있습니다.</p></div></section>
+<div class="nb-activation-charts">
+<figure><figcaption><strong>활성화 없음</strong><span>y = z · 단순 직선</span></figcaption>
+<svg viewBox="0 0 305 224" role="img" aria-label="y=z 직선. 입력 −2는 출력 −2, 입력 +2는 출력 +2">
+<path d="M45 142H267M151 205V24" fill="none" stroke="#8ba2ad" stroke-width="2"/><path d="M61 204L241 80" fill="none" stroke="#617d8e" stroke-width="4" stroke-linecap="round"/>
+<circle cx="61" cy="204" r="5" fill="#617d8e"/><circle cx="241" cy="80" r="5" fill="#617d8e"/>
+<text x="277" y="146" font-size="15" fill="#436777">z</text><text x="151" y="16" text-anchor="middle" font-size="15" fill="#436777">y</text>
+<text x="70" y="222" font-size="15" fill="#526d7e">−2 → −2</text><text x="187" y="45" font-size="15" fill="#526d7e">+2 → +2</text></svg></figure>
+<figure><figcaption><strong>ReLU 활성화</strong><span>y = max(0, z) · 0에서 꺾임</span></figcaption>
+<svg viewBox="0 0 305 224" role="img" aria-label="ReLU 꺾인 그래프. 음수 입력 −2는 0, 양수 입력 +2는 +2로 출력">
+<path d="M45 142H267M151 205V24" fill="none" stroke="#8ba2ad" stroke-width="2"/>
+<path d="M61 142H151L241 80" fill="none" stroke="#128773" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="61" cy="142" r="5" fill="#128773"/><circle cx="241" cy="80" r="5" fill="#128773"/>
+<text x="277" y="146" font-size="15" fill="#436777">z</text><text x="151" y="16" text-anchor="middle" font-size="15" fill="#436777">y</text>
+<text x="70" y="165" font-size="15" fill="#128773">−2 → 0</text><text x="188" y="45" font-size="15" fill="#128773">+2 → +2</text></svg></figure>
+</div>
+<p class="nb-takeaway"><strong>차이는 음수 입력.</strong> 직선은 −2를 −2로 전달하지만, ReLU는 0으로 자릅니다. 이 꺾임 덕분에 여러 층이 하나의 선형층으로 합쳐지지 않습니다.</p></div></section>
 <section class="slide" data-topic="ReLU와 XOR" data-level="basic" data-source-deck="new_lessons" data-source-slide="4" data-outline-unit="AI 원리 · 비선형성">
 <div class="slide-inner neuron-story concept-lab">
 <div class="lesson-meta"><span>20 · ReLU와 XOR</span><span class="lesson-level">핵심 개념</span></div>
 <h2 class="slide-title">ReLU로 XOR 계산하기</h2><p class="concept-lede">ReLU(x) = max(0, x)는 음수 입력을 0으로 바꿉니다. 두 개의 ReLU 출력을 합치는 간단한 신경망으로 <strong>XOR의 네 가지 경우</strong>를 모두 계산할 수 있습니다.</p>
 <div class="concept-equation">h₁ = ReLU(x₁ − x₂)　·　h₂ = ReLU(x₂ − x₁)</div>
 <div class="concept-equation">출력 y = h₁ + h₂</div>
-<table class="logic-table"><thead><tr><th>x₁</th><th>x₂</th><th>h₁</th><th>h₂</th><th>y (XOR)</th></tr></thead><tbody><tr><td class="">0</td><td class="">0</td><td class="">0</td><td class="">0</td><td class="zero">0</td></tr><tr><td class="">0</td><td class="">1</td><td class="">0</td><td class="">1</td><td class="positive">1</td></tr><tr><td class="">1</td><td class="">0</td><td class="">1</td><td class="">0</td><td class="positive">1</td></tr><tr><td class="">1</td><td class="">1</td><td class="">0</td><td class="">0</td><td class="zero">0</td></tr></tbody></table>
+<div class="nb-xor-gallery" role="img" aria-label="XOR 네 입력 사례 각각에 대하여 두 개의 ReLU 뉴런 h1,h2, 합산 결과 y를 표시"><div class="nb-xor-case ">
+  <div class="nb-xor-input">입력 <strong>(0, 0)</strong></div>
+  <div class="nb-xor-arrow">↓</div>
+  <div class="nb-xor-hidden"><span>h₁ = <b>0</b></span><span>h₂ = <b>0</b></span></div>
+  <div class="nb-xor-arrow">↓</div>
+  <div class="nb-xor-output">XOR = <strong>0</strong></div>
+ </div><div class="nb-xor-case nb-positive">
+  <div class="nb-xor-input">입력 <strong>(0, 1)</strong></div>
+  <div class="nb-xor-arrow">↓</div>
+  <div class="nb-xor-hidden"><span>h₁ = <b>0</b></span><span>h₂ = <b>1</b></span></div>
+  <div class="nb-xor-arrow">↓</div>
+  <div class="nb-xor-output">XOR = <strong>1</strong></div>
+ </div><div class="nb-xor-case nb-positive">
+  <div class="nb-xor-input">입력 <strong>(1, 0)</strong></div>
+  <div class="nb-xor-arrow">↓</div>
+  <div class="nb-xor-hidden"><span>h₁ = <b>1</b></span><span>h₂ = <b>0</b></span></div>
+  <div class="nb-xor-arrow">↓</div>
+  <div class="nb-xor-output">XOR = <strong>1</strong></div>
+ </div><div class="nb-xor-case ">
+  <div class="nb-xor-input">입력 <strong>(1, 1)</strong></div>
+  <div class="nb-xor-arrow">↓</div>
+  <div class="nb-xor-hidden"><span>h₁ = <b>0</b></span><span>h₂ = <b>0</b></span></div>
+  <div class="nb-xor-arrow">↓</div>
+  <div class="nb-xor-output">XOR = <strong>0</strong></div>
+ </div></div>
 <p class="concept-takeaway"><strong>핵심:</strong> 은닉층의 ReLU가 서로 다른 입력 조합에 반응하게 하므로, 단일 선형층으로 불가능했던 XOR를 구분할 수 있습니다. 입력은 0/1인 예시입니다.</p>
-<p class="concept-source">기술 참고: <a href="https://cs231n.github.io/neural-networks-1/" target="_blank" rel="noopener">Stanford CS231n · Neural Networks</a> · 수치·도식은 강의용으로 직접 구성</p>
+
 </div></section>
 <section class="slide" data-topic="Neural Network" data-level="basic" data-source-deck="ai_basics" data-source-slide="11" data-outline-unit="AI 원리 · 선형성·AND·XOR">
 <div class="slide-inner neuron-story"><div class="lesson-meta"><span>21 · Neural Network</span><span class="lesson-level">핵심 개념</span></div>
@@ -230,9 +278,12 @@
 <div class="nb-deep-node">선형 계산<small>W₂h+b₂</small></div><span class="nb-deep-arrow">→</span>
 <div class="nb-deep-node">출력<small>y</small></div>
 </div>
-<div class="nb-two-formulas"><div><small>활성화 없음</small><strong>y = W′x + b′</strong><span>단일 선형층으로 합쳐짐</span></div><div><small>활성화 있음</small><strong>y = W₂φ(W₁x+b₁)+b₂</strong><span>XOR 같은 비선형 패턴 표현 가능</span></div></div>
+<div class="nb-activation-role">
+<div><span class="nb-mini-stripe"></span><strong>선형 계산만</strong><small>아무리 반복해도 직선·평면 경계</small></div>
+<div><span class="nb-mini-stripe nb-nonlinear"></span><strong>중간에 ReLU 추가</strong><small>영역별로 다른 반응을 조합해 더 복잡한 경계 구성</small></div>
+</div><div class="nb-two-formulas"><div><small>활성화 없음</small><strong>y = W′x + b′</strong><span>단일 선형층으로 합쳐짐</span></div><div><small>활성화 있음</small><strong>y = W₂φ(W₁x+b₁)+b₂</strong><span>XOR 같은 비선형 패턴 표현 가능</span></div></div>
 <p class="nb-takeaway">표현력을 넓히는 것은 <strong>뉴런 개수만이 아니라 선형 계산 사이의 비선형성</strong>입니다. 이 구조가 CNN의 Conv → ReLU에도 적용됩니다.</p>
-<p class="concept-source">원리 참고: <a href="https://aibook.euiyun.com/chapters/neuron.html" target="_blank" rel="noopener">AIBook · 뉴런과 신경망</a> · <a href="https://cs231n.github.io/neural-networks-1/" target="_blank" rel="noopener">Stanford CS231n</a>. 계산·그림은 강의용으로 재구성.</p>
+
 </div></section>
 <section class="slide" data-topic="CNN 학습" data-level="basic" data-source-deck="vision_ai" data-source-slide="33" data-outline-unit="Kernel · 특징과 학습 원리">
 <div class="slide-inner"><div class="lesson-meta"><span>22 · CNN 학습</span>
@@ -262,7 +313,7 @@
 <h2 class="slide-title">RGB Channel과 학습 필터</h2>
 <p class="slide-subtitle">일반적인 Conv2d에서 필터 하나는 입력 Channel 전체를 곱해 합산합니다. 출력 Channel 수는 필터 수입니다.</p>
 <figure class="lesson-figure"><a href="assets/lesson/lesson_multichannel_filter_to_maps.svg?v=solid-arrows-20261015-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/lesson_multichannel_filter_to_maps.svg?v=solid-arrows-20261015-2" alt="RGB 전체를 보는 필터 하나가 출력 Channel 하나를 만듭니다"></a></figure>
-<p class="lesson-takeaway">3×3×3 필터 64개라면 가중치 1,728개와 Bias 64개이며, Stride 1·Padding 1의 출력은 224×224×64입니다.</p><details class="lesson-reference"><summary>출처 · 근거</summary><div>개념 참고: <a href="https://cs231n.github.io/convolutional-networks/" target="_blank" rel="noopener">Stanford CS231n</a> · 직접 재구성한 설명용 Figure</div></details></div></section>
+<p class="lesson-takeaway">3×3×3 필터 64개라면 가중치 1,728개와 Bias 64개이며, Stride 1·Padding 1의 출력은 224×224×64입니다.</p></div></section>
 <section class="slide" data-topic="Stride" data-level="basic" data-source-deck="vision_ai" data-source-slide="23" data-outline-unit="CNN · 특징 계산의 핵심">
 <div class="slide-inner concept-lab"><div class="lesson-meta"><span>26 · Stride</span><span class="lesson-level">핵심 개념</span></div>
 <h2 class="slide-title">Stride를 늘리면 Feature Map의 칸 수가 줄어듭니다</h2>
@@ -271,7 +322,7 @@
 <article class="concept-panel"><h3>Stride 1 · 한 칸씩</h3><div class="concept-matrix " style="--cols:3" role="img" aria-label="Stride 1로 계산한 3행 3열 출력값"><span class="concept-cell stride-cell"><b>7</b><small>(1,1)</small></span><span class="concept-cell stride-cell"><b>8</b><small>(1,2)</small></span><span class="concept-cell stride-cell"><b>9</b><small>(1,3)</small></span><span class="concept-cell stride-cell"><b>12</b><small>(2,1)</small></span><span class="concept-cell stride-cell"><b>13</b><small>(2,2)</small></span><span class="concept-cell stride-cell"><b>14</b><small>(2,3)</small></span><span class="concept-cell stride-cell"><b>17</b><small>(3,1)</small></span><span class="concept-cell stride-cell"><b>18</b><small>(3,2)</small></span><span class="concept-cell stride-cell"><b>19</b><small>(3,3)</small></span></div><div class="op-stat">3×3 = 9칸</div><p>모든 유효 위치를 계산합니다.</p></article>
 <article class="concept-panel emphasis"><h3>Stride 2 · 두 칸씩</h3><div class="concept-matrix " style="--cols:2" role="img" aria-label="Stride 2로 계산한 2행 2열 출력값"><span class="concept-cell stride-cell"><b>7</b><small>(1,1)</small></span><span class="concept-cell stride-cell"><b>9</b><small>(1,3)</small></span><span class="concept-cell stride-cell"><b>17</b><small>(3,1)</small></span><span class="concept-cell stride-cell"><b>19</b><small>(3,3)</small></span></div><div class="op-stat">2×2 = 4칸</div><p>일부 위치를 건너뛰어 더 작아집니다.</p></article></div>
 <p class="stride-positions">숫자 아래의 <strong>(행, 열)</strong>은 원본 입력에서 <strong>3×3 Kernel의 왼쪽 위 시작 위치</strong>입니다. 초록 입력 칸은 Stride 2에서 각 Kernel의 중앙값입니다.</p><div class="stride-dimension">출력 한 변 = ⌊(5 − 3) / Stride⌋ + 1　 →　 S=1: 3행 3열 / S=2: 2행 2열</div><p class="concept-takeaway">Stride 1 → 2로 바꾸면 이 예시의 <strong>출력 위치 9개 → 4개</strong>입니다. 계산은 줄지만 촘촘한 위치 정보도 감소합니다.</p>
-<p class="concept-source">조건: 5×5 입력, 3×3 중심만 1인 고정 Kernel, Padding 0, Bias 0, 일반적인 Conv 출력 크기 규칙. <a href="https://cs231n.github.io/convolutional-networks/" target="_blank" rel="noopener">CS231n Convolutional Networks</a></p></div></section>
+</div></section>
 <section class="slide" data-topic="Padding" data-level="basic" data-source-deck="vision_ai" data-source-slide="24" data-outline-unit="CNN · 특징 계산의 핵심">
 <div class="slide-inner concept-lab"><div class="lesson-meta"><span>27 · Padding</span><span class="lesson-level">핵심 개념</span></div>
 <h2 class="slide-title">Padding으로 가장자리도 계산하고 크기를 유지합니다</h2>
@@ -279,7 +330,7 @@
 <div class="concept-panes">
 <article class="concept-panel"><h3>Padding 0 · 추가 값 없음</h3><div class="concept-matrix " style="--cols:3" role="img" aria-label="원본 3행 3열 1에서 9"><span class="concept-cell">1</span><span class="concept-cell">2</span><span class="concept-cell">3</span><span class="concept-cell">4</span><span class="concept-cell">5</span><span class="concept-cell">6</span><span class="concept-cell">7</span><span class="concept-cell">8</span><span class="concept-cell">9</span></div><p class="matrix-label">3×3 Kernel: 모두 1 → 합계 45</p><div class="concept-scalar" role="img" aria-label="Padding 0의 1행 1열 출력은 45">45</div><div class="op-stat">3×3 → 1×1</div></article>
 <article class="concept-panel emphasis"><h3>Padding 1 · 바깥 0 한 줄 추가</h3><div class="padding-compare"><div class="padding-compare-unit"><p class="matrix-label">0으로 한 줄 채운 5×5 입력</p><div class="concept-matrix " style="--cols:5" role="img" aria-label="1부터9까지 3행3열 배열 바깥에 0으로 된 1칸 경계를 추가한 5행5열 배열"><span class="concept-cell border-cell">0</span><span class="concept-cell border-cell">0</span><span class="concept-cell border-cell">0</span><span class="concept-cell border-cell">0</span><span class="concept-cell border-cell">0</span><span class="concept-cell border-cell">0</span><span class="concept-cell">1</span><span class="concept-cell">2</span><span class="concept-cell">3</span><span class="concept-cell border-cell">0</span><span class="concept-cell border-cell">0</span><span class="concept-cell">4</span><span class="concept-cell">5</span><span class="concept-cell">6</span><span class="concept-cell border-cell">0</span><span class="concept-cell border-cell">0</span><span class="concept-cell">7</span><span class="concept-cell">8</span><span class="concept-cell">9</span><span class="concept-cell border-cell">0</span><span class="concept-cell border-cell">0</span><span class="concept-cell border-cell">0</span><span class="concept-cell border-cell">0</span><span class="concept-cell border-cell">0</span><span class="concept-cell border-cell">0</span></div></div><div class="padding-compare-unit"><p class="matrix-label">3×3 합계 Kernel 출력</p><div class="concept-matrix " style="--cols:3" role="img" aria-label="Padding 1 적용 출력은 세 행 세 열 12 21 16 27 45 33 24 39 28"><span class="concept-cell">12</span><span class="concept-cell">21</span><span class="concept-cell">16</span><span class="concept-cell">27</span><span class="concept-cell">45</span><span class="concept-cell">33</span><span class="concept-cell">24</span><span class="concept-cell">39</span><span class="concept-cell">28</span></div></div></div><div class="op-stat">3×3 → 3×3</div></article></div>
-<p class="concept-takeaway">Padding 1로 가장자리까지 <strong>출력 위치를 1개 → 9개</strong>로 유지합니다. 바깥 0은 실제 영상 Pixel이 아니며, 경계 출력값에 영향을 줍니다.</p><p class="concept-source">조건: 3×3 입력, 3×3 합계 Kernel, Stride 1, Zero Padding 0/1, Bias 0. <a href="https://cs231n.github.io/convolutional-networks/" target="_blank" rel="noopener">CS231n</a></p></div></section>
+<p class="concept-takeaway">Padding 1로 가장자리까지 <strong>출력 위치를 1개 → 9개</strong>로 유지합니다. 바깥 0은 실제 영상 Pixel이 아니며, 경계 출력값에 영향을 줍니다.</p></div></section>
 <section class="slide" data-topic="Max Pooling" data-level="basic" data-source-deck="vision_ai" data-source-slide="25" data-outline-unit="CNN · 특징 계산의 핵심">
 <div class="slide-inner concept-lab"><div class="lesson-meta"><span>28 · Max Pooling</span><span class="lesson-level">핵심 개념</span></div>
 <h2 class="slide-title">Max Pooling은 영역의 가장 큰 반응만 남깁니다</h2>
@@ -287,7 +338,7 @@
 <div class="concept-panes">
 <article class="concept-panel"><h3>입력 Feature Map · 4×4</h3><div class="concept-matrix " style="--cols:4" role="img" aria-label="4행4열 특징지도. 각 2행2열 블록 최대값 6, 4, 7, 9 강조"><span class="concept-cell">1</span><span class="concept-cell">3</span><span class="concept-cell">2</span><span class="concept-cell focus">4</span><span class="concept-cell">5</span><span class="concept-cell focus">6</span><span class="concept-cell">1</span><span class="concept-cell">2</span><span class="concept-cell">4</span><span class="concept-cell">2</span><span class="concept-cell focus">9</span><span class="concept-cell">3</span><span class="concept-cell">0</span><span class="concept-cell focus">7</span><span class="concept-cell">8</span><span class="concept-cell">1</span></div><p class="matrix-label">겹치지 않는 2×2 영역마다 최댓값 선택</p></article>
 <article class="concept-panel emphasis"><h3>Max Pooling 2×2, Stride 2</h3><div class="concept-matrix " style="--cols:2" role="img" aria-label="2행2열 출력 6 4 7 9"><span class="concept-cell focus">6</span><span class="concept-cell focus">4</span><span class="concept-cell focus">7</span><span class="concept-cell focus">9</span></div><div class="op-stat">4×4 (16칸) → 2×2 (4칸)</div><p>반응의 세기는 남지만 <strong>정확한 위치·다른 값은 사라집니다.</strong></p></article></div>
-<p class="concept-takeaway">한 채널에서 공간 크기가 <strong>가로·세로 각각 절반</strong>이 됩니다. Pooling은 고정된 Max 연산이므로 학습하는 Kernel이 아닙니다.</p><p class="concept-source">위 숫자는 실제 모델 출력이 아닌 수치 예시입니다. 채널별로 독립적으로 적용하며, 채널 수는 그대로입니다. <a href="https://cs231n.github.io/convolutional-networks/" target="_blank" rel="noopener">CS231n Pooling Layer</a></p></div></section>
+<p class="concept-takeaway">한 채널에서 공간 크기가 <strong>가로·세로 각각 절반</strong>이 됩니다. Pooling은 고정된 Max 연산이므로 학습하는 Kernel이 아닙니다.</p></div></section>
 <section class="slide" data-topic="Backbone과 Head" data-level="basic" data-source-deck="vision_ai" data-source-slide="31" data-outline-unit="CNN · 특징 계산의 핵심">
 <div class="slide-inner"><div class="lesson-meta"><span>29 · Backbone과 Head</span>
 <span class="lesson-level">핵심 개념</span></div>
@@ -333,7 +384,7 @@
 <h2 class="slide-title">Loss · 예측과 정답의 차이</h2>
 <p class="slide-subtitle">정답 y=4를 고정하고 후보 예측 2·3.6·4를 비교합니다. 회귀용 제곱오차는 차이의 부호를 없애고, 큰 오차에 더 큰 Loss를 부여합니다.</p>
 <figure class="lesson-figure"><a href="assets/lesson/loss_basic.svg?v=loss-optimizer-20261006-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/loss_basic.svg?v=loss-optimizer-20261006-2" alt="Loss는 예측과 정답의 차이를 학습용 숫자로 바꿉니다"></a></figure>
-<p class="lesson-takeaway">여러 샘플의 제곱오차를 평균하면 MSE(Mean Squared Error, 평균제곱오차)입니다. 문제에 따라 다른 Loss를 사용합니다.</p><details class="lesson-reference"><summary>출처 · 근거</summary><div>개념 참고: <a href="https://cs231n.github.io/optimization-1/" target="_blank" rel="noopener">Stanford CS231n · Optimization</a> · 실제 계산한 단일 샘플 회귀 예시</div></details></div></section>
+<p class="lesson-takeaway">여러 샘플의 제곱오차를 평균하면 MSE(Mean Squared Error, 평균제곱오차)입니다. 문제에 따라 다른 Loss를 사용합니다.</p></div></section>
 <section class="slide" data-topic="Training Loop" data-level="basic" data-source-deck="ai_basics" data-source-slide="21" data-outline-unit="모델 학습 · 예측에서 가중치 갱신까지">
 <div class="slide-inner"><div class="lesson-meta"><span>32 · Training Loop</span>
 <span class="lesson-level">핵심 개념</span></div>
@@ -403,7 +454,7 @@
 <h2 class="slide-title">Freeze와 Fine-tuning</h2>
 <p class="slide-subtitle">Freeze 방식은 Backbone 가중치를 고정하고 Head를 학습합니다. Fine-tuning에서는 선택한 Backbone 가중치까지 업데이트합니다.</p>
 <figure class="lesson-figure"><a href="assets/lesson/lesson_transfer_freeze_vs_finetune.svg?v=solid-arrows-20261015-2" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="assets/lesson/lesson_transfer_freeze_vs_finetune.svg?v=solid-arrows-20261015-2" alt="Freeze에서는 사전학습 Backbone을 고정하고 Head만 학습하며 Fine-tuning에서는 선택한 Backbone 가중치도 함께 업데이트하는 구조"></a></figure>
-<p class="lesson-takeaway">같은 대상 데이터로 두 방식을 검증하고, 데이터 양·도메인 차이·Validation 성능에 따라 업데이트 범위를 선택합니다.</p><details class="lesson-reference"><summary>출처 · 근거</summary><div>개념 참고: <a href="https://cs231n.github.io/convolutional-networks/" target="_blank" rel="noopener">Stanford CS231n</a> · 직접 재구성한 설명용 Figure</div></details></div></section>
+<p class="lesson-takeaway">같은 대상 데이터로 두 방식을 검증하고, 데이터 양·도메인 차이·Validation 성능에 따라 업데이트 범위를 선택합니다.</p></div></section>
 <section class="slide" data-topic="Overfitting" data-level="basic" data-source-deck="ai_basics" data-source-slide="35" data-outline-unit="전이학습 · 새 환경에 적용">
 <div class="slide-inner"><div class="lesson-meta"><span>42 · Overfitting</span>
 <span class="lesson-level">핵심 개념</span></div>

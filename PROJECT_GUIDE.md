@@ -496,3 +496,10 @@ GitHub Pages:
 - 원문 참고: Euiyun Kim, AIBook '뉴런과 신경망' https://aibook.euiyun.com/chapters/neuron.html ; Stanford CS231n https://cs231n.github.io/neural-networks-1/.
 - AIBook에서 개념→핵심 식→간결한 Figure/검산을 잇는 편집 방식을 참고했습니다. 원본 스타일/코드 자산을 복제하지 않고 현재 16:9 강의에 맞춰 로컬 HTML/SVG/CSS로 재구성했습니다.
 - 변경 범위: `docs/vision_ai_course.html`의 16~21번, 전용 `docs/neuron_concept_flow.css`, outline/검증 스크립트/문서. 다른 슬라이드와 공통 CSS/JS는 그대로 유지합니다.
+
+## 2026-10-17 · 이미지 출처 표기 기준 (현행)
+- 강의 화면에는 외부 이미지를 직접 재사용한 경우에만 출처를 표시합니다. 외부 논문 Figure, 학술자료 원본 이미지, 외부 사진이 해당합니다.
+- 공식 문서·논문·블로그의 개념이나 설명만 참고하고 HTML/SVG·숫자 예제를 자체 구성했다면 슬라이드에 참고 문헌을 표시하지 않습니다.
+- 외부 이미지 출처 기록은 `assets/SOURCES.md`에 계속 보존하고, 이미지 하단 또는 인접한 위치에서 원본 URL을 안내합니다.
+- 16~21번은 외부 이미지를 사용하지 않고 자체 SVG/HTML 수치 그래프를 사용하므로 콘텐츠 참고 링크를 제거했습니다.
+- 이번 수정에서는 16번 Step 경계와 실제 z=0.3, 17번 2→3→1 뉴런의 정확한 숫자 전개, 18번 AND/XOR 출력 배열, 19번 직선/ReLU 그래프, 20번 XOR 네 조합, 21번 변환의 차이를 시각화합니다.

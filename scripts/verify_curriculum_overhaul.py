@@ -172,10 +172,20 @@ assert "x₁+x₂ = 1.5" in course_slides[17]
 assert "XOR Gate" in course_slides[17]
 assert "기울기" not in course_slides[17], "Gate slide is geometry, not gradient"
 assert course_slides[16].count("W₂") >= 3
-assert "neuron_concept_flow.css?v=20261017-1" in course_page
+assert "neuron_concept_flow.css?v=20261017-2" in course_page
 assert "z = Wx + b" in course_slides[15]
 assert "2 → 3 → 1 뉴런" in course_slides[16]
 assert "W₂φ(W₁x+b₁)+b₂" in course_slides[20]
+assert "nb-threshold" in course_slides[15]
+assert "nb-network-numbers" in course_slides[16]
+assert "nb-gate-output" in course_slides[17]
+assert "nb-grid-axis-note" in course_slides[17]
+assert "위쪽 행은 x₂=1" in course_slides[17]
+assert "nb-activation-charts" in course_slides[18]
+assert course_slides[19].count("nb-xor-case ") == 4
+assert "nb-activation-role" in course_slides[20]
+assert 'class="concept-source"' not in course_page, "Only actual borrowed images need source labels"
+assert "개념 참고:" not in course_page, "Do not cite sources used only for concepts"
 assert all(
     max(0,x-y)+max(0,y-x) == (x^y)
     for x in (0,1) for y in (0,1)
