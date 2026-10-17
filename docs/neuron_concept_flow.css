@@ -82,3 +82,78 @@
 .lesson-deck .neuron-story .nb-two-formulas small,.lesson-deck .neuron-story .nb-two-formulas span{font-size:10px}
 .lesson-deck .neuron-story .nb-takeaway{font-size:13px}
 }
+
+/* 2026-10-17: value-to-output visual explanation, no extra image assets. */
+.lesson-deck .neuron-story .nb-threshold{margin:4px 0 7px;padding:9px 15px;border-top:1px solid #d9e3e7;border-bottom:1px solid #d9e3e7}
+.lesson-deck .neuron-story .nb-th-label{display:flex;align-items:center;justify-content:space-between;gap:6px;font-size:clamp(13px,1.04vw,16px);color:#607987}
+.lesson-deck .neuron-story .nb-th-label strong{color:#2d5969}
+.lesson-deck .neuron-story .nb-th-line{position:relative;height:7px;margin:24px 12px 16px;border-radius:3px;background:linear-gradient(90deg,#cbd9e0 50%,#a9d9cb 50%)}
+.lesson-deck .neuron-story .nb-th-zero{position:absolute;left:50%;top:-14px;height:35px;width:2px;background:#547786}
+.lesson-deck .neuron-story .nb-th-marker{position:absolute;left:68%;top:-34px;transform:translateX(-50%);white-space:nowrap;color:#067e69;font-size:clamp(14px,1.12vw,18px);font-weight:800}
+.lesson-deck .neuron-story .nb-network-numbers{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:9px 0;color:#396174;font-size:clamp(13px,1.04vw,17px)}
+.lesson-deck .neuron-story .nb-network-numbers b{color:#0a7966}
+.lesson-deck .neuron-story .nb-config{font-size:clamp(11px,.87vw,14px);color:#6b7d86;line-height:1.35;margin:5px 0}
+.lesson-deck .neuron-story .nb-gate-output{display:grid;grid-template-columns:1fr 1fr;gap:30px;margin:7px 0}
+.lesson-deck .neuron-story .nb-gate-output>div{display:grid;grid-template-columns:auto 1fr auto;gap:8px;align-items:center;padding:7px 15px;border-top:1px solid #d9e4e9}
+.lesson-deck .neuron-story .nb-gate-output strong{font-size:clamp(14px,1.08vw,17px);color:#27596b}
+.lesson-deck .neuron-story .nb-gate-output small{font-size:clamp(11px,.88vw,14px);color:#687e8b}
+.lesson-deck .neuron-story .nb-binary-grid{width:74px;height:74px;display:grid;grid-template-columns:1fr 1fr;gap:3px}
+.lesson-deck .neuron-story .nb-binary-grid span{display:grid;place-items:center;background:#e6edf0;color:#596f7b;border-radius:3px;font-size:17px;font-weight:750}
+.lesson-deck .neuron-story .nb-binary-grid .nb-one{background:#bbdfd2;color:#08755e}
+.lesson-deck .neuron-story .nb-activation-charts{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin:5px 0}
+.lesson-deck .neuron-story .nb-activation-charts figure{margin:0;padding:8px;border-top:2px solid #adc3cb;min-width:0}
+.lesson-deck .neuron-story .nb-activation-charts figure+figure{border-top-color:#0f8c73}
+.lesson-deck .neuron-story .nb-activation-charts figcaption{display:flex;align-items:baseline;gap:14px;justify-content:center;color:#446778}
+.lesson-deck .neuron-story .nb-activation-charts figcaption strong{font-size:clamp(19px,1.5vw,24px)}
+.lesson-deck .neuron-story .nb-activation-charts figcaption span{font-size:clamp(13px,1.07vw,16px)}
+.lesson-deck .neuron-story .nb-activation-charts svg{display:block;width:100%;height:min(30vh,260px)}
+.lesson-deck .neuron-story .nb-xor-gallery{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:10px 0 12px}
+.lesson-deck .neuron-story .nb-xor-case{padding:10px 11px;border-top:3px solid #a9bbc5;border-bottom:1px solid #e2e8ea;background:#f8fafb;text-align:center;color:#4a6879}
+.lesson-deck .neuron-story .nb-xor-case.nb-positive{border-top-color:#1b987a;background:#f0f8f4}
+.lesson-deck .neuron-story .nb-xor-input{font-size:clamp(15px,1.17vw,19px)}
+.lesson-deck .neuron-story .nb-xor-input strong{color:#2b5266}
+.lesson-deck .neuron-story .nb-xor-arrow{color:#87a6b0;font-size:17px;line-height:1.12;margin:2px}
+.lesson-deck .neuron-story .nb-xor-hidden{display:grid;grid-template-columns:1fr 1fr;gap:5px}
+.lesson-deck .neuron-story .nb-xor-hidden span{padding:6px 2px;background:#eaf2f5;border-radius:5px;font-size:clamp(14px,1.08vw,17px)}
+.lesson-deck .neuron-story .nb-xor-case.nb-positive .nb-xor-hidden span:has(b){background:#deefe8}
+.lesson-deck .neuron-story .nb-xor-output{font-size:clamp(17px,1.36vw,22px);font-weight:760}
+.lesson-deck .neuron-story .nb-xor-output strong{font-size:1.45em;color:#196e65}
+.lesson-deck .neuron-story .nb-activation-role{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.lesson-deck .neuron-story .nb-activation-role>div{display:flex;flex-wrap:wrap;align-items:baseline;gap:7px;padding:11px 2px;border-top:1px solid #cbdbe2}
+.lesson-deck .neuron-story .nb-activation-role strong{font-size:clamp(15px,1.16vw,18px);color:#285669}
+.lesson-deck .neuron-story .nb-activation-role small{font-size:clamp(12px,.95vw,15px);color:#68818b}
+.lesson-deck .neuron-story .nb-mini-stripe{display:block;align-self:center;width:26px;height:6px;background:#91aebd}
+.lesson-deck .neuron-story .nb-mini-stripe.nb-nonlinear{background:#22a184}
+@media(max-height:850px){
+.lesson-deck .neuron-story .nb-threshold{padding:3px 8px}
+.lesson-deck .neuron-story .nb-th-line{margin:19px 12px 12px}
+.lesson-deck .neuron-story .nb-network-numbers{font-size:12px;gap:4px;margin:3px 0}
+.lesson-deck .neuron-story .nb-config{font-size:10px;margin:3px 0}
+.lesson-deck .neuron-story .nb-binary-grid{width:55px;height:55px}
+.lesson-deck .neuron-story .nb-gate-output>div{padding:4px 6px}
+.lesson-deck .neuron-story .nb-activation-charts svg{height:min(24vh,205px)}
+.lesson-deck .neuron-story .nb-xor-gallery{gap:6px;margin:5px 0}
+.lesson-deck .neuron-story .nb-xor-case{padding:6px}
+.lesson-deck .neuron-story .nb-xor-hidden span{padding:4px 2px}
+.lesson-deck .neuron-story .nb-activation-role>div{padding:5px 2px}
+}
+@media(max-width:800px){
+.lesson-deck .neuron-story .nb-th-label{font-size:10px}
+.lesson-deck .neuron-story .nb-th-marker{font-size:11px}
+.lesson-deck .neuron-story .nb-network-numbers{flex-wrap:wrap;font-size:9px}
+.lesson-deck .neuron-story .nb-config{font-size:9px}
+.lesson-deck .neuron-story .nb-gate-output{gap:5px}
+.lesson-deck .neuron-story .nb-gate-output>div{display:flex;flex-wrap:wrap;justify-content:center}
+.lesson-deck .neuron-story .nb-gate-output strong,.lesson-deck .neuron-story .nb-gate-output small{font-size:9px}
+.lesson-deck .neuron-story .nb-binary-grid{height:44px;width:44px}
+.lesson-deck .neuron-story .nb-activation-charts{gap:5px}
+.lesson-deck .neuron-story .nb-activation-charts figcaption{flex-wrap:wrap;gap:2px}
+.lesson-deck .neuron-story .nb-activation-charts figcaption strong{font-size:13px}
+.lesson-deck .neuron-story .nb-activation-charts figcaption span{font-size:10px}
+.lesson-deck .neuron-story .nb-xor-gallery{grid-template-columns:repeat(2,minmax(0,1fr))}
+.lesson-deck .neuron-story .nb-xor-input{font-size:11px}
+.lesson-deck .neuron-story .nb-xor-hidden span{font-size:10px}
+.lesson-deck .neuron-story .nb-xor-output{font-size:12px}
+.lesson-deck .neuron-story .nb-activation-role strong{font-size:11px}
+.lesson-deck .neuron-story .nb-activation-role small{font-size:10px}
+}
