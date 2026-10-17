@@ -148,10 +148,12 @@ def main():
         # New pedagogical sequence with numerically faithful before/after grids.
         for slide_number, phrase in (
             (8,"왜 CNN을 사용할까?"),
-            (18,"선형층만 여러 개"),
-            (19,"AND는 직선"),
-            (20,"ReLU"),
-            (21,"XOR도 구분"),
+            (16,"퍼셉트론"),
+            (17,"활성화 함수가 없으면"),
+            (18,"AND와 XOR"),
+            (19,"ReLU"),
+            (20,"XOR 계산"),
+            (21,"선형 변환 사이"),
             (26,"Stride"),
             (27,"Padding"),
             (28,"Max Pooling"),

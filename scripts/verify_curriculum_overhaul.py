@@ -100,8 +100,8 @@ assert sources[11:16] == [
     ("vision_ai",19), ("cnn_contrast",1), ("ai_basics",8)
 ]
 assert sources[16:21] == [
-    ("ai_basics",11), ("new_lessons",2), ("new_lessons",3),
-    ("ai_basics",13), ("new_lessons",4)
+    ("new_lessons",2), ("new_lessons",3), ("ai_basics",13),
+    ("new_lessons",4), ("ai_basics",11)
 ]
 assert sources[25:29] == [
     ("vision_ai",23), ("vision_ai",24),
@@ -156,22 +156,26 @@ assert [it["title"] for it in items[19:]] == [
 assert all(not it.get("original","").startswith("Y") for it in items)
 assert items[19+7]["original"] == "N1"
 assert items[19+14]["original"] == "F1"
-assert [items[19+i]["original"] for i in (17,18,20)] == [
-    "N2","N3","N4"
+assert [items[19+i]["original"] for i in (16,17,19,20)] == [
+    "N2","N3","N4","A11"
 ]
 assert "lecture-toc-drawer" in (DOCS / "lecture_sidebar.js").read_text("utf-8")
 
 # Numerical convolution, padding, max pooling, AND/XOR must all be correct.
 for idx, phrase in [
-    (7,"1,048,576"), (17,"W₂W₁"), (18,"AND Gate"),
-    (20,"h₁ = ReLU"), (25,"3×3 = 9칸"), (26,"3×3 → 1×1"),
+    (7,"1,048,576"), (16,"W₂W₁"), (17,"AND Gate"),
+    (19,"h₁ = ReLU"), (25,"3×3 = 9칸"), (26,"3×3 → 1×1"),
     (27,"4×4 (16칸) → 2×2")
 ]:
     assert phrase in course_slides[idx], (idx+1,phrase)
-assert "x₁+x₂ = 1.5" in course_slides[18]
-assert "XOR Gate" in course_slides[18]
-assert "기울기" not in course_slides[18], "Gate slide is geometry, not gradient"
-assert course_slides[17].count("W₂") >= 3
+assert "x₁+x₂ = 1.5" in course_slides[17]
+assert "XOR Gate" in course_slides[17]
+assert "기울기" not in course_slides[17], "Gate slide is geometry, not gradient"
+assert course_slides[16].count("W₂") >= 3
+assert "neuron_concept_flow.css?v=20261017-1" in course_page
+assert "z = Wx + b" in course_slides[15]
+assert "2 → 3 → 1 뉴런" in course_slides[16]
+assert "W₂φ(W₁x+b₁)+b₂" in course_slides[20]
 assert all(
     max(0,x-y)+max(0,y-x) == (x^y)
     for x in (0,1) for y in (0,1)

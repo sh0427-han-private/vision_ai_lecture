@@ -1,6 +1,6 @@
 /* Public course: Intro 19, Vision AI integrated 49; total 68 slides. */
 window.LECTURE_OUTLINE = {
-  "version": "20261016-cnn-numeric-xor-49",
+  "version": "20261017-neuron-story-49",
   "groups": [
     {
       "name": "Intro · 시각의 중요성에서 숫자까지",
@@ -248,7 +248,7 @@ window.LECTURE_OUTLINE = {
           "page": "vision_ai_course.html",
           "slide": 16,
           "global": 35,
-          "title": "Weight · Bias · 입력의 중요도",
+          "title": "퍼셉트론 · Wx + b에서 판정까지",
           "original": "A8"
         }
       ]
@@ -260,36 +260,36 @@ window.LECTURE_OUTLINE = {
           "page": "vision_ai_course.html",
           "slide": 17,
           "global": 36,
-          "title": "Neural Network · 가중치 연결",
-          "original": "A11"
+          "title": "활성화 함수가 없으면 깊어도 단층",
+          "original": "N2"
         },
         {
           "page": "vision_ai_course.html",
           "slide": 18,
           "global": 37,
-          "title": "선형층만 여러 개 쌓아도 하나의 선형층과 같습니다",
-          "original": "N2"
+          "title": "AND와 XOR · 직선으로 구분할 수 있을까?",
+          "original": "N3"
         },
         {
           "page": "vision_ai_course.html",
           "slide": 19,
           "global": 38,
-          "title": "AND는 직선으로 구분되지만 XOR는 그렇지 않습니다",
-          "original": "N3"
+          "title": "ReLU · 비선형성의 시작",
+          "original": "A13"
         },
         {
           "page": "vision_ai_course.html",
           "slide": 20,
           "global": 39,
-          "title": "ReLU · 비선형 특성",
-          "original": "A13"
+          "title": "ReLU로 XOR 계산하기",
+          "original": "N4"
         },
         {
           "page": "vision_ai_course.html",
           "slide": 21,
           "global": 40,
-          "title": "비선형 ReLU를 거치면 XOR도 구분할 수 있습니다",
-          "original": "N4"
+          "title": "신경망 · 선형 변환 사이의 비선형성",
+          "original": "A11"
         }
       ]
     },
