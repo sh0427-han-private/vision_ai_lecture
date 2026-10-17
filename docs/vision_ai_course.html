@@ -162,47 +162,41 @@
 <section class="slide" data-topic="선형 Layer의 한계" data-level="basic" data-source-deck="new_lessons" data-source-slide="2" data-outline-unit="AI 원리 · 비선형성">
 <div class="slide-inner neuron-story"><div class="lesson-meta"><span>17 · 선형층의 한계</span><span class="lesson-level">핵심 개념</span></div>
 <h2 class="slide-title">활성화 함수가 없으면 깊어도 단층</h2>
-<p class="slide-subtitle">입력은 숫자를 전달하고, <strong>레이어 1과 레이어 2가 각각 Wx+b를 계산</strong>합니다. 두 계산 사이에 비선형 활성화는 없습니다.</p>
-<div class="nb-main-figure"><svg class="nb-network-svg" viewBox="0 0 1080 260" role="img" aria-label="2 → 3 → 1 뉴런. 입력은 데이터 전달만 하며, 레이어 1은 W1x+b1, 레이어 2는 W2z+b2를 계산한다. 계산 레이어는 두 개이고 중간 활성화 함수는 없다.">
-<rect x="15" y="8" width="190" height="244" rx="6" fill="#f5f7f8" stroke="#c6d1d7" stroke-dasharray="6 4"/>
-<rect x="325" y="8" width="310" height="244" rx="6" fill="#edf4f8" stroke="#9cb9ca"/>
-<rect x="795" y="8" width="270" height="244" rx="6" fill="#edf7f2" stroke="#8ab7a7"/>
-<g text-anchor="middle" font-family="sans-serif">
-<text x="110" y="39" font-size="25" font-weight="750" fill="#546b78">입력 · x</text>
-<text x="480" y="39" font-size="25" font-weight="750" fill="#2a5c77">레이어 1 · 은닉층</text>
-<text x="930" y="39" font-size="25" font-weight="750" fill="#187661">레이어 2 · 출력층</text>
-<text x="110" y="69" font-size="20" fill="#667b88">계산 없이 값 전달</text>
-<text x="480" y="69" font-size="20" fill="#426a80">z = W₁x + b₁</text>
-<text x="930" y="69" font-size="20" fill="#397c69">y = W₂z + b₂</text>
+<p class="slide-subtitle"><strong>입력 x 하나</strong>가 두 계산층을 지나고, 마지막에는 두 값을 더해 출력합니다. 모든 층에서 비선형 활성화를 생략했습니다.</p>
+<div class="nb-main-figure"><svg class="nb-network-svg" viewBox="0 0 1080 270" role="img" aria-label="1 → 2 → 2 → 1 뉴런. 입력 x=2, 계산층 1의 h1=5와 h2=1, 계산층 2의 z1=11과 z2=4, 합산 출력 y=15. 전체는 단일 계산 y=6x+3과 같다.">
+<rect x="15" y="8" width="175" height="254" rx="6" fill="#f5f7f8" stroke="#c6d1d7" stroke-dasharray="6 4"/>
+<rect x="265" y="8" width="240" height="254" rx="6" fill="#edf4f8" stroke="#9cb9ca"/>
+<rect x="555" y="8" width="240" height="254" rx="6" fill="#eef3f8" stroke="#9cb9ca"/>
+<rect x="855" y="8" width="210" height="254" rx="6" fill="#edf7f2" stroke="#8ab7a7"/>
+<g text-anchor="middle" font-family="sans-serif" font-size="24" font-weight="750" fill="#2a5c77">
+<text x="103" y="39" fill="#546b78">입력</text><text x="385" y="39">계산층 1</text><text x="675" y="39">계산층 2</text><text x="960" y="39" fill="#187661">출력 · 합산</text>
 </g>
-<g stroke="#9bb2bf" stroke-width="1.7">
-<path d="M137 124L452 106M137 124L452 153M137 124L452 200M137 183L452 106M137 183L452 153M137 183L452 200"/>
-<path d="M508 106L902 153M508 153H902M508 200L902 153"/>
+<g text-anchor="middle" font-family="sans-serif" font-size="19" fill="#617a88">
+<text x="103" y="69">숫자 하나: x = 2</text><text x="385" y="69">입력을 곱하고 더하기</text><text x="675" y="69">앞 층의 값을 조합</text><text x="960" y="69">두 값을 더하기만</text>
+</g>
+<g stroke="#9bb2bf" stroke-width="1.7" fill="none">
+<path d="M137 155L351 110M137 155L351 205"/>
+<path d="M419 110H641M419 110L641 205M419 205L641 110M419 205H641"/>
+<path d="M709 110L926 155M709 205L926 155"/>
 </g>
 <g fill="#fff" stroke="#8da8b5" stroke-width="1.8">
-<circle cx="110" cy="124" r="27"/><circle cx="110" cy="183" r="27"/>
-<circle cx="480" cy="106" r="22"/><circle cx="480" cy="153" r="22"/><circle cx="480" cy="200" r="22"/>
-<circle cx="930" cy="153" r="27" fill="#d7ede4"/>
+<circle cx="103" cy="155" r="27"/><circle cx="385" cy="110" r="27"/><circle cx="385" cy="205" r="27"/>
+<circle cx="675" cy="110" r="27"/><circle cx="675" cy="205" r="27"/><circle cx="960" cy="155" r="27" fill="#d7ede4"/>
 </g>
-<g text-anchor="middle" font-size="23" font-weight="750" fill="#214c60" font-family="sans-serif">
-<text x="110" y="132">1</text><text x="110" y="191">2</text>
-<text x="480" y="114">3</text><text x="480" y="161">3</text><text x="480" y="208">3</text>
-<text x="930" y="161">9</text>
+<g text-anchor="middle" font-family="sans-serif" font-size="24" font-weight="750" fill="#214c60">
+<text x="103" y="163">2</text><text x="385" y="118">5</text><text x="385" y="213">1</text>
+<text x="675" y="118">11</text><text x="675" y="213">4</text><text x="960" y="163">15</text>
 </g>
-<g text-anchor="middle" font-size="20" fill="#426475" font-family="sans-serif">
-<text x="110" y="240">x = (1, 2)</text>
-<text x="480" y="240">각 뉴런: 1 + 2 = 3</text>
-<text x="930" y="240">3 + 3 + 3 = 9</text>
-<text x="700" y="105" font-size="19" fill="#8b6746">활성화 없음</text>
+<g text-anchor="middle" font-family="sans-serif" font-size="21" fill="#426475">
+<text x="103" y="212">x = 2</text><text x="385" y="156">h₁ = 2x + 1</text><text x="385" y="251">h₂ = x − 1</text>
+<text x="675" y="156">z₁ = 2h₁ + h₂</text><text x="675" y="251">z₂ = h₁ − h₂</text>
+<text x="960" y="212">y = z₁ + z₂</text><text x="960" y="246" fill="#187661">11 + 4 = 15</text>
 </g></svg></div>
-<div class="nb-derivation"><span>z = W₁x + b₁</span><span>y = W₂z + b₂ = <strong>(W₂W₁)x + (W₂b₁ + b₂)</strong></span></div>
-<div class="nb-network-numbers">
-<span>입력 <b>x=(1, 2)</b></span><span>중간 뉴런 3개 <b>각각 1+2=3</b></span><span>출력 <b>3+3+3=9</b></span>
-<span>합친 뉴런 <b>3×1+3×2=9</b></span>
-</div>
-<p class="nb-config">이 그림의 가중치: 첫 층 3개 뉴런은 각각 w=(1,1), b=0 · 출력층 w=(1,1,1), b=0 · 합친 층 w′=(3,3), b′=0</p>
-<p class="nb-takeaway"><strong>입력은 계산 레이어 수에 포함하지 않습니다.</strong> 위 구조는 계산 레이어 2개이지만, 비선형 활성화가 없어 <strong>단일 Affine(선형변환 + Bias) 레이어와 동등</strong>합니다.</p>
-
+<div class="nb-derivation"><span>z₁ = 2(2x+1) + (x−1) = <strong>5x+1</strong></span><span>z₂ = (2x+1) − (x−1) = <strong>x+2</strong></span></div>
+<div class="concept-equation">y = z₁ + z₂ = (5x+1) + (x+2) = <strong>6x + 3</strong></div>
+<div class="nb-network-numbers"><span>여러 층을 거친 결과 <b>x=2 → 15</b></span><span>합친 단일층 <b>y=6×2+3=15</b></span><span><b>모든 x에서 같은 결과</b></span></div>
+<p class="nb-config">출력의 합산도 가중치 (1,1), 편향 0인 선형층입니다. 위 구조는 계산층 2개와 합산 출력층 1개로 이루어집니다.</p>
+<p class="nb-takeaway">뉴런과 층이 늘어도 <strong>곱하고 더하기만 반복하면 y=ax+b 하나로 합쳐집니다.</strong> 위 네트워크는 모든 입력 x에 대해 <strong>단일층 y=6x+3과 동등</strong>합니다.</p>
 </div></section>
 <section class="slide" data-topic="AND와 XOR" data-level="basic" data-source-deck="new_lessons" data-source-slide="3" data-outline-unit="AI 원리 · 비선형성">
 <div class="slide-inner neuron-story concept-lab">
