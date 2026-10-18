@@ -36,7 +36,7 @@
 .principles-deck .lf-zebra img{display:block;object-fit:contain;width:100%;height:100%;max-height:44dvh}
 .principles-deck .lf-zebra-fallback{display:none;width:100%;grid-template-columns:1fr .8fr 1fr .8fr 1fr;gap:14px;align-items:center}
 .principles-deck .lf-zebra.lf-no-external .lf-zebra-fallback{display:grid}
-.principles-deck .lf-zebra.lf-no-external img{display:none}
+.principles-deck .lf-zebra.lf-no-external>img{display:none}
 .principles-deck .lf-arch-unit{height:170px;border-top:3px solid #7da9ad;background:#f5f9fa;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;text-align:center;font-size:clamp(19px,1.52vw,23px);color:#2a6170}
 .principles-deck .lf-arch-unit img{height:92px;width:100%;object-fit:contain}
 .principles-deck .lf-arch-arrow{font-size:32px;color:#208a77;text-align:center}
