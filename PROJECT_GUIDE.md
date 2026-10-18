@@ -592,3 +592,13 @@ GitHub Pages:
 - Course **27**: 사과 입력→Kernel/Feature Map→Task Head→Prediction (Forward) → Label/Loss→Gradient→Optimizer→가중치 갱신 (Backward)의 전문적 자체 SVG 큰 Figure. 학습 Weight는 설정에 따라 Freeze될 수 있으며 CNN 외 Transformer 기반 모델도 있음.
 - 실습은 Intro Pixel/RGB/해상도, Course25 Weight 업데이트, Course39 Threshold 100건 예제 유지. 기존 SVG/JS/레거시 슬라이드 수정 시 동일 예제·cache key·목차·정적/브라우저/Pages QA 회귀.
 - 최신 종합 검토 및 후속 수정 제안: `reviews/2026-10-18_VISION_AI_54_SLIDE_FLOW_REVIEW.md`. 이전 검토서 50장 기준의 번호를 현재 실행 지침으로 사용하지 말 것.
+
+
+## 2026-10-19 · 최신 55장 도식/순서 (이전 지침보다 우선)
+
+- 공개 2시간 강의: **Intro 13 + Course 42 = 55장**, 본강의 110분 + 질의 10분.
+- Course 5 Anomaly Detection 제외. Course 6–10 = 퍼셉트론 → AND → XOR → ReLU → Affine층과 비선형성. Course 11 = 이전 얼룩말 CNN Architecture 원본 Figure(외부 링크, 출처 인접 표기), 접속 실패 시 로컬 자체 CNN 구조 Fallback.
+- Course 12 입력 5×5 + Kernel 3×3 → Feature Map 3×3의 전체 수치 대응, Course 13 위치별 반복, Course 14 Weight Sharing, Course 15 Feature Channel, Course 16 Stride, Course 17 동일 3×3 입력 Padding0→1×1 vs Padding1→3×3, Course 18 Pool 사용 이유(공간크기↓·강한 반응 유지/정확 위치 손실).
+- Course 24–25 Preprocessing/Augmentation은 슬라이드 안에 복합 슬라이드를 삽입하지 않고 자체 원본 사과 비교용 HTML을 사용. Course 28 CNN Forward/Backward 화살표를 두 줄로 정렬. Course 30 Transfer Learning에서 Feature Extractor Freeze + Classification Head Train 시각 구분.
+- Intro 13의 기존 사진이 잘못 보인 이유는 `iv-revision` 적용 CSS 범위 불일치였으며 이를 수정했다. 표시는 동일 원본의 CSS 밝기·회전·가림 시뮬레이션이다.
+- 기본 문서: `docs/two_hour_manifest.json`, `TWO_HOUR_LECTURE_PLAN.md`, `reviews/2026-10-19_CNN_SLIDE_REFINEMENT.md`, `TODO_VISION_AI_LECTURE.md`. 페이지 QA/110개 뷰/배포 확인은 별도 완료 판단.
