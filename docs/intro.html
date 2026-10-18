@@ -17,12 +17,13 @@
   <link rel="stylesheet" href="intro_apple_number_bridge.css?v=intro-picto-20261016-1">
   <script src="intro_apple_number_bridge.js?v=20261015-1" defer></script>
   <link rel="stylesheet" href="lecture_sidebar.css?v=20261015-1">
-  <script src="lecture_outline.js?v=project-course-20261018" defer></script>
+  <script src="lecture_outline.js?v=principles-20261018-1" defer></script>
   <script src="lecture_sidebar.js?v=20261015-1" defer></script>
   <link rel="stylesheet" href="intro_challenges.css?v=20261018-1">
 <link rel="stylesheet" href="two_hour_lecture.css?v=20261018-1">
+<link rel="stylesheet" href="principles_course.css?v=20261018-1">
 </head>
-<body class="deck-page" data-prev-page="" data-next-page="vision_ai_course.html">
+<body class="deck-page principles-intro" data-prev-page="" data-next-page="vision_ai_course.html">
 <header class="site-header"><nav class="nav"><a class="brand" href="intro.html#slide-1">Vision AI Lecture</a></nav></header>
 
 <main class="deck" aria-live="polite">
@@ -30,8 +31,8 @@
     <div class="slide-inner slide-hero">
       <span class="chapter-chip">Lecture 01 · Vision AI Introduction</span>
       <h1 class="slide-title">AI와 시각의 출발점</h1>
-      <p class="slide-subtitle">이미지 기반 분류·검출·분할의 원리를 이해하고, AI와 첫 프로젝트의 요구사항·데이터·평가 기준을 정합니다.</p>
-    <p class="th-hero-case">공통 질문 · 사진에서 사과의 결함을 어떻게 찾을까?</p></div>
+      <p class="slide-subtitle">한 장의 사과 사진에서 작은 결함을 찾으려면, 컴퓨터가 이미지를 어떻게 처리하고 학습하는지 알아야 합니다.</p>
+    <div class="pf-cover"><img src="assets/vision_task_apple_reference.jpg" alt="강의 전체에서 반복 사용할 결함이 있는 사과 사진"><p class="pf-cover-question">사진 속 작은 결함을<br>AI는 어떻게 찾을까?</p></div><p class="th-hero-case">오늘의 질문 · Pixel → CNN → 학습 → 검증</p></div>
   </section>
 <section class="slide" data-concept="scene">
   <div class="slide-inner vision-story">
@@ -247,20 +248,20 @@
 <div class="slide-inner intro-challenge">
 
 <h2 class="slide-title">다르게 생겨도 같은 종류</h2>
-<p class="slide-subtitle">색·재질·다리·등받이가 달라도, 아래 네 물체의 정답은 모두 <strong>의자</strong>입니다.</p>
+<p class="slide-subtitle">같은 종류도 모습은 다양합니다. 사과의 품종·색이 달라도 모두 사과인 것처럼, 여기서는 서로 다른 의자를 비교합니다.</p>
 <figure class="challenge-figure"><img src="assets/generated/intro_chair_diversity.webp" alt="서로 다르게 생긴 검은 사무용 의자, 나무 식탁 의자, 금속 접이식 의자, 천으로 덮인 안락의자를 나란히 비교한 생성 사진">
 <figcaption class="challenge-labels challenge-four"><div><span>사무용 의자</span><strong>의자</strong></div><div><span>식탁 의자</span><strong>의자</strong></div><div><span>접이식 의자</span><strong>의자</strong></div><div><span>안락의자</span><strong>의자</strong></div></figcaption></figure>
-<p class="challenge-takeaway">검은색이나 특정 다리 모양만 외우면 새로운 의자를 놓칩니다.<br><strong>서로 다른 모습에서 같은 종류를 구분하는 단서</strong>를 학습해야 합니다.</p>
+<p class="challenge-takeaway">의자 하나의 색·모양을 외우면 다른 의자를 놓칩니다. <strong>사과도 색·모양이 달라져도 알아보는 공통 단서</strong>가 필요합니다.</p>
 <p class="challenge-note">개념 설명용 생성 이미지 · 실제 모델의 예측 결과가 아닙니다.</p>
 </div></section>
 <section class="slide" data-concept="relevant-change" data-intro-challenge="relevant-change">
 <div class="slide-inner intro-challenge">
 
 <h2 class="slide-title">큰 변화보다 중요한 차이</h2>
-<p class="slide-subtitle">이 예시의 검사 기준은 <strong>균열 유무</strong>입니다. 밝기 차이가 커도 정상일 수 있고, 작은 균열이 판정을 바꿀 수 있습니다.</p>
+<p class="slide-subtitle">물체 종류를 아는 것과 결함을 찾는 것은 다릅니다. 여기서는 작은 <strong>균열 유무</strong>를 판단 기준으로 삼았습니다.</p>
 <figure class="challenge-figure"><img src="assets/generated/intro_inspection_relevant_change.webp" alt="균열 없는 표면, 큰 그림자가 있지만 균열 없는 표면, 밝기는 비슷하지만 오른쪽에 가는 균열이 있는 표면을 나란히 비교한 생성 사진">
 <figcaption class="challenge-labels challenge-three"><div><span>기준 표면</span><strong>정상 · 균열 없음</strong></div><div><span>넓은 영역의 밝기 변화</span><strong>정상 · 균열 없음</strong></div><div class="challenge-defect"><span>작은 영역의 균열</span><strong>불량 · 균열 있음</strong></div></figcaption></figure>
-<p class="challenge-takeaway"><strong>조명 차이에는 흔들리지 않고, 균열에는 민감하게.</strong><br>픽셀 차이의 크기보다 <strong>검사 목적에 필요한 차이</strong>를 구분해야 합니다.</p>
+<p class="challenge-takeaway"><strong>조명 차이에는 흔들리지 않고, 균열에는 민감하게.</strong><br>픽셀 변화의 크기보다 <strong>검사 목적에 필요한 차이</strong>를 찾아야 합니다. 사과에서는 갈색 반점을 결함으로 정해볼까요?</p>
 <p class="challenge-note">개념 설명용 생성 이미지 · 동일 원본의 픽셀 실험이나 실제 검사 결과가 아닙니다.</p>
 </div></section>
 </main>
