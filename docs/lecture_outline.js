@@ -1,6 +1,6 @@
-/* Vision AI why, current tasks and training teaching route. */
+/* Vision principles 55-slide current teaching route. */
 window.LECTURE_OUTLINE = {
-  "version": "20261018-why-principles-54",
+  "version": "20261019-gates-cnn-refine-55",
   "groups": [
     {
       "name": "필요성 · 사진과 숫자",
@@ -91,7 +91,7 @@ window.LECTURE_OUTLINE = {
       ]
     },
     {
-      "name": "지금의 Vision AI · Task와 모델·Label 선택",
+      "name": "Vision Task · 모델·Label",
       "items": [
         {
           "page": "vision_ai_course.html",
@@ -126,7 +126,7 @@ window.LECTURE_OUTLINE = {
       ]
     },
     {
-      "name": "신경망 · 왜 비선형이 필요한가",
+      "name": "신경망 · 퍼셉트론에서 XOR까지",
       "items": [
         {
           "page": "vision_ai_course.html",
@@ -137,237 +137,243 @@ window.LECTURE_OUTLINE = {
         {
           "page": "vision_ai_course.html",
           "slide": 7,
-          "title": "AND와 XOR · 직선으로 구분할 수 있을까?",
+          "title": "AND Gate · 퍼셉트론으로 표현",
           "global": 20
         },
         {
           "page": "vision_ai_course.html",
           "slide": 8,
-          "title": "ReLU · 비선형성의 시작",
+          "title": "XOR Gate · 한 뉴런으로 안 되는 이유",
           "global": 21
         },
         {
           "page": "vision_ai_course.html",
           "slide": 9,
-          "title": "비선형성 · 깊어져도 직선이면?",
+          "title": "ReLU · 비선형성의 시작",
           "global": 22
+        },
+        {
+          "page": "vision_ai_course.html",
+          "slide": 10,
+          "title": "비선형성 · 깊어져도 직선이면?",
+          "global": 23
         }
       ]
     },
     {
-      "name": "CNN 원리 · 이미지에서 특징까지",
+      "name": "CNN · Kernel과 특징 추출",
       "items": [
         {
           "page": "vision_ai_course.html",
-          "slide": 10,
-          "title": "CNN 전체 구조 · 사진에서 판정까지",
-          "global": 23
-        },
-        {
-          "page": "vision_ai_course.html",
           "slide": 11,
-          "title": "Kernel · 작은 영역의 가중합",
+          "title": "CNN Architecture · 사진에서 분류까지",
           "global": 24
         },
         {
           "page": "vision_ai_course.html",
           "slide": 12,
-          "title": "Feature Map · 같은 계산을 위치마다",
+          "title": "Kernel · 작은 영역의 가중합",
           "global": 25
         },
         {
           "page": "vision_ai_course.html",
           "slide": 13,
-          "title": "CNN · 지역 연결과 가중치 공유",
+          "title": "Feature Map · 같은 계산을 위치마다",
           "global": 26
         },
         {
           "page": "vision_ai_course.html",
           "slide": 14,
-          "title": "RGB에서 Feature Channel까지",
+          "title": "CNN · 지역 연결과 가중치 공유",
           "global": 27
         },
         {
           "page": "vision_ai_course.html",
           "slide": 15,
-          "title": "Stride · 계산 위치의 간격",
+          "title": "RGB에서 Feature Channel까지",
           "global": 28
         },
         {
           "page": "vision_ai_course.html",
           "slide": 16,
-          "title": "Padding · 입력 바깥에 값 채우기",
+          "title": "Stride · 계산 위치의 간격",
           "global": 29
         },
         {
           "page": "vision_ai_course.html",
           "slide": 17,
-          "title": "Max Pooling · 영역별 최댓값",
+          "title": "Padding · 같은 입력, 다른 출력 크기",
           "global": 30
         },
         {
           "page": "vision_ai_course.html",
           "slide": 18,
-          "title": "실제 Feature Map · CNN 내부 반응",
+          "title": "Max Pooling · 영역별 최댓값",
           "global": 31
         },
         {
           "page": "vision_ai_course.html",
           "slide": 19,
-          "title": "Backbone과 Task Head",
+          "title": "실제 Feature Map · CNN 내부 반응",
           "global": 32
+        },
+        {
+          "page": "vision_ai_course.html",
+          "slide": 20,
+          "title": "Backbone과 Task Head",
+          "global": 33
         }
       ]
     },
     {
-      "name": "데이터 · 어떤 사진으로 배우는가",
+      "name": "데이터 · 전처리와 증강",
       "items": [
         {
           "page": "vision_ai_course.html",
-          "slide": 20,
-          "title": "데이터셋 · 어떤 사진으로 배우나",
-          "global": 33
-        },
-        {
-          "page": "vision_ai_course.html",
           "slide": 21,
-          "title": "Train · Validation · Test",
+          "title": "데이터셋 · 어떤 사진으로 배우나",
           "global": 34
         },
         {
           "page": "vision_ai_course.html",
           "slide": 22,
-          "title": "Video Group Split · 데이터 누출 방지",
+          "title": "Train · Validation · Test",
           "global": 35
         },
         {
           "page": "vision_ai_course.html",
           "slide": 23,
-          "title": "Preprocessing · 입력 규격 맞추기",
+          "title": "Video Group Split · 데이터 누출 방지",
           "global": 36
         },
         {
           "page": "vision_ai_course.html",
           "slide": 24,
-          "title": "Data Augmentation · 조건 변화 만들기",
+          "title": "Preprocessing · 입력 크기를 맞추는 방법",
           "global": 37
+        },
+        {
+          "page": "vision_ai_course.html",
+          "slide": 25,
+          "title": "Data Augmentation · 같은 정답, 다른 조건",
+          "global": 38
         }
       ]
     },
     {
-      "name": "학습 · 가중치와 일반화",
+      "name": "학습 · CNN 가중치와 일반화",
       "items": [
         {
           "page": "vision_ai_course.html",
-          "slide": 25,
-          "title": "모델 학습 · 오차를 줄이는 반복",
-          "global": 38
-        },
-        {
-          "page": "vision_ai_course.html",
           "slide": 26,
-          "title": "Loss · 틀린 정도를 줄이는 방향",
+          "title": "모델 학습 · 오차를 줄이는 반복",
           "global": 39
         },
         {
           "page": "vision_ai_course.html",
           "slide": 27,
-          "title": "CNN 학습 구조 · Kernel이 바뀌는 과정",
+          "title": "Loss · 틀린 정도를 줄이는 방향",
           "global": 40
         },
         {
           "page": "vision_ai_course.html",
           "slide": 28,
-          "title": "Training과 Inference의 차이",
+          "title": "CNN 학습 · 예측에서 Weight 갱신까지",
           "global": 41
         },
         {
           "page": "vision_ai_course.html",
           "slide": 29,
-          "title": "전이학습 · 고정과 미세 조정",
+          "title": "Training과 Inference의 차이",
           "global": 42
         },
         {
           "page": "vision_ai_course.html",
           "slide": 30,
-          "title": "Batch · Step · Epoch",
+          "title": "전이학습 · 특징은 고정하고 분류기만 학습",
           "global": 43
         },
         {
           "page": "vision_ai_course.html",
           "slide": 31,
-          "title": "Overfitting · 새 데이터 일반화",
+          "title": "Batch · Step · Epoch",
           "global": 44
+        },
+        {
+          "page": "vision_ai_course.html",
+          "slide": 32,
+          "title": "Overfitting · 새 데이터 일반화",
+          "global": 45
         }
       ]
     },
     {
-      "name": "평가 · 무엇을 놓쳤는가",
+      "name": "평가 · 결함을 놓치지 않는가",
       "items": [
         {
           "page": "vision_ai_course.html",
-          "slide": 32,
-          "title": "Score Threshold · 판정 기준",
-          "global": 45
-        },
-        {
-          "page": "vision_ai_course.html",
           "slide": 33,
-          "title": "Confusion Matrix · 100건 평가",
+          "title": "Score Threshold · 판정 기준",
           "global": 46
         },
         {
           "page": "vision_ai_course.html",
           "slide": 34,
-          "title": "Accuracy의 함정 · 모두 정상이라면?",
+          "title": "Confusion Matrix · 100건 평가",
           "global": 47
         },
         {
           "page": "vision_ai_course.html",
           "slide": 35,
-          "title": "Precision과 Recall",
+          "title": "Accuracy의 함정 · 모두 정상이라면?",
           "global": 48
         },
         {
           "page": "vision_ai_course.html",
           "slide": 36,
-          "title": "IoU · 박스 겹침 비율",
+          "title": "Precision과 Recall",
           "global": 49
+        },
+        {
+          "page": "vision_ai_course.html",
+          "slide": 37,
+          "title": "IoU · 박스 겹침 비율",
+          "global": 50
         }
       ]
     },
     {
-      "name": "원리 회수 · 첫 사례로 돌아가기",
+      "name": "원리 복습 · 사과 검사",
       "items": [
         {
           "page": "vision_ai_course.html",
-          "slide": 37,
-          "title": "Vision AI 원리 · 한 장으로 연결",
-          "global": 50
-        },
-        {
-          "page": "vision_ai_course.html",
           "slide": 38,
-          "title": "첫 과제를 위한 네 가지 질문",
+          "title": "Vision AI 원리 · 한 장으로 연결",
           "global": 51
         },
         {
           "page": "vision_ai_course.html",
           "slide": 39,
-          "title": "실행 결과 확인 · 임계값과 오류 수",
+          "title": "첫 과제를 위한 네 가지 질문",
           "global": 52
         },
         {
           "page": "vision_ai_course.html",
           "slide": 40,
-          "title": "실패 사진이 알려 주는 것",
+          "title": "실행 결과 확인 · 임계값과 오류 수",
           "global": 53
         },
         {
           "page": "vision_ai_course.html",
           "slide": 41,
-          "title": "Vision AI 원리 · 무엇을 설명할 수 있나?",
+          "title": "실패 사진이 알려 주는 것",
           "global": 54
+        },
+        {
+          "page": "vision_ai_course.html",
+          "slide": 42,
+          "title": "Vision AI 원리 · 무엇을 설명할 수 있나?",
+          "global": 55
         }
       ]
     }

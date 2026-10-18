@@ -1,5 +1,5 @@
 {
-  "version": "20261018-why-principles-54",
+  "version": "20261019-gates-cnn-refine-55",
   "duration_minutes": 120,
   "teaching_minutes": 110,
   "discussion_minutes": 10,
@@ -7,275 +7,280 @@
     "intro": [
       {
         "slide": 1,
-        "concept": "start",
-        "title": "AI와 시각의 출발점"
+        "title": "AI와 시각의 출발점",
+        "concept": "start"
       },
       {
         "slide": 2,
-        "concept": "scene",
-        "title": "사람의 시각 · 장면 이해"
+        "title": "사람의 시각 · 장면 이해",
+        "concept": "scene"
       },
       {
         "slide": 3,
-        "concept": "vision-value",
-        "title": "Vision AI가 필요한 이유"
+        "title": "Vision AI가 필요한 이유",
+        "concept": "vision-value"
       },
       {
         "slide": 4,
-        "concept": "photo-numbers",
-        "title": "사람의 의미 인식 vs Pixel 숫자"
+        "title": "사람의 의미 인식 vs Pixel 숫자",
+        "concept": "photo-numbers"
       },
       {
         "slide": 5,
-        "concept": "gray",
-        "title": "사진에서 밝기 숫자로"
+        "title": "사진에서 밝기 숫자로",
+        "concept": "gray"
       },
       {
         "slide": 6,
-        "concept": "rgb",
-        "title": "RGB · Pixel당 세 숫자"
+        "title": "RGB · Pixel당 세 숫자",
+        "concept": "rgb"
       },
       {
         "slide": 7,
-        "concept": "hwc",
-        "title": "RGB 이미지와 숫자 배열"
+        "title": "RGB 이미지와 숫자 배열",
+        "concept": "hwc"
       },
       {
         "slide": 8,
-        "concept": "resolution",
-        "title": "해상도에 따른 정보 차이"
+        "title": "해상도에 따른 정보 차이",
+        "concept": "resolution"
       },
       {
         "slide": 9,
-        "concept": "lighting",
-        "title": "조명·색감에 따른 Pixel 변화"
+        "title": "조명·색감에 따른 Pixel 변화",
+        "concept": "lighting"
       },
       {
         "slide": 10,
-        "concept": "transform",
-        "title": "회전·크기·가림·흐림에 따른 변화"
+        "title": "회전·크기·가림·흐림에 따른 변화",
+        "concept": "transform"
       },
       {
         "slide": 11,
-        "concept": "diversity",
-        "title": "다르게 생겨도 같은 종류"
+        "title": "다르게 생겨도 같은 종류",
+        "concept": "diversity"
       },
       {
         "slide": 12,
-        "concept": "relevant-change",
-        "title": "큰 변화보다 중요한 차이"
+        "title": "큰 변화보다 중요한 차이",
+        "concept": "relevant-change"
       },
       {
         "slide": 13,
-        "concept": "vision-challenge",
-        "title": "Vision AI는 왜 어려울까?"
+        "title": "Vision AI는 왜 어려울까?",
+        "concept": "vision-challenge"
       }
     ],
     "vision_ai_course": [
       {
         "slide": 1,
-        "concept": "task",
-        "title": "같은 사진, 다른 질문과 정답"
+        "title": "같은 사진, 다른 질문과 정답",
+        "concept": "task"
       },
       {
         "slide": 2,
-        "concept": "rules",
-        "title": "규칙 기반과 데이터 학습"
+        "title": "규칙 기반과 데이터 학습",
+        "concept": "rules"
       },
       {
         "slide": 3,
-        "concept": "vision-evolution",
-        "title": "지금 Vision AI는 어디까지 왔나?"
+        "title": "지금 Vision AI는 어디까지 왔나?",
+        "concept": "vision-evolution"
       },
       {
         "slide": 4,
-        "concept": "model-choice",
-        "title": "첫 선택 · 어떤 모델을 쓸까?"
+        "title": "첫 선택 · 어떤 모델을 쓸까?",
+        "concept": "model-choice"
       },
       {
         "slide": 5,
-        "concept": "task-model-data",
-        "title": "내 과제에 맞는 모델과 Label"
+        "title": "내 과제에 맞는 모델과 Label",
+        "concept": "task-model-data"
       },
       {
         "slide": 6,
-        "concept": "perceptron",
-        "title": "퍼셉트론 · Wx + b에서 판정까지"
+        "title": "퍼셉트론 · Wx + b에서 판정까지",
+        "concept": "perceptron"
       },
       {
         "slide": 7,
-        "concept": "and-xor",
-        "title": "AND와 XOR · 직선으로 구분할 수 있을까?"
+        "title": "AND Gate · 퍼셉트론으로 표현",
+        "concept": "and-gate"
       },
       {
         "slide": 8,
-        "concept": "relu",
-        "title": "ReLU · 비선형성의 시작"
+        "title": "XOR Gate · 한 뉴런으로 안 되는 이유",
+        "concept": "xor-gate"
       },
       {
         "slide": 9,
-        "concept": "nonlinear",
-        "title": "비선형성 · 깊어져도 직선이면?"
+        "title": "ReLU · 비선형성의 시작",
+        "concept": "relu"
       },
       {
         "slide": 10,
-        "concept": "cnn-overview",
-        "title": "CNN 전체 구조 · 사진에서 판정까지"
+        "title": "비선형성 · 깊어져도 직선이면?",
+        "concept": "nonlinear"
       },
       {
         "slide": 11,
-        "concept": "kernel",
-        "title": "Kernel · 작은 영역의 가중합"
+        "title": "CNN Architecture · 사진에서 분류까지",
+        "concept": "cnn-overview"
       },
       {
         "slide": 12,
-        "concept": "feature-map",
-        "title": "Feature Map · 같은 계산을 위치마다"
+        "title": "Kernel · 작은 영역의 가중합",
+        "concept": "kernel"
       },
       {
         "slide": 13,
-        "concept": "sharing",
-        "title": "CNN · 지역 연결과 가중치 공유"
+        "title": "Feature Map · 같은 계산을 위치마다",
+        "concept": "feature-map"
       },
       {
         "slide": 14,
-        "concept": "channels",
-        "title": "RGB에서 Feature Channel까지"
+        "title": "CNN · 지역 연결과 가중치 공유",
+        "concept": "sharing"
       },
       {
         "slide": 15,
-        "concept": "stride",
-        "title": "Stride · 계산 위치의 간격"
+        "title": "RGB에서 Feature Channel까지",
+        "concept": "channels"
       },
       {
         "slide": 16,
-        "concept": "padding",
-        "title": "Padding · 입력 바깥에 값 채우기"
+        "title": "Stride · 계산 위치의 간격",
+        "concept": "stride"
       },
       {
         "slide": 17,
-        "concept": "pool",
-        "title": "Max Pooling · 영역별 최댓값"
+        "title": "Padding · 같은 입력, 다른 출력 크기",
+        "concept": "padding"
       },
       {
         "slide": 18,
-        "concept": "actual-map",
-        "title": "실제 Feature Map · CNN 내부 반응"
+        "title": "Max Pooling · 영역별 최댓값",
+        "concept": "pool"
       },
       {
         "slide": 19,
-        "concept": "backbone",
-        "title": "Backbone과 Task Head"
+        "title": "실제 Feature Map · CNN 내부 반응",
+        "concept": "actual-map"
       },
       {
         "slide": 20,
-        "concept": "dataset",
-        "title": "데이터셋 · 어떤 사진으로 배우나"
+        "title": "Backbone과 Task Head",
+        "concept": "backbone"
       },
       {
         "slide": 21,
-        "concept": "split",
-        "title": "Train · Validation · Test"
+        "title": "데이터셋 · 어떤 사진으로 배우나",
+        "concept": "dataset"
       },
       {
         "slide": 22,
-        "concept": "leakage",
-        "title": "Video Group Split · 데이터 누출 방지"
+        "title": "Train · Validation · Test",
+        "concept": "split"
       },
       {
         "slide": 23,
-        "concept": "preprocess",
-        "title": "Preprocessing · 입력 규격 맞추기"
+        "title": "Video Group Split · 데이터 누출 방지",
+        "concept": "leakage"
       },
       {
         "slide": 24,
-        "concept": "augment",
-        "title": "Data Augmentation · 조건 변화 만들기"
+        "title": "Preprocessing · 입력 크기를 맞추는 방법",
+        "concept": "preprocess"
       },
       {
         "slide": 25,
-        "concept": "learn",
-        "title": "모델 학습 · 오차를 줄이는 반복"
+        "title": "Data Augmentation · 같은 정답, 다른 조건",
+        "concept": "augment"
       },
       {
         "slide": 26,
-        "concept": "loss",
-        "title": "Loss · 틀린 정도를 줄이는 방향"
+        "title": "모델 학습 · 오차를 줄이는 반복",
+        "concept": "learn"
       },
       {
         "slide": 27,
-        "concept": "cnn-training",
-        "title": "CNN 학습 구조 · Kernel이 바뀌는 과정"
+        "title": "Loss · 틀린 정도를 줄이는 방향",
+        "concept": "loss"
       },
       {
         "slide": 28,
-        "concept": "infer",
-        "title": "Training과 Inference의 차이"
+        "title": "CNN 학습 · 예측에서 Weight 갱신까지",
+        "concept": "cnn-training"
       },
       {
         "slide": 29,
-        "concept": "transfer",
-        "title": "전이학습 · 고정과 미세 조정"
+        "title": "Training과 Inference의 차이",
+        "concept": "infer"
       },
       {
         "slide": 30,
-        "concept": "training-log",
-        "title": "Batch · Step · Epoch"
+        "title": "전이학습 · 특징은 고정하고 분류기만 학습",
+        "concept": "transfer"
       },
       {
         "slide": 31,
-        "concept": "overfit",
-        "title": "Overfitting · 새 데이터 일반화"
+        "title": "Batch · Step · Epoch",
+        "concept": "training-log"
       },
       {
         "slide": 32,
-        "concept": "threshold",
-        "title": "Score Threshold · 판정 기준"
+        "title": "Overfitting · 새 데이터 일반화",
+        "concept": "overfit"
       },
       {
         "slide": 33,
-        "concept": "confusion",
-        "title": "Confusion Matrix · 100건 평가"
+        "title": "Score Threshold · 판정 기준",
+        "concept": "threshold"
       },
       {
         "slide": 34,
-        "concept": "imbalance",
-        "title": "Accuracy의 함정 · 모두 정상이라면?"
+        "title": "Confusion Matrix · 100건 평가",
+        "concept": "confusion"
       },
       {
         "slide": 35,
-        "concept": "metrics",
-        "title": "Precision과 Recall"
+        "title": "Accuracy의 함정 · 모두 정상이라면?",
+        "concept": "imbalance"
       },
       {
         "slide": 36,
-        "concept": "iou",
-        "title": "IoU · 박스 겹침 비율"
+        "title": "Precision과 Recall",
+        "concept": "metrics"
       },
       {
         "slide": 37,
-        "concept": "workflow",
-        "title": "Vision AI 원리 · 한 장으로 연결"
+        "title": "IoU · 박스 겹침 비율",
+        "concept": "iou"
       },
       {
         "slide": 38,
-        "concept": "project-brief",
-        "title": "첫 과제를 위한 네 가지 질문"
+        "title": "Vision AI 원리 · 한 장으로 연결",
+        "concept": "workflow"
       },
       {
         "slide": 39,
-        "concept": "project-run",
-        "title": "실행 결과 확인 · 임계값과 오류 수"
+        "title": "첫 과제를 위한 네 가지 질문",
+        "concept": "project-brief"
       },
       {
         "slide": 40,
-        "concept": "project-iterate",
-        "title": "실패 사진이 알려 주는 것"
+        "title": "실행 결과 확인 · 임계값과 오류 수",
+        "concept": "project-run"
       },
       {
         "slide": 41,
-        "concept": "project-check",
-        "title": "Vision AI 원리 · 무엇을 설명할 수 있나?"
+        "title": "실패 사진이 알려 주는 것",
+        "concept": "project-iterate"
+      },
+      {
+        "slide": 42,
+        "title": "Vision AI 원리 · 무엇을 설명할 수 있나?",
+        "concept": "project-check"
       }
     ]
   },
@@ -295,52 +300,52 @@
       "minutes": 9
     },
     {
-      "name": "지금의 Vision AI · Task와 모델·Label 선택",
+      "name": "Vision Task · 모델·Label",
       "deck": "vision_ai_course",
       "start": 1,
       "end": 5,
       "minutes": 10
     },
     {
-      "name": "신경망 · 왜 비선형이 필요한가",
+      "name": "신경망 · 퍼셉트론에서 XOR까지",
       "deck": "vision_ai_course",
       "start": 6,
-      "end": 9,
+      "end": 10,
       "minutes": 11
     },
     {
-      "name": "CNN 원리 · 이미지에서 특징까지",
+      "name": "CNN · Kernel과 특징 추출",
       "deck": "vision_ai_course",
-      "start": 10,
-      "end": 19,
+      "start": 11,
+      "end": 20,
       "minutes": 30
     },
     {
-      "name": "데이터 · 어떤 사진으로 배우는가",
+      "name": "데이터 · 전처리와 증강",
       "deck": "vision_ai_course",
-      "start": 20,
-      "end": 24,
+      "start": 21,
+      "end": 25,
       "minutes": 10
     },
     {
-      "name": "학습 · 가중치와 일반화",
+      "name": "학습 · CNN 가중치와 일반화",
       "deck": "vision_ai_course",
-      "start": 25,
-      "end": 31,
+      "start": 26,
+      "end": 32,
       "minutes": 12
     },
     {
-      "name": "평가 · 무엇을 놓쳤는가",
+      "name": "평가 · 결함을 놓치지 않는가",
       "deck": "vision_ai_course",
-      "start": 32,
-      "end": 36,
+      "start": 33,
+      "end": 37,
       "minutes": 9
     },
     {
-      "name": "원리 회수 · 첫 사례로 돌아가기",
+      "name": "원리 복습 · 사과 검사",
       "deck": "vision_ai_course",
-      "start": 37,
-      "end": 41,
+      "start": 38,
+      "end": 42,
       "minutes": 5
     }
   ]
