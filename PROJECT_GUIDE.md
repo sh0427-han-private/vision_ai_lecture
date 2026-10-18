@@ -581,3 +581,14 @@ GitHub Pages:
 - `LECTURE_REVIEW.md`는 46장 이전 상태의 완료된 진단으로, 현재 **50장**의 내용/흐름 및 UI/Figure 검토서와 구현 기록이 대체하므로 제거한다. 옛 기록은 Git 이력에 남는다.
 - `REFERENCE_SLIDE_SOURCE_MAP.md`와 `REFERENCE_VISION_AI_SOURCE_LIBRARY.md`는 옛 69장/72장 번호가 포함된 연구·소스 라이브러리다. URL과 Figure 후보의 참고 가치가 있어 **역사적 참고용으로 보존**하며, 현행 구현 지시나 TODO로 사용하지 않는다.
 - 완료된 구조 개편(PR #101)과 미검증 사항(실제 브라우저 렌더·상호작용·GitHub Pages 배포 확인)은 [현재 활성 TODO](TODO_VISION_AI_LECTURE.md)에서 구분한다. 코드 정적 QA 통과와 브라우저/배포 실제 성공을 혼동하지 않는다.
+
+
+## 2026-10-18 · Vision AI 중요성/어려움 · 실무 Task/모델·Label · CNN 학습 Figure (최신)
+
+- 공개 기준: **Intro 13장 + Course 41장 = 총 54장**, 110분 강의 + 질의 10분. 이전 50장 또는 더 과거 슬라이드 번호는 역사적 기록이다. 현재 `docs/two_hour_manifest.json` / `docs/lecture_outline.js` / `TWO_HOUR_LECTURE_PLAN.md`을 기준으로 한다.
+- **Intro 3**: 왜 Vision AI가 중요한지 제조 검사/안전·공간 이해/정밀 영역 분석으로 설명; **Intro 9–12**: 같은 사과의 조명·회전·가림/결함 중요성; **Intro 13**: 조건별 Pixel 변화와 공통 의미를 요약하고 Task로 연결.
+- Course **1–5**: Task·Label 소개 → 규칙 vs 학습 → 실제 Vision AI 모델 활용 방식(일반 학습 모델, 범용 사전학습) → 기존모델 선택 → 유무/위치/영역/희귀 이상별 Classification·Detection·Segmentation·Anomaly Detection 모델/Label 예시. 모델 계열은 Task 그 자체가 아니며 범용 SAM 2도 산업 불량을 자동 판별한다고 주장하지 않는다.
+- Course **6–9** 신경망/비선형성, **10–19** CNN 원리, **20–24** 데이터, **25–31** 학습과 일반화, **32–36** 평가, **37–41** 개념 회수.
+- Course **27**: 사과 입력→Kernel/Feature Map→Task Head→Prediction (Forward) → Label/Loss→Gradient→Optimizer→가중치 갱신 (Backward)의 전문적 자체 SVG 큰 Figure. 학습 Weight는 설정에 따라 Freeze될 수 있으며 CNN 외 Transformer 기반 모델도 있음.
+- 실습은 Intro Pixel/RGB/해상도, Course25 Weight 업데이트, Course39 Threshold 100건 예제 유지. 기존 SVG/JS/레거시 슬라이드 수정 시 동일 예제·cache key·목차·정적/브라우저/Pages QA 회귀.
+- 최신 종합 검토 및 후속 수정 제안: `reviews/2026-10-18_VISION_AI_54_SLIDE_FLOW_REVIEW.md`. 이전 검토서 50장 기준의 번호를 현재 실행 지침으로 사용하지 말 것.
