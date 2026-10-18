@@ -132,3 +132,10 @@
 
 .principles-intro .pf-recap {border-left:4px solid #278b78;background:#f1f8f5;color:#285b59;padding:12px 16px;margin:14px 0 8px;font-size:clamp(17px,1.45vw,23px);line-height:1.45}
 @media(max-height:830px){.principles-intro .pf-recap{font-size:18px;margin:8px 0;padding:8px 12px}}
+
+@media(max-width:700px){
+ .principles-deck .pf-task-case{display:block}
+ .principles-deck .pf-case-photo{display:block;width:65%;max-height:19dvh;margin:0 auto 8px}
+ .principles-deck .pf-case-details .th-panes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px}
+ .principles-deck .pf-kernel-pair .pf-tensor{transform:scale(.45)}
+}
