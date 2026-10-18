@@ -46,3 +46,18 @@
 - GitHub PR API를 추가 실행 권한으로 재시도해도 `Forbidden`이 지속된다. Git fetch와 GitHub Actions HTML 조회는 성공하고, 공개 Pages 주소는 연결 단계에서 `403 Forbidden`이다.
 - 지정된 PR 절차를 직접 main 반영으로 변경할지는 사용자 선택을 요청했다. 답변 전에는 main을 변경하지 않는다.
 - [현장 리허설 실행표](2026-10-18_VISION_AI_REHEARSAL.md)에 누적 시간, CNN 30분/마지막 6분 세부 배분, 실제 조작·확인 질문, 4문항 평가표와 현장 기록 양식을 작성했다. manifest 시간 합계와 세부 배분은 검산했다. 실제 발표·수강생 평가 항목은 미실시로 유지한다.
+
+### 최종 Git 병합 및 배포 · 2026-10-18
+
+사용자가 Git push/merge 방식으로 진행하도록 명시적으로 승인했다. 최신 원격 main `1264f23`에서 작업 브랜치를 충돌 없이 병합한 커밋은 `9822c11a25e9df47c05da1218d7c3ddfd2bba1da`다. 일반 push 후 원격 main SHA 및 `docs/` 전체 diff 일치를 확인했다. 병합 상태에서 정적 커리큘럼 검사를 다시 통과했다.
+
+[Pages 배포 실행 39130465056](https://github.com/sh0427-han/vision_ai_lecture/actions/runs/39130465056)은 해당 커밋에 대해 **Success**, 전체 28초, deploy 23초를 확인했다. 공개 사이트 URL은 https://sh0427-han.github.io/vision_ai_lecture/ 이다. 현재 환경에서는 해당 호스트 접속이 403으로 차단되므로 실제 공개 화면의 직접 렌더 검증은 완료로 표시하지 않았다. 현장 리허설도 여전히 미실시다.
+
+원격 main과 일치하는 주요 강의 Git blob SHA:
+
+```text
+b2db7a1e8045f485f7a00899a0761affbe2ead3f  docs/intro.html
+af8e7360ecdfbdb337ed55b0d0288773389a9984  docs/vision_ai_course.html
+b3b091430a221b707b9028763e3bc1b5f8b37417  docs/principles_course.css
+d4959848da03f5e46ff2b44668e01ae2e75910ae  docs/project_course.js
+```
