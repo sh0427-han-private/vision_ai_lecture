@@ -22,6 +22,7 @@ Vision AI를 처음 접하는 사람도 **사진 → Pixel·RGB → Vision의 �
 - **[통합 Vision AI 바로 보기](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html)**
 - **[퍼셉트론·신경망 4–7번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-4)** · **[CNN 원리 8–17번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-8)** · **[데이터 준비 18–22번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-18)** · **[학습 23–29번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-23)** · **[평가 30–34번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-30)**
 - **[2시간 강의 운영안](TWO_HOUR_LECTURE_PLAN.md)**
+- **[남은 작업 · 현재 활성 TODO](TODO_VISION_AI_LECTURE.md)** — P0/P1 슬라이드별 수정 사양 및 실제 브라우저/배포 검증
 
 > 배포 URL 주의: 저장소 파일은 `docs/vision_ai_course.html`이지만 GitHub Pages는 `docs/` 디렉터리 자체를 웹사이트의 루트로 게시합니다. 따라서 공개 링크에는 `/docs/`를 넣으면 안 됩니다. 과거에 공유된 `/docs/vision_ai_course.html#slide-N` 링크는 자동으로 올바른 경로로 이동하도록 호환 페이지를 제공합니다.
 
@@ -151,4 +152,4 @@ vision_ai_lecture/
 
 [원리 회수·복습 구간](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-35)의 임계값 연습은 교육용 저장 점수100건을 직접 계산합니다. 실제 모델이나 외부 AI API의 실행 결과가 아닙니다. 실제 SqueezeNet Feature Map, 강아지 사진 전처리·증강 계산은 해당 모델/사진의 조건과 출처를 명시합니다.
 
-현재 순서와120분 운영은 [강의 운영안](TWO_HOUR_LECTURE_PLAN.md), 재편 전 진단은 [검토 보고서](LECTURE_REVIEW.md)를 참고합니다.
+현재 공개 강의의 순서·120분 운영은 [강의 운영안](TWO_HOUR_LECTURE_PLAN.md), 미완료 작업과 QA는 [활성 TODO](TODO_VISION_AI_LECTURE.md)를 기준으로 합니다. 상세 진단은 [50장 내용·흐름 검토](reviews/2026-10-18_VISION_AI_CONTENT_FLOW_REVIEW.md)와 [50장 UI·Figure 검토](reviews/2026-10-18_VISION_AI_UI_FIGURE_REVIEW.md), 최근 반영 내역은 [구현 기록](reviews/2026-10-18_VISION_AI_PRINCIPLES_IMPLEMENTATION.md)을 참고하세요. 과거 Figure 매핑은 현재 슬라이드 번호가 아닌 참고용 이력입니다.
