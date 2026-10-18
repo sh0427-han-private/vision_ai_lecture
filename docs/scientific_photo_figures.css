@@ -4,7 +4,7 @@
 .lesson-deck .scientific-photo .scientific-photo-figure {
   margin:0; padding:0; width:100%; display:flex; align-items:center; justify-content:center;
 }
-.lesson-deck .scientific-photo .scientific-photo-figure a {display:block; width:100%; cursor:zoom-in;}
+.lesson-deck .scientific-photo .scientific-photo-figure .figure-display {display:block; width:100%; }
 .lesson-deck .scientific-photo .scientific-photo-figure img {
   display:block; width:100%; height:auto; max-height:min(49dvh,510px);
   object-fit:contain; margin:0 auto; border:0; background:white;
@@ -23,7 +23,7 @@
 .lesson-deck .scientific-photo .scientific-prior-example summary {
   cursor:pointer; width:fit-content; font-weight:700; padding:2px 0;
 }
-.lesson-deck .scientific-photo .scientific-prior-example > a {display:block;margin-top:7px;}
+.lesson-deck .scientific-photo .scientific-prior-example > .figure-display {display:block;margin-top:7px;}
 .lesson-deck .scientific-photo .scientific-prior-example img {
   display:block;width:100%;max-height:53dvh;object-fit:contain;
 }
