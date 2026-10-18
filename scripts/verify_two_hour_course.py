@@ -66,7 +66,7 @@ assert '역전파(Backpropagation)' in concepts['loss']
 assert '지도학습(Supervised Learning)' in concepts['rules']
 assert '2 Epoch = 6 Step' in concepts['training-log']
 assert '80%' in concepts['imbalance'] and '0%' in concepts['imbalance']
-assert '확률 82%' in concepts['threshold']
+assert '실제 불량 확률을 보장하지 않습니다' in concepts['threshold']
 assert 'Label도 함께 변환' in concepts['augment']
 assert 'Train에서만' in concepts['preprocess']
 assert 'mAP' in concepts['iou']
@@ -75,7 +75,7 @@ assert 'Validation' in concepts['project-run'] and 'Test' in concepts['project-r
 assert 'Test를 반복 선택에 쓰지 않고' in concepts['project-iterate']
 assert 'data-grayscale-lesson' in concepts['gray'] and 'data-rgb-lesson' in concepts['rgb']
 assert '960×540' in concepts['resolution'] and '1920' not in concepts['resolution']
-assert '균열 유무' in concepts['relevant-change']
+assert '갈색 반점 유무' in concepts['relevant-change']
 for deck in ['intro','vision_ai_course','ai_basics','vision_ai']:
  text=(D/(deck+'.html')).read_text()
  assert not re.search(r'<a\b[^>]*>\s*(?:<svg|<img)',text),'Image must not open original'

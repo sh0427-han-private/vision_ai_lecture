@@ -64,11 +64,6 @@
 .principles-deck .pf-tilegrid {display:grid;grid-template-columns:repeat(20,1fr);gap:4px;max-width:760px;margin:24px auto 18px}
 .principles-deck .pf-tilegrid span{aspect-ratio:1;background:#dce7ea;border-radius:1px}
 .principles-deck .pf-tilegrid span.pf-miss{background:#bd927c}
-.principles-deck .pf-counts {display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:16px 0}
-.principles-deck .pf-count {text-align:center;padding:10px 4px;border:1px solid #bcd2d4}
-.principles-deck .pf-count b{display:block;font-size:clamp(22px,2vw,31px);color:#196e62}
-.principles-deck .pf-count span{font-size:clamp(15px,1.22vw,18px);color:#536e7d}
-.principles-deck .pf-metrics .pf-count:nth-child(2) b,.principles-deck .pf-metrics .pf-count:nth-child(3) b{color:#a26b4d}
 .principles-deck .pf-teaching-note {margin:6px 0;font-size:clamp(15px,1.12vw,18px);color:#647c88}
 .principles-deck .pf-recap {border-left:4px solid #2c8c7d;background:#f2f8f6;padding:12px 18px;margin-top:14px;color:#265a58;font-size:clamp(17px,1.4vw,22px);line-height:1.4}
 .principles-deck .pf-graphic {max-width:100%;height:min(32dvh,295px)}
@@ -123,12 +118,6 @@
 .principles-intro .meaning-reaction {justify-content:center;min-height:42px;margin-bottom:10px}
 .principles-intro .meaning-speech {background:#edf4f5;border:1px solid #c4d9dc;color:#255d66;border-radius:3px;box-shadow:none;min-height:0;padding:9px 15px;font-size:clamp(17px,1.45vw,23px)}
 .principles-intro .meaning-speech::before {display:none}
-.principles-deck .pf-kernel-pair {display:flex;gap:20px;justify-content:center;align-items:center;width:100%}
-.principles-deck .pf-kernel-pair>div {display:flex;flex-direction:column;gap:3px;align-items:center;min-width:110px}
-.principles-deck .pf-kernel-pair .pf-tensor {transform:scale(.55);transform-origin:center;height:76px;margin-top:-5px}
-.principles-deck .pf-kernel-pair b {font-size:clamp(14px,1.15vw,18px);color:#24596b;white-space:nowrap}
-@media(max-height:830px){.principles-deck .pf-kernel-pair .pf-tensor{height:66px}}
-@media(max-width:700px){.principles-deck .pf-kernel-pair{gap:2px}.principles-deck .pf-kernel-pair>div{min-width:60px}.principles-deck .pf-kernel-pair b{font-size:10px}}
 
 .principles-intro .pf-recap {border-left:4px solid #278b78;background:#f1f8f5;color:#285b59;padding:12px 16px;margin:14px 0 8px;font-size:clamp(17px,1.45vw,23px);line-height:1.45}
 @media(max-height:830px){.principles-intro .pf-recap{font-size:18px;margin:8px 0;padding:8px 12px}}
@@ -137,5 +126,71 @@
  .principles-deck .pf-task-case{display:block}
  .principles-deck .pf-case-photo{display:block;width:65%;max-height:19dvh;margin:0 auto 8px}
  .principles-deck .pf-case-details .th-panes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px}
- .principles-deck .pf-kernel-pair .pf-tensor{transform:scale(.45)}
 }
+
+/* TODO refinement: scoped to the public principles decks. */
+.principles-deck .pf-kernel-flow {grid-template-columns:.9fr 1fr .85fr 1.15fr;gap:18px;align-items:center}
+.principles-deck .pf-roi {text-align:center;border-right:2px dashed #a9bbc1}
+.principles-deck .pf-roi svg {display:block;width:100%;height:112px;margin:6px auto}
+.principles-deck .pf-roi svg+span {font-size:18px;color:#168975}
+.principles-deck .pf-roi p {font-size:17px}
+.principles-deck .pf-kernel-flow .concept-equation {font-size:clamp(18px,1.7vw,26px)}
+.principles-deck .pf-window-grid {position:relative;width:max-content;margin:auto}
+.principles-deck .pf-window-grid .concept-matrix {margin:0}
+.principles-deck .pf-window {position:absolute;top:0;width:60%;height:60%;pointer-events:none;box-sizing:border-box}
+.principles-deck .pf-window--first {left:0;border:3px solid #168975}
+.principles-deck .pf-window--second {left:20%;border:3px dashed #326fa8}
+.principles-deck .pf-first {color:#147c68}
+.principles-deck .pf-second {color:#326fa8}
+.principles-deck .pf-parallel {display:block;width:100%;height:min(36dvh,350px);margin:20px 0}
+.principles-deck .pf-start-grid {display:grid;grid-template-columns:repeat(5,26px);gap:2px;width:max-content;margin:8px auto}
+.principles-deck .pf-start-grid span {height:26px;line-height:26px;background:#eef2f3;color:#95a9af;text-align:center;font-size:17px}
+.principles-deck .pf-start-grid .pf-start {background:#d7eee5;color:#147c68}
+.principles-deck .pf-region-0 {background:#e4f2ea;border-color:#70a58b}
+.principles-deck .pf-region-1 {background:#e4edf7;border-color:#789fbe}
+.principles-deck .pf-region-2 {background:#f5eadc;border-color:#bba47e}
+.principles-deck .pf-region-3 {background:#ece6f5;border-color:#a48abf}
+.principles-deck .pf-region-0.focus,.principles-deck .pf-region-1.focus,.principles-deck .pf-region-2.focus,.principles-deck .pf-region-3.focus {color:#183e4a;outline:2px solid currentColor;outline-offset:-3px}
+.principles-deck .pf-dataset {display:grid;grid-template-columns:210px 1fr 1fr;gap:8px 20px;max-width:840px;margin:12px auto;align-items:center;text-align:center}
+.principles-deck .pf-dataset h3 {font-size:22px;margin:0;color:#275566}
+.principles-deck .pf-dataset .pf-apple {height:min(19dvh,180px);width:100%;display:block}
+.principles-intro .pf-apple-row {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;margin:24px auto;max-width:1060px}
+.principles-intro .pf-apple-row figure {margin:0;text-align:center}
+.principles-intro .pf-apple-row .pf-apple {width:100%;height:min(34dvh,320px);display:block}
+.principles-intro .pf-apple-row figcaption {font-size:clamp(18px,1.6vw,26px);margin-top:14px;font-weight:650;color:#275566}
+.principles-deck .pf-evaluation-layout {display:grid;grid-template-columns:1.5fr 1fr;gap:32px;align-items:center;margin:16px auto;max-width:1050px}
+.principles-deck .pf-confusion {width:100%;border-collapse:separate;border-spacing:5px;text-align:center;font-size:20px}
+.principles-deck .pf-confusion caption {font-size:22px;font-weight:650;margin-bottom:8px}
+.principles-deck .pf-confusion th {padding:8px;color:#305b67;font-weight:600}
+.principles-deck .pf-confusion td {padding:12px;border:1px solid #c9d8dd}
+.principles-deck .pf-confusion b {font-size:32px}
+.principles-deck .pf-confusion small {display:block;font-size:17px}
+.principles-deck .pf-tp {background:#dcefe8;color:#166a56}
+.principles-deck .pf-fn {background:#fae7d5;color:#9d4b1e}
+.principles-deck .pf-fp {background:#eee5f5;color:#70508b}
+.principles-deck .pf-tn {background:#e7eff2;color:#426572}
+.principles-deck .pf-error-bars h3 {font-size:20px}
+.principles-deck .pf-error-bars label {display:block;font-size:20px;margin:16px 0}
+.principles-deck .pf-error-bars progress {display:block;width:100%;height:25px;accent-color:#a35a30}
+.principles-deck .pf-error-bars label:nth-of-type(2) progress {accent-color:#806198}
+.principles-deck .pf-error-bars p {font-size:20px;line-height:1.5}
+@media(max-height:830px){
+ .principles-deck .pf-kernel-flow .concept-cell {min-width:33px;min-height:33px;width:33px;height:33px;font-size:20px}
+ .principles-deck .pf-kernel-flow h3 {font-size:19px}
+ .principles-deck .pf-roi svg {height:85px}
+ .principles-deck .pf-confusion td {padding:6px}
+ .principles-deck .pf-evaluation-layout {margin:8px auto}
+ .principles-deck .pf-start-grid {grid-template-columns:repeat(5,20px);gap:1px}
+ .principles-deck .pf-start-grid span {height:20px;line-height:20px}
+}
+.principles-deck .pf-static-confusion {max-width:900px;margin:20px auto}
+.principles-deck .pf-static-confusion td {padding:22px}
+.principles-deck .pf-eval-counts {display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:26px}
+.principles-deck .pf-eval-counts span {padding:10px}
+.principles-deck .pf-metric-dots {display:grid;grid-template-columns:repeat(6,1fr);gap:5px;margin:14px 0}
+.principles-deck .pf-metric-dots span {font-size:24px;line-height:34px;width:34px;text-align:center}
+@media(max-height:830px){.principles-deck .pf-static-confusion td{padding:14px}}
+.principles-deck .pf-confusion th,.principles-deck .pf-confusion td {font-size:20px;text-align:center;line-height:1.3}
+.principles-deck [data-concept="project-run"] .project-evaluation-control {margin:10px 0}
+.principles-deck [data-concept="project-run"] .project-result {margin:10px 0}
+.principles-deck [data-concept="project-run"] .pf-confusion caption {margin-bottom:0}
