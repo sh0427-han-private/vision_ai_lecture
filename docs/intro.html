@@ -17,11 +17,12 @@
   <link rel="stylesheet" href="intro_apple_number_bridge.css?v=intro-picto-20261016-1">
   <script src="intro_apple_number_bridge.js?v=20261015-1" defer></script>
   <link rel="stylesheet" href="lecture_sidebar.css?v=20261015-1">
-  <script src="lecture_outline.js?v=principles-20261018-1" defer></script>
+  <script src="lecture_outline.js?v=vision-why-20261018-1" defer></script>
   <script src="lecture_sidebar.js?v=20261015-1" defer></script>
   <link rel="stylesheet" href="intro_challenges.css?v=20261018-1">
 <link rel="stylesheet" href="two_hour_lecture.css?v=20261018-1">
 <link rel="stylesheet" href="principles_course.css?v=principles-todo-20261018-2">
+<link rel="stylesheet" href="vision_motivation.css?v=why-20261018-1">
 </head>
 <body class="deck-page principles-intro" data-prev-page="" data-next-page="vision_ai_course.html">
 <header class="site-header"><nav class="nav"><a class="brand" href="intro.html#slide-1">Vision AI Lecture</a></nav></header>
@@ -61,6 +62,18 @@
     <p class="vision-story-source">사진: <a href="https://commons.wikimedia.org/wiki/File:Forced_perspective_gallery_by_Francesco_Borromini.jpg" target="_blank" rel="noopener">Livioandronico2013 · Borromini 회랑</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a> · 크기 축소·WebP 변환</p>
   </div>
 </section>
+<section class="slide" data-concept="vision-value" data-level="basic">
+<div class="slide-inner two-hour">
+<h2 class="slide-title">Vision AI가 필요한 이유</h2>
+<p class="slide-subtitle">카메라 영상의 중요한 단서를 사람이 매번 찾아야 한다면 시간이 오래 걸립니다. Vision AI는 이미지를 분석해 판단과 확인을 돕습니다.</p>
+<div class="vm-showcase" role="group" aria-label="제조 품질검사, 안전을 위한 장면 이해, 필요한 영역의 정밀 분석이라는 활용 목적">
+<article><h3>제조 · 품질 검사</h3><div class="vm-visual"><img src="assets/vision_task_apple_reference.jpg" alt="갈색 반점이 있는 사과. 정상과 결함 여부를 판단하는 검사 예시"/></div><p>많은 제품에서 <strong>정상 / 결함</strong> 구분</p></article>
+<article><h3>안전 · 공간 이해</h3><div class="vm-visual"><img src="assets/intro_photos/perspective.webp" alt="장면의 앞과 뒤, 통로의 공간 구조가 보이는 회랑"/></div><p>영상 속 <strong>대상과 위치</strong> 파악</p></article>
+<article><h3>정밀 영역 분석</h3><div class="vm-visual"><svg viewBox="440 100 300 300" role="img" aria-label="사과 작은 반점의 픽셀 영역을 강조한 교육용 Mask"><image href="assets/vision_task_apple_reference.jpg" width="960" height="640"/><path d="M581 201 C595 200 605 209 609 221 C614 234 606 244 594 246 C580 247 572 236 571 224 C568 213 574 204 581 201Z" fill="#2fa58b" fill-opacity=".60" stroke="#137b66" stroke-width="3"/></svg></div><p>관심 대상의 <strong>정확한 영역</strong> 표시</p></article>
+</div>
+<p class="pf-recap"><strong>핵심:</strong> 사람이 눈으로 찾던 단서를 영상에서 반복적으로 찾아 <strong>검사·위치 파악·영역 분석</strong>에 활용합니다. 결과는 반드시 검증해야 합니다.</p>
+<p class="vm-small">활용 상황을 보여주는 개념 예시 · Box/Mask는 실제 모델 출력이 아님 · 회랑 사진: <a href="https://commons.wikimedia.org/wiki/File:Forced_perspective_gallery_by_Francesco_Borromini.jpg" target="_blank" rel="noopener">Livioandronico2013 / Wikimedia Commons</a></p>
+</div></section>
 <section class="slide" data-concept="photo-numbers">
   <div class="slide-inner intro-meaning-bridge" data-apple-matrix-bridge>
 
@@ -238,6 +251,19 @@
 
 <h2 class="slide-title">큰 변화보다 중요한 차이</h2>
 <p class="slide-subtitle">검사 기준은 <strong>표면의 지정된 갈색 반점 유무</strong>입니다. 사과라는 종류가 같아도 이 기준에 따라 정상·불량 Label이 달라집니다.</p><div class="pf-apple-row"><figure><svg class="pf-apple" viewBox="0 0 300 300" overflow="hidden" role="img" aria-label="교육용 생성 사과: 갈색 반점 없음"><rect x="-1000" y="-1000" width="3000" height="3000" fill="#b9b9b9"/><image href="assets/generated/apple_studio_preview.png" x="18" y="8" width="264" height="284"/></svg><figcaption>정상 · 갈색 반점 없음</figcaption></figure><figure><svg class="pf-apple" viewBox="0 0 300 300" overflow="hidden" role="img" aria-label="교육용 생성 사과: 갈색 반점 없음 · 어두운 표시" style="filter:brightness(.48)"><rect x="-1000" y="-1000" width="3000" height="3000" fill="#b9b9b9"/><image href="assets/generated/apple_studio_preview.png" x="18" y="8" width="264" height="284"/></svg><figcaption>정상 · 큰 밝기 변화</figcaption></figure><figure><svg class="pf-apple" viewBox="240 85 475 475" overflow="hidden" role="img" aria-label="교육용 생성 사과: 갈색 반점 있음"><rect x="-1000" y="-1000" width="3000" height="3000" fill="#b9b9b9"/><image href="assets/vision_task_apple_reference.jpg" width="960" height="640"/></svg><figcaption>불량 · 작은 갈색 반점</figcaption></figure></div><p class="challenge-takeaway"><strong>조명 차이에는 판정을 유지하고, 지정된 반점에는 판정을 바꿉니다.</strong><br>결함의 유무·위치·모양 중 무엇이 필요한지가 Task와 Label을 결정합니다.</p><p class="challenge-note">서로 다른 생성 원본 2장의 비교 · 동일 원본에 결함을 추가한 Pixel 실험이 아닙니다.</p>
+</div></section>
+<section class="slide" data-concept="vision-challenge" data-level="basic">
+<div class="slide-inner two-hour"><h2 class="slide-title">Vision AI는 왜 어려울까?</h2>
+<p class="slide-subtitle">같은 사과 사진도 조명·회전·크기·가림에 따라 Pixel이 달라집니다. 그러나 우리가 찾으려는 <strong>결함의 의미</strong>는 가능한 한 유지되어야 합니다.</p>
+<div class="vm-grid vm-grid--difficulty">
+<article class="vm-card"><h3>원본</h3><div class="iv-image"><img src="assets/vision_task_apple_reference.jpg" alt="기준 사과 사진"/></div><p>기준 Pixel 배열</p></article>
+<article class="vm-card"><h3>어두운 조명</h3><div class="iv-image iv-dark"><img src="assets/vision_task_apple_reference.jpg" alt="같은 사과 사진 밝기 감소"/></div><p>색·밝기 값 변화</p></article>
+<article class="vm-card"><h3>회전·크기</h3><div class="iv-image iv-rotate"><img src="assets/vision_task_apple_reference.jpg" alt="같은 사과 사진 평면 회전"/></div><p>모양의 위치 변화</p></article>
+<article class="vm-card"><h3>일부 가림</h3><div class="iv-image iv-occlude"><img src="assets/vision_task_apple_reference.jpg" alt="같은 사과 사진 일부 가림"/></div><p>정보가 일부 사라짐</p></article>
+</div>
+<div class="vm-intro-message"><div>컴퓨터의 입력<br><strong>서로 다른 Pixel 숫자</strong></div><span class="vm-arrow" aria-hidden="true">→</span><div>AI가 찾아야 할 것<br><strong>과제에 필요한 공통 특징</strong></div></div>
+<p class="pf-recap"><strong>정리:</strong> 조명 차이는 무시하고 결함 차이는 구분해야 합니다. 완전히 가려지거나 흐려진 결함은 어떤 모델도 항상 맞힐 수 없습니다.</p>
+<p class="vm-small">같은 생성 사과 사진에 적용한 화면상 변환 · 실제 재촬영/모델 추론 결과가 아님 · 다음에는 필요한 결과(Task)부터 정합니다.</p>
 </div></section>
 </main>
 

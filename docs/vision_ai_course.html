@@ -11,13 +11,14 @@
 <script src="slide.js?v=prevent-toc-wheel-20261016-1" defer></script>
 <script src="interactive_lessons.js?v=20261015-1" defer></script>
 <link rel="stylesheet" href="lecture_sidebar.css?v=20261015-1">
-<script src="lecture_outline.js?v=principles-20261018-1" defer></script>
+<script src="lecture_outline.js?v=vision-why-20261018-1" defer></script>
 <script src="lecture_sidebar.js?v=20261015-1" defer></script>
 <link rel="stylesheet" href="cnn_numeric_why_logic.css?v=20261017-1">
 <link rel="stylesheet" href="neuron_concept_flow.css?v=20261017-3">
 <link rel="stylesheet" href="two_hour_lecture.css?v=project-course-20261018">
 <link rel="stylesheet" href="principles_course.css?v=principles-todo-20261018-2">
 <script src="project_course.js?v=principles-todo-20261018-2" defer></script>
+<link rel="stylesheet" href="vision_motivation.css?v=why-20261018-1">
 </head><body class="deck-page lesson-deck principles-deck" data-prev-page="intro.html" data-next-page="">
 <header class="site-header"><nav class="nav"><a class="brand" href="intro.html#slide-1">Vision AI Lecture</a></nav></header>
 <main class="deck" aria-live="polite">
@@ -28,10 +29,33 @@
 <p class="slide-subtitle">조명만 달라도 같은 결함을 찾아야 한다면, 색상 기준 하나로는 부족할 수 있습니다. 이 강의의 지도학습(Supervised Learning)은 데이터와 정답에서 판단 기준을 학습합니다.</p>
 <figure class="lesson-figure"><div class="figure-display"><img src="assets/lesson/rule_learning_comparison.svg?v=professional-20261006-2" alt="판단 기준을 사람이 쓰거나, 데이터에서 배웁니다"></div></figure>
 <p class="lesson-takeaway">AI는 큰 범주이고 머신러닝은 데이터로 기준을 학습하는 방식입니다. 딥러닝은 여러 층의 신경망을 사용하는 머신러닝입니다. 모든 머신러닝에 사람이 붙인 정답이 필요한 것은 아닙니다.</p></div></section>
+<section class="slide" data-concept="vision-evolution" data-level="basic">
+<div class="slide-inner two-hour"><h2 class="slide-title">지금 Vision AI는 어디까지 왔나?</h2>
+<p class="slide-subtitle">이미지를 숫자 규칙만으로 처리하던 방식에서, 정답 데이터로 학습한 모델과 사전학습 모델을 <strong>목적에 맞게 재사용</strong>하는 방식까지 발전했습니다.</p>
+<div class="vm-showcase">
+<article><h3>① 규칙 기반</h3><div class="vm-visual"><svg viewBox="0 0 300 190" role="img" aria-label="영상의 갈색 밝기 조건을 기반으로 직접 정한 규칙의 예시"><rect x="20" y="18" width="260" height="150" fill="#eef3f4"/><rect x="45" y="55" width="75" height="75" fill="#cd9a75"/><rect x="160" y="55" width="75" height="75" fill="#84bca7"/><text x="82" y="148" text-anchor="middle" fill="#567" font-size="19">조건 비교</text><text x="195" y="148" text-anchor="middle" fill="#567" font-size="19">판정</text><path d="M125 91H152" stroke="#2b8d7b" stroke-width="4"/></svg></div><p>사람이 <strong>색·모양 기준</strong>을 정함</p></article>
+<article><h3>② Task별 학습 모델</h3><div class="vm-visual"><svg viewBox="440 100 300 300" role="img" aria-label="사과 결함 위치에 표시한 설명용 바운딩 박스"><image href="assets/vision_task_apple_reference.jpg" width="960" height="640"/><rect x="565" y="197" width="53" height="57" fill="none" stroke="#168975" stroke-width="5"/></svg></div><p>CNN 기반 분류, YOLO 계열 검출 등 <strong>Class / Box / Mask</strong> 예측</p></article>
+<article><h3>③ 범용 사전학습 모델</h3><div class="vm-visual"><svg viewBox="440 100 300 300" role="img" aria-label="사과 작은 반점의 픽셀 영역을 강조한 교육용 Mask"><image href="assets/vision_task_apple_reference.jpg" width="960" height="640"/><path d="M581 201 C595 200 605 209 609 221 C614 234 606 244 594 246 C580 247 572 236 571 224 C568 213 574 204 581 201Z" fill="#2fa58b" fill-opacity=".60" stroke="#137b66" stroke-width="3"/></svg></div><p>예: SAM 2는 <strong>점·박스 지정으로 이미지/영상 영역</strong> 추출 가능</p></article>
+</div>
+<p class="lesson-takeaway"><strong>중요:</strong> 범용 모델이 사과의 새로운 결함을 자동으로 이해하는 것은 아닙니다. 원하는 결과가 나오는지 확인하고 부족하면 데이터·Label을 준비합니다.</p>
+<p class="vm-small">모든 그림은 기능을 설명하는 자체 개념도(실제 예측 아님). YOLO/SAM 2는 모델 예시이며 Task와 구조는 다른 개념입니다. 최신 Vision AI에는 CNN뿐 아니라 Transformer 기반 모델도 있습니다. 이 강의에서는 CNN으로 이미지 특징 학습의 기본 원리를 배웁니다.</p>
+</div></section>
 <section class="slide" data-concept="model-choice" data-level="basic"><div class="slide-inner two-hour"><h2 class="slide-title">첫 선택 · 어떤 모델을 쓸까?</h2><p class="slide-subtitle">사과를 알아보는 모델이 작은 결함까지 알아보는 것은 아닙니다. 필요한 결과부터 확인합니다.</p><div class="principle-figure pf-three">
 <article class="pf-card pf-card--input"><h3>① 간단한 규칙</h3><div class="pf-head">갈색 영역 규칙<br>↓<br>밝기에도 안정적인가?</div><p>조명·크기가 바뀌어도 기준이 잘 통한다면<br><strong>규칙부터 시험</strong></p></article>
 <article class="pf-card "><h3>② 기존 모델</h3><div class="pf-head">사전학습 모델<br>↓<br>“사과” ≠ “결함 있음”</div><p>내가 원하는 <strong>정상/불량</strong>을 이미 구분한다면<br><strong>바로 추론</strong></p></article>
 <article class="pf-card pf-card--output"><h3>③ 새로운 결함</h3><div class="pf-head">정상/불량 Label + 학습<br>↓<br>새 사진의 결함 판정</div><p>기존 모델이 결함을 모르거나 자주 놓치면<br><strong>정답 Label과 학습</strong></p></article></div><p class="pf-caption">공통 입력: 사과 사진 · 셋 중 어느 방법이 적절한지는 새 조명과 실제 결함 사진으로 검증합니다.</p><p class="lesson-takeaway">처음부터 학습할 필요는 없습니다. **원하는 출력이 있는지** 먼저 확인하고, 부족할 때 데이터로 개선합니다.</p></div></section>
+<section class="slide" data-concept="task-model-data" data-level="basic">
+<div class="slide-inner two-hour"><h2 class="slide-title">내 과제에 맞는 모델과 Label</h2>
+<p class="slide-subtitle">먼저 필요한 출력부터 결정합니다. 같은 사과 사진이어도 분류·검출·분할·이상탐지에 따라 <strong>모델과 학습 데이터</strong>가 달라집니다.</p>
+<div class="vm-blueprint" role="group" aria-label="목표 출력에 따른 모델 유형, 실제 정답 Label 형식과 데이터 구성">
+<article><h3>유무만 판단</h3><svg viewBox="440 100 300 300" role="img" aria-label="사과 사진 전체를 분류한다"><image href="assets/vision_task_apple_reference.jpg" width="960" height="640"/></svg><p class="vm-detail">Classification<br><strong>정상 / 불량</strong></p><p class="vm-model">분류 CNN / 기존 분류 모델</p><p class="vm-label"><b>Label:</b> 사진마다 Class 1개<br>정상·불량 양쪽 수집</p></article>
+<article><h3>위치까지 표시</h3><svg viewBox="440 100 300 300" role="img" aria-label="사과 결함 위치에 표시한 설명용 바운딩 박스"><image href="assets/vision_task_apple_reference.jpg" width="960" height="640"/><rect x="565" y="197" width="53" height="57" fill="none" stroke="#168975" stroke-width="5"/></svg><p class="vm-detail">Detection<br><strong>결함 Box</strong></p><p class="vm-model">YOLO 계열 Detector</p><p class="vm-label"><b>Label:</b> 결함별 Box 좌표·Class<br>정상 사진도 포함</p></article>
+<article><h3>모양까지 표시</h3><svg viewBox="440 100 300 300" role="img" aria-label="사과 작은 반점의 픽셀 영역을 강조한 교육용 Mask"><image href="assets/vision_task_apple_reference.jpg" width="960" height="640"/><path d="M581 201 C595 200 605 209 609 221 C614 234 606 244 594 246 C580 247 572 236 571 224 C568 213 574 204 581 201Z" fill="#2fa58b" fill-opacity=".60" stroke="#137b66" stroke-width="3"/></svg><p class="vm-detail">Segmentation<br><strong>Pixel Mask</strong></p><p class="vm-model">U-Net / Segmentation 모델</p><p class="vm-label"><b>Label:</b> 결함 영역 Mask<br>사진과 Mask 정렬</p></article>
+<article><h3>불량 샘플 부족</h3><svg viewBox="440 100 300 300" role="img" aria-label="결함 주변에 높아진 이상 점수를 색으로 표현한 개념 히트맵"><defs><radialGradient id="heat"><stop offset="0" stop-color="#e75530" stop-opacity=".92"/><stop offset=".55" stop-color="#f1ba5a" stop-opacity=".56"/><stop offset="1" stop-color="#f1ba5a" stop-opacity="0"/></radialGradient></defs><image href="assets/vision_task_apple_reference.jpg" width="960" height="640"/><ellipse cx="594" cy="226" rx="63" ry="58" fill="url(#heat)"/></svg><p class="vm-detail">Anomaly Detection<br><strong>이상 점수·영역</strong></p><p class="vm-model">이상탐지 전용 모델</p><p class="vm-label"><b>Data:</b> 다양한 정상 사진 중심<br>실제 불량으로 성능 검증</p></article>
+</div>
+<p class="lesson-takeaway"><strong>과제 선택 기준:</strong> 필요한 출력과 확보 가능한 Label을 먼저 정하고, 촬영 조건·정상/불량 사례를 모아 독립 데이터에서 모델을 비교합니다.</p>
+<p class="vm-small">출력/Heatmap은 설명용 도식. 이상탐지는 학습 방식에 따라 필요한 정상·불량 Label이 달라집니다. 위 모델들은 예시이지 유일한 선택지가 아닙니다.</p>
+</div></section>
 <section class="slide" data-concept="perceptron" data-topic="Perceptron" data-level="basic">
 <div class="slide-inner neuron-story">
 
@@ -196,18 +220,90 @@
 <article class="pf-card "><h3>정답과 비교</h3><strong class="pf-number">y=4</strong><p>Loss=(1−4)²=9</p></article><span class="pf-arrow">→</span>
 <article class="pf-card "><h3>Gradient로 갱신</h3><strong class="pf-number">w=1.7</strong><p>학습률 0.1<br>w′=0.5−0.1×(−12)</p></article><span class="pf-arrow">→</span>
 <article class="pf-card pf-card--output"><h3>오차 감소</h3><strong class="pf-number">ŷ=3.4</strong><p>Loss=(3.4−4)²=0.36</p></article></div><p class="pf-caption">이 예시는 입력 x=2, 정답 y=4, Bias 0, 제곱 오차를 쓰는 <strong>교육용 회귀</strong> 문제입니다. 사과 결함 분류는 다른 Loss를 사용할 수 있습니다.</p><p class="lesson-takeaway">역전파(Backpropagation)는 각 Weight에 대한 Gradient를 계산하고, Optimizer는 그 값을 이용해 <strong>Weight를 갱신</strong>합니다.</p></div></section>
+<section class="slide" data-concept="cnn-training" data-topic="CNN 학습" data-level="basic">
+<div class="slide-inner two-hour"><h2 class="slide-title">CNN 학습 구조 · Kernel이 바뀌는 과정</h2>
+<p class="slide-subtitle">사과 사진으로 예측한 뒤 정답 Label과 비교합니다. Loss의 Gradient를 역전파(Backpropagation)해 <strong>학습 대상 Kernel과 Head의 Weight를 갱신</strong>합니다.</p>
+<figure class="vm-training-figure" data-training-figure-source="assets/lesson/lecture_cnn_training_feedback_ko.svg" aria-label="CNN 학습 구조 Figure"><svg class="vm-training-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 540" width="1200" height="540" role="img" aria-labelledby="vmtrain-title vmtrain-desc">
+<title id="vmtrain-title">CNN 학습 전체 구조: 사과 이미지가 Backbone, Task Head와 Loss를 지나 Gradient에 따라 Kernel이 갱신되는 폐회로</title>
+<desc id="vmtrain-desc">입력 사과 사진, CNN Kernel, Feature Map, 분류 Head, 예측, 정답 Label, Loss, 역전파 Gradient, 가중치 갱신 순서. 앞으로 계산한 결과와 되돌아가는 학습 경로를 구분한다.</desc>
+<defs>
+ <marker id="vmtrain-up" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M1 1L9 5L1 9Z" fill="#238676"/></marker>
+ <marker id="vmtrain-down" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M1 1L9 5L1 9Z" fill="#b4774b"/></marker>
+ <linearGradient id="vmtrain-plane" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d8ece8"/><stop offset="1" stop-color="#7db9aa"/></linearGradient>
+ <clipPath id="vmtrain-photo"><rect x="36" y="97" width="194" height="156" rx="4"/></clipPath>
+ <style>
+ .vm-training-svg text{font-family:Inter,'Noto Sans KR','Malgun Gothic',sans-serif;fill:#285568}
+ .vm-training-svg .t{font-size:24px;font-weight:700}
+ .vm-training-svg .m{font-size:19px;font-weight:650}
+ .vm-training-svg .s{font-size:17px;fill:#537382}
+ .vm-training-svg .line{stroke:#238676;stroke-width:4;fill:none;marker-end:url(#vmtrain-up)}
+ .vm-training-svg .back{stroke:#b4774b;stroke-width:4;fill:none;marker-end:url(#vmtrain-down)}
+ .vm-training-svg .box{fill:#f5faf9;stroke:#9bbcb9;stroke-width:2}
+ </style>
+</defs>
+<rect x="1" y="1" width="1198" height="538" rx="12" fill="#fff" stroke="#d8e5e8" stroke-width="2"/>
+<text x="42" y="48" class="t">① Forward · 사진에서 예측 계산</text>
+<rect x="26" y="82" width="216" height="228" rx="7" fill="#f5f9fa" stroke="#b7ced3"/>
+<image href="assets/vision_task_apple_reference.jpg" x="36" y="97" width="194" height="156" preserveAspectRatio="xMidYMid slice" clip-path="url(#vmtrain-photo)"/>
+<text x="134" y="281" text-anchor="middle" class="m">입력 RGB 사진</text>
+<path d="M247 177H291" class="line"/>
+<rect x="300" y="82" width="201" height="228" rx="7" class="box"/>
+<text x="402" y="114" text-anchor="middle" class="m">CNN · Kernel</text>
+<g stroke="#4b8b83" stroke-width="2">
+<rect x="337" y="146" width="42" height="42" fill="#b5d9cd"/><rect x="380" y="146" width="42" height="42" fill="#ddeee8"/><rect x="423" y="146" width="42" height="42" fill="#8dbdae"/>
+<rect x="337" y="189" width="42" height="42" fill="#ddeee8"/><rect x="380" y="189" width="42" height="42" fill="#8dbdae"/><rect x="423" y="189" width="42" height="42" fill="#b5d9cd"/>
+</g>
+<text x="401" y="280" text-anchor="middle" class="s">학습할 Weight</text>
+<path d="M505 177H543" class="line"/>
+<rect x="550" y="82" width="183" height="228" rx="7" class="box"/>
+<text x="641" y="114" text-anchor="middle" class="m">Feature Map</text>
+<g fill="url(#vmtrain-plane)" stroke="#368d7e" stroke-width="2">
+<rect x="587" y="160" width="88" height="83"/><rect x="599" y="149" width="88" height="83"/><rect x="611" y="138" width="88" height="83"/>
+</g>
+<text x="641" y="280" text-anchor="middle" class="s">위치별 특징 반응</text>
+<path d="M736 177H770" class="line"/>
+<rect x="778" y="82" width="157" height="228" rx="7" class="box"/>
+<text x="856" y="114" text-anchor="middle" class="m">Task Head</text>
+<g fill="#d9ece7" stroke="#75a99e"><rect x="804" y="151" width="103" height="39" rx="4"/><rect x="804" y="200" width="103" height="39" rx="4"/></g>
+<text x="856" y="177" text-anchor="middle" class="s">결함 점수</text>
+<text x="856" y="226" text-anchor="middle" class="s">정상 점수</text>
+<text x="856" y="280" text-anchor="middle" class="s">분류 예시</text>
+<path d="M939 177H972" class="line"/>
+<rect x="980" y="113" width="190" height="164" rx="8" fill="#eef7f4" stroke="#83b8a9" stroke-width="2"/>
+<text x="1075" y="146" text-anchor="middle" class="m">Prediction</text>
+<text x="1075" y="190" text-anchor="middle" style="font-size:27px;font-weight:700;fill:#187864">결함 있음?</text>
+<text x="1075" y="237" text-anchor="middle" class="s">예측 결과</text>
+<text x="42" y="352" class="t">② Backward · 정답과 비교한 오차를 Weight에 전달</text>
+<rect x="1000" y="379" width="164" height="60" rx="7" fill="#f6f8fb" stroke="#a7bac8" stroke-width="2"/>
+<text x="1082" y="405" text-anchor="middle" class="m">정답 Label</text>
+<text x="1082" y="429" text-anchor="middle" class="s">결함 있음</text>
+<rect x="780" y="386" width="161" height="63" rx="7" fill="#fff8f2" stroke="#d4b08c" stroke-width="2"/>
+<text x="860" y="410" text-anchor="middle" class="m">Loss · 오차</text>
+<text x="860" y="435" text-anchor="middle" class="s">예측 ↔ 정답</text>
+<path d="M1082 375V356H860V379" class="back"/>
+<path d="M1076 279V332H922V379" class="back"/>
+<path d="M774 416H636" class="back"/>
+<rect x="426" y="382" width="199" height="65" rx="7" fill="#fff8f2" stroke="#d4b08c" stroke-width="2"/>
+<text x="525" y="408" text-anchor="middle" class="m">Gradient 계산</text>
+<text x="525" y="433" text-anchor="middle" class="s">역전파 · 수정 방향</text>
+<path d="M420 415H312" class="back"/>
+<rect x="112" y="381" width="186" height="66" rx="7" fill="#fff8f2" stroke="#d4b08c" stroke-width="2"/>
+<text x="205" y="408" text-anchor="middle" class="m">Optimizer</text>
+<text x="205" y="433" text-anchor="middle" class="s">Weight 갱신</text>
+<path d="M205 377V345H399V315" class="back"/>
+<path d="M399 345H856V315" class="back"/>
+<path d="M525 453V469H856V454" fill="none" stroke="#d8b38c" stroke-width="2" stroke-dasharray="7 7"/>
+<text x="611" y="513" text-anchor="middle" style="font-size:19px;font-weight:650;fill:#2e635c">학습 중에는 이 과정을 반복 · 추론할 때는 Weight를 갱신하지 않음</text>
+</svg></figure>
+<p class="vm-training-caption">위쪽은 예측을 만드는 <strong>Forward</strong>, 아래쪽은 오차를 계산해 가중치를 바꾸는 <strong>Backward</strong> 경로입니다. 사진·정답의 형식은 Task에 따라 달라집니다. 아래는 Backbone과 Head를 모두 학습하는 개념도이며, Freeze 설정에서는 선택한 Weight를 고정합니다.</p>
+<p class="lesson-takeaway">학습: <strong>예측 → Loss → Gradient → Weight 갱신</strong>을 반복합니다. 추론(Inference): 학습한 Weight를 고정한 채 새 사진을 처리합니다.</p>
+</div></section>
 <section class="slide" data-concept="infer" data-topic="Training과 Inference" data-level="basic">
 <div class="slide-inner">
 <h2 class="slide-title">Training과 Inference의 차이</h2>
 <p class="slide-subtitle">Inference(추론)는 학습된 모델에 새 입력을 넣어 결과를 얻는 과정입니다. 정답 없이도 예측할 수 있습니다.</p>
 <figure class="lesson-figure"><div class="figure-display"><img src="assets/lesson/training_inference_basic.svg?v=professional-20261006-2" alt="배울 때는 Weight를 바꾸고, 사용할 때는 고정합니다"></div></figure>
 <p class="lesson-takeaway">추론 과정 자체는 새로운 데이터로 가중치를 학습하는 과정이 아닙니다.</p></div></section>
-<section class="slide" data-concept="cnn-training" data-topic="CNN 학습" data-level="basic">
-<div class="slide-inner">
-<h2 class="slide-title">학습 과정에서 바뀌는 Kernel</h2>
-<p class="slide-subtitle">작은 회귀 예시에서 w를 바꿨듯이, CNN은 Kernel의 가중치도 바꿉니다. Task에 맞는 예측과 Label의 차이가 학습 방향을 정합니다.</p>
-<figure class="lesson-figure"><div class="figure-display"><img src="assets/lesson/context_cnn_training.svg?v=professional-20261006-2" alt="CNN의 필터도 오차를 줄이는 방향으로 학습합니다"></div></figure>
-<p class="lesson-takeaway"><strong>학습의 영향:</strong> 같은 사진이라도 Kernel 가중치가 바뀌면 Feature Map과 최종 예측이 달라질 수 있습니다. Gradient로 수정 방향을 계산하고 Optimizer(갱신 알고리즘)가 가중치를 갱신합니다.</p></div></section>
 <section class="slide" data-concept="transfer" data-topic="Freeze와 Fine-tuning" data-level="detail">
 <div class="slide-inner">
 <h2 class="slide-title">전이학습 · 고정과 미세 조정</h2>

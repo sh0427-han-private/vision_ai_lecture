@@ -1,114 +1,97 @@
-# Vision AI 기초강의 — 원리 이해 중심 2시간 강의 운영안
+# Vision AI 기초강의 · 원리 이해 중심 120분 운영안
 
-> 적용 기준: 2026-10-18 개편 · `docs/two_hour_manifest.json` · Intro 11장 + 통합 강의 39장 = **50장**  
-> 출발 질문: **"사진에서 작은 사과 결함을 AI는 어떻게 찾을까?"**  
-> 교재 검토 근거: [내용·흐름 검토서](reviews/2026-10-18_VISION_AI_CONTENT_FLOW_REVIEW.md) / [UI·그림 검토서](reviews/2026-10-18_VISION_AI_UI_FIGURE_REVIEW.md)
+> **현행 공개 강의 기준 (2026-10-18 개편): Intro 13장 + 통합 41장 = 전체 54장.** `docs/two_hour_manifest.json`을 정답으로 사용한다.  
+> 이전 50장 강의 운영안/검토서의 슬라이드 번호는 현재와 다르다.  
+> 강의 전체 질문: **“사과 사진에서 작은 갈색 반점을 어떻게 찾고, 다른 사진에서도 믿을 수 있을까?”**
 
-## 1. 강의의 최종 성취
+## 1. 강의 목표와 전체 답변
 
-**최우선: Vision AI 원리를 자신의 말로 설명하는 것(A안).**
+**Vision AI 원리 이해(A안)**가 목표다. 수강생은 설명용 사과 사례를 통해 다음을 자신의 말로 답할 수 있어야 한다.
 
-학생이 강의가 끝났을 때 아래 네 질문에 **그림을 가리키며** 답하면 충분합니다.
+1. **왜 필요한가?** 사람의 반복적인 검사·위치 확인·영역 분석을 영상으로 지원한다.
+2. **왜 어려운가?** 사진의 Pixel은 조명/회전/크기/가림에 따라 변하지만, Task에서 중요한 의미는 안정적으로 찾아야 한다.
+3. **무엇을 할 것인가?** 유무·위치·모양·희귀 이상 중 어떤 결과가 필요한지 먼저 결정하고, Task별 모델·Label을 선택한다.
+4. **어떻게 계산·학습하는가?** CNN은 Kernel·Feature Map·Task Head를 통해 예측한다. 학습에서는 Loss의 Gradient로 Weight를 바꾼다.
+5. **왜 믿어도 되는가?** 새 개체/촬영 조건을 분리한 데이터에서 놓친 결함·오알람과 Task별 지표를 확인한다.
 
-1. **입력은 무엇인가?** → 실제 카메라 사진은 Pixel·RGB 숫자 배열이며 해상도와 촬영조건에 따라 값이 달라진다.
-2. **어떻게 특징을 찾는가?** → CNN은 작은 영역에 학습된 Kernel을 적용해 Feature Map을 만들고, 층을 거쳐 Task Head가 결과를 출력한다.
-3. **어떻게 배우는가?** → 정답(Label)과 Prediction의 차이(Loss)를 계산해 Weight를 갱신한다. 데이터 조건과 학습/추론이 중요하다.
-4. **어떻게 판단하나?** → 새 환경의 독립 데이터에서 놓친 불량과 오알람을 함께 확인한다. Task에 따라 평가도 달라진다.
+직접 AI 학습 코드 작성·최신 모델 세부 수식·모든 Architecture 암기는 목표가 아니다. **Task 종류와 CNN의 계산 원리**를 구분한다. 최신 모델에는 CNN 이외의 구조도 있으므로 CNN을 모든 Vision AI 모델의 유일한 구조로 설명하지 않는다.
 
-AI 협업과 시제품 작성은 **마지막 6분의 응용·복습**이며, 본강의의 주제가 AI 프롬프트 작성으로 변경되지 않도록 한다. 수학 유도·심화 Architecture·코드 실습은 본강의 목적에 포함되지 않는다.
+## 2. 2시간 진행 구성
 
-## 2. 전체 120분 / 50장 실제 강의 순서
-
-| 강의 구간 | 슬라이드 | 시간 | 학생의 질문 · 핵심 그림 | 다음 단원으로 이어지는 문장 |
+| 구간 | 슬라이드 | 분 | 핵심 질문과 Figure | 자연스러운 다음 연결 |
 |---|---|---:|---|---|
-| 입력 | Intro 1–7 | 12분 | 사과 사진 → Grayscale 숫자 → RGB/해상도 | "숫자로 표현하는 것은 알았다. 그런데 사진이 달라지면 어떨까?" |
-| 어려움 | Intro 8–11 | 6분 | 조명·회전·가림·클래스 다양성·중요한 작은 결함 | "무엇을 찾으라고 해야 중요한 차이를 알까?" |
-| Task | Course 1–3 | 6분 | 같은 결함의 Class / Box / Mask, 규칙 vs 학습 | "데이터로 배우는 판단은 어디서 계산할까?" |
-| 신경망 | Course 4–7 | 12분 | 퍼셉트론 → AND/XOR → ReLU → 다층 비선형성 | "이미지는 숫자가 너무 많다. 모든 Pixel을 한 번에 연결해야 할까?" |
-| **CNN 원리(최중요)** | **Course 8–17** | **30분** | CNN 전체 구조 → Kernel·Feature Map·Weight 공유·Channel·Stride·Padding·Pooling → 실제 반응 → Head | "이 특징을 내 사진에서 잘 찾게 하려면 무엇을 준비할까?" |
-| 데이터 준비 | Course 18–22 | 12분 | 촬영 환경·Label·독립 분할·입력 규격·증강 | "사진과 정답을 준비했다. 그러면 Weight는 어떻게 바뀔까?" |
-| 학습 | Course 23–29 | 14분 | 가중치 갱신 인터랙티브 → Loss → Training/Inference → Kernel 학습 → 전이학습·로그·과적합 | "Loss가 줄면 새 사과에서도 다 맞을까?" |
-| 평가 | Course 30–34 | 12분 | Threshold → Confusion Matrix → Accuracy 함정 → Precision/Recall → IoU | "최종적으로 무엇을 놓치고 있는지 어떻게 확인할까?" |
-| 원리 회수 | Course 35–39 | 6분 | 원리 전체 지도 → 사과 과제 질문 → 교육용 수치 재계산 → 오류 예시 → 설명 가능한 완료 기준 | "처음의 사과 사진을 지금은 어떻게 설명할까?" |
-| 질의·복습 | 별도 | 10분 | 처음 사과 사진을 다시 보여 주고 학생이 입력/과제/특징/검증을 설명 | 마무리 |
+| 필요성, 사람의 이해와 숫자 | Intro 1–8 | 14 | 사과 결함 질문 → 사람이 보는 장면 → **Vision AI 활용** → Pixel/RGB/해상도 | “왜 사진만 있으면 어렵나?” |
+| 어려움과 결정적인 차이 | Intro 9–13 | 9 | 기존 사과 원본을 조명·회전·가림으로 변환, 클래스 다양성, **어려움 종합** | “무슨 출력을 원해야 중요한 특징인지 정할까?” |
+| 지금의 Vision AI / Task / 모델·Label | Course 1–5 | 10 | Class/Box/Mask, **규칙→학습모델→범용 사전학습**, 지도학습, 모델 선택, **유무·위치·영역·이상탐지 데이터** | “그 모델의 가장 기초적인 계산은?” |
+| 신경망·비선형성 | Course 6–9 | 11 | 퍼셉트론 Wx+b·Step, AND/XOR, ReLU, Affine층의 한계 | “이 숫자 계산을 이미지에 효율적으로 적용하려면?” |
+| **CNN 핵심 원리** | **Course 10–19** | **30** | 사진→Feature Map→Head, Kernel 한 칸/이동, 공유, Channel, Stride/Padding/Pooling, 실측 채널, Task Head | “학습에 필요한 데이터는 무엇일까?” |
+| 데이터와 Label | Course 20–24 | 10 | 정상/결함×밝음/어두움, Group Split, 전처리/증강 | “Kernel Weight를 어떻게 바꾸나?” |
+| 학습·일반화 | Course 25–31 | 12 | 숫자 1Step 학습, Loss, 추론 차이, **CNN 전체 학습 아키텍처**, 전이학습, Batch/Epoch, 과적합 | “Loss 감소가 실제 검사 성공을 보장할까?” |
+| 평가 | Course 32–36 | 9 | Threshold, 혼동행렬, 불균형, Precision/Recall, IoU | “새 촬영조건에서 무엇을 놓치는가?” |
+| 원리 회수 | Course 37–41 | 5 | 같은 사과 사진으로 Task→Model/Label→CNN→학습→오류검사 돌아보기 | “이 결과를 왜 믿어야 하는가?” |
+| 질의·회고 | 별도 | 10 | 처음 사과 이미지를 보여주고 다섯 질문에 답하기 | 마무리 |
 
-**합계: 본강의 110분 + 질의·복습 10분 = 120분.**
+**총 110분 + 질의 10분 = 120분.** 실제 발표 시간은 예상이며 리허설로 조정한다.
 
-## 3. 변경 후 통합 강의의 정확한 번호
+## 3. Course 새 장 번호
 
-| 단원 | 번호 | 내용 |
-|---|---|---|
-| Task | 1–3 | 같은 사진 다른 질문, 규칙 vs 학습, 기존 모델 선택 |
-| 신경망 | 4–7 | 퍼셉트론, AND/XOR, ReLU, 비선형성 |
-| CNN 원리 | 8–17 | CNN 전체 Architecture, Kernel, Feature Map, Weight Sharing, Channel, Stride, Padding, Pooling, 실제 Feature Map, Backbone/Head |
-| 데이터 준비 | 18–22 | Dataset, Train/Validation/Test, Group Split, Preprocessing, Augmentation |
-| 학습 | 23–29 | Weight 갱신 실습, Loss/Gradient, Training vs Inference, CNN Kernel 학습, 전이학습, Batch/Step/Epoch, Overfitting |
-| 평가 | 30–34 | Threshold, Confusion Matrix, Accuracy 함정, Precision/Recall, IoU |
-| 회수·확인 | 35–39 | 원리 전체 연결, 과제 질문, 임계값 결과, 실패 사례, 설명 가능한 완료 기준 |
+- **1** Task의 의미와 Class/Box/Mask
+- **2** 규칙 vs 지도학습: 사진 조건이 바뀌어도 같은 Label을 배우는 이유
+- **3 [신규]** Vision AI가 발전한 방식: 규칙/Task별 학습 모델/범용 사전학습
+- **4** 현재 모델 선택: 규칙·사전학습·추가 학습 중 무엇을 먼저 시험할지
+- **5 [신규]** 목적/모델/Label/데이터 선택: Classification, Detection, Segmentation, Anomaly Detection
+- **6–9** Perceptron, AND/XOR, ReLU, 비선형성
+- **10–19** CNN 구조·Kernel·Feature Map·Weight Sharing·채널·Stride/Padding/Pooling·실제 Feature Map·Backbone/Head
+- **20–24** 데이터·Train/Validation/Test·Group Split·Preprocessing/Augmentation
+- **25–26** 학습 실습과 Loss/Gradient
+- **27 [Figure 교체]** CNN의 Forward → Loss → Backward → Weight 갱신 구조
+- **28** Training vs Inference: 학습 후 새 사진에 사용
+- **29–31** 전이학습, Batch/Step/Epoch, Overfitting
+- **32–36** Score Threshold, Confusion Matrix, Accuracy 함정, Precision/Recall, IoU
+- **37–41** 원리 회수, 과제 질문, 교육용 임계값 결과, 실패 조건, 최종 복습
 
-**중요:** 예전 Course `#slide-N`의 숫자는 현 물리적 순서가 바뀌었으므로 같은 개념을 가리키지 않을 수 있다. 원본 개념은 `data-concept`로 찾고, 학습 링크/목차는 **새 번호**로 생성한다. 예: CNN 전체 구조는 **Course #slide-8**, 퍼셉트론 #slide-4, 모델 학습 인터랙티브 #slide-23, 실제 Feature Map #slide-16.
+Intro는 **3번(필요성)**, **13번(왜 어려운가·종합)**을 새로 추가했다. Intro Pixel 6×6 클릭은 **5번**, 3채널 이해는 **6–7번**, 해상도는 **8번**, 촬영조건 변화는 **9–10번**이다.
 
-## 4. 발표자가 실제로 설명할 정도
+## 4. 장별 강의 설명의 경계와 오해 방지
 
-### 4.1 Intro: 반드시 보여 줄 것 / 생략할 것
+### 왜 중요하고 어려운가 (Intro)
 
-- 학생이 사진을 클릭하면 **실제 6×6 Pixel 값과 밝기**가 동시에 바뀌는지 보여 준다. Grayscale 변환 공식 암기는 요구하지 않는다.
-- RGB에서 `H×W×3`의 `3`은 컬러 채널이고 거리/깊이를 뜻하지 않는다.
-- 해상도는 같은 원본을 여러 크기로 **축소**할 때 작은 결함이 남는지에 초점을 맞춘다. 늘린 이미지만으로 새로운 디테일이 만들어진다고 말하지 않는다.
-- 의자 다양성은 **물체 이름이 같아도 겉모습이 다름**을 보여주는 한 장짜리 비유. 표면 균열은 **작은 결함이 큰 조명 변화보다 중요할 수 있음**의 비유. 다음 사과 Task에 연결하며 별도 소재처럼 길게 강의하지 않는다.
+- 일상·산업에서 영상 기반 **반복 검사, 장면 내 위치 파악, 정밀 영역 분석**을 지원하는 목적을 먼저 보여 준다. 사과는 품질검사라는 대표 사례다.
+- I9–10에서 **동일 사과 사진의 화면상 변환**으로 밝기·회전/크롭·가림을 비교한다. 실제 다른 카메라/각도에서 재촬영한 결과라고 주장하지 않는다. I11–12는 클래스 다양성과 중요한 결함 대비, I13은 한 줄로 왜 어려운지 설명한다.
+- Pixel 수 vs RGB 채널 수를 구분한다. 가림·초점으로 정보가 없어진 경우 어떤 모델도 항상 정답을 보장할 수 없다.
 
-### 4.2 신경망: AND/XOR를 왜 배우는가?
+### 현재의 모델과 데이터 선택 (Course 1–5)
 
-- 첫 계산 `Wx+b`는 **가중합**, 고전 퍼셉트론은 여기에 Step 판정이 들어간다.
-- AND는 한 직선으로 구분할 수 있고 XOR는 하나의 직선으로 구분할 수 없다. 비전공 학생에게 논리 게이트 전체를 외우게 하지 않는다.
-- ReLU는 음수 구간을 0으로 만들고 양수는 통과시킨다. **여러 층의 비선형 계산을 조합**하기 때문에 표현력이 커진다. ReLU 하나로 XOR가 저절로 풀리는 것은 아니다.
-- 실제 CNN에서도 기본 가중합 뒤에 ReLU 같은 비선형성을 사용한다.
+- **Task = 원하는 출력의 형태**, **Model = 그 결과를 계산하는 방식**, **Label = 학습에 제공하는 정답**, **Dataset = 다양한 사례 모음**으로 구분.
+- Classification(사진당 Class), Detection(결함마다 Box), Segmentation(결함 Mask), Anomaly Detection(정상 패턴과 다른 점수/Heatmap)을 비교한다. Anomaly 모델은 정상 사진 위주로 학습 가능한 종류가 있지만 **검증용 실제 불량 사례가 필요**할 수 있고 방식에 따라 데이터 구성이 달라진다.
+- **YOLO 계열**은 여러 Task별 모델이 있고 **SAM 2**는 점·박스 등의 프롬프트로 이미지/영상 Mask를 예측할 수 있다. 그러나 자동으로 새 산업 결함의 정답 Label을 알려주는 만능 모델이 아니다.
+- CNN은 이미지 모델의 근본 개념을 이해하기 위한 중심 소재이며, 오늘날 Transformer 기반 Vision Foundation Model도 있음을 설명한다. 별도 최신 모델 Architecture 수업으로 확장하지 않는다.
 
-### 4.3 CNN: 충분히 길고 그림 중심으로 설명할 부분
+### CNN 계산과 학습
 
-1. **전체 Architecture(#8)**: 사과 입력 → Feature Map stack → 공간 크기가 달라지는 단계 → Head → 정상/결함. 이것이 이후 9장의 지도다.
-2. **Kernel(#9)과 Feature Map(#10)**: 같은 5×5 교육용 데이터+3×3 Kernel 사용. 한 위치 `-6`, 오른쪽 다음 위치 `12`, 전체 3×3 반응 지도가 어떻게 만들어지는지만 확인한다.
-3. **지역 연결/공유(#11)**: 1,048,576 vs 9,216 vs 9개는 단일 채널·특정 연산 가정의 가중치 비교. **모든 방법이 같은 모델 기능을 가짐**은 아님.
-4. **RGB→Feature Channel(#12)**: 3개 색 Channel이 필터 하나로 출력 Map 1개가 되고, 서로 다른 필터 2개라면 Map 2개가 된다. Output Channel은 RGB와 다르다.
-5. **Stride/Padding/Pooling(#13–15)**: 시작 위치 간격 / 바깥 0 채움 / 지역 최댓값만 남김. 왜 처리하고 공간/정보가 무엇이 변하는지 그림으로 설명; 값 전체를 암산시키지 않는다.
-6. **실제 Feature Map(#16)**: CS231n 강아지 사진과 SqueezeNet1.1 **실제 계산 결과**를 비교. 각 층 `H×W×C`는 전체 shape, 그림은 채널 4개 샘플뿐이다. 색상은 채널별 상대값이라 수치 절댓값 비교에 쓰면 안 된다.
-7. **Backbone/Head(#17)**: 공통 특징을 모은 뒤 Classification/Detection/Segmentation에 따라 Head가 달라짐. 한 모델이 세 출력을 모두 내는 것은 아님.
+- C10의 큰 Architecture를 10초 보여 준 뒤, C11–19에서 “무슨 블록을 확대해서 보는가”를 직접 가리키며 설명한다.
+- C11–12는 같은 교육용 5×5/3×3 숫자 (좌상단 −6, 다음 칸 12); 실제 사과 JPEG 숫자와 혼동하지 않는다.
+- C27의 새 그림은 **사과 RGB → Kernel → Feature Map → Task Head → Prediction**(Forward)와 **Label + Prediction → Loss → Gradient/Optimizer → Weight 갱신**(Backward)을 두 층으로 보여준다. CNN 학습 전체가 꼭 그 특정 Tensor 크기/2 Class로 고정된 것은 아니다.
+- C25의 수치 회귀는 CNN이 실제로 결함을 학습한 결과가 아니다. 가중치 갱신의 최소 개념 예시다.
+- 학습 중 Gradient와 Weight를 바꾸지만 **추론**에서는 고정된 Weight로 새 사진을 분석한다.
 
-### 4.4 데이터와 학습
+### 평가
 
-- 데이터 준비 후에 학습 수치가 등장하도록 순서를 변경했다. **"무엇을 학습하는가?"를 먼저 보여주기 때문**.
-- Group Split은 같은 원본 영상·개체가 Train/Test에 동시에 있는 상황을 막는다. Test는 최종 고정 평가다.
-- Augmentation에서 결함이 가려지거나 Box/Mask가 변할 때는 Label이 유지되는지 반드시 확인한다. Train에만 증강한다.
-- Weight 갱신 실습은 `x=2,y=4,w=0.5` → 첫 Step `w=1.7`, Loss 9→0.36이라는 **간단한 회귀 예제**로서 CNN 분류 성능을 실제로 보여 주는 것은 아니다.
-- Backpropagation은 Gradient 계산, Optimizer는 Weight 갱신. 미분 유도·코드 구현은 설명하지 않는다.
-- 전이학습은 새 Task와 기존 모델을 연결하는 개념만. Freeze/미세 조정은 Validation으로 선택한다.
-- Batch10장, 4+4+2, Epoch2회 → Step6개는 학습 설정에 따라 다른 **교육용 예제**다.
+- 분류 교육용 100건 예시는 `TP18/FN2/FP4/TN76`로 동일하게 연결한다.
+- Score 0.82는 불량 확률 82% 보장이 아니며, 같은 100건 기준 임계값 결과는 Validation 설명용이다.
+- IoU는 위치/Mask 품질 지표의 개념 예로, 분류 Accuracy/Recall과 동일 지표가 아니다.
 
-### 4.5 평가와 복습
+## 5. 검사·출처·배포
 
-- C30의 Score 0.82는 확률 82%를 보장하지 않는다.
-- C31–33은 **같은 100건**(불량20, 정상80, TP18/FN2/FP4/TN76)으로 연결한다. Accuracy94%, Precision81.8%, Recall90%가 왜 다른 질문인지 **도식과 그림**에서 설명한다.
-- IoU는 정답 Box/Mask와 예측 영역이 얼마나 겹치는지이며, 검출 모델 전체 성능을 이것만으로 평가한다고 말하지 않는다.
-- 마지막 5장은 새로운 지식을 늘리지 않고 **전체 개념이 한 사과 사진에 어떻게 쓰였는지 복습하는 시간**으로 사용한다. 교육용 Score 실습은 실제 모델 출력이나 독립 Test 측정값으로 표현하지 않는다.
+- 기존 외부 Borromini 회랑 사진은 Intro 새 활용 슬라이드에도 원출처를 직접 표기. 직접 가져온 외부 Figure는 인접 출처를 표시하고 자체 도식/변형에 참고 문헌을 장식처럼 추가하지 않는다.
+- 54장 Title/Subtitle/Figure/Takeaway 체계와 `data-concept`, TOC, 수치, 로컬 이미지 경로를 동기화해야 한다.
+- `python scripts/verify_curriculum_overhaul.py`, `python scripts/verify_two_hour_course.py`, `python scripts/verify_learning_routes.py`, `python scripts/audit_visual_slides.py`를 수행하여 총 **108개 뷰(1920×1080, 1366×768)** 검사.
+- 실제 Pages URL을 최신 Commit으로 확인, 이미지 로딩과 JS 이벤트를 확인. 공개 렌더 검사를 정적 검사와 혼동하지 않는다.
+- 전체 콘텐츠 리뷰 및 남은 문제는 [54장 내용·흐름 재검토서](reviews/2026-10-18_VISION_AI_54_SLIDE_FLOW_REVIEW.md)에 기록하고, 활성 TODO는 [TODO_VISION_AI_LECTURE.md](TODO_VISION_AI_LECTURE.md)를 따른다.
 
-## 5. 이미지·레이아웃 일관성
+## 기술적 참고 자료
 
-- 기존 백색/청회색/녹색 스타일, **제목 / 간결한 부제 / 큰 정확한 Figure / 한 줄 정리** 구조 유지.
-- 원리 설명은 생성 카툰이 아니라 실제 사진, 실측 결과, 정확한 SVG/HTML Architecture. 사진이 바뀌는 이유(사과 과제↔외부 강아지 Feature Map 실측 예시)를 명시한다.
-- 외부 이미지를 **직접 가져온 경우에만** 이미지 아래 원본 URL과 저작자/기관을 적는다. 독자 제작 숫자·도식, 개념만 참고한 자료에는 출처를 붙이지 않는다.
-- 기존 확대 링크 복원 금지. 로컬 자산·정확한 Tensor/표시 숫자·인터랙티브 수치는 유지.
-- 장별 과밀은 텍스트 축소가 아니라 Figure 정리로 해결한다. 1920×1080과 1366×768 강의용 Viewport를 모두 확인한다.
+- Ultralytics 공식 <https://docs.ultralytics.com/tasks/>: Classification/Detection/Segmentation 등 Task 구분과 모델 선택 예시.
+- Meta FAIR SAM 2 공식 <https://ai.meta.com/research/sam2/>: 이미지·영상에서 promptable segmentation 및 사전학습의 활용 범위.
 
-## 6. 변경 후 QA / 상태 해석
-
-검증 대상: 50개 실제 슬라이드와 목차, 9개 시간 블록, `data-concept` 순서, 5×5 수치 계산·실측 파일 경로, Intro Pixel/RGB/해상도, 학습 Weight 한 단계 갱신, Threshold 0.30/0.50/0.70, 복습 펼침, 챕터 연결.
-
-- `scripts/verify_two_hour_course.py`: 구조·서술/선행개념·수치·로컬 경로.
-- `scripts/verify_learning_routes.py`: Chromium 탐색·50개 목차·상호작용.
-- `scripts/audit_visual_slides.py`: 1920×1080, 1366×768 전체 100뷰 캡처·겹침·과소축소 확인.
-
-**배포 검증은 별개**다. GitHub main에 파일이 반영된 뒤 Pages Workflow와 실제 `/vision_ai_lecture/intro.html`, `/vision_ai_lecture/vision_ai_course.html` URL에서 렌더링을 점검해야 한다.
-
-## 7. 핵심 결론
-
-> 학생이 강의가 끝난 뒤 **"왜 컴퓨터가 Pixel 숫자를 보고, CNN이 작은 패턴을 찾으며, Loss로 Kernel을 바꾸고, 새 환경에서 실패하는지를"** 자기 말로 설명할 수 있으면 성공이다. AI에게 프롬프트를 길게 써 주는 능력이 이 강의의 주된 평가 기준은 아니다.
+**중요:** 링크는 모델 기능의 사실 확인을 위한 자료이며, 새 강의에 외부 이미지를 복제해서 사용한 것은 아니다.

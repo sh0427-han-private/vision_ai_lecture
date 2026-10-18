@@ -25,7 +25,7 @@ def main():
   for deck,total in DECKS:
    page.goto(f'{BASE}/docs/{deck}.html?from=legacy#slide-3');position(page,deck,3,total)
    assert '/docs/' not in page.url and 'from=legacy' in page.url
-  page.goto(BASE+'/index.html');position(page,'intro',1,11)
+  page.goto(BASE+'/index.html');position(page,'intro',1,DECKS[0][1])
   assert page.locator('[data-slide-prev]').is_disabled()
   assert page.locator('#lecture-toc-drawer').get_attribute('aria-hidden')=='true'
   page.click('.lecture-toc-toggle')
@@ -33,8 +33,8 @@ def main():
   toc=page.locator('.lecture-toc-sections');toc.hover(position={'x':100,'y':170})
   page.mouse.wheel(0,540)
   page.wait_for_function("()=>document.querySelector('.lecture-toc-sections').scrollTop>0")
-  position(page,'intro',1,11)
-  page.keyboard.press('PageDown');position(page,'intro',1,11)
+  position(page,'intro',1,DECKS[0][1])
+  page.keyboard.press('PageDown');position(page,'intro',1,DECKS[0][1])
   page.keyboard.press('Escape')
   assert page.locator('#lecture-toc-drawer').get_attribute('aria-hidden')=='true'
   # Open the containing chapter and use a real TOC link across pages.
@@ -88,19 +88,19 @@ def main():
     page.click('[data-slide-prev]');position(page,deck,n,total)
    page.goto(f'{BASE}/{deck}.html#slide-{total}');position(page,deck,total,total)
   assert page.locator('[data-slide-next]').is_disabled()
-  page.goto(BASE+'/intro.html#slide-11');page.click('[data-slide-next]')
+  page.goto(f"{BASE}/intro.html#slide-{DECKS[0][1]}");page.click('[data-slide-next]')
   position(page,'vision_ai_course',1,COURSE_TOTAL)
-  page.click('[data-slide-prev]');position(page,'intro',11,11)
+  page.click('[data-slide-prev]');position(page,'intro',DECKS[0][1],DECKS[0][1])
   page.goto(BASE+'/vision_ai_course.html?mode=core#slide-21');position(page,'vision_ai_course',21,COURSE_TOTAL)
   assert 'mode=core' not in page.url
-  page.click('header a.brand');position(page,'intro',1,11)
+  page.click('header a.brand');position(page,'intro',1,DECKS[0][1])
   page.set_viewport_size({'width':390,'height':844})
   page.click('.lecture-toc-toggle')
   assert page.locator('#lecture-toc-drawer').get_attribute('aria-hidden')=='false'
   page.keyboard.press('Escape')
   assert page.locator('#lecture-toc-drawer').get_attribute('aria-hidden')=='true'
   page.locator('.slide.active .slide-title').click()
-  page.keyboard.press('ArrowRight');position(page,'intro',2,11)
+  page.keyboard.press('ArrowRight');position(page,'intro',2,DECKS[0][1])
   assert not errors,errors
   page.screenshot(path=str(OUT/'two_hour_navigation.jpg'),type='jpeg',quality=85)
   browser.close()

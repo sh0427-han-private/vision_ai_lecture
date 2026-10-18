@@ -1,11 +1,24 @@
 # TODO · Vision AI 원리 중심 강의 — 남은 작업
 
-> **현재 활성 작업 목록(Single Source of Truth)** · 2026-10-18 · 기준: `main` PR [#101](https://github.com/sh0427-han/vision_ai_lecture/pull/101), merge `58806da87f9206a1bef579055edca778c72465ce`  
+> **현재 활성 작업 목록(Single Source of Truth)** · 2026-10-18 · 이전 50장 기준: `main` PR [#101](https://github.com/sh0427-han/vision_ai_lecture/pull/101), merge `58806da87f9206a1bef579055edca778c72465ce`  
 > **강의 목표 A:** Vision AI를 처음 접하는 수강생이 **Pixel → CNN 특징 추출 → Loss/Weight 학습 → 독립 평가**를 그림으로 설명할 수 있도록 구성한다.  
 > **공개 강의:** Intro **11장** + `vision_ai_course.html` **39장** = **50장** / 원리·활동 **110분** + 질의·복습 **10분**.  
 > **이 문서는 앞으로 할 일만 추적한다.** 과거 진단 보고서의 옛 슬라이드 번호를 그대로 실행하지 않는다. `data-concept`와 현재 `docs/two_hour_manifest.json`을 사용한다.
 
 > **후속 작업 상태:** P0·P1 및 로컬 QA-01~03 완료. 작업 브랜치의 검증이며 main 배포 완료가 아닙니다. [구현·검증 기록](reviews/2026-10-18_VISION_AI_TODO_IMPLEMENTATION.md)을 참고하세요. QA-04 중 main 병합과 Pages 배포 성공을 확인했습니다. 공개 URL 직접 검증 및 현장 리허설은 남았습니다. 사용자의 후속 요청으로 PR API 대신 Git 병합·push를 승인받았습니다.
+
+> [!IMPORTANT]
+> **현행 활성 기준 (2026-10-18 추가 개편): Intro 13장 + Course 41장 = 총 54장.** 이 파일의 아래 50장 P0/P1 체크는 **이전 PR에서 완료된 작업의 이력**입니다. 이후 새 수업 수정은 [54장 전체 내용·흐름 재검토](reviews/2026-10-18_VISION_AI_54_SLIDE_FLOW_REVIEW.md)의 신규 슬라이드 번호와 `docs/two_hour_manifest.json`을 기준으로 합니다. 새 54장 공개 배포·화면 QA는 아직 완료 처리하지 않습니다.
+
+## 신규 54장 후속 작업 (활성)
+
+- [ ] **F54-P0-01 / Course 5:** Task·Model·Label 4열 Figure를 1366×768, 1920×1080에서 읽을 수 있는지 확인; 필요하면 본문 압축 및 핵심 3 Task 우선.
+- [ ] **F54-P0-02 / Course 27:** 새 CNN 학습 SVG의 Forward/Backward 방향·Gradient와 Kernel/Head 연결·Freeze 조건을 실제 렌더링으로 확인.
+- [ ] **F54-P0-03 / Intro 3·13:** 사과/회랑 이미지와 밝기·회전·가림 화면상 변환의 이미지 크기/출처·개념 vs 실제 출력 구분 확인.
+- [ ] **F54-QA / 전 구간:** 13+41=54개 슬라이드, 54개 목차, 두 해상도 **108개 화면**, 54장 이전/다음, C25 가중치 학습 버튼, C39 임계값 선택 및 계산, PDF 아닌 HTML 자산 경로, Pages 공개 배포 Workflow 점검.
+- [ ] **F54-P1 / 발표 흐름:** I9–13 반복 설명 최소화, C2–5 규칙/발전/선택/Label 역할 구분, C22 Video Group Split과 사과 검사 연결, C36 IoU로 넘어가는 이유 보완, 마지막 5장 5분 리허설.
+
+**상세 수정 명세:** [Vision AI 54장 전수 내용·흐름 재검토서](reviews/2026-10-18_VISION_AI_54_SLIDE_FLOW_REVIEW.md) (각 장 역할 및 우선순위·완료 조건).
 
 ## 상태 범례와 작업 규칙
 
