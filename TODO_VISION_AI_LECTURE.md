@@ -147,6 +147,7 @@
 
 - [ ] `main` PR 병합 후 Commit과 실제 파일 SHA를 재조회하고, GitHub Pages **Deploy Workflow 성공** 여부 확인.
 - [ ] 공개 URL `https://sh0427-han.github.io/vision_ai_lecture/`와 `.../vision_ai_course.html#slide-8` 등에서 바뀐 그림, 그림 크기·Cache Key·이미지 로딩 확인.
+- [x] 현장 리허설 실행표 준비: [시간표·4질문 평가표](reviews/2026-10-18_VISION_AI_REHEARSAL.md). 시간 배분 110+10분, CNN 30분, 복습 6분 검산 완료. 실제 발표 결과가 아님.
 - [ ] 120분 실제 발표 흐름 리허설: 강의 110분+Q&A 10분, CNN 핵심 30분, 마지막 복습 6분; 초보 수강생이 4가지 목표 질문에 답할 수 있는지 확인.
 - **완료 기준:** 배포 성공 기록과 실제 렌더 검증, 최종 강의 리허설 기록. `main` 병합만으로 완료 체크하지 않는다.
 

@@ -40,3 +40,9 @@
 - `gh pr list --repo sh0427-han/vision_ai_lecture --limit 1`는 `https://api.github.com/graphql: Forbidden`으로 실패했다. GitHub PR API 접근이 막혀 PR 생성/병합은 수행하지 못했다. 토큰이 없다고 단정하거나 요청하지 않았다.
 - `eb55e89`를 `origin/improve/principles-todo`에 게시하고 원격 SHA를 확인했다. `gh pr create`도 같은 GraphQL Forbidden으로 실패했다. [PR 생성 화면](https://github.com/sh0427-han/vision_ai_lecture/pull/new/improve/principles-todo)에서 PR→Merge 후 main 재조회→Pages 성공 및 공개 파일 검증이 필요하다. main 직행 push로 지정된 PR 절차를 대체하지 않는다.
 - 120분 실제 강의와 초보 수강생의 4질문 답변 확인은 사람이 참여하는 리허설이므로 미완료다. 시간 배분의 정적 합계 검증으로 대체하지 않는다.
+
+### 후속 진행: 남은 QA 준비
+
+- GitHub PR API를 추가 실행 권한으로 재시도해도 `Forbidden`이 지속된다. Git fetch와 GitHub Actions HTML 조회는 성공하고, 공개 Pages 주소는 연결 단계에서 `403 Forbidden`이다.
+- 지정된 PR 절차를 직접 main 반영으로 변경할지는 사용자 선택을 요청했다. 답변 전에는 main을 변경하지 않는다.
+- [현장 리허설 실행표](2026-10-18_VISION_AI_REHEARSAL.md)에 누적 시간, CNN 30분/마지막 6분 세부 배분, 실제 조작·확인 질문, 4문항 평가표와 현장 기록 양식을 작성했다. manifest 시간 합계와 세부 배분은 검산했다. 실제 발표·수강생 평가 항목은 미실시로 유지한다.
