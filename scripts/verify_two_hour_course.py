@@ -17,7 +17,7 @@ for deck,count in [('intro',11),('vision_ai_course',39)]:
  ss=re.findall(r'<section\b[^>]*class="slide[^\"]*"[^>]*>.*?</section>',text,re.S)
  assert len(ss)==count,(deck,len(ss))
  assert text.count('class="slide active"')==1
- assert re.findall(r'lecture_outline.js\?v=([^\"]+)',text)==['project-course-20261018']
+ assert re.findall(r'lecture_outline.js\?v=([^\"]+)',text)==['principles-20261018-1']
  slides[deck]=ss
  for n,s in enumerate(ss,1):
   c=re.search(r'data-concept="([^\"]+)"',s)[1];concepts[c]=s
@@ -32,14 +32,14 @@ for deck,count in [('intro',11),('vision_ai_course',39)]:
  assert not re.search(r'VGG-16|BatchNorm|γ|β|Grad-CAM|다음 장|기존 숫자',text),'Removed advanced topic or stale transition'
 # Prerequisites are executable constraints, not just comments in a teaching plan.
 seq=[x['concept'] for x in m['decks']['vision_ai_course']]
-for before,after in [('task','model-choice'),('model-choice','learn'),('learn','perceptron'),('perceptron','and-xor'),('and-xor','relu'),('relu','nonlinear'),('nonlinear','cnn-overview'),('cnn-overview','kernel'),('kernel','feature-map'),('feature-map','sharing'),('channels','actual-map'),('learn','cnn-training'),('backbone','transfer'),('dataset','split'),('split','transfer'),('split','overfit'),('training-log','overfit'),('threshold','confusion'),('confusion','imbalance'),('imbalance','metrics'),('metrics','iou'),('iou','project-brief'),('project-brief','project-run'),('project-run','project-iterate'),('project-iterate','project-check')]:
+for before,after in [('task','model-choice'),('model-choice','perceptron'),('perceptron','and-xor'),('and-xor','relu'),('relu','nonlinear'),('nonlinear','cnn-overview'),('cnn-overview','kernel'),('kernel','feature-map'),('feature-map','sharing'),('sharing','channels'),('channels','stride'),('stride','padding'),('padding','pool'),('pool','actual-map'),('actual-map','backbone'),('backbone','dataset'),('dataset','split'),('split','leakage'),('leakage','preprocess'),('preprocess','augment'),('augment','learn'),('learn','loss'),('loss','infer'),('infer','cnn-training'),('cnn-training','transfer'),('transfer','training-log'),('training-log','overfit'),('overfit','threshold'),('threshold','confusion'),('confusion','imbalance'),('imbalance','metrics'),('metrics','iou'),('iou','workflow'),('workflow','project-brief'),('project-brief','project-run'),('project-run','project-iterate'),('project-iterate','project-check')]:
  assert seq.index(before)<seq.index(after),(before,after)
 assert not {'affine-net','affine-collapse','xor-net'} & set(seq)
 # Every slide must belong to one timed block; no omitted or duplicated material.
 for deck,entries in m['decks'].items():
  covered=[n for block in m['blocks'] if block['deck']==deck for n in range(block['start'],block['end']+1)]
  assert covered==list(range(1,len(entries)+1)),(deck,covered)
-assert [block['minutes'] for block in m['blocks']]==[13,7,15,15,20,25,15]
+assert [block['minutes'] for block in m['blocks']]==[12,6,6,12,30,12,14,12,6]
 def matrices(concept):
  s=concepts[concept]; result=[]
  for cols,body in re.findall(r'<div class="concept-matrix[^\"]*" style="--cols:(\d+)"[^>]*>(.*?)</div>',s,re.S):
@@ -82,7 +82,7 @@ for deck in ['intro','vision_ai_course','ai_basics','vision_ai']:
  assert 'cursor:zoom' not in text
 for a in ['perceptron_gate_structure_ko','and_xor_gate_geometry_ko','xor_multilayer_gates_ko']:
  ET.parse(D/'assets/lesson'/f'{a}.svg')
-print('TWO_HOUR_QA_PASSED: 50 slides, 110+10 minutes, prerequisites, shared numeric examples, local assets and static figures')
+print('TWO_HOUR_QA_PASSED: 50 slides, 110+10 minutes, principles-first prerequisites, shared numeric examples and local assets')
 
 # Open feedback paths must not render as a solid filled blob.
 root=ET.parse(D/'assets/lesson/context_cnn_training.svg').getroot()
