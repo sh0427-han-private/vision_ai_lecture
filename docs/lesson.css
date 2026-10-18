@@ -55,9 +55,8 @@
   .lesson-deck .lesson-outline p { margin: 4px 0; font-size: 16px; }
 }
 
-/* 2026-10-13: allow learners to zoom detailed math diagrams without shrinking fonts. */
-.lesson-deck .lesson-figure a { display:block; cursor:zoom-in; border-radius:3px; }
-.lesson-deck .lesson-figure a:focus-visible { outline:3px solid #1c8a92; outline-offset:4px; }
+/* Static figures retain their slide layout without opening original files. */
+.lesson-deck .lesson-figure .figure-display { display:block;  border-radius:3px; }
 .lesson-deck .lesson-figure img { max-height:58dvh; }
 .lesson-deck .lesson-reference { background:none; border:0; font-size:13px; padding:0; }
 .lesson-deck .lesson-reference summary { cursor:pointer; display:inline-block; list-style:none; color:#6b8190; }
@@ -118,9 +117,9 @@
   width: 100%; margin: 0; padding: 0;
   display: flex; justify-content: center; align-items: center;
 }
-.lesson-deck .ppt-replaced .ppt-slide-figure a {
+.lesson-deck .ppt-replaced .ppt-slide-figure .figure-display {
   width: 100%; display: flex; justify-content: center; align-items: center;
-  border-radius: 4px; cursor: zoom-in;
+  border-radius: 4px;
 }
 .lesson-deck .ppt-replaced .ppt-slide-figure img {
   display: block;

@@ -13,7 +13,7 @@
   align-items: center;
   gap: 3px;
 }
-.lesson-deck .cs231n-hierarchy .cs231n-original-figure a {
+.lesson-deck .cs231n-hierarchy .cs231n-original-figure .figure-display {
   display: block;
   width: 100%;
   text-align: center;

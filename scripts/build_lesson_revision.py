@@ -710,7 +710,7 @@ def build_deck(filename, title, subtitle, cards, lessons, prev_page, next_page="
 <title>{html.escape(title)}</title>
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="slide.css?v=generatedfigfit-20260927-27">
-<link rel="stylesheet" href="lesson.css?v={VERSION}">
+<link rel="stylesheet" href="lesson.css?v=static-figures-20261018-1">
 <script src="slide.js?v=generatedfigfit-20260927-27" defer></script>
 </head><body class="deck-page lesson-deck" data-prev-page="{prev_page}" data-next-page="{next_page}">
 <header class="site-header"><nav class="nav"><a class="brand" href="index.html">Vision AI</a>
@@ -789,9 +789,9 @@ def build_deck(filename, title, subtitle, cards, lessons, prev_page, next_page="
     <p class="lesson-takeaway">Stride 1, Padding 0, Bias 0인 CNN식 Cross-correlation 예시입니다. ReLU를 적용하지 않아 음수가 남습니다.</p>
   </div>
   <figure class="ppt-slide-figure lesson-figure">
-    <a href="{asset}?v=ppt-source-20261013-1" target="_blank" rel="noopener" title="Convolution 강의 슬라이드 크게 보기">
+    <div class="figure-display">
       <img src="{asset}?v=ppt-source-20261013-1" alt="입력 5×5의 왼쪽 위 3×3을 강조하고 가중치 1·0·−1의 Kernel과 곱해 세 행 모두 −2를 얻습니다. 합계 −6을 출력 첫 칸에 기록하고, 필터를 한 칸씩 옮겨 −6 12 16 / −6 8 15 / −4 2 7의 출력 Feature Map을 만듭니다.">
-    </a>
+    </div>
   </figure>
 </div></section>\n'''
             manifest.append({"number":index,"topic":topic,"level":"detail","title":heading,"asset":asset})
@@ -801,7 +801,7 @@ def build_deck(filename, title, subtitle, cards, lessons, prev_page, next_page="
 <span class="lesson-level{" lesson-level--detail" if detailed else ""}">{"심화 학습" if detailed else "핵심 개념"}</span></div>
 <h2 class="slide-title">{html.escape(heading)}</h2>
 <p class="slide-subtitle">{html.escape(description)}</p>
-<figure class="lesson-figure"><a href="{asset}?v={figure_version}" target="_blank" rel="noopener" title="그림 원본 크기로 확대"><img src="{asset}?v={figure_version}" alt="{html.escape(FIGURE_ALT_DESCRIPTIONS.get(Path(asset).stem, heading))}"></a></figure>
+<figure class="lesson-figure"><div class="figure-display"><img src="{asset}?v={figure_version}" alt="{html.escape(FIGURE_ALT_DESCRIPTIONS.get(Path(asset).stem, heading))}"></div></figure>
 <p class="lesson-takeaway">{html.escape(takeaway)}</p>{reference}</div></section>\n'''
         manifest.append({"number":index,"topic":topic,"level":"detail" if detailed else "basic","title":heading,"asset":asset})
     header+='''</main><div class="deck-controls"><div class="deck-controls-inner">
