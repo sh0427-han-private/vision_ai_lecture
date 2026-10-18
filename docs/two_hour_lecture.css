@@ -25,7 +25,6 @@
 .th-case-table td { color:#35596a; }
 [data-concept="task"] .lesson-figure img { height:220px; object-fit:contain; }
 .th-task-roi { width:100%; height:220px; display:block; }
-.lesson-deck [data-concept="actual-map"] .cnn-real-image img { max-height:53dvh; }
 .project-course .th-case-table { table-layout:fixed; }
 .lesson-deck .two-hour .th-case-table,
 .lesson-deck .two-hour .th-case-table th,
@@ -53,5 +52,4 @@
  .lesson-deck .neuron-story .gate-reference-figure img { max-height:39dvh; }
  .lesson-deck .neuron-story .gate-geometry-layout .gate-reference-figure img { max-height:32dvh; }
  [data-concept="task"] .lesson-figure img,.th-task-roi { height:200px; }
- .lesson-deck [data-concept="actual-map"] .cnn-real-image img { max-height:48dvh; }
 }

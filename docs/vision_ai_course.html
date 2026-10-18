@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="slide.css?v=vision-first-introfit-20261015-1">
 <link rel="stylesheet" href="lesson.css?v=static-figures-20261018-1">
-<link rel="stylesheet" href="cnn_actual_feature_maps.css?v=static-figures-20261018-1">
+<link rel="stylesheet" href="cnn_actual_feature_maps.css?v=single-slide-20261018">
 <link rel="stylesheet" href="scientific_photo_figures.css?v=static-figures-20261018-1">
 <link rel="stylesheet" href="interactive_lessons.css?v=20261015-2">
 <script src="slide.js?v=prevent-toc-wheel-20261016-1" defer></script>
@@ -126,12 +126,28 @@
 <p class="concept-takeaway">한 채널에서 공간 크기가 <strong>가로·세로 각각 절반</strong>이 됩니다. Pooling은 고정된 Max 연산이므로 학습하는 Kernel이 아닙니다.</p></div></section>
 <section class="slide" data-concept="actual-map" data-topic="실제 Feature Map" data-level="basic">
 <div class="slide-inner cnn-real-featuremaps">
-
 <h2 class="slide-title">실제 Feature Map · CNN 내부 반응</h2>
-<p class="slide-subtitle">실제 모델의 내부 반응을 확인하기 위해 공개 강아지 사진을 이미 학습된 CNN에 입력했습니다. 같은 사진에서도 층과 채널에 따라 다른 Feature Map이 만들어집니다.</p>
-<figure class="lesson-figure cnn-real-image"><div class="figure-display"><img src="assets/lesson/cnn_squeezenet_actual_feature_maps.png?v=cnn-actual-20261016-1" alt="동일 강아지 사진의 실제 SqueezeNet1.1 활성화 지도. 얕은층 111×111×64, 중간층 27×27×256, 깊은층 13×13×512 중 각 네 채널을 선택하여 원본 입력 사진과 비교한 계산 결과"></div></figure>
-<p class="lesson-takeaway">얕은 층도 RGB 사진을 그대로 복사하지 않습니다. 각 채널은 학습한 특징에 대한 <strong>위치별 반응값</strong>이며, 채널별 색상 강도는 보기 쉽게 별도로 조정했습니다.</p>
-<p class="lesson-source">입력 사진 출처: <a href="https://cs231n.stanford.edu/slides/2017/cs231n_2017_lecture5.pdf" target="_blank" rel="noopener">Stanford CS231n · 2017 Lecture 5, Slide 37</a> · 강아지 영역 자르기·크기 조정. Feature Map은 ImageNet 사전학습 SqueezeNet 1.1로 직접 계산했습니다. 층마다 채널 4개를 선택하고 색상을 채널별로 정규화해, 채널 사이의 절대 반응 크기는 비교할 수 없습니다.</p>
+<p class="slide-subtitle">같은 강아지 사진을 ImageNet 사전학습 SqueezeNet 1.1에 입력했습니다. 층과 채널에 따라 다른 위치별 반응이 만들어집니다.</p>
+<div class="cnn-feature-flow" role="group" aria-label="입력 사진과 얕은 층·중간 층·깊은 층의 실제 Feature Map 비교">
+<figure class="cnn-feature-stage cnn-feature-stage--input">
+<h3>입력 사진</h3><p class="cnn-feature-shape">RGB · 224 × 224 × 3</p>
+<svg class="cnn-feature-visual" viewBox="59 263 226 266" role="img" aria-label="실제 CNN에 입력한 강아지 사진" overflow="hidden"><defs><clipPath id="cnn-data-59"><rect x="59" y="263" width="226" height="266"/></clipPath></defs><image href="assets/lesson/cnn_squeezenet_actual_feature_maps.png" width="1600" height="690" clip-path="url(#cnn-data-59)"/></svg>
+<figcaption>모델 입력 크기</figcaption></figure>
+<figure class="cnn-feature-stage cnn-feature-stage--shallow">
+<h3>얕은 층</h3><p class="cnn-feature-shape">111 × 111 × 64</p>
+<svg class="cnn-feature-visual" viewBox="362 272 331 240" role="img" aria-label="얕은 층의 실제 반응 지도, 채널 35·30·44·32" overflow="hidden"><defs><clipPath id="cnn-data-362"><rect x="362" y="272" width="331" height="240"/></clipPath></defs><image href="assets/lesson/cnn_squeezenet_actual_feature_maps.png" width="1600" height="690" clip-path="url(#cnn-data-362)"/></svg>
+<figcaption>전체 채널 중 4개 예시</figcaption></figure>
+<figure class="cnn-feature-stage cnn-feature-stage--middle">
+<h3>중간 층</h3><p class="cnn-feature-shape">27 × 27 × 256</p>
+<svg class="cnn-feature-visual" viewBox="766 272 331 240" role="img" aria-label="중간 층의 실제 반응 지도, 채널 2·62·24·153" overflow="hidden"><defs><clipPath id="cnn-data-766"><rect x="766" y="272" width="331" height="240"/></clipPath></defs><image href="assets/lesson/cnn_squeezenet_actual_feature_maps.png" width="1600" height="690" clip-path="url(#cnn-data-766)"/></svg>
+<figcaption>전체 채널 중 4개 예시</figcaption></figure>
+<figure class="cnn-feature-stage cnn-feature-stage--deep">
+<h3>깊은 층</h3><p class="cnn-feature-shape">13 × 13 × 512</p>
+<svg class="cnn-feature-visual" viewBox="1170 272 331 240" role="img" aria-label="깊은 층의 실제 반응 지도, 채널 471·302·409·415" overflow="hidden"><defs><clipPath id="cnn-data-1170"><rect x="1170" y="272" width="331" height="240"/></clipPath></defs><image href="assets/lesson/cnn_squeezenet_actual_feature_maps.png" width="1600" height="690" clip-path="url(#cnn-data-1170)"/></svg>
+<figcaption>전체 채널 중 4개 예시</figcaption></figure>
+</div>
+<p class="lesson-takeaway">Feature Map은 RGB 사진이 아니라 <strong>학습한 특징에 대한 위치별 반응값</strong>입니다. 색상은 채널별 상대값으로 조정했으므로 채널 사이의 절대 크기는 비교할 수 없습니다.</p>
+<p class="lesson-source">입력 사진: <a href="https://cs231n.stanford.edu/slides/2017/cs231n_2017_lecture5.pdf" target="_blank" rel="noopener">Stanford CS231n · 2017 Lecture 5, Slide 37</a> · 강아지 영역 자르기·크기 조정. Feature Map은 직접 계산한 실제 모델 출력이며 각 층의 일부 채널입니다.</p>
 </div></section>
 <section class="slide" data-concept="cnn-training" data-topic="CNN 학습" data-level="basic">
 <div class="slide-inner">

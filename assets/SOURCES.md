@@ -509,3 +509,9 @@ https://www.nature.com/articles/s42256-020-00257-z
 - 통합3·26·32·36–39의 표·문장·로그·점수는 자체 작성 교육용 자료이며 외부 이미지/문서 Figure를 복제하지 않았다. 화면에 개념 참고 출처를 추가하지 않는다.
 - `docs/project_course.js`의100건 점수는 강의의 TP18/FN2/FP4/TN76과 맞춘 교육용 고정 데이터다. 실제 모델 추론·Validation 측정 성능·독립 Test 결과가 아니다. 임계값 변경 시 실제 배열에서 재집계한다.
 - 기존 사과·의자·균열 생성 예시, 실제 SqueezeNet Feature Map과 CS231n 강아지 사진 출처 기록을 유지한다. 제거한 Affine/게이트 조합 자산도 삭제하지 않는다.
+
+
+## 2026-10-18 · 통합 19번 단일 슬라이드 구성
+
+- `cnn_squeezenet_actual_feature_maps.png`의 입력 사진·실제 Feature Map 영역만 SVG viewBox와 clipPath로 표시한다. 원본 PNG의 픽셀·계산 결과는 변경하지 않았다. 이미지 내부의 제목·패널 테두리·요약을 중복 표시하지 않고 제목·출력 크기·해석·사진 출처를 슬라이드 HTML에서 한 번만 구성한다.
+- 입력 사진 출처와 SqueezeNet/채널별 정규화 조건은 기존과 같다.
