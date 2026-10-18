@@ -64,3 +64,8 @@
  .vm-intro-message .vm-arrow{font-size:19px}
  .vm-training-figure img{max-height:35dvh}
 }
+
+/* Inline SVG preserves the locally loaded photograph under browser SVG image security restrictions. */
+.vm-training-figure .vm-training-svg{display:block;width:100%;height:auto;max-height:49dvh;margin:0 auto}
+@media(max-height:850px){.vm-training-figure .vm-training-svg{max-height:50dvh}}
+@media(max-width:700px){.vm-training-figure .vm-training-svg{max-height:35dvh}}
