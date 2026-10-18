@@ -102,13 +102,13 @@ window.LECTURE_OUTLINE = {
         {
           "page": "vision_ai_course.html",
           "slide": 2,
-          "title": "지금 Vision AI는 어디까지 왔나?",
+          "title": "규칙 기반과 데이터 학습",
           "global": 15
         },
         {
           "page": "vision_ai_course.html",
           "slide": 3,
-          "title": "규칙 기반과 데이터 학습",
+          "title": "지금 Vision AI는 어디까지 왔나?",
           "global": 16
         },
         {
@@ -272,13 +272,13 @@ window.LECTURE_OUTLINE = {
         {
           "page": "vision_ai_course.html",
           "slide": 27,
-          "title": "Training과 Inference의 차이",
+          "title": "CNN 학습 구조 · Kernel이 바뀌는 과정",
           "global": 40
         },
         {
           "page": "vision_ai_course.html",
           "slide": 28,
-          "title": "CNN 학습 구조 · Kernel이 바뀌는 과정",
+          "title": "Training과 Inference의 차이",
           "global": 41
         },
         {
