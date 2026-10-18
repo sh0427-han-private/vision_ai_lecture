@@ -53,6 +53,17 @@ def main():
     chapter=link.locator('xpath=ancestor::details[1]')
     if chapter.get_attribute('open') is None:chapter.locator('summary').click()
     link.click();position(page,deck,n,total)
+  # The AND/XOR explanations are separate and the new diagrams are present.
+  page.goto(f"{BASE}/vision_ai_course.html#slide-{number('and-gate')}")
+  assert page.locator('.lf-gate-table').count()==1
+  page.goto(f"{BASE}/vision_ai_course.html#slide-{number('xor-gate')}")
+  assert page.locator('.lf-gate-table').count()==1
+  page.goto(f"{BASE}/vision_ai_course.html#slide-{number('padding')}")
+  assert page.locator('.lf-pad-shared .concept-matrix').count()==1
+  assert page.locator('.lf-pad-result .concept-matrix').count()==2
+  page.goto(f"{BASE}/vision_ai_course.html#slide-{number('transfer')}")
+  assert page.locator('.lf-transfer-block').count()==4
+  assert 'Freeze' in page.locator('.slide.active').inner_text()
   # Training demonstration really follows the same step as the adjacent slide.
   learn=number('learn')
   page.goto(f'{BASE}/vision_ai_course.html#slide-{learn}');position(page,'vision_ai_course',learn,COURSE_TOTAL)
