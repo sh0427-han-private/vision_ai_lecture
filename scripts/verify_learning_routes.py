@@ -7,7 +7,7 @@ from playwright.sync_api import sync_playwright
 
 BASE = os.getenv("AUDIT_BASE_URL","http://127.0.0.1:8765")
 OUT = Path(__file__).resolve().parents[1] / "visual_audit_output"
-DECKS = (("intro",19),("vision_ai_course",49))
+DECKS = (("intro",21),("vision_ai_course",49))
 
 
 def check(flag, why):
@@ -35,7 +35,7 @@ def main():
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True,
             args=["--no-sandbox", "--disable-dev-shm-usage"])
-        page = browser.new_page(viewport={"width":1366,"height":768})
+        page = browser.new_page(viewport={"width":1366,"height":770})
         errors = []
         page.on("pageerror",lambda e: errors.append(str(e)))
 
@@ -49,13 +49,13 @@ def main():
         check(page.locator("[data-slide-current]").inner_text() == "9",
               "Legacy course query/hash not retained")
         page.goto(BASE + "/docs/intro.html#slide-7")
-        position(page, "intro", 7, 19)
+        position(page, "intro", 7, 21)
         check("/docs/" not in page.url, "Legacy Intro URL not normalized")
         page.goto(BASE + "/docs/")
-        position(page, "intro", 1, 19)
+        position(page, "intro", 1, 21)
 
         page.goto(BASE + "/index.html")
-        position(page,"intro",1,19)
+        position(page,"intro",1,21)
         check(page.locator("[data-slide-prev]").is_disabled(),
               "Intro 1 previous button not disabled")
         check(page.locator(".lecture-toc-toggle").is_visible(),
@@ -69,8 +69,8 @@ def main():
               "TOC toggle did not open")
         check(page.locator("#lecture-toc-drawer").get_attribute("aria-hidden") == "false",
               "TOC drawer is not accessible when open")
-        check(page.locator(".lecture-toc-link").count() == 68,
-              "TOC must list all 68 slides")
+        check(page.locator(".lecture-toc-link").count() == 70,
+              "TOC must list all 70 slides")
         # Wheel scrolls the outline contents, but never advances the lecture.
         toc = page.locator(".lecture-toc-sections")
         toc.evaluate("(el) => { el.scrollTop = 0; }")
@@ -81,18 +81,18 @@ def main():
         page.wait_for_function(
             "() => document.querySelector('.lecture-toc-sections').scrollTop > 0"
         )
-        position(page,"intro",1,19)
+        position(page,"intro",1,21)
         page.mouse.wheel(0, -260)
-        position(page,"intro",1,19)
+        position(page,"intro",1,21)
         page.mouse.move(800, 260)
         page.mouse.wheel(0, 400)
-        position(page,"intro",1,19)
+        position(page,"intro",1,21)
         page.keyboard.press("PageDown")
-        position(page,"intro",1,19)
+        position(page,"intro",1,21)
         check(page.locator('.lecture-toc-link[aria-current="page"]').count() == 1,
               "TOC active link missing")
         page.locator('.lecture-toc-link[href="intro.html#slide-3"]').click()
-        position(page,"intro",3,19)
+        position(page,"intro",3,21)
         check(page.locator(".lecture-toc-toggle").get_attribute("aria-expanded") == "false",
               "Selecting slide should close sidebar")
         page.click(".lecture-toc-toggle")
@@ -127,7 +127,7 @@ def main():
         check(page.locator(".lecture-toc-toggle").get_attribute("aria-expanded") == "false",
               "TOC close button failed")
 
-        # All 68 published slides are reachable by next, no AI chapter detour.
+        # All 70 published slides are reachable by next, no AI chapter detour.
         for deck,total in DECKS:
             page.goto(f"{BASE}/{deck}.html#slide-1")
             position(page,deck,1,total)
@@ -136,11 +136,11 @@ def main():
             for i in range(2,total+1):
                 page.click("[data-slide-next]")
                 position(page,deck,i,total)
-        page.goto(BASE+"/intro.html#slide-19")
+        page.goto(BASE+"/intro.html#slide-21")
         page.click("[data-slide-next]")
         position(page,"vision_ai_course",1,49)
         page.click("[data-slide-prev]")
-        position(page,"intro",19,19)
+        position(page,"intro",21,21)
         page.goto(BASE+"/vision_ai_course.html#slide-49")
         check(page.locator("[data-slide-next]").is_disabled(),
               "Final slide must end course")
@@ -165,8 +165,8 @@ def main():
         check(page.locator(".slide.active .concept-matrix").count() == 2,
               "Max Pooling must show both before/after numeric matrices")
         page.click(".lecture-toc-toggle")
-        check(page.locator(".lecture-toc-link").count() == 68,
-              "Sidebar should reflect updated 68-slide course")
+        check(page.locator(".lecture-toc-link").count() == 70,
+              "Sidebar should reflect updated 70-slide course")
         page.locator(".lecture-toc-close").click()
 
         # Sequence: whole CNN first, then real maps, learned features and Kernel.
@@ -202,13 +202,13 @@ def main():
               "Legacy core mode cannot hide content")
         page.goto(BASE+"/vision_ai_course.html#slide-18")
         page.click("header a.brand")
-        position(page,"intro",1,19)
+        position(page,"intro",1,21)
         check(not errors,"Browser JS errors: "+repr(errors))
         page.screenshot(path=str(OUT/"vision_first_sidebar_navigation.jpg"),
                         type="jpeg",quality=80)
         browser.close()
-        print("VISION_FIRST_NAV_QA_PASSED: Intro19 -> integrated Vision+CNN49 = 68")
-        print("RETRACTABLE_TOC_QA_PASSED: 68 links, click, close, outside and Escape")
+        print("VISION_FIRST_NAV_QA_PASSED: Intro21 -> integrated Vision+CNN49 = 70")
+        print("RETRACTABLE_TOC_QA_PASSED: 70 links, click, close, outside and Escape")
 
 
 if __name__ == "__main__":
