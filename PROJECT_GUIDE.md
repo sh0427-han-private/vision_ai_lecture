@@ -555,3 +555,19 @@ GitHub Pages:
 - 프로젝트는 같은 사과 결함 분류 사례로 작업 명세→결과 확인→실패 분석→완료 기준을 연결한다. `docs/project_course.js`는 교육용100건 점수의 임계값별 혼동행렬과 지표를 계산하며 실제 모델 성능이나 실제 Test 평가로 소개하지 않는다.
 - 그림을 사용하지 않은 자체 HTML/수치 예제에는 외부 개념 출처를 붙이지 않는다. 외부 사진을 포함한 Feature Map/변환 그림의 원본 사진 출처는 유지한다.
 - 기준: `docs/two_hour_manifest.json`, `TWO_HOUR_LECTURE_PLAN.md`. 목차·선행 개념·50장 탐색·두 해상도100화면·Threshold 재집계·복습 펼침을 검증한다. 통합 강의 번호는 새 순서다.
+
+
+## 2026-10-18 · A안 확정: Vision AI 원리 이해 중심 개편 (최신·최우선)
+
+- **최종 강의 목표:** AI 도구를 사용하는 프로젝트 실무보다 **Vision AI 내부 원리 이해**를 우선한다. 수강생이 Pixel → CNN Kernel/Feature Map → Weight 학습 → 데이터/평가의 관계를 직접 설명하게 한다.
+- 공개 장수: **Intro 11장 + 통합 39장 = 전체 50장**. 상세 배분과 현재 번호는 `docs/two_hour_manifest.json` 및 `TWO_HOUR_LECTURE_PLAN.md`를 최신 기준으로 사용한다. 예전 번호로 설명한 과거 가이드 내용보다 이 항목을 우선한다.
+- **현 통합 순서:** C1–3 Task/모델 선택 → C4–7 퍼셉트론/AND·XOR/ReLU → **C8–17 CNN 구조·연산·실제 반응** → C18–22 데이터 준비 → C23–29 Loss·Weight 학습·추론·전이학습 → C30–34 평가 → C35–39 원리 복습·응용.
+- 원리의 선행 관계를 개선하기 위해 **기존 학습/Loss/Inference를 CNN 이후로 이동**했다. 새 CNN 개요는 기존처럼 4개 텍스트 칸이 아닌 **사과 사진 → 입체 Feature Map → 공간 축소/특징 → Task Head**로 시각화한다.
+- 텍스트 중심이던 **모델 선택·비선형성·지역 연결/공유·RGB Feature Channel·Dataset·Loss·Batch/Step/Epoch·불균형 Accuracy·종합 과정/실패 사례**는 정확한 자체 HTML/SVG/사진 시각 중심으로 구성한다. 직접 계산한 수치·기존 실습·SqueezeNet 실측 반응은 유지한다.
+- 마지막 5장의 목적은 **AI 협업 방법 교육이 아니라 이미 배운 원리를 한 사과 검사 시나리오에 적용·회수**하는 것이다. 발표시간은 약 **6분**, CNN 원리 구간은 약 **30분**으로 조정했다. 본강의 110분 + 질의/복습 10분.
+- 공개 슬라이드 공통 구성: **간결한 제목 / 왜 필요한지 알려주는 짧은 부제 / Input→Process→Output 중심 큰 시각 Figure / 결과 한 문장 정리**. 어려운 개념을 쉬운 말로 설명하되 사진·기술 Figure는 전문적으로 유지한다.
+- 직접 재사용한 **외부 원본 이미지에만 발표 화면 출처 표시**. 기존 회랑 사진, Stanford CS231n 사진을 포함한 실제 CNN Feature Map/전처리·증강 출처는 유지. 자체 제작 텐서/Kernel 도식과 수치 예제에는 외부 개념 참고 문헌을 장식처럼 붙이지 않는다.
+- 신규 범위: `docs/principles_course.css`, `docs/intro.html`, `docs/vision_ai_course.html`, `docs/lecture_outline.js`, `docs/two_hour_manifest.json`. 원본 `docs/ai_basics.html`/`docs/vision_ai.html`은 호환용으로 보존.
+- 기존 Click Pixel/RGB/해상도 · Weight 학습 · Threshold 100건 실습을 유지하고, 새 physical slide-number로 Deep Link·브라우저 QA·cache key를 동기화한다.
+- 작업 근거: `reviews/2026-10-18_VISION_AI_CONTENT_FLOW_REVIEW.md` 및 `reviews/2026-10-18_VISION_AI_UI_FIGURE_REVIEW.md`.
+- **변경 후 필수 검증:** `scripts/verify_two_hour_course.py`, `scripts/verify_curriculum_overhaul.py`, `scripts/verify_learning_routes.py`, `scripts/audit_visual_slides.py`. 코드 정적 검증/로컬 브라우저 확인/실배포 Pages 확인은 서로 다른 완료 조건이다.
