@@ -1,0 +1,120 @@
+/* Vision AI principles-first curriculum, 2026-10-18.
+   Applies only to the public intro and integrated course; legacy decks untouched. */
+.principles-deck .principle-figure {display:grid;gap:16px;margin:20px 0 15px;align-items:stretch}
+.principles-deck .pf-two {grid-template-columns:repeat(2,minmax(0,1fr))}
+.principles-deck .pf-three {grid-template-columns:repeat(3,minmax(0,1fr))}
+.principles-deck .pf-four {grid-template-columns:repeat(4,minmax(0,1fr))}
+.principles-deck .pf-card {position:relative;min-width:0;padding:16px;background:#f6fafb;border-top:3px solid #639e9e;border-radius:3px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;text-align:center}
+.principles-deck .pf-card--input {background:#f7f9fb;border-color:#8295a1}
+.principles-deck .pf-card--output {background:#edf7f3;border-color:#2b9278}
+.principles-deck .pf-card h3 {margin:0;font-size:clamp(19px,1.65vw,25px);font-weight:750;color:#23596b}
+.principles-deck .pf-card p {margin:0;font-size:clamp(17px,1.32vw,21px);line-height:1.4;color:#4f6978}
+.principles-deck .pf-card strong {color:#147e6c}
+.principles-deck .pf-card img {display:block;object-fit:contain;width:100%;height:min(25dvh,230px)}
+.principles-deck .pf-caption {margin:6px 0 0;color:#536e7d;font-size:clamp(16px,1.25vw,20px);line-height:1.42;text-align:center}
+.principles-deck .pf-flow {display:flex;align-items:center;gap:8px;justify-content:space-between;margin:24px 0}
+.principles-deck .pf-flow .pf-card {flex:1}
+.principles-deck .pf-arrow {color:#238778;font-size:clamp(26px,2.5vw,39px);font-weight:600;flex:0 0 auto}
+.principles-deck .pf-photo {object-fit:contain;width:100%;max-height:26dvh;border-radius:2px}
+.principles-deck .pf-tag {display:inline-block;font-size:clamp(14px,1.1vw,17px);letter-spacing:.01em;color:#546d7c}
+.principles-deck .pf-number {font-weight:800;color:#146f64;font-size:clamp(26px,2.4vw,40px)}
+.principles-deck .pf-compare {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px;margin:24px 0}
+.principles-deck .pf-compare article {display:flex;flex-direction:column;gap:12px;align-items:center;border-top:3px solid #a9c4ca;padding:16px 8px}
+.principles-deck .pf-compare h3 {font-size:clamp(18px,1.5vw,24px);margin:0;color:#275a6d}
+.principles-deck .pf-connections {width:100%;max-height:35dvh;display:block;margin:auto}
+.principles-deck .pf-connections text {font-family:Inter,'Noto Sans CJK KR','Malgun Gothic',sans-serif;fill:#274f62}
+.principles-deck .pf-connections .pf-small {font-size:16px;fill:#54717f}
+.principles-deck .pf-connections .pf-label {font-size:21px;font-weight:700}
+.principles-deck .pf-pipeline {display:flex;gap:10px;align-items:stretch;justify-content:space-between;margin:23px 0 14px}
+.principles-deck .pf-stage {flex:1;min-width:0;display:flex;align-items:center;flex-direction:column;gap:9px;text-align:center;justify-content:center}
+.principles-deck .pf-stage h3 {font-size:clamp(18px,1.48vw,23px);margin:0;color:#225c6c}
+.principles-deck .pf-stage .pf-stage-note {font-size:clamp(15px,1.18vw,18px);line-height:1.3;color:#577280}
+.principles-deck .pf-stage img {height:min(21dvh,205px);max-width:100%;object-fit:contain}
+.principles-deck .pf-tensor {position:relative;width:100px;height:160px;flex:0 0 auto}
+.principles-deck .pf-tensor--deep {width:117px;height:137px}
+.principles-deck .pf-tensor--small {width:106px;height:108px}
+.principles-deck .pf-plane {position:absolute;display:block;width:76px;height:122px;border:2px solid #2d7680;background:linear-gradient(150deg,#d5eaf2 4%,#8bbbc4 57%,#478e98);box-shadow:1px 2px 3px #a5c1c7}
+.principles-deck .pf-tensor--deep .pf-plane {width:78px;height:91px}
+.principles-deck .pf-tensor--small .pf-plane {width:66px;height:66px}
+.principles-deck .pf-plane:nth-child(1){left:0;top:22px;opacity:.66}
+.principles-deck .pf-plane:nth-child(2){left:10px;top:15px;opacity:.78}
+.principles-deck .pf-plane:nth-child(3){left:20px;top:8px;opacity:.85}
+.principles-deck .pf-plane:nth-child(4){left:30px;top:1px;opacity:1}
+.principles-deck .pf-tensor--warm .pf-plane:nth-child(1) {background:#efb39e}
+.principles-deck .pf-tensor--warm .pf-plane:nth-child(2) {background:#d0dd94}
+.principles-deck .pf-tensor--warm .pf-plane:nth-child(3) {background:#84aad1}
+.principles-deck .pf-tensor--warm .pf-plane:nth-child(4){display:none}
+.principles-deck .pf-stage .pf-join {font-size:clamp(25px,2.3vw,36px);color:#208b79}
+.principles-deck .pf-head {padding:16px 12px;border:2px solid #2b8c77;background:#eff7f4;font-size:clamp(19px,1.5vw,24px);color:#1a6c5c;font-weight:700}
+.principles-deck .pf-workflow {display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin:24px 0}
+.principles-deck .pf-workflow .pf-card {min-height:170px}
+.principles-deck .pf-workflow .pf-card:not(:last-child)::after{content:'›';position:absolute;right:-15px;z-index:1;top:42%;font-size:30px;color:#398778}
+.principles-deck .pf-case-photo {width:min(31%,280px);min-width:0;max-height:31dvh;object-fit:contain}
+.principles-deck .pf-task-case{display:flex;align-items:center;gap:20px;margin:25px 0}
+.principles-deck .pf-case-details{flex:1}
+.principles-deck .pf-case-details .pf-card {margin-bottom:10px}
+.principles-deck .pf-status {font-size:clamp(17px,1.4vw,22px);color:#247a6d;font-weight:700}
+.principles-deck .pf-example-strip {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px;margin:18px 0}
+.principles-deck .pf-example-strip img {width:100%;height:min(20dvh,180px);object-fit:contain}
+.principles-deck .pf-defect {background:#d09a75;color:#fff;padding:5px 12px;border-radius:2px}
+.principles-deck .pf-neutral {background:#e8eef0;color:#315766;padding:5px 12px;border-radius:2px}
+.principles-deck .pf-lines {display:flex;justify-content:space-evenly;gap:14px;margin:18px 0}
+.principles-deck .pf-lines>div {flex:1;border-top:2px solid #9cbcc1;padding:13px 8px;text-align:center;font-size:clamp(17px,1.36vw,21px);color:#355b6b}
+.principles-deck .pf-lines strong {display:block;color:#167968;font-size:clamp(19px,1.7vw,27px);margin:6px 0}
+.principles-deck .pf-tilegrid {display:grid;grid-template-columns:repeat(20,1fr);gap:4px;max-width:760px;margin:24px auto 18px}
+.principles-deck .pf-tilegrid span{aspect-ratio:1;background:#dce7ea;border-radius:1px}
+.principles-deck .pf-tilegrid span.pf-miss{background:#bd927c}
+.principles-deck .pf-counts {display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:16px 0}
+.principles-deck .pf-count {text-align:center;padding:10px 4px;border:1px solid #bcd2d4}
+.principles-deck .pf-count b{display:block;font-size:clamp(22px,2vw,31px);color:#196e62}
+.principles-deck .pf-count span{font-size:clamp(15px,1.22vw,18px);color:#536e7d}
+.principles-deck .pf-metrics .pf-count:nth-child(2) b,.principles-deck .pf-metrics .pf-count:nth-child(3) b{color:#a26b4d}
+.principles-deck .pf-teaching-note {margin:6px 0;font-size:clamp(15px,1.12vw,18px);color:#647c88}
+.principles-deck .pf-recap {border-left:4px solid #2c8c7d;background:#f2f8f6;padding:12px 18px;margin-top:14px;color:#265a58;font-size:clamp(17px,1.4vw,22px);line-height:1.4}
+.principles-deck .pf-graphic {max-width:100%;height:min(32dvh,295px)}
+.principles-deck .pf-loop {display:flex;align-items:center;justify-content:center;gap:16px;margin:20px 0}
+.principles-deck .pf-loop .pf-card {width:25%}
+.principles-deck .pf-loop .pf-arrow{font-size:32px}
+.principles-deck .pf-batch {display:grid;grid-template-columns:4fr 4fr 2fr;gap:12px;align-items:stretch;margin:28px auto;max-width:950px}
+.principles-deck .pf-batch-group {display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:9px;padding:20px 10px;border-top:4px solid #398678;background:#f2f8f7;min-height:128px}
+.principles-deck .pf-batch-group span{width:35px;height:40px;border:2px solid #7a9eaa;background:#e3eef0;display:inline-block}
+.principles-deck .pf-batch-group strong{flex-basis:100%;font-size:20px;text-align:center;color:#336578}
+.principles-deck [data-concept="project-iterate"] .pf-card img {max-height:18dvh}
+.principles-intro [data-concept="start"] .slide-subtitle {max-width:980px}
+.principles-intro [data-concept="start"] .pf-cover {display:flex;align-items:center;justify-content:center;gap:40px;margin:18px 0}
+.principles-intro .pf-cover img {height:min(34dvh,320px);max-width:40%;object-fit:contain}
+.principles-intro .pf-cover .pf-cover-question {font-size:clamp(25px,2.6vw,40px);font-weight:750;max-width:480px;line-height:1.4;color:#1f6265}
+.principles-intro .challenge-figure {max-width:1060px}
+.principles-intro .challenge-takeaway {font-size:clamp(18px,1.4vw,23px)}
+@media (max-height:830px){
+ .principles-deck .principle-figure{gap:10px;margin:9px 0}
+ .principles-deck .pf-pipeline{margin:10px 0}
+ .principles-deck .pf-card {padding:10px}
+ .principles-deck .pf-card img{height:min(22dvh,150px)}
+ .principles-deck .pf-card h3{font-size:18px}
+ .principles-deck .pf-card p{font-size:16px}
+ .principles-deck .pf-workflow .pf-card{min-height:130px}
+ .principles-deck .pf-tensor{transform:scale(.82);height:122px}
+ .principles-deck .pf-connections{max-height:29dvh}
+ .principles-deck .pf-batch-group{min-height:95px;padding:8px}
+ .principles-deck .pf-batch-group span{width:25px;height:28px}
+ .principles-deck .pf-graphic{height:min(27dvh,240px)}
+ .principles-deck .pf-tilegrid{margin:10px auto}
+}
+@media(max-width:700px){
+ .principles-deck .pf-two,.principles-deck .pf-three,.principles-deck .pf-four,.principles-deck .pf-example-strip{gap:6px}
+ .principles-deck .pf-card {padding:6px 4px}
+ .principles-deck .pf-card h3{font-size:13px}
+ .principles-deck .pf-card p{font-size:11px}
+ .principles-deck .pf-stage h3{font-size:12px}
+ .principles-deck .pf-stage .pf-stage-note{font-size:11px}
+ .principles-deck .pf-tensor {transform:scale(.55);margin:-26px;width:57px}
+ .principles-deck .pf-flow,.principles-deck .pf-pipeline{gap:3px}
+ .principles-deck .pf-arrow {font-size:18px}
+ .principles-deck .pf-workflow{gap:3px}
+ .principles-deck .pf-workflow .pf-card{min-height:90px}
+ .principles-deck .pf-workflow .pf-card:not(:last-child)::after{right:-8px;font-size:17px}
+ .principles-deck .pf-tilegrid{gap:1px}
+ .principles-intro .pf-cover {gap:6px}
+ .principles-intro .pf-cover .pf-cover-question{font-size:18px}
+}
