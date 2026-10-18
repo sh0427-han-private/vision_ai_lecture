@@ -23,6 +23,12 @@
 <header class="site-header"><nav class="nav"><a class="brand" href="intro.html#slide-1">Vision AI Lecture</a></nav></header>
 <main class="deck" aria-live="polite">
 <section class="slide active" data-concept="task" data-level="basic"><div class="slide-inner two-hour "><h2 class="slide-title">같은 사진, 다른 질문과 정답</h2><p class="slide-subtitle">사과의 갈색 반점을 결함으로 정했다고 가정합니다. 필요한 결과가 Task(해결할 과제)와 Label(학습용 정답)의 형태를 결정합니다.</p><div class="th-panes"><article><h3>Classification · 분류</h3><figure class="lesson-figure"><div class="figure-display"><img src="assets/vision_task_apple_reference.jpg" alt="공통 입력 사과 사진"></div></figure><p>사진 전체의 판정<br><strong>정상 / 결함 있음</strong></p></article><article><h3>Detection · 검출</h3><svg class="th-task-roi" viewBox="440 100 300 300" role="img" aria-label="동일 사과 사진의 반점 부위를 확대한 설명용 bbox"><image href="assets/vision_task_apple_reference.jpg" x="0" y="0" width="960" height="640"/><rect x="565" y="197" width="53" height="57" fill="none" stroke="#168975" stroke-width="5"/></svg><p>결함의 종류 + 위치<br><strong>경계 상자 · Box</strong></p></article><article><h3>Segmentation · 분할</h3><svg class="th-task-roi" viewBox="440 100 300 300" role="img" aria-label="동일 사과 사진의 반점 부위를 확대한 설명용 mask"><image href="assets/vision_task_apple_reference.jpg" x="0" y="0" width="960" height="640"/><path d="M581 201 C595 200 605 209 609 221 C614 234 606 244 594 246 C580 247 572 236 571 224 C568 213 574 204 581 201Z" fill="#2fa58b" fill-opacity=".6" stroke="#137b66" stroke-width="3"/></svg><p>결함의 세밀한 영역<br><strong>Pixel별 Mask</strong></p></article></div><p class="lesson-takeaway">Label은 사람이 정한 정답이고 Prediction은 모델의 예측입니다. 그림의 Box·Mask는 설명용 표시이며 실제 모델 출력이 아닙니다.</p></div></section>
+<section class="slide" data-concept="rules" data-topic="규칙과 학습" data-level="basic">
+<div class="slide-inner">
+<h2 class="slide-title">규칙 기반과 데이터 학습</h2>
+<p class="slide-subtitle">조명만 달라도 같은 결함을 찾아야 한다면, 색상 기준 하나로는 부족할 수 있습니다. 이 강의의 지도학습(Supervised Learning)은 데이터와 정답에서 판단 기준을 학습합니다.</p>
+<figure class="lesson-figure"><div class="figure-display"><img src="assets/lesson/rule_learning_comparison.svg?v=professional-20261006-2" alt="판단 기준을 사람이 쓰거나, 데이터에서 배웁니다"></div></figure>
+<p class="lesson-takeaway">AI는 큰 범주이고 머신러닝은 데이터로 기준을 학습하는 방식입니다. 딥러닝은 여러 층의 신경망을 사용하는 머신러닝입니다. 모든 머신러닝에 사람이 붙인 정답이 필요한 것은 아닙니다.</p></div></section>
 <section class="slide" data-concept="vision-evolution" data-level="basic">
 <div class="slide-inner two-hour"><h2 class="slide-title">지금 Vision AI는 어디까지 왔나?</h2>
 <p class="slide-subtitle">이미지를 숫자 규칙만으로 처리하던 방식에서, 정답 데이터로 학습한 모델과 사전학습 모델을 <strong>목적에 맞게 재사용</strong>하는 방식까지 발전했습니다.</p>
@@ -32,14 +38,8 @@
 <article><h3>③ 범용 사전학습 모델</h3><div class="vm-visual"><svg viewBox="440 100 300 300" role="img" aria-label="사과 작은 반점의 픽셀 영역을 강조한 교육용 Mask"><image href="assets/vision_task_apple_reference.jpg" width="960" height="640"/><path d="M581 201 C595 200 605 209 609 221 C614 234 606 244 594 246 C580 247 572 236 571 224 C568 213 574 204 581 201Z" fill="#2fa58b" fill-opacity=".60" stroke="#137b66" stroke-width="3"/></svg></div><p>예: SAM 2는 <strong>점·박스 지정으로 이미지/영상 영역</strong> 추출 가능</p></article>
 </div>
 <p class="lesson-takeaway"><strong>중요:</strong> 범용 모델이 사과의 새로운 결함을 자동으로 이해하는 것은 아닙니다. 원하는 결과가 나오는지 확인하고 부족하면 데이터·Label을 준비합니다.</p>
-<p class="vm-small">모든 그림은 기능을 설명하는 자체 개념도(실제 예측 아님). YOLO/SAM 2는 모델 계열 예시이며, 모델 종류와 Task는 동일한 개념이 아닙니다.</p>
+<p class="vm-small">모든 그림은 기능을 설명하는 자체 개념도(실제 예측 아님). YOLO/SAM 2는 모델 예시이며 Task와 구조는 다른 개념입니다. 최신 Vision AI에는 CNN뿐 아니라 Transformer 기반 모델도 있습니다. 이 강의에서는 CNN으로 이미지 특징 학습의 기본 원리를 배웁니다.</p>
 </div></section>
-<section class="slide" data-concept="rules" data-topic="규칙과 학습" data-level="basic">
-<div class="slide-inner">
-<h2 class="slide-title">규칙 기반과 데이터 학습</h2>
-<p class="slide-subtitle">조명만 달라도 같은 결함을 찾아야 한다면, 색상 기준 하나로는 부족할 수 있습니다. 이 강의의 지도학습(Supervised Learning)은 데이터와 정답에서 판단 기준을 학습합니다.</p>
-<figure class="lesson-figure"><div class="figure-display"><img src="assets/lesson/rule_learning_comparison.svg?v=professional-20261006-2" alt="판단 기준을 사람이 쓰거나, 데이터에서 배웁니다"></div></figure>
-<p class="lesson-takeaway">AI는 큰 범주이고 머신러닝은 데이터로 기준을 학습하는 방식입니다. 딥러닝은 여러 층의 신경망을 사용하는 머신러닝입니다. 모든 머신러닝에 사람이 붙인 정답이 필요한 것은 아닙니다.</p></div></section>
 <section class="slide" data-concept="model-choice" data-level="basic"><div class="slide-inner two-hour"><h2 class="slide-title">첫 선택 · 어떤 모델을 쓸까?</h2><p class="slide-subtitle">사과를 알아보는 모델이 작은 결함까지 알아보는 것은 아닙니다. 필요한 결과부터 확인합니다.</p><div class="principle-figure pf-three">
 <article class="pf-card pf-card--input"><h3>① 간단한 규칙</h3><div class="pf-head">갈색 영역 규칙<br>↓<br>밝기에도 안정적인가?</div><p>조명·크기가 바뀌어도 기준이 잘 통한다면<br><strong>규칙부터 시험</strong></p></article>
 <article class="pf-card "><h3>② 기존 모델</h3><div class="pf-head">사전학습 모델<br>↓<br>“사과” ≠ “결함 있음”</div><p>내가 원하는 <strong>정상/불량</strong>을 이미 구분한다면<br><strong>바로 추론</strong></p></article>
@@ -220,12 +220,6 @@
 <article class="pf-card "><h3>정답과 비교</h3><strong class="pf-number">y=4</strong><p>Loss=(1−4)²=9</p></article><span class="pf-arrow">→</span>
 <article class="pf-card "><h3>Gradient로 갱신</h3><strong class="pf-number">w=1.7</strong><p>학습률 0.1<br>w′=0.5−0.1×(−12)</p></article><span class="pf-arrow">→</span>
 <article class="pf-card pf-card--output"><h3>오차 감소</h3><strong class="pf-number">ŷ=3.4</strong><p>Loss=(3.4−4)²=0.36</p></article></div><p class="pf-caption">이 예시는 입력 x=2, 정답 y=4, Bias 0, 제곱 오차를 쓰는 <strong>교육용 회귀</strong> 문제입니다. 사과 결함 분류는 다른 Loss를 사용할 수 있습니다.</p><p class="lesson-takeaway">역전파(Backpropagation)는 각 Weight에 대한 Gradient를 계산하고, Optimizer는 그 값을 이용해 <strong>Weight를 갱신</strong>합니다.</p></div></section>
-<section class="slide" data-concept="infer" data-topic="Training과 Inference" data-level="basic">
-<div class="slide-inner">
-<h2 class="slide-title">Training과 Inference의 차이</h2>
-<p class="slide-subtitle">Inference(추론)는 학습된 모델에 새 입력을 넣어 결과를 얻는 과정입니다. 정답 없이도 예측할 수 있습니다.</p>
-<figure class="lesson-figure"><div class="figure-display"><img src="assets/lesson/training_inference_basic.svg?v=professional-20261006-2" alt="배울 때는 Weight를 바꾸고, 사용할 때는 고정합니다"></div></figure>
-<p class="lesson-takeaway">추론 과정 자체는 새로운 데이터로 가중치를 학습하는 과정이 아닙니다.</p></div></section>
 <section class="slide" data-concept="cnn-training" data-topic="CNN 학습" data-level="basic">
 <div class="slide-inner two-hour"><h2 class="slide-title">CNN 학습 구조 · Kernel이 바뀌는 과정</h2>
 <p class="slide-subtitle">사과 사진으로 예측한 뒤 정답 Label과 비교합니다. Loss의 Gradient를 역전파(Backpropagation)해 <strong>Kernel과 Head의 Weight를 갱신</strong>합니다.</p>
@@ -233,6 +227,12 @@
 <p class="vm-training-caption">위쪽은 예측을 만드는 <strong>Forward</strong>, 아래쪽은 오차를 계산해 가중치를 바꾸는 <strong>Backward</strong> 경로입니다. 사진·정답의 형식은 Task에 따라 달라집니다.</p>
 <p class="lesson-takeaway">학습: <strong>예측 → Loss → Gradient → Weight 갱신</strong>을 반복합니다. 추론(Inference): 학습한 Weight를 고정한 채 새 사진을 처리합니다.</p>
 </div></section>
+<section class="slide" data-concept="infer" data-topic="Training과 Inference" data-level="basic">
+<div class="slide-inner">
+<h2 class="slide-title">Training과 Inference의 차이</h2>
+<p class="slide-subtitle">Inference(추론)는 학습된 모델에 새 입력을 넣어 결과를 얻는 과정입니다. 정답 없이도 예측할 수 있습니다.</p>
+<figure class="lesson-figure"><div class="figure-display"><img src="assets/lesson/training_inference_basic.svg?v=professional-20261006-2" alt="배울 때는 Weight를 바꾸고, 사용할 때는 고정합니다"></div></figure>
+<p class="lesson-takeaway">추론 과정 자체는 새로운 데이터로 가중치를 학습하는 과정이 아닙니다.</p></div></section>
 <section class="slide" data-concept="transfer" data-topic="Freeze와 Fine-tuning" data-level="detail">
 <div class="slide-inner">
 <h2 class="slide-title">전이학습 · 고정과 미세 조정</h2>
