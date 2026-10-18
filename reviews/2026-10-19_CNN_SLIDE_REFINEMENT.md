@@ -37,7 +37,7 @@
 - `docs/intro.html`, `docs/vision_motivation.css`: I13 사진 변형과 표현 수정.
 - `docs/vision_ai_course.html`: C5/C7–8/C11–18/C24–25/C28/C30 재구성. 기타 55장 순서와 인접 슬라이드 논리는 보존.
 - `docs/cnn_lecture_refinement.css`(신규): 모든 Gate, 행렬, Padding, CNN 구조·학습·Freeze, Preprocessing/Augmentation Figure에만 적용되는 스코프 CSS.
-- `docs/two_hour_manifest.json` / `docs/lecture_outline.js`: 55장 전체 새 물리적 번호와 9시간블록(합계 110분) 동기화.
+- `docs/two_hour_manifest.json` / `docs/lecture_outline.js`: 55장 전체 새 물리적 번호와 9개 시간 블록(합계 110분) 동기화.
 - `README.md`, `TWO_HOUR_LECTURE_PLAN.md`, `PROJECT_GUIDE.md`, `TODO_VISION_AI_LECTURE.md`: 현행 개수/번호/시간표, 이번 수정을 반영.
 - `scripts/verify_two_hour_course.py`, `scripts/verify_learning_routes.py`, `scripts/audit_visual_slides.py`: 55장, 별도 AND/XOR, Padding/전이학습 Layout, 외부 원본 Zebra + Fallback 조건 점검.
 
