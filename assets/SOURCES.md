@@ -479,3 +479,10 @@ https://www.nature.com/articles/s42256-020-00257-z
 - 20번: NAND와 OR 은닉 뉴런 → AND 출력 뉴런으로 XOR를 구성합니다. 모든 게이트는 Step(z)=1 if z≥0 else 0을 사용합니다. 17번 Affine 합성, 19번 ReLU, 21번 신경망 구조는 보존합니다.
 - 참고: WikiDocs https://wikidocs.net/60680 . 원본 이미지를 복사하지 않고 구조를 참고하여 한국어 SVG를 자체 작성했습니다. 원본 이미지 파일은 사용하지 않으므로 강의 화면에는 외부 이미지 출처를 추가하지 않았습니다.
 - 신규 자산: perceptron_gate_structure_ko.svg, and_xor_gate_geometry_ko.svg, xor_multilayer_gates_ko.svg. Intro 19장 + 통합 49장 = 전체 68장 유지.
+
+
+## 2026-10-18 · Intro Computer Vision 난점 생성 사진
+- `docs/assets/generated/intro_chair_diversity.webp`: 서로 다른 네 의자를 비교하는 ImageGen 생성 사진. Intro 9번.
+- `docs/assets/generated/intro_inspection_relevant_change.webp`: 균열 없는 표면/그림자 표면/균열 표면의 ImageGen 생성 개념 사진. Intro 10번.
+- 외부 사진을 재사용하지 않았습니다. 실제 검사·측정·모델 예측 이미지가 아닙니다. PNG 생성 원본을 같은 픽셀 크기 WebP로 인코딩하여 웹 강의에 사용했습니다.
+- 생성 방식: built-in image_gen. 프롬프트 전문: `assets/intro_challenges_generation.md`.

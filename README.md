@@ -28,9 +28,9 @@ Vision AI를 처음 접하는 사람도 **현실 세계 → Sensor → 숫자 �
 
 **[Vision AI Lecture · Intro 1번부터 보기](https://sh0427-han.github.io/vision_ai_lecture/)**
 
-사이트 주소를 열면 Intro의 첫 슬라이드가 바로 표시됩니다. **Intro 19장 → Vision AI를 중심으로 AI 원리를 필요한 위치에 배치한 통합 강의 49장**, 총 **68장**을 순서대로 학습합니다. AI Basics를 먼저 모두 설명하지 않고, Vision Task → CNN을 쓰는 이유·실제 Feature Map → Kernel·비선형성·AND/XOR → Stride·Padding·Max Pooling의 숫자 변화 → 데이터·평가로 이어집니다.
+사이트 주소를 열면 Intro의 첫 슬라이드가 바로 표시됩니다. **Intro 21장 → Vision AI를 중심으로 AI 원리를 필요한 위치에 배치한 통합 강의 49장**, 총 **70장**을 순서대로 학습합니다. AI Basics를 먼저 모두 설명하지 않고, Vision Task → CNN을 쓰는 이유·실제 Feature Map → Kernel·비선형성·AND/XOR → Stride·Padding·Max Pooling의 숫자 변화 → 데이터·평가로 이어집니다.
 
-왼쪽 상단의 **☰ 강의 목차**를 클릭하면 68개 슬라이드가 주제별로 표시되어 원하는 장으로 바로 이동할 수 있습니다. 목차 버튼을 다시 누르거나 **✕ 닫기**, 패널 바깥 클릭, **Esc** 키로 목차를 숨길 수 있습니다.
+왼쪽 상단의 **☰ 강의 목차**를 클릭하면 70개 슬라이드가 주제별로 표시되어 원하는 장으로 바로 이동할 수 있습니다. 목차 버튼을 다시 누르거나 **✕ 닫기**, 패널 바깥 클릭, **Esc** 키로 목차를 숨길 수 있습니다.
 
 ## 강의 슬라이드 안에서 직접 확인하는 Interactive Figure
 
@@ -150,7 +150,7 @@ vision_ai_lecture/
 
 ## Web Lecture
 
-정적 강의 사이트는 [Intro 1번](https://sh0427-han.github.io/vision_ai_lecture/)에서 바로 시작합니다. Intro 19장 → [통합 Vision AI 강의 49장](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html), 총 68장입니다. 기존 [AI Basics](docs/ai_basics.html) 및 [Vision AI](docs/vision_ai.html) 개별 슬라이드는 이전 직접 링크의 호환성을 위해 원본으로 유지합니다.
+정적 강의 사이트는 [Intro 1번](https://sh0427-han.github.io/vision_ai_lecture/)에서 바로 시작합니다. Intro 21장 → [통합 Vision AI 강의 49장](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html), 총 70장입니다. 기존 [AI Basics](docs/ai_basics.html) 및 [Vision AI](docs/vision_ai.html) 개별 슬라이드는 이전 직접 링크의 호환성을 위해 원본으로 유지합니다.
 
 디자인은 **흰색 배경, 한 화면 한 슬라이드, 최소한의 포인트 컬러**를 기본으로 합니다.
 
@@ -162,4 +162,4 @@ vision_ai_lecture/
 
 ### 최신 초급자 CNN 학습 순서
 
-통합 8번에서는 **이미지의 국소 연결·가중치 공유 때문에 CNN을 쓰는 이유**를 비교합니다. 16~21번은 **퍼셉트론의 Wx+b와 계단 활성화 → 활성화 없는 다층 계산의 단층 동등성 → AND/XOR 결정 경계 → ReLU로 XOR 계산 → 신경망 구조**을 설명합니다. 26~28번에서는 Stride·Padding·Max Pooling을 사진 처리 결과가 아니라 **숫자 배열의 Input → Output**으로 비교하여 왜 쓰고 데이터 크기·값이 어떻게 변하는지 보여줍니다. YOLO 관련 중복 설명 5장은 제거하고 Kernel 비교는 일반 CNN 중심으로 바꿨습니다. **Intro 19장 + 통합 49장 = 총 68장**입니다.
+통합 8번에서는 **이미지의 국소 연결·가중치 공유 때문에 CNN을 쓰는 이유**를 비교합니다. 16~21번은 **퍼셉트론의 Wx+b와 계단 활성화 → 활성화 없는 다층 계산의 단층 동등성 → AND/XOR 결정 경계 → ReLU로 XOR 계산 → 신경망 구조**을 설명합니다. 26~28번에서는 Stride·Padding·Max Pooling을 사진 처리 결과가 아니라 **숫자 배열의 Input → Output**으로 비교하여 왜 쓰고 데이터 크기·값이 어떻게 변하는지 보여줍니다. YOLO 관련 중복 설명 5장은 제거하고 Kernel 비교는 일반 CNN 중심으로 바꿨습니다. **Intro 21장 + 통합 49장 = 총 70장**입니다.
