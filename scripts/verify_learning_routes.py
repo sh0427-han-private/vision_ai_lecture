@@ -33,8 +33,8 @@ def main():
   toc=page.locator('.lecture-toc-sections');toc.hover(position={'x':100,'y':170})
   page.mouse.wheel(0,540)
   page.wait_for_function("()=>document.querySelector('.lecture-toc-sections').scrollTop>0")
-  position(page,'intro',1,11)
-  page.keyboard.press('PageDown');position(page,'intro',1,11)
+  position(page,'intro',1,DECKS[0][1])
+  page.keyboard.press('PageDown');position(page,'intro',1,DECKS[0][1])
   page.keyboard.press('Escape')
   assert page.locator('#lecture-toc-drawer').get_attribute('aria-hidden')=='true'
   # Open the containing chapter and use a real TOC link across pages.
@@ -93,7 +93,7 @@ def main():
   page.click('[data-slide-prev]');position(page,'intro',DECKS[0][1],DECKS[0][1])
   page.goto(BASE+'/vision_ai_course.html?mode=core#slide-21');position(page,'vision_ai_course',21,COURSE_TOTAL)
   assert 'mode=core' not in page.url
-  page.click('header a.brand');position(page,'intro',1,11)
+  page.click('header a.brand');position(page,'intro',1,DECKS[0][1])
   page.set_viewport_size({'width':390,'height':844})
   page.click('.lecture-toc-toggle')
   assert page.locator('#lecture-toc-drawer').get_attribute('aria-hidden')=='false'
