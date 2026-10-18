@@ -36,14 +36,16 @@
 ## 3. Course 새 장 번호
 
 - **1** Task의 의미와 Class/Box/Mask
-- **2 [신규]** Vision AI가 발전한 방식: 규칙/Task별 학습 모델/범용 사전학습
-- **3–4** 규칙·지도학습과 모델 선택
+- **2** 규칙 vs 지도학습: 사진 조건이 바뀌어도 같은 Label을 배우는 이유
+- **3 [신규]** Vision AI가 발전한 방식: 규칙/Task별 학습 모델/범용 사전학습
+- **4** 현재 모델 선택: 규칙·사전학습·추가 학습 중 무엇을 먼저 시험할지
 - **5 [신규]** 목적/모델/Label/데이터 선택: Classification, Detection, Segmentation, Anomaly Detection
 - **6–9** Perceptron, AND/XOR, ReLU, 비선형성
 - **10–19** CNN 구조·Kernel·Feature Map·Weight Sharing·채널·Stride/Padding/Pooling·실제 Feature Map·Backbone/Head
 - **20–24** 데이터·Train/Validation/Test·Group Split·Preprocessing/Augmentation
-- **25–27** 학습 실습, Loss/Gradient, Training vs Inference
-- **28 [Figure 교체]** CNN의 Forward → Loss → Backward → Weight 갱신 구조
+- **25–26** 학습 실습과 Loss/Gradient
+- **27 [Figure 교체]** CNN의 Forward → Loss → Backward → Weight 갱신 구조
+- **28** Training vs Inference: 학습 후 새 사진에 사용
 - **29–31** 전이학습, Batch/Step/Epoch, Overfitting
 - **32–36** Score Threshold, Confusion Matrix, Accuracy 함정, Precision/Recall, IoU
 - **37–41** 원리 회수, 과제 질문, 교육용 임계값 결과, 실패 조건, 최종 복습
@@ -69,7 +71,7 @@ Intro는 **3번(필요성)**, **13번(왜 어려운가·종합)**을 새로 추�
 
 - C10의 큰 Architecture를 10초 보여 준 뒤, C11–19에서 “무슨 블록을 확대해서 보는가”를 직접 가리키며 설명한다.
 - C11–12는 같은 교육용 5×5/3×3 숫자 (좌상단 −6, 다음 칸 12); 실제 사과 JPEG 숫자와 혼동하지 않는다.
-- C28의 새 그림은 **사과 RGB → Kernel → Feature Map → Task Head → Prediction**(Forward)와 **Label + Prediction → Loss → Gradient/Optimizer → Weight 갱신**(Backward)을 두 층으로 보여준다. CNN 학습 전체가 꼭 그 특정 Tensor 크기/2 Class로 고정된 것은 아니다.
+- C27의 새 그림은 **사과 RGB → Kernel → Feature Map → Task Head → Prediction**(Forward)와 **Label + Prediction → Loss → Gradient/Optimizer → Weight 갱신**(Backward)을 두 층으로 보여준다. CNN 학습 전체가 꼭 그 특정 Tensor 크기/2 Class로 고정된 것은 아니다.
 - C25의 수치 회귀는 CNN이 실제로 결함을 학습한 결과가 아니다. 가중치 갱신의 최소 개념 예시다.
 - 학습 중 Gradient와 Weight를 바꾸지만 **추론**에서는 고정된 Weight로 새 사진을 분석한다.
 
