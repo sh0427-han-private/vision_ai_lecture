@@ -1,14 +1,14 @@
 # TODO · Vision AI 원리 중심 강의 — 남은 작업
 
-> **현재 활성 작업 목록(Single Source of Truth)** · 2026-10-18 · 이전 50장 기준: `main` PR [#101](https://github.com/sh0427-han/vision_ai_lecture/pull/101), merge `58806da87f9206a1bef579055edca778c72465ce`  
+> **현재 활성 작업 목록(Single Source of Truth)** · 2026-10-19 · 최신 강의 기준: `docs/two_hour_manifest.json` (과거 최초 개편 PR [#101](https://github.com/sh0427-han/vision_ai_lecture/pull/101)은 이력)  
 > **강의 목표 A:** Vision AI를 처음 접하는 수강생이 **Pixel → CNN 특징 추출 → Loss/Weight 학습 → 독립 평가**를 그림으로 설명할 수 있도록 구성한다.  
-> **공개 강의:** Intro **11장** + `vision_ai_course.html` **39장** = **50장** / 원리·활동 **110분** + 질의·복습 **10분**.  
+> **공개 강의:** Intro **13장** + `vision_ai_course.html` **42장** = **55장** / 원리·활동 **110분** + 질의·복습 **10분**.  
 > **이 문서는 앞으로 할 일만 추적한다.** 과거 진단 보고서의 옛 슬라이드 번호를 그대로 실행하지 않는다. `data-concept`와 현재 `docs/two_hour_manifest.json`을 사용한다.
 
 > **후속 작업 상태:** P0·P1 및 로컬 QA-01~03 완료. 작업 브랜치의 검증이며 main 배포 완료가 아닙니다. [구현·검증 기록](reviews/2026-10-18_VISION_AI_TODO_IMPLEMENTATION.md)을 참고하세요. QA-04 중 main 병합과 Pages 배포 성공을 확인했습니다. 공개 URL 직접 검증 및 현장 리허설은 남았습니다. 사용자의 후속 요청으로 PR API 대신 Git 병합·push를 승인받았습니다.
 
 > [!IMPORTANT]
-> **현행 활성 기준 (2026-10-19 추가 개편): Intro 13장 + Course 42장 = 총 55장.** 이 파일의 아래 50장 P0/P1 체크는 **이전 PR에서 완료된 작업의 이력**입니다. 이후 새 수업 수정은 [54장 전체 내용·흐름 재검토](reviews/2026-10-18_VISION_AI_54_SLIDE_FLOW_REVIEW.md)의 신규 슬라이드 번호와 `docs/two_hour_manifest.json`을 기준으로 합니다. 새 54장 공개 배포·화면 QA는 아직 완료 처리하지 않습니다.
+> **현행 활성 기준 (2026-10-19 추가 개편): Intro 13장 + Course 42장 = 총 55장.** 이 파일의 아래 50장 P0/P1 체크는 **이전 PR에서 완료된 작업의 이력**입니다. 이전 54장 진단은 [54장 전체 내용·흐름 재검토](reviews/2026-10-18_VISION_AI_54_SLIDE_FLOW_REVIEW.md)의 신규 슬라이드 번호와 `docs/two_hour_manifest.json`을 기준으로 합니다. 새 55장 공개 배포·화면 QA는 아직 완료 처리하지 않습니다.
 
 ## 2026-10-19 · CNN 그림·게이트 단계학습 수정 후 미완료 검증
 
