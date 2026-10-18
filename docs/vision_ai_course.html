@@ -70,7 +70,7 @@
 <h2 class="slide-title">퍼셉트론 · Wx + b에서 판정까지</h2>
 <p class="slide-subtitle">모델 내부의 계산을 가장 작은 단위로 봅니다. 퍼셉트론은 입력에 가중치를 곱해 모으고, 기준에 따라 0 또는 1을 출력하는 인공 뉴런입니다.</p>
 <figure class="lesson-figure gate-reference-figure"><div class="figure-display"><img src="assets/lesson/perceptron_gate_structure_ko.svg?v=20261017-1" alt="입력과 가중치, 편향, 가중합 Σ, Step 활성화와 출력의 연결"></div></figure><div class="nb-equation-summary"><span><strong>w</strong> : 입력의 영향과 방향</span><span><strong>b</strong> : 판정 기준 조정</span><span><strong>z = Wx + b</strong> : 판정 전 점수</span></div>
-<p class="nb-takeaway">고정 입력 1에 b를 곱하면 편향이 더해집니다. <strong>Wx+b 계산과 Step 판정을 합친 것이 퍼셉트론</strong>입니다. 위 예시는 AND 게이트입니다.</p>
+<p class="nb-takeaway">고정 입력 1에 b를 곱하면 편향이 더해집니다. <strong>Wx+b 계산과 Step 판정을 합친 것이 퍼셉트론</strong>입니다. 위 예시는 두 입력이 모두 1일 때만 1을 출력하는 AND 게이트입니다.</p>
 </div></section>
 <section class="slide" data-concept="affine-net" data-level="basic"><div class="slide-inner two-hour th-network"><h2 class="slide-title">여러 층을 거치는 두 입력</h2><p class="slide-subtitle">뉴런을 연결한 Neural Network(신경망)입니다. 입력층과 계산층을 구분하고, 우선 활성화 없이 곱셈과 덧셈만 해 봅니다.</p><div class="nb-main-figure"><svg class="nb-network-svg" viewBox="0 0 1080 270" role="img" aria-label="2 → 3 → 2 → 1 뉴런의 완전 연결 신경망. 입력 x1=1, x2=2에서 은닉층 1은 4,0,3, 은닉층 2는 7,11, 합산 출력은 18이다. 활성화 함수는 없다.">
 <g font-family="sans-serif" text-anchor="middle" font-size="24" font-weight="750" fill="#315b70">
@@ -83,7 +83,7 @@
 <section class="slide" data-concept="and-xor" data-topic="AND와 XOR" data-level="basic">
 <div class="slide-inner neuron-story concept-lab">
 
-<h2 class="slide-title">AND와 XOR · 직선으로 구분할 수 있을까?</h2><p class="slide-subtitle">같은 네 가지 입력을 넣어도 정답 배치가 다릅니다. 녹색 점은 출력 1, 회색 점은 출력 0입니다.</p>
+<h2 class="slide-title">AND와 XOR · 직선으로 구분할 수 있을까?</h2><p class="slide-subtitle">AND는 두 입력이 모두 1일 때, XOR는 두 입력이 서로 다를 때 1입니다. 녹색 점은 출력 1, 회색 점은 출력 0입니다.</p>
 <div class="gate-geometry-layout"><figure class="lesson-figure gate-reference-figure"><div class="figure-display"><img src="assets/lesson/and_xor_gate_geometry_ko.svg?v=20261017-1" alt="AND Gate는 직선으로 구분 가능하고 XOR Gate는 대각선에 같은 클래스가 있어 구분 불가능"></div></figure><table class="gate-truth"><thead><tr><th>x₁</th><th>x₂</th><th>AND</th><th>XOR</th></tr></thead><tbody><tr><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr><td>0</td><td>1</td><td>0</td><td>1</td></tr><tr><td>1</td><td>0</td><td>0</td><td>1</td></tr><tr><td>1</td><td>1</td><td>1</td><td>0</td></tr></tbody></table></div><p class="gate-formula">AND: z = 0.5x₁ + 0.5x₂ − 0.7 · 경계 z=0 ⇔ x₁+x₂ = 1.4</p>
 <p class="nb-takeaway">AND는 직선 하나로 0과 1을 나눕니다. <strong>XOR는 어떤 가중치·편향을 골라도 단일 퍼셉트론으로 분리할 수 없습니다.</strong></p>
 </div></section>
@@ -141,7 +141,7 @@
 <div class="slide-inner cnn-real-featuremaps">
 
 <h2 class="slide-title">실제 Feature Map · CNN 내부 반응</h2>
-<p class="slide-subtitle">같은 강아지 사진을 사전학습 CNN에 넣었을 때 만들어진 실제 Feature Map입니다. 처음에는 위치·윤곽이 비교적 유지되고 뒤로 갈수록 반응은 추상적이고 공간 크기는 작아집니다.</p>
+<p class="slide-subtitle">실제 모델의 내부 반응을 확인하기 위해 공개 강아지 사진을 이미 학습된 CNN에 입력했습니다. 같은 사진에서도 층과 채널에 따라 다른 Feature Map이 만들어집니다.</p>
 <figure class="lesson-figure cnn-real-image"><div class="figure-display"><img src="assets/lesson/cnn_squeezenet_actual_feature_maps.png?v=cnn-actual-20261016-1" alt="동일 강아지 사진의 실제 SqueezeNet1.1 활성화 지도. 얕은층 111×111×64, 중간층 27×27×256, 깊은층 13×13×512 중 각 네 채널을 선택하여 원본 입력 사진과 비교한 계산 결과"></div></figure>
 <p class="lesson-takeaway">얕은 층도 RGB 사진을 그대로 복사하지 않습니다. 각 채널은 학습한 특징에 대한 <strong>위치별 반응값</strong>이며, 채널별 색상 강도는 보기 쉽게 별도로 조정했습니다.</p>
 <p class="lesson-source">직접 계산: <a href="https://pytorch.org/vision/stable/models/generated/torchvision.models.squeezenet1_1.html" target="_blank" rel="noopener">torchvision SqueezeNet 1.1 · ImageNet 사전학습</a> · <a href="https://github.com/sh0427-han/vision_ai_lecture/blob/main/scripts/render_cnn_feature_maps.py" target="_blank" rel="noopener">재현 코드</a> · 입력 사진: <a href="https://cs231n.stanford.edu/slides/2017/cs231n_2017_lecture5.pdf" target="_blank" rel="noopener">Stanford CS231n 2017 Lecture 5</a>. 채널 4개만 선택, 색상은 채널별 상대값으로 정규화했습니다. 이 그림의 색은 채널 사이의 절대 반응 크기 비교에 사용할 수 없습니다.</p>
@@ -186,13 +186,13 @@
 <section class="slide" data-concept="preprocess" data-topic="전처리" data-level="basic">
 <div class="slide-inner scientific-photo">
 <h2 class="slide-title">Preprocessing · 입력 규격 맞추기</h2>
-<p class="slide-subtitle">동일 사진을 강제로 정사각형으로 늘린 결과와 비율을 유지한 Letterbox를 비교합니다.</p>
+<p class="slide-subtitle">입력 규격을 맞추는 전처리(Preprocessing)입니다. 앞의 강아지 사진을 정사각형으로 늘린 결과와, 비율을 유지하고 빈 공간을 채운 Letterbox를 비교합니다.</p>
 <figure class="lesson-figure scientific-photo-figure"><div class="figure-display"><img src="assets/lesson/cnn_real_preprocess_dog.png?v=real-vision-20261016-1" alt="Preprocessing · 입력 규격 맞추기: 같은 실사 사진을 NumPy와 Pillow로 연산한 출력 비교"></div></figure>
 <p class="lesson-takeaway">비율을 고려하지 않은 Resize는 객체 형태를 왜곡합니다. 전처리에서는 크기뿐 아니라 색 채널의 순서와 숫자의 범위도 학습 때와 동일하게 맞춥니다.</p><p class="lesson-source">출처: <a href="https://cs231n.stanford.edu/slides/2017/cs231n_2017_lecture5.pdf" target="_blank" rel="noopener">Stanford CS231n (2017) 강아지 원본 사진</a> · <a href="https://github.com/sh0427-han/vision_ai_lecture/blob/main/scripts/render_real_vision_examples.py" target="_blank" rel="noopener">NumPy/Pillow 계산 재현 코드</a> · 실제 이미지 연산 결과 (CNN 학습 출력 아님)</p></div></section>
 <section class="slide" data-concept="augment" data-topic="Data Augmentation" data-level="basic">
 <div class="slide-inner scientific-photo">
 <h2 class="slide-title">Data Augmentation · 조건 변화 만들기</h2>
-<p class="slide-subtitle">동일 강아지 사진에 밝기·회전·가림을 실제 적용했습니다. 그림은 학습 결과가 아니라 입력 데이터의 변화입니다.</p>
+<p class="slide-subtitle">데이터 증강(Data Augmentation)은 학습 입력에 다양한 조건을 만드는 방법입니다. 같은 강아지 사진에 밝기·회전·가림을 적용한 실제 연산 결과를 비교합니다.</p>
 <figure class="lesson-figure scientific-photo-figure"><div class="figure-display"><img src="assets/lesson/cnn_real_augment_dog.png?v=real-vision-20261016-1" alt="Data Augmentation · 조건 변화 만들기: 같은 실사 사진을 NumPy와 Pillow로 연산한 출력 비교"></div></figure>
 <p class="lesson-takeaway">변환 후에도 Label이 맞아야 합니다. 결함을 가리거나 지워서는 안 되고, 색이 판정 기준이면 색상 변환도 제한합니다. 그림은 같은 강아지 사진에 실제 변환을 적용한 연산 예시입니다.</p><p class="lesson-source">출처: <a href="https://cs231n.stanford.edu/slides/2017/cs231n_2017_lecture5.pdf" target="_blank" rel="noopener">Stanford CS231n (2017) 강아지 원본 사진</a> · <a href="https://github.com/sh0427-han/vision_ai_lecture/blob/main/scripts/render_real_vision_examples.py" target="_blank" rel="noopener">NumPy/Pillow 계산 재현 코드</a> · 실제 이미지 연산 결과 (CNN 학습 출력 아님)</p></div></section>
 <section class="slide" data-concept="threshold" data-topic="Threshold" data-level="basic">

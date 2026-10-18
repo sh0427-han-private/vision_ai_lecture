@@ -69,3 +69,8 @@ for deck in ['intro','vision_ai_course','ai_basics','vision_ai']:
 for a in ['perceptron_gate_structure_ko','and_xor_gate_geometry_ko','xor_multilayer_gates_ko']:
  ET.parse(D/'assets/lesson'/f'{a}.svg')
 print('TWO_HOUR_QA_PASSED: 46 slides, 110+10 minutes, prerequisites, shared numeric examples, local assets and static figures')
+
+# Open feedback paths must not render as a solid filled blob.
+root=ET.parse(D/'assets/lesson/context_cnn_training.svg').getroot()
+feedback=root.find(".//{http://www.w3.org/2000/svg}path[@d='M1060 320C1060 440 375 440 375 320']")
+assert feedback is not None and feedback.get('fill')=='none'
