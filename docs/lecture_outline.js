@@ -1,6 +1,6 @@
 /* Public course: Intro 19, Vision AI integrated 49; total 68 slides. */
 window.LECTURE_OUTLINE = {
-  "version": "20261017-gate-story-49",
+  "version": "20261018-two-input-intro-order-49",
   "groups": [
     {
       "name": "Intro · 시각의 중요성에서 숫자까지",
@@ -20,67 +20,67 @@ window.LECTURE_OUTLINE = {
         {
           "page": "intro.html",
           "slide": 3,
-          "title": "일상 속 Vision 기술",
+          "title": "시각 이해 · What과 Where",
           "global": 3
         },
         {
           "page": "intro.html",
           "slide": 4,
-          "title": "사진 속 객체 인식",
+          "title": "일상 속 Vision 기술",
           "global": 4
         },
         {
           "page": "intro.html",
           "slide": 5,
-          "title": "사람의 의미 인식 vs Pixel 숫자",
+          "title": "사진 속 객체 인식",
           "global": 5
         },
         {
           "page": "intro.html",
           "slide": 6,
-          "title": "조명·색감에 따른 Pixel 변화",
+          "title": "사람의 의미 인식 vs Pixel 숫자",
           "global": 6
         },
         {
           "page": "intro.html",
           "slide": 7,
-          "title": "시점·회전·가림·초점 변화",
+          "title": "조명·색감에 따른 Pixel 변화",
           "global": 7
         },
         {
           "page": "intro.html",
           "slide": 8,
-          "title": "위치 변화와 Pixel 배열",
+          "title": "시점·회전·가림·초점 변화",
           "global": 8
         },
         {
           "page": "intro.html",
           "slide": 9,
-          "title": "RGB · Pixel당 세 숫자",
+          "title": "위치 변화와 Pixel 배열",
           "global": 9
         },
         {
           "page": "intro.html",
           "slide": 10,
-          "title": "RGB 이미지와 숫자 배열",
+          "title": "RGB · Pixel당 세 숫자",
           "global": 10
         },
         {
           "page": "intro.html",
           "slide": 11,
-          "title": "해상도와 Pixel 수",
+          "title": "RGB 이미지와 숫자 배열",
           "global": 11
         },
         {
           "page": "intro.html",
           "slide": 12,
-          "title": "해상도에 따른 정보 차이",
+          "title": "해상도와 Pixel 수",
           "global": 12
         },
         {
           "page": "intro.html",
           "slide": 13,
-          "title": "시각 이해 · What과 Where",
+          "title": "해상도에 따른 정보 차이",
           "global": 13
         },
         {

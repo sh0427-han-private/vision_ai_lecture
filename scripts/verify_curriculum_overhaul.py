@@ -163,7 +163,7 @@ assert "lecture-toc-drawer" in (DOCS / "lecture_sidebar.js").read_text("utf-8")
 
 # Numerical convolution, padding, max pooling, AND/XOR must all be correct.
 for idx, phrase in [
-    (7,"1,048,576"), (16,"6x + 3"), (17,"AND Gate"),
+    (7,"1,048,576"), (16,"x₁ + 7x₂ + 3"), (17,"AND Gate"),
     (19,"xor_multilayer_gates_ko"), (25,"3×3 = 9칸"), (26,"3×3 → 1×1"),
     (27,"4×4 (16칸) → 2×2")
 ]:
@@ -174,7 +174,7 @@ assert "기울기" not in course_slides[17], "Gate slide is geometry, not gradie
 assert "y = z₁ + z₂" in course_slides[16]
 assert "neuron_concept_flow.css?v=20261017-3" in course_page
 assert "z = Wx + b" in course_slides[15]
-assert "1 → 2 → 2 → 1 뉴런" in course_slides[16]
+assert "2 → 3 → 2 → 1 뉴런" in course_slides[16]
 assert "W₂φ(W₁x+b₁)+b₂" in course_slides[20]
 assert "perceptron_gate_structure_ko" in course_slides[15]
 assert "nb-network-numbers" in course_slides[16]
@@ -474,49 +474,49 @@ intro_slides = re.findall(
 assert len(intro_slides) == 19
 assert "AI와 시각의 출발점" in intro_slides[0]
 assert "사람의 시각 · 장면 이해" in intro_slides[1]
-assert "일상 속 Vision 기술" in intro_slides[2]
+assert "일상 속 Vision 기술" in intro_slides[3]
 assert "assets/intro_photos/perspective.webp" in intro_slides[1]
 for photo in ("cctv.webp", "robot.webp", "thermal.webp"):
-    assert f"assets/intro_photos/{photo}" in intro_slides[2]
-assert "사진 속 객체 인식" in intro_slides[3]
-assert "사람의 의미 인식 vs Pixel 숫자" in intro_slides[4]
-assert 'data-apple-matrix-bridge' in intro_slides[4]
-assert 'data-apple-matrix-grid' in intro_slides[4]
-assert 'assets/vision_task_apple_reference.jpg' in intro_slides[3]
+    assert f"assets/intro_photos/{photo}" in intro_slides[3]
+assert "사진 속 객체 인식" in intro_slides[4]
+assert "사람의 의미 인식 vs Pixel 숫자" in intro_slides[5]
+assert 'data-apple-matrix-bridge' in intro_slides[5]
+assert 'data-apple-matrix-grid' in intro_slides[5]
 assert 'assets/vision_task_apple_reference.jpg' in intro_slides[4]
-assert "Vision AI가 어려운 이유:" in intro_slides[4]
-assert "“아, 사과구나!”" in intro_slides[4]
-assert "“?! 그냥 숫자 배열이네”" in intro_slides[4]
-assert "조명·색감에 따른 Pixel 변화" in intro_slides[5]
-assert "시점·회전·가림·초점 변화" in intro_slides[6]
-assert 'class="iv-image iv-fov"' in intro_slides[6]
-assert "위치 변화와 Pixel 배열" in intro_slides[7]
-assert 'data-grayscale-lesson' in intro_slides[7]
-assert "RGB · Pixel당 세 숫자" in intro_slides[8]
-assert "RGB 이미지와 숫자 배열" in intro_slides[9]
-assert "640 × 960 ×" in intro_slides[9]
-assert "1,843,200" in intro_slides[9]
-assert "<strong>핵심:</strong>" not in intro_slides[9]
-assert "lecture_rgb_channel_stack.svg?v=rgb-total-20261016-1" in intro_slides[9]
-assert "해상도와 Pixel 수" in intro_slides[10]
-assert "더 세밀한 정보를 기록할 수 있습니다" in intro_slides[10]
-assert "해상도에 따른 정보 차이" in intro_slides[11]
-assert "저해상도 원본을 확대 저장해도" in intro_slides[11]
-assert "시각 이해 · What과 Where" in intro_slides[12]
+assert 'assets/vision_task_apple_reference.jpg' in intro_slides[5]
+assert "Vision AI가 어려운 이유:" in intro_slides[5]
+assert "“아, 사과구나!”" in intro_slides[5]
+assert "“?! 그냥 숫자 배열이네”" in intro_slides[5]
+assert "조명·색감에 따른 Pixel 변화" in intro_slides[6]
+assert "시점·회전·가림·초점 변화" in intro_slides[7]
+assert 'class="iv-image iv-fov"' in intro_slides[7]
+assert "위치 변화와 Pixel 배열" in intro_slides[8]
+assert 'data-grayscale-lesson' in intro_slides[8]
+assert "RGB · Pixel당 세 숫자" in intro_slides[9]
+assert "RGB 이미지와 숫자 배열" in intro_slides[10]
+assert "640 × 960 ×" in intro_slides[10]
+assert "1,843,200" in intro_slides[10]
+assert "<strong>핵심:</strong>" not in intro_slides[10]
+assert "lecture_rgb_channel_stack.svg?v=rgb-total-20261016-1" in intro_slides[10]
+assert "해상도와 Pixel 수" in intro_slides[11]
+assert "더 세밀한 정보를 기록할 수 있습니다" in intro_slides[11]
+assert "해상도에 따른 정보 차이" in intro_slides[12]
+assert "저해상도 원본을 확대 저장해도" in intro_slides[12]
+assert "시각 이해 · What과 Where" in intro_slides[2]
 assert "2D 이미지와 3D 공간의 모호함" in intro_slides[13]
-assert "to know what is where by looking" in intro_slides[12]
+assert "to know what is where by looking" in intro_slides[2]
 assert "Marr &amp; Nishihara (1978)" in intro_slides[13]
 assert "https://doi.org/10.1098/rspb.1978.0020" in intro_slides[13]
 assert "intro_inverse_2d_3d_ambiguity.svg?v=what-where-20261015-1" in intro_slides[13]
 assert "intro_vision_foundations.css?v=rgb-total-20261016-1" in intro_page
 assert "intro_vision_story.css?v=20261016-1" in intro_page
 assert (DOCS / "intro_vision_story.css").is_file()
-assert "640 × 960 × <span>3</span> = <strong>1,843,200</strong>" in intro_slides[9], "RGB numeric array count changed"
-assert "720 × 1280 × 3" in intro_slides[10], "resolution H × W × C changed"
-assert 'data-resolution-source="assets/generated/apple_studio.webp"' in intro_slides[11]
+assert "640 × 960 × <span>3</span> = <strong>1,843,200</strong>" in intro_slides[10], "RGB numeric array count changed"
+assert "720 × 1280 × 3" in intro_slides[11], "resolution H × W × C changed"
+assert 'data-resolution-source="assets/generated/apple_studio.webp"' in intro_slides[12]
 for p, w, h in ((360, 640, 360), (720, 1280, 720), (1080, 1920, 1080)):
-    assert f'data-resolution-p="{p}"' in intro_slides[11]
-    assert f'width="{w}" height="{h}" data-resolution-full' in intro_slides[11]
+    assert f'data-resolution-p="{p}"' in intro_slides[12]
+    assert f'width="{w}" height="{h}" data-resolution-full' in intro_slides[12]
 for path in ("intro_resolution_demo.js", "intro_resolution_demo.css",
              "intro_apple_number_bridge.js", "intro_apple_number_bridge.css"):
     assert (DOCS / path).is_file(), path
@@ -542,13 +542,13 @@ assert inverse_root.tag == "{http://www.w3.org/2000/svg}svg"
 labels = [int(x) for x in re.findall(
     r'<span class="slide-number">(\d+)</span>', intro_page
 )]
-assert labels == list(range(5, 20)), labels
+assert labels == [3] + list(range(6, 20)), labels
 channel_svg = (DOCS / "assets/lesson/lecture_rgb_channel_stack.svg").read_text("utf-8")
 assert 'viewBox="0 0 960 640"' in channel_svg
 assert "H × W × C = 640 × 960 × 3" in channel_svg
 assert "한 위치의 3개 값 (예시)" not in channel_svg
 assert "640 × 960 = 614,400 Pixel" in channel_svg
-assert "1,843,200" in intro_slides[9]
+assert "1,843,200" in intro_slides[10]
 res_file = DOCS / "assets/lesson/intro_resolution_comparison.svg"
 res_root = ET.parse(res_file).getroot()
 res_labels = "".join(node.text or "" for node in res_root.iter()
@@ -689,13 +689,18 @@ for x1 in (0, 1):
         assert xor_y == (x1 ^ x2)
 print("Perceptron AND and multilayer XOR: all truth-table rows verified.")
 
-# Scalar input through two hidden affine layers and a sum output.
-for scalar_x in (-5, -1, 0, 0.5, 2, 3, 10):
-    h1, h2 = 2*scalar_x + 1, scalar_x - 1
-    z1, z2 = 2*h1 + h2, h1 - h2
-    assert z1 == 5*scalar_x + 1
-    assert z2 == scalar_x + 2
-    assert z1 + z2 == 6*scalar_x + 3
-assert (2*2+1, 2-1) == (5, 1)
-assert (2*5+1, 5-1, 11+4) == (11, 4, 15)
-print("Scalar 1-2-2-1 network and collapsed y=6x+3 verified.")
+# Two-input fully connected affine network with a sum output.
+for x1, x2 in ((1, 2), (0, 0), (-2, 3), (0.5, -1.5), (4, -3)):
+    h1, h2, h3 = x1+x2+1, 2*x1-x2, -x1+2*x2
+    z1, z2 = h1+h2+h3, 2*h1-h2+h3
+    assert z1 == 2*x1+2*x2+1
+    assert z2 == -x1+5*x2+2
+    assert z1+z2 == x1+7*x2+3
+assert (1+2+1, 2*1-2, -1+2*2) == (4, 0, 3)
+assert (4+0+3, 2*4-0+3, 7+11) == (7, 11, 18)
+assert "시각 이해 · What과 Where" in intro_slides[2]
+intro_titles = [html.unescape(re.search(
+    r'<h[12] class="slide-title[^"]*">([^<]+)</h[12]>', s
+).group(1)) for s in intro_slides]
+assert [item["title"] for item in items[:19]] == intro_titles
+print("Two-input network, collapsed equation, Intro order and sidebar verified.")

@@ -28,15 +28,18 @@ def main() -> None:
         errors: list[str] = []
         page.on("pageerror", lambda error: errors.append(str(error)))
 
-        # New Intro 5: the numbers must be computed from the same photo
-        # displayed on Intro 4, not fabricated, and represent 8x12 grayscale.
+        # Intro 6: the numbers must be computed from the same photo
+        # displayed on Intro 5, not fabricated, and represent 8x12 grayscale.
         page.goto(BASE_URL + "#slide-1", wait_until="networkidle")
         assert "AI와 시각의 출발점" in page.locator(".slide.active").inner_text()
         page.goto(BASE_URL + "#slide-2", wait_until="networkidle")
         assert "사람의 시각 · 장면 이해" in page.locator(".slide.active").inner_text()
         page.goto(BASE_URL + "#slide-3", wait_until="networkidle")
+        assert "시각 이해 · What과 Where" in page.locator(".slide.active").inner_text()
+        page.click("[data-slide-next]")
+        assert page.url.endswith("#slide-4")
         assert "일상 속 Vision 기술" in page.locator(".slide.active").inner_text()
-        page.goto(BASE_URL + "#slide-5", wait_until="networkidle")
+        page.goto(BASE_URL + "#slide-6", wait_until="networkidle")
         page.wait_for_function(
             "() => document.querySelector('[data-apple-matrix-bridge]')"
             "?.dataset.appleMatrixReady === 'true'"
@@ -78,14 +81,14 @@ def main() -> None:
         assert bridge["actual"] == bridge["expected"], bridge
         assert len(set(bridge["actual"])) > 10, bridge
         assert all(0 <= x <= 255 for x in bridge["actual"]), bridge
-        page.goto(BASE_URL + "#slide-4", wait_until="networkidle")
+        page.goto(BASE_URL + "#slide-5", wait_until="networkidle")
         assert page.locator(".slide.active img").get_attribute("src").split("?")[0] == bridge["src"]
         page.click("[data-slide-next]")
-        assert page.url.endswith("#slide-5")
-        page.click("[data-slide-next]")
         assert page.url.endswith("#slide-6")
+        page.click("[data-slide-next]")
+        assert page.url.endswith("#slide-7")
 
-        page.goto(BASE_URL + "#slide-8", wait_until="networkidle")
+        page.goto(BASE_URL + "#slide-9", wait_until="networkidle")
         page.locator("[data-gray-coordinate]").wait_for()
         page.wait_for_function(
             "() => document.querySelector('[data-gray-values]')"
@@ -121,7 +124,7 @@ def main() -> None:
         page.locator("[data-gray-reset]").click()
         assert numbers(page, "[data-gray-values]") == second_values
 
-        page.goto(BASE_URL + "#slide-9", wait_until="networkidle")
+        page.goto(BASE_URL + "#slide-10", wait_until="networkidle")
         page.wait_for_function(
             "() => document.querySelector('[data-rgb-shape]').textContent"
             ".includes('× 3')"
@@ -157,13 +160,13 @@ def main() -> None:
         ]
         assert result == expected, (result, expected)
         # Same source image must generate three real output rasters.
-        page.goto(BASE_URL + "#slide-10", wait_until="networkidle")
+        page.goto(BASE_URL + "#slide-11", wait_until="networkidle")
         assert "1,843,200" in page.locator(".slide.active").inner_text()
         assert page.locator(".intro-rgb-data-figure img").count() == 1
         assert page.locator(".slide.active .callout").count() == 0
-        page.goto(BASE_URL + "#slide-11", wait_until="networkidle")
-        assert "해상도와 Pixel 수" in page.locator(".slide.active").inner_text()
         page.goto(BASE_URL + "#slide-12", wait_until="networkidle")
+        assert "해상도와 Pixel 수" in page.locator(".slide.active").inner_text()
+        page.goto(BASE_URL + "#slide-13", wait_until="networkidle")
         page.wait_for_function(
             "() => document.querySelector('[data-resolution-comparison]')"
             "?.dataset.resolutionReady === 'true'",
