@@ -66,9 +66,8 @@ def main() -> None:
             };
         }""")
         assert bridge["dims"] == [960, 640], bridge
-        assert page.locator(".meaning-reaction svg").count() == 2
         assert page.locator(".meaning-speech").all_text_contents() == [
-            "“아, 사과구나!”", "“?! 그냥 숫자 배열이네”"
+            "사람이 얻은 의미 · 사과", "컴퓨터가 받은 입력 · 숫자 배열"
         ]
         assert bridge["count"] == 96, bridge
         assert bridge["actual"] == bridge["expected"], bridge

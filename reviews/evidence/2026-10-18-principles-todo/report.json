@@ -1,0 +1,6496 @@
+[
+  {
+    "deck": "intro",
+    "slide": 1,
+    "viewport": "1920x1080",
+    "title": "AI와 시각의 출발점",
+    "fitScale": 1,
+    "titleFontPx": 46,
+    "slideHeight": 944,
+    "contentHeight": 670,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [
+      {
+        "src": "assets/vision_task_apple_reference.jpg",
+        "loaded": true,
+        "naturalW": 960,
+        "naturalH": 640,
+        "renderW": 472,
+        "renderH": 320
+      }
+    ],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 370,
+          "y": 245.40625,
+          "right": 1530,
+          "bottom": 305.203125,
+          "width": 1160,
+          "height": 59.796875
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 370,
+          "y": 317.203125,
+          "right": 1350,
+          "bottom": 391.984375,
+          "width": 980,
+          "height": 74.78125
+        }
+      }
+    ]
+  },
+  {
+    "deck": "intro",
+    "slide": 2,
+    "viewport": "1920x1080",
+    "title": "사람의 시각 · 장면 이해",
+    "fitScale": 1,
+    "titleFontPx": 40,
+    "slideHeight": 944,
+    "contentHeight": 678,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [
+      {
+        "src": "assets/intro_photos/perspective.webp",
+        "loaded": true,
+        "naturalW": 1339,
+        "naturalH": 900,
+        "renderW": 717,
+        "renderH": 410
+      }
+    ],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 365,
+          "y": 241.546875,
+          "right": 1185,
+          "bottom": 293.546875,
+          "width": 820,
+          "height": 52
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 365,
+          "y": 305.546875,
+          "right": 1485,
+          "bottom": 337.046875,
+          "width": 1120,
+          "height": 31.5
+        }
+      }
+    ]
+  },
+  {
+    "deck": "intro",
+    "slide": 3,
+    "viewport": "1920x1080",
+    "title": "사람의 의미 인식 vs Pixel 숫자",
+    "fitScale": 1,
+    "titleFontPx": 40,
+    "slideHeight": 944,
+    "contentHeight": 679,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [
+      {
+        "src": "assets/vision_task_apple_reference.jpg",
+        "loaded": true,
+        "naturalW": 960,
+        "naturalH": 640,
+        "renderW": 388,
+        "renderH": 258
+      }
+    ],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 365,
+          "y": 196.40625,
+          "right": 1555,
+          "bottom": 248.40625,
+          "width": 1190,
+          "height": 52
+        }
+      }
+    ]
+  },
+  {
+    "deck": "intro",
+    "slide": 4,
+    "viewport": "1920x1080",
+    "title": "사진에서 밝기 숫자로",
+    "fitScale": 1,
+    "titleFontPx": 40,
+    "slideHeight": 944,
+    "contentHeight": 694,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [
+      {
+        "src": "assets/vision_task_apple_reference.jpg",
+        "loaded": true,
+        "naturalW": 960,
+        "naturalH": 640,
+        "renderW": 535,
+        "renderH": 356
+      }
+    ],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 340,
+          "y": 189.09375,
+          "right": 1580,
+          "bottom": 241.09375,
+          "width": 1240,
+          "height": 52
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 340,
+          "y": 253.09375,
+          "right": 1520,
+          "bottom": 282.53125,
+          "width": 1180,
+          "height": 29.4375
+        }
+      }
+    ]
+  },
+  {
+    "deck": "intro",
+    "slide": 5,
+    "viewport": "1920x1080",
+    "title": "RGB · Pixel당 세 숫자",
+    "fitScale": 1,
+    "titleFontPx": 40,
+    "slideHeight": 944,
+    "contentHeight": 625,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [
+      {
+        "src": "assets/vision_task_apple_reference.jpg",
+        "loaded": true,
+        "naturalW": 960,
+        "naturalH": 640,
+        "renderW": 517,
+        "renderH": 344
+      }
+    ],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 340,
+          "y": 223.34375,
+          "right": 1580,
+          "bottom": 275.34375,
+          "width": 1240,
+          "height": 52
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 340,
+          "y": 287.34375,
+          "right": 1520,
+          "bottom": 316.78125,
+          "width": 1180,
+          "height": 29.4375
+        }
+      },
+      {
+        "name": "intro-visual pixel-structure-visual",
+        "bounds": {
+          "x": 380,
+          "y": 334.78125,
+          "right": 1540,
+          "bottom": 796.15625,
+          "width": 1160,
+          "height": 461.375
+        }
+      }
+    ]
+  },
+  {
+    "deck": "intro",
+    "slide": 6,
+    "viewport": "1920x1080",
+    "title": "RGB 이미지와 숫자 배열",
+    "fitScale": 1,
+    "titleFontPx": 40,
+    "slideHeight": 944,
+    "contentHeight": 642,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [
+      {
+        "src": "assets/lesson/lecture_rgb_channel_stack.svg?v=rgb-total-20261016-1",
+        "loaded": true,
+        "naturalW": 1200,
+        "naturalH": 420,
+        "renderW": 1220,
+        "renderH": 427
+      }
+    ],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 340,
+          "y": 215.15625,
+          "right": 1580,
+          "bottom": 267.15625,
+          "width": 1240,
+          "height": 52
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 340,
+          "y": 279.15625,
+          "right": 1240,
+          "bottom": 311.453125,
+          "width": 900,
+          "height": 32.296875
+        }
+      },
+      {
+        "name": "figure figure--generated-lecture intro-rgb-data-figure",
+        "bounds": {
+          "x": 340,
+          "y": 323.453125,
+          "right": 1560,
+          "bottom": 750.453125,
+          "width": 1220,
+          "height": 427
+        }
+      }
+    ]
+  },
+  {
+    "deck": "intro",
+    "slide": 7,
+    "viewport": "1920x1080",
+    "title": "해상도에 따른 정보 차이",
+    "fitScale": 1,
+    "titleFontPx": 40,
+    "slideHeight": 944,
+    "contentHeight": 668,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 380,
+          "y": 201.75,
+          "right": 1540,
+          "bottom": 253.75,
+          "width": 1160,
+          "height": 52
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 380,
+          "y": 265.75,
+          "right": 1280,
+          "bottom": 330.34375,
+          "width": 900,
+          "height": 64.59375
+        }
+      }
+    ]
+  },
+  {
+    "deck": "intro",
+    "slide": 8,
+    "viewport": "1920x1080",
+    "title": "조명·색감에 따른 Pixel 변화",
+    "fitScale": 1,
+    "titleFontPx": 40,
+    "slideHeight": 944,
+    "contentHeight": 633,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [
+      {
+        "src": "assets/vision_task_apple_reference.jpg",
+        "loaded": true,
+        "naturalW": 960,
+        "naturalH": 640,
+        "renderW": 295,
+        "renderH": 280
+      },
+      {
+        "src": "assets/vision_task_apple_reference.jpg",
+        "loaded": true,
+        "naturalW": 960,
+        "naturalH": 640,
+        "renderW": 295,
+        "renderH": 280
+      },
+      {
+        "src": "assets/vision_task_apple_reference.jpg",
+        "loaded": true,
+        "naturalW": 960,
+        "naturalH": 640,
+        "renderW": 295,
+        "renderH": 280
+      },
+      {
+        "src": "assets/vision_task_apple_reference.jpg",
+        "loaded": true,
+        "naturalW": 960,
+        "naturalH": 640,
+        "renderW": 295,
+        "renderH": 280
+      }
+    ],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 340,
+          "y": 219.5625,
+          "right": 1580,
+          "bottom": 271.5625,
+          "width": 1240,
+          "height": 52
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 340,
+          "y": 283.5625,
+          "right": 1240,
+          "bottom": 348.15625,
+          "width": 900,
+          "height": 64.59375
+        }
+      }
+    ]
+  },
+  {
+    "deck": "intro",
+    "slide": 9,
+    "viewport": "1920x1080",
+    "title": "회전·크기·가림·흐림에 따른 변화",
+    "fitScale": 1,
+    "titleFontPx": 40,
+    "slideHeight": 944,
+    "contentHeight": 666,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [
+      {
+        "src": "assets/vision_task_apple_reference.jpg",
+        "loaded": true,
+        "naturalW": 960,
+        "naturalH": 640,
+        "renderW": 298,
+        "renderH": 291
+      },
+      {
+        "src": "assets/vision_task_apple_reference.jpg",
+        "loaded": true,
+        "naturalW": 960,
+        "naturalH": 640,
+        "renderW": 428,
+        "renderH": 406
+      },
+      {
+        "src": "assets/vision_task_apple_reference.jpg",
+        "loaded": true,
+        "naturalW": 960,
+        "naturalH": 640,
+        "renderW": 295,
+        "renderH": 280
+      },
+      {
+        "src": "assets/vision_task_apple_reference.jpg",
+        "loaded": true,
+        "naturalW": 960,
+        "naturalH": 640,
+        "renderW": 295,
+        "renderH": 280
+      }
+    ],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 340,
+          "y": 202.890625,
+          "right": 1580,
+          "bottom": 254.890625,
+          "width": 1240,
+          "height": 52
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 340,
+          "y": 266.890625,
+          "right": 1240,
+          "bottom": 331.484375,
+          "width": 900,
+          "height": 64.59375
+        }
+      }
+    ]
+  },
+  {
+    "deck": "intro",
+    "slide": 10,
+    "viewport": "1920x1080",
+    "title": "다르게 생겨도 같은 종류",
+    "fitScale": 1,
+    "titleFontPx": 40,
+    "slideHeight": 944,
+    "contentHeight": 574,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 360,
+          "y": 248.984375,
+          "right": 1560,
+          "bottom": 300.984375,
+          "width": 1200,
+          "height": 52
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 360,
+          "y": 312.984375,
+          "right": 1260,
+          "bottom": 340.53125,
+          "width": 900,
+          "height": 27.546875
+        }
+      },
+      {
+        "name": "pf-apple-row",
+        "bounds": {
+          "x": 430,
+          "y": 364.53125,
+          "right": 1490,
+          "bottom": 742.71875,
+          "width": 1060,
+          "height": 378.1875
+        }
+      }
+    ]
+  },
+  {
+    "deck": "intro",
+    "slide": 11,
+    "viewport": "1920x1080",
+    "title": "큰 변화보다 중요한 차이",
+    "fitScale": 1,
+    "titleFontPx": 40,
+    "slideHeight": 944,
+    "contentHeight": 636,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 360,
+          "y": 217.953125,
+          "right": 1560,
+          "bottom": 269.953125,
+          "width": 1200,
+          "height": 52
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 360,
+          "y": 281.953125,
+          "right": 1260,
+          "bottom": 337.046875,
+          "width": 900,
+          "height": 55.09375
+        }
+      },
+      {
+        "name": "pf-apple-row",
+        "bounds": {
+          "x": 430,
+          "y": 361.046875,
+          "right": 1490,
+          "bottom": 739.234375,
+          "width": 1060,
+          "height": 378.1875
+        }
+      }
+    ]
+  },
+  {
+    "deck": "vision_ai_course",
+    "slide": 1,
+    "viewport": "1920x1080",
+    "title": "같은 사진, 다른 질문과 정답",
+    "fitScale": 1,
+    "titleFontPx": 38,
+    "slideHeight": 944,
+    "contentHeight": 622,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [
+      {
+        "src": "assets/vision_task_apple_reference.jpg",
+        "loaded": true,
+        "naturalW": 960,
+        "naturalH": 640,
+        "renderW": 368,
+        "renderH": 220
+      }
+    ],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 360,
+          "y": 225.015625,
+          "right": 1560,
+          "bottom": 274.40625,
+          "width": 1200,
+          "height": 49.390625
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 360,
+          "y": 283.40625,
+          "right": 1480,
+          "bottom": 346.40625,
+          "width": 1120,
+          "height": 63
+        }
+      },
+      {
+        "name": "th-panes",
+        "bounds": {
+          "x": 360,
+          "y": 366.40625,
+          "right": 1560,
+          "bottom": 779.4375,
+          "width": 1200,
+          "height": 413.03125
+        }
+      },
+      {
+        "name": "lesson-takeaway",
+        "bounds": {
+          "x": 360,
+          "y": 799.4375,
+          "right": 1560,
+          "bottom": 846.984375,
+          "width": 1200,
+          "height": 47.546875
+        }
+      }
+    ]
+  },
+  {
+    "deck": "vision_ai_course",
+    "slide": 2,
+    "viewport": "1920x1080",
+    "title": "규칙 기반과 데이터 학습",
+    "fitScale": 1,
+    "titleFontPx": 38,
+    "slideHeight": 944,
+    "contentHeight": 695,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [
+      {
+        "src": "assets/lesson/rule_learning_comparison.svg?v=professional-20261006-2",
+        "loaded": true,
+        "naturalW": 300,
+        "naturalH": 119,
+        "renderW": 1200,
+        "renderH": 475
+      }
+    ],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 360,
+          "y": 188.25,
+          "right": 1560,
+          "bottom": 237.640625,
+          "width": 1200,
+          "height": 49.390625
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 360,
+          "y": 246.640625,
+          "right": 1520,
+          "bottom": 309.640625,
+          "width": 1160,
+          "height": 63
+        }
+      },
+      {
+        "name": "lesson-figure",
+        "bounds": {
+          "x": 360,
+          "y": 321.640625,
+          "right": 1560,
+          "bottom": 796.640625,
+          "width": 1200,
+          "height": 475
+        }
+      },
+      {
+        "name": "lesson-takeaway",
+        "bounds": {
+          "x": 360,
+          "y": 808.640625,
+          "right": 1560,
+          "bottom": 883.734375,
+          "width": 1200,
+          "height": 75.09375
+        }
+      }
+    ]
+  },
+  {
+    "deck": "vision_ai_course",
+    "slide": 3,
+    "viewport": "1920x1080",
+    "title": "첫 선택 · 어떤 모델을 쓸까?",
+    "fitScale": 1,
+    "titleFontPx": 38,
+    "slideHeight": 944,
+    "contentHeight": 544,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 360,
+          "y": 264.171875,
+          "right": 1560,
+          "bottom": 313.5625,
+          "width": 1200,
+          "height": 49.390625
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 360,
+          "y": 322.5625,
+          "right": 1480,
+          "bottom": 354.0625,
+          "width": 1120,
+          "height": 31.5
+        }
+      },
+      {
+        "name": "principle-figure pf-three",
+        "bounds": {
+          "x": 360,
+          "y": 374.0625,
+          "right": 1560,
+          "bottom": 704.875,
+          "width": 1200,
+          "height": 330.8125
+        }
+      },
+      {
+        "name": "pf-caption",
+        "bounds": {
+          "x": 360,
+          "y": 719.875,
+          "right": 1560,
+          "bottom": 748.265625,
+          "width": 1200,
+          "height": 28.390625
+        }
+      },
+      {
+        "name": "lesson-takeaway",
+        "bounds": {
+          "x": 360,
+          "y": 760.265625,
+          "right": 1560,
+          "bottom": 807.8125,
+          "width": 1200,
+          "height": 47.546875
+        }
+      }
+    ]
+  },
+  {
+    "deck": "vision_ai_course",
+    "slide": 4,
+    "viewport": "1920x1080",
+    "title": "퍼셉트론 · Wx + b에서 판정까지",
+    "fitScale": 1,
+    "titleFontPx": 38,
+    "slideHeight": 944,
+    "contentHeight": 769,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [
+      {
+        "src": "assets/lesson/perceptron_gate_structure_ko.svg?v=20261017-1",
+        "loaded": true,
+        "naturalW": 1120,
+        "naturalH": 390,
+        "renderW": 1200,
+        "renderH": 418
+      }
+    ],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 360,
+          "y": 151.578125,
+          "right": 1560,
+          "bottom": 200.96875,
+          "width": 1200,
+          "height": 49.390625
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 360,
+          "y": 209.96875,
+          "right": 1520,
+          "bottom": 270.84375,
+          "width": 1160,
+          "height": 60.875
+        }
+      },
+      {
+        "name": "lesson-figure gate-reference-figure",
+        "bounds": {
+          "x": 360,
+          "y": 282.84375,
+          "right": 1560,
+          "bottom": 700.6875,
+          "width": 1200,
+          "height": 417.84375
+        }
+      },
+      {
+        "name": "nb-takeaway",
+        "bounds": {
+          "x": 360,
+          "y": 795.78125,
+          "right": 1560,
+          "bottom": 860.875,
+          "width": 1200,
+          "height": 65.09375
+        }
+      },
+      {
+        "name": "lesson-takeaway",
+        "bounds": {
+          "x": 360,
+          "y": 872.875,
+          "right": 1560,
+          "bottom": 920.421875,
+          "width": 1200,
+          "height": 47.546875
+        }
+      }
+    ]
+  },
+  {
+    "deck": "vision_ai_course",
+    "slide": 5,
+    "viewport": "1920x1080",
+    "title": "AND와 XOR · 직선으로 구분할 수 있을까?",
+    "fitScale": 1,
+    "titleFontPx": 38,
+    "slideHeight": 944,
+    "contentHeight": 608,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [
+      {
+        "src": "assets/lesson/and_xor_gate_geometry_ko.svg?v=20261017-1",
+        "loaded": true,
+        "naturalW": 1120,
+        "naturalH": 390,
+        "renderW": 901,
+        "renderH": 314
+      }
+    ],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 365,
+          "y": 231.96875,
+          "right": 1555,
+          "bottom": 281.359375,
+          "width": 1190,
+          "height": 49.390625
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 365,
+          "y": 290.359375,
+          "right": 1525,
+          "bottom": 320.796875,
+          "width": 1160,
+          "height": 30.4375
+        }
+      },
+      {
+        "name": "gate-geometry-layout",
+        "bounds": {
+          "x": 365,
+          "y": 332.796875,
+          "right": 1555,
+          "bottom": 666.53125,
+          "width": 1190,
+          "height": 333.734375
+        }
+      },
+      {
+        "name": "nb-takeaway",
+        "bounds": {
+          "x": 365,
+          "y": 747.921875,
+          "right": 1555,
+          "bottom": 780.46875,
+          "width": 1190,
+          "height": 32.546875
+        }
+      },
+      {
+        "name": "lesson-takeaway",
+        "bounds": {
+          "x": 365,
+          "y": 792.46875,
+          "right": 1555,
+          "bottom": 840.015625,
+          "width": 1190,
+          "height": 47.546875
+        }
+      }
+    ]
+  },
+  {
+    "deck": "vision_ai_course",
+    "slide": 6,
+    "viewport": "1920x1080",
+    "title": "ReLU · 비선형성의 시작",
+    "fitScale": 1,
+    "titleFontPx": 38,
+    "slideHeight": 944,
+    "contentHeight": 589,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 360,
+          "y": 241.640625,
+          "right": 1560,
+          "bottom": 291.03125,
+          "width": 1200,
+          "height": 49.390625
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 360,
+          "y": 300.03125,
+          "right": 1520,
+          "bottom": 360.90625,
+          "width": 1160,
+          "height": 60.875
+        }
+      },
+      {
+        "name": "nb-activation-charts",
+        "bounds": {
+          "x": 360,
+          "y": 372.90625,
+          "right": 1560,
+          "bottom": 691.703125,
+          "width": 1200,
+          "height": 318.796875
+        }
+      },
+      {
+        "name": "nb-takeaway",
+        "bounds": {
+          "x": 360,
+          "y": 705.703125,
+          "right": 1560,
+          "bottom": 770.796875,
+          "width": 1200,
+          "height": 65.09375
+        }
+      },
+      {
+        "name": "lesson-takeaway",
+        "bounds": {
+          "x": 360,
+          "y": 782.796875,
+          "right": 1560,
+          "bottom": 830.34375,
+          "width": 1200,
+          "height": 47.546875
+        }
+      }
+    ]
+  },
+  {
+    "deck": "vision_ai_course",
+    "slide": 7,
+    "viewport": "1920x1080",
+    "title": "비선형성 · 깊어져도 직선이면?",
+    "fitScale": 1,
+    "titleFontPx": 38,
+    "slideHeight": 944,
+    "contentHeight": 588,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 360,
+          "y": 241.90625,
+          "right": 1560,
+          "bottom": 291.296875,
+          "width": 1200,
+          "height": 49.390625
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 360,
+          "y": 300.296875,
+          "right": 1480,
+          "bottom": 331.796875,
+          "width": 1120,
+          "height": 31.5
+        }
+      },
+      {
+        "name": "principle-figure pf-two",
+        "bounds": {
+          "x": 360,
+          "y": 351.796875,
+          "right": 1560,
+          "bottom": 698.765625,
+          "width": 1200,
+          "height": 346.96875
+        }
+      },
+      {
+        "name": "pf-caption",
+        "bounds": {
+          "x": 360,
+          "y": 713.765625,
+          "right": 1560,
+          "bottom": 770.546875,
+          "width": 1200,
+          "height": 56.78125
+        }
+      },
+      {
+        "name": "lesson-takeaway",
+        "bounds": {
+          "x": 360,
+          "y": 782.546875,
+          "right": 1560,
+          "bottom": 830.09375,
+          "width": 1200,
+          "height": 47.546875
+        }
+      }
+    ]
+  },
+  {
+    "deck": "vision_ai_course",
+    "slide": 8,
+    "viewport": "1920x1080",
+    "title": "CNN 전체 구조 · 사진에서 판정까지",
+    "fitScale": 1,
+    "titleFontPx": 38,
+    "slideHeight": 944,
+    "contentHeight": 550,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [
+      {
+        "src": "assets/vision_task_apple_reference.jpg",
+        "loaded": true,
+        "naturalW": 960,
+        "naturalH": 640,
+        "renderW": 256,
+        "renderH": 205
+      }
+    ],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 360,
+          "y": 261.0625,
+          "right": 1560,
+          "bottom": 310.453125,
+          "width": 1200,
+          "height": 49.390625
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 360,
+          "y": 319.453125,
+          "right": 1480,
+          "bottom": 382.453125,
+          "width": 1120,
+          "height": 63
+        }
+      },
+      {
+        "name": "pf-pipeline",
+        "bounds": {
+          "x": 360,
+          "y": 405.453125,
+          "right": 1560,
+          "bottom": 680.59375,
+          "width": 1200,
+          "height": 275.140625
+        }
+      },
+      {
+        "name": "pf-caption",
+        "bounds": {
+          "x": 360,
+          "y": 694.59375,
+          "right": 1560,
+          "bottom": 751.375,
+          "width": 1200,
+          "height": 56.78125
+        }
+      },
+      {
+        "name": "lesson-takeaway",
+        "bounds": {
+          "x": 360,
+          "y": 763.375,
+          "right": 1560,
+          "bottom": 810.921875,
+          "width": 1200,
+          "height": 47.546875
+        }
+      }
+    ]
+  },
+  {
+    "deck": "vision_ai_course",
+    "slide": 9,
+    "viewport": "1920x1080",
+    "title": "Kernel · 작은 영역의 가중합",
+    "fitScale": 1,
+    "titleFontPx": 38,
+    "slideHeight": 944,
+    "contentHeight": 650,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 360,
+          "y": 210.859375,
+          "right": 1560,
+          "bottom": 260.25,
+          "width": 1200,
+          "height": 49.390625
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 360,
+          "y": 269.25,
+          "right": 1480,
+          "bottom": 300.75,
+          "width": 1120,
+          "height": 31.5
+        }
+      },
+      {
+        "name": "th-panes pf-kernel-flow",
+        "bounds": {
+          "x": 360,
+          "y": 320.75,
+          "right": 1560,
+          "bottom": 723.4375,
+          "width": 1200,
+          "height": 402.6875
+        }
+      },
+      {
+        "name": "pf-teaching-note",
+        "bounds": {
+          "x": 360,
+          "y": 743.4375,
+          "right": 1560,
+          "bottom": 774.03125,
+          "width": 1200,
+          "height": 30.59375
+        }
+      },
+      {
+        "name": "lesson-takeaway",
+        "bounds": {
+          "x": 360,
+          "y": 786.03125,
+          "right": 1560,
+          "bottom": 861.125,
+          "width": 1200,
+          "height": 75.09375
+        }
+      }
+    ]
+  },
+  {
+    "deck": "vision_ai_course",
+    "slide": 10,
+    "viewport": "1920x1080",
+    "title": "Feature Map · 같은 계산을 위치마다",
+    "fitScale": 1,
+    "titleFontPx": 38,
+    "slideHeight": 944,
+    "contentHeight": 701,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 360,
+          "y": 185.6875,
+          "right": 1560,
+          "bottom": 235.078125,
+          "width": 1200,
+          "height": 49.390625
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 360,
+          "y": 244.078125,
+          "right": 1480,
+          "bottom": 275.578125,
+          "width": 1120,
+          "height": 31.5
+        }
+      },
+      {
+        "name": "th-panes",
+        "bounds": {
+          "x": 360,
+          "y": 295.578125,
+          "right": 1560,
+          "bottom": 748.609375,
+          "width": 1200,
+          "height": 453.03125
+        }
+      },
+      {
+        "name": "pf-teaching-note",
+        "bounds": {
+          "x": 360,
+          "y": 768.609375,
+          "right": 1560,
+          "bottom": 799.203125,
+          "width": 1200,
+          "height": 30.59375
+        }
+      },
+      {
+        "name": "lesson-takeaway",
+        "bounds": {
+          "x": 360,
+          "y": 811.203125,
+          "right": 1560,
+          "bottom": 886.296875,
+          "width": 1200,
+          "height": 75.09375
+        }
+      }
+    ]
+  },
+  {
+    "deck": "vision_ai_course",
+    "slide": 11,
+    "viewport": "1920x1080",
+    "title": "CNN · 지역 연결과 가중치 공유",
+    "fitScale": 1,
+    "titleFontPx": 38,
+    "slideHeight": 944,
+    "contentHeight": 728,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 360,
+          "y": 172.0625,
+          "right": 1560,
+          "bottom": 221.453125,
+          "width": 1200,
+          "height": 49.390625
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 360,
+          "y": 230.453125,
+          "right": 1480,
+          "bottom": 261.953125,
+          "width": 1120,
+          "height": 31.5
+        }
+      },
+      {
+        "name": "principle-figure pf-three",
+        "bounds": {
+          "x": 360,
+          "y": 281.953125,
+          "right": 1560,
+          "bottom": 796.984375,
+          "width": 1200,
+          "height": 515.03125
+        }
+      },
+      {
+        "name": "pf-caption",
+        "bounds": {
+          "x": 360,
+          "y": 811.984375,
+          "right": 1560,
+          "bottom": 840.375,
+          "width": 1200,
+          "height": 28.390625
+        }
+      },
+      {
+        "name": "lesson-takeaway",
+        "bounds": {
+          "x": 360,
+          "y": 852.375,
+          "right": 1560,
+          "bottom": 899.921875,
+          "width": 1200,
+          "height": 47.546875
+        }
+      }
+    ]
+  },
+  {
+    "deck": "vision_ai_course",
+    "slide": 12,
+    "viewport": "1920x1080",
+    "title": "RGB에서 Feature Channel까지",
+    "fitScale": 1,
+    "titleFontPx": 38,
+    "slideHeight": 944,
+    "contentHeight": 596,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 360,
+          "y": 237.890625,
+          "right": 1560,
+          "bottom": 287.28125,
+          "width": 1200,
+          "height": 49.390625
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 360,
+          "y": 296.28125,
+          "right": 1480,
+          "bottom": 327.78125,
+          "width": 1120,
+          "height": 31.5
+        }
+      },
+      {
+        "name": {},
+        "bounds": {
+          "x": 360,
+          "y": 347.78125,
+          "right": 1560,
+          "bottom": 697.78125,
+          "width": 1200,
+          "height": 350
+        }
+      },
+      {
+        "name": "pf-caption",
+        "bounds": {
+          "x": 360,
+          "y": 717.78125,
+          "right": 1560,
+          "bottom": 774.5625,
+          "width": 1200,
+          "height": 56.78125
+        }
+      },
+      {
+        "name": "lesson-takeaway",
+        "bounds": {
+          "x": 360,
+          "y": 786.5625,
+          "right": 1560,
+          "bottom": 834.109375,
+          "width": 1200,
+          "height": 47.546875
+        }
+      }
+    ]
+  },
+  {
+    "deck": "vision_ai_course",
+    "slide": 13,
+    "viewport": "1920x1080",
+    "title": "Stride · 계산 위치의 간격",
+    "fitScale": 1,
+    "titleFontPx": 38,
+    "slideHeight": 944,
+    "contentHeight": 862,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 360,
+          "y": 104.96875,
+          "right": 1560,
+          "bottom": 154.359375,
+          "width": 1200,
+          "height": 49.390625
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 360,
+          "y": 163.359375,
+          "right": 1480,
+          "bottom": 194.859375,
+          "width": 1120,
+          "height": 31.5
+        }
+      },
+      {
+        "name": "th-panes",
+        "bounds": {
+          "x": 360,
+          "y": 214.859375,
+          "right": 1560,
+          "bottom": 813.890625,
+          "width": 1200,
+          "height": 599.03125
+        }
+      },
+      {
+        "name": "concept-equation",
+        "bounds": {
+          "x": 360,
+          "y": 833.890625,
+          "right": 1560,
+          "bottom": 907.484375,
+          "width": 1200,
+          "height": 73.59375
+        }
+      },
+      {
+        "name": "lesson-takeaway",
+        "bounds": {
+          "x": 360,
+          "y": 919.484375,
+          "right": 1560,
+          "bottom": 967.03125,
+          "width": 1200,
+          "height": 47.546875
+        }
+      }
+    ]
+  },
+  {
+    "deck": "vision_ai_course",
+    "slide": 14,
+    "viewport": "1920x1080",
+    "title": "Padding · 입력 바깥에 값 채우기",
+    "fitScale": 1,
+    "titleFontPx": 38,
+    "slideHeight": 944,
+    "contentHeight": 765,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 365,
+          "y": 153.34375,
+          "right": 1555,
+          "bottom": 202.734375,
+          "width": 1190,
+          "height": 49.390625
+        }
+      },
+      {
+        "name": "slide-subtitle concept-lede",
+        "bounds": {
+          "x": 365,
+          "y": 211.734375,
+          "right": 1525,
+          "bottom": 268.921875,
+          "width": 1160,
+          "height": 57.1875
+        }
+      }
+    ]
+  },
+  {
+    "deck": "vision_ai_course",
+    "slide": 15,
+    "viewport": "1920x1080",
+    "title": "Max Pooling · 영역별 최댓값",
+    "fitScale": 1,
+    "titleFontPx": 38,
+    "slideHeight": 944,
+    "contentHeight": 643,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 365,
+          "y": 214.734375,
+          "right": 1555,
+          "bottom": 264.125,
+          "width": 1190,
+          "height": 49.390625
+        }
+      },
+      {
+        "name": "slide-subtitle concept-lede",
+        "bounds": {
+          "x": 365,
+          "y": 273.125,
+          "right": 1525,
+          "bottom": 301.71875,
+          "width": 1160,
+          "height": 28.59375
+        }
+      }
+    ]
+  },
+  {
+    "deck": "vision_ai_course",
+    "slide": 16,
+    "viewport": "1920x1080",
+    "title": "실제 Feature Map · CNN 내부 반응",
+    "fitScale": 1,
+    "titleFontPx": 38,
+    "slideHeight": 944,
+    "contentHeight": 757,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 360,
+          "y": 157.28125,
+          "right": 1560,
+          "bottom": 206.671875,
+          "width": 1200,
+          "height": 49.390625
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 360,
+          "y": 215.671875,
+          "right": 1520,
+          "bottom": 276.546875,
+          "width": 1160,
+          "height": 60.875
+        }
+      },
+      {
+        "name": "lesson-takeaway",
+        "bounds": {
+          "x": 360,
+          "y": 783.96875,
+          "right": 1560,
+          "bottom": 876.96875,
+          "width": 1200,
+          "height": 93
+        }
+      }
+    ]
+  },
+  {
+    "deck": "vision_ai_course",
+    "slide": 17,
+    "viewport": "1920x1080",
+    "title": "Backbone과 Task Head",
+    "fitScale": 1,
+    "titleFontPx": 38,
+    "slideHeight": 944,
+    "contentHeight": 668,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [
+      {
+        "src": "assets/lesson/lesson_backbone_head_roles.svg?v=solid-arrows-20261015-2",
+        "loaded": true,
+        "naturalW": 1200,
+        "naturalH": 475,
+        "renderW": 1200,
+        "renderH": 475
+      }
+    ],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 360,
+          "y": 202.03125,
+          "right": 1560,
+          "bottom": 251.421875,
+          "width": 1200,
+          "height": 49.390625
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 360,
+          "y": 260.421875,
+          "right": 1520,
+          "bottom": 323.421875,
+          "width": 1160,
+          "height": 63
+        }
+      },
+      {
+        "name": "lesson-figure",
+        "bounds": {
+          "x": 360,
+          "y": 335.421875,
+          "right": 1560,
+          "bottom": 810.421875,
+          "width": 1200,
+          "height": 475
+        }
+      },
+      {
+        "name": "lesson-takeaway",
+        "bounds": {
+          "x": 360,
+          "y": 822.421875,
+          "right": 1560,
+          "bottom": 869.96875,
+          "width": 1200,
+          "height": 47.546875
+        }
+      }
+    ]
+  },
+  {
+    "deck": "vision_ai_course",
+    "slide": 18,
+    "viewport": "1920x1080",
+    "title": "데이터셋 · 어떤 사진으로 배우나",
+    "fitScale": 1,
+    "titleFontPx": 38,
+    "slideHeight": 944,
+    "contentHeight": 668,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 360,
+          "y": 201.9375,
+          "right": 1560,
+          "bottom": 251.328125,
+          "width": 1200,
+          "height": 49.390625
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 360,
+          "y": 260.328125,
+          "right": 1480,
+          "bottom": 291.828125,
+          "width": 1120,
+          "height": 31.5
+        }
+      },
+      {
+        "name": "pf-dataset",
+        "bounds": {
+          "x": 540,
+          "y": 303.828125,
+          "right": 1380,
+          "bottom": 707.328125,
+          "width": 840,
+          "height": 403.5
+        }
+      },
+      {
+        "name": "pf-caption",
+        "bounds": {
+          "x": 360,
+          "y": 719.328125,
+          "right": 1560,
+          "bottom": 776.109375,
+          "width": 1200,
+          "height": 56.78125
+        }
+      },
+      {
+        "name": "pf-caption",
+        "bounds": {
+          "x": 360,
+          "y": 782.109375,
+          "right": 1560,
+          "bottom": 810.5,
+          "width": 1200,
+          "height": 28.390625
+        }
+      },
+      {
+        "name": "lesson-takeaway",
+        "bounds": {
+          "x": 360,
+          "y": 822.5,
+          "right": 1560,
+          "bottom": 870.046875,
+          "width": 1200,
+          "height": 47.546875
+        }
+      }
+    ]
+  },
+  {
+    "deck": "vision_ai_course",
+    "slide": 19,
+    "viewport": "1920x1080",
+    "title": "Train · Validation · Test",
+    "fitScale": 1,
+    "titleFontPx": 38,
+    "slideHeight": 944,
+    "contentHeight": 761,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [
+      {
+        "src": "assets/lesson/context_dataset_split.svg?v=professional-20261006-2",
+        "loaded": true,
+        "naturalW": 1200,
+        "naturalH": 600,
+        "renderW": 1200,
+        "renderH": 600
+      }
+    ],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 360,
+          "y": 155.28125,
+          "right": 1560,
+          "bottom": 204.671875,
+          "width": 1200,
+          "height": 49.390625
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 360,
+          "y": 213.671875,
+          "right": 1520,
+          "bottom": 245.171875,
+          "width": 1160,
+          "height": 31.5
+        }
+      },
+      {
+        "name": "lesson-figure",
+        "bounds": {
+          "x": 360,
+          "y": 257.171875,
+          "right": 1560,
+          "bottom": 857.171875,
+          "width": 1200,
+          "height": 600
+        }
+      },
+      {
+        "name": "lesson-takeaway",
+        "bounds": {
+          "x": 360,
+          "y": 869.171875,
+          "right": 1560,
+          "bottom": 916.71875,
+          "width": 1200,
+          "height": 47.546875
+        }
+      }
+    ]
+  },
+  {
+    "deck": "vision_ai_course",
+    "slide": 20,
+    "viewport": "1920x1080",
+    "title": "Video Group Split · 데이터 누출 방지",
+    "fitScale": 1,
+    "titleFontPx": 38,
+    "slideHeight": 944,
+    "contentHeight": 673,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [
+      {
+        "src": "assets/lesson/lesson_video_group_split_comparison.svg?v=pedagogic-20261013-2",
+        "loaded": true,
+        "naturalW": 1200,
+        "naturalH": 480,
+        "renderW": 1200,
+        "renderH": 480
+      }
+    ],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 360,
+          "y": 199.53125,
+          "right": 1560,
+          "bottom": 248.921875,
+          "width": 1200,
+          "height": 49.390625
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 360,
+          "y": 257.921875,
+          "right": 1520,
+          "bottom": 320.921875,
+          "width": 1160,
+          "height": 63
+        }
+      },
+      {
+        "name": "lesson-figure",
+        "bounds": {
+          "x": 360,
+          "y": 332.921875,
+          "right": 1560,
+          "bottom": 812.921875,
+          "width": 1200,
+          "height": 480
+        }
+      },
+      {
+        "name": "lesson-takeaway",
+        "bounds": {
+          "x": 360,
+          "y": 824.921875,
+          "right": 1560,
+          "bottom": 872.46875,
+          "width": 1200,
+          "height": 47.546875
+        }
+      }
+    ]
+  },
+  {
+    "deck": "vision_ai_course",
+    "slide": 21,
+    "viewport": "1920x1080",
+    "title": "Preprocessing · 입력 규격 맞추기",
+    "fitScale": 1,
+    "titleFontPx": 38,
+    "slideHeight": 944,
+    "contentHeight": 709,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [
+      {
+        "src": "assets/lesson/cnn_real_preprocess_dog.png?v=real-vision-20261016-1",
+        "loaded": true,
+        "naturalW": 1600,
+        "naturalH": 650,
+        "renderW": 1200,
+        "renderH": 488
+      }
+    ],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 360,
+          "y": 181.703125,
+          "right": 1560,
+          "bottom": 231.09375,
+          "width": 1200,
+          "height": 49.390625
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 360,
+          "y": 240.09375,
+          "right": 1520,
+          "bottom": 298.875,
+          "width": 1160,
+          "height": 58.78125
+        }
+      },
+      {
+        "name": "lesson-figure scientific-photo-figure",
+        "bounds": {
+          "x": 360,
+          "y": 305.875,
+          "right": 1560,
+          "bottom": 793.375,
+          "width": 1200,
+          "height": 487.5
+        }
+      },
+      {
+        "name": "lesson-takeaway",
+        "bounds": {
+          "x": 360,
+          "y": 801.375,
+          "right": 1560,
+          "bottom": 867.75,
+          "width": 1200,
+          "height": 66.375
+        }
+      }
+    ]
+  },
+  {
+    "deck": "vision_ai_course",
+    "slide": 22,
+    "viewport": "1920x1080",
+    "title": "Data Augmentation · 조건 변화 만들기",
+    "fitScale": 1,
+    "titleFontPx": 38,
+    "slideHeight": 944,
+    "contentHeight": 709,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [
+      {
+        "src": "assets/lesson/cnn_real_augment_dog.png?v=real-vision-20261016-1",
+        "loaded": true,
+        "naturalW": 1600,
+        "naturalH": 650,
+        "renderW": 1200,
+        "renderH": 488
+      }
+    ],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 360,
+          "y": 181.703125,
+          "right": 1560,
+          "bottom": 231.09375,
+          "width": 1200,
+          "height": 49.390625
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 360,
+          "y": 240.09375,
+          "right": 1520,
+          "bottom": 298.875,
+          "width": 1160,
+          "height": 58.78125
+        }
+      },
+      {
+        "name": "lesson-figure scientific-photo-figure",
+        "bounds": {
+          "x": 360,
+          "y": 305.875,
+          "right": 1560,
+          "bottom": 793.375,
+          "width": 1200,
+          "height": 487.5
+        }
+      },
+      {
+        "name": "lesson-takeaway",
+        "bounds": {
+          "x": 360,
+          "y": 801.375,
+          "right": 1560,
+          "bottom": 867.75,
+          "width": 1200,
+          "height": 66.375
+        }
+      }
+    ]
+  },
+  {
+    "deck": "vision_ai_course",
+    "slide": 23,
+    "viewport": "1920x1080",
+    "title": "모델 학습 · 오차를 줄이는 반복",
+    "fitScale": 1,
+    "titleFontPx": 38,
+    "slideHeight": 944,
+    "contentHeight": 534,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 360,
+          "y": 269.140625,
+          "right": 1560,
+          "bottom": 318.53125,
+          "width": 1200,
+          "height": 49.390625
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 360,
+          "y": 327.53125,
+          "right": 1520,
+          "bottom": 390.53125,
+          "width": 1160,
+          "height": 63
+        }
+      },
+      {
+        "name": "lesson-figure lesson-inline-lab",
+        "bounds": {
+          "x": 360,
+          "y": 402.53125,
+          "right": 1560,
+          "bottom": 743.3125,
+          "width": 1200,
+          "height": 340.78125
+        }
+      },
+      {
+        "name": "lesson-takeaway",
+        "bounds": {
+          "x": 360,
+          "y": 755.3125,
+          "right": 1560,
+          "bottom": 802.859375,
+          "width": 1200,
+          "height": 47.546875
+        }
+      }
+    ]
+  },
+  {
+    "deck": "vision_ai_course",
+    "slide": 24,
+    "viewport": "1920x1080",
+    "title": "Loss · 틀린 정도를 줄이는 방향",
+    "fitScale": 1,
+    "titleFontPx": 38,
+    "slideHeight": 944,
+    "contentHeight": 437,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 360,
+          "y": 317.5625,
+          "right": 1560,
+          "bottom": 366.953125,
+          "width": 1200,
+          "height": 49.390625
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 360,
+          "y": 375.953125,
+          "right": 1480,
+          "bottom": 407.453125,
+          "width": 1120,
+          "height": 31.5
+        }
+      },
+      {
+        "name": "pf-caption",
+        "bounds": {
+          "x": 360,
+          "y": 666.484375,
+          "right": 1560,
+          "bottom": 694.875,
+          "width": 1200,
+          "height": 28.390625
+        }
+      },
+      {
+        "name": "lesson-takeaway",
+        "bounds": {
+          "x": 360,
+          "y": 706.875,
+          "right": 1560,
+          "bottom": 754.421875,
+          "width": 1200,
+          "height": 47.546875
+        }
+      }
+    ]
+  },
+  {
+    "deck": "vision_ai_course",
+    "slide": 25,
+    "viewport": "1920x1080",
+    "title": "Training과 Inference의 차이",
+    "fitScale": 1,
+    "titleFontPx": 38,
+    "slideHeight": 944,
+    "contentHeight": 661,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [
+      {
+        "src": "assets/lesson/training_inference_basic.svg?v=professional-20261006-2",
+        "loaded": true,
+        "naturalW": 300,
+        "naturalH": 125,
+        "renderW": 1200,
+        "renderH": 500
+      }
+    ],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 360,
+          "y": 205.28125,
+          "right": 1560,
+          "bottom": 254.671875,
+          "width": 1200,
+          "height": 49.390625
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 360,
+          "y": 263.671875,
+          "right": 1520,
+          "bottom": 295.171875,
+          "width": 1160,
+          "height": 31.5
+        }
+      },
+      {
+        "name": "lesson-figure",
+        "bounds": {
+          "x": 360,
+          "y": 307.171875,
+          "right": 1560,
+          "bottom": 807.171875,
+          "width": 1200,
+          "height": 500
+        }
+      },
+      {
+        "name": "lesson-takeaway",
+        "bounds": {
+          "x": 360,
+          "y": 819.171875,
+          "right": 1560,
+          "bottom": 866.71875,
+          "width": 1200,
+          "height": 47.546875
+        }
+      }
+    ]
+  },
+  {
+    "deck": "vision_ai_course",
+    "slide": 26,
+    "viewport": "1920x1080",
+    "title": "학습 과정에서 바뀌는 Kernel",
+    "fitScale": 1,
+    "titleFontPx": 38,
+    "slideHeight": 944,
+    "contentHeight": 684,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [
+      {
+        "src": "assets/lesson/context_cnn_training.svg?v=professional-20261006-2",
+        "loaded": true,
+        "naturalW": 300,
+        "naturalH": 124,
+        "renderW": 1200,
+        "renderH": 495
+      }
+    ],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 360,
+          "y": 194,
+          "right": 1560,
+          "bottom": 243.390625,
+          "width": 1200,
+          "height": 49.390625
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 360,
+          "y": 252.390625,
+          "right": 1520,
+          "bottom": 283.890625,
+          "width": 1160,
+          "height": 31.5
+        }
+      },
+      {
+        "name": "lesson-figure",
+        "bounds": {
+          "x": 360,
+          "y": 295.890625,
+          "right": 1560,
+          "bottom": 790.890625,
+          "width": 1200,
+          "height": 495
+        }
+      },
+      {
+        "name": "lesson-takeaway",
+        "bounds": {
+          "x": 360,
+          "y": 802.890625,
+          "right": 1560,
+          "bottom": 877.984375,
+          "width": 1200,
+          "height": 75.09375
+        }
+      }
+    ]
+  },
+  {
+    "deck": "vision_ai_course",
+    "slide": 27,
+    "viewport": "1920x1080",
+    "title": "전이학습 · 고정과 미세 조정",
+    "fitScale": 1,
+    "titleFontPx": 38,
+    "slideHeight": 944,
+    "contentHeight": 695,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [
+      {
+        "src": "assets/lesson/lesson_transfer_freeze_vs_finetune.svg?v=solid-arrows-20261015-2",
+        "loaded": true,
+        "naturalW": 1200,
+        "naturalH": 475,
+        "renderW": 1200,
+        "renderH": 475
+      }
+    ],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 360,
+          "y": 188.25,
+          "right": 1560,
+          "bottom": 237.640625,
+          "width": 1200,
+          "height": 49.390625
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 360,
+          "y": 246.640625,
+          "right": 1520,
+          "bottom": 309.640625,
+          "width": 1160,
+          "height": 63
+        }
+      },
+      {
+        "name": "lesson-figure",
+        "bounds": {
+          "x": 360,
+          "y": 321.640625,
+          "right": 1560,
+          "bottom": 796.640625,
+          "width": 1200,
+          "height": 475
+        }
+      },
+      {
+        "name": "lesson-takeaway",
+        "bounds": {
+          "x": 360,
+          "y": 808.640625,
+          "right": 1560,
+          "bottom": 883.734375,
+          "width": 1200,
+          "height": 75.09375
+        }
+      }
+    ]
+  },
+  {
+    "deck": "vision_ai_course",
+    "slide": 28,
+    "viewport": "1920x1080",
+    "title": "Batch · Step · Epoch",
+    "fitScale": 1,
+    "titleFontPx": 38,
+    "slideHeight": 944,
+    "contentHeight": 530,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 360,
+          "y": 271.09375,
+          "right": 1560,
+          "bottom": 320.484375,
+          "width": 1200,
+          "height": 49.390625
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 360,
+          "y": 329.484375,
+          "right": 1480,
+          "bottom": 360.984375,
+          "width": 1120,
+          "height": 31.5
+        }
+      },
+      {
+        "name": "pf-caption",
+        "bounds": {
+          "x": 360,
+          "y": 684.5625,
+          "right": 1560,
+          "bottom": 741.34375,
+          "width": 1200,
+          "height": 56.78125
+        }
+      },
+      {
+        "name": "lesson-takeaway",
+        "bounds": {
+          "x": 360,
+          "y": 753.34375,
+          "right": 1560,
+          "bottom": 800.890625,
+          "width": 1200,
+          "height": 47.546875
+        }
+      }
+    ]
+  },
+  {
+    "deck": "vision_ai_course",
+    "slide": 29,
+    "viewport": "1920x1080",
+    "title": "Overfitting · 새 데이터 일반화",
+    "fitScale": 1,
+    "titleFontPx": 38,
+    "slideHeight": 944,
+    "contentHeight": 688,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [
+      {
+        "src": "assets/lesson/context_overfit_leakage.svg?v=professional-20261006-2",
+        "loaded": true,
+        "naturalW": 300,
+        "naturalH": 124,
+        "renderW": 1200,
+        "renderH": 495
+      }
+    ],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 360,
+          "y": 192.03125,
+          "right": 1560,
+          "bottom": 241.421875,
+          "width": 1200,
+          "height": 49.390625
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 360,
+          "y": 250.421875,
+          "right": 1520,
+          "bottom": 313.421875,
+          "width": 1160,
+          "height": 63
+        }
+      },
+      {
+        "name": "lesson-figure",
+        "bounds": {
+          "x": 360,
+          "y": 325.421875,
+          "right": 1560,
+          "bottom": 820.421875,
+          "width": 1200,
+          "height": 495
+        }
+      },
+      {
+        "name": "lesson-takeaway",
+        "bounds": {
+          "x": 360,
+          "y": 832.421875,
+          "right": 1560,
+          "bottom": 879.96875,
+          "width": 1200,
+          "height": 47.546875
+        }
+      }
+    ]
+  },
+  {
+    "deck": "vision_ai_course",
+    "slide": 30,
+    "viewport": "1920x1080",
+    "title": "Score Threshold · 판정 기준",
+    "fitScale": 1,
+    "titleFontPx": 38,
+    "slideHeight": 944,
+    "contentHeight": 450,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 360,
+          "y": 311,
+          "right": 1560,
+          "bottom": 360.390625,
+          "width": 1200,
+          "height": 49.390625
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 360,
+          "y": 369.390625,
+          "right": 1520,
+          "bottom": 400.890625,
+          "width": 1160,
+          "height": 31.5
+        }
+      },
+      {
+        "name": "principle-figure pf-three",
+        "bounds": {
+          "x": 360,
+          "y": 420.890625,
+          "right": 1560,
+          "bottom": 670.90625,
+          "width": 1200,
+          "height": 250.015625
+        }
+      },
+      {
+        "name": "lesson-takeaway",
+        "bounds": {
+          "x": 360,
+          "y": 685.90625,
+          "right": 1560,
+          "bottom": 761,
+          "width": 1200,
+          "height": 75.09375
+        }
+      }
+    ]
+  },
+  {
+    "deck": "vision_ai_course",
+    "slide": 31,
+    "viewport": "1920x1080",
+    "title": "Confusion Matrix · 100건 평가",
+    "fitScale": 1,
+    "titleFontPx": 38,
+    "slideHeight": 944,
+    "contentHeight": 505,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 360,
+          "y": 283.390625,
+          "right": 1560,
+          "bottom": 332.78125,
+          "width": 1200,
+          "height": 49.390625
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 360,
+          "y": 341.78125,
+          "right": 1520,
+          "bottom": 373.28125,
+          "width": 1160,
+          "height": 31.5
+        }
+      },
+      {
+        "name": "pf-confusion pf-static-confusion",
+        "bounds": {
+          "x": 510,
+          "y": 393.28125,
+          "right": 1410,
+          "bottom": 721.046875,
+          "width": 900,
+          "height": 327.765625
+        }
+      },
+      {
+        "name": "lesson-takeaway",
+        "bounds": {
+          "x": 360,
+          "y": 741.046875,
+          "right": 1560,
+          "bottom": 788.59375,
+          "width": 1200,
+          "height": 47.546875
+        }
+      }
+    ]
+  },
+  {
+    "deck": "vision_ai_course",
+    "slide": 32,
+    "viewport": "1920x1080",
+    "title": "Accuracy의 함정 · 모두 정상이라면?",
+    "fitScale": 1,
+    "titleFontPx": 38,
+    "slideHeight": 944,
+    "contentHeight": 611,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 360,
+          "y": 230.75,
+          "right": 1560,
+          "bottom": 280.140625,
+          "width": 1200,
+          "height": 49.390625
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 360,
+          "y": 289.140625,
+          "right": 1480,
+          "bottom": 320.640625,
+          "width": 1120,
+          "height": 31.5
+        }
+      },
+      {
+        "name": "pf-caption",
+        "bounds": {
+          "x": 360,
+          "y": 724.921875,
+          "right": 1560,
+          "bottom": 781.703125,
+          "width": 1200,
+          "height": 56.78125
+        }
+      },
+      {
+        "name": "lesson-takeaway",
+        "bounds": {
+          "x": 360,
+          "y": 793.703125,
+          "right": 1560,
+          "bottom": 841.25,
+          "width": 1200,
+          "height": 47.546875
+        }
+      }
+    ]
+  },
+  {
+    "deck": "vision_ai_course",
+    "slide": 33,
+    "viewport": "1920x1080",
+    "title": "Precision과 Recall",
+    "fitScale": 1,
+    "titleFontPx": 38,
+    "slideHeight": 944,
+    "contentHeight": 574,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 360,
+          "y": 249.203125,
+          "right": 1560,
+          "bottom": 298.59375,
+          "width": 1200,
+          "height": 49.390625
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 360,
+          "y": 307.59375,
+          "right": 1520,
+          "bottom": 370.59375,
+          "width": 1160,
+          "height": 63
+        }
+      },
+      {
+        "name": "principle-figure pf-two",
+        "bounds": {
+          "x": 360,
+          "y": 390.59375,
+          "right": 1560,
+          "bottom": 760.234375,
+          "width": 1200,
+          "height": 369.640625
+        }
+      },
+      {
+        "name": "lesson-takeaway",
+        "bounds": {
+          "x": 360,
+          "y": 775.234375,
+          "right": 1560,
+          "bottom": 822.78125,
+          "width": 1200,
+          "height": 47.546875
+        }
+      }
+    ]
+  },
+  {
+    "deck": "vision_ai_course",
+    "slide": 34,
+    "viewport": "1920x1080",
+    "title": "IoU · 박스 겹침 비율",
+    "fitScale": 1,
+    "titleFontPx": 38,
+    "slideHeight": 944,
+    "contentHeight": 715,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [
+      {
+        "src": "assets/lesson/context_iou_visual.svg?v=professional-20261006-2",
+        "loaded": true,
+        "naturalW": 300,
+        "naturalH": 124,
+        "renderW": 1200,
+        "renderH": 495
+      }
+    ],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 360,
+          "y": 178.25,
+          "right": 1560,
+          "bottom": 227.640625,
+          "width": 1200,
+          "height": 49.390625
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 360,
+          "y": 236.640625,
+          "right": 1520,
+          "bottom": 299.640625,
+          "width": 1160,
+          "height": 63
+        }
+      },
+      {
+        "name": "lesson-figure",
+        "bounds": {
+          "x": 360,
+          "y": 311.640625,
+          "right": 1560,
+          "bottom": 806.640625,
+          "width": 1200,
+          "height": 495
+        }
+      },
+      {
+        "name": "lesson-takeaway",
+        "bounds": {
+          "x": 360,
+          "y": 818.640625,
+          "right": 1560,
+          "bottom": 893.734375,
+          "width": 1200,
+          "height": 75.09375
+        }
+      }
+    ]
+  },
+  {
+    "deck": "vision_ai_course",
+    "slide": 35,
+    "viewport": "1920x1080",
+    "title": "Vision AI 원리 · 한 장으로 연결",
+    "fitScale": 1,
+    "titleFontPx": 38,
+    "slideHeight": 944,
+    "contentHeight": 529,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [
+      {
+        "src": "assets/vision_task_apple_reference.jpg",
+        "loaded": true,
+        "naturalW": 960,
+        "naturalH": 640,
+        "renderW": 198,
+        "renderH": 230
+      }
+    ],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 360,
+          "y": 271.453125,
+          "right": 1560,
+          "bottom": 320.84375,
+          "width": 1200,
+          "height": 49.390625
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 360,
+          "y": 329.84375,
+          "right": 1480,
+          "bottom": 361.34375,
+          "width": 1120,
+          "height": 31.5
+        }
+      },
+      {
+        "name": "pf-workflow",
+        "bounds": {
+          "x": 360,
+          "y": 385.34375,
+          "right": 1560,
+          "bottom": 728.984375,
+          "width": 1200,
+          "height": 343.640625
+        }
+      },
+      {
+        "name": "lesson-takeaway",
+        "bounds": {
+          "x": 360,
+          "y": 752.984375,
+          "right": 1560,
+          "bottom": 800.53125,
+          "width": 1200,
+          "height": 47.546875
+        }
+      }
+    ]
+  },
+  {
+    "deck": "vision_ai_course",
+    "slide": 36,
+    "viewport": "1920x1080",
+    "title": "첫 과제를 위한 네 가지 질문",
+    "fitScale": 1,
+    "titleFontPx": 38,
+    "slideHeight": 944,
+    "contentHeight": 527,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [
+      {
+        "src": "assets/vision_task_apple_reference.jpg",
+        "loaded": true,
+        "naturalW": 960,
+        "naturalH": 640,
+        "renderW": 280,
+        "renderH": 187
+      }
+    ],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 360,
+          "y": 272.75,
+          "right": 1560,
+          "bottom": 322.140625,
+          "width": 1200,
+          "height": 49.390625
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 360,
+          "y": 331.140625,
+          "right": 1480,
+          "bottom": 362.640625,
+          "width": 1120,
+          "height": 31.5
+        }
+      },
+      {
+        "name": "principle-figure pf-two",
+        "bounds": {
+          "x": 660,
+          "y": 407.640625,
+          "right": 1560,
+          "bottom": 711.703125,
+          "width": 900,
+          "height": 304.0625
+        }
+      },
+      {
+        "name": "lesson-takeaway",
+        "bounds": {
+          "x": 360,
+          "y": 751.703125,
+          "right": 1560,
+          "bottom": 799.25,
+          "width": 1200,
+          "height": 47.546875
+        }
+      }
+    ]
+  },
+  {
+    "deck": "vision_ai_course",
+    "slide": 37,
+    "viewport": "1920x1080",
+    "title": "실행 결과 확인 · 임계값과 오류 수",
+    "fitScale": 1,
+    "titleFontPx": 38,
+    "slideHeight": 944,
+    "contentHeight": 612,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 360,
+          "y": 229.890625,
+          "right": 1560,
+          "bottom": 279.28125,
+          "width": 1200,
+          "height": 49.390625
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 360,
+          "y": 288.28125,
+          "right": 1480,
+          "bottom": 319.78125,
+          "width": 1120,
+          "height": 31.5
+        }
+      },
+      {
+        "name": "pf-evaluation-layout",
+        "bounds": {
+          "x": 435,
+          "y": 403.78125,
+          "right": 1485,
+          "bottom": 715.546875,
+          "width": 1050,
+          "height": 311.765625
+        }
+      },
+      {
+        "name": "lesson-takeaway",
+        "bounds": {
+          "x": 360,
+          "y": 794.546875,
+          "right": 1560,
+          "bottom": 842.09375,
+          "width": 1200,
+          "height": 47.546875
+        }
+      }
+    ]
+  },
+  {
+    "deck": "vision_ai_course",
+    "slide": 38,
+    "viewport": "1920x1080",
+    "title": "실패 사진이 알려 주는 것",
+    "fitScale": 1,
+    "titleFontPx": 38,
+    "slideHeight": 944,
+    "contentHeight": 549,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [
+      {
+        "src": "assets/vision_task_apple_reference.jpg",
+        "loaded": true,
+        "naturalW": 960,
+        "naturalH": 640,
+        "renderW": 357,
+        "renderH": 194
+      },
+      {
+        "src": "assets/vision_task_apple_reference.jpg",
+        "loaded": true,
+        "naturalW": 960,
+        "naturalH": 640,
+        "renderW": 357,
+        "renderH": 194
+      },
+      {
+        "src": "assets/vision_task_apple_reference.jpg",
+        "loaded": true,
+        "naturalW": 960,
+        "naturalH": 640,
+        "renderW": 161,
+        "renderH": 194
+      }
+    ],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 360,
+          "y": 261.375,
+          "right": 1560,
+          "bottom": 310.765625,
+          "width": 1200,
+          "height": 49.390625
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 360,
+          "y": 319.765625,
+          "right": 1480,
+          "bottom": 351.265625,
+          "width": 1120,
+          "height": 31.5
+        }
+      },
+      {
+        "name": "principle-figure pf-three",
+        "bounds": {
+          "x": 360,
+          "y": 371.265625,
+          "right": 1560,
+          "bottom": 679.296875,
+          "width": 1200,
+          "height": 308.03125
+        }
+      },
+      {
+        "name": "pf-caption",
+        "bounds": {
+          "x": 360,
+          "y": 694.296875,
+          "right": 1560,
+          "bottom": 751.078125,
+          "width": 1200,
+          "height": 56.78125
+        }
+      },
+      {
+        "name": "lesson-takeaway",
+        "bounds": {
+          "x": 360,
+          "y": 763.078125,
+          "right": 1560,
+          "bottom": 810.625,
+          "width": 1200,
+          "height": 47.546875
+        }
+      }
+    ]
+  },
+  {
+    "deck": "vision_ai_course",
+    "slide": 39,
+    "viewport": "1920x1080",
+    "title": "Vision AI 원리 · 무엇을 설명할 수 있나?",
+    "fitScale": 1,
+    "titleFontPx": 38,
+    "slideHeight": 944,
+    "contentHeight": 605,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [
+      {
+        "src": "assets/vision_task_apple_reference.jpg",
+        "loaded": true,
+        "naturalW": 960,
+        "naturalH": 640,
+        "renderW": 280,
+        "renderH": 187
+      }
+    ],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 360,
+          "y": 233.40625,
+          "right": 1560,
+          "bottom": 282.796875,
+          "width": 1200,
+          "height": 49.390625
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 360,
+          "y": 291.796875,
+          "right": 1480,
+          "bottom": 323.296875,
+          "width": 1120,
+          "height": 31.5
+        }
+      },
+      {
+        "name": "principle-figure pf-two",
+        "bounds": {
+          "x": 660,
+          "y": 368.296875,
+          "right": 1560,
+          "bottom": 672.359375,
+          "width": 900,
+          "height": 304.0625
+        }
+      },
+      {
+        "name": "lesson-takeaway",
+        "bounds": {
+          "x": 360,
+          "y": 791.046875,
+          "right": 1560,
+          "bottom": 838.59375,
+          "width": 1200,
+          "height": 47.546875
+        }
+      }
+    ]
+  },
+  {
+    "deck": "intro",
+    "slide": 1,
+    "viewport": "1366x768",
+    "title": "AI와 시각의 출발점",
+    "fitScale": 1,
+    "titleFontPx": 35.5,
+    "slideHeight": 632,
+    "contentHeight": 522,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [
+      {
+        "src": "assets/vision_task_apple_reference.jpg",
+        "loaded": true,
+        "naturalW": 960,
+        "naturalH": 640,
+        "renderW": 392,
+        "renderH": 261
+      }
+    ],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 93,
+          "y": 163.4375,
+          "right": 1253,
+          "bottom": 205.6875,
+          "width": 1160,
+          "height": 42.25
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 93,
+          "y": 210.6875,
+          "right": 1073,
+          "bottom": 234.796875,
+          "width": 980,
+          "height": 24.109375
+        }
+      }
+    ]
+  },
+  {
+    "deck": "intro",
+    "slide": 2,
+    "viewport": "1366x768",
+    "title": "사람의 시각 · 장면 이해",
+    "fitScale": 1,
+    "titleFontPx": 35.5,
+    "slideHeight": 632,
+    "contentHeight": 531,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [
+      {
+        "src": "assets/intro_photos/perspective.webp",
+        "loaded": true,
+        "naturalW": 1339,
+        "naturalH": 900,
+        "renderW": 717,
+        "renderH": 315
+      }
+    ],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 88,
+          "y": 159,
+          "right": 908,
+          "bottom": 201.25,
+          "width": 820,
+          "height": 42.25
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 88,
+          "y": 206.25,
+          "right": 1208,
+          "bottom": 230.359375,
+          "width": 1120,
+          "height": 24.109375
+        }
+      }
+    ]
+  },
+  {
+    "deck": "intro",
+    "slide": 3,
+    "viewport": "1366x768",
+    "title": "사람의 의미 인식 vs Pixel 숫자",
+    "fitScale": 1,
+    "titleFontPx": 35.5,
+    "slideHeight": 632,
+    "contentHeight": 536,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [
+      {
+        "src": "assets/vision_task_apple_reference.jpg",
+        "loaded": true,
+        "naturalW": 960,
+        "naturalH": 640,
+        "renderW": 353,
+        "renderH": 235
+      }
+    ],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 88,
+          "y": 112.0625,
+          "right": 1278,
+          "bottom": 154.3125,
+          "width": 1190,
+          "height": 42.25
+        }
+      }
+    ]
+  },
+  {
+    "deck": "intro",
+    "slide": 4,
+    "viewport": "1366x768",
+    "title": "사진에서 밝기 숫자로",
+    "fitScale": 1,
+    "titleFontPx": 35.5,
+    "slideHeight": 632,
+    "contentHeight": 586,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [
+      {
+        "src": "assets/vision_task_apple_reference.jpg",
+        "loaded": true,
+        "naturalW": 960,
+        "naturalH": 640,
+        "renderW": 440,
+        "renderH": 292
+      }
+    ],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 63,
+          "y": 87.203125,
+          "right": 1303,
+          "bottom": 129.453125,
+          "width": 1240,
+          "height": 42.25
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 63,
+          "y": 134.453125,
+          "right": 1243,
+          "bottom": 158.5625,
+          "width": 1180,
+          "height": 24.109375
+        }
+      }
+    ]
+  },
+  {
+    "deck": "intro",
+    "slide": 5,
+    "viewport": "1366x768",
+    "title": "RGB · Pixel당 세 숫자",
+    "fitScale": 1,
+    "titleFontPx": 35.5,
+    "slideHeight": 632,
+    "contentHeight": 587,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [
+      {
+        "src": "assets/vision_task_apple_reference.jpg",
+        "loaded": true,
+        "naturalW": 960,
+        "naturalH": 640,
+        "renderW": 517,
+        "renderH": 344
+      }
+    ],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 63,
+          "y": 86.265625,
+          "right": 1303,
+          "bottom": 128.515625,
+          "width": 1240,
+          "height": 42.25
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 63,
+          "y": 133.515625,
+          "right": 1243,
+          "bottom": 157.625,
+          "width": 1180,
+          "height": 24.109375
+        }
+      },
+      {
+        "name": "intro-visual pixel-structure-visual",
+        "bounds": {
+          "x": 103,
+          "y": 169.625,
+          "right": 1263,
+          "bottom": 630,
+          "width": 1160,
+          "height": 460.375
+        }
+      }
+    ]
+  },
+  {
+    "deck": "intro",
+    "slide": 6,
+    "viewport": "1366x768",
+    "title": "RGB 이미지와 숫자 배열",
+    "fitScale": 1,
+    "titleFontPx": 35.5,
+    "slideHeight": 632,
+    "contentHeight": 558,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [
+      {
+        "src": "assets/lesson/lecture_rgb_channel_stack.svg?v=rgb-total-20261016-1",
+        "loaded": true,
+        "naturalW": 1200,
+        "naturalH": 420,
+        "renderW": 1220,
+        "renderH": 399
+      }
+    ],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 63,
+          "y": 100.75,
+          "right": 1303,
+          "bottom": 143,
+          "width": 1240,
+          "height": 42.25
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 63,
+          "y": 148,
+          "right": 963,
+          "bottom": 172.109375,
+          "width": 900,
+          "height": 24.109375
+        }
+      },
+      {
+        "name": "figure figure--generated-lecture intro-rgb-data-figure",
+        "bounds": {
+          "x": 63,
+          "y": 180.109375,
+          "right": 1283,
+          "bottom": 579.46875,
+          "width": 1220,
+          "height": 399.359375
+        }
+      }
+    ]
+  },
+  {
+    "deck": "intro",
+    "slide": 7,
+    "viewport": "1366x768",
+    "title": "해상도에 따른 정보 차이",
+    "fitScale": 1,
+    "titleFontPx": 35.5,
+    "slideHeight": 632,
+    "contentHeight": 569,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 103,
+          "y": 95.421875,
+          "right": 1263,
+          "bottom": 137.671875,
+          "width": 1160,
+          "height": 42.25
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 103,
+          "y": 142.671875,
+          "right": 1003,
+          "bottom": 190.890625,
+          "width": 900,
+          "height": 48.21875
+        }
+      }
+    ]
+  },
+  {
+    "deck": "intro",
+    "slide": 8,
+    "viewport": "1366x768",
+    "title": "조명·색감에 따른 Pixel 변화",
+    "fitScale": 1,
+    "titleFontPx": 35.5,
+    "slideHeight": 632,
+    "contentHeight": 531,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [
+      {
+        "src": "assets/vision_task_apple_reference.jpg",
+        "loaded": true,
+        "naturalW": 960,
+        "naturalH": 640,
+        "renderW": 295,
+        "renderH": 235
+      },
+      {
+        "src": "assets/vision_task_apple_reference.jpg",
+        "loaded": true,
+        "naturalW": 960,
+        "naturalH": 640,
+        "renderW": 295,
+        "renderH": 235
+      },
+      {
+        "src": "assets/vision_task_apple_reference.jpg",
+        "loaded": true,
+        "naturalW": 960,
+        "naturalH": 640,
+        "renderW": 295,
+        "renderH": 235
+      },
+      {
+        "src": "assets/vision_task_apple_reference.jpg",
+        "loaded": true,
+        "naturalW": 960,
+        "naturalH": 640,
+        "renderW": 295,
+        "renderH": 235
+      }
+    ],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 63,
+          "y": 114.5,
+          "right": 1303,
+          "bottom": 156.75,
+          "width": 1240,
+          "height": 42.25
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 63,
+          "y": 161.75,
+          "right": 963,
+          "bottom": 209.96875,
+          "width": 900,
+          "height": 48.21875
+        }
+      }
+    ]
+  },
+  {
+    "deck": "intro",
+    "slide": 9,
+    "viewport": "1366x768",
+    "title": "회전·크기·가림·흐림에 따른 변화",
+    "fitScale": 1,
+    "titleFontPx": 35.5,
+    "slideHeight": 632,
+    "contentHeight": 507,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [
+      {
+        "src": "assets/vision_task_apple_reference.jpg",
+        "loaded": true,
+        "naturalW": 960,
+        "naturalH": 640,
+        "renderW": 286,
+        "renderH": 257
+      },
+      {
+        "src": "assets/vision_task_apple_reference.jpg",
+        "loaded": true,
+        "naturalW": 960,
+        "naturalH": 640,
+        "renderW": 428,
+        "renderH": 341
+      },
+      {
+        "src": "assets/vision_task_apple_reference.jpg",
+        "loaded": true,
+        "naturalW": 960,
+        "naturalH": 640,
+        "renderW": 295,
+        "renderH": 235
+      },
+      {
+        "src": "assets/vision_task_apple_reference.jpg",
+        "loaded": true,
+        "naturalW": 960,
+        "naturalH": 640,
+        "renderW": 295,
+        "renderH": 235
+      }
+    ],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 63,
+          "y": 126.546875,
+          "right": 1303,
+          "bottom": 168.796875,
+          "width": 1240,
+          "height": 42.25
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 63,
+          "y": 173.796875,
+          "right": 963,
+          "bottom": 197.90625,
+          "width": 900,
+          "height": 24.109375
+        }
+      }
+    ]
+  },
+  {
+    "deck": "intro",
+    "slide": 10,
+    "viewport": "1366x768",
+    "title": "다르게 생겨도 같은 종류",
+    "fitScale": 1,
+    "titleFontPx": 35.5,
+    "slideHeight": 632,
+    "contentHeight": 482,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 83,
+          "y": 138.9375,
+          "right": 1283,
+          "bottom": 181.1875,
+          "width": 1200,
+          "height": 42.25
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 83,
+          "y": 186.1875,
+          "right": 983,
+          "bottom": 210.296875,
+          "width": 900,
+          "height": 24.109375
+        }
+      },
+      {
+        "name": "pf-apple-row",
+        "bounds": {
+          "x": 153,
+          "y": 234.296875,
+          "right": 1213,
+          "bottom": 546.5625,
+          "width": 1060,
+          "height": 312.265625
+        }
+      }
+    ]
+  },
+  {
+    "deck": "intro",
+    "slide": 11,
+    "viewport": "1366x768",
+    "title": "큰 변화보다 중요한 차이",
+    "fitScale": 1,
+    "titleFontPx": 35.5,
+    "slideHeight": 632,
+    "contentHeight": 535,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 83,
+          "y": 112.546875,
+          "right": 1283,
+          "bottom": 154.796875,
+          "width": 1200,
+          "height": 42.25
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 83,
+          "y": 159.796875,
+          "right": 983,
+          "bottom": 208.015625,
+          "width": 900,
+          "height": 48.21875
+        }
+      },
+      {
+        "name": "pf-apple-row",
+        "bounds": {
+          "x": 153,
+          "y": 232.015625,
+          "right": 1213,
+          "bottom": 544.28125,
+          "width": 1060,
+          "height": 312.265625
+        }
+      }
+    ]
+  },
+  {
+    "deck": "vision_ai_course",
+    "slide": 1,
+    "viewport": "1366x768",
+    "title": "같은 사진, 다른 질문과 정답",
+    "fitScale": 1,
+    "titleFontPx": 34.8,
+    "slideHeight": 632,
+    "contentHeight": 460,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [
+      {
+        "src": "assets/vision_task_apple_reference.jpg",
+        "loaded": true,
+        "naturalW": 960,
+        "naturalH": 640,
+        "renderW": 378,
+        "renderH": 200
+      }
+    ],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 83,
+          "y": 150.125,
+          "right": 1283,
+          "bottom": 192.953125,
+          "width": 1200,
+          "height": 42.828125
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 83,
+          "y": 197.953125,
+          "right": 1203,
+          "bottom": 222.28125,
+          "width": 1120,
+          "height": 24.328125
+        }
+      },
+      {
+        "name": "th-panes",
+        "bounds": {
+          "x": 83,
+          "y": 234.28125,
+          "right": 1283,
+          "bottom": 561.671875,
+          "width": 1200,
+          "height": 327.390625
+        }
+      },
+      {
+        "name": "lesson-takeaway",
+        "bounds": {
+          "x": 83,
+          "y": 573.671875,
+          "right": 1283,
+          "bottom": 609.859375,
+          "width": 1200,
+          "height": 36.1875
+        }
+      }
+    ]
+  },
+  {
+    "deck": "vision_ai_course",
+    "slide": 2,
+    "viewport": "1366x768",
+    "title": "규칙 기반과 데이터 학습",
+    "fitScale": 1,
+    "titleFontPx": 34.8,
+    "slideHeight": 632,
+    "contentHeight": 519,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [
+      {
+        "src": "assets/lesson/rule_learning_comparison.svg?v=professional-20261006-2",
+        "loaded": true,
+        "naturalW": 300,
+        "naturalH": 119,
+        "renderW": 1200,
+        "renderH": 353
+      }
+    ],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 83,
+          "y": 120.4375,
+          "right": 1283,
+          "bottom": 163.265625,
+          "width": 1200,
+          "height": 42.828125
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 83,
+          "y": 168.265625,
+          "right": 1243,
+          "bottom": 216.921875,
+          "width": 1160,
+          "height": 48.65625
+        }
+      },
+      {
+        "name": "lesson-figure",
+        "bounds": {
+          "x": 83,
+          "y": 222.921875,
+          "right": 1283,
+          "bottom": 576.1875,
+          "width": 1200,
+          "height": 353.265625
+        }
+      },
+      {
+        "name": "lesson-takeaway",
+        "bounds": {
+          "x": 83,
+          "y": 581.1875,
+          "right": 1283,
+          "bottom": 639.5625,
+          "width": 1200,
+          "height": 58.375
+        }
+      }
+    ]
+  },
+  {
+    "deck": "vision_ai_course",
+    "slide": 3,
+    "viewport": "1366x768",
+    "title": "첫 선택 · 어떤 모델을 쓸까?",
+    "fitScale": 1,
+    "titleFontPx": 34.8,
+    "slideHeight": 632,
+    "contentHeight": 404,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 83,
+          "y": 177.84375,
+          "right": 1283,
+          "bottom": 220.671875,
+          "width": 1200,
+          "height": 42.828125
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 83,
+          "y": 225.671875,
+          "right": 1203,
+          "bottom": 250,
+          "width": 1120,
+          "height": 24.328125
+        }
+      },
+      {
+        "name": "principle-figure pf-three",
+        "bounds": {
+          "x": 83,
+          "y": 259,
+          "right": 1283,
+          "bottom": 507.71875,
+          "width": 1200,
+          "height": 248.71875
+        }
+      },
+      {
+        "name": "pf-caption",
+        "bounds": {
+          "x": 83,
+          "y": 516.71875,
+          "right": 1283,
+          "bottom": 540.96875,
+          "width": 1200,
+          "height": 24.25
+        }
+      },
+      {
+        "name": "lesson-takeaway",
+        "bounds": {
+          "x": 83,
+          "y": 545.96875,
+          "right": 1283,
+          "bottom": 582.15625,
+          "width": 1200,
+          "height": 36.1875
+        }
+      }
+    ]
+  },
+  {
+    "deck": "vision_ai_course",
+    "slide": 4,
+    "viewport": "1366x768",
+    "title": "퍼셉트론 · Wx + b에서 판정까지",
+    "fitScale": 1,
+    "titleFontPx": 34.8,
+    "slideHeight": 632,
+    "contentHeight": 520,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [
+      {
+        "src": "assets/lesson/perceptron_gate_structure_ko.svg?v=20261017-1",
+        "loaded": true,
+        "naturalW": 1120,
+        "naturalH": 390,
+        "renderW": 1200,
+        "renderH": 300
+      }
+    ],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 83,
+          "y": 120.1875,
+          "right": 1283,
+          "bottom": 163.015625,
+          "width": 1200,
+          "height": 42.828125
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 83,
+          "y": 168.015625,
+          "right": 1243,
+          "bottom": 194.75,
+          "width": 1160,
+          "height": 26.734375
+        }
+      },
+      {
+        "name": "lesson-figure gate-reference-figure",
+        "bounds": {
+          "x": 83,
+          "y": 204.75,
+          "right": 1283,
+          "bottom": 504.265625,
+          "width": 1200,
+          "height": 299.515625
+        }
+      },
+      {
+        "name": "nb-takeaway",
+        "bounds": {
+          "x": 83,
+          "y": 574.9375,
+          "right": 1283,
+          "bottom": 598.609375,
+          "width": 1200,
+          "height": 23.671875
+        }
+      },
+      {
+        "name": "lesson-takeaway",
+        "bounds": {
+          "x": 83,
+          "y": 603.609375,
+          "right": 1283,
+          "bottom": 639.796875,
+          "width": 1200,
+          "height": 36.1875
+        }
+      }
+    ]
+  },
+  {
+    "deck": "vision_ai_course",
+    "slide": 5,
+    "viewport": "1366x768",
+    "title": "AND와 XOR · 직선으로 구분할 수 있을까?",
+    "fitScale": 1,
+    "titleFontPx": 34.8,
+    "slideHeight": 632,
+    "contentHeight": 474,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [
+      {
+        "src": "assets/lesson/and_xor_gate_geometry_ko.svg?v=20261017-1",
+        "loaded": true,
+        "naturalW": 1120,
+        "naturalH": 390,
+        "renderW": 901,
+        "renderH": 246
+      }
+    ],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 88,
+          "y": 142.828125,
+          "right": 1278,
+          "bottom": 185.65625,
+          "width": 1190,
+          "height": 42.828125
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 88,
+          "y": 190.65625,
+          "right": 1248,
+          "bottom": 217.390625,
+          "width": 1160,
+          "height": 26.734375
+        }
+      },
+      {
+        "name": "gate-geometry-layout",
+        "bounds": {
+          "x": 88,
+          "y": 223.390625,
+          "right": 1278,
+          "bottom": 489.140625,
+          "width": 1190,
+          "height": 265.75
+        }
+      },
+      {
+        "name": "nb-takeaway",
+        "bounds": {
+          "x": 88,
+          "y": 552.296875,
+          "right": 1278,
+          "bottom": 575.96875,
+          "width": 1190,
+          "height": 23.671875
+        }
+      },
+      {
+        "name": "lesson-takeaway",
+        "bounds": {
+          "x": 88,
+          "y": 580.96875,
+          "right": 1278,
+          "bottom": 617.15625,
+          "width": 1190,
+          "height": 36.1875
+        }
+      }
+    ]
+  },
+  {
+    "deck": "vision_ai_course",
+    "slide": 6,
+    "viewport": "1366x768",
+    "title": "ReLU · 비선형성의 시작",
+    "fitScale": 1,
+    "titleFontPx": 34.8,
+    "slideHeight": 632,
+    "contentHeight": 390,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 83,
+          "y": 185.21875,
+          "right": 1283,
+          "bottom": 228.046875,
+          "width": 1200,
+          "height": 42.828125
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 83,
+          "y": 233.046875,
+          "right": 1243,
+          "bottom": 259.78125,
+          "width": 1160,
+          "height": 26.734375
+        }
+      },
+      {
+        "name": "nb-activation-charts",
+        "bounds": {
+          "x": 83,
+          "y": 265.78125,
+          "right": 1283,
+          "bottom": 502.90625,
+          "width": 1200,
+          "height": 237.125
+        }
+      },
+      {
+        "name": "nb-takeaway",
+        "bounds": {
+          "x": 83,
+          "y": 509.90625,
+          "right": 1283,
+          "bottom": 533.578125,
+          "width": 1200,
+          "height": 23.671875
+        }
+      },
+      {
+        "name": "lesson-takeaway",
+        "bounds": {
+          "x": 83,
+          "y": 538.578125,
+          "right": 1283,
+          "bottom": 574.765625,
+          "width": 1200,
+          "height": 36.1875
+        }
+      }
+    ]
+  },
+  {
+    "deck": "vision_ai_course",
+    "slide": 7,
+    "viewport": "1366x768",
+    "title": "비선형성 · 깊어져도 직선이면?",
+    "fitScale": 1,
+    "titleFontPx": 34.8,
+    "slideHeight": 632,
+    "contentHeight": 464,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 83,
+          "y": 147.890625,
+          "right": 1283,
+          "bottom": 190.71875,
+          "width": 1200,
+          "height": 42.828125
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 83,
+          "y": 195.71875,
+          "right": 1203,
+          "bottom": 220.046875,
+          "width": 1120,
+          "height": 24.328125
+        }
+      },
+      {
+        "name": "principle-figure pf-two",
+        "bounds": {
+          "x": 83,
+          "y": 229.046875,
+          "right": 1283,
+          "bottom": 537.65625,
+          "width": 1200,
+          "height": 308.609375
+        }
+      },
+      {
+        "name": "pf-caption",
+        "bounds": {
+          "x": 83,
+          "y": 546.65625,
+          "right": 1283,
+          "bottom": 570.90625,
+          "width": 1200,
+          "height": 24.25
+        }
+      },
+      {
+        "name": "lesson-takeaway",
+        "bounds": {
+          "x": 83,
+          "y": 575.90625,
+          "right": 1283,
+          "bottom": 612.09375,
+          "width": 1200,
+          "height": 36.1875
+        }
+      }
+    ]
+  },
+  {
+    "deck": "vision_ai_course",
+    "slide": 8,
+    "viewport": "1366x768",
+    "title": "CNN 전체 구조 · 사진에서 판정까지",
+    "fitScale": 1,
+    "titleFontPx": 34.8,
+    "slideHeight": 632,
+    "contentHeight": 407,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [
+      {
+        "src": "assets/vision_task_apple_reference.jpg",
+        "loaded": true,
+        "naturalW": 960,
+        "naturalH": 640,
+        "renderW": 259,
+        "renderH": 161
+      }
+    ],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 83,
+          "y": 176.328125,
+          "right": 1283,
+          "bottom": 219.15625,
+          "width": 1200,
+          "height": 42.828125
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 83,
+          "y": 224.15625,
+          "right": 1203,
+          "bottom": 248.484375,
+          "width": 1120,
+          "height": 24.328125
+        }
+      },
+      {
+        "name": "pf-pipeline",
+        "bounds": {
+          "x": 83,
+          "y": 258.484375,
+          "right": 1283,
+          "bottom": 483.96875,
+          "width": 1200,
+          "height": 225.484375
+        }
+      },
+      {
+        "name": "pf-caption",
+        "bounds": {
+          "x": 83,
+          "y": 493.96875,
+          "right": 1283,
+          "bottom": 542.46875,
+          "width": 1200,
+          "height": 48.5
+        }
+      },
+      {
+        "name": "lesson-takeaway",
+        "bounds": {
+          "x": 83,
+          "y": 547.46875,
+          "right": 1283,
+          "bottom": 583.65625,
+          "width": 1200,
+          "height": 36.1875
+        }
+      }
+    ]
+  },
+  {
+    "deck": "vision_ai_course",
+    "slide": 9,
+    "viewport": "1366x768",
+    "title": "Kernel · 작은 영역의 가중합",
+    "fitScale": 1,
+    "titleFontPx": 34.8,
+    "slideHeight": 632,
+    "contentHeight": 472,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 83,
+          "y": 143.75,
+          "right": 1283,
+          "bottom": 186.578125,
+          "width": 1200,
+          "height": 42.828125
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 83,
+          "y": 191.578125,
+          "right": 1203,
+          "bottom": 215.90625,
+          "width": 1120,
+          "height": 24.328125
+        }
+      },
+      {
+        "name": "th-panes pf-kernel-flow",
+        "bounds": {
+          "x": 83,
+          "y": 227.90625,
+          "right": 1283,
+          "bottom": 536.046875,
+          "width": 1200,
+          "height": 308.140625
+        }
+      },
+      {
+        "name": "pf-teaching-note",
+        "bounds": {
+          "x": 83,
+          "y": 548.046875,
+          "right": 1283,
+          "bottom": 574.046875,
+          "width": 1200,
+          "height": 26
+        }
+      },
+      {
+        "name": "lesson-takeaway",
+        "bounds": {
+          "x": 83,
+          "y": 580.046875,
+          "right": 1283,
+          "bottom": 616.234375,
+          "width": 1200,
+          "height": 36.1875
+        }
+      }
+    ]
+  },
+  {
+    "deck": "vision_ai_course",
+    "slide": 10,
+    "viewport": "1366x768",
+    "title": "Feature Map · 같은 계산을 위치마다",
+    "fitScale": 1,
+    "titleFontPx": 34.8,
+    "slideHeight": 632,
+    "contentHeight": 512,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 83,
+          "y": 124.125,
+          "right": 1283,
+          "bottom": 166.953125,
+          "width": 1200,
+          "height": 42.828125
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 83,
+          "y": 171.953125,
+          "right": 1203,
+          "bottom": 196.28125,
+          "width": 1120,
+          "height": 24.328125
+        }
+      },
+      {
+        "name": "th-panes",
+        "bounds": {
+          "x": 83,
+          "y": 208.28125,
+          "right": 1283,
+          "bottom": 555.6875,
+          "width": 1200,
+          "height": 347.40625
+        }
+      },
+      {
+        "name": "pf-teaching-note",
+        "bounds": {
+          "x": 83,
+          "y": 567.6875,
+          "right": 1283,
+          "bottom": 593.6875,
+          "width": 1200,
+          "height": 26
+        }
+      },
+      {
+        "name": "lesson-takeaway",
+        "bounds": {
+          "x": 83,
+          "y": 599.6875,
+          "right": 1283,
+          "bottom": 635.875,
+          "width": 1200,
+          "height": 36.1875
+        }
+      }
+    ]
+  },
+  {
+    "deck": "vision_ai_course",
+    "slide": 11,
+    "viewport": "1366x768",
+    "title": "CNN · 지역 연결과 가중치 공유",
+    "fitScale": 1,
+    "titleFontPx": 34.8,
+    "slideHeight": 632,
+    "contentHeight": 514,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 83,
+          "y": 123.21875,
+          "right": 1283,
+          "bottom": 166.046875,
+          "width": 1200,
+          "height": 42.828125
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 83,
+          "y": 171.046875,
+          "right": 1203,
+          "bottom": 195.375,
+          "width": 1120,
+          "height": 24.328125
+        }
+      },
+      {
+        "name": "principle-figure pf-three",
+        "bounds": {
+          "x": 83,
+          "y": 204.375,
+          "right": 1283,
+          "bottom": 562.34375,
+          "width": 1200,
+          "height": 357.96875
+        }
+      },
+      {
+        "name": "pf-caption",
+        "bounds": {
+          "x": 83,
+          "y": 571.34375,
+          "right": 1283,
+          "bottom": 595.59375,
+          "width": 1200,
+          "height": 24.25
+        }
+      },
+      {
+        "name": "lesson-takeaway",
+        "bounds": {
+          "x": 83,
+          "y": 600.59375,
+          "right": 1283,
+          "bottom": 636.78125,
+          "width": 1200,
+          "height": 36.1875
+        }
+      }
+    ]
+  },
+  {
+    "deck": "vision_ai_course",
+    "slide": 12,
+    "viewport": "1366x768",
+    "title": "RGB에서 Feature Channel까지",
+    "fitScale": 1,
+    "titleFontPx": 34.8,
+    "slideHeight": 632,
+    "contentHeight": 454,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 83,
+          "y": 152.96875,
+          "right": 1283,
+          "bottom": 195.796875,
+          "width": 1200,
+          "height": 42.828125
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 83,
+          "y": 200.796875,
+          "right": 1203,
+          "bottom": 225.125,
+          "width": 1120,
+          "height": 24.328125
+        }
+      },
+      {
+        "name": {},
+        "bounds": {
+          "x": 83,
+          "y": 245.125,
+          "right": 1283,
+          "bottom": 521.59375,
+          "width": 1200,
+          "height": 276.46875
+        }
+      },
+      {
+        "name": "pf-caption",
+        "bounds": {
+          "x": 83,
+          "y": 541.59375,
+          "right": 1283,
+          "bottom": 565.84375,
+          "width": 1200,
+          "height": 24.25
+        }
+      },
+      {
+        "name": "lesson-takeaway",
+        "bounds": {
+          "x": 83,
+          "y": 570.84375,
+          "right": 1283,
+          "bottom": 607.03125,
+          "width": 1200,
+          "height": 36.1875
+        }
+      }
+    ]
+  },
+  {
+    "deck": "vision_ai_course",
+    "slide": 13,
+    "viewport": "1366x768",
+    "title": "Stride · 계산 위치의 간격",
+    "fitScale": 0.93,
+    "titleFontPx": 32.4,
+    "slideHeight": 632,
+    "contentHeight": 607,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 125.203125,
+          "y": 76.671875,
+          "right": 1240.796875,
+          "bottom": 116.5,
+          "width": 1115.59375,
+          "height": 39.828125
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 125.203125,
+          "y": 121.140625,
+          "right": 1166.421875,
+          "bottom": 143.765625,
+          "width": 1041.21875,
+          "height": 22.625
+        }
+      },
+      {
+        "name": "th-panes",
+        "bounds": {
+          "x": 125.203125,
+          "y": 154.90625,
+          "right": 1240.796875,
+          "bottom": 580.953125,
+          "width": 1115.59375,
+          "height": 426.046875
+        }
+      },
+      {
+        "name": "concept-equation",
+        "bounds": {
+          "x": 125.203125,
+          "y": 592.09375,
+          "right": 1240.796875,
+          "bottom": 642.265625,
+          "width": 1115.59375,
+          "height": 50.171875
+        }
+      },
+      {
+        "name": "lesson-takeaway",
+        "bounds": {
+          "x": 125.203125,
+          "y": 649.6875,
+          "right": 1240.796875,
+          "bottom": 683.3125,
+          "width": 1115.59375,
+          "height": 33.625
+        }
+      }
+    ]
+  },
+  {
+    "deck": "vision_ai_course",
+    "slide": 14,
+    "viewport": "1366x768",
+    "title": "Padding · 입력 바깥에 값 채우기",
+    "fitScale": 1,
+    "titleFontPx": 34.8,
+    "slideHeight": 632,
+    "contentHeight": 591,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 88,
+          "y": 84.4375,
+          "right": 1278,
+          "bottom": 127.265625,
+          "width": 1190,
+          "height": 42.828125
+        }
+      },
+      {
+        "name": "slide-subtitle concept-lede",
+        "bounds": {
+          "x": 88,
+          "y": 132.265625,
+          "right": 1248,
+          "bottom": 180.859375,
+          "width": 1160,
+          "height": 48.59375
+        }
+      }
+    ]
+  },
+  {
+    "deck": "vision_ai_course",
+    "slide": 15,
+    "viewport": "1366x768",
+    "title": "Max Pooling · 영역별 최댓값",
+    "fitScale": 1,
+    "titleFontPx": 34.8,
+    "slideHeight": 632,
+    "contentHeight": 492,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 88,
+          "y": 134,
+          "right": 1278,
+          "bottom": 176.828125,
+          "width": 1190,
+          "height": 42.828125
+        }
+      },
+      {
+        "name": "slide-subtitle concept-lede",
+        "bounds": {
+          "x": 88,
+          "y": 181.828125,
+          "right": 1248,
+          "bottom": 206.125,
+          "width": 1160,
+          "height": 24.296875
+        }
+      }
+    ]
+  },
+  {
+    "deck": "vision_ai_course",
+    "slide": 16,
+    "viewport": "1366x768",
+    "title": "실제 Feature Map · CNN 내부 반응",
+    "fitScale": 1,
+    "titleFontPx": 34.8,
+    "slideHeight": 632,
+    "contentHeight": 572,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 83,
+          "y": 93.890625,
+          "right": 1283,
+          "bottom": 136.71875,
+          "width": 1200,
+          "height": 42.828125
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 83,
+          "y": 141.71875,
+          "right": 1243,
+          "bottom": 168.453125,
+          "width": 1160,
+          "height": 26.734375
+        }
+      },
+      {
+        "name": "lesson-takeaway",
+        "bounds": {
+          "x": 83,
+          "y": 547.875,
+          "right": 1283,
+          "bottom": 629.3125,
+          "width": 1200,
+          "height": 81.4375
+        }
+      }
+    ]
+  },
+  {
+    "deck": "vision_ai_course",
+    "slide": 17,
+    "viewport": "1366x768",
+    "title": "Backbone과 Task Head",
+    "fitScale": 1,
+    "titleFontPx": 34.8,
+    "slideHeight": 632,
+    "contentHeight": 497,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [
+      {
+        "src": "assets/lesson/lesson_backbone_head_roles.svg?v=solid-arrows-20261015-2",
+        "loaded": true,
+        "naturalW": 1200,
+        "naturalH": 475,
+        "renderW": 1200,
+        "renderH": 353
+      }
+    ],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 83,
+          "y": 131.53125,
+          "right": 1283,
+          "bottom": 174.359375,
+          "width": 1200,
+          "height": 42.828125
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 83,
+          "y": 179.359375,
+          "right": 1243,
+          "bottom": 228.015625,
+          "width": 1160,
+          "height": 48.65625
+        }
+      },
+      {
+        "name": "lesson-figure",
+        "bounds": {
+          "x": 83,
+          "y": 234.015625,
+          "right": 1283,
+          "bottom": 587.28125,
+          "width": 1200,
+          "height": 353.265625
+        }
+      },
+      {
+        "name": "lesson-takeaway",
+        "bounds": {
+          "x": 83,
+          "y": 592.28125,
+          "right": 1283,
+          "bottom": 628.46875,
+          "width": 1200,
+          "height": 36.1875
+        }
+      }
+    ]
+  },
+  {
+    "deck": "vision_ai_course",
+    "slide": 18,
+    "viewport": "1366x768",
+    "title": "데이터셋 · 어떤 사진으로 배우나",
+    "fitScale": 1,
+    "titleFontPx": 34.8,
+    "slideHeight": 632,
+    "contentHeight": 551,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 83,
+          "y": 104.296875,
+          "right": 1283,
+          "bottom": 147.125,
+          "width": 1200,
+          "height": 42.828125
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 83,
+          "y": 152.125,
+          "right": 1203,
+          "bottom": 176.453125,
+          "width": 1120,
+          "height": 24.328125
+        }
+      },
+      {
+        "name": "pf-dataset",
+        "bounds": {
+          "x": 263,
+          "y": 188.453125,
+          "right": 1103,
+          "bottom": 523.765625,
+          "width": 840,
+          "height": 335.3125
+        }
+      },
+      {
+        "name": "pf-caption",
+        "bounds": {
+          "x": 83,
+          "y": 535.765625,
+          "right": 1283,
+          "bottom": 584.265625,
+          "width": 1200,
+          "height": 48.5
+        }
+      },
+      {
+        "name": "pf-caption",
+        "bounds": {
+          "x": 83,
+          "y": 590.265625,
+          "right": 1283,
+          "bottom": 614.515625,
+          "width": 1200,
+          "height": 24.25
+        }
+      },
+      {
+        "name": "lesson-takeaway",
+        "bounds": {
+          "x": 83,
+          "y": 619.515625,
+          "right": 1283,
+          "bottom": 655.703125,
+          "width": 1200,
+          "height": 36.1875
+        }
+      }
+    ]
+  },
+  {
+    "deck": "vision_ai_course",
+    "slide": 19,
+    "viewport": "1366x768",
+    "title": "Train · Validation · Test",
+    "fitScale": 1,
+    "titleFontPx": 34.8,
+    "slideHeight": 632,
+    "contentHeight": 473,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [
+      {
+        "src": "assets/lesson/context_dataset_split.svg?v=professional-20261006-2",
+        "loaded": true,
+        "naturalW": 1200,
+        "naturalH": 600,
+        "renderW": 1200,
+        "renderH": 353
+      }
+    ],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 83,
+          "y": 143.6875,
+          "right": 1283,
+          "bottom": 186.515625,
+          "width": 1200,
+          "height": 42.828125
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 83,
+          "y": 191.515625,
+          "right": 1243,
+          "bottom": 215.84375,
+          "width": 1160,
+          "height": 24.328125
+        }
+      },
+      {
+        "name": "lesson-figure",
+        "bounds": {
+          "x": 83,
+          "y": 221.84375,
+          "right": 1283,
+          "bottom": 575.109375,
+          "width": 1200,
+          "height": 353.265625
+        }
+      },
+      {
+        "name": "lesson-takeaway",
+        "bounds": {
+          "x": 83,
+          "y": 580.109375,
+          "right": 1283,
+          "bottom": 616.296875,
+          "width": 1200,
+          "height": 36.1875
+        }
+      }
+    ]
+  },
+  {
+    "deck": "vision_ai_course",
+    "slide": 20,
+    "viewport": "1366x768",
+    "title": "Video Group Split · 데이터 누출 방지",
+    "fitScale": 1,
+    "titleFontPx": 34.8,
+    "slideHeight": 632,
+    "contentHeight": 473,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [
+      {
+        "src": "assets/lesson/lesson_video_group_split_comparison.svg?v=pedagogic-20261013-2",
+        "loaded": true,
+        "naturalW": 1200,
+        "naturalH": 480,
+        "renderW": 1200,
+        "renderH": 353
+      }
+    ],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 83,
+          "y": 143.6875,
+          "right": 1283,
+          "bottom": 186.515625,
+          "width": 1200,
+          "height": 42.828125
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 83,
+          "y": 191.515625,
+          "right": 1243,
+          "bottom": 215.84375,
+          "width": 1160,
+          "height": 24.328125
+        }
+      },
+      {
+        "name": "lesson-figure",
+        "bounds": {
+          "x": 83,
+          "y": 221.84375,
+          "right": 1283,
+          "bottom": 575.109375,
+          "width": 1200,
+          "height": 353.265625
+        }
+      },
+      {
+        "name": "lesson-takeaway",
+        "bounds": {
+          "x": 83,
+          "y": 580.109375,
+          "right": 1283,
+          "bottom": 616.296875,
+          "width": 1200,
+          "height": 36.1875
+        }
+      }
+    ]
+  },
+  {
+    "deck": "vision_ai_course",
+    "slide": 21,
+    "viewport": "1366x768",
+    "title": "Preprocessing · 입력 규격 맞추기",
+    "fitScale": 1,
+    "titleFontPx": 34.8,
+    "slideHeight": 632,
+    "contentHeight": 511,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [
+      {
+        "src": "assets/lesson/cnn_real_preprocess_dog.png?v=real-vision-20261016-1",
+        "loaded": true,
+        "naturalW": 1600,
+        "naturalH": 650,
+        "renderW": 1200,
+        "renderH": 323
+      }
+    ],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 83,
+          "y": 124.515625,
+          "right": 1283,
+          "bottom": 167.34375,
+          "width": 1200,
+          "height": 42.828125
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 83,
+          "y": 172.34375,
+          "right": 1243,
+          "bottom": 223.96875,
+          "width": 1160,
+          "height": 51.625
+        }
+      },
+      {
+        "name": "lesson-figure scientific-photo-figure",
+        "bounds": {
+          "x": 83,
+          "y": 230.96875,
+          "right": 1283,
+          "bottom": 553.515625,
+          "width": 1200,
+          "height": 322.546875
+        }
+      },
+      {
+        "name": "lesson-takeaway",
+        "bounds": {
+          "x": 83,
+          "y": 558.515625,
+          "right": 1283,
+          "bottom": 615.640625,
+          "width": 1200,
+          "height": 57.125
+        }
+      }
+    ]
+  },
+  {
+    "deck": "vision_ai_course",
+    "slide": 22,
+    "viewport": "1366x768",
+    "title": "Data Augmentation · 조건 변화 만들기",
+    "fitScale": 1,
+    "titleFontPx": 34.8,
+    "slideHeight": 632,
+    "contentHeight": 511,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [
+      {
+        "src": "assets/lesson/cnn_real_augment_dog.png?v=real-vision-20261016-1",
+        "loaded": true,
+        "naturalW": 1600,
+        "naturalH": 650,
+        "renderW": 1200,
+        "renderH": 323
+      }
+    ],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 83,
+          "y": 124.515625,
+          "right": 1283,
+          "bottom": 167.34375,
+          "width": 1200,
+          "height": 42.828125
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 83,
+          "y": 172.34375,
+          "right": 1243,
+          "bottom": 223.96875,
+          "width": 1160,
+          "height": 51.625
+        }
+      },
+      {
+        "name": "lesson-figure scientific-photo-figure",
+        "bounds": {
+          "x": 83,
+          "y": 230.96875,
+          "right": 1283,
+          "bottom": 553.515625,
+          "width": 1200,
+          "height": 322.546875
+        }
+      },
+      {
+        "name": "lesson-takeaway",
+        "bounds": {
+          "x": 83,
+          "y": 558.515625,
+          "right": 1283,
+          "bottom": 615.640625,
+          "width": 1200,
+          "height": 57.125
+        }
+      }
+    ]
+  },
+  {
+    "deck": "vision_ai_course",
+    "slide": 23,
+    "viewport": "1366x768",
+    "title": "모델 학습 · 오차를 줄이는 반복",
+    "fitScale": 1,
+    "titleFontPx": 34.8,
+    "slideHeight": 632,
+    "contentHeight": 460,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 83,
+          "y": 149.9375,
+          "right": 1283,
+          "bottom": 192.765625,
+          "width": 1200,
+          "height": 42.828125
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 83,
+          "y": 197.765625,
+          "right": 1243,
+          "bottom": 222.09375,
+          "width": 1160,
+          "height": 24.328125
+        }
+      },
+      {
+        "name": "lesson-figure lesson-inline-lab",
+        "bounds": {
+          "x": 83,
+          "y": 228.09375,
+          "right": 1283,
+          "bottom": 568.875,
+          "width": 1200,
+          "height": 340.78125
+        }
+      },
+      {
+        "name": "lesson-takeaway",
+        "bounds": {
+          "x": 83,
+          "y": 573.875,
+          "right": 1283,
+          "bottom": 610.0625,
+          "width": 1200,
+          "height": 36.1875
+        }
+      }
+    ]
+  },
+  {
+    "deck": "vision_ai_course",
+    "slide": 24,
+    "viewport": "1366x768",
+    "title": "Loss · 틀린 정도를 줄이는 방향",
+    "fitScale": 1,
+    "titleFontPx": 34.8,
+    "slideHeight": 632,
+    "contentHeight": 350,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 83,
+          "y": 205.203125,
+          "right": 1283,
+          "bottom": 248.03125,
+          "width": 1200,
+          "height": 42.828125
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 83,
+          "y": 253.03125,
+          "right": 1203,
+          "bottom": 277.359375,
+          "width": 1120,
+          "height": 24.328125
+        }
+      },
+      {
+        "name": "pf-caption",
+        "bounds": {
+          "x": 83,
+          "y": 489.359375,
+          "right": 1283,
+          "bottom": 513.609375,
+          "width": 1200,
+          "height": 24.25
+        }
+      },
+      {
+        "name": "lesson-takeaway",
+        "bounds": {
+          "x": 83,
+          "y": 518.609375,
+          "right": 1283,
+          "bottom": 554.796875,
+          "width": 1200,
+          "height": 36.1875
+        }
+      }
+    ]
+  },
+  {
+    "deck": "vision_ai_course",
+    "slide": 25,
+    "viewport": "1366x768",
+    "title": "Training과 Inference의 차이",
+    "fitScale": 1,
+    "titleFontPx": 34.8,
+    "slideHeight": 632,
+    "contentHeight": 473,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [
+      {
+        "src": "assets/lesson/training_inference_basic.svg?v=professional-20261006-2",
+        "loaded": true,
+        "naturalW": 300,
+        "naturalH": 125,
+        "renderW": 1200,
+        "renderH": 353
+      }
+    ],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 83,
+          "y": 143.6875,
+          "right": 1283,
+          "bottom": 186.515625,
+          "width": 1200,
+          "height": 42.828125
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 83,
+          "y": 191.515625,
+          "right": 1243,
+          "bottom": 215.84375,
+          "width": 1160,
+          "height": 24.328125
+        }
+      },
+      {
+        "name": "lesson-figure",
+        "bounds": {
+          "x": 83,
+          "y": 221.84375,
+          "right": 1283,
+          "bottom": 575.109375,
+          "width": 1200,
+          "height": 353.265625
+        }
+      },
+      {
+        "name": "lesson-takeaway",
+        "bounds": {
+          "x": 83,
+          "y": 580.109375,
+          "right": 1283,
+          "bottom": 616.296875,
+          "width": 1200,
+          "height": 36.1875
+        }
+      }
+    ]
+  },
+  {
+    "deck": "vision_ai_course",
+    "slide": 26,
+    "viewport": "1366x768",
+    "title": "학습 과정에서 바뀌는 Kernel",
+    "fitScale": 1,
+    "titleFontPx": 34.8,
+    "slideHeight": 632,
+    "contentHeight": 495,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [
+      {
+        "src": "assets/lesson/context_cnn_training.svg?v=professional-20261006-2",
+        "loaded": true,
+        "naturalW": 300,
+        "naturalH": 124,
+        "renderW": 1200,
+        "renderH": 353
+      }
+    ],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 83,
+          "y": 132.59375,
+          "right": 1283,
+          "bottom": 175.421875,
+          "width": 1200,
+          "height": 42.828125
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 83,
+          "y": 180.421875,
+          "right": 1243,
+          "bottom": 204.75,
+          "width": 1160,
+          "height": 24.328125
+        }
+      },
+      {
+        "name": "lesson-figure",
+        "bounds": {
+          "x": 83,
+          "y": 210.75,
+          "right": 1283,
+          "bottom": 564.015625,
+          "width": 1200,
+          "height": 353.265625
+        }
+      },
+      {
+        "name": "lesson-takeaway",
+        "bounds": {
+          "x": 83,
+          "y": 569.015625,
+          "right": 1283,
+          "bottom": 627.390625,
+          "width": 1200,
+          "height": 58.375
+        }
+      }
+    ]
+  },
+  {
+    "deck": "vision_ai_course",
+    "slide": 27,
+    "viewport": "1366x768",
+    "title": "전이학습 · 고정과 미세 조정",
+    "fitScale": 1,
+    "titleFontPx": 34.8,
+    "slideHeight": 632,
+    "contentHeight": 519,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [
+      {
+        "src": "assets/lesson/lesson_transfer_freeze_vs_finetune.svg?v=solid-arrows-20261015-2",
+        "loaded": true,
+        "naturalW": 1200,
+        "naturalH": 475,
+        "renderW": 1200,
+        "renderH": 353
+      }
+    ],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 83,
+          "y": 120.4375,
+          "right": 1283,
+          "bottom": 163.265625,
+          "width": 1200,
+          "height": 42.828125
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 83,
+          "y": 168.265625,
+          "right": 1243,
+          "bottom": 216.921875,
+          "width": 1160,
+          "height": 48.65625
+        }
+      },
+      {
+        "name": "lesson-figure",
+        "bounds": {
+          "x": 83,
+          "y": 222.921875,
+          "right": 1283,
+          "bottom": 576.1875,
+          "width": 1200,
+          "height": 353.265625
+        }
+      },
+      {
+        "name": "lesson-takeaway",
+        "bounds": {
+          "x": 83,
+          "y": 581.1875,
+          "right": 1283,
+          "bottom": 639.5625,
+          "width": 1200,
+          "height": 58.375
+        }
+      }
+    ]
+  },
+  {
+    "deck": "vision_ai_course",
+    "slide": 28,
+    "viewport": "1366x768",
+    "title": "Batch · Step · Epoch",
+    "fitScale": 1,
+    "titleFontPx": 34.8,
+    "slideHeight": 632,
+    "contentHeight": 442,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 83,
+          "y": 159.046875,
+          "right": 1283,
+          "bottom": 201.875,
+          "width": 1200,
+          "height": 42.828125
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 83,
+          "y": 206.875,
+          "right": 1203,
+          "bottom": 231.203125,
+          "width": 1120,
+          "height": 24.328125
+        }
+      },
+      {
+        "name": "pf-caption",
+        "bounds": {
+          "x": 83,
+          "y": 511.25,
+          "right": 1283,
+          "bottom": 559.75,
+          "width": 1200,
+          "height": 48.5
+        }
+      },
+      {
+        "name": "lesson-takeaway",
+        "bounds": {
+          "x": 83,
+          "y": 564.75,
+          "right": 1283,
+          "bottom": 600.9375,
+          "width": 1200,
+          "height": 36.1875
+        }
+      }
+    ]
+  },
+  {
+    "deck": "vision_ai_course",
+    "slide": 29,
+    "viewport": "1366x768",
+    "title": "Overfitting · 새 데이터 일반화",
+    "fitScale": 1,
+    "titleFontPx": 34.8,
+    "slideHeight": 632,
+    "contentHeight": 473,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [
+      {
+        "src": "assets/lesson/context_overfit_leakage.svg?v=professional-20261006-2",
+        "loaded": true,
+        "naturalW": 300,
+        "naturalH": 124,
+        "renderW": 1200,
+        "renderH": 353
+      }
+    ],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 83,
+          "y": 143.6875,
+          "right": 1283,
+          "bottom": 186.515625,
+          "width": 1200,
+          "height": 42.828125
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 83,
+          "y": 191.515625,
+          "right": 1243,
+          "bottom": 215.84375,
+          "width": 1160,
+          "height": 24.328125
+        }
+      },
+      {
+        "name": "lesson-figure",
+        "bounds": {
+          "x": 83,
+          "y": 221.84375,
+          "right": 1283,
+          "bottom": 575.109375,
+          "width": 1200,
+          "height": 353.265625
+        }
+      },
+      {
+        "name": "lesson-takeaway",
+        "bounds": {
+          "x": 83,
+          "y": 580.109375,
+          "right": 1283,
+          "bottom": 616.296875,
+          "width": 1200,
+          "height": 36.1875
+        }
+      }
+    ]
+  },
+  {
+    "deck": "vision_ai_course",
+    "slide": 30,
+    "viewport": "1366x768",
+    "title": "Score Threshold · 판정 기준",
+    "fitScale": 1,
+    "titleFontPx": 34.8,
+    "slideHeight": 632,
+    "contentHeight": 371,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 83,
+          "y": 194.59375,
+          "right": 1283,
+          "bottom": 237.421875,
+          "width": 1200,
+          "height": 42.828125
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 83,
+          "y": 242.421875,
+          "right": 1243,
+          "bottom": 266.75,
+          "width": 1160,
+          "height": 24.328125
+        }
+      },
+      {
+        "name": "principle-figure pf-three",
+        "bounds": {
+          "x": 83,
+          "y": 275.75,
+          "right": 1283,
+          "bottom": 498.015625,
+          "width": 1200,
+          "height": 222.265625
+        }
+      },
+      {
+        "name": "lesson-takeaway",
+        "bounds": {
+          "x": 83,
+          "y": 507.015625,
+          "right": 1283,
+          "bottom": 565.390625,
+          "width": 1200,
+          "height": 58.375
+        }
+      }
+    ]
+  },
+  {
+    "deck": "vision_ai_course",
+    "slide": 31,
+    "viewport": "1366x768",
+    "title": "Confusion Matrix · 100건 평가",
+    "fitScale": 1,
+    "titleFontPx": 34.8,
+    "slideHeight": 632,
+    "contentHeight": 444,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 83,
+          "y": 157.9375,
+          "right": 1283,
+          "bottom": 200.765625,
+          "width": 1200,
+          "height": 42.828125
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 83,
+          "y": 205.765625,
+          "right": 1243,
+          "bottom": 230.09375,
+          "width": 1160,
+          "height": 24.328125
+        }
+      },
+      {
+        "name": "pf-confusion pf-static-confusion",
+        "bounds": {
+          "x": 233,
+          "y": 250.09375,
+          "right": 1133,
+          "bottom": 545.859375,
+          "width": 900,
+          "height": 295.765625
+        }
+      },
+      {
+        "name": "lesson-takeaway",
+        "bounds": {
+          "x": 83,
+          "y": 565.859375,
+          "right": 1283,
+          "bottom": 602.046875,
+          "width": 1200,
+          "height": 36.1875
+        }
+      }
+    ]
+  },
+  {
+    "deck": "vision_ai_course",
+    "slide": 32,
+    "viewport": "1366x768",
+    "title": "Accuracy의 함정 · 모두 정상이라면?",
+    "fitScale": 1,
+    "titleFontPx": 34.8,
+    "slideHeight": 632,
+    "contentHeight": 513,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 83,
+          "y": 123.375,
+          "right": 1283,
+          "bottom": 166.203125,
+          "width": 1200,
+          "height": 42.828125
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 83,
+          "y": 171.203125,
+          "right": 1203,
+          "bottom": 195.53125,
+          "width": 1120,
+          "height": 24.328125
+        }
+      },
+      {
+        "name": "pf-caption",
+        "bounds": {
+          "x": 83,
+          "y": 571.171875,
+          "right": 1283,
+          "bottom": 595.421875,
+          "width": 1200,
+          "height": 24.25
+        }
+      },
+      {
+        "name": "lesson-takeaway",
+        "bounds": {
+          "x": 83,
+          "y": 600.421875,
+          "right": 1283,
+          "bottom": 636.609375,
+          "width": 1200,
+          "height": 36.1875
+        }
+      }
+    ]
+  },
+  {
+    "deck": "vision_ai_course",
+    "slide": 33,
+    "viewport": "1366x768",
+    "title": "Precision과 Recall",
+    "fitScale": 1,
+    "titleFontPx": 34.8,
+    "slideHeight": 632,
+    "contentHeight": 456,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 83,
+          "y": 152.015625,
+          "right": 1283,
+          "bottom": 194.84375,
+          "width": 1200,
+          "height": 42.828125
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 83,
+          "y": 199.84375,
+          "right": 1243,
+          "bottom": 224.171875,
+          "width": 1160,
+          "height": 24.328125
+        }
+      },
+      {
+        "name": "principle-figure pf-two",
+        "bounds": {
+          "x": 83,
+          "y": 233.171875,
+          "right": 1283,
+          "bottom": 562.78125,
+          "width": 1200,
+          "height": 329.609375
+        }
+      },
+      {
+        "name": "lesson-takeaway",
+        "bounds": {
+          "x": 83,
+          "y": 571.78125,
+          "right": 1283,
+          "bottom": 607.96875,
+          "width": 1200,
+          "height": 36.1875
+        }
+      }
+    ]
+  },
+  {
+    "deck": "vision_ai_course",
+    "slide": 34,
+    "viewport": "1366x768",
+    "title": "IoU · 박스 겹침 비율",
+    "fitScale": 1,
+    "titleFontPx": 34.8,
+    "slideHeight": 632,
+    "contentHeight": 495,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [
+      {
+        "src": "assets/lesson/context_iou_visual.svg?v=professional-20261006-2",
+        "loaded": true,
+        "naturalW": 300,
+        "naturalH": 124,
+        "renderW": 1200,
+        "renderH": 353
+      }
+    ],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 83,
+          "y": 132.59375,
+          "right": 1283,
+          "bottom": 175.421875,
+          "width": 1200,
+          "height": 42.828125
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 83,
+          "y": 180.421875,
+          "right": 1243,
+          "bottom": 204.75,
+          "width": 1160,
+          "height": 24.328125
+        }
+      },
+      {
+        "name": "lesson-figure",
+        "bounds": {
+          "x": 83,
+          "y": 210.75,
+          "right": 1283,
+          "bottom": 564.015625,
+          "width": 1200,
+          "height": 353.265625
+        }
+      },
+      {
+        "name": "lesson-takeaway",
+        "bounds": {
+          "x": 83,
+          "y": 569.015625,
+          "right": 1283,
+          "bottom": 627.390625,
+          "width": 1200,
+          "height": 58.375
+        }
+      }
+    ]
+  },
+  {
+    "deck": "vision_ai_course",
+    "slide": 35,
+    "viewport": "1366x768",
+    "title": "Vision AI 원리 · 한 장으로 연결",
+    "fitScale": 1,
+    "titleFontPx": 34.8,
+    "slideHeight": 632,
+    "contentHeight": 392,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [
+      {
+        "src": "assets/vision_task_apple_reference.jpg",
+        "loaded": true,
+        "naturalW": 960,
+        "naturalH": 640,
+        "renderW": 210,
+        "renderH": 150
+      }
+    ],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 83,
+          "y": 183.875,
+          "right": 1283,
+          "bottom": 226.703125,
+          "width": 1200,
+          "height": 42.828125
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 83,
+          "y": 231.703125,
+          "right": 1203,
+          "bottom": 256.03125,
+          "width": 1120,
+          "height": 24.328125
+        }
+      },
+      {
+        "name": "pf-workflow",
+        "bounds": {
+          "x": 83,
+          "y": 280.03125,
+          "right": 1283,
+          "bottom": 515.921875,
+          "width": 1200,
+          "height": 235.890625
+        }
+      },
+      {
+        "name": "lesson-takeaway",
+        "bounds": {
+          "x": 83,
+          "y": 539.921875,
+          "right": 1283,
+          "bottom": 576.109375,
+          "width": 1200,
+          "height": 36.1875
+        }
+      }
+    ]
+  },
+  {
+    "deck": "vision_ai_course",
+    "slide": 36,
+    "viewport": "1366x768",
+    "title": "첫 과제를 위한 네 가지 질문",
+    "fitScale": 1,
+    "titleFontPx": 34.8,
+    "slideHeight": 632,
+    "contentHeight": 405,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [
+      {
+        "src": "assets/vision_task_apple_reference.jpg",
+        "loaded": true,
+        "naturalW": 960,
+        "naturalH": 640,
+        "renderW": 280,
+        "renderH": 187
+      }
+    ],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 83,
+          "y": 177.546875,
+          "right": 1283,
+          "bottom": 220.375,
+          "width": 1200,
+          "height": 42.828125
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 83,
+          "y": 225.375,
+          "right": 1203,
+          "bottom": 249.703125,
+          "width": 1120,
+          "height": 24.328125
+        }
+      },
+      {
+        "name": "principle-figure pf-two",
+        "bounds": {
+          "x": 383,
+          "y": 283.703125,
+          "right": 1283,
+          "bottom": 512.265625,
+          "width": 900,
+          "height": 228.5625
+        }
+      },
+      {
+        "name": "lesson-takeaway",
+        "bounds": {
+          "x": 83,
+          "y": 546.265625,
+          "right": 1283,
+          "bottom": 582.453125,
+          "width": 1200,
+          "height": 36.1875
+        }
+      }
+    ]
+  },
+  {
+    "deck": "vision_ai_course",
+    "slide": 37,
+    "viewport": "1366x768",
+    "title": "실행 결과 확인 · 임계값과 오류 수",
+    "fitScale": 1,
+    "titleFontPx": 34.8,
+    "slideHeight": 632,
+    "contentHeight": 554,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 83,
+          "y": 102.828125,
+          "right": 1283,
+          "bottom": 145.65625,
+          "width": 1200,
+          "height": 42.828125
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 83,
+          "y": 150.65625,
+          "right": 1203,
+          "bottom": 174.984375,
+          "width": 1120,
+          "height": 24.328125
+        }
+      },
+      {
+        "name": "pf-evaluation-layout",
+        "bounds": {
+          "x": 158,
+          "y": 250.984375,
+          "right": 1208,
+          "bottom": 549.984375,
+          "width": 1050,
+          "height": 299
+        }
+      },
+      {
+        "name": "lesson-takeaway",
+        "bounds": {
+          "x": 83,
+          "y": 620.984375,
+          "right": 1283,
+          "bottom": 657.171875,
+          "width": 1200,
+          "height": 36.1875
+        }
+      }
+    ]
+  },
+  {
+    "deck": "vision_ai_course",
+    "slide": 38,
+    "viewport": "1366x768",
+    "title": "실패 사진이 알려 주는 것",
+    "fitScale": 1,
+    "titleFontPx": 34.8,
+    "slideHeight": 632,
+    "contentHeight": 380,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [
+      {
+        "src": "assets/vision_task_apple_reference.jpg",
+        "loaded": true,
+        "naturalW": 960,
+        "naturalH": 640,
+        "renderW": 373,
+        "renderH": 138
+      },
+      {
+        "src": "assets/vision_task_apple_reference.jpg",
+        "loaded": true,
+        "naturalW": 960,
+        "naturalH": 640,
+        "renderW": 373,
+        "renderH": 138
+      },
+      {
+        "src": "assets/vision_task_apple_reference.jpg",
+        "loaded": true,
+        "naturalW": 960,
+        "naturalH": 640,
+        "renderW": 168,
+        "renderH": 138
+      }
+    ],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 83,
+          "y": 190.140625,
+          "right": 1283,
+          "bottom": 232.96875,
+          "width": 1200,
+          "height": 42.828125
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 83,
+          "y": 237.96875,
+          "right": 1203,
+          "bottom": 262.296875,
+          "width": 1120,
+          "height": 24.328125
+        }
+      },
+      {
+        "name": "principle-figure pf-three",
+        "bounds": {
+          "x": 83,
+          "y": 271.296875,
+          "right": 1283,
+          "bottom": 495.421875,
+          "width": 1200,
+          "height": 224.125
+        }
+      },
+      {
+        "name": "pf-caption",
+        "bounds": {
+          "x": 83,
+          "y": 504.421875,
+          "right": 1283,
+          "bottom": 528.671875,
+          "width": 1200,
+          "height": 24.25
+        }
+      },
+      {
+        "name": "lesson-takeaway",
+        "bounds": {
+          "x": 83,
+          "y": 533.671875,
+          "right": 1283,
+          "bottom": 569.859375,
+          "width": 1200,
+          "height": 36.1875
+        }
+      }
+    ]
+  },
+  {
+    "deck": "vision_ai_course",
+    "slide": 39,
+    "viewport": "1366x768",
+    "title": "Vision AI 원리 · 무엇을 설명할 수 있나?",
+    "fitScale": 1,
+    "titleFontPx": 34.8,
+    "slideHeight": 632,
+    "contentHeight": 477,
+    "contentBottomOverflow": 0,
+    "contentRightOverflow": 0,
+    "browserHorizontalOverflow": 0,
+    "overlaps": [],
+    "images": [
+      {
+        "src": "assets/vision_task_apple_reference.jpg",
+        "loaded": true,
+        "naturalW": 960,
+        "naturalH": 640,
+        "renderW": 280,
+        "renderH": 187
+      }
+    ],
+    "elements": [
+      {
+        "name": "slide-title",
+        "bounds": {
+          "x": 83,
+          "y": 141.703125,
+          "right": 1283,
+          "bottom": 184.53125,
+          "width": 1200,
+          "height": 42.828125
+        }
+      },
+      {
+        "name": "slide-subtitle",
+        "bounds": {
+          "x": 83,
+          "y": 189.53125,
+          "right": 1203,
+          "bottom": 213.859375,
+          "width": 1120,
+          "height": 24.328125
+        }
+      },
+      {
+        "name": "principle-figure pf-two",
+        "bounds": {
+          "x": 383,
+          "y": 247.859375,
+          "right": 1283,
+          "bottom": 476.421875,
+          "width": 900,
+          "height": 228.5625
+        }
+      },
+      {
+        "name": "lesson-takeaway",
+        "bounds": {
+          "x": 83,
+          "y": 582.109375,
+          "right": 1283,
+          "bottom": 618.296875,
+          "width": 1200,
+          "height": 36.1875
+        }
+      }
+    ]
+  }
+]

@@ -20,6 +20,10 @@
     for (const [name, count] of Object.entries(counts)) {
       root.querySelector(`[data-project-${name}]`).textContent = String(count);
     }
+    for (const name of ["fn", "fp"]) {
+      root.querySelector(`[data-project-${name}-bar]`).value = counts[name];
+      root.querySelector(`[data-project-${name}-label]`).textContent = `${counts[name]}건`;
+    }
     const precision = 100 * counts.tp / (counts.tp + counts.fp);
     const recall = 100 * counts.tp / (counts.tp + counts.fn);
     root.querySelector("[data-project-result]").textContent =

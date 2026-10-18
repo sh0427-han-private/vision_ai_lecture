@@ -515,3 +515,10 @@ https://www.nature.com/articles/s42256-020-00257-z
 
 - `cnn_squeezenet_actual_feature_maps.png`의 입력 사진·실제 Feature Map 영역만 SVG viewBox와 clipPath로 표시한다. 원본 PNG의 픽셀·계산 결과는 변경하지 않았다. 이미지 내부의 제목·패널 테두리·요약을 중복 표시하지 않고 제목·출력 크기·해석·사진 출처를 슬라이드 HTML에서 한 번만 구성한다.
 - 입력 사진 출처와 SqueezeNet/채널별 정규화 조건은 기존과 같다.
+
+## 2026-10-18 · 원리 강의 TODO 후속 반영
+
+- Intro 10–11 / Course 18: 기존 AI 생성 `generated/apple_studio_preview.png`와 `vision_task_apple_reference.jpg` 재사용. 두 독립 원본을 SVG viewport로 비슷한 크기로 배치하고 CSS brightness로 어두운 표시를 비교한다. 같은 원본에 결함을 추가하거나 실제 재촬영한 자료로 표현하지 않는다. 의자/균열 자산은 역사적 자료로 보존하되 공개 강의에서는 사용하지 않는다.
+- Course 9: `vision_task_apple_reference.jpg`의 실제 ROI `(550,185,85,85)`를 SVG viewport로 확대. 5×5 교육용 배열은 사진에서 추출한 값이 아님을 인접 문장으로 명시.
+- Course 10/12–15/30–33/37: Kernel 위치, 병렬 RGB 필터, 시작 위치, Pooling 영역 및 혼동행렬/지표는 자체 HTML/SVG 수치 도식. 외부 이미지 출처는 추가하지 않는다.
+- Course 16/21/22: 기존 SqueezeNet 계산 및 Stanford 강아지 사진 출처를 보존. 실제 반응/직접 이미지 변환/사과 Task 개념의 차이를 표시.

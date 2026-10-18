@@ -46,6 +46,13 @@ def main():
   target.click();position(page,'vision_ai_course',kernel,COURSE_TOTAL)
   assert page.locator('.slide.active').get_attribute('data-concept')=='kernel'
   assert page.locator('#lecture-toc-drawer').get_attribute('aria-hidden')=='true'
+  for deck, total in DECKS:
+   for n in range(1,total+1):
+    page.click('.lecture-toc-toggle')
+    link=page.locator(f'.lecture-toc-link[href="{deck}.html#slide-{n}"]')
+    chapter=link.locator('xpath=ancestor::details[1]')
+    if chapter.get_attribute('open') is None:chapter.locator('summary').click()
+    link.click();position(page,deck,n,total)
   # Training demonstration really follows the same step as the adjacent slide.
   learn=number('learn')
   page.goto(f'{BASE}/vision_ai_course.html#slide-{learn}');position(page,'vision_ai_course',learn,COURSE_TOTAL)
@@ -61,6 +68,9 @@ def main():
    page.select_option('[data-project-threshold]',threshold)
    actual=[int(page.locator(f'[data-project-{key}]').inner_text()) for key in ['tp','fn','fp','tn']]
    assert actual==expected,(threshold,actual)
+   for key, count in [("fn", expected[1]), ("fp", expected[2])]:
+    assert page.locator(f"[data-project-{key}-bar]").evaluate("el => el.value") == count
+    assert page.locator(f"[data-project-{key}-label]").inner_text() == f"{count}건"
    assert sum(actual)==100
    precision=100*expected[0]/(expected[0]+expected[2]);recall=100*expected[0]/20
    assert page.locator('[data-project-result]').inner_text()==f'Precision {precision:.1f}% · Recall {recall:.1f}%'
@@ -74,6 +84,9 @@ def main():
    for n in range(2,total+1):
     page.click('[data-slide-next]');position(page,deck,n,total)
    assert not page.locator('.slide.active a:has(img)').count()
+   for n in range(total-1,0,-1):
+    page.click('[data-slide-prev]');position(page,deck,n,total)
+   page.goto(f'{BASE}/{deck}.html#slide-{total}');position(page,deck,total,total)
   assert page.locator('[data-slide-next]').is_disabled()
   page.goto(BASE+'/intro.html#slide-11');page.click('[data-slide-next]')
   position(page,'vision_ai_course',1,COURSE_TOTAL)
@@ -81,6 +94,13 @@ def main():
   page.goto(BASE+'/vision_ai_course.html?mode=core#slide-21');position(page,'vision_ai_course',21,COURSE_TOTAL)
   assert 'mode=core' not in page.url
   page.click('header a.brand');position(page,'intro',1,11)
+  page.set_viewport_size({'width':390,'height':844})
+  page.click('.lecture-toc-toggle')
+  assert page.locator('#lecture-toc-drawer').get_attribute('aria-hidden')=='false'
+  page.keyboard.press('Escape')
+  assert page.locator('#lecture-toc-drawer').get_attribute('aria-hidden')=='true'
+  page.locator('.slide.active .slide-title').click()
+  page.keyboard.press('ArrowRight');position(page,'intro',2,11)
   assert not errors,errors
   page.screenshot(path=str(OUT/'two_hour_navigation.jpg'),type='jpeg',quality=85)
   browser.close()
