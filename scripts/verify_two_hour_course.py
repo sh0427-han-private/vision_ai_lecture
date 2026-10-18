@@ -17,7 +17,7 @@ for deck,count in [('intro',13),('vision_ai_course',42)]:
  ss=re.findall(r'<section\b[^>]*class="slide[^\"]*"[^>]*>.*?</section>',text,re.S)
  assert len(ss)==count,(deck,len(ss))
  assert text.count('class="slide active"')==1
- assert re.findall(r'lecture_outline.js\?v=([^\"]+)',text)==['vision-why-20261018-1']
+ assert re.findall(r'lecture_outline.js\?v=([^\"]+)',text)==['gates-cnn-20261019-1']
  slides[deck]=ss
  for n,s in enumerate(ss,1):
   c=re.search(r'data-concept="([^\"]+)"',s)[1];concepts[c]=s
@@ -99,7 +99,7 @@ assert feedback is not None and feedback.get('fill')=='none'
 assert set(['vision-value','vision-challenge']).issubset(concepts)
 assert set(['vision-evolution','task-model-data']).issubset(concepts)
 assert seq.index('task-model-data') < seq.index('perceptron')
-assert 'vision_motivation.css?v=why-20261018-1' in (D/'intro.html').read_text()
+assert 'vision_motivation.css?v=why-20261019-1' in (D/'intro.html').read_text()
 assert 'vision_motivation.css?v=why-20261018-1' in (D/'vision_ai_course.html').read_text()
 assert 'lf-training-story' in concepts['cnn-training'] and 'Kernel + Head Weight 갱신' in concepts['cnn-training']
 new_diagram=D/'assets/lesson/lecture_cnn_training_feedback_ko.svg'
