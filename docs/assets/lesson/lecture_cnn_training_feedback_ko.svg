@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 540" width="1200" height="540" role="img" aria-labelledby="title desc">
+<title id="title">CNN 학습 전체 구조: 사과 이미지가 Backbone, Task Head와 Loss를 지나 Gradient에 따라 Kernel이 갱신되는 폐회로</title>
+<desc id="desc">입력 사과 사진, CNN Kernel, Feature Map, 분류 Head, 예측, 정답 Label, Loss, 역전파 Gradient, 가중치 갱신 순서. 앞으로 계산한 결과와 되돌아가는 학습 경로를 구분한다.</desc>
+<defs>
+ <marker id="up" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M1 1L9 5L1 9Z" fill="#238676"/></marker>
+ <marker id="down" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M1 1L9 5L1 9Z" fill="#b4774b"/></marker>
+ <linearGradient id="plane" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d8ece8"/><stop offset="1" stop-color="#7db9aa"/></linearGradient>
+ <clipPath id="photo"><rect x="36" y="97" width="194" height="156" rx="4"/></clipPath>
+ <style>
+ text{font-family:Inter,'Noto Sans KR','Malgun Gothic',sans-serif;fill:#285568}
+ .t{font-size:24px;font-weight:700}
+ .m{font-size:19px;font-weight:650}
+ .s{font-size:17px;fill:#537382}
+ .line{stroke:#238676;stroke-width:4;fill:none;marker-end:url(#up)}
+ .back{stroke:#b4774b;stroke-width:4;fill:none;marker-end:url(#down)}
+ .box{fill:#f5faf9;stroke:#9bbcb9;stroke-width:2}
+ </style>
+</defs>
+<rect x="1" y="1" width="1198" height="538" rx="12" fill="#fff" stroke="#d8e5e8" stroke-width="2"/>
+<text x="42" y="48" class="t">① Forward · 사진에서 예측 계산</text>
+<rect x="26" y="82" width="216" height="228" rx="7" fill="#f5f9fa" stroke="#b7ced3"/>
+<image href="../vision_task_apple_reference.jpg" x="36" y="97" width="194" height="156" preserveAspectRatio="xMidYMid slice" clip-path="url(#photo)"/>
+<text x="134" y="281" text-anchor="middle" class="m">입력 RGB 사진</text>
+<path d="M247 177H291" class="line"/>
+<rect x="300" y="82" width="201" height="228" rx="7" class="box"/>
+<text x="402" y="114" text-anchor="middle" class="m">CNN · Kernel</text>
+<g stroke="#4b8b83" stroke-width="2">
+<rect x="337" y="146" width="42" height="42" fill="#b5d9cd"/><rect x="380" y="146" width="42" height="42" fill="#ddeee8"/><rect x="423" y="146" width="42" height="42" fill="#8dbdae"/>
+<rect x="337" y="189" width="42" height="42" fill="#ddeee8"/><rect x="380" y="189" width="42" height="42" fill="#8dbdae"/><rect x="423" y="189" width="42" height="42" fill="#b5d9cd"/>
+</g>
+<text x="401" y="280" text-anchor="middle" class="s">학습할 Weight</text>
+<path d="M505 177H543" class="line"/>
+<rect x="550" y="82" width="183" height="228" rx="7" class="box"/>
+<text x="641" y="114" text-anchor="middle" class="m">Feature Map</text>
+<g fill="url(#plane)" stroke="#368d7e" stroke-width="2">
+<rect x="587" y="160" width="88" height="83"/><rect x="599" y="149" width="88" height="83"/><rect x="611" y="138" width="88" height="83"/>
+</g>
+<text x="641" y="280" text-anchor="middle" class="s">위치별 특징 반응</text>
+<path d="M736 177H770" class="line"/>
+<rect x="778" y="82" width="157" height="228" rx="7" class="box"/>
+<text x="856" y="114" text-anchor="middle" class="m">Task Head</text>
+<g fill="#d9ece7" stroke="#75a99e"><rect x="804" y="151" width="103" height="39" rx="4"/><rect x="804" y="200" width="103" height="39" rx="4"/></g>
+<text x="856" y="177" text-anchor="middle" class="s">결함 점수</text>
+<text x="856" y="226" text-anchor="middle" class="s">정상 점수</text>
+<text x="856" y="280" text-anchor="middle" class="s">분류 예시</text>
+<path d="M939 177H972" class="line"/>
+<rect x="980" y="113" width="190" height="164" rx="8" fill="#eef7f4" stroke="#83b8a9" stroke-width="2"/>
+<text x="1075" y="146" text-anchor="middle" class="m">Prediction</text>
+<text x="1075" y="190" text-anchor="middle" style="font-size:27px;font-weight:700;fill:#187864">결함 있음?</text>
+<text x="1075" y="237" text-anchor="middle" class="s">예측 결과</text>
+<text x="42" y="352" class="t">② Backward · 정답과 비교한 오차를 Weight에 전달</text>
+<rect x="1000" y="379" width="164" height="60" rx="7" fill="#f6f8fb" stroke="#a7bac8" stroke-width="2"/>
+<text x="1082" y="405" text-anchor="middle" class="m">정답 Label</text>
+<text x="1082" y="429" text-anchor="middle" class="s">결함 있음</text>
+<rect x="780" y="386" width="161" height="63" rx="7" fill="#fff8f2" stroke="#d4b08c" stroke-width="2"/>
+<text x="860" y="410" text-anchor="middle" class="m">Loss · 오차</text>
+<text x="860" y="435" text-anchor="middle" class="s">예측 ↔ 정답</text>
+<path d="M1082 375V356H860V379" class="back"/>
+<path d="M1076 279V332H922V379" class="back"/>
+<path d="M774 416H636" class="back"/>
+<rect x="426" y="382" width="199" height="65" rx="7" fill="#fff8f2" stroke="#d4b08c" stroke-width="2"/>
+<text x="525" y="408" text-anchor="middle" class="m">Gradient 계산</text>
+<text x="525" y="433" text-anchor="middle" class="s">역전파 · 수정 방향</text>
+<path d="M420 415H312" class="back"/>
+<rect x="112" y="381" width="186" height="66" rx="7" fill="#fff8f2" stroke="#d4b08c" stroke-width="2"/>
+<text x="205" y="408" text-anchor="middle" class="m">Optimizer</text>
+<text x="205" y="433" text-anchor="middle" class="s">Weight 갱신</text>
+<path d="M205 377V345H399V315" class="back"/>
+<path d="M525 453V469H856V454" fill="none" stroke="#d8b38c" stroke-width="2" stroke-dasharray="7 7"/>
+<text x="611" y="513" text-anchor="middle" style="font-size:19px;font-weight:650;fill:#2e635c">학습 중에는 이 과정을 반복 · 추론할 때는 Weight를 갱신하지 않음</text>
+</svg>
