@@ -12,7 +12,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DOCS = ROOT / "docs"
 manifest = json.loads((DOCS / "assets/lesson/manifest.json").read_text("utf-8"))
 
-expected = {"intro": 11, "ai_basics": 44, "vision_ai": 37}
+expected = {"intro": 13, "ai_basics": 44, "vision_ai": 37}
 
 for name, count in expected.items():
     document = (DOCS / f"{name}.html").read_text("utf-8")
@@ -270,9 +270,9 @@ for deck in ("ai_basics", "vision_ai"):
                 deck, item["number"], "refers to skipped following advanced slide"
             )
 assert (
-    11 + 1 + sum(x["level"] == "basic" for x in manifest["ai_basics"])
+    13 + 1 + sum(x["level"] == "basic" for x in manifest["ai_basics"])
     + 1 + sum(x["level"] == "basic" for x in manifest["vision_ai"])
-) == 73
+) == 75
 assert "직전 Convolution" not in (
     DOCS / "assets/lesson/lesson_featuremap_numeric_continuation.svg"
 ).read_text("utf-8")
