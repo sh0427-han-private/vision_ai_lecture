@@ -169,6 +169,6 @@
 ## Markdown 정리 결정 (2026-10-18)
 
 - **활성 TODO:** 이 파일 하나를 작업 시작점으로 사용.
-- **삭제 후보로 처리:** `TODO_INTRO_RGB_TENSOR.md`(스스로 Legacy/Superseded 명시, 2026-09 이전 요구 기준), `LECTURE_REVIEW.md`(46장 기준 구버전 진단, 현행 두 50장 검토서로 대체). 변경 이력은 Git History/PR에서 복구 가능.
+- **삭제 완료 (이번 정리 PR):** `TODO_INTRO_RGB_TENSOR.md`(스스로 Legacy/Superseded 명시, 2026-09 이전 요구 기준), `LECTURE_REVIEW.md`(46장 기준 구버전 진단, 현행 두 50장 검토서로 대체). 변경 이력은 Git History/PR에서 복구 가능.
 - **보존:** `PROJECT_GUIDE.md`, `AGENTS.md`, `HTML_DESIGN_RULES.md`, `CHATGPT_PROJECT_INSTRUCTIONS.md`, `TWO_HOUR_LECTURE_PLAN.md`, `assets/SOURCES.md`, 개별 장별 노트 및 현재 50장 검토·구현 기록.
 - **과거 자료로 보존하되 현행 번호로 실행하지 않음:** `REFERENCE_VISION_AI_SOURCE_LIBRARY.md`(외부 논문/강의 출처 DB), `REFERENCE_SLIDE_SOURCE_MAP.md`(옛 69장 매핑). 출처 목록이 유용하므로 제거하지 않고 구버전 표시.
