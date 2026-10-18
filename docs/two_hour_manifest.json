@@ -1,5 +1,5 @@
 {
-  "version": "20261018-two-hour",
+  "version": "20261018-project-course",
   "duration_minutes": 120,
   "teaching_minutes": 110,
   "discussion_minutes": 10,
@@ -74,153 +74,153 @@
       },
       {
         "slide": 3,
+        "title": "첫 선택 · 기존 모델부터 시험",
+        "concept": "model-choice"
+      },
+      {
+        "slide": 4,
         "title": "모델 학습 · 오차를 줄이는 반복",
         "concept": "learn"
       },
       {
-        "slide": 4,
+        "slide": 5,
         "title": "Loss와 가중치 갱신",
         "concept": "loss"
       },
       {
-        "slide": 5,
+        "slide": 6,
         "title": "Training과 Inference의 차이",
         "concept": "infer"
       },
       {
-        "slide": 6,
+        "slide": 7,
         "title": "퍼셉트론 · Wx + b에서 판정까지",
         "concept": "perceptron"
       },
       {
-        "slide": 7,
-        "title": "여러 층을 거치는 두 입력",
-        "concept": "affine-net"
-      },
-      {
         "slide": 8,
-        "title": "선형 계산만 쌓으면 단일층과 동등",
-        "concept": "affine-collapse"
-      },
-      {
-        "slide": 9,
         "title": "AND와 XOR · 직선으로 구분할 수 있을까?",
         "concept": "and-xor"
       },
       {
-        "slide": 10,
-        "title": "다층 퍼셉트론 · 게이트 조합으로 XOR",
-        "concept": "xor-net"
-      },
-      {
-        "slide": 11,
+        "slide": 9,
         "title": "ReLU · 비선형성의 시작",
         "concept": "relu"
       },
       {
-        "slide": 12,
+        "slide": 10,
         "title": "신경망의 핵심 · 계산 사이의 비선형성",
         "concept": "nonlinear"
       },
       {
-        "slide": 13,
-        "title": "Kernel · 작은 영역의 가중합",
-        "concept": "kernel"
-      },
-      {
-        "slide": 14,
-        "title": "Feature Map · 같은 계산을 위치마다",
-        "concept": "feature-map"
-      },
-      {
-        "slide": 15,
-        "title": "CNN · 지역 연결과 가중치 공유",
-        "concept": "sharing"
-      },
-      {
-        "slide": 16,
-        "title": "RGB 입력과 출력 Channel",
-        "concept": "channels"
-      },
-      {
-        "slide": 17,
-        "title": "Stride · 계산 위치의 간격",
-        "concept": "stride"
-      },
-      {
-        "slide": 18,
-        "title": "Padding · 입력 바깥에 값 채우기",
-        "concept": "padding"
-      },
-      {
-        "slide": 19,
-        "title": "Max Pooling · 영역별 최댓값",
-        "concept": "pool"
-      },
-      {
-        "slide": 20,
+        "slide": 11,
         "title": "CNN 전체 구조 · 특징에서 판정까지",
         "concept": "cnn-overview"
       },
       {
-        "slide": 21,
+        "slide": 12,
+        "title": "Kernel · 작은 영역의 가중합",
+        "concept": "kernel"
+      },
+      {
+        "slide": 13,
+        "title": "Feature Map · 같은 계산을 위치마다",
+        "concept": "feature-map"
+      },
+      {
+        "slide": 14,
+        "title": "CNN · 지역 연결과 가중치 공유",
+        "concept": "sharing"
+      },
+      {
+        "slide": 15,
+        "title": "RGB 입력과 출력 Channel",
+        "concept": "channels"
+      },
+      {
+        "slide": 16,
+        "title": "Stride · 계산 위치의 간격",
+        "concept": "stride"
+      },
+      {
+        "slide": 17,
+        "title": "Padding · 입력 바깥에 값 채우기",
+        "concept": "padding"
+      },
+      {
+        "slide": 18,
+        "title": "Max Pooling · 영역별 최댓값",
+        "concept": "pool"
+      },
+      {
+        "slide": 19,
         "title": "실제 Feature Map · CNN 내부 반응",
         "concept": "actual-map"
       },
       {
-        "slide": 22,
+        "slide": 20,
         "title": "학습 과정에서 바뀌는 Kernel",
         "concept": "cnn-training"
       },
       {
-        "slide": 23,
+        "slide": 21,
         "title": "Backbone과 Task Head",
         "concept": "backbone"
       },
       {
-        "slide": 24,
-        "title": "전이학습 · 고정과 미세 조정",
-        "concept": "transfer"
-      },
-      {
-        "slide": 25,
+        "slide": 22,
         "title": "데이터셋 · 판정 기준과 촬영 조건",
         "concept": "dataset"
       },
       {
-        "slide": 26,
+        "slide": 23,
         "title": "Train · Validation · Test",
         "concept": "split"
       },
       {
-        "slide": 27,
+        "slide": 24,
         "title": "Video Group Split · 데이터 누출 방지",
         "concept": "leakage"
       },
       {
-        "slide": 28,
+        "slide": 25,
+        "title": "전이학습 · 고정과 미세 조정",
+        "concept": "transfer"
+      },
+      {
+        "slide": 26,
+        "title": "학습 로그 · Batch, Step, Epoch",
+        "concept": "training-log"
+      },
+      {
+        "slide": 27,
         "title": "Overfitting · 새 데이터 일반화",
         "concept": "overfit"
       },
       {
-        "slide": 29,
+        "slide": 28,
         "title": "Preprocessing · 입력 규격 맞추기",
         "concept": "preprocess"
       },
       {
-        "slide": 30,
+        "slide": 29,
         "title": "Data Augmentation · 조건 변화 만들기",
         "concept": "augment"
       },
       {
-        "slide": 31,
+        "slide": 30,
         "title": "Score Threshold · 판정 기준",
         "concept": "threshold"
       },
       {
-        "slide": 32,
+        "slide": 31,
         "title": "Confusion Matrix · 100건 평가",
         "concept": "confusion"
+      },
+      {
+        "slide": 32,
+        "title": "Accuracy의 함정 · 모두 정상이라면?",
+        "concept": "imbalance"
       },
       {
         "slide": 33,
@@ -236,6 +236,26 @@
         "slide": 35,
         "title": "과제를 시작할 때 선택할 개념",
         "concept": "workflow"
+      },
+      {
+        "slide": 36,
+        "title": "AI에 전달할 작업 명세",
+        "concept": "project-brief"
+      },
+      {
+        "slide": 37,
+        "title": "실행 결과 확인 · 임계값과 오류 수",
+        "concept": "project-run"
+      },
+      {
+        "slide": 38,
+        "title": "실패 사례에서 다음 요청으로",
+        "concept": "project-iterate"
+      },
+      {
+        "slide": 39,
+        "title": "완료 기준 · AI의 설명에서 검증으로",
+        "concept": "project-check"
       }
     ]
   },
@@ -245,42 +265,49 @@
       "deck": "intro",
       "start": 1,
       "end": 7,
-      "minutes": 14
+      "minutes": 13
     },
     {
       "name": "어려움 · 남겨야 할 차이",
       "deck": "intro",
       "start": 8,
       "end": 11,
-      "minutes": 8
+      "minutes": 7
     },
     {
-      "name": "Task와 학습 원리",
+      "name": "Task · 모델 선택과 학습",
       "deck": "vision_ai_course",
       "start": 1,
-      "end": 5,
-      "minutes": 16
+      "end": 6,
+      "minutes": 15
     },
     {
-      "name": "신경망 · 선형성과 비선형성",
+      "name": "신경망 · 비선형성의 역할",
       "deck": "vision_ai_course",
-      "start": 6,
-      "end": 12,
-      "minutes": 22
+      "start": 7,
+      "end": 10,
+      "minutes": 15
     },
     {
-      "name": "CNN · 작은 계산에서 전체 구조로",
+      "name": "CNN · 전체 구조에서 작은 계산으로",
       "deck": "vision_ai_course",
-      "start": 13,
-      "end": 24,
-      "minutes": 26
+      "start": 11,
+      "end": 21,
+      "minutes": 20
     },
     {
-      "name": "데이터와 평가 · 과제에 적용",
+      "name": "데이터 · 학습 로그와 평가",
       "deck": "vision_ai_course",
-      "start": 25,
-      "end": 35,
-      "minutes": 24
+      "start": 22,
+      "end": 34,
+      "minutes": 25
+    },
+    {
+      "name": "AI와 첫 프로젝트 · 요청과 검증",
+      "deck": "vision_ai_course",
+      "start": 35,
+      "end": 39,
+      "minutes": 15
     }
   ]
 }

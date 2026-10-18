@@ -20,7 +20,7 @@ Vision AI를 처음 접하는 사람도 **사진 → Pixel·RGB → Vision의 �
 
 - **[Intro 처음부터 보기](https://sh0427-han.github.io/vision_ai_lecture/)**
 - **[통합 Vision AI 바로 보기](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html)**
-- **[퍼셉트론·신경망 6–12번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-6)** · **[CNN 계산 13–24번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-13)** · **[데이터·평가 25–35번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-25)**
+- **[퍼셉트론·신경망 7–10번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-7)** · **[CNN 구조·계산 11–21번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-11)** · **[데이터·평가 22–34번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-22)**
 - **[2시간 강의 운영안](TWO_HOUR_LECTURE_PLAN.md)**
 
 > 배포 URL 주의: 저장소 파일은 `docs/vision_ai_course.html`이지만 GitHub Pages는 `docs/` 디렉터리 자체를 웹사이트의 루트로 게시합니다. 따라서 공개 링크에는 `/docs/`를 넣으면 안 됩니다. 과거에 공유된 `/docs/vision_ai_course.html#slide-N` 링크는 자동으로 올바른 경로로 이동하도록 호환 페이지를 제공합니다.
@@ -29,13 +29,13 @@ Vision AI를 처음 접하는 사람도 **사진 → Pixel·RGB → Vision의 �
 
 **[Vision AI Lecture · Intro 1번부터 보기](https://sh0427-han.github.io/vision_ai_lecture/)**
 
-사이트 주소를 열면 Intro 첫 슬라이드부터 **11장 + 통합 35장 = 46장**을 순서대로 봅니다. 설명·계산 예시 110분과 질문·복습 10분으로 구성한 원리 중심 강의입니다. 직접 모델을 구현하기보다 AI 도구로 과제를 수행할 때 필요한 개념을 선택하는 것이 목표입니다.
+사이트 주소를 열면 Intro 첫 슬라이드부터 **11장 + 통합 39장 = 50장**을 순서대로 봅니다. 원리 설명·AI 협업 활동 110분과 질문·복습 10분으로 구성합니다. Task·모델 선택·데이터·평가를 이해하고, AI에 작업을 요청한 뒤 결과와 오류를 직접 확인하는 것이 목표입니다.
 
-왼쪽 상단의 **☰ 강의 목차**를 클릭하면 46개 슬라이드가 주제별로 표시되어 원하는 장으로 바로 이동할 수 있습니다. 목차 버튼을 다시 누르거나 **✕ 닫기**, 패널 바깥 클릭, **Esc** 키로 목차를 숨길 수 있습니다.
+왼쪽 상단의 **☰ 강의 목차**를 클릭하면 50개 슬라이드가 주제별로 표시되어 원하는 장으로 바로 이동할 수 있습니다. 목차 버튼을 다시 누르거나 **✕ 닫기**, 패널 바깥 클릭, **Esc** 키로 목차를 숨길 수 있습니다.
 
 ## 강의 슬라이드 안에서 직접 확인하는 Interactive Figure
 
-AI Basics의 **학습의 의미** 슬라이드에서는 '한 단계 학습' 또는 '자동 학습' 버튼을 누르면 모델이 예측 오차에 따라 가중치를 갱신하고 정답에 접근하는 장면을 볼 수 있습니다. 가중치를 직접 수정하는 입력창은 사용하지 않습니다.
+통합 강의 4번 **모델 학습 · 오차를 줄이는 반복**에서는 '한 단계 학습' 또는 '자동 학습' 버튼을 누르면 모델이 예측 오차에 따라 가중치를 갱신하고 정답에 접근하는 장면을 볼 수 있습니다. 가중치를 직접 수정하는 입력창은 사용하지 않습니다.
 
 CNN은 동일 수치 입력을 Kernel → Feature Map → Stride까지 연결합니다. Mean·Gaussian·Sobel 세부 연산은 본강의에서 다루지 않습니다.
 
@@ -134,16 +134,19 @@ vision_ai_lecture/
 
 ## Web Lecture
 
-정적 강의 사이트는 [Intro 1번](https://sh0427-han.github.io/vision_ai_lecture/)에서 바로 시작합니다. Intro 11장 → [통합 Vision AI 강의 35장](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html), 총 46장입니다. 기존 [AI Basics](docs/ai_basics.html) 및 [Vision AI](docs/vision_ai.html) 개별 슬라이드는 이전 직접 링크의 호환성을 위해 원본으로 유지합니다.
+정적 강의 사이트는 [Intro 1번](https://sh0427-han.github.io/vision_ai_lecture/)에서 바로 시작합니다. Intro 11장 → [통합 Vision AI 강의 39장](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html), 총 50장입니다. 기존 [AI Basics](docs/ai_basics.html) 및 [Vision AI](docs/vision_ai.html) 개별 슬라이드는 이전 직접 링크의 호환성을 위해 원본으로 유지합니다.
 
 디자인은 **흰색 배경, 한 화면 한 슬라이드, 최소한의 포인트 컬러**를 기본으로 합니다.
 
 
-### 실제 사진·계산 결과로 보는 핵심 슬라이드
+### 원리에서 AI와 첫 프로젝트까지
 
-기존 그림과 실제 연산의 차이가 보이도록, [Stride 22번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-22), [Padding 23번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-23), [Max Pooling 24번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-24), [전처리 39번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-39), [증강 40번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-40)에 같은 강아지 실사 사진의 실제 계산 결과를 연결했습니다. 모든 공개 슬라이드 제목은 간결한 개념형 제목으로 정리했습니다.
+- 통합 3번: 기존 모델·API·규칙 기반으로 먼저 시험할 방법 선택
+- 통합 7–10번: 퍼셉트론·직선의 한계·ReLU, 상세 수식 전개는 참고로 분리
+- 통합 11–21번: 전체 CNN 구조 → 동일 수치의 Kernel/Feature Map → 실제 내부 반응
+- 통합 22–34번: 데이터 독립성·전이학습·학습 로그·전처리·불균형·임계값·평가
+- 통합 35–39번: 작업 명세 → 저장 점수 재집계 → 실패 분석 → 완료 기준
 
+[AI와 첫 프로젝트 구간](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-35)의 임계값 연습은 교육용 저장 점수100건을 직접 계산합니다. 실제 모델이나 외부 AI API의 실행 결과가 아닙니다. 실제 SqueezeNet Feature Map, 강아지 사진 전처리·증강 계산은 해당 모델/사진의 조건과 출처를 명시합니다.
 
-### 최신 초급자 CNN 학습 순서
-
-현재 본강의의 순서, 120분 시간 배분, 계산 예시와 주의점은 [2시간 강의 운영안](TWO_HOUR_LECTURE_PLAN.md)을 기준으로 합니다.
+현재 순서와120분 운영은 [강의 운영안](TWO_HOUR_LECTURE_PLAN.md), 재편 전 진단은 [검토 보고서](LECTURE_REVIEW.md)를 참고합니다.

@@ -13,6 +13,8 @@
 .vision-story-observations span{font-size:19px;color:#5a717c;font-weight:650}
 .vision-story-observations b{font-size:20px;color:#244d58}
 .vision-story-takeaway{margin:16px 0 0;padding:14px 19px;border-left:4px solid #27897a;background:#eff7f4;border-radius:8px;font-size:clamp(18px,1.5vw,22px);line-height:1.5;color:#245b58;font-weight:700}
+.vision-story-source{margin:8px 0 0;font-size:clamp(13px,1.1vw,16px);line-height:1.4;color:#617f8b}
+.vision-story-source a{color:inherit;text-underline-offset:2px}
 .vision-story-applications{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
 .vision-story-applications article{border:1px solid #d9e4eb;border-radius:13px;overflow:hidden;background:#fff;min-width:0}
 .vision-story-app-photo{height:260px;overflow:hidden;background:#eaf0f4}

@@ -10,14 +10,14 @@ items=[x for g in outline['groups'] for x in g['items']]
 assert m['duration_minutes']==120
 assert sum(x['minutes'] for x in m['blocks'])==m['teaching_minutes']==110
 assert m['teaching_minutes']+m['discussion_minutes']==120
-assert [x['global'] for x in items]==list(range(1,47))
+assert [x['global'] for x in items]==list(range(1,51))
 slides={}; concepts={}
-for deck,count in [('intro',11),('vision_ai_course',35)]:
+for deck,count in [('intro',11),('vision_ai_course',39)]:
  text=(D/(deck+'.html')).read_text()
  ss=re.findall(r'<section\b[^>]*class="slide[^\"]*"[^>]*>.*?</section>',text,re.S)
  assert len(ss)==count,(deck,len(ss))
  assert text.count('class="slide active"')==1
- assert re.findall(r'lecture_outline.js\?v=([^\"]+)',text)==['two-hour-20261018']
+ assert re.findall(r'lecture_outline.js\?v=([^\"]+)',text)==['project-course-20261018']
  slides[deck]=ss
  for n,s in enumerate(ss,1):
   c=re.search(r'data-concept="([^\"]+)"',s)[1];concepts[c]=s
@@ -32,8 +32,14 @@ for deck,count in [('intro',11),('vision_ai_course',35)]:
  assert not re.search(r'VGG-16|BatchNorm|γ|β|Grad-CAM|다음 장|기존 숫자',text),'Removed advanced topic or stale transition'
 # Prerequisites are executable constraints, not just comments in a teaching plan.
 seq=[x['concept'] for x in m['decks']['vision_ai_course']]
-for before,after in [('task','learn'),('learn','perceptron'),('perceptron','affine-net'),('affine-net','affine-collapse'),('and-xor','xor-net'),('xor-net','relu'),('relu','kernel'),('kernel','feature-map'),('feature-map','sharing'),('channels','actual-map'),('stride','cnn-overview'),('learn','cnn-training'),('backbone','transfer'),('split','overfit'),('threshold','confusion'),('confusion','metrics'),('metrics','iou')]:
+for before,after in [('task','model-choice'),('model-choice','learn'),('learn','perceptron'),('perceptron','and-xor'),('and-xor','relu'),('relu','nonlinear'),('nonlinear','cnn-overview'),('cnn-overview','kernel'),('kernel','feature-map'),('feature-map','sharing'),('channels','actual-map'),('learn','cnn-training'),('backbone','transfer'),('dataset','split'),('split','transfer'),('split','overfit'),('training-log','overfit'),('threshold','confusion'),('confusion','imbalance'),('imbalance','metrics'),('metrics','iou'),('iou','project-brief'),('project-brief','project-run'),('project-run','project-iterate'),('project-iterate','project-check')]:
  assert seq.index(before)<seq.index(after),(before,after)
+assert not {'affine-net','affine-collapse','xor-net'} & set(seq)
+# Every slide must belong to one timed block; no omitted or duplicated material.
+for deck,entries in m['decks'].items():
+ covered=[n for block in m['blocks'] if block['deck']==deck for n in range(block['start'],block['end']+1)]
+ assert covered==list(range(1,len(entries)+1)),(deck,covered)
+assert [block['minutes'] for block in m['blocks']]==[13,7,15,15,20,25,15]
 def matrices(concept):
  s=concepts[concept]; result=[]
  for cols,body in re.findall(r'<div class="concept-matrix[^\"]*" style="--cols:(\d+)"[^>]*>(.*?)</div>',s,re.S):
@@ -54,11 +60,19 @@ assert round((.5*2-4)**2,2)==9 and round((1.7*2-4)**2,2)==.36
 assert abs(.5-.1*(2*(.5*2-4)*2)-1.7)<1e-12
 assert 'w=0.5' in concepts['loss'] and 'w=1.7' in concepts['loss']
 assert '9,216' in concepts['sharing'] and 9*1024==9216
-assert 'x₁ + 7x₂ + 3' in concepts['affine-collapse']
-assert '입력층' in concepts['affine-net'] and '은닉층 2' in concepts['affine-net'] and 'y = z₁ + z₂' in concepts['affine-net']
 assert 'perceptron_gate_structure_ko.svg' in concepts['perceptron']
 assert 'x₁+x₂ = 1.4' in concepts['and-xor']
-assert 'xor_multilayer_gates_ko.svg' in concepts['xor-net']
+assert '역전파(Backpropagation)' in concepts['loss']
+assert '지도학습(Supervised Learning)' in concepts['rules']
+assert '2 Epoch = 6 Step' in concepts['training-log']
+assert '80%' in concepts['imbalance'] and '0%' in concepts['imbalance']
+assert '확률 82%' in concepts['threshold']
+assert 'Label도 함께 변환' in concepts['augment']
+assert 'Train에서만' in concepts['preprocess']
+assert 'mAP' in concepts['iou']
+assert '실제 모델을 실행한 결과는 아닙니다' in concepts['project-run']
+assert 'Validation' in concepts['project-run'] and 'Test' in concepts['project-run']
+assert 'Test를 반복 선택에 쓰지 않고' in concepts['project-iterate']
 assert 'data-grayscale-lesson' in concepts['gray'] and 'data-rgb-lesson' in concepts['rgb']
 assert '960×540' in concepts['resolution'] and '1920' not in concepts['resolution']
 assert '균열 유무' in concepts['relevant-change']
@@ -68,7 +82,7 @@ for deck in ['intro','vision_ai_course','ai_basics','vision_ai']:
  assert 'cursor:zoom' not in text
 for a in ['perceptron_gate_structure_ko','and_xor_gate_geometry_ko','xor_multilayer_gates_ko']:
  ET.parse(D/'assets/lesson'/f'{a}.svg')
-print('TWO_HOUR_QA_PASSED: 46 slides, 110+10 minutes, prerequisites, shared numeric examples, local assets and static figures')
+print('TWO_HOUR_QA_PASSED: 50 slides, 110+10 minutes, prerequisites, shared numeric examples, local assets and static figures')
 
 # Open feedback paths must not render as a solid filled blob.
 root=ET.parse(D/'assets/lesson/context_cnn_training.svg').getroot()

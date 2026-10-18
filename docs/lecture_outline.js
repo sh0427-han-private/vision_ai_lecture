@@ -1,6 +1,6 @@
-/* Two-hour principle-focused public lecture. */
+/* Two-hour foundations and AI-assisted project course. */
 window.LECTURE_OUTLINE = {
-  "version": "20261018-two-hour",
+  "version": "20261018-project-course",
   "groups": [
     {
       "name": "입력 · 사진과 숫자",
@@ -79,7 +79,7 @@ window.LECTURE_OUTLINE = {
       ]
     },
     {
-      "name": "Task와 학습 원리",
+      "name": "Task · 모델 선택과 학습",
       "items": [
         {
           "page": "vision_ai_course.html",
@@ -96,196 +96,196 @@ window.LECTURE_OUTLINE = {
         {
           "page": "vision_ai_course.html",
           "slide": 3,
-          "title": "모델 학습 · 오차를 줄이는 반복",
+          "title": "첫 선택 · 기존 모델부터 시험",
           "global": 14
         },
         {
           "page": "vision_ai_course.html",
           "slide": 4,
-          "title": "Loss와 가중치 갱신",
+          "title": "모델 학습 · 오차를 줄이는 반복",
           "global": 15
         },
         {
           "page": "vision_ai_course.html",
           "slide": 5,
-          "title": "Training과 Inference의 차이",
+          "title": "Loss와 가중치 갱신",
           "global": 16
+        },
+        {
+          "page": "vision_ai_course.html",
+          "slide": 6,
+          "title": "Training과 Inference의 차이",
+          "global": 17
         }
       ]
     },
     {
-      "name": "신경망 · 선형성과 비선형성",
+      "name": "신경망 · 비선형성의 역할",
       "items": [
         {
           "page": "vision_ai_course.html",
-          "slide": 6,
-          "title": "퍼셉트론 · Wx + b에서 판정까지",
-          "global": 17
-        },
-        {
-          "page": "vision_ai_course.html",
           "slide": 7,
-          "title": "여러 층을 거치는 두 입력",
+          "title": "퍼셉트론 · Wx + b에서 판정까지",
           "global": 18
         },
         {
           "page": "vision_ai_course.html",
           "slide": 8,
-          "title": "선형 계산만 쌓으면 단일층과 동등",
+          "title": "AND와 XOR · 직선으로 구분할 수 있을까?",
           "global": 19
         },
         {
           "page": "vision_ai_course.html",
           "slide": 9,
-          "title": "AND와 XOR · 직선으로 구분할 수 있을까?",
+          "title": "ReLU · 비선형성의 시작",
           "global": 20
         },
         {
           "page": "vision_ai_course.html",
           "slide": 10,
-          "title": "다층 퍼셉트론 · 게이트 조합으로 XOR",
+          "title": "신경망의 핵심 · 계산 사이의 비선형성",
           "global": 21
-        },
+        }
+      ]
+    },
+    {
+      "name": "CNN · 전체 구조에서 작은 계산으로",
+      "items": [
         {
           "page": "vision_ai_course.html",
           "slide": 11,
-          "title": "ReLU · 비선형성의 시작",
+          "title": "CNN 전체 구조 · 특징에서 판정까지",
           "global": 22
         },
         {
           "page": "vision_ai_course.html",
           "slide": 12,
-          "title": "신경망의 핵심 · 계산 사이의 비선형성",
+          "title": "Kernel · 작은 영역의 가중합",
           "global": 23
-        }
-      ]
-    },
-    {
-      "name": "CNN · 작은 계산에서 전체 구조로",
-      "items": [
+        },
         {
           "page": "vision_ai_course.html",
           "slide": 13,
-          "title": "Kernel · 작은 영역의 가중합",
+          "title": "Feature Map · 같은 계산을 위치마다",
           "global": 24
         },
         {
           "page": "vision_ai_course.html",
           "slide": 14,
-          "title": "Feature Map · 같은 계산을 위치마다",
+          "title": "CNN · 지역 연결과 가중치 공유",
           "global": 25
         },
         {
           "page": "vision_ai_course.html",
           "slide": 15,
-          "title": "CNN · 지역 연결과 가중치 공유",
+          "title": "RGB 입력과 출력 Channel",
           "global": 26
         },
         {
           "page": "vision_ai_course.html",
           "slide": 16,
-          "title": "RGB 입력과 출력 Channel",
+          "title": "Stride · 계산 위치의 간격",
           "global": 27
         },
         {
           "page": "vision_ai_course.html",
           "slide": 17,
-          "title": "Stride · 계산 위치의 간격",
+          "title": "Padding · 입력 바깥에 값 채우기",
           "global": 28
         },
         {
           "page": "vision_ai_course.html",
           "slide": 18,
-          "title": "Padding · 입력 바깥에 값 채우기",
+          "title": "Max Pooling · 영역별 최댓값",
           "global": 29
         },
         {
           "page": "vision_ai_course.html",
           "slide": 19,
-          "title": "Max Pooling · 영역별 최댓값",
+          "title": "실제 Feature Map · CNN 내부 반응",
           "global": 30
         },
         {
           "page": "vision_ai_course.html",
           "slide": 20,
-          "title": "CNN 전체 구조 · 특징에서 판정까지",
+          "title": "학습 과정에서 바뀌는 Kernel",
           "global": 31
         },
         {
           "page": "vision_ai_course.html",
           "slide": 21,
-          "title": "실제 Feature Map · CNN 내부 반응",
+          "title": "Backbone과 Task Head",
           "global": 32
-        },
+        }
+      ]
+    },
+    {
+      "name": "데이터 · 학습 로그와 평가",
+      "items": [
         {
           "page": "vision_ai_course.html",
           "slide": 22,
-          "title": "학습 과정에서 바뀌는 Kernel",
+          "title": "데이터셋 · 판정 기준과 촬영 조건",
           "global": 33
         },
         {
           "page": "vision_ai_course.html",
           "slide": 23,
-          "title": "Backbone과 Task Head",
+          "title": "Train · Validation · Test",
           "global": 34
         },
         {
           "page": "vision_ai_course.html",
           "slide": 24,
-          "title": "전이학습 · 고정과 미세 조정",
+          "title": "Video Group Split · 데이터 누출 방지",
           "global": 35
-        }
-      ]
-    },
-    {
-      "name": "데이터와 평가 · 과제에 적용",
-      "items": [
+        },
         {
           "page": "vision_ai_course.html",
           "slide": 25,
-          "title": "데이터셋 · 판정 기준과 촬영 조건",
+          "title": "전이학습 · 고정과 미세 조정",
           "global": 36
         },
         {
           "page": "vision_ai_course.html",
           "slide": 26,
-          "title": "Train · Validation · Test",
+          "title": "학습 로그 · Batch, Step, Epoch",
           "global": 37
         },
         {
           "page": "vision_ai_course.html",
           "slide": 27,
-          "title": "Video Group Split · 데이터 누출 방지",
+          "title": "Overfitting · 새 데이터 일반화",
           "global": 38
         },
         {
           "page": "vision_ai_course.html",
           "slide": 28,
-          "title": "Overfitting · 새 데이터 일반화",
+          "title": "Preprocessing · 입력 규격 맞추기",
           "global": 39
         },
         {
           "page": "vision_ai_course.html",
           "slide": 29,
-          "title": "Preprocessing · 입력 규격 맞추기",
+          "title": "Data Augmentation · 조건 변화 만들기",
           "global": 40
         },
         {
           "page": "vision_ai_course.html",
           "slide": 30,
-          "title": "Data Augmentation · 조건 변화 만들기",
+          "title": "Score Threshold · 판정 기준",
           "global": 41
         },
         {
           "page": "vision_ai_course.html",
           "slide": 31,
-          "title": "Score Threshold · 판정 기준",
+          "title": "Confusion Matrix · 100건 평가",
           "global": 42
         },
         {
           "page": "vision_ai_course.html",
           "slide": 32,
-          "title": "Confusion Matrix · 100건 평가",
+          "title": "Accuracy의 함정 · 모두 정상이라면?",
           "global": 43
         },
         {
@@ -299,12 +299,41 @@ window.LECTURE_OUTLINE = {
           "slide": 34,
           "title": "IoU · 박스 겹침 비율",
           "global": 45
-        },
+        }
+      ]
+    },
+    {
+      "name": "AI와 첫 프로젝트 · 요청과 검증",
+      "items": [
         {
           "page": "vision_ai_course.html",
           "slide": 35,
           "title": "과제를 시작할 때 선택할 개념",
           "global": 46
+        },
+        {
+          "page": "vision_ai_course.html",
+          "slide": 36,
+          "title": "AI에 전달할 작업 명세",
+          "global": 47
+        },
+        {
+          "page": "vision_ai_course.html",
+          "slide": 37,
+          "title": "실행 결과 확인 · 임계값과 오류 수",
+          "global": 48
+        },
+        {
+          "page": "vision_ai_course.html",
+          "slide": 38,
+          "title": "실패 사례에서 다음 요청으로",
+          "global": 49
+        },
+        {
+          "page": "vision_ai_course.html",
+          "slide": 39,
+          "title": "완료 기준 · AI의 설명에서 검증으로",
+          "global": 50
         }
       ]
     }

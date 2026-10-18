@@ -17,7 +17,9 @@ ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "visual_audit_output"
 OUTPUT.mkdir(exist_ok=True)
 BASE_URL = os.getenv("AUDIT_BASE_URL", "http://127.0.0.1:8765")
-DECKS = {"intro": 11, "vision_ai_course": 35}
+DECKS = {name: len(entries) for name, entries in json.loads(
+    (ROOT / "docs/two_hour_manifest.json").read_text()
+)["decks"].items()}
 VIEWPORTS = [(1920, 1080), (1366, 768)]
 
 

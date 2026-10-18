@@ -76,10 +76,9 @@ for name in ["ai_basics", "vision_ai"]:
                 '//section[contains(concat(" ", @class, " "), " slide ")]'
             )[entry["number"]]
             refs = slide.xpath('.//*[contains(@class,"lesson-reference")]//a/@href')
-            assert "https://link.springer.com/article/10.1186/s40537-021-00444-8" in refs
-            assert len(refs) >= 2
+            assert not refs, "Self-drawn survey diagrams must not show concept citations"
 print("SVG XML/resources, AND, convolution, gradients, IoU and metrics verified")
-print("Survey sources, cross-entropy, CNN shapes, class ratio and residual sum verified")
+print("Image-only citation policy, cross-entropy, CNN shapes, class ratio and residual sum verified")
 
 # Check the actual filter routines against hand-calculated independent results.
 from scipy import ndimage as ndi
@@ -104,5 +103,5 @@ processing = [item for item in manifest["vision_ai"] if Path(item["asset"]).stem
 assert len(processing) >= 5
 for item in processing:
     refs = vision_slides[item["number"]].xpath('.//*[contains(@class,"lesson-reference")]//a/@href')
-    assert "https://szeliski.org/Book/1stEdition.htm" in refs
-print("Szeliski sources, mean/median, Gaussian DC, Sobel ramp, mask opening/closing and pyramid shapes verified")
+    assert not refs, "Self-calculated filtering figures must not show concept citations"
+print("Image-only citation policy, mean/median, Gaussian DC, Sobel ramp, mask opening/closing and pyramid shapes verified")

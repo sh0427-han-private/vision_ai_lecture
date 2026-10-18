@@ -734,49 +734,21 @@ def build_deck(filename, title, subtitle, cards, lessons, prev_page, next_page="
             asset=f"assets/ppt_slides/{asset[4:]}.svg"
         else:
             asset=f"assets/lesson/{asset}.svg"
-        reference=""
-        if detailed:
-            url="https://cs231n.github.io/convolutional-networks/" if filename=="vision_ai.html" else "https://cs231n.github.io/"
-            reference=f'<p class="lesson-reference">개념 참고: <a href="{url}" target="_blank" rel="noopener">Stanford CS231n</a> · 직접 재구성한 설명용 Figure</p>'
+        # Only reused external images need source links on lecture slides.
+        # Concept references remain in assets/SOURCES.md, not the presentation.
+        reference = ""
         if any(name in asset for name in ["learning_basic", "network_basic", "capture_conditions", "shortcut_professional", "hierarchy_professional"]):
-            reference += '<p class="lesson-reference">사진: AI 생성 교육용 예시 · 실제 측정/실험 결과가 아님</p>'
+            reference = '<p class="lesson-source">이미지 안내: AI 생성 교육용 예시 · 실제 측정/실험 결과가 아님</p>'
         figure_version = VERSION
-        if Path(asset).stem in {"loss_basic", "gradient_basic", "gradient_detail", "optimizer_learning_rates"}:
+        stem = Path(asset).stem
+        if stem in {"loss_basic", "gradient_basic", "gradient_detail", "optimizer_learning_rates"}:
             figure_version = "loss-optimizer-20261006-2"
-            reference = '<p class="lesson-reference">개념 참고: <a href="https://cs231n.github.io/optimization-1/" target="_blank" rel="noopener">Stanford CS231n · Optimization</a> · 실제 계산한 단일 샘플 회귀 예시</p>'
-        if Path(asset).stem in SURVEY_REFERENCES:
-            section, primary_url, primary_label = SURVEY_REFERENCES[Path(asset).stem]
-            figure_version = "survey-20261006-1"
-            if Path(asset).stem == "survey_feature_learning":
-                figure_version = "survey-20261006-2"
-            reference = (
-                f'<p class="lesson-reference">참고: <a href="{SURVEY_URL}" '
-                f'target="_blank" rel="noopener">Alzubaidi et al. (2021) · {section}</a>'
-                f' · <a href="{primary_url}" target="_blank" rel="noopener">{primary_label}</a>'
-                ' · 강의용 재구성</p>'
-            )
-        if Path(asset).stem.startswith("lecture_"):
+        if stem in SURVEY_REFERENCES:
+            figure_version = "survey-20261006-2" if stem == "survey_feature_learning" else "survey-20261006-1"
+        if stem.startswith("lecture_"):
             figure_version = "visual-20261013-1"
-            reference = (
-                '<p class="lesson-reference">참고: '
-                '<a href="https://cs.brown.edu/courses/csci1430/2020_Spring/lectures/2020Spring_02_ImageFiltering.pdf" '
-                'target="_blank" rel="noopener">Brown CSCI1430 Image Filtering (2020)</a> · '
-                '<a href="https://docs.opencv.org/4.x/d4/d13/tutorial_py_filtering.html" '
-                'target="_blank" rel="noopener">OpenCV Image Filtering</a> · 검산된 설명용 도식</p>'
-            )
-        if Path(asset).stem in PROCESSING_SECTIONS:
-            section = PROCESSING_SECTIONS[Path(asset).stem]
-            figure_version = "processing-20261006-2" if Path(asset).stem == "processing_pyramid" else "processing-20261006-1"
-            reference = (
-                '<p class="lesson-reference">참고: <a href="https://szeliski.org/Book/1stEdition.htm" '
-                f'target="_blank" rel="noopener">Szeliski · Ch. 3 {section}</a>'
-                ' · 기존 AI 생성 사진 / 합성 데이터에 실제 연산 적용</p>'
-            )
-        if reference:
-            reference = reference.replace(
-                '<p class="lesson-reference">',
-                '<details class="lesson-reference"><summary>출처 · 근거</summary><div>'
-            ).replace('</p>', '</div></details>')
+        if stem in PROCESSING_SECTIONS:
+            figure_version = "processing-20261006-2" if stem == "processing_pyramid" else "processing-20261006-1"
         if asset == "assets/ppt_slides/vision_ai_convolution_ppt.svg":
             # PPT-first production workflow: full editable slide in source PPTX,
             # with matching SVG used as the entire web lecture composition.
