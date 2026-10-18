@@ -6,6 +6,7 @@ Vision AI를 처음 접하는 사람을 대상으로 하는 입문 강의자료 
 
 - GitHub Repository: https://github.com/sh0427-han/vision_ai_lecture
 - GitHub Pages: https://sh0427-han.github.io/vision_ai_lecture/
+- 현재 남은 작업: [TODO_VISION_AI_LECTURE.md](TODO_VISION_AI_LECTURE.md) — 최신 50장 기준, 슬라이드별 미완료 항목·QA 확인
 
 ## Course Structure
 
@@ -571,3 +572,12 @@ GitHub Pages:
 - 기존 Click Pixel/RGB/해상도 · Weight 학습 · Threshold 100건 실습을 유지하고, 새 physical slide-number로 Deep Link·브라우저 QA·cache key를 동기화한다.
 - 작업 근거: `reviews/2026-10-18_VISION_AI_CONTENT_FLOW_REVIEW.md` 및 `reviews/2026-10-18_VISION_AI_UI_FIGURE_REVIEW.md`.
 - **변경 후 필수 검증:** `scripts/verify_two_hour_course.py`, `scripts/verify_curriculum_overhaul.py`, `scripts/verify_learning_routes.py`, `scripts/audit_visual_slides.py`. 코드 정적 검증/로컬 브라우저 확인/실배포 Pages 확인은 서로 다른 완료 조건이다.
+
+
+## 2026-10-18 · 현재 활성 TODO 및 Markdown 자료 정리
+
+- 최신 미완료 작업은 **`TODO_VISION_AI_LECTURE.md`** 하나에서 관리한다. 각 슬라이드의 실제 `data-concept`와 `docs/two_hour_manifest.json`의 현재 번호를 우선한다.
+- `TODO_INTRO_RGB_TENSOR.md`는 기존 파일 자체가 구버전/대체된 작업 지침임을 명시했으며, 현재 사과 Grayscale/RGB 교육 구성과 충돌하므로 제거한다.
+- `LECTURE_REVIEW.md`는 46장 이전 상태의 완료된 진단으로, 현재 **50장**의 내용/흐름 및 UI/Figure 검토서와 구현 기록이 대체하므로 제거한다. 옛 기록은 Git 이력에 남는다.
+- `REFERENCE_SLIDE_SOURCE_MAP.md`와 `REFERENCE_VISION_AI_SOURCE_LIBRARY.md`는 옛 69장/72장 번호가 포함된 연구·소스 라이브러리다. URL과 Figure 후보의 참고 가치가 있어 **역사적 참고용으로 보존**하며, 현행 구현 지시나 TODO로 사용하지 않는다.
+- 완료된 구조 개편(PR #101)과 미검증 사항(실제 브라우저 렌더·상호작용·GitHub Pages 배포 확인)은 [현재 활성 TODO](TODO_VISION_AI_LECTURE.md)에서 구분한다. 코드 정적 QA 통과와 브라우저/배포 실제 성공을 혼동하지 않는다.
