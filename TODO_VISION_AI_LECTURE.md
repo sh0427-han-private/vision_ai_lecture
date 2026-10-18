@@ -8,9 +8,25 @@
 > **후속 작업 상태:** P0·P1 및 로컬 QA-01~03 완료. 작업 브랜치의 검증이며 main 배포 완료가 아닙니다. [구현·검증 기록](reviews/2026-10-18_VISION_AI_TODO_IMPLEMENTATION.md)을 참고하세요. QA-04 중 main 병합과 Pages 배포 성공을 확인했습니다. 공개 URL 직접 검증 및 현장 리허설은 남았습니다. 사용자의 후속 요청으로 PR API 대신 Git 병합·push를 승인받았습니다.
 
 > [!IMPORTANT]
-> **현행 활성 기준 (2026-10-18 추가 개편): Intro 13장 + Course 41장 = 총 54장.** 이 파일의 아래 50장 P0/P1 체크는 **이전 PR에서 완료된 작업의 이력**입니다. 이후 새 수업 수정은 [54장 전체 내용·흐름 재검토](reviews/2026-10-18_VISION_AI_54_SLIDE_FLOW_REVIEW.md)의 신규 슬라이드 번호와 `docs/two_hour_manifest.json`을 기준으로 합니다. 새 54장 공개 배포·화면 QA는 아직 완료 처리하지 않습니다.
+> **현행 활성 기준 (2026-10-19 추가 개편): Intro 13장 + Course 42장 = 총 55장.** 이 파일의 아래 50장 P0/P1 체크는 **이전 PR에서 완료된 작업의 이력**입니다. 이후 새 수업 수정은 [54장 전체 내용·흐름 재검토](reviews/2026-10-18_VISION_AI_54_SLIDE_FLOW_REVIEW.md)의 신규 슬라이드 번호와 `docs/two_hour_manifest.json`을 기준으로 합니다. 새 54장 공개 배포·화면 QA는 아직 완료 처리하지 않습니다.
 
-## 신규 54장 후속 작업 (활성)
+## 2026-10-19 · CNN 그림·게이트 단계학습 수정 후 미완료 검증
+
+- [x] Intro 13: 사진 변환 CSS 범위 수정 (같은 사과 원본을 재사용).
+- [x] Course 5: Anomaly Detection 제외, 분류/검출/분할 세 선택지만 유지.
+- [x] AND/XOR 분리: Course 7·8; 각각 진리표, 좌표 분리 직관을 시각화.
+- [x] Course 11–15: 기존 얼룩말 CNN Architecture 출처 Figure + 로컬 대체도 / Kernel 입력→출력 Matrix / Sharing·Channel 목적 설명.
+- [x] Course 17·18: 같은 입력 Padding 0/1 및 Max Pooling 사용 목적 설명.
+- [x] Course 24·25: 슬라이드 속 슬라이드 구조 제거, 동일 사과의 HTML 사진 변환 비교.
+- [x] Course 28·30: Forward/Backward 학습 그림 정렬, Backbone Freeze/Head Train Transfer Learning.
+- [ ] **실제 UI QA:** 두 발표 화면 크기 1920×1080/1366×768 × 55장 = **110개 화면**. 특히 C7/8, 11, 12, 17, 24/25, 28, 30에서 도형 간격·글자 가독성 확인.
+- [ ] **외부 Figure 로딩/대체:** 기존 얼룩말 Figure 로딩 실패 시 로컬 CNN Fallback을 실제 브라우저에서 확인. 원본 이미지 보일 때와 막힐 때 모두 그림·출처·텍스트 잘림 없음.
+- [ ] **회귀/배포:** Gate/Kernel/Padding/Pooling의 숫자, Course26 Weight 실습, Course40 Threshold 교육용 100건, 목차 55개 및 Pages Workflow 성공과 실 URL 검증.
+- [ ] **2시간 리허설:** AND/XOR 설명을 별도 슬라이드로 나눠도 CNN30분/110+10분 목표를 유지하는지 현장 시연.
+
+**변경 확인:** [2026-10-19 그림·강의 수정 리뷰](reviews/2026-10-19_CNN_SLIDE_REFINEMENT.md). 앞의 50장·54장 지침은 과거 작업 기록이다.
+
+## 2026-10-18 · 과거 54장 후속 작업 (이력)
 
 - [ ] **F54-P0-01 / Course 5:** Task·Model·Label 4열 Figure를 1366×768, 1920×1080에서 읽을 수 있는지 확인; 필요하면 본문 압축 및 핵심 3 Task 우선.
 - [ ] **F54-P0-02 / Course 27:** 새 CNN 학습 SVG의 Forward/Backward 방향·Gradient와 Kernel/Head 연결·Freeze 조건을 실제 렌더링으로 확인.
