@@ -157,7 +157,7 @@ vision_ai_lecture/
 현재 공개 강의의 순서·120분 운영은 [강의 운영안](TWO_HOUR_LECTURE_PLAN.md), 미완료 작업과 QA는 [활성 TODO](TODO_VISION_AI_LECTURE.md)를 기준으로 합니다. 상세 진단은 [기존 50장 내용 검토](reviews/2026-10-18_VISION_AI_CONTENT_FLOW_REVIEW.md)와 [기존 50장 UI·Figure 검토](reviews/2026-10-18_VISION_AI_UI_FIGURE_REVIEW.md), 최근 반영 내역은 [구현 기록](reviews/2026-10-18_VISION_AI_PRINCIPLES_IMPLEMENTATION.md)을 참고하세요. 과거 Figure 매핑은 현재 슬라이드 번호가 아닌 참고용 이력입니다.
 
 
-## 최신 54장 내용·흐름 재검토
+## 이전 54장 내용·흐름 재검토 기록
 
 2026-10-18 추가 요청(왜 필요한가/어려운가, 현재 활용 모델과 Task·데이터 구성, CNN 학습 구조) 반영 현황 및 후속 개선 권고는 [54장 내용·흐름 전수 재검토서](reviews/2026-10-18_VISION_AI_54_SLIDE_FLOW_REVIEW.md)를 참고합니다. **과거 50장 링크의 고정 슬라이드 번호는 현재 강의와 다릅니다.**
 
