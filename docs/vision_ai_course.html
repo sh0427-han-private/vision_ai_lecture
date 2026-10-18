@@ -105,7 +105,7 @@
 <section class="slide" data-concept="pool" data-topic="Max Pooling" data-level="basic">
 <div class="slide-inner concept-lab">
 <h2 class="slide-title">Max Pooling · 영역별 최댓값</h2>
-<p class="concept-lede">이번에는 Kernel 가중합 대신 영역의 최댓값을 고릅니다. 네 영역의 차이를 보기 위한 새 4×4 Feature Map 예시입니다.</p>
+<p class="slide-subtitle concept-lede">이번에는 Kernel 가중합 대신 영역의 최댓값을 고릅니다. 네 영역의 차이를 보기 위한 새 4×4 Feature Map 예시입니다.</p>
 <div class="concept-panes">
 <article class="concept-panel"><h3>입력 Feature Map · 4×4</h3><div class="concept-matrix " style="--cols:4" role="img" aria-label="4행4열 특징지도. 각 2행2열 블록 최대값 6, 4, 7, 9 강조"><span class="concept-cell">1</span><span class="concept-cell">3</span><span class="concept-cell">2</span><span class="concept-cell focus">4</span><span class="concept-cell">5</span><span class="concept-cell focus">6</span><span class="concept-cell">1</span><span class="concept-cell">2</span><span class="concept-cell">4</span><span class="concept-cell">2</span><span class="concept-cell focus">9</span><span class="concept-cell">3</span><span class="concept-cell">0</span><span class="concept-cell focus">7</span><span class="concept-cell">8</span><span class="concept-cell">1</span></div><p class="matrix-label">겹치지 않는 2×2 영역마다 최댓값 선택</p></article>
 <article class="concept-panel emphasis"><h3>Max Pooling 2×2, Stride 2</h3><div class="concept-matrix " style="--cols:2" role="img" aria-label="2행2열 출력 6 4 7 9"><span class="concept-cell focus">6</span><span class="concept-cell focus">4</span><span class="concept-cell focus">7</span><span class="concept-cell focus">9</span></div><div class="op-stat">4×4 (16칸) → 2×2 (4칸)</div><p>반응의 세기는 남지만 <strong>정확한 위치·다른 값은 사라집니다.</strong></p></article></div>
