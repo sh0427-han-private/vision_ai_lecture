@@ -151,7 +151,7 @@
 <h2 class="slide-title">학습 과정에서 바뀌는 Kernel</h2>
 <p class="slide-subtitle">작은 회귀 예시에서 w를 바꿨듯이, CNN은 Kernel의 가중치도 바꿉니다. Task에 맞는 예측과 Label의 차이가 학습 방향을 정합니다.</p>
 <figure class="lesson-figure"><div class="figure-display"><img src="assets/lesson/context_cnn_training.svg?v=professional-20261006-2" alt="CNN의 필터도 오차를 줄이는 방향으로 학습합니다"></div></figure>
-<p class="lesson-takeaway"><strong>학습의 영향:</strong> 같은 사진이라도 Kernel 가중치가 바뀌면 Feature Map과 최종 예측이 달라질 수 있습니다. Gradient로 수정 방향을 계산하고 Optimizer가 가중치를 갱신합니다.</p></div></section>
+<p class="lesson-takeaway"><strong>학습의 영향:</strong> 같은 사진이라도 Kernel 가중치가 바뀌면 Feature Map과 최종 예측이 달라질 수 있습니다. Gradient로 수정 방향을 계산하고 Optimizer(갱신 알고리즘)가 가중치를 갱신합니다.</p></div></section>
 <section class="slide" data-concept="backbone" data-topic="Backbone과 Head" data-level="basic">
 <div class="slide-inner">
 <h2 class="slide-title">Backbone과 Task Head</h2>
@@ -188,7 +188,7 @@
 <h2 class="slide-title">Preprocessing · 입력 규격 맞추기</h2>
 <p class="slide-subtitle">동일 사진을 강제로 정사각형으로 늘린 결과와 비율을 유지한 Letterbox를 비교합니다.</p>
 <figure class="lesson-figure scientific-photo-figure"><div class="figure-display"><img src="assets/lesson/cnn_real_preprocess_dog.png?v=real-vision-20261016-1" alt="Preprocessing · 입력 규격 맞추기: 같은 실사 사진을 NumPy와 Pillow로 연산한 출력 비교"></div></figure>
-<p class="lesson-takeaway">비율을 고려하지 않은 Resize는 객체 형태를 왜곡합니다. 전처리에서는 크기뿐 아니라 RGB/BGR, 값의 정규화, 채널 순서를 학습 때와 동일하게 맞춥니다.</p><p class="lesson-source">출처: <a href="https://cs231n.stanford.edu/slides/2017/cs231n_2017_lecture5.pdf" target="_blank" rel="noopener">Stanford CS231n (2017) 강아지 원본 사진</a> · <a href="https://github.com/sh0427-han/vision_ai_lecture/blob/main/scripts/render_real_vision_examples.py" target="_blank" rel="noopener">NumPy/Pillow 계산 재현 코드</a> · 실제 이미지 연산 결과 (CNN 학습 출력 아님)</p></div></section>
+<p class="lesson-takeaway">비율을 고려하지 않은 Resize는 객체 형태를 왜곡합니다. 전처리에서는 크기뿐 아니라 색 채널의 순서와 숫자의 범위도 학습 때와 동일하게 맞춥니다.</p><p class="lesson-source">출처: <a href="https://cs231n.stanford.edu/slides/2017/cs231n_2017_lecture5.pdf" target="_blank" rel="noopener">Stanford CS231n (2017) 강아지 원본 사진</a> · <a href="https://github.com/sh0427-han/vision_ai_lecture/blob/main/scripts/render_real_vision_examples.py" target="_blank" rel="noopener">NumPy/Pillow 계산 재현 코드</a> · 실제 이미지 연산 결과 (CNN 학습 출력 아님)</p></div></section>
 <section class="slide" data-concept="augment" data-topic="Data Augmentation" data-level="basic">
 <div class="slide-inner scientific-photo">
 <h2 class="slide-title">Data Augmentation · 조건 변화 만들기</h2>
@@ -216,7 +216,7 @@
 <section class="slide" data-concept="iou" data-topic="IoU" data-level="basic">
 <div class="slide-inner">
 <h2 class="slide-title">IoU · 박스 겹침 비율</h2>
-<p class="slide-subtitle">IoU(Intersection over Union, 교집합/합집합 비율)는 정답 영역과 예측 영역의 겹침 정도입니다.</p>
+<p class="slide-subtitle">분류의 정답 여부와 달리, 검출·분할에서는 위치나 영역도 맞아야 합니다. IoU(Intersection over Union)는 정답과 예측의 교집합/합집합 비율입니다.</p>
 <figure class="lesson-figure"><div class="figure-display"><img src="assets/lesson/context_iou_visual.svg?v=professional-20261006-2" alt="위치와 영역은 정답과 얼마나 겹치는지 평가합니다"></div></figure>
 <p class="lesson-takeaway">완전 일치하면 1, 겹치는 영역이 없으면 0입니다.</p></div></section>
 <section class="slide" data-concept="workflow" data-level="basic"><div class="slide-inner two-hour "><h2 class="slide-title">과제를 시작할 때 선택할 개념</h2><p class="slide-subtitle">사과 결함 검사를 예로 강의 전체를 연결해 봅니다. AI 도구에 작업을 맡겨도, 결과와 검증 기준은 사람이 정해야 합니다.</p><table class="th-case-table"><thead><tr><th>질문</th><th>필요한 개념</th><th>이 사례의 선택</th></tr></thead><tbody><tr><td>사진 전체가 결함인가?</td><td>Task · Label</td><td>분류 / 정상·결함 Label</td></tr><tr><td>작은 결함이 보이는가?</td><td>해상도 · 전처리</td><td>축소 후 결함 정보 확인</td></tr><tr><td>새 촬영에서도 통하는가?</td><td>Group Split · 일반화</td><td>촬영 묶음 분리 후 평가</td></tr><tr><td>무엇을 놓치면 안 되는가?</td><td>Threshold · Recall</td><td>미검출과 과검출의 비용 비교</td></tr><tr><td>운영 중 성능이 달라졌는가?</td><td>오류 수집 · 재평가</td><td>조건별 오류를 모아 Label·데이터 개선</td></tr></tbody></table><p class="lesson-takeaway">검출이 필요하면 Box Label과 IoU, 분할이 필요하면 Mask Label과 영역 평가를 선택합니다. 개선 전후는 같은 평가 기준으로 비교합니다.</p></div></section>

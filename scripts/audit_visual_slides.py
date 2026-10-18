@@ -45,7 +45,11 @@ def inspect_slide(page):
             '.slide-title,.slide-subtitle,.lesson-meta,.lesson-figure,' +
             '.lesson-takeaway,.figure,.callout,.sensor-life-trio,' +
             '.apple-variation-grid,.generalization-visual,' +
-            '.intro-visual,.visual-panel,.lesson-reference'
+            '.intro-visual,.visual-panel,.lesson-reference,' +
+            '.th-panes,.th-cnn-flow,.th-case-table,.th-note,' +
+            '.nb-main-figure,.nb-network-numbers,.nb-derivation,' +
+            '.concept-equation,.nb-takeaway,.nb-activation-charts,' +
+            '.gate-geometry-layout'
           )].filter(x => x.getBoundingClientRect().height > 1);
           // Visually hidden accessibility-only content has no visual overlap.
           const visuallyPresent = nodes.filter(node => {
