@@ -1,0 +1,50 @@
+/* Public two-hour course only. Shared legacy presentation styles are unchanged. */
+.slide-inner.two-hour { width:min(1200px,100%); }
+.two-hour .slide-subtitle { max-width:1120px; }
+.th-panes { display:grid; grid-auto-flow:column; grid-auto-columns:minmax(0,1fr); gap:24px; margin:20px 0; align-items:start; }
+.th-panes>article { min-width:0; border-top:2px solid #a4c4cc; padding:16px 8px 8px; text-align:center; }
+.th-panes h3 { font-size:clamp(20px,1.7vw,27px); color:#245469; margin:0 0 16px; }
+.th-panes p,.th-note { font-size:clamp(18px,1.5vw,23px); color:#526c7c; line-height:1.55; }
+.th-panes strong { color:#147b67; }
+.lesson-deck .two-hour .concept-matrix { width:min(100%,260px); }
+.lesson-deck .two-hour .concept-cell { font-size:clamp(19px,1.7vw,26px); }
+.lesson-deck .two-hour .concept-equation { font-size:clamp(20px,1.8vw,28px); padding:13px 8px; margin:12px 0; }
+.th-note { text-align:center; margin:20px 0; }
+.th-hero-case { color:#187766; border-top:2px solid #b7d7d0; padding-top:24px; font-size:clamp(20px,2vw,30px); }
+.th-cnn-flow { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:34px; margin:55px 0; }
+.th-cnn-flow article { position:relative; min-width:0; padding:24px 12px; border-top:3px solid #598b99; background:#f3f8f8; text-align:center; }
+.th-cnn-flow article+article::before { content:'›'; position:absolute; left:-27px; top:65px; font-size:35px; color:#529a94; }
+.th-cnn-flow span { font-size:20px; color:#608294; }
+.th-cnn-flow h3 { font-size:25px; color:#205767; margin:22px 0; }
+.th-cnn-flow p { font-size:20px; color:#526c7c; }
+.lesson-deck .th-network .nb-main-figure { margin:14px 0; }
+.lesson-deck .th-network .nb-network-svg { width:100%; height:auto; max-height:none; display:block; }
+.th-network .nb-network-numbers,.th-network .nb-derivation { display:flex; justify-content:space-around; gap:18px; margin:18px 0; font-size:clamp(18px,1.5vw,24px); color:#325c70; }
+.lesson-deck .neuron-story .gate-reference-figure img { max-height:42dvh; }
+.lesson-deck .neuron-story .gate-geometry-layout .gate-reference-figure img { max-height:34dvh; }
+.th-case-table { width:100%; border-collapse:collapse; font-size:clamp(18px,1.45vw,23px); margin:24px 0; }
+.th-case-table th { background:#e9f4f1; color:#176c5c; text-align:left; }
+.th-case-table td,.th-case-table th { padding:16px; border-bottom:1px solid #d7e5e7; }
+.th-case-table td { color:#35596a; }
+[data-concept="task"] .lesson-figure img { height:220px; object-fit:contain; }
+.th-task-roi { width:100%; height:220px; display:block; }
+.lesson-deck [data-concept="actual-map"] .cnn-real-image img { max-height:53dvh; }
+@media(max-height:850px){
+ .th-panes { margin:12px 0; gap:18px; }
+ .th-panes>article { padding:10px 5px 2px; }
+ .th-panes h3 { margin-bottom:10px; }
+ .th-panes p,.th-note { font-size:18px; line-height:1.4; margin:12px 0; }
+ .lesson-deck .two-hour .concept-matrix { width:min(100%,220px); }
+ .lesson-deck .two-hour .concept-cell { font-size:20px; }
+ .lesson-deck .two-hour .concept-equation { font-size:20px; padding:10px 5px; margin:8px 0; }
+ .th-cnn-flow { margin:32px 0; gap:30px; }
+ .th-cnn-flow h3 { font-size:23px; margin:15px 0; }
+ .th-cnn-flow p { font-size:18px; }
+ .th-case-table td,.th-case-table th { padding:12px; }
+ .lesson-deck .th-network .nb-main-figure { margin:8px 0; }
+ .th-network .nb-network-numbers,.th-network .nb-derivation { margin:12px 0; font-size:18px; }
+ .lesson-deck .neuron-story .gate-reference-figure img { max-height:39dvh; }
+ .lesson-deck .neuron-story .gate-geometry-layout .gate-reference-figure img { max-height:32dvh; }
+ [data-concept="task"] .lesson-figure img,.th-task-roi { height:200px; }
+ .lesson-deck [data-concept="actual-map"] .cnn-real-image img { max-height:48dvh; }
+}

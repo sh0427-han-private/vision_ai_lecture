@@ -12,7 +12,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DOCS = ROOT / "docs"
 manifest = json.loads((DOCS / "assets/lesson/manifest.json").read_text("utf-8"))
 
-expected = {"intro": 21, "ai_basics": 44, "vision_ai": 37}
+expected = {"intro": 11, "ai_basics": 44, "vision_ai": 37}
 
 for name, count in expected.items():
     document = (DOCS / f"{name}.html").read_text("utf-8")
@@ -72,147 +72,6 @@ assert 'data-next-page="vision_ai.html"' in (DOCS / "ai_basics.html").read_text(
 assert 'data-prev-page="ai_basics.html"' in (DOCS / "vision_ai.html").read_text("utf-8")
 assert 'data-next-page=""' in (DOCS / "vision_ai.html").read_text("utf-8")
 print("Landing redirects and single-track controls validated.")
-
-# Public learning path starts with CNN essentials; duplicate YOLO chapters are removed.
-# Original ai_basics / vision_ai files are retained for optional deep study.
-course_page = (DOCS / "vision_ai_course.html").read_text("utf-8")
-course_slides = re.findall(
-    r'<section class="slide(?: [^"]+)?"[^>]*>.*?</section>',
-    course_page, flags=re.DOTALL
-)
-assert len(course_slides) == 49, "49 core CNN/AI slides after YOLO removal"
-assert course_page.count('class="slide active"') == 1
-sources = [
-    (deck, int(index))
-    for deck, index in re.findall(
-        r'data-source-deck="([^"]+)" data-source-slide="(\d+)"', course_page
-    )
-]
-assert len(sources) == 49 and len(set(sources)) == 49, "Sources must be unique"
-assert sources[:5] == [("vision_ai", n) for n in range(2, 7)]
-assert sources[5:7] == [("ai_basics", 2), ("ai_basics", 3)]
-assert sources[7:11] == [
-    ("new_lessons",1), ("cnn_expansion",1),
-    ("cnn_featuremaps",1), ("vision_ai",28)
-]
-assert sources[11:16] == [
-    ("vision_ai",18), ("vision_ai",10),
-    ("vision_ai",19), ("cnn_contrast",1), ("ai_basics",8)
-]
-assert sources[16:21] == [
-    ("new_lessons",2), ("new_lessons",3), ("ai_basics",13),
-    ("new_lessons",4), ("ai_basics",11)
-]
-assert sources[25:29] == [
-    ("vision_ai",23), ("vision_ai",24),
-    ("vision_ai",25), ("vision_ai",31)
-]
-assert sources[-1] == ("ai_basics",44)
-assert not any(d.startswith("yolo") for d,i in sources)
-assert not re.search(r"\bYOLO\b|yolo_", course_page, flags=re.IGNORECASE)
-assert not re.search(r"\*\*[^*]+\*\*", course_page), "Raw Markdown bold is not rendered in HTML slides"
-assert ("vision_ai",7) in sources, "IoU still appears in evaluation section"
-assert sorted(i for d,i in sources if d=="cnn_expansion") == [1,2]
-assert all(d!="cnn_expansion" or i<=2 for d,i in sources)
-assert ("vision_ai", 27) not in sources
-assert ("ai_basics", 27) not in sources
-assert "cnn_squeezenet_actual_feature_maps.png" in course_page
-assert (DOCS / "assets/lesson/cnn_squeezenet_actual_feature_maps.png").is_file()
-assert (ROOT / "scripts/render_cnn_feature_maps.py").is_file()
-assert "cnn_numeric_why_logic.css?v=20261017-1" in course_page
-assert 'data-prev-page="intro.html"' in course_page
-assert 'data-next-page=""' in course_page
-assert 'slide.js?v=prevent-toc-wheel-20261016-1' in course_page
-assert 'slide.js?v=prevent-toc-wheel-20261016-1' in intro_markup
-for markup in (intro_markup, course_page):
-    for path in ("lecture_sidebar.css", "lecture_outline.js",
-                 "lecture_sidebar.js"):
-        assert path in markup, path
-for url in re.findall(r'(?:src|href)="([^"]+)"', course_page):
-    if url.startswith(("http:", "https:", "#", "mailto:", "data:")):
-        continue
-    target = url.split("?", 1)[0].split("#", 1)[0]
-    if target:
-        assert (DOCS / target).is_file(), target
-
-# Exactly 70 public links: Intro 21 + CNN/AI 49.
-outline_source = (DOCS / "lecture_outline.js").read_text("utf-8")
-outline = json.loads(outline_source.split(" = ", 1)[1].strip().rstrip(";"))
-items = [item for group in outline["groups"] for item in group["items"]]
-assert len(items) == 70
-assert [it["global"] for it in items] == list(range(1,71))
-assert [(it["page"], it["slide"]) for it in items[:21]] == [
-    ("intro.html", n) for n in range(1,22)
-]
-assert [(it["page"], it["slide"]) for it in items[21:]] == [
-    ("vision_ai_course.html", n) for n in range(1,50)
-]
-assert len(outline["groups"]) == 11
-assert [it["title"] for it in items[21:]] == [
-    html.unescape(re.sub(r"<[^>]+>","",re.search(
-        r'<h2 class="slide-title">([^<]+)</h2>', slide
-    ).group(1))) for slide in course_slides
-], "Sidebar titles must exactly match visible slide titles"
-assert all(not it.get("original","").startswith("Y") for it in items)
-assert items[21+7]["original"] == "N1"
-assert items[21+14]["original"] == "F1"
-assert [items[21+i]["original"] for i in (16,17,19,20)] == [
-    "N2","N3","N4","A11"
-]
-assert "lecture-toc-drawer" in (DOCS / "lecture_sidebar.js").read_text("utf-8")
-
-# Numerical convolution, padding, max pooling, AND/XOR must all be correct.
-for idx, phrase in [
-    (7,"1,048,576"), (16,"x₁ + 7x₂ + 3"), (17,"AND Gate"),
-    (19,"xor_multilayer_gates_ko"), (25,"3×3 = 9칸"), (26,"3×3 → 1×1"),
-    (27,"4×4 (16칸) → 2×2")
-]:
-    assert phrase in course_slides[idx], (idx+1,phrase)
-assert "x₁+x₂ = 1.4" in course_slides[17]
-assert "XOR Gate" in course_slides[17]
-assert "기울기" not in course_slides[17], "Gate slide is geometry, not gradient"
-assert "y = z₁ + z₂" in course_slides[16]
-assert "neuron_concept_flow.css?v=20261017-3" in course_page
-assert "z = Wx + b" in course_slides[15]
-assert "2 → 3 → 2 → 1 뉴런" in course_slides[16]
-assert "W₂φ(W₁x+b₁)+b₂" in course_slides[20]
-assert "perceptron_gate_structure_ko" in course_slides[15]
-assert "nb-network-numbers" in course_slides[16]
-assert "gate-truth" in course_slides[17]
-assert "and_xor_gate_geometry_ko" in course_slides[17]
-assert "x₁+x₂ = 1.4" in course_slides[17]
-assert "nb-activation-charts" in course_slides[18]
-assert course_slides[19].count("<tr>") == 5
-assert "nb-activation-role" in course_slides[20]
-assert 'class="concept-source"' not in course_page, "Only actual borrowed images need source labels"
-assert "개념 참고:" not in course_page, "Do not cite sources used only for concepts"
-assert all(
-    max(0,x-y)+max(0,y-x) == (x^y)
-    for x in (0,1) for y in (0,1)
-)
-# 5x5 with center-only 3x3 kernel, valid convolutions:
-input5 = [[1+5*y+x for x in range(5)] for y in range(5)]
-assert [[input5[y+1][x+1] for x in range(3)]
-        for y in range(3)] == [[7,8,9],[12,13,14],[17,18,19]]
-assert [[input5[y*2+1][x*2+1] for x in range(2)]
-        for y in range(2)] == [[7,9],[17,19]]
-original3 = [[1,2,3],[4,5,6],[7,8,9]]
-padded = [[0]*5] + [[0]+line+[0] for line in original3] + [[0]*5]
-assert sum(sum(row) for row in original3) == 45
-padding_result = [
-    [sum(padded[y+i][x+j] for i in range(3) for j in range(3))
-     for x in range(3)] for y in range(3)
-]
-assert padding_result == [[12,21,16],[27,45,33],[24,39,28]]
-pool_input = [[1,3,2,4],[5,6,1,2],[4,2,9,3],[0,7,8,1]]
-pooled = [[max(pool_input[2*y+i][2*x+j]
-               for i in range(2) for j in range(2))
-           for x in range(2)] for y in range(2)]
-assert pooled == [[6,4],[7,9]]
-assert 32*32*32*32 == 1_048_576
-assert 3*3 == 9
-print("CNN motivation, ReLU/XOR, numeric Stride/Padding/Pooling and 70 sidebar entries validated.")
-
 
 figures = sorted((DOCS / "assets/lesson").glob("lecture_*.svg"))
 assert len(figures) >= 9, "missing new lesson illustrations"
@@ -411,9 +270,9 @@ for deck in ("ai_basics", "vision_ai"):
                 deck, item["number"], "refers to skipped following advanced slide"
             )
 assert (
-    21 + 1 + sum(x["level"] == "basic" for x in manifest["ai_basics"])
+    11 + 1 + sum(x["level"] == "basic" for x in manifest["ai_basics"])
     + 1 + sum(x["level"] == "basic" for x in manifest["vision_ai"])
-) == 83
+) == 73
 assert "직전 Convolution" not in (
     DOCS / "assets/lesson/lesson_featuremap_numeric_continuation.svg"
 ).read_text("utf-8")
@@ -463,133 +322,6 @@ for output_number in ("-6", "12", "16", "8", "15", "-4", "2", "7"):
     assert output_number in ppt_data, output_number
 assert (ROOT / "slides/pptx_sources/Vision_AI_Convolution_PPT_Source.pptx").is_file()
 print("PPT slide source and 16:9 lecture SVG are present and mathematically aligned.")
-
-
-# Intro: the real apple JPEG is width 960, height 640. Shape is H x W x C.
-intro_page = (DOCS / "intro.html").read_text("utf-8")
-intro_slides = re.findall(
-    r'<section class="slide(?: [^"]+)?"[^>]*>.*?</section>',
-    intro_page, flags=re.DOTALL
-)
-assert len(intro_slides) == 21
-assert "AI와 시각의 출발점" in intro_slides[0]
-assert "사람의 시각 · 장면 이해" in intro_slides[1]
-assert "일상 속 Vision 기술" in intro_slides[3]
-assert "assets/intro_photos/perspective.webp" in intro_slides[1]
-for photo in ("cctv.webp", "robot.webp", "thermal.webp"):
-    assert f"assets/intro_photos/{photo}" in intro_slides[3]
-assert "사진 속 객체 인식" in intro_slides[4]
-assert "사람의 의미 인식 vs Pixel 숫자" in intro_slides[5]
-assert 'data-apple-matrix-bridge' in intro_slides[5]
-assert 'data-apple-matrix-grid' in intro_slides[5]
-assert 'assets/vision_task_apple_reference.jpg' in intro_slides[4]
-assert 'assets/vision_task_apple_reference.jpg' in intro_slides[5]
-assert "Vision AI가 어려운 이유:" in intro_slides[5]
-assert "“아, 사과구나!”" in intro_slides[5]
-assert "“?! 그냥 숫자 배열이네”" in intro_slides[5]
-assert "조명·색감에 따른 Pixel 변화" in intro_slides[6]
-assert "시점·회전·가림·초점 변화" in intro_slides[7]
-assert 'class="iv-image iv-fov figure-display"' in intro_slides[7]
-assert "위치 변화와 Pixel 배열" in intro_slides[10]
-assert 'data-grayscale-lesson' in intro_slides[10]
-assert "RGB · Pixel당 세 숫자" in intro_slides[11]
-assert "RGB 이미지와 숫자 배열" in intro_slides[12]
-assert "640 × 960 ×" in intro_slides[12]
-assert "1,843,200" in intro_slides[12]
-assert "<strong>핵심:</strong>" not in intro_slides[12]
-assert "lecture_rgb_channel_stack.svg?v=rgb-total-20261016-1" in intro_slides[12]
-assert "해상도와 Pixel 수" in intro_slides[13]
-assert "더 세밀한 정보를 기록할 수 있습니다" in intro_slides[13]
-assert "해상도에 따른 정보 차이" in intro_slides[14]
-assert "저해상도 원본을 확대 저장해도" in intro_slides[14]
-assert "시각 이해 · What과 Where" in intro_slides[2]
-assert "2D 이미지와 3D 공간의 모호함" in intro_slides[15]
-assert "to know what is where by looking" in intro_slides[2]
-assert "Marr &amp; Nishihara (1978)" in intro_slides[15]
-assert "https://doi.org/10.1098/rspb.1978.0020" in intro_slides[15]
-assert "intro_inverse_2d_3d_ambiguity.svg?v=what-where-20261015-1" in intro_slides[15]
-assert "intro_vision_foundations.css?v=rgb-total-20261016-1" in intro_page
-assert "intro_vision_story.css?v=20261016-1" in intro_page
-assert (DOCS / "intro_vision_story.css").is_file()
-assert "640 × 960 × <span>3</span> = <strong>1,843,200</strong>" in intro_slides[12], "RGB numeric array count changed"
-assert "720 × 1280 × 3" in intro_slides[13], "resolution H × W × C changed"
-assert 'data-resolution-source="assets/generated/apple_studio.webp"' in intro_slides[14]
-for p, w, h in ((360, 640, 360), (720, 1280, 720), (1080, 1920, 1080)):
-    assert f'data-resolution-p="{p}"' in intro_slides[14]
-    assert f'width="{w}" height="{h}" data-resolution-full' in intro_slides[14]
-for path in ("intro_resolution_demo.js", "intro_resolution_demo.css",
-             "intro_apple_number_bridge.js", "intro_apple_number_bridge.css"):
-    assert (DOCS / path).is_file(), path
-assert "intro_resolution_demo.js?v=20261015-1" in intro_page
-assert "intro_apple_number_bridge.js?v=20261015-1" in intro_page
-assert "intro_apple_number_bridge.css?v=intro-picto-20261016-1" in intro_page
-intro_outline_key = re.search(r"lecture_outline[.]js[?]v=([^\"]+)", intro_page)
-course_outline_key = re.search(r"lecture_outline[.]js[?]v=([^\"]+)", course_page)
-assert intro_outline_key and course_outline_key, "Both pages must load a versioned outline"
-assert intro_outline_key.group(1) == course_outline_key.group(1), "Intro/Course outline cache versions must agree"
-bridge_script = (DOCS / "intro_apple_number_bridge.js").read_text("utf-8")
-assert "const width = 12, height = 8;" in bridge_script
-for channel_weight in ("0.299", "0.587", "0.114"):
-    assert channel_weight in bridge_script
-
-# Perspective illustration shows equal apparent height for scaled size/distance.
-assert 160 / (625 - 145) == 220 / (805 - 145)
-inverse_svg = DOCS / "assets/lesson/intro_inverse_2d_3d_ambiguity.svg"
-inverse_root = ET.parse(inverse_svg).getroot()
-assert inverse_root.get("viewBox") == "0 0 1200 445"
-assert inverse_root.tag == "{http://www.w3.org/2000/svg}svg"
-
-labels = [int(x) for x in re.findall(
-    r'<span class="slide-number">(\d+)</span>', intro_page
-)]
-assert labels == [3] + list(range(6, 22)), labels
-channel_svg = (DOCS / "assets/lesson/lecture_rgb_channel_stack.svg").read_text("utf-8")
-assert 'viewBox="0 0 960 640"' in channel_svg
-assert "H × W × C = 640 × 960 × 3" in channel_svg
-assert "한 위치의 3개 값 (예시)" not in channel_svg
-assert "640 × 960 = 614,400 Pixel" in channel_svg
-assert "1,843,200" in intro_slides[12]
-res_file = DOCS / "assets/lesson/intro_resolution_comparison.svg"
-res_root = ET.parse(res_file).getroot()
-res_labels = "".join(node.text or "" for node in res_root.iter()
-                     if node.tag.endswith("text"))
-for label in ("640 × 360", "1280 × 720", "1920 × 1080",
-              "720 × 1280 × 3"):
-    assert label in res_labels, label
-for w, h in ((640, 360), (1280, 720), (1920, 1080)):
-    assert w * 9 == h * 16
-and_svg = (DOCS / "assets/lesson/lesson_and_xor_separability.svg").read_text("utf-8")
-assert 'stroke="#d2652f" stroke-width="7"' in and_svg
-assert 'stroke="#fbe1d0" stroke-width="18"' in and_svg
-assert "결정 경계" in and_svg
-and_root = ET.fromstring(and_svg)
-ns = "{http://www.w3.org/2000/svg}"
-plots = [node for node in and_root.iter(ns + "g")
-         if node.get("data-plot") in ("and", "xor")]
-assert sorted(node.get("data-plot") for node in plots) == ["and", "xor"]
-for plot in plots:
-    assert (plot.get("data-x-max"), plot.get("data-y-max")) == ("2", "2")
-    gate = plot.get("data-plot")
-    circles = [node for node in plot.iter(ns + "circle")]
-    assert len(circles) == 4, (gate, len(circles))
-    for dot in circles:
-        x, y = int(dot.get("data-x")), int(dot.get("data-y"))
-        predicted = int(dot.get("data-class"))
-        expected_class = (x & y) if gate == "and" else (x ^ y)
-        assert predicted == expected_class, (gate, x, y, predicted)
-        x0 = 175 if gate == "and" else 765
-        assert float(dot.get("cx")) == x0 + 100 * x
-        assert float(dot.get("cy")) == 354 - 100 * y
-lines = [node for node in and_root.iter(ns + "path")
-         if node.get("data-decision-boundary-main") == "and"]
-assert len(lines) == 1
-assert lines[0].get("d") == "M175 204 L325 354"
-# Every point lies on the correct side of x1+x2=1.5.
-assert all(
-    (x + y > 1.5) == bool(x & y)
-    for x in (0, 1) for y in (0, 1)
-)
-print("Intro apple-to-number bridge, HWC, 21-slide numbering and AND/XOR verified.")
 
 
 # Vision AI 9 is now the point-versus-neighborhood operation slide.
@@ -667,7 +399,7 @@ assert source_mask is not None and mask_el is not None
 assert mask_el.get("d") == source_mask.group(1), (
     "Mask must follow the same localized apple defect outline"
 )
-for page_name, idx in (("vision_ai_course", 4), ("vision_ai", 5)):
+for page_name, idx in (("vision_ai", 5),):
     markup = (DOCS / f"{page_name}.html").read_text("utf-8")
     slides = re.findall(
         r'<section class="slide(?: [^"]+)?"[^>]*>.*?</section>',
@@ -698,19 +430,7 @@ for x1, x2 in ((1, 2), (0, 0), (-2, 3), (0.5, -1.5), (4, -3)):
     assert z1+z2 == x1+7*x2+3
 assert (1+2+1, 2*1-2, -1+2*2) == (4, 0, 3)
 assert (4+0+3, 2*4-0+3, 7+11) == (7, 11, 18)
-assert "시각 이해 · What과 Where" in intro_slides[2]
-intro_titles = [html.unescape(re.search(
-    r'<h[12] class="slide-title[^"]*">([^<]+)</h[12]>', s
-).group(1)) for s in intro_slides]
-assert [item["title"] for item in items[:21]] == intro_titles
-print("Two-input network, collapsed equation, Intro order and sidebar verified.")
 
-assert "다르게 생겨도 같은 종류" in intro_slides[8]
-assert "큰 변화보다 중요한 차이" in intro_slides[9]
-assert 'data-intro-challenge="class-diversity"' in intro_slides[8]
-assert 'data-intro-challenge="relevant-change"' in intro_slides[9]
-assert "균열 유무" in intro_slides[9]
-assert not re.search(r'<a[^>]*>\s*<img', intro_slides[8]+intro_slides[9])
-for asset in ('intro_chair_diversity.webp','intro_inspection_relevant_change.webp'):
-    assert (DOCS / 'assets/generated' / asset).is_file()
-print("Intro diversity and inspection teaching examples verified.")
+# Current public sequence and arithmetic are maintained independently of legacy decks.
+import runpy
+runpy.run_path(str(ROOT / "scripts/verify_two_hour_course.py"), run_name="__main__")

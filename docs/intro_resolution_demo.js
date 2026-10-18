@@ -9,9 +9,9 @@
   const status = root.querySelector("[data-resolution-status]");
   const region = { x: 0.57, y: 0.46, width: 0.065 };
   const sizes = [
-    {p:360, w:640, h:360},
-    {p:720, w:1280, h:720},
-    {p:1080, w:1920, h:1080}
+    {p:90, w:160, h:90},
+    {p:180, w:320, h:180},
+    {p:360, w:640, h:360}
   ];
 
   source.onload = () => {

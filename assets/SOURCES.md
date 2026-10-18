@@ -486,3 +486,11 @@ https://www.nature.com/articles/s42256-020-00257-z
 - `docs/assets/generated/intro_inspection_relevant_change.webp`: 균열 없는 표면/그림자 표면/균열 표면의 ImageGen 생성 개념 사진. Intro 10번.
 - 외부 사진을 재사용하지 않았습니다. 실제 검사·측정·모델 예측 이미지가 아닙니다. PNG 생성 원본을 같은 픽셀 크기 WebP로 인코딩하여 웹 강의에 사용했습니다.
 - 생성 방식: built-in image_gen. 프롬프트 전문: `assets/intro_challenges_generation.md`.
+
+
+## 2026-10-18 · 2시간 본강의 정리
+
+- 새 수치 행렬과 신경망/CNN 흐름은 자체 작성 HTML/SVG이며 외부 Figure를 새로 복제하지 않았습니다. 내용 원리 근거는 기존 CS231n/퍼셉트론 참고 자료를 사용합니다.
+- Task 비교는 기존 `vision_task_apple_reference.jpg`의 같은 반점과 기존 `task_labels_three_outputs.svg`의 Mask 경계를 확대해 표시합니다. AI 생성 교육용 입력과 예시 Annotation이며 실제 검사 Label/모델 결과가 아닙니다.
+- Intro 밝기·회전·크기·가림·흐림을 동일한 위 사과 이미지로 통일했습니다. 외부 Red Apple 사진은 이 구간에서 더 이상 쓰지 않습니다. 실제 재촬영이 아닌 화면 변환임을 명시합니다.
+- 실제 SqueezeNet Feature Map, 강아지 전처리·증강 원본/계산 결과는 그대로 사용하고 해당 슬라이드의 외부 이미지 출처를 보존합니다. 본강의에서 제거한 연구용 Figure 자산과 기존 출처 기록은 삭제하지 않습니다.

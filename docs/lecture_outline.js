@@ -1,9 +1,9 @@
-/* Public course: Intro 21, Vision AI integrated 49; total 70 slides. */
+/* Two-hour principle-focused public lecture. */
 window.LECTURE_OUTLINE = {
-  "version": "20261018-intro-challenges-70",
+  "version": "20261018-two-hour",
   "groups": [
     {
-      "name": "Intro · 시각의 중요성에서 숫자까지",
+      "name": "입력 · 사진과 숫자",
       "items": [
         {
           "page": "intro.html",
@@ -20,509 +20,291 @@ window.LECTURE_OUTLINE = {
         {
           "page": "intro.html",
           "slide": 3,
-          "title": "시각 이해 · What과 Where",
+          "title": "사람의 의미 인식 vs Pixel 숫자",
           "global": 3
         },
         {
           "page": "intro.html",
           "slide": 4,
-          "title": "일상 속 Vision 기술",
+          "title": "사진에서 밝기 숫자로",
           "global": 4
         },
         {
           "page": "intro.html",
           "slide": 5,
-          "title": "사진 속 객체 인식",
+          "title": "RGB · Pixel당 세 숫자",
           "global": 5
         },
         {
           "page": "intro.html",
           "slide": 6,
-          "title": "사람의 의미 인식 vs Pixel 숫자",
+          "title": "RGB 이미지와 숫자 배열",
           "global": 6
         },
         {
           "page": "intro.html",
           "slide": 7,
-          "title": "조명·색감에 따른 Pixel 변화",
+          "title": "해상도에 따른 정보 차이",
           "global": 7
-        },
+        }
+      ]
+    },
+    {
+      "name": "어려움 · 남겨야 할 차이",
+      "items": [
         {
           "page": "intro.html",
           "slide": 8,
-          "title": "시점·회전·가림·초점 변화",
+          "title": "조명·색감에 따른 Pixel 변화",
           "global": 8
         },
         {
           "page": "intro.html",
           "slide": 9,
-          "title": "다르게 생겨도 같은 종류",
+          "title": "회전·크기·가림·흐림에 따른 변화",
           "global": 9
         },
         {
           "page": "intro.html",
           "slide": 10,
-          "title": "큰 변화보다 중요한 차이",
+          "title": "다르게 생겨도 같은 종류",
           "global": 10
         },
         {
           "page": "intro.html",
           "slide": 11,
-          "title": "위치 변화와 Pixel 배열",
+          "title": "큰 변화보다 중요한 차이",
           "global": 11
-        },
-        {
-          "page": "intro.html",
-          "slide": 12,
-          "title": "RGB · Pixel당 세 숫자",
-          "global": 12
-        },
-        {
-          "page": "intro.html",
-          "slide": 13,
-          "title": "RGB 이미지와 숫자 배열",
-          "global": 13
-        },
-        {
-          "page": "intro.html",
-          "slide": 14,
-          "title": "해상도와 Pixel 수",
-          "global": 14
-        },
-        {
-          "page": "intro.html",
-          "slide": 15,
-          "title": "해상도에 따른 정보 차이",
-          "global": 15
-        },
-        {
-          "page": "intro.html",
-          "slide": 16,
-          "title": "2D 이미지와 3D 공간의 모호함",
-          "global": 16
-        },
-        {
-          "page": "intro.html",
-          "slide": 17,
-          "title": "밝기값 3D 표시 vs 실제 거리",
-          "global": 17
-        },
-        {
-          "page": "intro.html",
-          "slide": 18,
-          "title": "외우는 Pixel, 학습하는 Pattern",
-          "global": 18
-        },
-        {
-          "page": "intro.html",
-          "slide": 19,
-          "title": "Vision AI · Pixel에서 결과까지",
-          "global": 19
-        },
-        {
-          "page": "intro.html",
-          "slide": 20,
-          "title": "센서별 입력 데이터 비교",
-          "global": 20
-        },
-        {
-          "page": "intro.html",
-          "slide": 21,
-          "title": "우리 주변의 Vision Sensor",
-          "global": 21
         }
       ]
     },
     {
-      "name": "Vision Task · 무엇을 찾을까?",
+      "name": "Task와 학습 원리",
       "items": [
         {
           "page": "vision_ai_course.html",
           "slide": 1,
-          "global": 22,
-          "title": "Vision AI Task 선택",
-          "original": "V2"
+          "title": "같은 사진, 다른 질문과 정답",
+          "global": 12
         },
         {
           "page": "vision_ai_course.html",
           "slide": 2,
-          "global": 23,
-          "title": "Classification · 이미지 전체 분류",
-          "original": "V3"
+          "title": "규칙 기반과 데이터 학습",
+          "global": 13
         },
         {
           "page": "vision_ai_course.html",
           "slide": 3,
-          "global": 24,
-          "title": "Detection · 위치와 종류 찾기",
-          "original": "V4"
+          "title": "모델 학습 · 오차를 줄이는 반복",
+          "global": 14
         },
         {
           "page": "vision_ai_course.html",
           "slide": 4,
-          "global": 25,
-          "title": "Segmentation · Pixel 단위 분할",
-          "original": "V5"
+          "title": "Loss와 가중치 갱신",
+          "global": 15
         },
         {
           "page": "vision_ai_course.html",
           "slide": 5,
-          "global": 26,
-          "title": "같은 사진, 다른 정답 형태",
-          "original": "V6"
+          "title": "Training과 Inference의 차이",
+          "global": 16
         }
       ]
     },
     {
-      "name": "AI · 규칙과 학습",
+      "name": "신경망 · 선형성과 비선형성",
       "items": [
         {
           "page": "vision_ai_course.html",
           "slide": 6,
-          "global": 27,
-          "title": "AI · 머신러닝 · 딥러닝의 관계",
-          "original": "A2"
+          "title": "퍼셉트론 · Wx + b에서 판정까지",
+          "global": 17
         },
         {
           "page": "vision_ai_course.html",
           "slide": 7,
-          "global": 28,
-          "title": "규칙 기반과 데이터 학습",
-          "original": "A3"
-        }
-      ]
-    },
-    {
-      "name": "CNN · 왜 쓰고 무엇을 배우나",
-      "items": [
+          "title": "여러 층을 거치는 두 입력",
+          "global": 18
+        },
         {
           "page": "vision_ai_course.html",
           "slide": 8,
-          "global": 29,
-          "title": "왜 CNN을 사용할까? · 이미지의 국소 패턴과 가중치 공유",
-          "original": "N1"
+          "title": "선형 계산만 쌓으면 단일층과 동등",
+          "global": 19
         },
         {
           "page": "vision_ai_course.html",
           "slide": 9,
-          "global": 30,
-          "title": "CNN 전체 구조와 특징 추출",
-          "original": "C1"
+          "title": "AND와 XOR · 직선으로 구분할 수 있을까?",
+          "global": 20
         },
         {
           "page": "vision_ai_course.html",
           "slide": 10,
-          "global": 31,
-          "title": "실제 Feature Map · CNN 내부 반응",
-          "original": "M1"
+          "title": "다층 퍼셉트론 · 게이트 조합으로 XOR",
+          "global": 21
         },
         {
           "page": "vision_ai_course.html",
           "slide": 11,
-          "global": 32,
-          "title": "Feature Visualization · 학습된 특징",
-          "original": "V28"
+          "title": "ReLU · 비선형성의 시작",
+          "global": 22
+        },
+        {
+          "page": "vision_ai_course.html",
+          "slide": 12,
+          "title": "신경망의 핵심 · 계산 사이의 비선형성",
+          "global": 23
         }
       ]
     },
     {
-      "name": "Kernel · 특징과 가중치",
+      "name": "CNN · 작은 계산에서 전체 구조로",
       "items": [
         {
           "page": "vision_ai_course.html",
-          "slide": 12,
-          "global": 33,
-          "title": "CNN의 지역 연결과 가중치 공유",
-          "original": "V18"
-        },
-        {
-          "page": "vision_ai_course.html",
           "slide": 13,
-          "global": 34,
-          "title": "Kernel · 작은 영역을 반복 탐색",
-          "original": "V10"
+          "title": "Kernel · 작은 영역의 가중합",
+          "global": 24
         },
         {
           "page": "vision_ai_course.html",
           "slide": 14,
-          "global": 35,
-          "title": "Kernel 반응 · 패턴에 따른 차이",
-          "original": "V19"
+          "title": "Feature Map · 같은 계산을 위치마다",
+          "global": 25
         },
         {
           "page": "vision_ai_course.html",
           "slide": 15,
-          "global": 36,
-          "title": "고정된 필터와 학습하는 Kernel의 차이",
-          "original": "F1"
+          "title": "CNN · 지역 연결과 가중치 공유",
+          "global": 26
         },
         {
           "page": "vision_ai_course.html",
           "slide": 16,
-          "global": 37,
-          "title": "퍼셉트론 · Wx + b에서 판정까지",
-          "original": "A8"
-        }
-      ]
-    },
-    {
-      "name": "AI 원리 · 선형성·AND·XOR",
-      "items": [
+          "title": "RGB 입력과 출력 Channel",
+          "global": 27
+        },
         {
           "page": "vision_ai_course.html",
           "slide": 17,
-          "global": 38,
-          "title": "활성화 함수가 없으면 깊어도 단층",
-          "original": "N2"
+          "title": "Stride · 계산 위치의 간격",
+          "global": 28
         },
         {
           "page": "vision_ai_course.html",
           "slide": 18,
-          "global": 39,
-          "title": "AND와 XOR · 직선으로 구분할 수 있을까?",
-          "original": "N3"
+          "title": "Padding · 입력 바깥에 값 채우기",
+          "global": 29
         },
         {
           "page": "vision_ai_course.html",
           "slide": 19,
-          "global": 40,
-          "title": "ReLU · 비선형성의 시작",
-          "original": "A13"
+          "title": "Max Pooling · 영역별 최댓값",
+          "global": 30
         },
         {
           "page": "vision_ai_course.html",
           "slide": 20,
-          "global": 41,
-          "title": "다층 퍼셉트론 · 게이트 조합으로 XOR",
-          "original": "N4"
+          "title": "CNN 전체 구조 · 특징에서 판정까지",
+          "global": 31
         },
         {
           "page": "vision_ai_course.html",
           "slide": 21,
-          "global": 42,
-          "title": "신경망 · 선형 변환 사이의 비선형성",
-          "original": "A11"
-        }
-      ]
-    },
-    {
-      "name": "CNN · 특징 계산과 크기 변화",
-      "items": [
+          "title": "실제 Feature Map · CNN 내부 반응",
+          "global": 32
+        },
         {
           "page": "vision_ai_course.html",
           "slide": 22,
-          "global": 43,
           "title": "학습 과정에서 바뀌는 Kernel",
-          "original": "V33"
+          "global": 33
         },
         {
           "page": "vision_ai_course.html",
           "slide": 23,
-          "global": 44,
-          "title": "CNN 블록 · Conv와 활성화",
-          "original": "C2"
+          "title": "Backbone과 Task Head",
+          "global": 34
         },
         {
           "page": "vision_ai_course.html",
           "slide": 24,
-          "global": 45,
-          "title": "Feature Map · 위치별 반응값",
-          "original": "V21"
-        },
+          "title": "전이학습 · 고정과 미세 조정",
+          "global": 35
+        }
+      ]
+    },
+    {
+      "name": "데이터와 평가 · 과제에 적용",
+      "items": [
         {
           "page": "vision_ai_course.html",
           "slide": 25,
-          "global": 46,
-          "title": "RGB Channel과 학습 필터",
-          "original": "V22"
+          "title": "데이터셋 · 판정 기준과 촬영 조건",
+          "global": 36
         },
         {
           "page": "vision_ai_course.html",
           "slide": 26,
-          "global": 47,
-          "title": "Stride를 늘리면 Feature Map의 칸 수가 줄어듭니다",
-          "original": "V23"
+          "title": "Train · Validation · Test",
+          "global": 37
         },
         {
           "page": "vision_ai_course.html",
           "slide": 27,
-          "global": 48,
-          "title": "Padding으로 가장자리도 계산하고 크기를 유지합니다",
-          "original": "V24"
+          "title": "Video Group Split · 데이터 누출 방지",
+          "global": 38
         },
         {
           "page": "vision_ai_course.html",
           "slide": 28,
-          "global": 49,
-          "title": "Max Pooling은 영역의 가장 큰 반응만 남깁니다",
-          "original": "V25"
+          "title": "Overfitting · 새 데이터 일반화",
+          "global": 39
         },
         {
           "page": "vision_ai_course.html",
           "slide": 29,
-          "global": 50,
-          "title": "Backbone과 Task Head",
-          "original": "V31"
-        }
-      ]
-    },
-    {
-      "name": "모델 학습 · 예측부터 Weight 갱신",
-      "items": [
+          "title": "Preprocessing · 입력 규격 맞추기",
+          "global": 40
+        },
         {
           "page": "vision_ai_course.html",
           "slide": 30,
-          "global": 51,
-          "title": "모델 학습 · 오차를 줄이는 반복",
-          "original": "A15"
+          "title": "Data Augmentation · 조건 변화 만들기",
+          "global": 41
         },
         {
           "page": "vision_ai_course.html",
           "slide": 31,
-          "global": 52,
-          "title": "Loss · 예측과 정답의 차이",
-          "original": "A16"
+          "title": "Score Threshold · 판정 기준",
+          "global": 42
         },
         {
           "page": "vision_ai_course.html",
           "slide": 32,
-          "global": 53,
-          "title": "Forward · Gradient · Weight 갱신",
-          "original": "A21"
+          "title": "Confusion Matrix · 100건 평가",
+          "global": 43
         },
         {
           "page": "vision_ai_course.html",
           "slide": 33,
-          "global": 54,
-          "title": "Training과 Inference의 차이",
-          "original": "A22"
+          "title": "Precision과 Recall",
+          "global": 44
         },
         {
           "page": "vision_ai_course.html",
           "slide": 34,
-          "global": 55,
-          "title": "Batch · Iteration · Epoch",
-          "original": "A28"
-        }
-      ]
-    },
-    {
-      "name": "데이터 · 현장 환경과 준비",
-      "items": [
+          "title": "IoU · 박스 겹침 비율",
+          "global": 45
+        },
         {
           "page": "vision_ai_course.html",
           "slide": 35,
-          "global": 56,
-          "title": "데이터셋 · 촬영 조건과 Label",
-          "original": "A29"
-        },
-        {
-          "page": "vision_ai_course.html",
-          "slide": 36,
-          "global": 57,
-          "title": "Train · Validation · Test",
-          "original": "A30"
-        },
-        {
-          "page": "vision_ai_course.html",
-          "slide": 37,
-          "global": 58,
-          "title": "Video Group Split · 데이터 누출 방지",
-          "original": "A31"
-        },
-        {
-          "page": "vision_ai_course.html",
-          "slide": 38,
-          "global": 59,
-          "title": "Preprocessing · 입력 규격 맞추기",
-          "original": "A33"
-        },
-        {
-          "page": "vision_ai_course.html",
-          "slide": 39,
-          "global": 60,
-          "title": "Data Augmentation · 조건 변화 만들기",
-          "original": "A34"
-        }
-      ]
-    },
-    {
-      "name": "전이학습 · 새 환경 적용",
-      "items": [
-        {
-          "page": "vision_ai_course.html",
-          "slide": 40,
-          "global": 61,
-          "title": "Transfer Learning · 사전학습 활용",
-          "original": "V34"
-        },
-        {
-          "page": "vision_ai_course.html",
-          "slide": 41,
-          "global": 62,
-          "title": "Freeze와 Fine-tuning",
-          "original": "V35"
-        },
-        {
-          "page": "vision_ai_course.html",
-          "slide": 42,
-          "global": 63,
-          "title": "Overfitting · 새 데이터 일반화",
-          "original": "A35"
-        }
-      ]
-    },
-    {
-      "name": "평가 · 현장 적용",
-      "items": [
-        {
-          "page": "vision_ai_course.html",
-          "slide": 43,
-          "global": 64,
-          "title": "Score Threshold · 판정 기준",
-          "original": "A38"
-        },
-        {
-          "page": "vision_ai_course.html",
-          "slide": 44,
-          "global": 65,
-          "title": "Confusion Matrix · 100건 평가",
-          "original": "A39"
-        },
-        {
-          "page": "vision_ai_course.html",
-          "slide": 45,
-          "global": 66,
-          "title": "Precision과 Recall",
-          "original": "A40"
-        },
-        {
-          "page": "vision_ai_course.html",
-          "slide": 46,
-          "global": 67,
-          "title": "IoU · 박스 겹침 비율",
-          "original": "V7"
-        },
-        {
-          "page": "vision_ai_course.html",
-          "slide": 47,
-          "global": 68,
-          "title": "Grad-CAM · 클래스별 판단 근거",
-          "original": "V36"
-        },
-        {
-          "page": "vision_ai_course.html",
-          "slide": 48,
-          "global": 69,
-          "title": "Vision AI 프로젝트 전체 흐름",
-          "original": "V37"
-        },
-        {
-          "page": "vision_ai_course.html",
-          "slide": 49,
-          "global": 70,
-          "title": "운영 데이터와 재학습",
-          "original": "A44"
+          "title": "과제를 시작할 때 선택할 개념",
+          "global": 46
         }
       ]
     }

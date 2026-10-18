@@ -17,7 +17,7 @@ ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "visual_audit_output"
 OUTPUT.mkdir(exist_ok=True)
 BASE_URL = os.getenv("AUDIT_BASE_URL", "http://127.0.0.1:8765")
-DECKS = {"intro": 21, "vision_ai_course": 49}
+DECKS = {"intro": 11, "vision_ai_course": 35}
 VIEWPORTS = [(1920, 1080), (1366, 768)]
 
 
@@ -45,7 +45,11 @@ def inspect_slide(page):
             '.slide-title,.slide-subtitle,.lesson-meta,.lesson-figure,' +
             '.lesson-takeaway,.figure,.callout,.sensor-life-trio,' +
             '.apple-variation-grid,.generalization-visual,' +
-            '.intro-visual,.visual-panel,.lesson-reference'
+            '.intro-visual,.visual-panel,.lesson-reference,' +
+            '.th-panes,.th-cnn-flow,.th-case-table,.th-note,' +
+            '.nb-main-figure,.nb-network-numbers,.nb-derivation,' +
+            '.concept-equation,.nb-takeaway,.nb-activation-charts,' +
+            '.gate-geometry-layout'
           )].filter(x => x.getBoundingClientRect().height > 1);
           // Visually hidden accessibility-only content has no visual overlap.
           const visuallyPresent = nodes.filter(node => {
