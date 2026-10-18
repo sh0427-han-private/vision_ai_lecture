@@ -80,3 +80,44 @@
 .principles-deck .lf-transfer-block{min-height:166px;padding:9px 6px}
 .principles-deck .lf-transfer-block img{height:84px}
 }
+
+/* The first three Task families are shown in one clear row (no Anomaly Detection). */
+.principles-deck .vm-blueprint.lf-three-tasks{grid-template-columns:repeat(3,minmax(0,1fr));max-width:1050px}
+.principles-deck .vm-blueprint.lf-three-tasks article{padding:12px 16px}
+.principles-deck .vm-blueprint.lf-three-tasks svg{height:min(24dvh,220px)}
+/* Native unboxed Preprocessing and Augmentation panels, not embedded slide screenshots. */
+.principles-deck .lf-prep-box{width:min(17dvh,175px);height:min(17dvh,175px);margin:8px auto;background:#e9eff2;display:grid;place-items:center;overflow:hidden}
+.principles-deck .lf-prep-box--wide{width:min(27dvh,275px)}
+.principles-deck .lf-prep-box img{display:block;width:100%;height:100%}
+.principles-deck .lf-prep-original{object-fit:contain}
+.principles-deck .lf-prep-stretch{object-fit:fill}
+.principles-deck .lf-prep-letterbox{object-fit:contain}
+.principles-deck .lf-simple-photo-grid{margin:18px auto 8px}
+.principles-deck .lf-figure-note{font-size:clamp(15px,1.17vw,18px);color:#577580;line-height:1.35;margin:8px auto;text-align:center}
+.principles-deck .lf-augment-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:15px auto;max-width:1140px}
+.principles-deck .lf-augment-grid article{min-width:0;text-align:center;border-top:3px solid #80aeb0;background:#f8fbfb;padding:12px 6px}
+.principles-deck .lf-augment-grid h3{font-size:clamp(19px,1.55vw,24px);color:#2c606c;margin:0 0 10px}
+.principles-deck .lf-augment-grid p{font-size:clamp(16px,1.22vw,19px);color:#567481;margin:9px 0 0}
+.principles-deck .lf-aug-frame{height:min(25dvh,245px);width:100%;display:grid;place-items:center;background:#edf2f2;overflow:hidden;position:relative}
+.principles-deck .lf-aug-frame img{width:100%;height:100%;object-fit:contain}
+.principles-deck .lf-aug-dark img{filter:brightness(.48)}
+.principles-deck .lf-aug-rotate img{transform:rotate(19deg) scale(.78)}
+.principles-deck .lf-aug-occlude:after{content:"";position:absolute;left:3%;bottom:9%;height:20%;width:46%;background:#74858e}
+.principles-deck .lf-mini-stacks{display:block;position:relative;height:72px;width:98px;margin:4px auto}
+.principles-deck .lf-mini-stacks i{position:absolute;left:14px;top:12px;width:72px;height:52px;border:2px solid #327e7d;background:linear-gradient(135deg,#cdeae1,#80b7aa)}
+.principles-deck .lf-mini-stacks i:nth-child(1){transform:translate(-12px,9px)}
+.principles-deck .lf-mini-stacks i:nth-child(2){transform:translate(-6px,4px);background:#b5dace}
+.principles-deck .lf-mini-stacks i:nth-child(3){background:#83b9a7}
+.principles-deck .lf-training-story{margin:10px auto 6px;max-width:1130px}
+.principles-deck .lf-training-label{font-size:clamp(20px,1.66vw,26px);color:#196d60;margin:8px 0}
+.principles-deck .lf-training-label--back{color:#976a45;margin-top:17px}
+@media(max-height:850px){
+.principles-deck .vm-blueprint.lf-three-tasks svg{height:150px}
+.principles-deck .lf-prep-box{width:145px;height:145px}
+.principles-deck .lf-prep-box--wide{width:220px}
+.principles-deck .lf-aug-frame{height:160px}
+.principles-deck .lf-augment-grid{margin:6px auto}
+.principles-deck .lf-training-label{margin:3px 0}
+.principles-deck .lf-training-label--back{margin-top:8px}
+.principles-deck .lf-train-step{min-height:92px}
+}
