@@ -1,0 +1,286 @@
+{
+  "version": "20261018-two-hour",
+  "duration_minutes": 120,
+  "teaching_minutes": 110,
+  "discussion_minutes": 10,
+  "decks": {
+    "intro": [
+      {
+        "slide": 1,
+        "title": "AI와 시각의 출발점",
+        "concept": "start"
+      },
+      {
+        "slide": 2,
+        "title": "사람의 시각 · 장면 이해",
+        "concept": "scene"
+      },
+      {
+        "slide": 3,
+        "title": "사람의 의미 인식 vs Pixel 숫자",
+        "concept": "photo-numbers"
+      },
+      {
+        "slide": 4,
+        "title": "사진에서 밝기 숫자로",
+        "concept": "gray"
+      },
+      {
+        "slide": 5,
+        "title": "RGB · Pixel당 세 숫자",
+        "concept": "rgb"
+      },
+      {
+        "slide": 6,
+        "title": "RGB 이미지와 숫자 배열",
+        "concept": "hwc"
+      },
+      {
+        "slide": 7,
+        "title": "해상도에 따른 정보 차이",
+        "concept": "resolution"
+      },
+      {
+        "slide": 8,
+        "title": "조명·색감에 따른 Pixel 변화",
+        "concept": "lighting"
+      },
+      {
+        "slide": 9,
+        "title": "회전·크기·가림·흐림에 따른 변화",
+        "concept": "transform"
+      },
+      {
+        "slide": 10,
+        "title": "다르게 생겨도 같은 종류",
+        "concept": "diversity"
+      },
+      {
+        "slide": 11,
+        "title": "큰 변화보다 중요한 차이",
+        "concept": "relevant-change"
+      }
+    ],
+    "vision_ai_course": [
+      {
+        "slide": 1,
+        "title": "같은 사진, 다른 질문과 정답",
+        "concept": "task"
+      },
+      {
+        "slide": 2,
+        "title": "규칙 기반과 데이터 학습",
+        "concept": "rules"
+      },
+      {
+        "slide": 3,
+        "title": "모델 학습 · 오차를 줄이는 반복",
+        "concept": "learn"
+      },
+      {
+        "slide": 4,
+        "title": "Loss와 가중치 갱신",
+        "concept": "loss"
+      },
+      {
+        "slide": 5,
+        "title": "Training과 Inference의 차이",
+        "concept": "infer"
+      },
+      {
+        "slide": 6,
+        "title": "퍼셉트론 · Wx + b에서 판정까지",
+        "concept": "perceptron"
+      },
+      {
+        "slide": 7,
+        "title": "여러 층을 거치는 두 입력",
+        "concept": "affine-net"
+      },
+      {
+        "slide": 8,
+        "title": "선형 계산만 쌓으면 단일층과 동등",
+        "concept": "affine-collapse"
+      },
+      {
+        "slide": 9,
+        "title": "AND와 XOR · 직선으로 구분할 수 있을까?",
+        "concept": "and-xor"
+      },
+      {
+        "slide": 10,
+        "title": "다층 퍼셉트론 · 게이트 조합으로 XOR",
+        "concept": "xor-net"
+      },
+      {
+        "slide": 11,
+        "title": "ReLU · 비선형성의 시작",
+        "concept": "relu"
+      },
+      {
+        "slide": 12,
+        "title": "신경망의 핵심 · 계산 사이의 비선형성",
+        "concept": "nonlinear"
+      },
+      {
+        "slide": 13,
+        "title": "Kernel · 작은 영역의 가중합",
+        "concept": "kernel"
+      },
+      {
+        "slide": 14,
+        "title": "Feature Map · 같은 계산을 위치마다",
+        "concept": "feature-map"
+      },
+      {
+        "slide": 15,
+        "title": "CNN · 지역 연결과 가중치 공유",
+        "concept": "sharing"
+      },
+      {
+        "slide": 16,
+        "title": "RGB 입력과 출력 Channel",
+        "concept": "channels"
+      },
+      {
+        "slide": 17,
+        "title": "Stride · 계산 위치의 간격",
+        "concept": "stride"
+      },
+      {
+        "slide": 18,
+        "title": "Padding · 입력 바깥에 값 채우기",
+        "concept": "padding"
+      },
+      {
+        "slide": 19,
+        "title": "Max Pooling · 영역별 최댓값",
+        "concept": "pool"
+      },
+      {
+        "slide": 20,
+        "title": "CNN 전체 구조 · 특징에서 판정까지",
+        "concept": "cnn-overview"
+      },
+      {
+        "slide": 21,
+        "title": "실제 Feature Map · CNN 내부 반응",
+        "concept": "actual-map"
+      },
+      {
+        "slide": 22,
+        "title": "학습 과정에서 바뀌는 Kernel",
+        "concept": "cnn-training"
+      },
+      {
+        "slide": 23,
+        "title": "Backbone과 Task Head",
+        "concept": "backbone"
+      },
+      {
+        "slide": 24,
+        "title": "전이학습 · 고정과 미세 조정",
+        "concept": "transfer"
+      },
+      {
+        "slide": 25,
+        "title": "데이터셋 · 판정 기준과 촬영 조건",
+        "concept": "dataset"
+      },
+      {
+        "slide": 26,
+        "title": "Train · Validation · Test",
+        "concept": "split"
+      },
+      {
+        "slide": 27,
+        "title": "Video Group Split · 데이터 누출 방지",
+        "concept": "leakage"
+      },
+      {
+        "slide": 28,
+        "title": "Overfitting · 새 데이터 일반화",
+        "concept": "overfit"
+      },
+      {
+        "slide": 29,
+        "title": "Preprocessing · 입력 규격 맞추기",
+        "concept": "preprocess"
+      },
+      {
+        "slide": 30,
+        "title": "Data Augmentation · 조건 변화 만들기",
+        "concept": "augment"
+      },
+      {
+        "slide": 31,
+        "title": "Score Threshold · 판정 기준",
+        "concept": "threshold"
+      },
+      {
+        "slide": 32,
+        "title": "Confusion Matrix · 100건 평가",
+        "concept": "confusion"
+      },
+      {
+        "slide": 33,
+        "title": "Precision과 Recall",
+        "concept": "metrics"
+      },
+      {
+        "slide": 34,
+        "title": "IoU · 박스 겹침 비율",
+        "concept": "iou"
+      },
+      {
+        "slide": 35,
+        "title": "과제를 시작할 때 선택할 개념",
+        "concept": "workflow"
+      }
+    ]
+  },
+  "blocks": [
+    {
+      "name": "입력 · 사진과 숫자",
+      "deck": "intro",
+      "start": 1,
+      "end": 7,
+      "minutes": 14
+    },
+    {
+      "name": "어려움 · 남겨야 할 차이",
+      "deck": "intro",
+      "start": 8,
+      "end": 11,
+      "minutes": 8
+    },
+    {
+      "name": "Task와 학습 원리",
+      "deck": "vision_ai_course",
+      "start": 1,
+      "end": 5,
+      "minutes": 16
+    },
+    {
+      "name": "신경망 · 선형성과 비선형성",
+      "deck": "vision_ai_course",
+      "start": 6,
+      "end": 12,
+      "minutes": 22
+    },
+    {
+      "name": "CNN · 작은 계산에서 전체 구조로",
+      "deck": "vision_ai_course",
+      "start": 13,
+      "end": 24,
+      "minutes": 26
+    },
+    {
+      "name": "데이터와 평가 · 과제에 적용",
+      "deck": "vision_ai_course",
+      "start": 25,
+      "end": 35,
+      "minutes": 24
+    }
+  ]
+}
