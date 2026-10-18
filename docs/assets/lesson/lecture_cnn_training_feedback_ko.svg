@@ -66,6 +66,7 @@
 <text x="205" y="408" text-anchor="middle" class="m">Optimizer</text>
 <text x="205" y="433" text-anchor="middle" class="s">Weight 갱신</text>
 <path d="M205 377V345H399V315" class="back"/>
+<path d="M399 345H856V315" class="back"/>
 <path d="M525 453V469H856V454" fill="none" stroke="#d8b38c" stroke-width="2" stroke-dasharray="7 7"/>
 <text x="611" y="513" text-anchor="middle" style="font-size:19px;font-weight:650;fill:#2e635c">학습 중에는 이 과정을 반복 · 추론할 때는 Weight를 갱신하지 않음</text>
 </svg>
