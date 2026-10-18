@@ -5,7 +5,7 @@
 > **공개 강의:** Intro **11장** + `vision_ai_course.html` **39장** = **50장** / 원리·활동 **110분** + 질의·복습 **10분**.  
 > **이 문서는 앞으로 할 일만 추적한다.** 과거 진단 보고서의 옛 슬라이드 번호를 그대로 실행하지 않는다. `data-concept`와 현재 `docs/two_hour_manifest.json`을 사용한다.
 
-> **후속 작업 상태:** P0·P1 및 로컬 QA-01~03 완료. 작업 브랜치의 검증이며 main 배포 완료가 아닙니다. [구현·검증 기록](reviews/2026-10-18_VISION_AI_TODO_IMPLEMENTATION.md)을 참고하세요. QA-04는 PR API 접근 및 현장 리허설 단계가 남았습니다.
+> **후속 작업 상태:** P0·P1 및 로컬 QA-01~03 완료. 작업 브랜치의 검증이며 main 배포 완료가 아닙니다. [구현·검증 기록](reviews/2026-10-18_VISION_AI_TODO_IMPLEMENTATION.md)을 참고하세요. QA-04는 배포 확인 및 현장 리허설 단계가 남았습니다. 사용자의 후속 요청으로 PR API 대신 Git 병합·push를 승인받았습니다.
 
 ## 상태 범례와 작업 규칙
 
@@ -145,7 +145,7 @@
 
 ### QA-04 · 배포와 현장 최종 점검
 
-- [ ] `main` PR 병합 후 Commit과 실제 파일 SHA를 재조회하고, GitHub Pages **Deploy Workflow 성공** 여부 확인.
+- [ ] 사용자가 승인한 Git 병합·push 후 `main` Commit과 실제 파일 SHA를 재조회하고, GitHub Pages **Deploy Workflow 성공** 여부 확인.
 - [ ] 공개 URL `https://sh0427-han.github.io/vision_ai_lecture/`와 `.../vision_ai_course.html#slide-8` 등에서 바뀐 그림, 그림 크기·Cache Key·이미지 로딩 확인.
 - [x] 현장 리허설 실행표 준비: [시간표·4질문 평가표](reviews/2026-10-18_VISION_AI_REHEARSAL.md). 시간 배분 110+10분, CNN 30분, 복습 6분 검산 완료. 실제 발표 결과가 아님.
 - [ ] 120분 실제 발표 흐름 리허설: 강의 110분+Q&A 10분, CNN 핵심 30분, 마지막 복습 6분; 초보 수강생이 4가지 목표 질문에 답할 수 있는지 확인.
@@ -176,3 +176,7 @@
 - **삭제 완료 (이번 정리 PR):** `TODO_INTRO_RGB_TENSOR.md`(스스로 Legacy/Superseded 명시, 2026-09 이전 요구 기준), `LECTURE_REVIEW.md`(46장 기준 구버전 진단, 현행 두 50장 검토서로 대체). 변경 이력은 Git History/PR에서 복구 가능.
 - **보존:** `PROJECT_GUIDE.md`, `AGENTS.md`, `HTML_DESIGN_RULES.md`, `CHATGPT_PROJECT_INSTRUCTIONS.md`, `TWO_HOUR_LECTURE_PLAN.md`, `assets/SOURCES.md`, 개별 장별 노트 및 현재 50장 검토·구현 기록.
 - **과거 자료로 보존하되 현행 번호로 실행하지 않음:** `REFERENCE_VISION_AI_SOURCE_LIBRARY.md`(외부 논문/강의 출처 DB), `REFERENCE_SLIDE_SOURCE_MAP.md`(옛 69장 매핑). 출처 목록이 유용하므로 제거하지 않고 구버전 표시.
+
+## 후속 사용자 승인 · 2026-10-18
+
+PR API 차단이 지속되어 사용자가 기존 방식의 Git push 및 merge를 요청했다. 이에 작업 브랜치를 로컬 main에 병합하고 일반 push로 반영한다. 기존 PR 절차의 이번 작업 예외이며, 공개 URL 검증과 실제 수강생 리허설은 수행 근거가 있을 때만 완료 처리한다.
