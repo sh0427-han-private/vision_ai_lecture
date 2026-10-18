@@ -129,3 +129,6 @@
 .principles-deck .pf-kernel-pair b {font-size:clamp(14px,1.15vw,18px);color:#24596b;white-space:nowrap}
 @media(max-height:830px){.principles-deck .pf-kernel-pair .pf-tensor{height:66px}}
 @media(max-width:700px){.principles-deck .pf-kernel-pair{gap:2px}.principles-deck .pf-kernel-pair>div{min-width:60px}.principles-deck .pf-kernel-pair b{font-size:10px}}
+
+.principles-intro .pf-recap {border-left:4px solid #278b78;background:#f1f8f5;color:#285b59;padding:12px 16px;margin:14px 0 8px;font-size:clamp(17px,1.45vw,23px);line-height:1.45}
+@media(max-height:830px){.principles-intro .pf-recap{font-size:18px;margin:8px 0;padding:8px 12px}}
