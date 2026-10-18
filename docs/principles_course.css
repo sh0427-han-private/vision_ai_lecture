@@ -118,3 +118,14 @@
  .principles-intro .pf-cover {gap:6px}
  .principles-intro .pf-cover .pf-cover-question{font-size:18px}
 }
+
+/* Professional replacement for the earlier anthropomorphic input/meaning icons. */
+.principles-intro .meaning-reaction {justify-content:center;min-height:42px;margin-bottom:10px}
+.principles-intro .meaning-speech {background:#edf4f5;border:1px solid #c4d9dc;color:#255d66;border-radius:3px;box-shadow:none;min-height:0;padding:9px 15px;font-size:clamp(17px,1.45vw,23px)}
+.principles-intro .meaning-speech::before {display:none}
+.principles-deck .pf-kernel-pair {display:flex;gap:20px;justify-content:center;align-items:center;width:100%}
+.principles-deck .pf-kernel-pair>div {display:flex;flex-direction:column;gap:3px;align-items:center;min-width:110px}
+.principles-deck .pf-kernel-pair .pf-tensor {transform:scale(.55);transform-origin:center;height:76px;margin-top:-5px}
+.principles-deck .pf-kernel-pair b {font-size:clamp(14px,1.15vw,18px);color:#24596b;white-space:nowrap}
+@media(max-height:830px){.principles-deck .pf-kernel-pair .pf-tensor{height:66px}}
+@media(max-width:700px){.principles-deck .pf-kernel-pair{gap:2px}.principles-deck .pf-kernel-pair>div{min-width:60px}.principles-deck .pf-kernel-pair b{font-size:10px}}
