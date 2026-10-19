@@ -1,6 +1,6 @@
-# Vision AI 초급 강의 · 최신 58장 운영 계획
+# Vision AI 초급 강의 · 최신 59장 운영 계획
 
-> **현재 기준 2026-10-19:** Intro 13 + 통합 Vision AI Course 45 = **총 58장**. 총 120분 전부 설명 및 시연에 사용하며 별도 Q&A 구간 없음.
+> **현재 기준 2026-10-19:** Intro 13 + 통합 Vision AI Course 46 = **총 59장**. 총 120분 전부 설명 및 시연에 사용하며 별도 Q&A 구간 없음.
 > 최종 강의 순서·슬라이드 제목의 기준은 `docs/two_hour_manifest.json`과 `docs/lecture_outline.js`.
 
 ## 1. 전체 질문과 교육 목표
@@ -17,13 +17,13 @@ AND/XOR는 Vision AI의 별도 Task가 아니라 **왜 단층 퍼셉트론만으
 |---|---|---:|---|
 | Vision AI 필요성 및 컴퓨터의 입력 | Intro 1–8 | 14 | 왜 사진 검사가 필요하며 사진은 어떤 Pixel 숫자로 변환될까? |
 | 이미지의 어려움 | Intro 9–13 | 10 | 같은 사과가 조명·크기·가림에 따라 왜 다르게 보일까? |
-| Vision Task / 모델·Label | Course 1–5 | 10 | Class, Box, Mask 중 어떤 결과가 필요한가? |
-| AND/XOR와 퍼셉트론·비선형성 | **Course 6–12** | **18** | 언제 뉴런 하나로 되고, 왜 XOR에는 비선형성이 필요할까? |
-| CNN 계산과 특징 추출 | Course 13–23 | 30 | Kernel·Feature Map·Channel·Pooling은 어떤 역할을 할까? |
-| 데이터셋 분할과 증강 | Course 24–27 | 10 | 정상/불량과 촬영 변화를 어떻게 독립적으로 구성할까? |
-| 학습 · 지도와 비지도 활용 | Course 28–35 | 14 | 같은 CNN Feature를 지도 Classifier와 비지도 Clustering에 어떻게 사용할까? |
-| 모델 평가 | Course 36–40 | 9 | 무엇을 놓쳤고 어떤 오류가 발생했나? |
-| 첫 사과 사례로 회수 | Course 41–45 | 5 | 내가 해결할 Task·Label·Model·Metric을 설명할 수 있나? |
+| Rule-based 숫자 계산과 이미지 데이터 학습 | Course 1–6 | 10 | 간단한 계산은 규칙으로 되는데, 이미지의 판단 기준은 누가 만들까? |
+| AND/XOR와 퍼셉트론·비선형성 | **Course 7–13** | **18** | 언제 뉴런 하나로 되고, 왜 XOR에는 비선형성이 필요할까? |
+| CNN 계산과 특징 추출 | Course 14–24 | 30 | Kernel·Feature Map·Channel·Pooling은 어떤 역할을 할까? |
+| 데이터셋 분할과 증강 | Course 25–28 | 10 | 정상/불량과 촬영 변화를 어떻게 독립적으로 구성할까? |
+| 학습 · 지도와 비지도 활용 | Course 29–36 | 14 | 같은 CNN Feature를 지도 Classifier와 비지도 Clustering에 어떻게 사용할까? |
+| 모델 평가 | Course 37–41 | 9 | 무엇을 놓쳤고 어떤 오류가 발생했나? |
+| 첫 사과 사례로 회수 | Course 42–46 | 5 | 내가 해결할 Task·Label·Model·Metric을 설명할 수 있나? |
 
 **총합: 120분.** 발표 시간은 실측 리허설 전에 정한 교육용 배분이다.
 
@@ -31,13 +31,13 @@ AND/XOR는 Vision AI의 별도 Task가 아니라 **왜 단층 퍼셉트론만으
 
 | Course | 핵심 메시지 | 발표자가 연결할 질문 |
 |---|---|---|
-| **6 · 퍼셉트론** | 뉴런 하나의 동일 Weight 예시 z=W(x₁+x₂)+b를 그림으로 보여주고 W,b 한 개씩 설명. 일반 뉴런은 입력별 Weight가 다를 수 있음. Step으로 0/1 출력 | “뉴런 하나로 어떤 논리 규칙을 표현할 수 있을까요?” |
-| **7 · AND Gate 규칙** | 0/1 두 입력 모두 1일 때만 1. 네 입력 (00,01,10,11)을 시각적으로 비교. 동일 Weight를 쓰는 퍼셉트론 한 개로 구현 가능 | “Weight와 Bias를 조절하면 경계가 어떻게 바뀔까요?” |
-| **8 · AND 실습** | x₂의 Weight는 1로 고정하고 W,b를 바꿔 결정 직선의 **기울기와 위치**를 조절. 기본 예시 AND 정답 4/4 | “그렇다면 입력이 서로 다를 때만 1인 규칙도 직선 하나로 분리할 수 있을까요?” |
-| **9 · XOR Gate 규칙** | 둘 중 **정확히 하나가 1**일 때만 1. 정답 1이 (0,1)와 (1,0)에 대각선으로 놓임 | “AND와 다르게 왜 뉴런 하나로 표현이 어려울까요?” |
-| **10 · XOR 실습** | 선형 두 층도 최종 **하나의 직선**; 비선형 활성화 추가로 XOR 패턴을 구현 | “그 직선을 꺾는 활성화가 무엇일까요?” |
-| **11 · ReLU** | 음수를 0으로 바꾸는 꺾임 | “비선형 함수를 중간에 넣으면 어떤 점이 달라질까요?” |
-| **12 · 선형층 합성의 한계** | 비선형성 없이는 깊어져도 하나의 Affine 변환과 같음 | “이미지의 지역 특징을 이런 뉴런으로 효율적으로 배우려면?” |
+| **7 · 퍼셉트론** | 뉴런 하나의 동일 Weight 예시 z=W(x₁+x₂)+b를 그림으로 보여주고 W,b 한 개씩 설명. 일반 뉴런은 입력별 Weight가 다를 수 있음. Step으로 0/1 출력 | “뉴런 하나로 어떤 논리 규칙을 표현할 수 있을까요?” |
+| **8 · AND Gate 규칙** | 0/1 두 입력 모두 1일 때만 1. 네 입력 (00,01,10,11)을 시각적으로 비교. 동일 Weight를 쓰는 퍼셉트론 한 개로 구현 가능 | “Weight와 Bias를 조절하면 경계가 어떻게 바뀔까요?” |
+| **9 · AND 실습** | x₂의 Weight는 1로 고정하고 W,b를 바꿔 결정 직선의 **기울기와 위치**를 조절. 기본 예시 AND 정답 4/4 | “그렇다면 입력이 서로 다를 때만 1인 규칙도 직선 하나로 분리할 수 있을까요?” |
+| **10 · XOR Gate 규칙** | 둘 중 **정확히 하나가 1**일 때만 1. 정답 1이 (0,1)와 (1,0)에 대각선으로 놓임 | “AND와 다르게 왜 뉴런 하나로 표현이 어려울까요?” |
+| **11 · XOR 실습** | 선형 두 층도 최종 **하나의 직선**; 비선형 활성화 추가로 XOR 패턴을 구현 | “그 직선을 꺾는 활성화가 무엇일까요?” |
+| **12 · ReLU** | 음수를 0으로 바꾸는 꺾임 | “비선형 함수를 중간에 넣으면 어떤 점이 달라질까요?” |
+| **13 · 선형층 합성의 한계** | 비선형성 없이는 깊어져도 하나의 Affine 변환과 같음 | “이미지의 지역 특징을 이런 뉴런으로 효율적으로 배우려면?” |
 
 AND는 정답을 정의한 논리 기능이고, Step 퍼셉트론은 이를 구현하는 수치 모델이다. 뉴런 개수와 입력별 Weight 개수는 다르다는 점을 명확히 구분한다. 단층 신경망이라는 설명도 가장 단순한 뉴런 하나의 구현 예시로 제한한다.
 
@@ -45,28 +45,28 @@ AND/XOR의 새로운 개념 장표에는 외부 이미지 없이 직접 구성�
 
 ## 4. 이후 슬라이드 번호(최신 Course)
 
-- **C13** CNN Architecture, **C14** CNN을 쓰는 이유(얼룩말 예시), **C15** Kernel, **C16** Feature Map, **C17** Weight Sharing, **C18** RGB/Feature Channel
-- **C19** Stride, **C20** Padding, **C21** Max Pooling, **C22** 실제 Feature Map 일부, **C23** Backbone/Task Head
-- **C24–27** Dataset, Train/Validation/Test, Group Split, Data Augmentation
-- **C28–35** 학습 수치 예제, Loss, CNN Forward/Backward, 추론, 전이학습, **지도/비지도 특징 활용(C33)**, Batch/Epoch, Overfitting
-- **C36–40** Score Threshold, Confusion Matrix, Accuracy 함정, Precision/Recall, IoU
-- **C41–45** Vision AI 업무 과제 구성·검증·개선·마무리
+- **C14** CNN Architecture, **C15** CNN을 쓰는 이유(얼룩말 예시), **C16** Kernel, **C17** Feature Map, **C18** Weight Sharing, **C19** RGB/Feature Channel
+- **C20** Stride, **C21** Padding, **C22** Max Pooling, **C23** 실제 Feature Map 일부, **C24** Backbone/Task Head
+- **C25–28** Dataset, Train/Validation/Test, Group Split, Data Augmentation
+- **C29–36** 학습 수치 예제, Loss, CNN Forward/Backward, 추론, 전이학습, **지도/비지도 특징 활용(C34)**, Batch/Epoch, Overfitting
+- **C37–41** Score Threshold, Confusion Matrix, Accuracy 함정, Precision/Recall, IoU
+- **C42–46** Vision AI 업무 과제 구성·검증·개선·마무리
 
 ## 5. 수치·데이터·실험 설명 원칙
 
 - AND 설명 규칙: (00→0, 01→0, 10→0, 11→1), 단일 Step 퍼셉트론으로 구현 가능.
 - XOR 설명 규칙: (00→0, 01→1, 10→1, 11→0), 단일 직선 불가능. 뒤 C10의 비선형 예시는 `|t|=ReLU(t)+ReLU(−t)`를 사용하며 단일 ReLU 하나의 계산 결과라고 설명하지 않음.
-- C15–16 Kernel/Feature Map의 5×5 입력 및 3×3 출력 수치는 동일한 교육용 예시. 사과 JPEG의 실제 픽셀 계산이라고 주장하지 않음.
-- C20 Padding: 동일 입력 3×3, 3×3 Kernel, Stride1을 비교해 Padding0 출력 1×1 vs Padding1 출력 3×3.
-- C28 학습의 1차원 회귀는 **Gradient 설명용**이지 실제 CNN 결함 학습 측정치가 아님.
-- C37–40의 교육용 평가 데이터는 동일한 100건 Cohort로 연결하고 Test 실제 측정 결과로 포장하지 않음.
+- C16–17 Kernel/Feature Map의 5×5 입력 및 3×3 출력 수치는 동일한 교육용 예시. 사과 JPEG의 실제 픽셀 계산이라고 주장하지 않음.
+- C21 Padding: 동일 입력 3×3, 3×3 Kernel, Stride1을 비교해 Padding0 출력 1×1 vs Padding1 출력 3×3.
+- C29 학습의 1차원 회귀는 **Gradient 설명용**이지 실제 CNN 결함 학습 측정치가 아님.
+- C38–41의 교육용 평가 데이터는 동일한 100건 Cohort로 연결하고 Test 실제 측정 결과로 포장하지 않음.
 - 실제 강아지 SqueezeNet Feature Map 등 외부 실측 예시에는 출처 및 대상 모델·사진을 구분. 사내망을 고려해 직접 재구성 그림은 로컬 CSS/HTML을 사용.
 
 ## 6. 검증·배포 조건
 
-1. `scripts/verify_two_hour_course.py`: Intro 13 + Course 45, 목차 58개, Concept ID와 제목 동기화, 네 입력 조합 숫자 및 Task/Kernel/평가 관련 기존 검사.
+1. `scripts/verify_two_hour_course.py`: Intro 13 + Course 46, 목차 59개, Concept ID와 제목 동기화, 네 입력 조합 숫자 및 Task/Kernel/평가 관련 기존 검사.
 2. `scripts/verify_learning_routes.py`: 최신 Concept ID로 AND 설명→퍼셉트론→AND 실습→XOR 설명→XOR 실습 이동, Slider·초기화 등 기존 회귀 테스트.
-3. `scripts/audit_visual_slides.py`: 두 발표 해상도 **1920×1080 / 1366×768**, 전체 58×2=**116개 화면**에서 잘림·이미지·레이아웃·콘솔 확인.
+3. `scripts/audit_visual_slides.py`: 두 발표 해상도 **1920×1080 / 1366×768**, 전체 59×2=**118개 화면**에서 잘림·이미지·레이아웃·콘솔 확인.
 4. Merge 후 `main` 실제 파일 재조회 및 Pages Workflow 최신 커밋 상태, 공개 사이트 실렌더/캐시 확인.
 5. 리허설에서는 Gate 이해 18분/ CNN31분/총 120분 실현 가능성 확인.
 
@@ -91,6 +91,13 @@ AND/XOR의 새로운 개념 장표에는 외부 이미지 없이 직접 구성�
 
 ## 2026-10-19 · Preprocessing 삭제에 따른 흐름 최신화
 
-- 이전 C27 Preprocessing(Resize/Letterbox 비교)은 강의 범위에서 제외. **C24 Dataset → C25 데이터 분할 → C26 Video Group Split → C27 Data Augmentation → C28 학습**으로 바로 진행합니다.
+- 이전 C27 Preprocessing(Resize/Letterbox 비교)은 강의 범위에서 제외. **C24 Dataset → C25 데이터 분할 → C26 Video Group Split → C27 Data Augmentation → C29 학습**으로 바로 진행합니다.
 - 데이터 학습에 필요한 최소한의 주의점(독립 분할, Train에서만 증강, Label 변경 시 정합성)은 기존 슬라이드에서 유지합니다.
 - 이후 C33 CNN 지도/비지도 비교, C36–40 모델 평가, C41–45 업무 적용. 전체 58장/120분(별도 Q&A 없음).
+
+
+## 2026-10-19 · 숫자 계산 규칙과 이미지 학습 2장 설명
+
+- **Course 2**: 1+1=2, 2+1=3을 하나의 덧셈 규칙으로 처리. 사람이 명확히 작성할 수 있는 계산은 데이터를 학습하지 않아도 됨.
+- **Course 3**: 같은 결함 사과의 밝음/어두움 사진과 정상 사과를 제시. 색상·밝기 Rule을 직접 작성하면 조명·그림자 등 조건이 추가돼 예외가 증가할 수 있음. 다양한 사진과 정답 Label로 모델이 패턴을 학습하는 지도 머신러닝과 비교. Rule-based 이미지 처리가 불가능하다고 단정하지 않으며 교육용 그림을 실제 예측으로 설명하지 않음.
+- **Course 4**: 직접 규칙 → Task별 학습 모델 → 사전학습 모델 재사용으로 자연스럽게 연결. 앞 6장 데이터/모델 맥락에 기존 10분 배정, 120분/59장 유지.
