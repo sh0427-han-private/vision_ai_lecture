@@ -53,11 +53,22 @@ def main():
     chapter=link.locator('xpath=ancestor::details[1]')
     if chapter.get_attribute('open') is None:chapter.locator('summary').click()
     link.click();position(page,deck,n,total)
+  # Same frozen pretrained CNN output can feed a supervised head or an
+  # unlabeled feature clustering stage; these are not equivalent class labels.
+  page.goto(f"{BASE}/vision_ai_course.html#slide-{number('cnn-learning-paths')}")
+  page.wait_for_selector('.slide.active .su-figure')
+  assert page.locator('.slide.active .su-stage--backbone').count()==1
+  assert page.locator('.slide.active .su-path').count()==2
+  assert '정상 / 불량' in page.locator('.slide.active .su-path--sup').inner_text()
+  assert '그룹 A / B' in page.locator('.slide.active .su-path--un').inner_text()
+  assert '학습 데이터의 Label과 학습 목표' in page.locator('.slide.active').inner_text()
+  page.goto(f"{BASE}/vision_ai_course.html#slide-{number('perceptron')}")
+  assert page.locator('.slide.active img[src*="perceptron_one_weight_ko.svg"]').count()==1
   # General one-neuron perceptron first; AND logic rule is its application.
   page.goto(f"{BASE}/vision_ai_course.html#slide-{number('perceptron')}")
-  assert '뉴런 1개가 Weight 1개라는 뜻은 아닙니다' in page.locator('.slide.active').inner_text()
-  assert page.locator('.slide.active .pw-equation').count()==2
-  assert 'w₁x₁ + w₂x₂' in page.locator('.slide.active .pw-equations').inner_text()
+  assert '하나의 W와 b로 판정' in page.locator('.slide.active').inner_text()
+  assert page.locator('.slide.active .pw-equation').count()==1
+  assert 'W(x₁ + x₂) + b' in page.locator('.slide.active .pw-equations').inner_text()
   # Concept explanation before slider labs (the four cases are a visual truth table).
   page.goto(f"{BASE}/vision_ai_course.html#slide-{number('and-rule')}")
   assert page.locator('.slide.active .gb-example').count()==4
