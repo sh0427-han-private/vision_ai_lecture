@@ -65,3 +65,10 @@ Prepared G/H patch generators and scoped assets are saved for continuation; NOT 
 - Fixed final-contract H raster matcher (`\\d` regexp overescape) and ordered four P55 response nodes visually/DOM as Pixel → Feature → Learning → Evaluation.
 - Route-level Playwright checks now cover five workflow nodes/four question connections, two source-resolution canvases completing load at exact 240² and 24², and four P55 answer nodes.
 - These new Python/Chromium checks are **authored but not executed** in this connector-only session; the local repository cannot be cloned because github.com DNS resolution fails, and no new GitHub Actions run was reported for the previous commit.
+
+## Final H source audit · HEAD 2e189c2 (connector readback)
+
+- PASS (source audit, not full Python): Intro 13 / Course 42 / global 55 / blocks 120 / plan ordering 55/55 / Concept ID uniqueness / Manifest titles and slide indices / Outline global IDs 1..55 / outline version.
+- PASS (source audit): all **39 untouched A–G Course sections** match the pre-H HEAD byte for byte; Intro source was not part of H file changes. Only 3 H sections were rewritten; `project-brief` removed.
+- PASS (source audit): H SVG five nodes and four linked questions; three hypotheses; two raster dimensions 240/24 with one source ROI; four self-check answer nodes in 1→2→3→4 order; existing local CSS/JS paths and final-contract check references.
+- Verification limitation: source audits executed through live GitHub content readback. Python/Node final gate and Chromium screenshot/interactive QA remain unexecuted in this environment; CI showed no run for initial H commit. Independent Reviewer status remains PENDING.
