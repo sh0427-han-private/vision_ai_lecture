@@ -8,14 +8,14 @@ Integration branch: `automation/approved-55-20261019`. Main baseline ad3f0a8; ap
 | B | P14–18 |10|b803380|PASS independent re-review|RML01/02/03 and FLOW01 closed; 10+2 views, Critical0/Major0|
 | C | P19–27 |23|fc8d463 (cache/test follow-up014c4c3)|PASS independent|9 slides/18+2 independent views, 2 viewport interaction/geometry runs, Critical0/Major0/Minor0|
 | D | P28–36 |22|9a4eacf → ae99806|PASS final ae99806|18+2 independent views; Critical0/Major0/Minor0. 24 displayed matrices/9 windows/PNG failure PASS; SqueezeNet re-inference NOT VERIFIED|
-| E | P37–40 |9|—|pending|Implemented; 8 integrated views, 700/150/150, group IDs and label transforms PASS; independent review pending|
-| F | P41–47 |15|—|pending|Pending|
+| E | P37–40 |9|39e9cc5|PASS independent|8 independent views; Critical0/Major0/Minor0; split/group/GT transforms verified|
+| F | P41–47 |15|—|pending|Medium Builder implementing 7 lessons, folding training-log into learn|
 | G | P48–52 |10|—|pending|Pending|
 | H | P53–55 |5|—|pending|Pending|
 
 Actual checks: Python3.12, Playwright/Pillow/lxml/system Chromium154 imports/version pass. Intro Pixel browser QA started. Existing main exact-text static assertion fails; no assertion bypass counted as pass. GitHub API and official web host access blocked (403), native Git fetch successful. See ENVIRONMENT.md. Existing screenshots/CI and old independent A review are historical evidence, not approval of current HEAD.
 
-Next: E implementation and fixed-SHA review, then F–H. Classroom rehearsal/learner feedback and public Pages rendering: NOT VERIFIED. These require actual external observations; technical Build PASS will be explicitly distinguished.
+Next: F implementation and fixed-SHA review, then G–H. Classroom rehearsal/learner feedback and public Pages rendering: NOT VERIFIED. These require actual external observations; technical Build PASS will be explicitly distinguished.
 
 Historical Builder progress is available at commit9ce8be57:BUILDER_PROGRESS.md; this file is the consolidated active status record.
 
@@ -26,7 +26,7 @@ Historical Builder progress is available at commit9ce8be57:BUILDER_PROGRESS.md; 
 | AUD-01 | A/B/F/G/H | Open until independent55 merge/removal audit |
 | AUD-02 | C | CLOSED: C-fc8d463.md, actual boundary/preset/Reset checks |
 | AUD-03 | C/D | CLOSED: C and D independent PASS |
-| AUD-04 | A/E | A relationship/video PASS; GroupSplit E pending |
+| AUD-04 | A/E | CLOSED: A and E independent PASS; group IDs disjoint |
 | AUD-08 | B | Technical CLOSED at b803380, B-b803380.md; blind actual students NOT VERIFIED |
 | AUD-09 | F | Open: Frozen backbone / supervised head / no-label clusters |
 | AUD-10 | D/F | Open: actual SqueezeNet metadata and offline shared architecture |
