@@ -53,33 +53,44 @@ def main():
     chapter=link.locator('xpath=ancestor::details[1]')
     if chapter.get_attribute('open') is None:chapter.locator('summary').click()
     link.click();position(page,deck,n,total)
-  # AND is an actual interactive single-perceptron decision boundary.
+  # Course 7: one shared W + Bias. W/B move one straight decision boundary.
   page.goto(f"{BASE}/vision_ai_course.html#slide-{number('and-gate')}")
   page.wait_for_selector('[data-gate-lab="and"][data-ready="true"]')
-  assert page.locator('[data-gate-lab="and"] input[type="range"]').count()==3
-  assert '정답 4 / 4' in page.locator('[data-gate-lab="and"] [data-gate-summary]').inner_text()
-  original_line=page.locator('[data-gate-lab="and"] [data-gate-svg]').inner_html()
+  assert page.locator('[data-gate-lab="and"] input[type="range"]').count()==2
+  assert 'AI 판정 4 / 4개 일치' in page.locator('[data-gate-lab="and"] [data-gate-summary]').inner_text()
+  original=page.locator('[data-gate-lab="and"] [data-gate-svg]').inner_html()
   page.locator('[data-gate-lab="and"] [data-param="b"]').evaluate("(el)=>{el.value='-2';el.dispatchEvent(new Event('input',{bubbles:true}));}")
   assert page.locator('[data-gate-lab="and"] [data-value="b"]').inner_text()=='-2.0'
-  assert '정답 3 / 4' in page.locator('[data-gate-lab="and"] [data-gate-summary]').inner_text()
-  assert page.locator('[data-gate-lab="and"] [data-gate-svg]').inner_html()!=original_line
+  assert 'AI 판정 3 / 4개 일치' in page.locator('[data-gate-lab="and"] [data-gate-summary]').inner_text()
+  assert page.locator('[data-gate-lab="and"] [data-gate-svg]').inner_html()!=original
   page.click('[data-gate-lab="and"] [data-gate-reset]')
-  assert '정답 4 / 4' in page.locator('[data-gate-lab="and"] [data-gate-summary]').inner_text()
-  # XOR: layer1 two neurons (six controls), layer2 output (three), Step vs identity.
+  assert 'AI 판정 4 / 4개 일치' in page.locator('[data-gate-lab="and"] [data-gate-summary]').inner_text()
+  # Course 8: only W1,b1,W2,b2, initially LINEAR (3/4 and one line).
   page.goto(f"{BASE}/vision_ai_course.html#slide-{number('xor-gate')}")
   page.wait_for_selector('[data-gate-lab="xor"][data-ready="true"]')
-  assert page.locator('[data-gate-lab="xor"] input[type="range"]').count()==9
-  assert '정답 4 / 4' in page.locator('[data-gate-lab="xor"] [data-gate-summary]').inner_text()
-  assert page.locator('[data-gate-lab="xor"] .gl-outcome').count()==4
-  page.click('[data-gate-lab="xor"] [data-gate-mode="linear"]')
+  assert page.locator('[data-gate-lab="xor"] input[type="range"]').count()==4
+  assert 'AI 판정 3 / 4개 일치' in page.locator('[data-gate-lab="xor"] [data-gate-summary]').inner_text()
   assert page.locator('[data-gate-lab="xor"] [data-gate-mode="linear"]').get_attribute('aria-pressed')=='true'
-  assert '정답 3 / 4' in page.locator('[data-gate-lab="xor"] [data-gate-summary]').inner_text()
   assert '직선 하나' in page.locator('[data-gate-lab="xor"] [data-gate-equation]').inner_text()
-  page.click('[data-gate-lab="xor"] [data-gate-mode="step"]')
-  page.locator('[data-gate-lab="xor"] [data-param="a1"]').evaluate("(el)=>{el.value='0';el.dispatchEvent(new Event('input',{bubbles:true}));}")
-  assert '정답 3 / 4' in page.locator('[data-gate-lab="xor"] [data-gate-summary]').inner_text()
+  assert 'ReLU' not in page.locator('[data-gate-lab="xor"] [data-gate-stage]').inner_text()
+  assert page.locator('[data-gate-lab="xor"] .gl-outcome').count()==4
+  assert '정답 0' in page.locator('[data-gate-lab="xor"] .gl-outcome').first.inner_text()
+  assert 'AI 판정 1' in page.locator('[data-gate-lab="xor"] .gl-outcome').first.inner_text()
+  linear_plot=page.locator('[data-gate-lab="xor"] [data-gate-svg]').inner_html()
+  page.locator('[data-gate-lab="xor"] [data-param="b1"]').evaluate("(el)=>{el.value='-0.5';el.dispatchEvent(new Event('input',{bubbles:true}));}")
+  assert page.locator('[data-gate-lab="xor"] [data-gate-svg]').inner_html()!=linear_plot
   page.click('[data-gate-lab="xor"] [data-gate-reset]')
-  assert '정답 4 / 4' in page.locator('[data-gate-lab="xor"] [data-gate-summary]').inner_text()
+  page.click('[data-gate-lab="xor"] [data-gate-mode="nonlinear"]')
+  assert page.locator('[data-gate-lab="xor"] [data-gate-mode="nonlinear"]').get_attribute('aria-pressed')=='true'
+  assert 'AI 판정 4 / 4개 일치' in page.locator('[data-gate-lab="xor"] [data-gate-summary]').inner_text()
+  assert 'ReLU' in page.locator('[data-gate-lab="xor"] [data-gate-stage]').inner_text()
+  nonlinear_plot=page.locator('[data-gate-lab="xor"] [data-gate-svg]').inner_html()
+  assert nonlinear_plot!=linear_plot
+  page.locator('[data-gate-lab="xor"] [data-param="w1"]').evaluate("(el)=>{el.value='0';el.dispatchEvent(new Event('input',{bubbles:true}));}")
+  assert 'AI 판정 2 / 4개 일치' in page.locator('[data-gate-lab="xor"] [data-gate-summary]').inner_text()
+  page.click('[data-gate-lab="xor"] [data-gate-reset]')
+  assert page.locator('[data-gate-lab="xor"] [data-gate-mode="linear"]').get_attribute('aria-pressed')=='true'
+  assert 'AI 판정 3 / 4개 일치' in page.locator('[data-gate-lab="xor"] [data-gate-summary]').inner_text()
   page.goto(f"{BASE}/vision_ai_course.html#slide-{number('padding')}")
   assert page.locator('.lf-pad-shared .concept-matrix').count()==1
   assert page.locator('.lf-pad-result .concept-matrix').count()==2
