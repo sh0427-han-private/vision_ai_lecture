@@ -46,4 +46,7 @@ for deck,items in pages.items():
 (D/'two_hour_manifest.json').write_text(json.dumps(m,ensure_ascii=False,indent=2)+'\n')
 (D/'lecture_outline.js').write_text('/* Approved 55-slide plan; actual staged count '+str(global_n)+'. */\nwindow.LECTURE_OUTLINE = '+json.dumps(outline,ensure_ascii=False,indent=2)+';\n')
 if args.final:assert global_n==55 and len({x['concept'] for items in pages.values() for x in items})==55
+for legacy in D.glob('*.html'):
+ text=legacy.read_text();updated=re.sub(r'lecture_outline.js\?v=[^\"]+','lecture_outline.js?v=approved55-20261019-1',text)
+ if updated!=text:legacy.write_text(updated)
 print('SYNC',global_n,'slides; 120 planned minutes; final=',args.final)
