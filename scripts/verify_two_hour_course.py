@@ -213,7 +213,7 @@ print('PREPROCESSING_REMOVAL_QA_PASSED: 59 slides, dataset→split→leakage→a
 ar=concepts['rules'];vision=concepts['rules-image']
 assert '규칙 기반' in ar and 'rl-math-board' in ar
 assert ar.count('class="rl-math-card"')==2
-assert 'aria-label="1 더하기 1는 2"' in ar and 'aria-label="2 더하기 1는 3"' in ar
+assert 'aria-label="1 더하기 1은 2"' in ar and 'aria-label="2 더하기 1은 3"' in ar
 assert '결과 = 첫 번째 수 + 두 번째 수' in ar
 assert '데이터를 학습하지 않고도' in ar
 assert vision.count('class="rl-pane rl-pane--')==2
