@@ -669,3 +669,11 @@ GitHub Pages:
 - **C34:** 같은 사전학습 CNN Feature Extractor를 Freeze한 예시로 `Feature 벡터→정답 Label 있는 Classification Head 학습(지도) / Label 없는 Clustering(K-means, 비지도)`을 두 갈래 그림으로 설명. 그룹 A/B는 의미가 없는 발견된 군집이며 자동 정상/불량 판정이 아님.
 - 주의: 지도/비지도는 **분류 Head만 교체하면 변하는 속성**이 아니라 **Label과 학습 목표**의 구분이다. 고정 Backbone이 과거 Label로 지도 사전학습됐을 수도 있으므로 C34의 비지도는 Feature를 활용한 **후단 군집화 단계**를 뜻한다. CNN 추출기 자체 학습은 지도/자기지도 등 별도 방식 가능.
 - 새 로컬 CSS: `docs/supervised_unsupervised_cnn.css?v=cnn-paths-20261019-1`; W/b 도식 CSS `docs/perceptron_weights_clarity.css?v=one-w-20261019-2`; 공유 TOC cache `cnn-paths-20261019-1`. 59장×2뷰=118 브라우저 시각 QA 필요.
+
+
+## 2026-10-19 · Preprocessing 장표 삭제 (최신 우선)
+
+- 강의에서 **Preprocessing 전용 C27 슬라이드를 삭제**하여 Intro 13 + Course 45 = **58장**. 전체 **120분** 강의, 별도 질의응답 블록 없음. 옛 C27 Preprocessing/59장 번호는 이력.
+- 현행 학습 흐름: C24 Dataset → C25 Train/Validation/Test → C26 Video Group Split → C27 Data Augmentation → C28 모델 학습. 기존 데이터 증강의 Train 전용/Label 정합성 원칙은 보존.
+- C33 지도/비지도 CNN 비교, C36–40 모델 평가, C41–45 적용/복습. 정확한 번호/순서는 `docs/two_hour_manifest.json`과 `docs/lecture_outline.js` 기준.
+- `scripts/verify_two_hour_course.py`에서 `preprocess` Concept이 없어야 하고 `leakage`→`augment`→`learn` 직접 연결을 검사. 공유 TOC 캐시 `no-preprocess-20261019-1`; 전수 브라우저 QA 58×2=116개 화면 필요.
