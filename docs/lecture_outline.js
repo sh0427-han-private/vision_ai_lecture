@@ -1,6 +1,6 @@
-/* Vision AI 55-slide complete 120-minute teaching route (no separate Q&A). */
+/* Vision AI 55-slide full 120-minute course: simple W/B and linear→nonlinear gates. */
 window.LECTURE_OUTLINE = {
-  "version": "20261019-interactive-gates-120min",
+  "version": "20261019-simple-wb-linear-to-nonlinear",
   "groups": [
     {
       "name": "필요성 · 사진과 숫자",
@@ -137,13 +137,13 @@ window.LECTURE_OUTLINE = {
         {
           "page": "vision_ai_course.html",
           "slide": 7,
-          "title": "AND Gate · Weight와 Bias가 경계를 바꾼다",
+          "title": "AND Gate · Weight와 Bias로 직선 이동",
           "global": 20
         },
         {
           "page": "vision_ai_course.html",
           "slide": 8,
-          "title": "XOR · 두 Layer를 쌓으면 달라질까?",
+          "title": "XOR · 선형층을 쌓아도 직선 하나",
           "global": 21
         },
         {
