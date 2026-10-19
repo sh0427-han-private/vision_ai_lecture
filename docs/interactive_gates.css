@@ -1,0 +1,52 @@
+/* Public 2-hour lecture: interactive AND/XOR decision boundaries. No CDN. */
+.principles-deck .gl-lesson .gl-layout{display:grid;grid-template-columns:minmax(0,1.04fr) minmax(0,.96fr);gap:20px;align-items:start;margin:10px auto 8px;max-width:1230px}
+.principles-deck .gl-controls,.principles-deck .gl-visual{min-width:0;border-top:3px solid #73a9a6;background:#f8fbfb;padding:14px 18px}
+.principles-deck .gl-controls>h3,.principles-deck .gl-visual>h3,.principles-deck .gl-mode-row h3{font-size:clamp(20px,1.6vw,26px);margin:0 0 8px;color:#295a68}
+.principles-deck .gl-description{font-size:clamp(16px,1.18vw,19px);line-height:1.35;margin:8px 0;color:#456d77}
+.principles-deck .gl-slider-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px 13px;margin:12px 0}
+.principles-deck .gl-slider{display:flex;flex-direction:column;gap:5px;min-width:0;font-size:clamp(15px,1.12vw,18px);font-weight:600;color:#325d69}
+.principles-deck .gl-slider>span{display:flex;gap:6px;justify-content:space-between;align-items:baseline}
+.principles-deck .gl-slider output{color:#177f6f;min-width:37px;text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.principles-deck .gl-slider input[type="range"]{width:100%;accent-color:#218a77;min-height:21px;cursor:pointer;touch-action:pan-y}
+.principles-deck .gl-equation{font-size:clamp(16px,1.18vw,19px);background:#e9f3f2;border-left:3px solid #52a398;padding:10px 13px;line-height:1.45;color:#2a6670;margin:10px 0;overflow-wrap:anywhere}
+.principles-deck .gl-plot-shell{max-width:510px;margin:auto}
+.principles-deck .gl-plot{display:block;width:100%;height:min(33dvh,285px);min-height:175px;overflow:visible}
+.principles-deck .gl-legend{text-align:center;color:#4d6a77;font-size:clamp(14px,1.09vw,17px);margin:1px 0 7px}
+.principles-deck .gl-truth{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:5px;margin:6px auto 7px}
+.principles-deck .gl-outcome{display:flex;flex-wrap:wrap;gap:3px 8px;align-items:center;justify-content:center;border:1px solid #b8d4cc;border-radius:4px;background:#e9f5f0;color:#265e61;padding:6px 3px;font-size:clamp(14px,1.08vw,17px)}
+.principles-deck .gl-outcome b{font-size:1.14em;color:#167862}
+.principles-deck .gl-outcome small{width:100%;text-align:center;font-size:clamp(12px,.95vw,15px);color:#53727e}
+.principles-deck .gl-incorrect{border:2px solid #cd6258;background:#fff2f0}
+.principles-deck .gl-incorrect b{color:#b54438}
+.principles-deck .gl-summary{font-size:clamp(16px,1.19vw,19px);font-weight:650;color:#315f6a;line-height:1.4;margin:9px 0 2px}
+.principles-deck .gl-reset,.principles-deck .gl-mode button{border:1px solid #72a79f;background:#fff;color:#176d61;border-radius:4px;padding:8px 13px;font-size:clamp(15px,1.13vw,18px);font-weight:650;cursor:pointer}
+.principles-deck .gl-reset:hover,.principles-deck .gl-mode button:hover{background:#e2f1ec}
+.principles-deck .gl-reset:focus-visible,.principles-deck .gl-mode button:focus-visible,.principles-deck .gl-slider input:focus-visible{outline:3px solid #197c69;outline-offset:2px}
+.principles-deck .gl-teacher{font-size:clamp(16px,1.18vw,19px);line-height:1.43;margin:12px 0 3px;color:#496775}
+.principles-deck .gl-mode-row{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.principles-deck .gl-mode{display:flex;gap:5px}
+.principles-deck .gl-mode button[aria-pressed="true"]{background:#218b77;border-color:#218b77;color:#fff}
+.principles-deck .gl-layout--xor .gl-slider-grid{gap:7px 10px;margin:6px 0 8px}
+.principles-deck .gl-layout--xor .gl-slider{font-size:clamp(14px,1.04vw,17px)}
+.principles-deck .gl-layout--xor .gl-description{margin:6px 0}
+.principles-deck .gl-layout--xor .gl-controls,.principles-deck .gl-layout--xor .gl-visual{padding:10px 14px}
+.principles-deck .gl-layout--xor .gl-equation{font-size:clamp(13px,1.03vw,17px);margin:7px 0}
+.principles-deck .gl-layout--xor .gl-teacher{font-size:clamp(15px,1.04vw,17px)}
+@media(max-height:850px){
+ .principles-deck .gl-lesson .gl-layout{margin:6px auto;gap:12px}
+ .principles-deck .gl-controls,.principles-deck .gl-visual{padding:8px 11px}
+ .principles-deck .gl-plot{height:235px;min-height:0}
+ .principles-deck .gl-slider-grid{gap:6px;margin:5px 0}
+ .principles-deck .gl-slider{gap:1px}
+ .principles-deck .gl-equation{padding:6px 8px;margin:5px 0}
+ .principles-deck .gl-teacher{margin:5px 0 0}
+ .principles-deck .gl-lesson .slide-subtitle{margin-bottom:4px}
+ .principles-deck .gl-layout--xor .gl-plot{height:218px}
+ .principles-deck .gl-layout--xor .gl-truth{margin:3px 0}
+}
+@media(max-width:750px){
+ .principles-deck .gl-lesson .gl-layout{grid-template-columns:1fr}
+ .principles-deck .gl-plot{height:220px}
+ .principles-deck .gl-slider-grid{gap:4px}
+ .principles-deck .gl-visual,.principles-deck .gl-controls{padding:6px}
+}
