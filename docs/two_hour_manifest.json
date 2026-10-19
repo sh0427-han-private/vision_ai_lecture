@@ -1,5 +1,5 @@
 {
-  "version": "20261019-interactive-gates-120min",
+  "version": "20261019-simple-wb-linear-to-nonlinear",
   "duration_minutes": 120,
   "teaching_minutes": 120,
   "discussion_minutes": 0,
@@ -104,12 +104,12 @@
       },
       {
         "slide": 7,
-        "title": "AND Gate · Weight와 Bias가 경계를 바꾼다",
+        "title": "AND Gate · Weight와 Bias로 직선 이동",
         "concept": "and-gate"
       },
       {
         "slide": 8,
-        "title": "XOR · 두 Layer를 쌓으면 달라질까?",
+        "title": "XOR · 선형층을 쌓아도 직선 하나",
         "concept": "xor-gate"
       },
       {
