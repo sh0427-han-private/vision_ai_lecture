@@ -57,7 +57,12 @@ jobs:
           PY
 
       - name: Check single-track navigation and chapter continuity
+        if: always()
         run: python scripts/verify_learning_routes.py
+
+      - name: Verify approved B group figures in Chromium
+        if: always()
+        run: python scripts/verify_approved_b_browser.py
 
       - name: Upload geometry report
         uses: actions/upload-artifact@v4
