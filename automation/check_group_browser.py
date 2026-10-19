@@ -4,6 +4,7 @@ This checks observable layout/assets, not semantic Figure quality. An independen
 Reviewer must still inspect each capture. No screenshot is a classroom rehearsal.
 """
 import argparse,json,os,sys,subprocess
+from PIL import Image, ImageChops
 from pathlib import Path
 from playwright.sync_api import sync_playwright
 ROOT=Path(__file__).resolve().parents[1]
@@ -21,7 +22,7 @@ locations={entry['concept']:(deck,entry['slide']) for deck,entries in manifest['
 targets=[p for p in plan if p['group']==args.group]
 report={'commit':subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),'group':args.group,'screens':[],'page_errors':[]}
 with sync_playwright()as p:
- browser=p.chromium.launch(executable_path='/usr/bin/chromium',headless=True,args=['--no-sandbox','--disable-dev-shm-usage'])
+ browser=p.chromium.launch(headless=True,args=['--no-sandbox','--disable-dev-shm-usage'])
  for w,h in[(1920,1080),(1366,768)]:
   page=browser.new_page(viewport={'width':w,'height':h})
   page.on('pageerror',lambda e:report['page_errors'].append(str(e)))
@@ -62,6 +63,53 @@ with sync_playwright()as p:
      continue  # No misleading screenshot when either canvas is still blank.
    page.wait_for_timeout(160)
    info=inspect_slide(page)
+   if target['concept']=='project-iterate':
+    # The subject photograph/ROI is fixed; a true background-only pair must
+    # share the same clipping geometry and subject pixels, but differ outside.
+    svgs=page.locator('.slide.active svg[data-h-background-variant]')
+    assert svgs.count()==2,'expected two controlled background composites'
+    metas=svgs.evaluate_all("""nodes=>nodes.map(s=>({
+      kind:s.dataset.hBackgroundVariant,
+      original:s.querySelector('image')?.getAttribute('href'),
+      crop:s.querySelector('image')?.getAttribute('width')+'x'+
+           s.querySelector('image')?.getAttribute('height'),
+      mask:s.querySelector('clipPath path')?.getAttribute('d'),
+      roi:s.querySelector('circle')?.outerHTML
+    }))""")
+    assert [x['kind'] for x in metas]==['matte','grid'],metas
+    assert metas[0]['original']==metas[1]['original']==(
+     'assets/vision_task_apple_reference.jpg')
+    assert metas[0]['crop']==metas[1]['crop']=='960x640'
+    assert metas[0]['mask']==metas[1]['mask']
+    assert metas[0]['roi']==metas[1]['roi']
+    images=[]
+    for variant in ['matte','grid']:
+     path=args.out/f'{w}-background-{variant}.png'
+     svgs.nth(len(images)).screenshot(path=str(path))
+     images.append(Image.open(path).convert('RGB'))
+    a,b=images
+    assert a.size==b.size and min(a.size)>=80,a.size
+    fw,fh=a.size
+    def area(cx,cy,r=.045):
+     x=int(fw*cx);y=int(fh*cy);dx=int(fw*r);dy=int(fh*r)
+     return (x-dx,y-dy,x+dx,y+dy)
+    # In the subject and annotated defect, both rendered pixel regions match.
+    roi_area=area((596-300)/450,(226-85)/450)
+    apple_area=area((525-300)/450,(310-85)/450)
+    assert ImageChops.difference(
+     a.crop(roi_area),b.crop(roi_area)).getbbox() is None,'ROI changed'
+    assert ImageChops.difference(
+     a.crop(apple_area),b.crop(apple_area)).getbbox() is None,'apple changed'
+    # Top-left exterior has actual, not border-only, altered surface pixels.
+    diff=ImageChops.difference(a.crop((0,0,int(fw*.2),int(fh*.2))),
+                               b.crop((0,0,int(fw*.2),int(fh*.2))))
+    diff_pixels=sum(1 for px in diff.getdata() if max(px)>8)
+    total=diff.width*diff.height
+    assert diff_pixels>total*.015,(diff_pixels,total)
+    info['background_checks']={
+     'photo':metas[0]['original'],'roi_equal':True,'apple_equal':True,
+     'outside_changed_pixels':diff_pixels,'outside_sample_pixels':total,
+     'composites':['matte','grid']}
    if target['concept']=='project-iterate':
     info['canvas_checks']=page.locator(
      '.slide.active canvas[data-h-review-resolution]').evaluate_all(
