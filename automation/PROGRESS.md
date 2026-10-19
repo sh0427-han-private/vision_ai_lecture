@@ -10,12 +10,12 @@ Integration branch: `automation/approved-55-20261019`. Main baseline ad3f0a8; ap
 | D | P28–36 |22|9a4eacf → ae99806|PASS final ae99806|18+2 independent views; Critical0/Major0/Minor0. 24 displayed matrices/9 windows/PNG failure PASS; SqueezeNet re-inference NOT VERIFIED|
 | E | P37–40 |9|39e9cc5|PASS independent|8 independent views; Critical0/Major0/Minor0; split/group/GT transforms verified|
 | F | P41–47 |15|219e2ba|PASS independent|14+2 independent views; Critical0/Major0/Minor0; actual learning/6 update endpoints/local transfer verified|
-| G | P48–52 |10|—|pending|Implemented; 10 integrated views/100 Score/IoU checks PASS; independent review next|
-| H | P53–55 |5|—|pending|Pending|
+| G | P48–52 |10|d27e160|Independent review pending|Existing implementation preserved; prior integrated 10-view/numeric checks recorded; Reviewer additions tracked separately |
+| H | P53–55 |5|H implementation commit (see history)|Independent review pending|P53 workflow+4 questions, P54 hypothesis/control comparison, P55 four-answer recap. Structural source checks pass; Chromium views not yet verified |
 
 Actual checks: Python3.12, Playwright/Pillow/lxml/system Chromium154 imports/version pass. Intro Pixel browser QA started. Existing main exact-text static assertion fails; no assertion bypass counted as pass. GitHub API and official web host access blocked (403), native Git fetch successful. See ENVIRONMENT.md. Existing screenshots/CI and old independent A review are historical evidence, not approval of current HEAD.
 
-Next: G fixed-SHA review, then H and final55 QA. Classroom rehearsal/learner feedback and public Pages rendering: NOT VERIFIED. These require actual external observations; technical Build PASS will be explicitly distinguished.
+Next: G fixed-SHA independent review and any G-specific findings (not folded into H), then H independent screenshots and final 110-view/interaction QA. Never merge main before global approval. Classroom rehearsal/learner feedback and public Pages rendering: NOT VERIFIED. These require actual external observations; technical Build PASS will be explicitly distinguished.
 
 Historical Builder progress is available at commit9ce8be57:BUILDER_PROGRESS.md; this file is the consolidated active status record.
 
@@ -50,3 +50,12 @@ C parent integration: approved staged contract PASS at58 slides/120min (not fina
 2026-10-19: work resumed on automation/approved-55-20261019 at014c4c3. C independent PASS report had been written but not committed before the interruption; report is now preserved. D Builder has implementation GO. No main merge/deploy performed.
 
 Prepared G/H patch generators and scoped assets are saved for continuation; NOT APPLIED and NOT VERIFIED. They will be applied only after preceding groups PASS. New group screenshot utility is syntax-checked only.
+
+## H final-construction handoff · 2026-10-19
+
+- Base HEAD: `d27e160c` (G score array). Preserve A–G unchanged; H sections only are regenerated using `automation/build_h.py` specification and existing scoped `docs/approved_h.css/js`.
+- P53–P55 = Course 40–42. Absorb/delete `project-brief` as approved, remove stray legacy `undefined` literal, and connect 5 technical nodes with 4 task-design annotations.
+- Final source state: Intro 13 + Course 42 = 55; eight-block duration 26+10+23+22+9+15+10+5=120 minutes; Manifest/Outline/contract version synchronized.
+- Local tool access cannot resolve github.com for cloning or launch live repository Chromium in this session. Build-time JavaScript source assertions checked 55 concept order, H figure nodes/questions, answer hooks, old-slide preservation, and 120-minute curriculum. Full Python/static and viewport/browser commands remain **NOT RUN** for this commit, not PASS.
+- G independent Reviewer additions: **not yet available on this branch**; any subsequent G issues must be documented and addressed as a separate G follow-up without rewriting H's approved scope.
+- Main merge and Pages deployment remain prohibited. Independent Reviewer verdict, 110 screenshots, all-slider/keyboard/reset QA, classroom 120-minute rehearsal, Pages production observation: NOT VERIFIED.

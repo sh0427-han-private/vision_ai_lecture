@@ -1,4 +1,4 @@
-/* Approved 55-slide plan; actual staged count 56. */
+/* Approved 55-slide plan; final count 55. */
 window.LECTURE_OUTLINE = {
   "version": "approved55-20261019-1",
   "groups": [
@@ -361,20 +361,14 @@ window.LECTURE_OUTLINE = {
         {
           "page": "vision_ai_course.html",
           "slide": 41,
-          "title": "첫 과제를 위한 네 가지 질문",
+          "title": "실패 사진이 알려 주는 것",
           "global": 54
         },
         {
           "page": "vision_ai_course.html",
           "slide": 42,
-          "title": "실패 사진이 알려 주는 것",
-          "global": 55
-        },
-        {
-          "page": "vision_ai_course.html",
-          "slide": 43,
           "title": "Vision AI 원리 · 무엇을 설명할 수 있나?",
-          "global": 56
+          "global": 55
         }
       ]
     }

@@ -578,3 +578,9 @@ https://www.nature.com/articles/s42256-020-00257-z
 
 - P48 absorbs the former standalone project-run UI. One fixed array of 100 educational Scores supplies the histogram, threshold line, matrix, error bars and Precision/Recall. No measured model performance is claimed. P49/P51 are fixed threshold0.50 reference figures; P50 is a separate all-normal baseline.
 - P52 uses the same generated apple with two illustrative Box annotations. Separate integer coordinates are GT(x1,y1,w5,h6), Prediction(x1,y3,w5,h6): intersection20, union40, IoU0.5. The integer example is not the photograph's measured pixel coordinates. New diagrams are self-authored SVG/HTML; no external Figure copied.
+
+## Approved group H P53–P55 (2026-10-19)
+
+- P53/P55: reuse existing educational generated `docs/assets/vision_task_apple_reference.jpg`, mark defect ROI, render self-authored HTML/SVG decision-flow and four answer figures. No new external image used; no new empirical model output.
+- P54: same local generated apple with display-only CSS brightness ×0.35 and colored outer border for the *hypothetical* background condition. Resolution comparison renders **the same source ROI** through Canvas as 240×240 and 24×24 pixel arrays; latter enlarges via pixelated CSS. None is an actual documented model failure, and border does not claim to be a real background replacement.
+- P55 numerical references come from separate previous toy examples (Kernel map −6→12, scalar regression w0.5→1.7/Loss9→0.36, threshold 0.50 TP18/FN2/Recall90%); they are not measurements of one CNN on this photo.

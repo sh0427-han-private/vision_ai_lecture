@@ -80,4 +80,27 @@ if 'data-matrix-name="kernel-input"' in concepts['kernel']:
 # Every local SVG actually referenced by the two decks parses successfully.
 for name in re.findall(r'(?:src|href)="([^\"]+\.svg)(?:\?[^\"]*)?"',(D/'intro.html').read_text()+(D/'vision_ai_course.html').read_text()):
  if not name.startswith(('http:','https:','data:')):ET.parse(D/name)
+# H final recaps: inspect actual slide DOM and the shared-photo controls.
+if args.final:
+ assert 'project-brief' not in concepts and len(concepts)==55
+ h53=concepts['workflow']
+ assert len(re.findall(r'data-review-node="[^"]+"',h53))==5
+ assert len(re.findall(r'data-question-node="[^"]+"',h53))==4
+ assert h53.count('marker-end="url(#h55-arrow)"')==4
+ assert 'Test 점수로 모델과 기준을 반복 선택하지 않습니다' in h53
+ h54=concepts['project-iterate']
+ assert len(re.findall(r'class="h55-compare"',h54))==3
+ assert set(re.findall(r'data-h-review-resolution="(\\d+)"',h54))=={'240','24'}
+ assert '실제 모델의 실패 결과가 아닙니다' in h54
+ h55=concepts['project-check']
+ assert set(re.findall(r'data-review-answer="([^"]+)"',h55))=={'pixel','feature','learn','evaluate'}
+ assert 'Recall = 18 / 20 = 90%' in h55 and 'Loss 9 → 0.36' in h55
+ for k in ['workflow','project-iterate','project-check']:
+  assert 'vision_task_apple_reference.jpg' in concepts[k]
+ source_js=(D/'approved_h.js').read_text()
+ assert 'source.src=\'assets/vision_task_apple_reference.jpg\'' in source_js
+ assert 'ctx.drawImage(source,300,85,450,450,0,0,size,size)' in source_js
+ css=(D/'approved_h.css').read_text()
+ assert '.h55-hypotheses' in css and '.h55-answers' in css
+ assert 'approved_h.js' in (D/'vision_ai_course.html').read_text()
 print(('APPROVED55_FINAL_CONTRACT_PASS' if args.final else 'APPROVED55_STAGED_CONTRACT_PASS'),total,'slides; 120 minutes; source/DOM/outline and independent numeric checks')
