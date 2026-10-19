@@ -1,6 +1,6 @@
-/* 58 slide beginner Vision AI teaching order - perceptron before AND example. */
+/* 59-slide Vision AI course: one-W perceptron + shared CNN supervised/unsupervised comparison. */
 window.LECTURE_OUTLINE = {
-  "version": "20261019-perceptron-input-weights-first",
+  "version": "20261019-cnn-supervised-unsupervised-one-w",
   "groups": [
     {
       "name": "필요성 · 사진과 숫자",
@@ -131,7 +131,7 @@ window.LECTURE_OUTLINE = {
         {
           "page": "vision_ai_course.html",
           "slide": 6,
-          "title": "퍼셉트론 · Wx + b에서 판정까지",
+          "title": "퍼셉트론 · 하나의 W와 b로 판정",
           "global": 19
         },
         {
@@ -279,7 +279,7 @@ window.LECTURE_OUTLINE = {
       ]
     },
     {
-      "name": "학습 · CNN 가중치와 일반화",
+      "name": "학습 · CNN Feature 재사용과 지도/비지도",
       "items": [
         {
           "page": "vision_ai_course.html",
@@ -314,14 +314,20 @@ window.LECTURE_OUTLINE = {
         {
           "page": "vision_ai_course.html",
           "slide": 34,
-          "title": "Batch · Step · Epoch",
+          "title": "같은 CNN 특징 · 지도와 비지도 활용",
           "global": 47
         },
         {
           "page": "vision_ai_course.html",
           "slide": 35,
-          "title": "Overfitting · 새 데이터 일반화",
+          "title": "Batch · Step · Epoch",
           "global": 48
+        },
+        {
+          "page": "vision_ai_course.html",
+          "slide": 36,
+          "title": "Overfitting · 새 데이터 일반화",
+          "global": 49
         }
       ]
     },
@@ -330,33 +336,33 @@ window.LECTURE_OUTLINE = {
       "items": [
         {
           "page": "vision_ai_course.html",
-          "slide": 36,
-          "title": "Score Threshold · 판정 기준",
-          "global": 49
-        },
-        {
-          "page": "vision_ai_course.html",
           "slide": 37,
-          "title": "Confusion Matrix · 100건 평가",
+          "title": "Score Threshold · 판정 기준",
           "global": 50
         },
         {
           "page": "vision_ai_course.html",
           "slide": 38,
-          "title": "Accuracy의 함정 · 모두 정상이라면?",
+          "title": "Confusion Matrix · 100건 평가",
           "global": 51
         },
         {
           "page": "vision_ai_course.html",
           "slide": 39,
-          "title": "Precision과 Recall",
+          "title": "Accuracy의 함정 · 모두 정상이라면?",
           "global": 52
         },
         {
           "page": "vision_ai_course.html",
           "slide": 40,
-          "title": "IoU · 박스 겹침 비율",
+          "title": "Precision과 Recall",
           "global": 53
+        },
+        {
+          "page": "vision_ai_course.html",
+          "slide": 41,
+          "title": "IoU · 박스 겹침 비율",
+          "global": 54
         }
       ]
     },
@@ -365,33 +371,33 @@ window.LECTURE_OUTLINE = {
       "items": [
         {
           "page": "vision_ai_course.html",
-          "slide": 41,
-          "title": "Vision AI 원리 · 한 장으로 연결",
-          "global": 54
-        },
-        {
-          "page": "vision_ai_course.html",
           "slide": 42,
-          "title": "첫 과제를 위한 네 가지 질문",
+          "title": "Vision AI 원리 · 한 장으로 연결",
           "global": 55
         },
         {
           "page": "vision_ai_course.html",
           "slide": 43,
-          "title": "실행 결과 확인 · 임계값과 오류 수",
+          "title": "첫 과제를 위한 네 가지 질문",
           "global": 56
         },
         {
           "page": "vision_ai_course.html",
           "slide": 44,
-          "title": "실패 사진이 알려 주는 것",
+          "title": "실행 결과 확인 · 임계값과 오류 수",
           "global": 57
         },
         {
           "page": "vision_ai_course.html",
           "slide": 45,
-          "title": "Vision AI 원리 · 무엇을 설명할 수 있나?",
+          "title": "실패 사진이 알려 주는 것",
           "global": 58
+        },
+        {
+          "page": "vision_ai_course.html",
+          "slide": 46,
+          "title": "Vision AI 원리 · 무엇을 설명할 수 있나?",
+          "global": 59
         }
       ]
     }
