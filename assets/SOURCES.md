@@ -561,3 +561,9 @@ https://www.nature.com/articles/s42256-020-00257-z
 - P28 same generated apple source, exact 85×85 ROI; numeric 5×5 input and 3×3 Kernel are a separate educational array, not measured photo pixels. P29 uses identical arrays, all nine windows and matching output coordinates. P30–34 are original exact SVG calculations; no external Figure reproduced.
 - P35 reuses `cnn_squeezenet_actual_feature_maps.png` unchanged and its source/reproduction script `scripts/render_cnn_feature_maps.py`. Stage `features[1]/[7]/[12]`, shape 111×111×64 / 27×27×256 / 13×13×512; selected IDs 35,30,44,32 / 2,62,24,153 / 471,302,409,415. Per-channel 2–99 percentile display normalization; absolute intensity not comparable between channels/stages. Input image origin remains Stanford CS231n 2017 Lecture5 slide37; actual calculation uses ImageNet SqueezeNet1.1, separate from the virtual apple CNN.
 - P36 crops the same local P20 SVG's spatial Backbone. GAP+Dense belong to the Classification Head; Box/Mask Heads illustrate alternative spatial-output designs, not simultaneous measured predictions.
+
+## Approved group E P37–P40 (2026-10-19)
+
+- P37 reuses existing generated normal/defect originals with controlled viewports and identical CSS brightness factors. Different originals are disclosed; no new actual experiment or external Figure.
+- P38: 100 visible tiles, each representing ten images; 700/150/150. P39 reuses photos to illustrate hypothetical A/B/C ×3 Frame IDs; this is not nine real observations. Identical IDs are rearranged to demonstrate random leakage versus disjoint Group Split.
+- P40 reuses the defect photo and canonical GT Box/Mask. Each valid geometric transform wraps photo and annotations together; complete defect covering is marked invalid. Train-only augmentation is explicit. Original self-authored SVG/HTML diagrams, no external Figure copied.

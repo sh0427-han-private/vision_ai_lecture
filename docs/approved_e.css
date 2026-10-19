@@ -1,0 +1,6 @@
+/* Approved P37–P40: figure geometry and captions are scoped to E. */
+.principles-deck .slide-inner.e55 {width:min(1220px,100%)}
+.principles-deck .e55 .slide-subtitle {max-width:1220px;line-height:1.4;margin-bottom:12px}
+.principles-deck .e55-diagram {display:block;width:100%;height:auto;max-height:430px;margin:8px auto 12px}
+.principles-deck .e55 .lesson-takeaway {font-size:clamp(20px,1.5vw,25px);line-height:1.45;margin:10px 0 6px;padding:9px 0}
+.principles-deck .e55-caption {font-size:clamp(16px,1.15vw,18px);line-height:1.45;color:#587583;margin:6px 0 0}

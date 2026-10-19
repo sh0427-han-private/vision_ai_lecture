@@ -8,7 +8,7 @@ Integration branch: `automation/approved-55-20261019`. Main baseline ad3f0a8; ap
 | B | P14–18 |10|b803380|PASS independent re-review|RML01/02/03 and FLOW01 closed; 10+2 views, Critical0/Major0|
 | C | P19–27 |23|fc8d463 (cache/test follow-up014c4c3)|PASS independent|9 slides/18+2 independent views, 2 viewport interaction/geometry runs, Critical0/Major0/Minor0|
 | D | P28–36 |22|9a4eacf → ae99806|PASS final ae99806|18+2 independent views; Critical0/Major0/Minor0. 24 displayed matrices/9 windows/PNG failure PASS; SqueezeNet re-inference NOT VERIFIED|
-| E | P37–40 |9|—|pending|Medium-reasoning Builder implementing; independent review next|
+| E | P37–40 |9|—|pending|Implemented; 8 integrated views, 700/150/150, group IDs and label transforms PASS; independent review pending|
 | F | P41–47 |15|—|pending|Pending|
 | G | P48–52 |10|—|pending|Pending|
 | H | P53–55 |5|—|pending|Pending|
