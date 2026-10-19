@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="ko"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Vision AI 기초 · 원리 중심 · 45장</title>
+<title>Vision AI 기초 · 원리 중심 · 46장</title>
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="slide.css?v=vision-first-introfit-20261015-1">
 <link rel="stylesheet" href="lesson.css?v=static-figures-20261018-1">
@@ -24,6 +24,7 @@
 <script src="interactive_gates.js?v=20261019-rotate-w-3" defer></script>
 <link rel="stylesheet" href="gate_basics.css?v=gate-rule-20261019-1">
 <link rel="stylesheet" href="perceptron_weights_clarity.css?v=weights-20261019-1">
+<link rel="stylesheet" href="supervised_unsupervised_cnn.css?v=cnn-paths-20261019-1">
 </head><body class="deck-page lesson-deck principles-deck" data-prev-page="intro.html" data-next-page="">
 <header class="site-header"><nav class="nav"><a class="brand" href="intro.html#slide-1">Vision AI Lecture</a></nav></header>
 <main class="deck" aria-live="polite">
@@ -63,12 +64,14 @@
 </div></section>
 <section class="slide" data-concept="perceptron" data-topic="Perceptron" data-level="basic">
 <div class="slide-inner neuron-story">
-
-<h2 class="slide-title">퍼셉트론 · Wx + b에서 판정까지</h2>
-<p class="slide-subtitle">퍼셉트론(Perceptron)은 입력에 Weight를 곱해 더한 뒤 Step 함수로 0/1을 결정하는 <strong>뉴런 하나</strong>입니다. 입력이 2개면 입력선도 2개입니다.</p>
-<figure class="lesson-figure gate-reference-figure"><div class="figure-display"><img src="assets/lesson/perceptron_gate_structure_ko.svg?v=20261017-1" alt="입력과 가중치, 편향, 가중합 Σ, Step 활성화와 출력의 연결"></div></figure><div class="pw-equations" role="group" aria-label="뉴런 하나에서 입력별 Weight 두 개의 일반식과 가중치를 동일하게 묶은 AND 예시"><div class="pw-equation pw-equation--general"><strong>일반식 · 입력별 Weight</strong><span>z = w₁x₁ + w₂x₂ + b</span></div><div class="pw-equation pw-equation--tie"><strong>AND 설명용 · w₁ = w₂ = w</strong><span>z = w(x₁ + x₂) + b</span></div></div>
-<p class="nb-takeaway"><strong>입력선 2개 → Weight 2개(w₁,w₂) → 합산 뉴런(Σ) 1개.</strong> 아래 그림의 w₁=w₂=0.5는 Weight를 동일하게 설정한 AND 예시입니다.</p>
-<p class="lesson-takeaway"><strong>뉴런 1개가 Weight 1개라는 뜻은 아닙니다.</strong> 뉴런 하나에도 여러 입력과 각 입력에 대응하는 Weight가 있고, Step이 최종 0/1을 출력합니다. 다음 장에서 AND 규칙을 봅니다.</p></div></section>
+<h2 class="slide-title">퍼셉트론 · 하나의 W와 b로 판정</h2>
+<p class="slide-subtitle">퍼셉트론(Perceptron)은 입력을 계산한 뒤 Step 함수로 <strong>0 또는 1</strong>을 결정하는 <strong>뉴런 하나</strong>입니다. 여기서는 가장 쉬운 예시로 두 입력에 <strong>같은 W</strong>를 적용합니다.</p>
+<figure class="lesson-figure gate-reference-figure"><div class="figure-display"><img src="assets/lesson/perceptron_one_weight_ko.svg?v=one-w-20261019-1" alt="두 입력 x₁,x₂를 더해 W 하나를 곱하고 Bias b 하나를 더한 후 Step으로 0/1 출력하는 단일 퍼셉트론 교육용 그림"></div></figure>
+<div class="pw-equations pw-equations--single" role="group" aria-label="설명용 단일 퍼셉트론의 가중합 공식">
+<div class="pw-equation pw-equation--tie"><strong>설명용 · 두 입력에 공통 Weight W 적용</strong><span>z = W(x₁ + x₂) + b</span></div></div>
+<p class="nb-takeaway"><strong>W</strong>는 입력에 곱하는 가중치, <strong>b</strong>는 판단 기준을 옮기는 Bias(편향)입니다. <strong>Step(z)</strong>가 최종 0/1을 정합니다.</p>
+<p class="lesson-takeaway">여기서 <strong>W 하나</strong>는 두 입력의 가중치를 같게 묶은 <strong>쉬운 예시</strong>입니다. 실제 뉴런의 W는 입력별 여러 가중치를 묶어 나타낼 수도 있습니다. 다음 AND Gate 규칙을 이 계산으로 표현할 수 있습니다.</p>
+</div></section>
 <section class="slide" data-concept="and-rule" data-topic="AND Gate" data-level="basic">
 <div class="slide-inner two-hour gb-lesson">
 <h2 class="slide-title">AND Gate · 두 입력이 모두 1일 때</h2>
@@ -81,7 +84,7 @@
 <article class="gb-example gb-example--one" aria-label="AND 입력 1와 1, 정답 출력 1"><div class="gb-pair"><div class="gb-input"><small>x₁</small><span class="gb-state gb-state--on">1</span></div><div class="gb-input"><small>x₂</small><span class="gb-state gb-state--on">1</span></div></div><span class="gb-arrow" aria-hidden="true">→</span><div class="gb-gate">AND</div><span class="gb-arrow" aria-hidden="true">→</span><div class="gb-result"><small>결과</small><strong>1</strong><small>켜짐</small></div></article>
 </div>
 <p class="gb-caption">0 = 꺼짐 · 1 = 켜짐 · 네 가지 입력 중 <strong>(1,1)에서만 1</strong></p>
-<p class="lesson-takeaway"><strong>AND는 어떤 규칙을 계산할지</strong>를 뜻합니다. 앞 장의 <strong>단일 퍼셉트론</strong>에 w₁=w₂=0.5, b=−0.7과 Step을 사용하면 네 입력의 결과가 AND 규칙과 같습니다. 뉴런은 여전히 <strong>1개</strong>입니다.</p>
+<p class="lesson-takeaway"><strong>AND는 어떤 규칙을 계산할지</strong>를 뜻합니다. 앞 장의 <strong>단일 퍼셉트론</strong>에 W=0.5, b=−0.7과 Step을 사용하면 네 입력의 결과가 AND 규칙과 같습니다. <strong>z=0.5(x₁+x₂)−0.7</strong>을 Step으로 판단하면 AND의 네 경우와 일치합니다.</p>
 </div></section>
 <section class="slide" data-concept="and-gate" data-topic="AND Gate" data-level="basic"><div class="slide-inner two-hour gl-lesson"><h2 class="slide-title">AND Gate · Weight와 Bias로 직선 이동</h2><p class="slide-subtitle">두 입력 x₁, x₂를 구분하는 결정 직선입니다. <strong>W를 바꾸면 기울기가 회전</strong>하고, <strong>b를 바꾸면 위치가 이동</strong>합니다.</p><div class="gl-layout lesson-inline-lab" data-gate-lab="and"><article class="gl-controls"><h3>① W · Bias 조절</h3><p class="gl-description">z=Wx₁+1·x₂+b → 경계 x₂=−Wx₁−b (x₂의 Weight=1 고정)</p><div class="gl-slider-grid gl-slider-grid--two"><label class="gl-slider"><span>Weight W <output data-value="w" for="gl-w">1.0</output></span><input id="gl-w" data-param="w" type="range" min="-2" max="2" step="0.1" value="1" aria-label="Weight W 조절"></label><label class="gl-slider"><span>Bias b <output data-value="b" for="gl-b">-1.2</output></span><input id="gl-b" data-param="b" type="range" min="-2" max="2" step="0.1" value="-1.2" aria-label="Bias b 조절"></label></div><p class="gl-equation" data-gate-equation></p><button class="gl-reset" type="button" data-gate-reset>AND 기본값 복원</button><p class="gl-teacher">여기서는 <strong>w₂=1로 고정</strong>하고 w₁=W만 조절합니다. 따라서 W는 기울기(−W)를, b는 y절편(−b)을 바꿉니다.</p></article><article class="gl-visual"><h3>② 직선과 AND 정답 비교</h3><div class="gl-plot-shell"><svg class="gl-plot" data-gate-svg role="img" aria-label="네 입력의 AND 정답 점과 AI 판정 영역. 점 안 숫자는 정답, 빨간 테두리는 AI가 틀린 경우입니다."></svg><p class="gl-legend">점 안의 0/1 = <strong>정답</strong> · 연한 초록 영역 = <strong>AI가 1로 판단한 위치</strong></p><div class="gl-truth" data-gate-results aria-label="네 입력별 정답과 AI의 판정 비교"></div></div><p class="gl-summary" data-gate-summary aria-live="polite"></p></article></div><p class="lesson-takeaway">AND는 (1,1)만 1이어서 <strong>두 입력 Weight를 갖는 뉴런 하나의 직선</strong>만으로 네 점을 분리할 수 있습니다.</p></div></section>
 <section class="slide" data-concept="xor-rule" data-topic="XOR Gate" data-level="basic">
@@ -242,6 +245,31 @@
 <figure class="lesson-figure"><div class="figure-display"><img src="assets/lesson/training_inference_basic.svg?v=professional-20261006-2" alt="배울 때는 Weight를 바꾸고, 사용할 때는 고정합니다"></div></figure>
 <p class="lesson-takeaway">추론 과정 자체는 새로운 데이터로 가중치를 학습하는 과정이 아닙니다.</p></div></section>
 <section class="slide" data-concept="transfer" data-topic="Freeze와 Fine-tuning" data-level="basic"><div class="slide-inner two-hour"><h2 class="slide-title">전이학습 · 특징은 고정하고 분류기만 학습</h2><p class="slide-subtitle">Course 11의 얼룩말 CNN 구조에서 학습할 부분을 구분합니다. <strong>Feature Extractor는 Freeze</strong>하고 사과 결함 판정을 위한 <strong>Classification Head만 먼저 재학습</strong>합니다.</p><figure class="lf-cnn-architecture"><div class="lf-zebra" role="group" aria-label="얼룩말 CNN Architecture 원본 Figure. 로딩 실패 시 로컬 CNN 학습 구조로 대체"><img src="https://i0.wp.com/developersbreach.com/wp-content/uploads/2020/08/cnn_banner.png?fit=1200%2C564&amp;ssl=1" alt="얼룩말 사진에서 Conv·Pooling Feature Extractor와 Fully Connected 분류기로 이어지는 CNN 원본 아키텍처 그림" onerror="this.closest('.lf-zebra').classList.add('lf-no-external');this.hidden=true"><div class="lf-zebra-fallback"><div class="lf-arch-unit"><img src="assets/vision_task_apple_reference.jpg" alt="사과 사진"><b>입력</b></div><span class="lf-arch-arrow">→</span><div class="lf-arch-unit"><b>Convolution</b><span>Kernel → Feature Map</span><b>특징 추출</b></div><span class="lf-arch-arrow">→</span><div class="lf-arch-unit"><b>Classification</b><span>정상 / 결함 있음</span><span>Task Head</span></div></div></div><figcaption class="lf-zebra-caption">외부 원본 Figure: <a href="https://developersbreach.com/convolution-neural-network-deep-learning/" target="_blank" rel="noopener">Swapna K E · Developers Breach (2020)</a> · 설명용 CNN Classification 구조 / 사내망에서 원본이 차단되면 자체 도식으로 대체</figcaption><p class="zebra-fallback-note">원본 이미지 연결 불가 · 같은 구조를 설명하는 자체 도식</p></figure><div class="lf-transfer-flow zebra-transfer-legend" role="group" aria-label="원본 구조 앞쪽 특징 추출부는 고정, 뒤쪽 분류기는 새 과제에 맞춰 학습"><article><h3>앞쪽 · Feature Extractor</h3><p>학습된 Conv 특징을 재사용<br><strong>Freeze · Weight 고정</strong></p></article><span class="zebra-link" aria-hidden="true">→</span><article><h3>뒤쪽 · Classification Head</h3><p>‘얼룩말 등 기존 클래스’ → ‘사과 정상/불량’<br><strong>Head 교체 · 새 Label로 학습</strong></p></article></div><p class="lesson-takeaway">새 입력은 사과 사진입니다. 특징이 새 과제에도 유용한지는 검증해야 합니다. 먼저 <strong>Head만 학습</strong>하고, 필요하면 Backbone의 일부를 풀어 추가 학습하는 Fine-tuning을 비교합니다. 모델 선택은 Validation으로 검증합니다.</p></div></section>
+<section class="slide" data-concept="cnn-learning-paths" data-topic="Supervised vs Unsupervised" data-level="basic">
+<div class="slide-inner two-hour su-lesson">
+<h2 class="slide-title">같은 CNN 특징 · 지도와 비지도 활용</h2>
+<p class="slide-subtitle">이미지의 특징을 추출하는 CNN은 <strong>같이 사용</strong>할 수 있습니다. 그다음 <strong>정답 Label로 분류를 학습</strong>할지, <strong>Label 없이 비슷한 특징끼리 묶을지</strong>에 따라 활용 방식이 달라집니다.</p>
+<div class="su-figure" role="group" aria-label="같은 사전학습 CNN 특징 추출기를 고정한 뒤 Label이 있는 지도 분류와 Label이 없는 비지도 군집화로 나뉘는 흐름">
+<div class="su-shared">
+<div class="su-stage"><img class="su-photo" src="assets/vision_task_apple_reference.jpg" alt="입력 예시 사과 사진"><strong>여러 사과 사진</strong><small>Pixel 입력 · 설명용 대표 사진</small></div>
+<div class="su-arrow" aria-hidden="true">→</div>
+<div class="su-stage su-stage--backbone"><div class="su-filter-pills" aria-hidden="true"><i></i><i></i><i></i></div><strong>CNN · Feature Extractor</strong><small>사전학습 모델 재사용<br>두 경로 모두 Freeze(고정)</small></div>
+<div class="su-arrow" aria-hidden="true">→</div>
+<div class="su-stage su-stage--features"><div class="su-feature-vector" aria-hidden="true"><span></span><span></span><span></span><span></span></div><strong>Feature 벡터</strong><small>무늬·형태·색의 특징 수치</small></div>
+</div>
+<div class="su-fork" aria-hidden="true">같은 특징에서 두 경로로 나뉨</div>
+<div class="su-paths">
+<article class="su-path su-path--sup"><h3>① 지도학습 · Supervised</h3><p class="su-path-sub"><strong>정답 Label 있음</strong> · Classification Head를 Label에 맞춰 학습</p>
+<div class="su-path-flow"><div class="su-labels" aria-label="정상과 불량이라는 학습 정답"><span>정상 Label</span><span>불량 Label</span></div><span class="su-arrow" aria-hidden="true">→</span><div class="su-path-node"><strong>분류 Head</strong><small>Label 비교 → Loss로 Weight 학습</small></div><span class="su-arrow" aria-hidden="true">→</span><div class="su-path-node su-path-node--end"><strong>정상 / 불량</strong><small>알려진 Class로 판정</small></div></div>
+<p class="su-path-note">목표: 정답을 예측하도록 학습</p></article>
+<article class="su-path su-path--un"><h3>② 비지도학습 · Unsupervised</h3><p class="su-path-sub"><strong>정답 Label 없음</strong> · 추출한 Feature를 비슷한 것끼리 군집화</p>
+<div class="su-path-flow"><div class="su-path-node"><strong>Label 없음</strong><small>Feature 벡터만 사용</small></div><span class="su-arrow" aria-hidden="true">→</span><div class="su-path-node"><strong>Clustering</strong><small>예: K-means</small><div class="su-clusters" aria-label="특징 공간에서 파란 점 4개와 초록 점 4개가 두 군집을 이룬 설명용 산점도"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div><span class="su-arrow" aria-hidden="true">→</span><div class="su-path-node su-path-node--end"><strong>그룹 A / B</strong><small>정상·불량 의미는 아직 없음</small></div></div>
+<p class="su-path-note">목표: 숨겨진 유사성과 그룹을 찾기</p></article>
+</div>
+</div>
+<p class="su-accuracy">※ 동일한 사전학습 CNN을 고정하고 <strong>후단 작업만 비교한 예시</strong>입니다. 전체 학습이 지도·비지도로 나뉘는 기준은 단순히 Head 교체가 아니라 <strong>학습 데이터의 Label과 학습 목표</strong>입니다. CNN 특징 추출기 자체도 다른 방식으로 학습할 수 있습니다.</p>
+<p class="lesson-takeaway">지도: <strong>Label로 분류 Head 학습</strong> → 정상/불량 판정. 비지도: <strong>Label 없이 CNN 특징 군집화</strong> → 이름 없는 그룹 발견. <strong>군집은 자동으로 정상/불량 분류가 되는 것이 아닙니다.</strong></p>
+</div></section>
 <section class="slide" data-concept="training-log" data-level="basic"><div class="slide-inner two-hour"><h2 class="slide-title">Batch · Step · Epoch</h2><p class="slide-subtitle">CNN을 학습시킬 때 사진을 몇 장씩 보고, 가중치를 몇 번 바꿨는지 읽기 위한 용어입니다.</p><div class="pf-batch" role="group" aria-label="10개 사진을 4개 4개 2개 배치로 나누어 한 Epoch의 3 Step으로 계산">
 <div class="pf-batch-group"><span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span><strong>Batch 1 · 4장</strong></div><div class="pf-batch-group"><span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span><strong>Batch 2 · 4장</strong></div><div class="pf-batch-group"><span aria-hidden="true"></span><span aria-hidden="true"></span><strong>Batch 3 · 2장</strong></div></div>
 <div class="pf-lines"><div><strong>10장</strong>Train 전체 사진</div><div><strong>3 Step</strong>Batch마다 한 번 Weight 갱신</div><div><strong>2 Epoch = 6 Step</strong>전체 사진을 두 바퀴 학습</div></div>
