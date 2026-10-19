@@ -53,11 +53,16 @@ def main():
     chapter=link.locator('xpath=ancestor::details[1]')
     if chapter.get_attribute('open') is None:chapter.locator('summary').click()
     link.click();position(page,deck,n,total)
+  # General one-neuron perceptron first; AND logic rule is its application.
+  page.goto(f"{BASE}/vision_ai_course.html#slide-{number('perceptron')}")
+  assert '뉴런 1개가 Weight 1개라는 뜻은 아닙니다' in page.locator('.slide.active').inner_text()
+  assert page.locator('.slide.active .pw-equation').count()==2
+  assert 'w₁x₁ + w₂x₂' in page.locator('.slide.active .pw-equations').inner_text()
   # Concept explanation before slider labs (the four cases are a visual truth table).
   page.goto(f"{BASE}/vision_ai_course.html#slide-{number('and-rule')}")
   assert page.locator('.slide.active .gb-example').count()==4
   assert '모두 1' in page.locator('.slide.active').inner_text()
-  assert '퍼셉트론 뉴런 하나' in page.locator('.slide.active').inner_text()
+  assert '단일 퍼셉트론' in page.locator('.slide.active').inner_text()
   page.goto(f"{BASE}/vision_ai_course.html#slide-{number('xor-rule')}")
   assert page.locator('.slide.active .gb-example').count()==4
   assert '서로 다를 때' in page.locator('.slide.active').inner_text()
