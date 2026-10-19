@@ -7,3 +7,5 @@
 새 ImageGen 사진형 얼룩말 파일 한 장을 줄무늬/목·머리/전체로 표시한다. 생성 프롬프트와 자산 이력은 assets/SOURCES.md에 보존했다. 강의 56장·120분·목차·인터랙션은 유지한다.
 
 검증: 정적 수치/구조 검사 통과. 실제 Chromium 1366×768 및 1920×1080에서 C12 fitScale=1, overflow=0, overlap=0. 스크린샷은 `/workspace/.onboarding/vision-ai/zebra-photo-20261019/`에 보존. 1366px 화면을 직접 검토했다.
+
+병합 시 최신 main `85fed42`의 AND/XOR 기본 설명 2장을 보존했다. 최종 Intro13+Course45=58장, `cnn-why`는 C14, 전이학습은 C33이다. 최신 번호로 두 해상도 화면 검사를 다시 수행한다.

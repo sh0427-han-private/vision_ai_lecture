@@ -53,6 +53,15 @@ def main():
     chapter=link.locator('xpath=ancestor::details[1]')
     if chapter.get_attribute('open') is None:chapter.locator('summary').click()
     link.click();position(page,deck,n,total)
+  # Concept explanation before slider labs (the four cases are a visual truth table).
+  page.goto(f"{BASE}/vision_ai_course.html#slide-{number('and-rule')}")
+  assert page.locator('.slide.active .gb-example').count()==4
+  assert '모두 1' in page.locator('.slide.active').inner_text()
+  assert '퍼셉트론 뉴런 하나' in page.locator('.slide.active').inner_text()
+  page.goto(f"{BASE}/vision_ai_course.html#slide-{number('xor-rule')}")
+  assert page.locator('.slide.active .gb-example').count()==4
+  assert '서로 다를 때' in page.locator('.slide.active').inner_text()
+  assert '직선 하나로 분리할 수 없습니다' in page.locator('.slide.active').inner_text()
   # Course 7: W actually ROTATES the line, while b translates it.
   page.goto(f"{BASE}/vision_ai_course.html#slide-{number('and-gate')}")
   page.wait_for_selector('[data-gate-lab="and"][data-ready="true"]')
