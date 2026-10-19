@@ -177,8 +177,10 @@ def main():
   assert page.locator('[data-gate-lab="xor"] [data-gate-mode="linear"]').get_attribute('aria-pressed')=='true'
   assert 'AI 판정 3 / 4개 일치' in page.locator('[data-gate-lab="xor"] [data-gate-summary]').inner_text()
   page.goto(f"{BASE}/vision_ai_course.html#slide-{number('padding')}")
-  assert page.locator('.lf-pad-shared .concept-matrix').count()==1
-  assert page.locator('.lf-pad-result .concept-matrix').count()==2
+  def shown_matrix(name):
+   return page.locator(f'.slide.active [data-matrix-name="{name}"]').evaluate("g=>{const c=+g.dataset.cols,a=[...g.querySelectorAll('text[data-row]')].map(t=>+t.textContent);return Array.from({length:a.length/c},(_,i)=>a.slice(i*c,(i+1)*c));}")
+  assert shown_matrix('padding-input')==[[1,2,3],[4,5,6],[7,8,9]]
+  assert shown_matrix('padding-output')==[[12,21,16],[27,45,33],[24,39,28]]
   page.goto(f"{BASE}/vision_ai_course.html#slide-{number('transfer')}")
   assert page.locator('.zebra-transfer-legend article').count()==2
   # Staged build: P20 is local now; P45 will be replaced in F, which is not yet Verified.
