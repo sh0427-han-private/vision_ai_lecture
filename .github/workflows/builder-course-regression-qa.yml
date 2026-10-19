@@ -1,0 +1,41 @@
+name: Builder temporary regression QA
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/builder-course-regression-qa.yml'
+permissions:
+  contents: read
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Browser setup
+        run: |
+          python -m pip install playwright pillow
+          python -m playwright install --with-deps chromium
+      - name: Existing navigation and interaction tests
+        run: |
+          python -m http.server 8765 --directory docs >/tmp/lecture-http.log 2>&1 &
+          python scripts/verify_learning_routes.py
+          python scripts/verify_intro_pixel_interactive.py
+      - name: Existing full viewport audit
+        run: |
+          python scripts/audit_visual_slides.py
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('visual_audit_output/issues.json')
+          issues=json.loads(p.read_text('utf-8'))
+          print('TOTAL_VISUAL_ISSUES:',len(issues))
+          print('TARGET_ISSUES:',json.dumps([x for x in issues if x.get('deck')=='vision_ai_course' and x.get('slide') in (2,3)],ensure_ascii=False))
+          PY
+      - name: Store screenshot audit
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: builder-full-route-audit
+          path: visual_audit_output/
+          retention-days: 7
+          if-no-files-found: warn
