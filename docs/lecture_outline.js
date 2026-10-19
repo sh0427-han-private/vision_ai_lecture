@@ -1,6 +1,6 @@
-/* Vision principles 55-slide current teaching route. */
+/* Vision AI 55-slide complete 120-minute teaching route (no separate Q&A). */
 window.LECTURE_OUTLINE = {
-  "version": "20261019-gates-cnn-refine-55",
+  "version": "20261019-interactive-gates-120min",
   "groups": [
     {
       "name": "필요성 · 사진과 숫자",
