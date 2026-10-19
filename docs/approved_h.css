@@ -2,14 +2,14 @@
 .h55-recall-photo{display:flex;align-items:center;justify-content:center;gap:25px;margin:8px 0 10px}
 .h55-recall-photo svg{width:130px;height:130px}.h55-recall-photo p{font-size:23px;color:#426777;line-height:1.6}
 .h55-workflow{width:100%;height:auto;display:block;margin:10px auto}
-.h55-hypotheses{display:grid;grid-template-columns:repeat(3,1fr);gap:25px;margin:22px 0 10px}
+.h55-hypotheses{display:grid;grid-template-columns:repeat(3,1fr);gap:25px;margin:16px 0 8px}
 .h55-hypotheses article+article{border-left:1px solid #cfdee3;padding-left:25px}
 .h55 h3{font-size:24px;color:#315f71;margin:0 0 14px}.h55-pair{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .h55 figure{margin:0;text-align:center}.h55-pair svg,.h55-pair canvas{width:100%;height:auto;aspect-ratio:1;display:block;object-fit:contain}
 .h55-pair canvas{image-rendering:pixelated}.h55 figcaption{font-size:18px;color:#537683;line-height:1.4;margin-top:7px}
 .h55-dark svg{filter:brightness(.35)}/* P54: backgrounds are independent SVG composites with the same original apple pixels. */
-.h55-hypotheses .h55-background-note{font-size:17px;line-height:1.35;margin:8px 0 0;color:#436777}
-.h55-hypotheses p{font-size:20px;color:#436777;line-height:1.55;margin:13px 0}.h55-compare{font-size:19px;line-height:1.5;border-top:2px solid #97b9c0;padding-top:10px;color:#196e5d}
+.h55-hypotheses .h55-background-note{font-size:17px;line-height:1.35;margin:6px 0 0;color:#436777}
+.h55-hypotheses p{font-size:20px;color:#436777;line-height:1.55;margin:9px 0}.h55-compare{font-size:19px;line-height:1.5;border-top:2px solid #97b9c0;padding-top:10px;color:#196e5d}
 .h55-note{font-size:17px;line-height:1.4;color:#587784;margin:12px 0 0}
 .h55-answers{display:grid;grid-template-columns:1fr 230px 1fr;grid-template-rows:auto auto;gap:24px 30px;margin:20px auto 0;max-width:1200px}
 .h55-answers article{border-top:2px solid #9abec5;padding-top:14px}.h55-answers h3{font-size:23px;margin-bottom:12px}.h55-answers article>strong{font-size:25px;color:#14755f}.h55-answers article p{font-size:20px;color:#476b7a;line-height:1.5;margin:12px 0 0}
