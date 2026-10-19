@@ -20,7 +20,7 @@ Vision AI를 처음 접하는 사람도 **필요성 → Pixel·RGB → Vision의
 
 - **[Intro 처음부터 보기](https://sh0427-han.github.io/vision_ai_lecture/)**
 - **[통합 Vision AI 바로 보기](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html)**
-- **[왜 필요한가 · Intro 3번](https://sh0427-han.github.io/vision_ai_lecture/intro.html#slide-3)** · **[왜 어려운가 · Intro 13번](https://sh0427-han.github.io/vision_ai_lecture/intro.html#slide-13)** · **[현재 모델 · Course 3번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-3)** · **[과제별 모델·Label · Course 5번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-5)** · **[CNN 원리 · Course 11–21번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-13)** · **[CNN 학습 구조 · Course 29번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-29)**
+- **[왜 필요한가 · Intro 3번](https://sh0427-han.github.io/vision_ai_lecture/intro.html#slide-3)** · **[왜 어려운가 · Intro 13번](https://sh0427-han.github.io/vision_ai_lecture/intro.html#slide-13)** · **[현재 모델 · Course 3번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-3)** · **[과제별 모델·Label · Course 5번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-5)** · **[CNN 원리 · Course 13–23번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-13)** · **[CNN 학습 구조 · Course 31번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-31)**
 - **[2시간 강의 운영안](TWO_HOUR_LECTURE_PLAN.md)**
 - **[남은 작업 · 현재 활성 TODO](TODO_VISION_AI_LECTURE.md)** — P0/P1 슬라이드별 수정 사양 및 실제 브라우저/배포 검증
 
@@ -152,7 +152,7 @@ vision_ai_lecture/
 - 통합 36–40: Threshold·혼동행렬·불균형·Precision/Recall·IoU
 - 통합 41–45: 공통 사과 사진으로 원리·검증 과정 복습
 
-[원리 회수·복습 구간](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-41)의 임계값 연습은 교육용 저장 점수100건을 직접 계산합니다. 실제 모델이나 외부 AI API의 실행 결과가 아닙니다. 실제 SqueezeNet Feature Map, 강아지 사진 전처리·증강 계산은 해당 모델/사진의 조건과 출처를 명시합니다.
+[임계값·오류 확인 실습](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-43)의 임계값 연습은 교육용 저장 점수100건을 직접 계산합니다. 실제 모델이나 외부 AI API의 실행 결과가 아닙니다. 실제 SqueezeNet Feature Map, 강아지 사진 전처리·증강 계산은 해당 모델/사진의 조건과 출처를 명시합니다.
 
 현재 공개 강의의 순서·120분 운영은 [강의 운영안](TWO_HOUR_LECTURE_PLAN.md), 미완료 작업과 QA는 [활성 TODO](TODO_VISION_AI_LECTURE.md)를 기준으로 합니다. 상세 진단은 [기존 50장 내용 검토](reviews/2026-10-18_VISION_AI_CONTENT_FLOW_REVIEW.md)와 [기존 50장 UI·Figure 검토](reviews/2026-10-18_VISION_AI_UI_FIGURE_REVIEW.md), 최근 반영 내역은 [구현 기록](reviews/2026-10-18_VISION_AI_PRINCIPLES_IMPLEMENTATION.md)을 참고하세요. 과거 Figure 매핑은 현재 슬라이드 번호가 아닌 참고용 이력입니다.
 
