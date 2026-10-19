@@ -20,7 +20,7 @@ Vision AI를 처음 접하는 사람도 **필요성 → Pixel·RGB → Vision의
 
 - **[Intro 처음부터 보기](https://sh0427-han.github.io/vision_ai_lecture/)**
 - **[통합 Vision AI 바로 보기](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html)**
-- **[왜 필요한가 · Intro 3번](https://sh0427-han.github.io/vision_ai_lecture/intro.html#slide-3)** · **[왜 어려운가 · Intro 13번](https://sh0427-han.github.io/vision_ai_lecture/intro.html#slide-13)** · **[현재 모델 · Course 3번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-4)** · **[과제별 모델·Label · Course 5번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-6)** · **[CNN 원리 · Course 13–23번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-14)** · **[CNN 학습 구조 · Course 31번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-32)**
+- **[왜 필요한가 · Intro 3번](https://sh0427-han.github.io/vision_ai_lecture/intro.html#slide-3)** · **[왜 어려운가 · Intro 13번](https://sh0427-han.github.io/vision_ai_lecture/intro.html#slide-13)** · **[현재 모델 · Course 4번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-4)** · **[과제별 모델·Label · Course 6번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-6)** · **[CNN 원리 · Course 14–24번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-14)** · **[CNN 학습 구조 · Course 32번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-32)**
 - **[2시간 강의 운영안](TWO_HOUR_LECTURE_PLAN.md)**
 - **[남은 작업 · 현재 활성 TODO](TODO_VISION_AI_LECTURE.md)** — P0/P1 슬라이드별 수정 사양 및 실제 브라우저/배포 검증
 
@@ -169,30 +169,30 @@ vision_ai_lecture/
 
 ## 2026-10-19 · AND/XOR Gate 실시간 실습
 
-- [Course 8 AND Gate](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-9): W와 Bias 슬라이더 2개로 기울기(−W)와 y절편(−b)을 각각 변경합니다. W를 움직이면 결정 직선이 회전합니다.
-- [Course 10 XOR Gate](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-11): Layer 1의 W₁·b₁, Layer 2의 W₂·b₂, 총 4개 슬라이더로 최종 선형 경계의 기울기·절편을 조절합니다. 이 예제의 Layer 2에는 원래 입력 x₁을 더하는 고정 연결이 포함됩니다. **비선형 없음(3/4) → 비선형 추가(4/4)**를 비교합니다. 비선형 |t|는 두 ReLU 반응의 합으로 구현할 수 있습니다.
+- [Course 9 AND Gate](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-9): W와 Bias 슬라이더 2개로 기울기(−W)와 y절편(−b)을 각각 변경합니다. W를 움직이면 결정 직선이 회전합니다.
+- [Course 11 XOR Gate](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-11): Layer 1의 W₁·b₁, Layer 2의 W₂·b₂, 총 4개 슬라이더로 최종 선형 경계의 기울기·절편을 조절합니다. 이 예제의 Layer 2에는 원래 입력 x₁을 더하는 고정 연결이 포함됩니다. **비선형 없음(3/4) → 비선형 추가(4/4)**를 비교합니다. 비선형 |t|는 두 ReLU 반응의 합으로 구현할 수 있습니다.
 - **강의 시간은 총 120분**이며 별도 질의응답/Q&A 시간은 없습니다. 강의 일정은 [운영안](TWO_HOUR_LECTURE_PLAN.md)을 따릅니다.
 
 
 ## 2026-10-19 · AND와 XOR의 동작 원리 먼저 학습
 
-- [Course 6 · 퍼셉트론](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-7): 뉴런 하나의 가장 쉬운 예시로 두 입력에 같은 W를 적용해 **z=W(x₁+x₂)+b**를 보여줍니다. 일반적인 뉴런의 W는 입력별 가중치를 묶어서 나타낼 수도 있습니다. [Course 7 · AND 동작](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-8)에서는 두 입력이 모두 1일 때만 1이라는 규칙을 확인합니다.
-- [Course 9 · XOR 동작 규칙](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-10): 두 입력이 다를 때만 1. Course 10에서 선형층의 단일 직선 한계와 비선형성 비교.
+- [Course 7 · 퍼셉트론](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-7): 뉴런 하나의 가장 쉬운 예시로 두 입력에 같은 W를 적용해 **z=W(x₁+x₂)+b**를 보여줍니다. 일반적인 뉴런의 W는 입력별 가중치를 묶어서 나타낼 수도 있습니다. [Course 8 · AND 동작](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-8)에서는 두 입력이 모두 1일 때만 1이라는 규칙을 확인합니다.
+- [Course 10 · XOR 동작 규칙](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-10): 두 입력이 다를 때만 1. Course 11에서 선형층의 단일 직선 한계와 비선형성 비교.
 - 최신 강의: **Intro 13 + Course 46 = 총 59장**, 120분 전체 강의. 외부 이미지 없이 자체 HTML/CSS 도식으로 4가지 입력 조합을 설명합니다.
 
 
 ## 2026-10-19 · 퍼셉트론 입력선과 뉴런 수 구분 (최신)
 
-- Course 6 퍼셉트론 → Course 7 AND 규칙 → Course 8 AND 직선 실습 → Course 9 XOR 규칙 → Course 10 XOR 선형·비선형 실습.
+- Course 7 퍼셉트론 → Course 8 AND 규칙 → Course 9 AND 직선 실습 → Course 10 XOR 규칙 → Course 11 XOR 선형·비선형 실습.
 - 퍼셉트론 뉴런 1개에 입력 x₁,x₂는 각각 Weight w₁,w₂를 갖습니다. w₁,w₂는 뉴런 두 개를 뜻하지 않습니다.
 - AND 특별 예시에서 w₁=w₂=w로 묶으면 z=w(x₁+x₂)+b입니다. 이 경우 W만 바꿔서는 직선 기울기가 회전하지 않습니다.
-- Course 8은 회전을 보여주기 위해 x₂ Weight=1로 고정한 z=Wx₁+1·x₂+b를 사용합니다. Course 10도 일부 입력선의 Weight=1 고정, 층마다 조절하는 W·b만 표시합니다.
+- Course 9는 회전을 보여주기 위해 x₂ Weight=1로 고정한 z=Wx₁+1·x₂+b를 사용합니다. Course 11도 일부 입력선의 Weight=1 고정, 층마다 조절하는 W·b만 표시합니다.
 
 
 ## 2026-10-19 · CNN 지도/비지도 활용 비교 (최신)
 
-- Course 6 퍼셉트론은 화면에서 **W와 b 하나씩**, `z=W(x₁+x₂)+b`의 동일 Weight 예시만 시각화합니다. 한 뉴런이 항상 스칼라 Weight 하나만 갖는다는 주장과는 구분합니다.
-- [Course 33 · 같은 CNN 특징의 지도/비지도 활용](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-34): **고정된 사전학습 CNN Feature Extractor** 뒤 지도(Classification Head + 정답 Label)와 비지도(Feature Clustering + Label 없음)를 비교합니다. 군집 A/B는 정상/불량 Class 이름이 아닙니다.
+- Course 7 퍼셉트론은 화면에서 **W와 b 하나씩**, `z=W(x₁+x₂)+b`의 동일 Weight 예시만 시각화합니다. 한 뉴런이 항상 스칼라 Weight 하나만 갖는다는 주장과는 구분합니다.
+- [Course 34 · 같은 CNN 특징의 지도/비지도 활용](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-34): **고정된 사전학습 CNN Feature Extractor** 뒤 지도(Classification Head + 정답 Label)와 비지도(Feature Clustering + Label 없음)를 비교합니다. 군집 A/B는 정상/불량 Class 이름이 아닙니다.
 - **학습 구분은 Head 교체 자체가 아니라 Label 사용 여부와 학습 목표**에 따른 것입니다. 특징 추출기 자체는 별도 방식으로 사전학습할 수 있으므로, 이 그림은 같은 Backbone을 고정해 후단만 비교한 예시임을 명시합니다.
 - Intro 13 + Course 46 = **총 59장**, 별도 Q&A 없는 120분 강의입니다.
 
