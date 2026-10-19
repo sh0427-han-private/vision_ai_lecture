@@ -163,7 +163,7 @@ assert seq.index('and-rule') < seq.index('perceptron') < seq.index('and-gate')
 assert seq.index('and-gate') < seq.index('xor-rule') < seq.index('xor-gate') < seq.index('relu')
 for concept, outputs in [('and-rule',[0,0,0,1]),('xor-rule',[0,1,1,0])]:
  slide=concepts[concept]
- assert slide.count('class="gb-example') == 4,(concept,'four visual truth table cases')
+ assert slide.count('<article class="gb-example') == 4,(concept,'four visual truth table cases')
  assert [int(x) for x in re.findall(r'<strong>([01])</strong><small>(?:켜짐|꺼짐)</small>',slide)] == outputs,concept
  assert 'gb-examples' in slide and 'gb-rule' in slide
 assert 'Step 활성화 퍼셉트론 뉴런 하나' in concepts['and-rule']
