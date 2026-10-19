@@ -155,7 +155,8 @@ assert 'clippedLine' in js_source
 print('GATE_ROTATION_QA_PASSED: W rotates effective linear boundary, b translates, XOR nonlinear contours clipped')
 
 assert 'cnn_banner.png' in concepts['transfer']
-assert '뇌의 작동을 그대로 재현한 모델은 아닙니다' in concepts['cnn-why']
+assert '완전 연결' in concepts['cnn-why'] and 'Kernel을 여러 위치에서 공유' in concepts['cnn-why']
+assert 'zebra_feature_photo.png' in concepts['cnn-why']
 assert seq.index('cnn-why') == seq.index('cnn-overview') + 1
 
 # Logic rules must precede their Perceptron and interactive boundary demonstrations.

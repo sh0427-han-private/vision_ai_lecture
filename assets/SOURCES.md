@@ -527,3 +527,9 @@ https://www.nature.com/articles/s42256-020-00257-z
 
 - Course11/Course31: Swapna K E · Developers Breach (2020), https://developersbreach.com/convolution-neural-network-deep-learning/ 의 기존 외부 `cnn_banner.png` 참조를 재사용한다. 실제 표시 시 인접 출처를 제공하고 접속 실패 시 로컬 자체 구조로 대체한다. 이번 환경에서는 원본 호스트 접속이 403이라 원본 이미지를 다운로드하거나 수정하지 않았다.
 - Course12 `cnn-why`: 경계/줄무늬·특징 조합·분류는 직접 작성한 HTML/SVG 개념도다. 실제 CNN 채널 출력 또는 뇌 측정 결과가 아니다.
+
+## 2026-10-19 · Course12 사진형 얼룩말
+
+- `docs/assets/generated/zebra_feature_photo.png`: ImageGen 생성, 1536×1024. 실제 촬영물이 아닌 사진형 생성 자산. 외부 원본 이미지는 사용하지 않았다.
+- 생성 지시: 자연광의 초원에서 오른쪽을 바라보며 서 있는 얼룩말 한 마리, 선명한 검정/흰 줄무늬, 전체 몸과 다리, 글자·테두리·도식 없는 사실적인 야생동물 사진 구도.
+- 같은 파일을 SVG viewport로 줄무늬 `(650,340,250,250)`, 목/머리 `(550,30,820,640)`, 전체 `(0,0,1536,1024)`에 표시한다. 사진형 그림의 확대이지 CNN의 실측 Feature Map이 아니다. 사용자 요청으로 발표 화면의 개념도/뇌 관련 단서 문구는 제거하고 생성 이력은 이 문서에 보존한다.
