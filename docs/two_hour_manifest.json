@@ -1,5 +1,5 @@
 {
-  "version": "20261019-gate-rules-58",
+  "version": "20261019-perceptron-input-weights-first",
   "duration_minutes": 120,
   "teaching_minutes": 120,
   "discussion_minutes": 0,
@@ -99,13 +99,13 @@
       },
       {
         "slide": 6,
-        "title": "AND Gate · 두 입력이 모두 1일 때",
-        "concept": "and-rule"
+        "title": "퍼셉트론 · Wx + b에서 판정까지",
+        "concept": "perceptron"
       },
       {
         "slide": 7,
-        "title": "퍼셉트론 · Wx + b에서 판정까지",
-        "concept": "perceptron"
+        "title": "AND Gate · 두 입력이 모두 1일 때",
+        "concept": "and-rule"
       },
       {
         "slide": 8,
@@ -322,7 +322,7 @@
       "minutes": 10
     },
     {
-      "name": "AND/XOR 동작과 퍼셉트론·비선형성",
+      "name": "퍼셉트론 → AND/XOR의 규칙과 비선형성",
       "deck": "vision_ai_course",
       "start": 6,
       "end": 12,
