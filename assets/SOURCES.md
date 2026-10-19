@@ -541,3 +541,12 @@ https://www.nature.com/articles/s42256-020-00257-z
 - `docs/assets/lesson/lecture_rgb_channel_stack.svg` — 기존 P07 RGB 3-channel 설명 그림 재사용. 마지막 숫자 3은 공간 깊이가 아닌 채널 축.
 - P02 AI⊃ML⊃DL과 Computer Vision의 문제·기술 축, P03 가상 반복 검사, P08 사과 Frame 이동, P13 2×2 밝기/결함 매트릭스는 자체 HTML/SVG/CSS 개념 Figure. 별도 외부 Figure 복제 없음.
 - 기존 회랑 실사 출처: [Livioandronico2013, Wikimedia Commons, CC BY-SA 4.0](https://commons.wikimedia.org/wiki/File:Forced_perspective_gallery_by_Francesco_Borromini.jpg); P03 보조 사례로만 설명, 새 Figure에는 사용하지 않음.
+
+## Approved Vision AI group B P14–P18 (Builder, 2026-10-19)
+
+- P14/P18: `docs/assets/vision_task_apple_reference.jpg`, 동일 사과/결함 ROI `viewBox="440 100 300 300"`를 사용. 정답 Box는 `(x=565,y=197,w=53,h=57)`, 정답 Mask는 기존 `M581 201 …` path. 파란 주석은 **사람이 지정한 Ground Truth 예시**이며 AI의 추론 출력이 아님.
+- P15: PR #113의 Python `def add(a,b): return a+b` 단일 함수·두 입력/출력 연결은 변경 없이 재사용. 산술 1+1=2, 2+1=3.
+- P16: `vision_task_apple_reference.jpg` 불량 사과(밝음/0.48배 어두움)와 `docs/assets/generated/apple_studio_preview.png` 정상 사과(0.48배 어두움)를 양쪽 비교에 똑같이 재사용. 정상 이미지의 화면상 확대율을 낮춰 다른 구도에 의한 비교 왜곡을 줄였으나, **서로 다른 생성 이미지 두 원본**을 동일 촬영이라 주장하지 않음. 밝기 변환은 CSS 표시 시뮬레이션이며 모델 M/Prediction은 개념 Figure로 실측 훈련 결과가 아님.
+- P17: 기존 C04 발전사/사전학습 모델 개념을 C05 `model-choice`의 독립 검증 중심 선택 도식에 통합. Classifier/Detector 성능, 정량 비용 등 성능 수치는 발명하지 않음.
+- P18: Classification Class / Detection defect Box + Class / Segmentation pixel Mask의 제작 부담은 **정성적 상대 비교**. 실제 어노테이션 시간·인건비 측정 수치가 아님.
+- 새 Figure는 로컬 HTML/CSS/SVG로 직접 작성했고, 별도 외부 논문 Figure/실사/CDN을 삽입하지 않음.
