@@ -35,3 +35,18 @@
   .lesson-deck .neuron-story .pw-equations{grid-template-columns:1fr;gap:4px;}
   .lesson-deck .neuron-story .pw-equation span{font-size:18px;}
 }
+
+/* Course 6: one educational shared W and one b, not the general per-input formula. */
+.lesson-deck .neuron-story .pw-equations--single{
+  grid-template-columns:minmax(0,1fr);max-width:790px;margin:10px auto 8px
+}
+.lesson-deck .neuron-story .pw-equations--single .pw-equation{
+  align-items:center;min-height:84px;padding:11px 23px
+}
+.lesson-deck .neuron-story .pw-equations--single .pw-equation span{
+  font-size:clamp(28px,2.25vw,36px)
+}
+@media(max-height:850px){
+ .lesson-deck .neuron-story .pw-equations--single{margin:5px auto 4px}
+ .lesson-deck .neuron-story .pw-equations--single .pw-equation{min-height:58px;padding:5px 12px}
+}
