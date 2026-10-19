@@ -72,17 +72,29 @@ def main():
   page.goto(f"{BASE}/vision_ai_course.html#slide-{number('rules-image')}")
   assert page.locator('.slide.active .rl-pane').count() == 2
   assert page.locator('.slide.active .rl-photo-card').count() == 6
-  assert page.locator('.slide.active .rl-photo-card--dark').count() == 4
-  assert page.locator('.slide.active .rl-image-rule').count() == 1
-  assert 'brown_pixels >= k' in page.locator('.slide.active .rl-rule-code').inner_text()
-  assert page.locator('.slide.active .rl-rule-questions span').count() == 3
-  assert page.locator('.slide.active .rl-training-figure .rl-train-step').count() == 3
-  assert '라벨링 데이터' in page.locator('.slide.active').inner_text()
+  assert page.locator('.slide.active .b55-dark-photo').count() == 4
+  assert page.locator('.slide.active .b55-rule-card').count() == 1
+  assert '갈색 Pixel 수 ≥ k ?' in page.locator('.slide.active .b55-rule-card').inner_text()
+  assert '그림자?' in page.locator('.slide.active .b55-rule-card').inner_text()
+  assert page.locator('.slide.active .b55-ml-path .b55-step').count() == 6
+  assert '정답 사진 + Label' in page.locator('.slide.active').inner_text()
   assert '지도학습(Supervised Learning)' in page.locator('.slide.active').inner_text()
-  assert '새 사진 성능은 따로 검증해야 합니다' in page.locator('.slide.active').inner_text()
-  assert '실제 학습·예측 결과가 아닙니다' in page.locator('.slide.active').inner_text()
+  assert '독립' in page.locator('.slide.active').inner_text()
+  assert '실제 결과 미측정' in page.locator('.slide.active').inner_text()
   for img in page.locator('.slide.active .rl-photo-card img').all():
    assert img.evaluate('(el)=>el.complete&&el.naturalWidth>0'), img.get_attribute('src')
+   # P14-P18: GT annotations, shared model and label preparation cost.
+   page.goto(f"{BASE}/vision_ai_course.html#slide-{number('task')}")
+   assert page.locator('.slide.active .b55-tasks article').count()==3
+   page.goto(f"{BASE}/vision_ai_course.html#slide-{number('rules-image')}")
+   assert page.locator('.slide.active .b55-model').count()==1
+   assert page.locator('.slide.active .b55-training').count()==1
+   assert page.locator('.slide.active .b55-inference').count()==1
+   assert page.locator('.slide.active .b55-prediction').count()==1
+   page.goto(f"{BASE}/vision_ai_course.html#slide-{number('model-choice')}")
+   assert page.locator('.slide.active .b55-gate').count()==3
+   page.goto(f"{BASE}/vision_ai_course.html#slide-{number('task-model-data')}")
+   assert page.locator('.slide.active .b55-label-row').count()==3
   # Same frozen pretrained CNN output can feed a supervised head or an
   # unlabeled feature clustering stage; these are not equivalent class labels.
   page.goto(f"{BASE}/vision_ai_course.html#slide-{number('cnn-learning-paths')}")
