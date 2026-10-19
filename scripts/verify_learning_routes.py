@@ -210,7 +210,7 @@ def main():
   assert page.locator('[data-iteration]').inner_text()=='0'
   assert float(page.locator('[data-weight]').inner_text())==.5
   # Recompute the educational validation results when the learner changes threshold.
-  page.goto(f"{BASE}/vision_ai_course.html#slide-{number('project-run')}")
+  page.goto(f"{BASE}/vision_ai_course.html#slide-{number('threshold')}")
   page.wait_for_selector('[data-project-evaluation][data-ready="true"]')
   for threshold,expected in [('0.5',[18,2,4,76]),('0.3',[20,0,30,50]),('0.7',[11,9,2,78])]:
    page.select_option('[data-project-threshold]',threshold)
@@ -222,6 +222,20 @@ def main():
    assert sum(actual)==100
    precision=100*expected[0]/(expected[0]+expected[2]);recall=100*expected[0]/20
    assert page.locator('[data-project-result]').inner_text()==f'Precision {precision:.1f}% · Recall {recall:.1f}%'
+   bins=page.locator('[data-score-bin]').evaluate_all("ns=>ns.map(n=>({p:+n.dataset.positive,n:+n.dataset.negative}))")
+   assert len(bins)==10 and sum(b['p'] for b in bins)==20 and sum(b['n'] for b in bins)==80
+   assert float(page.locator('[data-threshold-line]').get_attribute('data-threshold-line'))==float(threshold)
+  page.locator('[data-project-threshold]').focus();page.keyboard.press('Home')
+  assert page.locator('[data-project-threshold]').input_value()=='0.3'
+  page.keyboard.press('End')
+  assert page.locator('[data-project-threshold]').input_value()=='0.7'
+  page.click('[data-project-reset]')
+  assert page.locator('[data-project-threshold]').input_value()=='0.5'
+  assert [int(page.locator(f'[data-project-{k}]').inner_text()) for k in ['tp','fn','fp','tn']]==[18,2,4,76]
+  page.goto(f"{BASE}/vision_ai_course.html#slide-{number('metrics')}")
+  dots=page.locator('.slide.active .pf-metric-dots')
+  assert dots.nth(0).locator('span').count()==22 and dots.nth(0).locator('.pf-tp').count()==18 and dots.nth(0).locator('.pf-fp').count()==4
+  assert dots.nth(1).locator('span').count()==20 and dots.nth(1).locator('.pf-tp').count()==18 and dots.nth(1).locator('.pf-fn').count()==2
   page.goto(f"{BASE}/vision_ai_course.html#slide-{number('project-check')}")
   page.click('.project-answer summary')
   assert page.locator('.project-answer p').is_visible()

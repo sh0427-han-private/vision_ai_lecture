@@ -279,16 +279,11 @@
       },
       {
         "slide": 42,
-        "title": "실행 결과 확인 · 임계값과 오류 수",
-        "concept": "project-run"
-      },
-      {
-        "slide": 43,
         "title": "실패 사진이 알려 주는 것",
         "concept": "project-iterate"
       },
       {
-        "slide": 44,
+        "slide": 43,
         "title": "Vision AI 원리 · 무엇을 설명할 수 있나?",
         "concept": "project-check"
       }
@@ -348,7 +343,7 @@
       "name": "원리 회수",
       "deck": "vision_ai_course",
       "start": 40,
-      "end": 44,
+      "end": 43,
       "minutes": 5
     }
   ]

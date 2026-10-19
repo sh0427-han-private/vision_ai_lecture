@@ -9,13 +9,13 @@ Integration branch: `automation/approved-55-20261019`. Main baseline ad3f0a8; ap
 | C | P19–27 |23|fc8d463 (cache/test follow-up014c4c3)|PASS independent|9 slides/18+2 independent views, 2 viewport interaction/geometry runs, Critical0/Major0/Minor0|
 | D | P28–36 |22|9a4eacf → ae99806|PASS final ae99806|18+2 independent views; Critical0/Major0/Minor0. 24 displayed matrices/9 windows/PNG failure PASS; SqueezeNet re-inference NOT VERIFIED|
 | E | P37–40 |9|39e9cc5|PASS independent|8 independent views; Critical0/Major0/Minor0; split/group/GT transforms verified|
-| F | P41–47 |15|—|pending|Implemented 7 lessons; training-log absorbed. 14 integrated views, Gradient/parameter/source checks PASS; independent review pending|
-| G | P48–52 |10|—|pending|Pending|
+| F | P41–47 |15|219e2ba|PASS independent|14+2 independent views; Critical0/Major0/Minor0; actual learning/6 update endpoints/local transfer verified|
+| G | P48–52 |10|—|pending|Implemented; 10 integrated views/100 Score/IoU checks PASS; independent review next|
 | H | P53–55 |5|—|pending|Pending|
 
 Actual checks: Python3.12, Playwright/Pillow/lxml/system Chromium154 imports/version pass. Intro Pixel browser QA started. Existing main exact-text static assertion fails; no assertion bypass counted as pass. GitHub API and official web host access blocked (403), native Git fetch successful. See ENVIRONMENT.md. Existing screenshots/CI and old independent A review are historical evidence, not approval of current HEAD.
 
-Next: F implementation and fixed-SHA review, then G–H. Classroom rehearsal/learner feedback and public Pages rendering: NOT VERIFIED. These require actual external observations; technical Build PASS will be explicitly distinguished.
+Next: G fixed-SHA review, then H and final55 QA. Classroom rehearsal/learner feedback and public Pages rendering: NOT VERIFIED. These require actual external observations; technical Build PASS will be explicitly distinguished.
 
 Historical Builder progress is available at commit9ce8be57:BUILDER_PROGRESS.md; this file is the consolidated active status record.
 
