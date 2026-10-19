@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="ko"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Vision AI 기초 · 원리 중심 · 46장</title>
+<title>Vision AI 기초 · 원리 중심 · 45장</title>
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="slide.css?v=vision-first-introfit-20261015-1">
 <link rel="stylesheet" href="lesson.css?v=static-figures-20261018-1">
@@ -11,7 +11,7 @@
 <script src="slide.js?v=prevent-toc-wheel-20261016-1" defer></script>
 <script src="interactive_lessons.js?v=20261015-1" defer></script>
 <link rel="stylesheet" href="lecture_sidebar.css?v=20261015-1">
-<script src="lecture_outline.js?v=cnn-paths-20261019-1" defer></script>
+<script src="lecture_outline.js?v=no-preprocess-20261019-1" defer></script>
 <script src="lecture_sidebar.js?v=20261015-1" defer></script>
 <link rel="stylesheet" href="cnn_numeric_why_logic.css?v=20261017-1">
 <link rel="stylesheet" href="neuron_concept_flow.css?v=20261017-3">
@@ -199,7 +199,7 @@
 <p class="slide-subtitle">동일한 원본 영상 A·B·C에서 각각 3개 Frame을 뽑은 예시입니다. 무작위 Frame 분할과 원본 Video를 통째로 나누는 Group Split을 비교합니다.</p>
 <figure class="lesson-figure"><div class="figure-display"><img src="assets/lesson/lesson_video_group_split_comparison.svg?v=pedagogic-20261013-2" alt="9개 프레임을 무작위로 나누면 영상 A B C가 Train Validation Test에 중복되지만 영상별 Group Split에서는 원본 영상이 서로 겹치지 않는 비교"></div></figure>
 <p class="lesson-takeaway">같은 원본 영상의 Frame이 Train·Validation·Test에 동시에 들어가지 않게 합니다. 새 설비 성능을 평가하려면 설비 자체로 Group을 정합니다.</p></div></section>
-<section class="slide" data-concept="preprocess" data-topic="전처리" data-level="basic"><div class="slide-inner two-hour"><h2 class="slide-title">Preprocessing · 입력 크기를 맞추는 방법</h2><p class="slide-subtitle">모델이 요구하는 입력 크기에 사진을 맞출 때, <strong>비율을 억지로 늘릴지, 비율을 유지하고 빈 공간을 채울지</strong>에 따라 모습이 달라집니다.</p><div class="lf-simple-photo-grid" role="group" aria-label="동일 사과 사진을 원본 비율, 강제 정사각형, 비율 유지 Letterbox로 비교"><article><h3>원본 · 3:2</h3><div class="lf-prep-box lf-prep-box--wide"><img src="assets/vision_task_apple_reference.jpg" alt="3대2 사과 사진 원본" class="lf-prep-original"></div><p>기준 사진의 비율</p></article><article><h3>왜곡 Resize · 1:1</h3><div class="lf-prep-box"><img src="assets/vision_task_apple_reference.jpg" alt="원본을 강제로 정사각형에 늘린 결과" class="lf-prep-stretch"></div><p>원본의 가로·세로 비율이 달라짐</p></article><article><h3>Letterbox · 1:1</h3><div class="lf-prep-box"><img src="assets/vision_task_apple_reference.jpg" alt="원본 비율을 유지하면서 빈 영역을 채운 결과" class="lf-prep-letterbox"></div><p>비율 유지 · 남는 영역을 채움</p></article></div><p class="lf-figure-note">사전학습 모델에 정해진 입력 정규화 설정을 유지하고, 내 Dataset에서 평균·표준편차를 새로 계산한다면 Train에서만 구합니다.</p><p class="lesson-takeaway">작은 결함은 축소 시 사라질 수 있습니다. <strong>학습과 추론은 이미지 크기·색 채널 순서·값 범위·정규화 규격을 동일하게</strong> 맞춥니다.</p><p class="lf-figure-note">한 장의 교육용 생성 사과 원본으로 브라우저 표시 크기만 다르게 한 비교 · 실제 저장된 학습 텐서와 모델 결과가 아님</p></div></section>
+
 <section class="slide" data-concept="augment" data-topic="Data Augmentation" data-level="basic"><div class="slide-inner two-hour"><h2 class="slide-title">Data Augmentation · 같은 정답, 다른 조건</h2><p class="slide-subtitle">Train 사진에 밝기·회전 등의 변화를 만들어 <strong>촬영 조건이 달라도 중요한 결함을 찾도록</strong> 학습시킬 수 있습니다. 단, Label이 바뀌면 안 됩니다.</p><div class="lf-augment-grid" role="group" aria-label="같은 사과 사진의 원본, 어두운 표시, 회전, 부분 가림 비교"><article><h3>원본</h3><div class="lf-aug-frame"><img src="assets/vision_task_apple_reference.jpg" alt="결함 사과 원본"></div><p>정답: 결함 있음</p></article><article><h3>밝기 변화</h3><div class="lf-aug-frame lf-aug-dark"><img src="assets/vision_task_apple_reference.jpg" alt="밝기가 감소한 동일 사과"></div><p>밝기 숫자만 달라짐</p></article><article><h3>회전</h3><div class="lf-aug-frame lf-aug-rotate"><img src="assets/vision_task_apple_reference.jpg" alt="20도 회전한 동일 사과"></div><p>위치·방향이 달라짐</p></article><article><h3>부분 가림</h3><div class="lf-aug-frame lf-aug-occlude"><img src="assets/vision_task_apple_reference.jpg" alt="일부 영역을 가린 동일 사과"></div><p>결함을 가리지 않아야 함</p></article></div><p class="lesson-takeaway">원본 그룹을 먼저 Train/Validation/Test로 나누고 <strong>Train에서만 증강</strong>합니다. Box/Mask가 있으면 회전·Crop에 맞춰 Label도 함께 바꿉니다.</p><p class="lf-figure-note">한 장의 프로젝트 생성 사과 사진에 화면상 CSS 변환을 적용한 예시 · 실제 학습 데이터 파일 생성이나 모델 출력이 아님</p></div></section>
 <section class="slide" data-concept="learn" data-topic="학습의 의미" data-level="basic">
 <div class="slide-inner">
