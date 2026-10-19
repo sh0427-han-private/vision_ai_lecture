@@ -6,12 +6,17 @@ python scripts/verify_intro_pixel_interactive.py (requires Playwright Chromium).
 from __future__ import annotations
 
 import math
+import os
+import json
+from pathlib import Path
 import re
 
 from playwright.sync_api import sync_playwright
 
 
-BASE_URL = "http://127.0.0.1:8765/intro.html"
+BASE_URL = os.getenv("AUDIT_BASE_URL", "http://127.0.0.1:8765") + "/intro.html"
+MANIFEST = json.loads((Path(__file__).resolve().parents[1] / "docs/two_hour_manifest.json").read_text())
+INTRO = {entry["concept"]: entry["slide"] for entry in MANIFEST["decks"]["intro"]}
 
 
 def numbers(page, selector: str) -> list[int]:
@@ -28,11 +33,11 @@ def main() -> None:
         errors: list[str] = []
         page.on("pageerror", lambda error: errors.append(str(error)))
 
-        page.goto(BASE_URL + "#slide-1", wait_until="networkidle")
+        page.goto(BASE_URL + f"#slide-{INTRO['start']}", wait_until="networkidle")
         assert "AI와 시각의 출발점" in page.locator(".slide.active").inner_text()
-        page.goto(BASE_URL + "#slide-2", wait_until="networkidle")
+        page.goto(BASE_URL + f"#slide-{INTRO['scene']}", wait_until="networkidle")
         assert "사람의 시각" in page.locator(".slide.active").inner_text()
-        page.goto(BASE_URL + "#slide-3", wait_until="networkidle")
+        page.goto(BASE_URL + f"#slide-{INTRO['photo-numbers']}", wait_until="networkidle")
         page.wait_for_function(
             "() => document.querySelector('[data-apple-matrix-bridge]')"
             "?.dataset.appleMatrixReady === 'true'"
@@ -73,7 +78,7 @@ def main() -> None:
         assert bridge["actual"] == bridge["expected"], bridge
         assert len(set(bridge["actual"])) > 10, bridge
         assert all(0 <= x <= 255 for x in bridge["actual"]), bridge
-        page.goto(BASE_URL + "#slide-4", wait_until="networkidle")
+        page.goto(BASE_URL + f"#slide-{INTRO['gray']}", wait_until="networkidle")
         page.locator("[data-gray-coordinate]").wait_for()
         page.wait_for_function(
             "() => document.querySelector('[data-gray-values]')"
@@ -109,7 +114,7 @@ def main() -> None:
         page.locator("[data-gray-reset]").click()
         assert numbers(page, "[data-gray-values]") == second_values
 
-        page.goto(BASE_URL + "#slide-5", wait_until="networkidle")
+        page.goto(BASE_URL + f"#slide-{INTRO['rgb']}", wait_until="networkidle")
         page.wait_for_function(
             "() => document.querySelector('[data-rgb-shape]').textContent"
             ".includes('× 3')"
@@ -145,11 +150,11 @@ def main() -> None:
         ]
         assert result == expected, (result, expected)
         # Same source image must generate three real output rasters.
-        page.goto(BASE_URL + "#slide-6", wait_until="networkidle")
+        page.goto(BASE_URL + f"#slide-{INTRO['hwc']}", wait_until="networkidle")
         assert "1,843,200" in page.locator(".slide.active").inner_text()
         assert page.locator(".intro-rgb-data-figure img").count() == 1
         assert page.locator(".slide.active .callout").count() == 0
-        page.goto(BASE_URL + "#slide-7", wait_until="networkidle")
+        page.goto(BASE_URL + f"#slide-{INTRO['resolution']}", wait_until="networkidle")
         page.wait_for_function(
             "() => document.querySelector('[data-resolution-comparison]')"
             "?.dataset.resolutionReady === 'true'",

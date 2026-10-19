@@ -6,6 +6,7 @@ on:
       - 'docs/**'
       - 'scripts/audit_visual_slides.py'
       - 'scripts/verify_learning_routes.py'
+      - 'scripts/verify_intro_pixel_interactive.py'
       - '.github/workflows/visual-audit.yml'
   workflow_dispatch:
 
@@ -30,7 +31,7 @@ jobs:
           python -m pip install playwright pillow
           python -m playwright install --with-deps chromium
 
-      - name: Render 50 slides at two resolutions
+      - name: Render 56 slides at two resolutions
         run: |
           python -m http.server 8765 --directory docs > /tmp/lecture-http.log 2>&1 &
           python scripts/audit_visual_slides.py
@@ -45,7 +46,7 @@ jobs:
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: visual-audit-50-slides
+          name: visual-audit-56-slides
           path: visual_audit_output/
           retention-days: 14
           if-no-files-found: warn
