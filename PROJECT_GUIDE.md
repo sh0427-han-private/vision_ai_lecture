@@ -2,6 +2,8 @@
 
 Vision AI를 처음 접하는 사람을 대상으로 하는 입문 강의자료 제작 프로젝트입니다.
 
+> **최신 승인 기준 · 2026-10-19:** 55장 / 120분, Intro13 + Course42, A–H 순서는 [승인 스토리보드](planning/SLIDE_STORYBOARD.md)와 [최신 운영안](TWO_HOUR_LECTURE_PLAN.md)을 따릅니다. 실제 구현·검수 상태는 [automation/PROGRESS.md](automation/PROGRESS.md), 실제 번호는 Manifest/Outline이 기준입니다. 아래 50/54/55/56/58/59/99장 및 옛 Course 번호는 변경 이력이며 현재 승인안과 충돌할 때 적용하지 않습니다. main 병합·공개 배포는 최종 승인 전 수행하지 않습니다.
+
 ## Links
 
 - GitHub Repository: https://github.com/sh0427-han/vision_ai_lecture

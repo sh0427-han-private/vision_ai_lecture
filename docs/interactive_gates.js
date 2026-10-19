@@ -170,8 +170,8 @@
         '<small>AI 판정 <strong>'+guesses[i]+'</strong></small></span>').join('');
       const explanation=isXor
         ? mode==='linear'
-          ? '선형층을 두 개 연결해도 최종 결과는 한 직선입니다. XOR의 네 정답을 모두 나눌 수 없습니다.'
-          : '중간에 |t|를 추가하면 두 경계가 생기고 XOR 네 정답을 분리할 수 있습니다.'
+          ? '가중합만 연결하면 한 직선입니다.'
+          : '|t|는 꺾인 경계를 표현합니다.'
         : 'W는 직선의 기울기(-W)를, b는 위치(-b)를 바꿉니다.';
       summary.textContent='AI 판정 '+hits+' / 4개 일치 · '+explanation;
       if(isXor){
@@ -180,8 +180,8 @@
           ? '최종 z = ('+num(w)+')x₁ + ('+num(v)+')x₂ + ('+num(bias)+') → 직선 하나'
           : 't='+num(values.w1)+'x₁+x₂+('+num(values.b1)+'),  z='+num(values.w2)+'|t|+x₁+('+num(values.b2)+')';
         if(stage) stage.textContent=mode==='linear'
-          ? 'Layer 1: t=W₁x₁+x₂+b₁ → Layer 2: z=W₂t+x₁+b₂ = 최종 Wx+b, 직선 하나'
-          : 'Layer 사이에 |t|=ReLU(t)+ReLU(−t) 추가 → 최종 두 경계로 XOR 분리';
+          ? '선형 g(t)=t · 최종 경계는 직선 하나'
+          : 'Layer 사이에 |t|=ReLU(t)+ReLU(−t) · 꺾인 경계 표현';
       }else{
         equation.textContent='z = '+num(values.w)+'x₁ + x₂ + ('+num(values.b)+') · 경계 x₂=−Wx₁−b';
       }

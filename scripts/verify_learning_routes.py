@@ -72,42 +72,58 @@ def main():
   page.goto(f"{BASE}/vision_ai_course.html#slide-{number('rules-image')}")
   assert page.locator('.slide.active .rl-pane').count() == 2
   assert page.locator('.slide.active .rl-photo-card').count() == 6
-  assert page.locator('.slide.active .rl-photo-card--dark').count() == 4
-  assert page.locator('.slide.active .rl-image-rule').count() == 1
-  assert 'brown_pixels >= k' in page.locator('.slide.active .rl-rule-code').inner_text()
-  assert page.locator('.slide.active .rl-rule-questions span').count() == 3
-  assert page.locator('.slide.active .rl-training-figure .rl-train-step').count() == 3
-  assert '라벨링 데이터' in page.locator('.slide.active').inner_text()
+  assert page.locator('.slide.active .b55-dark-photo').count() == 4
+  assert page.locator('.slide.active .b55-rule-card').count() == 1
+  assert '갈색 Pixel 수 ≥ k ?' in page.locator('.slide.active .b55-rule-card').inner_text()
+  assert '그림자?' in page.locator('.slide.active .b55-rule-card').inner_text()
+  assert page.locator('.slide.active .b55-ml-path .b55-step').count() == 6
+  assert '정답 사진 + Label' in page.locator('.slide.active').inner_text()
   assert '지도학습(Supervised Learning)' in page.locator('.slide.active').inner_text()
-  assert '새 사진 성능은 따로 검증해야 합니다' in page.locator('.slide.active').inner_text()
-  assert '실제 학습·예측 결과가 아닙니다' in page.locator('.slide.active').inner_text()
-  for img in page.locator('.slide.active .rl-photo-card img').all():
-   assert img.evaluate('(el)=>el.complete&&el.naturalWidth>0'), img.get_attribute('src')
+  assert '독립' in page.locator('.slide.active').inner_text()
+  assert '미측정' in page.locator('.slide.active .b55-prediction').inner_text()
+  page.wait_for_function("""() => {
+   const images = [...document.querySelectorAll('.slide.active .rl-photo-card img')];
+   return images.length === 6 &&
+     images.every(img => img.complete && img.naturalWidth > 0);
+  }""", timeout=15000)
+  assert page.locator('.slide.active .rl-photo-card img').count() == 6
+  # P14-P18: GT annotations, shared model and label preparation cost.
+  page.goto(f"{BASE}/vision_ai_course.html#slide-{number('task')}")
+  assert page.locator('.slide.active .b55-tasks article').count()==3
+  page.goto(f"{BASE}/vision_ai_course.html#slide-{number('rules-image')}")
+  assert page.locator('.slide.active .b55-model').count()==1
+  assert page.locator('.slide.active .b55-training').count()==1
+  assert page.locator('.slide.active .b55-inference').count()==1
+  assert page.locator('.slide.active .b55-prediction').count()==1
+  page.goto(f"{BASE}/vision_ai_course.html#slide-{number('model-choice')}")
+  assert page.locator('.slide.active .b55-gate').count()==3
+  page.goto(f"{BASE}/vision_ai_course.html#slide-{number('task-model-data')}")
+  assert page.locator('.slide.active .b55-label-row').count()==3
   # Same frozen pretrained CNN output can feed a supervised head or an
   # unlabeled feature clustering stage; these are not equivalent class labels.
   page.goto(f"{BASE}/vision_ai_course.html#slide-{number('cnn-learning-paths')}")
   page.wait_for_selector('.slide.active .su-figure')
-  assert page.locator('.slide.active .su-stage--backbone').count()==1
-  assert page.locator('.slide.active .su-path').count()==2
-  assert '정상 / 불량' in page.locator('.slide.active .su-path--sup').inner_text()
-  assert '그룹 A / B' in page.locator('.slide.active .su-path--un').inner_text()
-  assert '학습 데이터의 Label과 학습 목표' in page.locator('.slide.active').inner_text()
+  assert page.locator('.slide.active .su-shared').count()==1
+  assert page.locator('.slide.active .su-path--sup, .slide.active .su-path--un').count()==2
+  assert '정상 / 불량' in page.locator('.slide.active .su-path--sup').text_content()
+  assert 'Group A / B' in page.locator('.slide.active .su-path--un').text_content()
+  assert 'Label 없이 특징 군집화' in page.locator('.slide.active').inner_text()
   page.goto(f"{BASE}/vision_ai_course.html#slide-{number('perceptron')}")
-  assert page.locator('.slide.active img[src*="perceptron_one_weight_ko.svg"]').count()==1
+  assert page.locator('.slide.active img[src*="perceptron_approved_c.svg"]').count()==1
   # General one-neuron perceptron first; AND logic rule is its application.
   page.goto(f"{BASE}/vision_ai_course.html#slide-{number('perceptron')}")
   assert '하나의 W와 b로 판정' in page.locator('.slide.active').inner_text()
-  assert page.locator('.slide.active .pw-equation').count()==1
-  assert 'W(x₁ + x₂) + b' in page.locator('.slide.active .pw-equations').inner_text()
+  assert 'z=W(x₁+x₂)+b' in page.locator('.slide.active .c55-neuron-note').inner_text()
+  assert '일반 뉴런은 입력마다 다른 Weight 가능' in page.locator('.slide.active .c55-neuron-note').inner_text()
   # Concept explanation before slider labs (the four cases are a visual truth table).
   page.goto(f"{BASE}/vision_ai_course.html#slide-{number('and-rule')}")
   assert page.locator('.slide.active .gb-example').count()==4
   assert '모두 1' in page.locator('.slide.active').inner_text()
-  assert '단일 퍼셉트론' in page.locator('.slide.active').inner_text()
+  assert 'z=0.5(x₁+x₂)−0.7' in page.locator('.slide.active').inner_text()
   page.goto(f"{BASE}/vision_ai_course.html#slide-{number('xor-rule')}")
   assert page.locator('.slide.active .gb-example').count()==4
   assert '서로 다를 때' in page.locator('.slide.active').inner_text()
-  assert '직선 하나로 분리할 수 없습니다' in page.locator('.slide.active').inner_text()
+  assert '직선 하나로 0과 1을 모두 분리할 수 없습니다' in page.locator('.slide.active').inner_text()
   # Course 7: W actually ROTATES the line, while b translates it.
   page.goto(f"{BASE}/vision_ai_course.html#slide-{number('and-gate')}")
   page.wait_for_selector('[data-gate-lab="and"][data-ready="true"]')
@@ -161,13 +177,23 @@ def main():
   assert page.locator('[data-gate-lab="xor"] [data-gate-mode="linear"]').get_attribute('aria-pressed')=='true'
   assert 'AI 판정 3 / 4개 일치' in page.locator('[data-gate-lab="xor"] [data-gate-summary]').inner_text()
   page.goto(f"{BASE}/vision_ai_course.html#slide-{number('padding')}")
-  assert page.locator('.lf-pad-shared .concept-matrix').count()==1
-  assert page.locator('.lf-pad-result .concept-matrix').count()==2
+  def shown_matrix(name):
+   return page.locator(f'.slide.active [data-matrix-name="{name}"]').evaluate("g=>{const c=+g.dataset.cols,a=[...g.querySelectorAll('text[data-row]')].map(t=>+t.textContent);return Array.from({length:a.length/c},(_,i)=>a.slice(i*c,(i+1)*c));}")
+  assert shown_matrix('padding-input')==[[1,2,3],[4,5,6],[7,8,9]]
+  assert shown_matrix('padding-output')==[[12,21,16],[27,45,33],[24,39,28]]
   page.goto(f"{BASE}/vision_ai_course.html#slide-{number('transfer')}")
-  assert page.locator('.zebra-transfer-legend article').count()==2
-  assert page.locator('.slide.active .lf-zebra > img').get_attribute('src') == page.locator('[data-concept="cnn-overview"] .lf-zebra > img').get_attribute('src')
-  assert 'Head 교체' in page.locator('.slide.active').inner_text()
-  assert 'Freeze' in page.locator('.slide.active').inner_text()
+  assert page.locator('.slide.active [data-transfer-mode]').count()==2
+  head_only=page.locator('.slide.active [data-transfer-mode="head-only"]')
+  assert head_only.locator('[data-update-target="head"]').count()==1
+  assert head_only.locator('[data-update-target="conv-a"], [data-update-target="conv-b"]').count()==0
+  fine_tune=page.locator('.slide.active [data-transfer-mode="fine-tune"]')
+  assert fine_tune.locator('[data-update-target="conv-b"]').count()==1
+  assert fine_tune.locator('[data-update-target="head"]').count()==1
+  assert page.locator('.slide.active img[src^="http"]').count()==0
+  page.click('[data-ref-concept="cnn-overview"]')
+  position(page,'vision_ai_course',number('cnn-overview'),COURSE_TOTAL)
+  page.wait_for_selector('[data-concept="cnn-overview"] [data-cnn-architecture][data-ready="true"]',state='attached')
+  assert page.locator('[data-concept="cnn-overview"] [data-cnn-architecture]').get_attribute('data-model-id')=='apple-cnn-1426'
   # Training demonstration really follows the same step as the adjacent slide.
   learn=number('learn')
   page.goto(f'{BASE}/vision_ai_course.html#slide-{learn}');position(page,'vision_ai_course',learn,COURSE_TOTAL)
@@ -176,8 +202,15 @@ def main():
   assert abs(float(page.locator('[data-loss]').inner_text())-.36)<1e-6
   page.click('[data-train-reset]')
   assert float(page.locator('[data-weight]').inner_text())==.5
+  page.click('[data-train-run]')
+  page.wait_for_function("Number(document.querySelector('[data-iteration]').textContent)>=1")
+  assert float(page.locator('[data-loss]').inner_text())<9
+  page.click('[data-train-reset]')
+  page.wait_for_timeout(400)
+  assert page.locator('[data-iteration]').inner_text()=='0'
+  assert float(page.locator('[data-weight]').inner_text())==.5
   # Recompute the educational validation results when the learner changes threshold.
-  page.goto(f"{BASE}/vision_ai_course.html#slide-{number('project-run')}")
+  page.goto(f"{BASE}/vision_ai_course.html#slide-{number('threshold')}")
   page.wait_for_selector('[data-project-evaluation][data-ready="true"]')
   for threshold,expected in [('0.5',[18,2,4,76]),('0.3',[20,0,30,50]),('0.7',[11,9,2,78])]:
    page.select_option('[data-project-threshold]',threshold)
@@ -189,10 +222,37 @@ def main():
    assert sum(actual)==100
    precision=100*expected[0]/(expected[0]+expected[2]);recall=100*expected[0]/20
    assert page.locator('[data-project-result]').inner_text()==f'Precision {precision:.1f}% · Recall {recall:.1f}%'
+   bins=page.locator('[data-score-bin]').evaluate_all("ns=>ns.map(n=>({p:+n.dataset.positive,n:+n.dataset.negative}))")
+   assert len(bins)==10 and sum(b['p'] for b in bins)==20 and sum(b['n'] for b in bins)==80
+   assert float(page.locator('[data-threshold-line]').get_attribute('data-threshold-line'))==float(threshold)
+  page.locator('[data-project-threshold]').focus();page.keyboard.press('Home')
+  assert page.locator('[data-project-threshold]').input_value()=='0.3'
+  page.keyboard.press('End')
+  assert page.locator('[data-project-threshold]').input_value()=='0.7'
+  page.click('[data-project-reset]')
+  assert page.locator('[data-project-threshold]').input_value()=='0.5'
+  assert [int(page.locator(f'[data-project-{k}]').inner_text()) for k in ['tp','fn','fp','tn']]==[18,2,4,76]
+  page.goto(f"{BASE}/vision_ai_course.html#slide-{number('metrics')}")
+  dots=page.locator('.slide.active .pf-metric-dots')
+  assert dots.nth(0).locator('span').count()==22 and dots.nth(0).locator('.pf-tp').count()==18 and dots.nth(0).locator('.pf-fp').count()==4
+  assert dots.nth(1).locator('span').count()==20 and dots.nth(1).locator('.pf-tp').count()==18 and dots.nth(1).locator('.pf-fn').count()==2
   page.goto(f"{BASE}/vision_ai_course.html#slide-{number('project-check')}")
   page.click('.project-answer summary')
   assert page.locator('.project-answer p').is_visible()
   assert 'Mask Label' in page.locator('.project-answer p').inner_text()
+  # H P53–P55: real DOM, same-photo downsampling and interactive recap.
+  page.goto(f"{BASE}/vision_ai_course.html#slide-{number('workflow')}")
+  assert page.locator('.slide.active [data-review-node]').count()==5
+  assert page.locator('.slide.active [data-question-node]').count()==4
+  page.goto(f"{BASE}/vision_ai_course.html#slide-{number('project-iterate')}")
+  page.wait_for_function("()=>[...document.querySelectorAll('.slide.active [data-h-review-resolution]')].every(c=>c.dataset.ready==='true')")
+  raster=page.locator('.slide.active [data-h-review-resolution]').evaluate_all(
+      "nodes=>nodes.map(c=>[Number(c.dataset.hReviewResolution),c.width,c.height])")
+  assert raster==[[240,240,240],[24,24,24]],raster
+  page.goto(f"{BASE}/vision_ai_course.html#slide-{number('project-check')}")
+  assert page.locator('.slide.active [data-review-answer]').count()==4
+  assert page.locator('.slide.active [data-review-answer]').evaluate_all(
+      "nodes=>nodes.map(n=>n.dataset.reviewAnswer)") == ['pixel','feature','learn','evaluate']
   # Every current slide remains reachable in order through the normal controls.
   for deck,total in DECKS:
    page.goto(f'{BASE}/{deck}.html#slide-1');position(page,deck,1,total)

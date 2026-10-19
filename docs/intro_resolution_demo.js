@@ -7,7 +7,7 @@
   const source = new Image();
   source.decoding = "async";
   const status = root.querySelector("[data-resolution-status]");
-  const region = { x: 0.57, y: 0.46, width: 0.065 };
+  const region = { x: 0.54, y: 0.27, width: 0.15 };
   const sizes = [
     {p:90, w:160, h:90},
     {p:180, w:320, h:180},

@@ -1,0 +1,3 @@
+/* Values measured from the same local educational source photograph. */
+(()=>{const root=document.querySelector('[data-light-values]');if(!root)return;
+ const image=new Image();image.onload=()=>{const c=document.createElement('canvas');c.width=image.naturalWidth;c.height=image.naturalHeight;const ctx=c.getContext('2d');ctx.drawImage(image,0,0);const rgb=[...ctx.getImageData(590,224,1,1).data].slice(0,3);const apply=k=>rgb.map(v=>Math.min(255,Math.round(v*k))).join(', ');root.textContent=`반점 Pixel (590,224) · 원본 [${apply(1)}] → 어둡게 [${apply(.45)}] / 밝게 [${apply(1.6)}] · 표시 밝기×k, 반올림·255 제한`;};image.src='assets/vision_task_apple_reference.jpg';})();

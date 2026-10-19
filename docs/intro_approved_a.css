@@ -1,0 +1,120 @@
+/* Approved group A — scoped figures. Preserves measured Pixel interaction styles. */
+.principles-intro .a55{max-width:1200px}
+.principles-intro .a55 figure{margin:0;min-width:0}
+.principles-intro .a55 .slide-subtitle{margin-bottom:16px;line-height:1.4}
+.principles-intro .a55 h3{margin:0 0 10px;font-size:clamp(18px,1.45vw,23px);color:#245b6a}
+.principles-intro .a55 img{display:block;width:100%;height:100%;object-fit:contain}
+.principles-intro .a55 svg{display:block;width:100%;height:100%}
+.principles-intro .a55 .a55-arrow{font-size:clamp(25px,2.7vw,43px);color:#368a7d;align-self:center;text-align:center}
+.principles-intro .a55 .a55-picture{height:248px;background:#eceff0;position:relative;overflow:hidden}
+.principles-intro .a55 figcaption{font-size:clamp(16px,1.18vw,20px);font-weight:750;color:#315d69;text-align:center;margin-top:8px}
+.principles-intro .a55 .a55-takeaway{font-size:clamp(19px,1.55vw,25px);font-weight:750;color:#196c5f;text-align:center;line-height:1.4;margin:22px 0 5px}
+.principles-intro .a55 .a55-foot{font-size:clamp(12px,.95vw,15px);line-height:1.35;color:#607982;margin:10px 0}
+.principles-intro .a55-chain,.principles-intro .a55-value-row{display:grid;grid-template-columns:minmax(0,35fr) 45px minmax(0,35fr) 45px minmax(0,30fr);gap:12px;align-items:center;margin:24px auto 4px}
+.principles-intro .a55-process{min-height:245px;background:#eaf6f1;border:2px solid #83b6a8;display:flex;flex-direction:column;justify-content:center;text-align:center;padding:15px}
+.principles-intro .a55-process strong{font-size:clamp(20px,1.6vw,26px);color:#1f7365}
+.principles-intro .a55-process p{font-size:clamp(18px,1.3vw,22px);line-height:1.5}
+.principles-intro .a55-process small{font-size:14px;color:#567b75}
+.principles-intro .a55-filmtag{text-align:center;font-size:13px;color:#536e77;margin-top:6px}
+.principles-intro .a55-taxonomy{display:grid;grid-template-columns:minmax(0,53fr) 102px minmax(0,47fr);gap:12px;align-items:center}
+.principles-intro .a55-taxonomy>div{min-width:0}
+.principles-intro .a55-technology,.principles-intro .a55-cv{min-height:380px}
+.principles-intro .a55-ai{background:#eef5fa;border:2px solid #7a9fb3;padding:15px;color:#24576b}
+.principles-intro .a55-ai b{font-size:23px}
+.principles-intro .a55-ai p{font-size:clamp(14px,1.06vw,17px);margin:5px 0 8px}
+.principles-intro .a55-ml{margin:13px 0 0 25px;padding:10px;background:#e5f1f2;border:2px solid #7aa7a9}
+.principles-intro .a55-dl{margin:11px 0 0 25px;padding:12px;background:#e5f5ea;border:2px solid #76aa88}
+.principles-intro .a55-dl strong{display:block;font-size:clamp(15px,1.1vw,18px);color:#2a765c}
+.principles-intro .a55-vision-link{text-align:center;color:#1b7868}
+.principles-intro .a55-vision-link b{font-size:18px}
+.principles-intro .a55-vision-link span{display:block;font-size:56px}
+.principles-intro .a55-vision-link small{font-size:14px;color:#557179}
+.principles-intro .a55-cv{background:#f8fbfc;border:2px solid #8caab7;padding:14px}
+.principles-intro .a55-cv-trad,.principles-intro .a55-cv-learn{border-left:5px solid #90a9b7;padding:12px;background:#edf2f3;margin:12px 0}
+.principles-intro .a55-cv-learn{border-color:#319077;background:#e8f5ee}
+.principles-intro .a55-cv b{font-size:clamp(17px,1.28vw,21px)}
+.principles-intro .a55-cv p{font-size:clamp(15px,1.06vw,18px);margin:5px 0}
+.principles-intro .a55-cv-case{display:flex;gap:12px;align-items:center;font-size:16px;font-weight:700;color:#267061}
+.principles-intro .a55-cv-case img{width:90px;height:75px;object-fit:cover}
+.principles-intro .a55-stage{background:#f8fafb;border-top:3px solid #85afb0;padding:12px;min-height:330px;text-align:center}
+.principles-intro .a55-stage .a55-picture{height:190px}
+.principles-intro .a55-stage p{font-size:clamp(15px,1.1vw,18px);line-height:1.35;margin:11px 0}
+.principles-intro .a55-stage>b{font-size:19px;color:#176d61}
+.principles-intro .a55-minis{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;height:185px;overflow:hidden;margin:3px 0 8px}
+.principles-intro .a55-minis img{object-fit:cover;background:#ddd;min-width:0;min-height:0}
+.principles-intro .a55-video{display:grid;grid-template-columns:minmax(0,30fr) minmax(0,45fr) minmax(0,25fr);gap:14px;margin:25px 0 15px}
+.principles-intro .a55-video>div{min-width:0;text-align:center}
+.principles-intro .a55-video h3{min-height:46px}
+.principles-intro .a55-vsingle .a55-picture{height:220px}
+.principles-intro .a55-pixel{position:absolute;bottom:7px;right:7px;background:#fffffff0;color:#216d61;font-size:15px;padding:5px}
+.principles-intro .a55-vsingle>b{display:block;font-size:24px;color:#286b78;margin-top:9px}
+.principles-intro .a55-time{color:#1b7d6a;text-align:left;border-bottom:3px solid #439786;font-size:17px;font-weight:750;padding-bottom:5px}
+.principles-intro .a55-strip{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin-top:13px}
+.principles-intro .a55-frame-photo{height:140px;overflow:hidden;background:#eef0f1;border:1px solid #8daab2}
+.principles-intro .a55-frame-photo img{object-fit:cover;transform:translateX(var(--offset));}
+.principles-intro .a55-strip figcaption{font-size:clamp(13px,.96vw,15px);white-space:nowrap}
+.principles-intro .a55-vframes p{margin:15px 0 8px;font-weight:750;font-size:18px;color:#3b6e78}
+.principles-intro .a55-vframes small{font-size:14px;color:#5e7780}
+.principles-intro .a55-vstack{border-left:2px solid #e0e9e9}
+.principles-intro .a55-stacked{position:relative;height:147px;width:120px;margin:22px auto 0}
+.principles-intro .a55-stacked span{position:absolute;top:20px;left:16px;width:86px;height:90px;border:2px solid #649896;background:#e3f0ed}
+.principles-intro .a55-stacked span:nth-child(1){transform:translate(-13px,-13px)}
+.principles-intro .a55-stacked span:nth-child(2){transform:translate(-6px,-6px)}
+.principles-intro .a55-vstack b{display:block;font-size:22px;color:#275c74}
+.principles-intro .a55-vstack strong{display:block;font-size:clamp(19px,1.55vw,25px);color:#197368;margin:10px 0}
+.principles-intro .a55-vstack p{font-size:15px;color:#5b7580}
+.principles-intro .a55-vformula{text-align:center;border-top:2px solid #8fb7a8;background:#eef6f1;padding:12px;font-size:clamp(16px,1.2vw,19px);color:#486b77}
+.principles-intro .a55-vformula b{color:#1f7a69}
+.principles-intro .a55-three-apple{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px;margin:24px 0}
+.principles-intro .a55-three-apple figure{background:#f7f9fa;text-align:center;padding:11px}
+.principles-intro .a55-three-apple svg{height:285px}
+.principles-intro .a55-three-apple figcaption{display:grid;gap:5px}
+.principles-intro .a55-three-apple span{font-size:clamp(16px,1.13vw,19px)}
+.principles-intro .a55-three-apple b{font-size:clamp(18px,1.4vw,23px);color:#21755f}
+.principles-intro .a55-three-apple figure:not(:first-child) b{color:#a05c37}
+.principles-intro .a55-dark{filter:brightness(.48)}
+.principles-intro .a55-conditions{display:grid;grid-template-columns:130px repeat(2,minmax(0,1fr));grid-template-rows:42px 205px 205px;gap:8px;align-items:stretch;margin:18px 0}
+.principles-intro .a55-conditions>span,.principles-intro .a55-conditions>b{text-align:center;color:#3f6673;font-size:clamp(16px,1.15vw,20px)}
+.principles-intro .a55-class-label{background:#e7f3f0;border-left:4px solid #37977e;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:8px}
+.principles-intro .a55-class-label b{font-size:22px;color:#287660}
+.principles-intro .a55-class-label span{font-size:15px;color:#50707a}
+.principles-intro .a55-defect-label{background:#f7eee7;border-color:#c27b44}
+.principles-intro .a55-defect-label b{color:#975936}
+.principles-intro .a55-condition-photo{background:#eceff0;overflow:hidden}
+.principles-intro [data-concept="lighting"] .a55-light-three{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media(max-height:850px){
+.principles-intro .a55 .slide-subtitle{margin-bottom:8px}
+.principles-intro .a55 .a55-picture{height:170px}
+.principles-intro .a55-process{min-height:170px;padding:8px}
+.principles-intro .a55-chain,.principles-intro .a55-value-row{margin:10px auto}
+.principles-intro .a55-ai{padding:8px}
+.principles-intro .a55-technology,.principles-intro .a55-cv{min-height:300px}
+.principles-intro .a55-ml,.principles-intro .a55-dl{margin-top:6px;padding:6px}
+.principles-intro .a55-cv{padding:8px}
+.principles-intro .a55-cv-trad,.principles-intro .a55-cv-learn{padding:8px;margin:8px 0}
+.principles-intro .a55-stage{min-height:275px}
+.principles-intro .a55-stage .a55-picture{height:135px}
+.principles-intro .a55-minis{height:132px}
+.principles-intro .a55-video{margin:8px 0}
+.principles-intro .a55-vsingle .a55-picture{height:145px}
+.principles-intro .a55-frame-photo{height:95px}
+.principles-intro .a55-stacked{height:100px;margin-top:8px}
+.principles-intro .a55-stacked span{height:68px;width:74px}
+.principles-intro .a55-three-apple svg{height:185px}
+.principles-intro .a55-conditions{grid-template-rows:28px 141px 141px;margin:8px 0}
+.principles-intro .a55 .a55-takeaway{margin:9px 0 3px}
+}
+@media(max-width:900px){
+.principles-intro .a55-taxonomy{grid-template-columns:minmax(0,1fr) 65px minmax(0,1fr);gap:6px}
+.principles-intro .a55-video{gap:7px}
+.principles-intro .a55-strip{gap:3px}
+.principles-intro .a55-chain,.principles-intro .a55-value-row{grid-template-columns:minmax(0,35fr) 26px minmax(0,35fr) 26px minmax(0,30fr);gap:6px}
+}
+
+/* Independent-review A-01/02/03 corrections. */
+.principles-intro .a55 .a55-foot,.principles-intro .a55-filmtag,.principles-intro .a55-process small,.principles-intro .a55-vframes small,.principles-intro .a55-vstack p,.principles-intro .a55-class-label span {font-size:17px;line-height:1.4}
+.principles-intro .a55-measure {position:relative}
+.principles-intro .a55-roi {position:absolute;left:59%;top:29%;width:6%;height:13%;border:2px solid #169c82;pointer-events:none}
+.principles-intro .a55-light-values {font-size:19px;line-height:1.5;text-align:center;color:#275b65}
+.principles-intro .a55-five {grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}
+.principles-intro [data-concept="transform"] .iv-image {height:min(27dvh,240px)}

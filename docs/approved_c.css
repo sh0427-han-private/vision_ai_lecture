@@ -1,0 +1,136 @@
+/* Approved P19–P27 and their shared, local CNN architecture map. */
+.principles-deck .c55{width:min(1220px,100%)}
+.principles-deck .c55 .slide-subtitle{max-width:1190px;margin-bottom:10px;line-height:1.4}
+.principles-deck .c55 .lesson-takeaway{font-size:clamp(19px,1.48vw,24px);line-height:1.4;margin:10px 0 4px;padding:9px 0}
+.principles-deck .c55-foot{color:#617785;font-size:clamp(16px,1.17vw,19px);line-height:1.35;margin:7px 0 0}
+.principles-deck .c55-map{display:flex;align-items:center;gap:15px;border-top:1px solid #d3e1e6;border-bottom:1px solid #d3e1e6;margin:9px 0 12px;padding:4px 0}
+.principles-deck .c55-map>span{flex:0 0 120px;font-size:18px;font-weight:700;line-height:1.25;color:#2b7d70}
+.principles-deck [data-cnn-map]{flex:1;min-width:0}
+.principles-deck .c55-mini-svg{display:block;width:100%;height:auto;max-height:55px}
+.principles-deck .c55-mini-svg .arch-node text{font-size:28px!important}
+.principles-deck .c55-architecture-svg{display:block;width:100%;height:auto}
+.principles-deck .c55-arch-figure{margin:10px 0 2px}
+.principles-deck .c55-params{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;font-size:clamp(17px,1.22vw,20px);color:#3e6474;margin:10px 0}
+.principles-deck .c55-params>span{border-top:2px solid #87b7ae;padding-top:7px;text-align:center}
+.principles-deck .c55-params strong{display:block;color:#1f7563;font-size:clamp(18px,1.4vw,23px)}
+.principles-deck .c55-why-grid{display:grid;grid-template-columns:1fr 1.4fr .85fr;gap:22px;align-items:stretch;margin:14px 0}
+.principles-deck .c55-why-grid article{min-width:0;border-top:2px solid #83aab4;padding-top:8px}
+.principles-deck .c55-why-grid h3{font-size:clamp(21px,1.65vw,27px);color:#2b6373;margin:0 0 8px}
+.principles-deck .c55-apple-photo{width:100%;height:250px;display:block}
+.principles-deck .c55-observations{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.principles-deck .c55-observations figure{margin:0;min-width:0;text-align:center}
+.principles-deck .c55-observations svg{display:block;width:100%;height:170px}
+.principles-deck .c55-observations figcaption{font-size:18px;color:#456a7b;line-height:1.3;margin:6px 0}
+.principles-deck .c55-why-grid p{font-size:clamp(18px,1.32vw,22px);line-height:1.4;color:#4c6a79;margin:8px 0}
+.principles-deck .c55-response-svg{width:100%;height:190px;display:block}
+.principles-deck .c55-summary-flow{border-top:1px solid #c4d9df;border-bottom:1px solid #c4d9df;padding:12px 0;text-align:center;font-size:clamp(20px,1.6vw,26px);color:#277568}
+.principles-deck .c55-gate-layout{display:grid;grid-template-columns:1.4fr .8fr;gap:28px;align-items:center;margin:12px 0}
+.principles-deck .c55 .gb-examples{gap:10px;margin:0}
+.principles-deck .c55 .gb-example{min-height:120px;gap:10px;padding:10px}
+.principles-deck .c55 .gb-state{width:43px;height:48px}
+.principles-deck .c55 .gb-result{min-width:48px}
+.principles-deck .c55 .gb-gate{min-width:57px;padding:8px 7px}
+.principles-deck .c55-gate-graph{margin:0;min-width:0;text-align:center}
+.principles-deck .c55-gate-graph svg{width:100%;height:280px;display:block}
+.principles-deck .c55-gate-graph figcaption{font-size:19px;color:#456d7a;margin-top:4px}
+.principles-deck .c55 .gb-lead{margin:5px 0 10px}
+.principles-deck .c55 .gb-rule{font-size:22px;padding:8px 20px}
+.principles-deck .c55 .gb-caption{font-size:19px;margin:8px 0}
+.principles-deck .c55 .gate-reference-figure{margin:5px 0;padding:0}
+.principles-deck .c55 .gate-reference-figure .figure-display{padding:0}
+.principles-deck .c55 .gate-reference-figure img{height:285px;max-height:32dvh;width:100%;object-fit:contain}
+.principles-deck .c55-neuron-note{display:flex;justify-content:space-between;gap:20px;padding:12px 16px;background:#f0f7f5;color:#376a6b;font-size:clamp(18px,1.4vw,22px);line-height:1.35}
+.principles-deck .c55 .nb-activation-charts{gap:28px;margin:8px 0}
+.principles-deck .c55 .nb-activation-charts svg{height:280px;max-height:31dvh}
+.principles-deck .c55 .nb-activation-charts figcaption{font-size:22px}
+.principles-deck .c55-affine{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin:18px 0}
+.principles-deck .c55-affine article{border-top:3px solid #82aab7;background:#f6f9fa;padding:16px 20px;min-width:0}
+.principles-deck .c55-affine article:last-child{border-color:#3d9e83;background:#f1f8f4}
+.principles-deck .c55-affine h3{font-size:25px;color:#2d6171;margin:0 0 15px}
+.principles-deck .c55-affine p{font-size:clamp(20px,1.6vw,26px);line-height:1.55;color:#315b6e;margin:8px 0}
+.principles-deck .c55-affine .c55-equation{font-size:clamp(24px,1.85vw,31px);font-weight:750;color:#247565;white-space:nowrap}
+.principles-deck .c55-bend{display:block;width:100%;height:125px}
+/* Gate labs retain their selectors and numeric logic. Reduce repeated prose, not font size. */
+.principles-deck .c55.gl-lesson .gl-layout{margin:8px 0;gap:19px;grid-template-columns:1fr 1.03fr}
+.principles-deck .c55 .gl-controls,.principles-deck .c55 .gl-visual{padding:12px 15px}
+.principles-deck .c55 .gl-plot{height:245px;min-height:0}
+.principles-deck .c55 .gl-plot text{font-size:27px}
+.principles-deck .c55 .gl-teacher{font-size:18px;line-height:1.35;margin:9px 0 0}
+.principles-deck .c55 .gl-description{font-size:18px;line-height:1.3}
+.principles-deck .c55 .gl-slider{font-size:18px}
+.principles-deck .c55 .gl-layer-card{padding:7px 11px}
+.principles-deck .c55 .gl-layer-card h4{font-size:21px;margin:0 0 5px}
+.principles-deck .c55 .gl-layer-card .gl-description{font-size:18px}
+.principles-deck .c55 .gl-equation{font-size:18px;line-height:1.35;padding:8px 10px}
+.principles-deck .c55 .gl-stage{font-size:18px;line-height:1.35;padding:8px 10px}
+.principles-deck .c55 .gl-legend{font-size:17px;margin:4px 0}
+.principles-deck .c55 .gl-outcome .gl-input,.principles-deck .c55 .gl-outcome small{font-size:17px}
+.principles-deck .c55 .gl-summary{font-size:18px;line-height:1.35;margin:8px 0 0}
+.principles-deck .c55 .gl-truth .gl-outcome{min-height:63px}
+.principles-deck .c55 .gl-mode button{font-size:17px;padding:7px 8px}
+.principles-deck .c55 .gl-controls>h3,.principles-deck .c55 .gl-visual h3{font-size:23px}
+.principles-deck .c55 .gl-stage-flow{display:block;width:100%;height:88px;margin:0}
+.principles-deck .c55 .gl-stage-flow text{font-size:30px}
+.principles-deck .c55 .gl-layout--xor .gl-summary{font-weight:600}
+.principles-deck .c55 .gl-truth .gl-outcome{line-height:1.1;gap:1px;padding:4px 3px}
+.principles-deck .c55 .gl-truth .gl-outcome small{line-height:1.1}
+.principles-deck .c55 .gl-layer-card h4{line-height:1.2}
+.principles-deck .c55 .gl-slider{line-height:1.2}
+.principles-deck .c55-layer-pair{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.principles-deck .c55-layer-pair .gl-layer-card h4{font-size:21px}
+.principles-deck .c55 .c55-layer-pair .gl-description{font-size:18px;line-height:1.25;margin:4px 0}
+.principles-deck .c55 .gl-presets{display:flex;gap:7px;align-items:center;flex-wrap:wrap;margin-top:6px}
+.principles-deck .c55 .gl-presets button{border:1px solid #78aa9d;background:#fff;border-radius:4px;color:#1a715e;font-size:17px;padding:6px 10px;cursor:pointer}
+.principles-deck .c55 .gl-presets button:focus-visible{outline:3px solid #247c6a;outline-offset:2px}
+@media(max-height:850px){
+ .principles-deck .c55-map{margin:5px 0 8px;padding:1px 0}
+ .principles-deck .c55-map>span{font-size:16px;flex-basis:112px}
+ .principles-deck .c55 .slide-title{margin-bottom:7px}
+ .principles-deck .c55 .slide-subtitle{margin-bottom:6px}
+ .principles-deck .c55 .lesson-takeaway{font-size:19px;margin:5px 0 2px;padding:6px 0}
+ .principles-deck .c55-foot{font-size:16px;margin-top:5px}
+ .principles-deck .c55-arch-figure{margin:5px 0 0}
+ .principles-deck .c55-params{margin:6px 0;gap:8px;font-size:17px}
+ .principles-deck .c55-params>span{padding-top:4px}
+ .principles-deck .c55-params strong{font-size:18px}
+ .principles-deck .c55-why-grid{margin:10px 0;gap:16px}
+ .principles-deck .c55-apple-photo{height:220px}
+ .principles-deck .c55-observations svg{height:155px}
+ .principles-deck .c55-response-svg{height:170px}
+ .principles-deck .c55-summary-flow{padding:8px 0;font-size:21px}
+ .principles-deck .c55-gate-layout{margin:8px 0;gap:20px}
+ .principles-deck .c55 .gb-example{min-height:106px;padding:7px;gap:8px}
+ .principles-deck .c55-gate-graph svg{height:247px}
+ .principles-deck .c55 .nb-activation-charts svg{height:235px}
+ .principles-deck .c55-affine{margin:12px 0;gap:18px}
+ .principles-deck .c55-affine article{padding:12px 15px}
+ .principles-deck .c55-affine h3{font-size:22px;margin-bottom:9px}
+ .principles-deck .c55-affine p{font-size:21px;margin:5px 0}
+ .principles-deck .c55-affine .c55-equation{font-size:25px}
+ .principles-deck .c55.gl-lesson .gl-layout{gap:15px;margin:4px 0}
+ .principles-deck .c55 .gl-controls,.principles-deck .c55 .gl-visual{padding:8px 11px}
+ .principles-deck .c55 .gl-plot{height:225px}
+ .principles-deck .c55 .gl-layout--xor .gl-plot{height:170px}
+ .principles-deck .c55 .gl-layout--xor .gl-plot text{font-size:33px}
+ .principles-deck .c55 .gl-layer-card{padding:5px 9px}
+ .principles-deck .c55 .gl-layer-card h4{font-size:19px;margin-bottom:3px}
+ .principles-deck .c55 .gl-layer-card .gl-description{font-size:16px;line-height:1.25}
+ .principles-deck .c55 .gl-equation{font-size:17px;padding:5px 7px;line-height:1.3;margin:3px 0}
+ .principles-deck .c55 .gl-stage{font-size:17px;padding:5px 7px;margin:3px 0}
+ .principles-deck .c55 .gl-summary{font-size:17px;margin:4px 0 0}
+ .principles-deck .c55 .gl-truth .gl-outcome{min-height:58px}
+ .principles-deck .c55 .gl-slider{font-size:17px}
+ .principles-deck .c55 .gl-stage-flow{height:55px}
+ .principles-deck .c55 .gl-legend{font-size:16px}
+ .principles-deck .c55 .gl-presets{margin:3px 0;gap:5px}
+ .principles-deck .c55 .gl-presets button{font-size:16px;padding:4px 7px}
+}
+@media(max-width:800px){
+ .principles-deck .c55-map>span{flex-basis:70px;font-size:12px}
+ .principles-deck .c55-why-grid{gap:8px}
+ .principles-deck .c55-observations{gap:3px}
+ .principles-deck .c55-gate-layout{grid-template-columns:1.4fr 1fr;gap:10px}
+ .principles-deck .c55 .gb-example{gap:3px}
+ .principles-deck .c55 .gb-state{width:25px;height:30px}
+ .principles-deck .c55-affine{gap:8px}
+}

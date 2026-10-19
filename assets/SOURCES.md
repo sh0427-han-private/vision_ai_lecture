@@ -533,3 +533,54 @@ https://www.nature.com/articles/s42256-020-00257-z
 - `docs/assets/generated/zebra_feature_photo.png`: ImageGen 생성, 1536×1024. 실제 촬영물이 아닌 사진형 생성 자산. 외부 원본 이미지는 사용하지 않았다.
 - 생성 지시: 자연광의 초원에서 오른쪽을 바라보며 서 있는 얼룩말 한 마리, 선명한 검정/흰 줄무늬, 전체 몸과 다리, 글자·테두리·도식 없는 사실적인 야생동물 사진 구도.
 - 같은 파일을 SVG viewport로 줄무늬 `(650,340,250,250)`, 목/머리 `(550,30,820,640)`, 전체 `(0,0,1536,1024)`에 표시한다. 사진형 그림의 확대이지 CNN의 실측 Feature Map이 아니다. 사용자 요청으로 발표 화면의 개념도/뇌 관련 단서 문구는 제거하고 생성 이력은 이 문서에 보존한다.
+
+## Approved Vision AI group A P01–P13 (2026-10-19)
+
+- `docs/assets/vision_task_apple_reference.jpg` — 기존 교육용 생성 사과 원본을 P01/P02/P03/P08/P10–P13에 재사용. ROI 타원은 자체 SVG Annotation이며 학습한 모델의 예측이 아님.
+- `docs/assets/generated/apple_studio_preview.png` — 기존 정상 사과 생성 원본을 P12/P13에 재사용. 불량 사과와 서로 다른 원본을 사용했으므로 결함만 합성한 동일 촬영 비교가 아님.
+- `docs/assets/lesson/lecture_rgb_channel_stack.svg` — 기존 P07 RGB 3-channel 설명 그림 재사용. 마지막 숫자 3은 공간 깊이가 아닌 채널 축.
+- P02 AI⊃ML⊃DL과 Computer Vision의 문제·기술 축, P03 가상 반복 검사, P08 사과 Frame 이동, P13 2×2 밝기/결함 매트릭스는 자체 HTML/SVG/CSS 개념 Figure. 별도 외부 Figure 복제 없음.
+- 기존 회랑 실사 출처: [Livioandronico2013, Wikimedia Commons, CC BY-SA 4.0](https://commons.wikimedia.org/wiki/File:Forced_perspective_gallery_by_Francesco_Borromini.jpg); P03 보조 사례로만 설명, 새 Figure에는 사용하지 않음.
+
+## Approved Vision AI group B P14–P18 (Builder, 2026-10-19)
+
+- P14/P18: `docs/assets/vision_task_apple_reference.jpg`, 동일 사과/결함 ROI `viewBox="440 100 300 300"`를 사용. 정답 Box는 `(x=565,y=197,w=53,h=57)`, 정답 Mask는 기존 `M581 201 …` path. 파란 주석은 **사람이 지정한 Ground Truth 예시**이며 AI의 추론 출력이 아님.
+- P15: PR #113의 Python `def add(a,b): return a+b` 단일 함수·두 입력/출력 연결은 변경 없이 재사용. 산술 1+1=2, 2+1=3.
+- P16: `vision_task_apple_reference.jpg` 불량 사과(밝음/0.48배 어두움)와 `docs/assets/generated/apple_studio_preview.png` 정상 사과(0.48배 어두움)를 양쪽 비교에 똑같이 재사용. 정상 이미지의 화면상 확대율을 낮춰 다른 구도에 의한 비교 왜곡을 줄였으나, **서로 다른 생성 이미지 두 원본**을 동일 촬영이라 주장하지 않음. 밝기 변환은 CSS 표시 시뮬레이션이며 모델 M/Prediction은 개념 Figure로 실측 훈련 결과가 아님.
+- P17: 기존 C04 발전사/사전학습 모델 개념을 C05 `model-choice`의 독립 검증 중심 선택 도식에 통합. Classifier/Detector 성능, 정량 비용 등 성능 수치는 발명하지 않음.
+- P18: Classification Class / Detection defect Box + Class / Segmentation pixel Mask의 제작 부담은 **정성적 상대 비교**. 실제 어노테이션 시간·인건비 측정 수치가 아님.
+- 새 Figure는 로컬 HTML/CSS/SVG로 직접 작성했고, 별도 외부 논문 Figure/실사/CDN을 삽입하지 않음.
+
+## Approved55 C / P19–P27 · 2026-10-19
+
+- 동일 생성 사과 사진과 자체 정밀 SVG/HTML을 사용. `cnn_apple_architecture.svg`는 64×64×3→Conv8→Pool→Conv16→GAP16→Dense2의 Shape와 1,426 Parameters(Bias 포함)의 단일 로컬 원본이다. 미니맵은 같은 SVG를 복제해 강조하며 실측 활성화가 아니다.
+- `perceptron_approved_c.svg`는 기존 자체 퍼셉트론 그림을 가독성에 맞춰 수정한 것이다. 외부 Figure를 새로 복제하지 않았다. CS231n/PyTorch 공식 원문 신규 GET은 403으로 NOT VERIFIED이며 기존 소스 라이브러리와 독립 산술 검산을 사용했다.
+
+## Approved group D P28–P36 (2026-10-19)
+
+- P28 same generated apple source, exact 85×85 ROI; numeric 5×5 input and 3×3 Kernel are a separate educational array, not measured photo pixels. P29 uses identical arrays, all nine windows and matching output coordinates. P30–34 are original exact SVG calculations; no external Figure reproduced.
+- P35 reuses `cnn_squeezenet_actual_feature_maps.png` unchanged and its source/reproduction script `scripts/render_cnn_feature_maps.py`. Stage `features[1]/[7]/[12]`, shape 111×111×64 / 27×27×256 / 13×13×512; selected IDs 35,30,44,32 / 2,62,24,153 / 471,302,409,415. Per-channel 2–99 percentile display normalization; absolute intensity not comparable between channels/stages. Input image origin remains Stanford CS231n 2017 Lecture5 slide37; actual calculation uses ImageNet SqueezeNet1.1, separate from the virtual apple CNN.
+- P36 crops the same local P20 SVG's spatial Backbone. GAP+Dense belong to the Classification Head; Box/Mask Heads illustrate alternative spatial-output designs, not simultaneous measured predictions.
+
+## Approved group E P37–P40 (2026-10-19)
+
+- P37 reuses existing generated normal/defect originals with controlled viewports and identical CSS brightness factors. Different originals are disclosed; no new actual experiment or external Figure.
+- P38: 100 visible tiles, each representing ten images; 700/150/150. P39 reuses photos to illustrate hypothetical A/B/C ×3 Frame IDs; this is not nine real observations. Identical IDs are rearranged to demonstrate random leakage versus disjoint Group Split.
+- P40 reuses the defect photo and canonical GT Box/Mask. Each valid geometric transform wraps photo and annotations together; complete defect covering is marked invalid. Train-only augmentation is explicit. Original self-authored SVG/HTML diagrams, no external Figure copied.
+
+## Approved group F P41–P47 (2026-10-19)
+
+- P41 retains the actual local Gradient Descent UI (`interactive_lessons.js`); photos+Class Label bridge the image problem to a separate educational scalar regression. Batch/Epoch definitions moved from the removed standalone slide to presenter notes.
+- P42 original SVG computes gradient −12 and learning rate0.1: w0.5→1.7, Loss9→0.36. P43/P45 reuse the exact local P20 model nodes/shapes and parameter counts; Optimizer arrowheads reach trainable Conv/Head boundaries. P45 external zebra Figure is replaced by local Head-only / Fine-tuning comparison and a link to the actual shared model. No external Figure copied.
+- P44/P46 original HTML/SVG Training/Inference and shared Frozen Features branches. Group A/B are arbitrary clusters, not defect classes; past pretraining may have used Labels. P47 curves are explicitly virtual trends and the same generated apple brightness comparison is a hypothesis aid, not a measured failure log.
+
+## Approved group G P48–P52 (2026-10-19)
+
+- P48 absorbs the former standalone project-run UI. One fixed array of 100 educational Scores supplies the histogram, threshold line, matrix, error bars and Precision/Recall. No measured model performance is claimed. P49/P51 are fixed threshold0.50 reference figures; P50 is a separate all-normal baseline.
+- P52 uses the same generated apple with two illustrative Box annotations. Separate integer coordinates are GT(x1,y1,w5,h6), Prediction(x1,y3,w5,h6): intersection20, union40, IoU0.5. The integer example is not the photograph's measured pixel coordinates. New diagrams are self-authored SVG/HTML; no external Figure copied.
+
+## Approved group H P53–P55 (2026-10-19)
+
+- P53/P55: reuse existing educational generated `docs/assets/vision_task_apple_reference.jpg`, mark defect ROI, render self-authored HTML/SVG decision-flow and four answer figures. No new external image used; no new empirical model output.
+- P54: same local generated apple with display-only CSS brightness ×0.35 and colored outer border for the *hypothetical* background condition. Resolution comparison renders **the same source ROI** through Canvas as 240×240 and 24×24 pixel arrays; latter enlarges via pixelated CSS. None is an actual documented model failure, and border does not claim to be a real background replacement.
+- P55 numerical references come from separate previous toy examples (Kernel map −6→12, scalar regression w0.5→1.7/Loss9→0.36, threshold 0.50 TP18/FN2/Recall90%); they are not measurements of one CNN on this photo.

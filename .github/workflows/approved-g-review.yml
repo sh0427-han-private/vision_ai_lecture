@@ -1,0 +1,38 @@
+name: Approved G P48-P52 browser re-review
+on:
+  push:
+    branches:
+      - automation/approved-55-20261019
+    paths:
+      - "docs/project_course.js"
+      - "docs/vision_ai_course.html"
+      - "docs/approved_g.css"
+      - "automation/build_g.py"
+      - "scripts/verify_approved_g_browser.py"
+      - ".github/workflows/approved-g-review.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  g-browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Playwright and Chromium
+        run: |
+          python -m pip install playwright pillow
+          python -m playwright install --with-deps chromium
+      - name: Run G browser QA (10 captures and threshold controls)
+        run: |
+          python -m http.server 8765 --directory docs >/tmp/approved-g-http.log 2>&1 &
+          python scripts/verify_approved_g_browser.py
+      - name: Save G screenshots and report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: approved-g-browser-qa
+          path: visual_audit_output/approved_g/
+          if-no-files-found: warn
