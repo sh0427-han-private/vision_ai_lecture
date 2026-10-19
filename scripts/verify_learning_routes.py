@@ -53,39 +53,53 @@ def main():
     chapter=link.locator('xpath=ancestor::details[1]')
     if chapter.get_attribute('open') is None:chapter.locator('summary').click()
     link.click();position(page,deck,n,total)
-  # Course 7: one shared W + Bias. W/B move one straight decision boundary.
+  # Course 7: W actually ROTATES the line, while b translates it.
   page.goto(f"{BASE}/vision_ai_course.html#slide-{number('and-gate')}")
   page.wait_for_selector('[data-gate-lab="and"][data-ready="true"]')
   assert page.locator('[data-gate-lab="and"] input[type="range"]').count()==2
   assert 'AI 판정 4 / 4개 일치' in page.locator('[data-gate-lab="and"] [data-gate-summary]').inner_text()
-  original=page.locator('[data-gate-lab="and"] [data-gate-svg]').inner_html()
-  page.locator('[data-gate-lab="and"] [data-param="b"]').evaluate("(el)=>{el.value='-2';el.dispatchEvent(new Event('input',{bubbles:true}));}")
-  assert page.locator('[data-gate-lab="and"] [data-value="b"]').inner_text()=='-2.0'
-  assert 'AI 판정 3 / 4개 일치' in page.locator('[data-gate-lab="and"] [data-gate-summary]').inner_text()
-  assert page.locator('[data-gate-lab="and"] [data-gate-svg]').inner_html()!=original
+  line_sel='[data-gate-lab="and"] [data-gate-svg] line[aria-label="최종 Wx+b 직선 판정 경계"]'
+  def line_gradient():
+   x1,y1,x2,y2=page.locator(line_sel).evaluate("(e)=>['x1','y1','x2','y2'].map(k=>Number(e.getAttribute(k)))")
+   return (y2-y1)/(x2-x1)
+  slope_start=line_gradient()
+  page.locator('[data-gate-lab="and"] [data-param="w"]').evaluate("(el)=>{el.value='0.4';el.dispatchEvent(new Event('input',{bubbles:true}));}")
+  slope_rotated=line_gradient()
+  assert abs(slope_start-slope_rotated)>0.1,(slope_start,slope_rotated)
   page.click('[data-gate-lab="and"] [data-gate-reset]')
   assert 'AI 판정 4 / 4개 일치' in page.locator('[data-gate-lab="and"] [data-gate-summary]').inner_text()
-  # Course 8: only W1,b1,W2,b2, initially LINEAR (3/4 and one line).
+  slope_reset=line_gradient()
+  page.locator('[data-gate-lab="and"] [data-param="b"]').evaluate("(el)=>{el.value='-0.5';el.dispatchEvent(new Event('input',{bubbles:true}));}")
+  assert 'AI 판정 2 / 4개 일치' in page.locator('[data-gate-lab="and"] [data-gate-summary]').inner_text()
+  assert abs(slope_reset-line_gradient())<1e-7,'b changed the slope instead of translating'
+  page.click('[data-gate-lab="and"] [data-gate-reset]')
+  assert 'AI 판정 4 / 4개 일치' in page.locator('[data-gate-lab="and"] [data-gate-summary]').inner_text()
+  # Course 8: both W1 and W2 alter the final line's angle, nonlinear gives two edges.
   page.goto(f"{BASE}/vision_ai_course.html#slide-{number('xor-gate')}")
   page.wait_for_selector('[data-gate-lab="xor"][data-ready="true"]')
   assert page.locator('[data-gate-lab="xor"] input[type="range"]').count()==4
   assert 'AI 판정 3 / 4개 일치' in page.locator('[data-gate-lab="xor"] [data-gate-summary]').inner_text()
   assert page.locator('[data-gate-lab="xor"] [data-gate-mode="linear"]').get_attribute('aria-pressed')=='true'
   assert '직선 하나' in page.locator('[data-gate-lab="xor"] [data-gate-equation]').inner_text()
-  assert 'ReLU' not in page.locator('[data-gate-lab="xor"] [data-gate-stage]').inner_text()
   assert page.locator('[data-gate-lab="xor"] .gl-outcome').count()==4
   assert '정답 0' in page.locator('[data-gate-lab="xor"] .gl-outcome').first.inner_text()
   assert 'AI 판정 1' in page.locator('[data-gate-lab="xor"] .gl-outcome').first.inner_text()
-  linear_plot=page.locator('[data-gate-lab="xor"] [data-gate-svg]').inner_html()
-  page.locator('[data-gate-lab="xor"] [data-param="b1"]').evaluate("(el)=>{el.value='-0.5';el.dispatchEvent(new Event('input',{bubbles:true}));}")
-  assert page.locator('[data-gate-lab="xor"] [data-gate-svg]').inner_html()!=linear_plot
+  xor_line='[data-gate-lab="xor"] [data-gate-svg] line[aria-label="최종 Wx+b 직선 판정 경계"]'
+  def xor_gradient():
+   x1,y1,x2,y2=page.locator(xor_line).evaluate("(e)=>['x1','y1','x2','y2'].map(k=>Number(e.getAttribute(k)))")
+   return (y2-y1)/(x2-x1)
+  initial_gradient=xor_gradient()
+  page.locator('[data-gate-lab="xor"] [data-param="w1"]').evaluate("(el)=>{el.value='0.5';el.dispatchEvent(new Event('input',{bubbles:true}));}")
+  assert abs(xor_gradient()-initial_gradient)>0.1,'XOR W1 did not rotate final line'
+  page.click('[data-gate-lab="xor"] [data-gate-reset]')
+  page.locator('[data-gate-lab="xor"] [data-param="w2"]').evaluate("(el)=>{el.value='-1.5';el.dispatchEvent(new Event('input',{bubbles:true}));}")
+  assert abs(xor_gradient()-initial_gradient)>0.1,'XOR W2 did not rotate final line'
   page.click('[data-gate-lab="xor"] [data-gate-reset]')
   page.click('[data-gate-lab="xor"] [data-gate-mode="nonlinear"]')
   assert page.locator('[data-gate-lab="xor"] [data-gate-mode="nonlinear"]').get_attribute('aria-pressed')=='true'
   assert 'AI 판정 4 / 4개 일치' in page.locator('[data-gate-lab="xor"] [data-gate-summary]').inner_text()
   assert 'ReLU' in page.locator('[data-gate-lab="xor"] [data-gate-stage]').inner_text()
-  nonlinear_plot=page.locator('[data-gate-lab="xor"] [data-gate-svg]').inner_html()
-  assert nonlinear_plot!=linear_plot
+  assert page.locator('[data-gate-lab="xor"] [data-gate-svg] line[aria-label="최종 비선형 판정 경계"]').count()==2
   page.locator('[data-gate-lab="xor"] [data-param="w1"]').evaluate("(el)=>{el.value='0';el.dispatchEvent(new Event('input',{bubbles:true}));}")
   assert 'AI 판정 2 / 4개 일치' in page.locator('[data-gate-lab="xor"] [data-gate-summary]').inner_text()
   page.click('[data-gate-lab="xor"] [data-gate-reset]')
