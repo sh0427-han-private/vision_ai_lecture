@@ -224,7 +224,7 @@ assert vision.count('class="rl-pane rl-pane--')==2
 assert vision.count('<figure class="rl-photo-card')==6
 assert vision.count('vision_task_apple_reference.jpg')==4
 assert vision.count('apple_studio_preview.png')==2
-assert vision.count('D-L ·')==2 and vision.count('D-D ·')==2 and vision.count('N-D ·')==2
+assert all(vision.count('<b>'+k+'</b>')==2 for k in ['D-L','D-D','N-D'])
 assert '갈색 Pixel 수 ≥ k ?' in vision and '지도학습(Supervised Learning)' in vision
 assert all(x in vision for x in ['Model M','b55-training','b55-inference','b55-bottom-three','b55-prediction','실제 결과 미측정','Validation / Test'])
 assert (D/'b_approved_figure.css').is_file()
