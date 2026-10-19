@@ -11,14 +11,14 @@ assert m['duration_minutes']==120
 assert sum(x['minutes'] for x in m['blocks'])==m['teaching_minutes']==120
 assert m['discussion_minutes']==0
 assert m['teaching_minutes']+m['discussion_minutes']==120
-assert [x['global'] for x in items]==list(range(1,59))
+assert [x['global'] for x in items]==list(range(1,60))
 slides={}; concepts={}
-for deck,count in [('intro',13),('vision_ai_course',45)]:
+for deck,count in [('intro',13),('vision_ai_course',46)]:
  text=(D/(deck+'.html')).read_text()
  ss=re.findall(r'<section\b[^>]*class="slide[^\"]*"[^>]*>.*?</section>',text,re.S)
  assert len(ss)==count,(deck,len(ss))
  assert text.count('class="slide active"')==1
- assert re.findall(r'lecture_outline.js\?v=([^\"]+)',text)==['perceptron-weights-20261019-1']
+ assert re.findall(r'lecture_outline.js\?v=([^\"]+)',text)==['cnn-paths-20261019-1']
  slides[deck]=ss
  for n,s in enumerate(ss,1):
   c=re.search(r'data-concept="([^\"]+)"',s)[1];concepts[c]=s
@@ -39,14 +39,14 @@ for deck,count in [('intro',13),('vision_ai_course',45)]:
  assert not re.search(r'VGG-16|BatchNorm|γ|β|Grad-CAM|다음 장|기존 숫자',text),'Removed advanced topic or stale transition'
 # Prerequisites are executable constraints, not just comments in a teaching plan.
 seq=[x['concept'] for x in m['decks']['vision_ai_course']]
-for before,after in [('task','rules'),('rules','vision-evolution'),('vision-evolution','model-choice'),('model-choice','task-model-data'),('task-model-data','perceptron'),('perceptron','and-rule'),('and-rule','and-gate'),('and-gate','xor-rule'),('xor-rule','xor-gate'),('xor-gate','relu'),('relu','nonlinear'),('nonlinear','cnn-overview'),('cnn-overview','cnn-why'),('cnn-why','kernel'),('kernel','feature-map'),('feature-map','sharing'),('sharing','channels'),('channels','stride'),('stride','padding'),('padding','pool'),('pool','actual-map'),('actual-map','backbone'),('backbone','dataset'),('dataset','split'),('split','leakage'),('leakage','preprocess'),('preprocess','augment'),('augment','learn'),('learn','loss'),('loss','cnn-training'),('cnn-training','infer'),('infer','transfer'),('transfer','training-log'),('training-log','overfit'),('overfit','threshold'),('threshold','confusion'),('confusion','imbalance'),('imbalance','metrics'),('metrics','iou'),('iou','workflow'),('workflow','project-brief'),('project-brief','project-run'),('project-run','project-iterate'),('project-iterate','project-check')]:
+for before,after in [('task','rules'),('rules','vision-evolution'),('vision-evolution','model-choice'),('model-choice','task-model-data'),('task-model-data','perceptron'),('perceptron','and-rule'),('and-rule','and-gate'),('and-gate','xor-rule'),('xor-rule','xor-gate'),('xor-gate','relu'),('relu','nonlinear'),('nonlinear','cnn-overview'),('cnn-overview','cnn-why'),('cnn-why','kernel'),('kernel','feature-map'),('feature-map','sharing'),('sharing','channels'),('channels','stride'),('stride','padding'),('padding','pool'),('pool','actual-map'),('actual-map','backbone'),('backbone','dataset'),('dataset','split'),('split','leakage'),('leakage','preprocess'),('preprocess','augment'),('augment','learn'),('learn','loss'),('loss','cnn-training'),('cnn-training','infer'),('infer','transfer'),('transfer','cnn-learning-paths'),('cnn-learning-paths','training-log'),('training-log','overfit'),('overfit','threshold'),('threshold','confusion'),('confusion','imbalance'),('imbalance','metrics'),('metrics','iou'),('iou','workflow'),('workflow','project-brief'),('project-brief','project-run'),('project-run','project-iterate'),('project-iterate','project-check')]:
  assert seq.index(before)<seq.index(after),(before,after)
 assert not {'affine-net','affine-collapse','xor-net'} & set(seq)
 # Every slide must belong to one timed block; no omitted or duplicated material.
 for deck,entries in m['decks'].items():
  covered=[n for block in m['blocks'] if block['deck']==deck for n in range(block['start'],block['end']+1)]
  assert covered==list(range(1,len(entries)+1)),(deck,covered)
-assert [block['minutes'] for block in m['blocks']]==[14,10,10,18,31,10,13,9,5]
+assert [block['minutes'] for block in m['blocks']]==[14,10,10,18,30,10,14,9,5]
 def matrices(concept):
  s=concepts[concept]; result=[]
  for cols,body in re.findall(r'<div class="concept-matrix[^\"]*" style="--cols:(\d+)"[^>]*>(.*?)</div>',s,re.S):
@@ -67,7 +67,7 @@ assert round((.5*2-4)**2,2)==9 and round((1.7*2-4)**2,2)==.36
 assert abs(.5-.1*(2*(.5*2-4)*2)-1.7)<1e-12
 assert 'w=0.5' in concepts['loss'] and 'w=1.7' in concepts['loss']
 assert '9,216' in concepts['sharing'] and 9*1024==9216
-assert 'perceptron_gate_structure_ko.svg' in concepts['perceptron']
+assert 'perceptron_one_weight_ko.svg' in concepts['perceptron']
 assert all(('data-param="'+name+'"') in concepts['and-gate'] for name in ['w','b'])
 assert all(('data-param="'+name+'"') in concepts['xor-gate'] for name in ['w1','b1','w2','b2'])
 assert 'data-gate-mode="nonlinear"' in concepts['xor-gate'] and 'data-gate-mode="linear"' in concepts['xor-gate']
@@ -91,7 +91,7 @@ for deck in ['intro','vision_ai_course','ai_basics','vision_ai']:
  assert 'cursor:zoom' not in text
 for a in ['perceptron_gate_structure_ko','and_xor_gate_geometry_ko','xor_multilayer_gates_ko']:
  ET.parse(D/'assets/lesson'/f'{a}.svg')
-print('TWO_HOUR_QA_PASSED: 58 slides, 120 teaching minutes without a Q&A block, principles-first prerequisites, shared numeric examples and local assets')
+print('TWO_HOUR_QA_PASSED: 59 slides, 120 teaching minutes without a Q&A block, principles-first prerequisites, shared numeric examples and local assets')
 
 # Open feedback paths must not render as a solid filled blob.
 root=ET.parse(D/'assets/lesson/context_cnn_training.svg').getroot()
@@ -175,11 +175,29 @@ print('GATE_RULES_QA_PASSED: AND/XOR operation explained before demonstrations')
 
 # One neuron can have two input-connection weights; tied weights are a special AND case.
 p=concepts['perceptron'];a=concepts['and-gate'];x=concepts['xor-gate']
-assert 'z = w₁x₁ + w₂x₂ + b' in p
-assert 'z = w(x₁ + x₂) + b' in p and 'w₁ = w₂ = w' in p
-assert '뉴런 1개가 Weight 1개라는 뜻은 아닙니다' in p
+assert 'z = W(x₁ + x₂) + b' in p
+assert p.count('class="pw-equation') == 1 and '두 입력에 공통 Weight W 적용' in p
+assert '쉬운 예시' in p and '입력별 여러 가중치를 묶어' in p
 assert 'w₂=1로 고정' in a and 'z=Wx₁+1·x₂+b' in a
 assert 'Weight는 1로 고정' in x and '각 층에서 Weight 하나만 조절' in x
 assert (D/'perceptron_weights_clarity.css').is_file()
-assert 'perceptron_weights_clarity.css?v=weights-20261019-1' in (D/'vision_ai_course.html').read_text()
+assert 'perceptron_weights_clarity.css?v=one-w-20261019-2' in (D/'vision_ai_course.html').read_text()
 print('PERCEPTRON_INPUT_WEIGHTS_QA_PASSED: two input weights/one neuron, tied-weight AND, fixed-coefficient rotating lab')
+
+# A separate beginner diagram uses one shared W and one Bias, not two visible w1/w2 terms.
+assert 'w₁x₁ + w₂x₂' not in concepts['perceptron']
+assert 'perceptron_one_weight_ko.svg?v=one-w-20261019-1' in concepts['perceptron']
+import xml.etree.ElementTree as _Xml
+pict=_Xml.parse(D/'assets/lesson/perceptron_one_weight_ko.svg').getroot()
+pict_text=''.join(pict.itertext())
+assert 'z = W(x₁ + x₂) + b' in pict_text
+assert 'w₁' not in pict_text and 'w₂' not in pict_text
+# Common frozen CNN features -> labeled classifier OR unlabeled clusters is downstream-stage comparison.
+su=concepts['cnn-learning-paths']
+for keyword in ['Feature Extractor','Freeze','지도학습','비지도학습','Label','Classification Head','Clustering','K-means','그룹 A / B','학습 목표','CNN 특징 추출기 자체도 다른 방식으로 학습']:
+ assert keyword in su,keyword
+assert su.count('class="su-path su-path--') == 2
+assert (D/'supervised_unsupervised_cnn.css').is_file()
+assert 'supervised_unsupervised_cnn.css?v=cnn-paths-20261019-1' in course_page
+assert seq.index('transfer')+1==seq.index('cnn-learning-paths')
+print('CNN_SUPERVISION_QA_PASSED: 59-slide course with same frozen features, labeled classification vs unlabeled clustering')
