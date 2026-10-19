@@ -68,16 +68,20 @@
   }
   function step(v) { return v >= -1e-9 ? 1 : 0; }
 
-  // Intro-friendly parameterization: each layer has just one shared W and one Bias.
-  // For two inputs, s=x1+x2. The AND layer reads z=W*s+b.
-  // XOR Layer1 computes t=W1*s+b1; Layer2 reads either t (linear) or |t|
-  // where |t|=ReLU(t)+ReLU(-t). The latter is a 2-ReLU hidden-layer example.
+  // Geometric interpretation: z = W*x1 + x2 + b => x2 = -W*x1 - b.
+  // W changes the slope, while b changes the offset (the y-intercept is -b).
+  // XOR has two simplified affine stages with one adjustable W/b per stage:
+  //   t = W1*x1 + x2 + b1
+  //   z = W2*g(t) + x1 + b2
+  // Here the +x1 term in layer 2 is a fixed, non-trainable skip input.
+  // Without nonlinearity: z = (W1*W2+1)*x1 + W2*x2 + W2*b1+b2,
+  // a SINGLE line whose slope responds to either weight when W2!=0.
+  // With |t| = ReLU(t)+ReLU(-t), a piecewise-linear two-edge XOR region forms.
   function setup(root) {
-    const kind = root.dataset.gateLab;
-    const isXor = kind === "xor";
+    const kind = root.dataset.gateLab, isXor = kind === "xor";
     const presets = isXor
-      ? {w1:1,b1:-1,w2:-1,b2:.5}
-      : {w:.5,b:-.7};
+      ? {w1:1,b1:-1,w2:-2,b2:.5}
+      : {w:1,b:-1.2};
     const sliders = [...root.querySelectorAll('input[type="range"][data-param]')];
     const values = Object.fromEntries(sliders.map(slider => [slider.dataset.param, Number(slider.value)]));
     const svg = root.querySelector('[data-gate-svg]');
@@ -85,82 +89,107 @@
     const results = root.querySelector('[data-gate-results]');
     const equation = root.querySelector('[data-gate-equation]');
     const stage = root.querySelector('[data-gate-stage]');
-    let mode = "linear"; // Explain the impossibility FIRST, then introduce a nonlinearity.
-    const target = ([x,y]) => isXor ? x ^ y : x & y;
+    let mode = 'linear';
+
+    // Clip the zero-level line to a convex polygon, so the nonlinear branches
+    // show the FINAL output decision boundary, not misleading whole lines.
+    function clippedLine(coeff, convexPoly) {
+      if (!convexPoly || convexPoly.length < 2) return '';
+      const f = p => evalLine(coeff,p[0],p[1]);
+      let points = [];
+      for(let j=0;j<convexPoly.length;j++){
+        const a=convexPoly[j], b=convexPoly[(j+1)%convexPoly.length];
+        const fa=f(a),fb=f(b);
+        if(Math.abs(fa)<1e-9) points.push(a);
+        if(fa*fb< -1e-12) {
+          const t=fa/(fa-fb);
+          points.push([a[0]+t*(b[0]-a[0]),a[1]+t*(b[1]-a[1])]);
+        }
+      }
+      points=points.filter((p,i)=>points.findIndex(q=>Math.hypot(p[0]-q[0],p[1]-q[1])<1e-7)===i);
+      if(points.length<2) return '';
+      let best=[points[0],points[1]],d=-1;
+      for(let i=0;i<points.length;i++)for(let j=i+1;j<points.length;j++){
+        const length=Math.hypot(points[i][0]-points[j][0],points[i][1]-points[j][1]);
+        if(length>d){d=length;best=[points[i],points[j]];}
+      }
+      return '<line x1="'+xPos(best[0][0])+'" y1="'+yPos(best[0][1])+
+        '" x2="'+xPos(best[1][0])+'" y2="'+yPos(best[1][1])+
+        '" stroke="#c38144" stroke-width="3.5" aria-label="최종 비선형 판정 경계"/>';
+    }
 
     function render() {
       sliders.forEach(slider => {
-        const label = root.querySelector('[data-value="' + slider.dataset.param + '"]');
-        if (label) label.textContent = num(values[slider.dataset.param]);
+        const label=root.querySelector('[data-value="'+slider.dataset.param+'"]');
+        if(label) label.textContent=num(values[slider.dataset.param]);
       });
-      const hidden = [values.w1, values.w1, values.b1];
-      const finalLine = isXor
-        ? [values.w1*values.w2, values.w1*values.w2, values.w2*values.b1+values.b2]
-        : [values.w, values.w, values.b];
-      const activation = t => isXor && mode === "nonlinear" ? Math.abs(t) : t;
-      const score = (x,y) => isXor
-        ? values.w2 * activation(values.w1*(x+y)+values.b1) + values.b2
-        : values.w*(x+y)+values.b;
-      const actual = inputs.map(([x,y]) => step(score(x,y)));
-      const expected = inputs.map(target);
-      const correct = actual.filter((value,i) => value===expected[i]).length;
-      let region = "", lines = "";
+      // The x2 coefficient is fixed at 1 in the single AND layer.
+      const andLine=[values.w,1,values.b];
+      const h1=[values.w1,1,values.b1];
+      const linearLine=isXor
+        ? [1+values.w1*values.w2, values.w2, values.w2*values.b1+values.b2]
+        : andLine;
+      const score=(x,y)=>{
+        if(!isXor) return values.w*x+y+values.b;
+        const t=values.w1*x+y+values.b1;
+        return values.w2*(mode==='nonlinear'?Math.abs(t):t)+x+values.b2;
+      };
+      const targets=inputs.map(([x,y])=>isXor ? x^y : x&y);
+      const guesses=inputs.map(([x,y])=>step(score(x,y)));
+      const hits=guesses.filter((v,i)=>v===targets[i]).length;
 
-      if (!isXor || mode === "linear") {
-        region = polygon(halfPlane(rectangle(), finalLine, true), '#40a58d');
-        lines = line(finalLine, '#c38144', false, '최종 Wx+b의 직선 경계');
-      } else {
-        // |t| gives the union of two clipped linear half-planes.
-        const posCoeffs = [values.w1*values.w2,values.w1*values.w2,values.w2*values.b1+values.b2];
-        const negCoeffs = [-values.w1*values.w2,-values.w1*values.w2,-values.w2*values.b1+values.b2];
-        for(const [sign,coefs] of [[true,posCoeffs],[false,negCoeffs]]) {
-          const domain = halfPlane(rectangle(), hidden, sign);
-          region += polygon(halfPlane(domain,coefs,true),'#40a58d');
-          const seg=lineSegment(coefs);
-          if(seg){
-            const mid=[(seg[0][0]+seg[1][0])/2,(seg[0][1]+seg[1][1])/2];
-            if((sign ? 1 : -1)*evalLine(hidden,mid[0],mid[1])>=-1e-8)
-              lines += line(coefs,'#c38144',false,'비선형 결정을 구성하는 경계');
-          }
+      let region='', boundaries='';
+      if(!isXor || mode==='linear'){
+        region=polygon(halfPlane(rectangle(),linearLine,true),'#40a58d');
+        boundaries=line(linearLine,'#c38144',false,'최종 Wx+b 직선 판정 경계');
+      }else{
+        const positive=[1+values.w1*values.w2,values.w2,values.w2*values.b1+values.b2];
+        const negative=[1-values.w1*values.w2,-values.w2,-values.w2*values.b1+values.b2];
+        for(const [keepPositive, coeff] of [[true,positive],[false,negative]]){
+          const clipped=halfPlane(rectangle(),h1,keepPositive);
+          region+=polygon(halfPlane(clipped,coeff,true),'#40a58d');
+          boundaries+=clippedLine(coeff,clipped);
         }
       }
-      const points=inputs.map(([x,y],i)=>{
-        const equal=actual[i]===expected[i],label=expected[i];
-        return '<circle cx="'+xPos(x)+'" cy="'+yPos(y)+'" r="19" fill="'+(label?'#16866c':'#8a9daa')+'" stroke="'+(equal?'#fff':'#d34d47')+'" stroke-width="'+(equal?'2.5':'5')+'"/>'+
-          '<text x="'+xPos(x)+'" y="'+(yPos(y)+6)+'" fill="#fff" font-size="17" font-weight="700" text-anchor="middle">'+label+'</text>';
+      const dots=inputs.map(([x,y],i)=>{
+        const matches=targets[i]===guesses[i];
+        return '<circle cx="'+xPos(x)+'" cy="'+yPos(y)+'" r="19" fill="'+(targets[i]?'#16866c':'#8a9daa')+
+          '" stroke="'+(matches?'#fff':'#d34d47')+'" stroke-width="'+(matches?'2.5':'5')+'"/>'+
+          '<text x="'+xPos(x)+'" y="'+(yPos(y)+6)+'" fill="#fff" font-size="17" font-weight="700" text-anchor="middle">'+targets[i]+'</text>';
       }).join('');
       svg.setAttribute('viewBox','0 0 '+W+' '+H);
       svg.innerHTML='<rect x="'+LEFT+'" y="'+TOP+'" width="'+PW+'" height="'+PH+'" fill="#f4f8f8" stroke="#b2cacd"/>'+
         '<line x1="'+xPos(0)+'" y1="'+TOP+'" x2="'+xPos(0)+'" y2="'+(TOP+PH)+'" stroke="#9fb7c1" stroke-width="1.5"/>'+
         '<line x1="'+LEFT+'" y1="'+yPos(0)+'" x2="'+(LEFT+PW)+'" y2="'+yPos(0)+'" stroke="#9fb7c1" stroke-width="1.5"/>'+
-        region+lines+points+
+        region+boundaries+dots+
         '<text x="'+(LEFT+PW-5)+'" y="'+(TOP+PH+29)+'" font-size="20" text-anchor="end" fill="#365f70">x₁ →</text>'+
         '<text x="'+(LEFT-8)+'" y="'+(TOP+12)+'" font-size="20" text-anchor="end" fill="#365f70">x₂ ↑</text>';
       results.innerHTML=inputs.map(([x,y],i)=>
-        '<span class="gl-outcome '+(actual[i]===expected[i]?'gl-correct':'gl-incorrect')+'">'+
-        '<b class="gl-input">('+x+','+y+')</b><small>정답 '+expected[i]+'</small><small>AI 판정 <strong>'+actual[i]+'</strong></small></span>').join('');
-      const description=isXor
-        ? mode==='linear' ? '비선형이 없으므로 두 층을 지나도 최종 경계는 직선 하나입니다.'
-          : '비선형 |t|를 넣으면 두 경계 사이가 선택되어 XOR 네 점을 구분할 수 있습니다.'
-        : 'W·Bias를 바꿔도 퍼셉트론의 판정 경계는 직선 하나입니다.';
-      summary.textContent='AI 판정 '+correct+' / 4개 일치 · '+description;
+        '<span class="gl-outcome '+(targets[i]===guesses[i]?'gl-correct':'gl-incorrect')+'">'+
+        '<b class="gl-input">('+x+','+y+')</b><small>정답 '+targets[i]+'</small>'+
+        '<small>AI 판정 <strong>'+guesses[i]+'</strong></small></span>').join('');
+      const explanation=isXor
+        ? mode==='linear'
+          ? '선형층을 두 개 연결해도 최종 결과는 한 직선입니다. XOR의 네 정답을 모두 나눌 수 없습니다.'
+          : '중간에 |t|를 추가하면 두 경계가 생기고 XOR 네 정답을 분리할 수 있습니다.'
+        : 'W는 직선의 기울기(-W)를, b는 위치(-b)를 바꿉니다.';
+      summary.textContent='AI 판정 '+hits+' / 4개 일치 · '+explanation;
       if(isXor){
-        const w=values.w1*values.w2, b=values.w2*values.b1+values.b2;
+        const w=1+values.w1*values.w2, v=values.w2, bias=values.w2*values.b1+values.b2;
         equation.textContent=mode==='linear'
-          ? '최종 z = ('+num(w)+')(x₁+x₂) + ('+num(b)+')  → Wx+b, 직선 하나'
-          : 't = '+num(values.w1)+'(x₁+x₂) + ('+num(values.b1)+'); z = '+num(values.w2)+'|t| + ('+num(values.b2)+')';
-        if(stage)stage.textContent=mode==='linear'
-          ? 'Layer 1의 Wx+b → Layer 2의 Wx+b = 결국 하나의 직선'
-          : 'Layer 사이에 |t| = ReLU(t)+ReLU(−t)를 적용 → 두 경계로 XOR 구분';
+          ? '최종 z = ('+num(w)+')x₁ + ('+num(v)+')x₂ + ('+num(bias)+') → 직선 하나'
+          : 't='+num(values.w1)+'x₁+x₂+('+num(values.b1)+'),  z='+num(values.w2)+'|t|+x₁+('+num(values.b2)+')';
+        if(stage) stage.textContent=mode==='linear'
+          ? 'Layer 1: t=W₁x₁+x₂+b₁ → Layer 2: z=W₂t+x₁+b₂ = 최종 Wx+b, 직선 하나'
+          : 'Layer 사이에 |t|=ReLU(t)+ReLU(−t) 추가 → 최종 두 경계로 XOR 분리';
       }else{
-        equation.textContent='z = '+num(values.w)+'(x₁+x₂) + ('+num(values.b)+') · 경계 z=0';
+        equation.textContent='z = '+num(values.w)+'x₁ + x₂ + ('+num(values.b)+') · 경계 x₂=−Wx₁−b';
       }
     }
 
     root.addEventListener('touchend',event=>event.stopPropagation());
     sliders.forEach(slider=>slider.addEventListener('input',()=>{
-      values[slider.dataset.param]=Number(slider.value);
-      render();
+      values[slider.dataset.param]=Number(slider.value);render();
     }));
     root.querySelectorAll('[data-gate-mode]').forEach(button=>button.addEventListener('click',()=>{
       mode=button.dataset.gateMode;
@@ -175,8 +204,7 @@
       root.querySelectorAll('[data-gate-mode]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.gateMode===mode)));
       render();
     });
-    render();
-    root.dataset.ready='true';
+    render();root.dataset.ready='true';
   }
 
   document.querySelectorAll('[data-gate-lab]').forEach(setup);
