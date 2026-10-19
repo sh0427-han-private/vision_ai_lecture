@@ -148,7 +148,7 @@ print('GATE_SIMPLIFICATION_QA_PASSED: W/B per layer, linear boundary then ReLU-b
 
 # Regression for slope/offset geometry, not only moving a fixed-slope line.
 assert 'z=Wx₁+1·x₂+b' in concepts['and-gate']
-assert '기울기 −W' in concepts['and-gate'] and 'y절편 −b' in concepts['and-gate']
+assert (('기울기 −W' in concepts['and-gate'] and 'y절편 −b' in concepts['and-gate']) or ('기울기(−W)' in concepts['and-gate'] and 'y절편(−b)' in concepts['and-gate']))
 assert 'z=W₂t+1·x₁+b₂' in concepts['xor-gate']
 assert 'x₁ Weight=1 고정' in concepts['xor-gate']
 js_source=(D/'interactive_gates.js').read_text()
