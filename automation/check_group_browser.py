@@ -82,25 +82,30 @@ with sync_playwright()as p:
     assert metas[0]['crop']==metas[1]['crop']=='960x640'
     assert metas[0]['mask']==metas[1]['mask']
     assert metas[0]['roi']==metas[1]['roi']
-    # Fractional grid tracks differ by 1 CSS pixel; render both at an
-    # identical 180px QA crop, then restore styles before full-slide captures.
-    svgs.evaluate_all("""nodes=>nodes.forEach(s=>{
-      s.dataset.qaOldWidth=s.style.width;
-      s.dataset.qaOldHeight=s.style.height;
-      s.style.width='180px';
-      s.style.height='180px';
-    })""")
+    # Capture detached visual QA copies outside auto-scaled slide DOM.
+    # Their identical 200x200 sizes make true pixel equality testable.
+    page.evaluate("""() => {
+      const holder=document.createElement('div');
+      holder.id='h55-qa-crops';
+      holder.style.cssText='position:fixed;top:0;left:0;display:flex;' +
+        'z-index:99999;background:white;pointer-events:none';
+      for(const node of document.querySelectorAll(
+          '.slide.active svg[data-h-background-variant]')){
+        const copy=node.cloneNode(true);
+        copy.style.cssText='width:200px;height:200px;max-width:none;' +
+          'min-width:200px;min-height:200px;transform:none;display:block';
+        holder.appendChild(copy);
+      }
+      document.body.appendChild(holder);
+    }""")
+    qa_svgs=page.locator('#h55-qa-crops svg')
+    assert qa_svgs.count()==2
     images=[]
     for variant in ['matte','grid']:
      path=args.out/f'{w}-background-{variant}.png'
-     svgs.nth(len(images)).screenshot(path=str(path))
+     qa_svgs.nth(len(images)).screenshot(path=str(path))
      images.append(Image.open(path).convert('RGB'))
-    svgs.evaluate_all("""nodes=>nodes.forEach(s=>{
-      s.style.width=s.dataset.qaOldWidth;
-      s.style.height=s.dataset.qaOldHeight;
-      delete s.dataset.qaOldWidth;
-      delete s.dataset.qaOldHeight;
-    })""")
+    page.locator('#h55-qa-crops').evaluate('(n)=>n.remove()')
     a,b=images
     assert a.size==b.size and min(a.size)>=80,a.size
     fw,fh=a.size
