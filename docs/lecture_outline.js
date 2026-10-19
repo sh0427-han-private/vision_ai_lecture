@@ -1,6 +1,6 @@
-/* Vision principles 55-slide current teaching route. */
+/* Vision AI 55-slide complete 120-minute teaching route (no separate Q&A). */
 window.LECTURE_OUTLINE = {
-  "version": "20261019-gates-cnn-refine-55",
+  "version": "20261019-interactive-gates-120min",
   "groups": [
     {
       "name": "필요성 · 사진과 숫자",
@@ -137,13 +137,13 @@ window.LECTURE_OUTLINE = {
         {
           "page": "vision_ai_course.html",
           "slide": 7,
-          "title": "AND Gate · 퍼셉트론으로 표현",
+          "title": "AND Gate · Weight와 Bias가 경계를 바꾼다",
           "global": 20
         },
         {
           "page": "vision_ai_course.html",
           "slide": 8,
-          "title": "XOR Gate · 한 뉴런으로 안 되는 이유",
+          "title": "XOR · 두 Layer를 쌓으면 달라질까?",
           "global": 21
         },
         {

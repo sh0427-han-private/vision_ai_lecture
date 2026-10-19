@@ -8,7 +8,8 @@ m=json.loads((D/'two_hour_manifest.json').read_text())
 outline=json.loads((D/'lecture_outline.js').read_text().split(' = ',1)[1].strip().rstrip(';'))
 items=[x for g in outline['groups'] for x in g['items']]
 assert m['duration_minutes']==120
-assert sum(x['minutes'] for x in m['blocks'])==m['teaching_minutes']==110
+assert sum(x['minutes'] for x in m['blocks'])==m['teaching_minutes']==120
+assert m['discussion_minutes']==0
 assert m['teaching_minutes']+m['discussion_minutes']==120
 assert [x['global'] for x in items]==list(range(1,56))
 slides={}; concepts={}
@@ -17,7 +18,7 @@ for deck,count in [('intro',13),('vision_ai_course',42)]:
  ss=re.findall(r'<section\b[^>]*class="slide[^\"]*"[^>]*>.*?</section>',text,re.S)
  assert len(ss)==count,(deck,len(ss))
  assert text.count('class="slide active"')==1
- assert re.findall(r'lecture_outline.js\?v=([^\"]+)',text)==['gates-cnn-20261019-1']
+ assert re.findall(r'lecture_outline.js\?v=([^\"]+)',text)==['interactive-gates-20261019-1']
  slides[deck]=ss
  for n,s in enumerate(ss,1):
   c=re.search(r'data-concept="([^\"]+)"',s)[1];concepts[c]=s
@@ -45,7 +46,7 @@ assert not {'affine-net','affine-collapse','xor-net'} & set(seq)
 for deck,entries in m['decks'].items():
  covered=[n for block in m['blocks'] if block['deck']==deck for n in range(block['start'],block['end']+1)]
  assert covered==list(range(1,len(entries)+1)),(deck,covered)
-assert [block['minutes'] for block in m['blocks']]==[14,9,10,11,30,10,12,9,5]
+assert [block['minutes'] for block in m['blocks']]==[14,10,10,16,32,11,13,9,5]
 def matrices(concept):
  s=concepts[concept]; result=[]
  for cols,body in re.findall(r'<div class="concept-matrix[^\"]*" style="--cols:(\d+)"[^>]*>(.*?)</div>',s,re.S):
@@ -67,7 +68,9 @@ assert abs(.5-.1*(2*(.5*2-4)*2)-1.7)<1e-12
 assert 'w=0.5' in concepts['loss'] and 'w=1.7' in concepts['loss']
 assert '9,216' in concepts['sharing'] and 9*1024==9216
 assert 'perceptron_gate_structure_ko.svg' in concepts['perceptron']
-assert 'x₁+x₂ = 1.4' in concepts['and-gate'] and '서로 다를 때만 1' in concepts['xor-gate']
+assert all(('data-param="'+name+'"') in concepts['and-gate'] for name in ['w1','w2','b'])
+assert all(('data-param="'+name+'"') in concepts['xor-gate'] for name in ['a1','b1','c1','a2','b2','c2','u1','u2','d'])
+assert 'data-gate-mode="step"' in concepts['xor-gate'] and 'data-gate-mode="linear"' in concepts['xor-gate']
 assert '역전파(Backpropagation)' in concepts['loss']
 assert '지도학습(Supervised Learning)' in concepts['rules']
 assert '2 Epoch = 6 Step' in concepts['training-log']
@@ -88,7 +91,7 @@ for deck in ['intro','vision_ai_course','ai_basics','vision_ai']:
  assert 'cursor:zoom' not in text
 for a in ['perceptron_gate_structure_ko','and_xor_gate_geometry_ko','xor_multilayer_gates_ko']:
  ET.parse(D/'assets/lesson'/f'{a}.svg')
-print('TWO_HOUR_QA_PASSED: 55 slides, 110+10 minutes, principles-first prerequisites, shared numeric examples and local assets')
+print('TWO_HOUR_QA_PASSED: 55 slides, 120 teaching minutes without a Q&A block, principles-first prerequisites, shared numeric examples and local assets')
 
 # Open feedback paths must not render as a solid filled blob.
 root=ET.parse(D/'assets/lesson/context_cnn_training.svg').getroot()
@@ -100,7 +103,7 @@ assert set(['vision-value','vision-challenge']).issubset(concepts)
 assert set(['vision-evolution','task-model-data']).issubset(concepts)
 assert seq.index('task-model-data') < seq.index('perceptron')
 assert 'vision_motivation.css?v=why-20261019-1' in (D/'intro.html').read_text()
-assert 'vision_motivation.css?v=why-20261018-1' in (D/'vision_ai_course.html').read_text()
+assert 'vision_motivation.css?v=why-20261019-1' in (D/'vision_ai_course.html').read_text()
 assert 'lf-training-story' in concepts['cnn-training'] and 'Kernel + Head Weight 갱신' in concepts['cnn-training']
 new_diagram=D/'assets/lesson/lecture_cnn_training_feedback_ko.svg'
 assert ET.parse(new_diagram).getroot().tag=='{http://www.w3.org/2000/svg}svg'
@@ -118,3 +121,15 @@ assert '사용 이유:' in concepts['pool'] and '4×4(16칸) → 2×2(4칸)' in 
 assert 'lf-simple-photo-grid' in concepts['preprocess'] and 'lf-augment-grid' in concepts['augment']
 assert 'lf-transfer-flow' in concepts['transfer'] and 'Freeze' in concepts['transfer'] and 'Classification Head' in concepts['transfer']
 print('LECTURE_REFINEMENT_QA_PASSED: original CNN architecture, AND/XOR split, padding and head-only transfer')
+
+# Gate interactive assets must be local, versioned, and wired to their slide controls.
+course_page=(D/'vision_ai_course.html').read_text()
+assert 'interactive_gates.js?v=20261019-1' in course_page
+assert 'interactive_gates.css?v=20261019-1' in course_page
+for name in ['interactive_gates.js','interactive_gates.css']:
+ assert (D/name).is_file(),name
+assert 'data-gate-lab="and"' in concepts['and-gate'] and 'data-gate-reset' in concepts['and-gate']
+assert 'data-gate-lab="xor"' in concepts['xor-gate'] and 'data-gate-reset' in concepts['xor-gate']
+assert 'Step(z)' in concepts['and-gate']
+assert '비선형' in concepts['xor-gate']
+print('GATE_INTERACTIVE_QA_PASSED: 3 AND sliders, 9 XOR sliders, Step/Linear toggle, 120m all-teaching schedule')

@@ -602,3 +602,11 @@ GitHub Pages:
 - Course 24–25 Preprocessing/Augmentation은 슬라이드 안에 복합 슬라이드를 삽입하지 않고 자체 원본 사과 비교용 HTML을 사용. Course 28 CNN Forward/Backward 화살표를 두 줄로 정렬. Course 30 Transfer Learning에서 Feature Extractor Freeze + Classification Head Train 시각 구분.
 - Intro 13의 기존 사진이 잘못 보인 이유는 `iv-revision` 적용 CSS 범위 불일치였으며 이를 수정했다. 표시는 동일 원본의 CSS 밝기·회전·가림 시뮬레이션이다.
 - 기본 문서: `docs/two_hour_manifest.json`, `TWO_HOUR_LECTURE_PLAN.md`, `reviews/2026-10-19_CNN_SLIDE_REFINEMENT.md`, `TODO_VISION_AI_LECTURE.md`. 페이지 QA/110개 뷰/배포 확인은 별도 완료 판단.
+
+
+## 2026-10-19 · 최신 인터랙티브 Gate 강의와 120분 운영 (최우선)
+
+- 기존 Intro13+Course42=55장 유지. **Q&A 전용 10분 구간 제거**, `docs/two_hour_manifest.json`의 `teaching_minutes=120`, `discussion_minutes=0`, 9개 구간 합계 120분을 현행 공식 운영안으로 사용.
+- Course7 AND에서 Weight w₁, w₂, Bias 슬라이더를 움직이면 결정 직선·네 진리표 결과·정답 개수가 실시간 변화하며 초기화 가능.
+- Course8 XOR은 두 층의 Weight6/Bias3 총 9개 슬라이더와 **Step 사용 vs 활성화 없음** 토글이 있어, 활성화 없는 두 선형층은 결국 한 직선으로 합쳐져 XOR를 풀 수 없음을 보여 준다. 기본 Step XOR는 4/4 정답으로 초기화.
+- 기존 기타 학습/평가 슬라이드·Sidebar·로컬 네트워크 독립성·공유 CSS cache 및 검증 조건 유지. 새 JS/CSS는 `docs/interactive_gates.js`, `docs/interactive_gates.css`로 독립 관리.

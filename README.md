@@ -30,7 +30,7 @@ Vision AI를 처음 접하는 사람도 **필요성 → Pixel·RGB → Vision의
 
 **[Vision AI Lecture · Intro 1번부터 보기](https://sh0427-han.github.io/vision_ai_lecture/)**
 
-사이트 주소를 열면 Intro 첫 슬라이드부터 **13장 + 통합 42장 = 55장**을 순서대로 봅니다. Vision AI의 원리를 이해하는 본강의 110분과 질의·복습 10분으로 구성합니다. 핵심 목표는 **Pixel 숫자 → CNN 특징 추출 → 가중치 학습 → 새 사진 평가**를 학생 자신의 말로 설명하는 것입니다.
+사이트 주소를 열면 Intro 첫 슬라이드부터 **13장 + 통합 42장 = 55장**을 순서대로 봅니다. Vision AI의 원리를 이해하는 **별도 질의응답 없이 120분 전체 강의**로 구성합니다. 핵심 목표는 **Pixel 숫자 → CNN 특징 추출 → 가중치 학습 → 새 사진 평가**를 학생 자신의 말로 설명하는 것입니다.
 
 왼쪽 상단의 **☰ 강의 목차**를 클릭하면 55개 슬라이드가 주제별로 표시되어 원하는 장으로 바로 이동할 수 있습니다. 목차 버튼을 다시 누르거나 **✕ 닫기**, 패널 바깥 클릭, **Esc** 키로 목차를 숨길 수 있습니다.
 
@@ -165,3 +165,10 @@ vision_ai_lecture/
 ## 2026-10-19 · CNN·퍼셉트론 강의 그림 보완
 
 현재 55장 순서에서 AND Gate는 Course 7, XOR Gate는 Course 8, CNN 구조는 Course 11, Kernel은 Course 12, Padding은 Course 17, Max Pooling은 Course 18, 학습 구조는 Course 28, 전이학습은 Course 30입니다. 얼룩말 CNN Architecture 원본은 이미지 출처 표기 및 로컬 대체 그림과 함께 제공합니다. [수정·검증 기록](reviews/2026-10-19_CNN_SLIDE_REFINEMENT.md)을 참조하세요.
+
+
+## 2026-10-19 · AND/XOR Gate 실시간 실습
+
+- [Course 7 AND Gate](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-7): w₁, w₂, Bias 슬라이더로 결정 직선의 방향·위치를 직접 변화시키며 진리표 결과를 확인합니다.
+- [Course 8 XOR Gate](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-8): Layer 1(뉴런 2개)과 Layer 2의 총 9개 파라미터를 조절하고 Step/활성화 없음 토글로 복수 선형층과 비선형 네트워크의 차이를 비교합니다.
+- **강의 시간은 총 120분**이며 별도 질의응답/Q&A 시간은 없습니다. 강의 일정은 [운영안](TWO_HOUR_LECTURE_PLAN.md)을 따릅니다.
