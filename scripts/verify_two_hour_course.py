@@ -144,10 +144,10 @@ assert 'AI 판정' in concepts['xor-gate'] and '정답' in concepts['xor-gate']
 print('GATE_SIMPLIFICATION_QA_PASSED: W/B per layer, linear boundary then ReLU-based nonlinearity')
 
 # Regression for slope/offset geometry, not only moving a fixed-slope line.
-assert 'z=Wx₁+x₂+b' in concepts['and-gate']
+assert 'z=Wx₁+1·x₂+b' in concepts['and-gate']
 assert '기울기 −W' in concepts['and-gate'] and 'y절편 −b' in concepts['and-gate']
-assert 'z=W₂t+x₁+b₂' in concepts['xor-gate']
-assert 'x₁은 고정된 입력 연결' in concepts['xor-gate']
+assert 'z=W₂t+1·x₁+b₂' in concepts['xor-gate']
+assert 'x₁ Weight=1 고정' in concepts['xor-gate']
 js_source=(D/'interactive_gates.js').read_text()
 assert '[values.w,1,values.b]' in js_source
 assert '[1+values.w1*values.w2, values.w2, values.w2*values.b1+values.b2]' in js_source
