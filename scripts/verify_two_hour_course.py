@@ -68,9 +68,9 @@ assert abs(.5-.1*(2*(.5*2-4)*2)-1.7)<1e-12
 assert 'w=0.5' in concepts['loss'] and 'w=1.7' in concepts['loss']
 assert '9,216' in concepts['sharing'] and 9*1024==9216
 assert 'perceptron_gate_structure_ko.svg' in concepts['perceptron']
-assert all(('data-param="'+name+'"') in concepts['and-gate'] for name in ['w1','w2','b'])
-assert all(('data-param="'+name+'"') in concepts['xor-gate'] for name in ['a1','b1','c1','a2','b2','c2','u1','u2','d'])
-assert 'data-gate-mode="step"' in concepts['xor-gate'] and 'data-gate-mode="linear"' in concepts['xor-gate']
+assert all(('data-param="'+name+'"') in concepts['and-gate'] for name in ['w','b'])
+assert all(('data-param="'+name+'"') in concepts['xor-gate'] for name in ['w1','b1','w2','b2'])
+assert 'data-gate-mode="nonlinear"' in concepts['xor-gate'] and 'data-gate-mode="linear"' in concepts['xor-gate']
 assert '역전파(Backpropagation)' in concepts['loss']
 assert '지도학습(Supervised Learning)' in concepts['rules']
 assert '2 Epoch = 6 Step' in concepts['training-log']
@@ -124,12 +124,21 @@ print('LECTURE_REFINEMENT_QA_PASSED: original CNN architecture, AND/XOR split, p
 
 # Gate interactive assets must be local, versioned, and wired to their slide controls.
 course_page=(D/'vision_ai_course.html').read_text()
-assert 'interactive_gates.js?v=20261019-1' in course_page
-assert 'interactive_gates.css?v=20261019-1' in course_page
+assert 'interactive_gates.js?v=20261019-simplewb-2' in course_page
+assert 'interactive_gates.css?v=20261019-simplewb-2' in course_page
 for name in ['interactive_gates.js','interactive_gates.css']:
  assert (D/name).is_file(),name
 assert 'data-gate-lab="and"' in concepts['and-gate'] and 'data-gate-reset' in concepts['and-gate']
 assert 'data-gate-lab="xor"' in concepts['xor-gate'] and 'data-gate-reset' in concepts['xor-gate']
-assert 'Step(z)' in concepts['and-gate']
+assert 'z≥0' in concepts['and-gate']
 assert '비선형' in concepts['xor-gate']
-print('GATE_INTERACTIVE_QA_PASSED: 3 AND sliders, 9 XOR sliders, Step/Linear toggle, 120m all-teaching schedule')
+print('GATE_INTERACTIVE_QA_PASSED: 2 AND sliders, 4 XOR sliders, linear-to-nonlinear toggle, 120m all-teaching schedule')
+
+# One shared weight + bias per layer, no neuron-specific w11/w12 UI.
+assert concepts['and-gate'].count('data-param=')==2
+assert concepts['xor-gate'].count('data-param=')==4
+assert '뉴런 A' not in concepts['xor-gate'] and 'w₁₁' not in concepts['xor-gate']
+assert '|t|' in concepts['xor-gate'] and 'ReLU' in concepts['xor-gate']
+assert 'data-gate-stage' in concepts['xor-gate']
+assert 'AI 판정' in concepts['xor-gate'] and '정답' in concepts['xor-gate']
+print('GATE_SIMPLIFICATION_QA_PASSED: W/B per layer, linear boundary then ReLU-based nonlinearity')
