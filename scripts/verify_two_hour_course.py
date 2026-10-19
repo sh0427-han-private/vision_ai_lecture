@@ -18,7 +18,7 @@ for deck,count in [('intro',13),('vision_ai_course',42)]:
  ss=re.findall(r'<section\b[^>]*class="slide[^\"]*"[^>]*>.*?</section>',text,re.S)
  assert len(ss)==count,(deck,len(ss))
  assert text.count('class="slide active"')==1
- assert re.findall(r'lecture_outline.js\?v=([^\"]+)',text)==['gates-cnn-20261019-1']
+ assert re.findall(r'lecture_outline.js\?v=([^\"]+)',text)==['interactive-gates-20261019-1']
  slides[deck]=ss
  for n,s in enumerate(ss,1):
   c=re.search(r'data-concept="([^\"]+)"',s)[1];concepts[c]=s
