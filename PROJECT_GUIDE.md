@@ -610,3 +610,12 @@ GitHub Pages:
 - Course7 AND에서 Weight w₁, w₂, Bias 슬라이더를 움직이면 결정 직선·네 진리표 결과·정답 개수가 실시간 변화하며 초기화 가능.
 - Course8 XOR은 두 층의 Weight6/Bias3 총 9개 슬라이더와 **Step 사용 vs 활성화 없음** 토글이 있어, 활성화 없는 두 선형층은 결국 한 직선으로 합쳐져 XOR를 풀 수 없음을 보여 준다. 기본 Step XOR는 4/4 정답으로 초기화.
 - 기존 기타 학습/평가 슬라이드·Sidebar·로컬 네트워크 독립성·공유 CSS cache 및 검증 조건 유지. 새 JS/CSS는 `docs/interactive_gates.js`, `docs/interactive_gates.css`로 독립 관리.
+
+
+## 2026-10-19 · Course 7–8 최종 단순화: 한 층은 W,b만 (이전 2+9 슬라이더 지침보다 우선)
+
+- **Course 7:** 공통 입력 s=x₁+x₂에 공유 W와 b만 사용하여 `z=W·s+b`. 슬라이더 **2개**로 직선 경계와 AND 판정을 변화시킨다.
+- **Course 8:** Layer 1 `t=W₁·(x₁+x₂)+b₁`, Layer 2 `z=W₂·g(t)+b₂`. 두 층 W₁,b₁,W₂,b₂ **총 4개** 슬라이더. 최초 `g(t)=t`(비선형 없음)로 시작해 선형 변환 둘이 하나의 `Wx+b`로 합쳐지는 **직선 하나**를 보여 준다(기본 XOR 3/4).
+- 다음 토글 `g(t)=|t|`(비선형 추가): `|t|=ReLU(t)+ReLU(-t)`이며, 그림에서는 **두 경계 사이의 영역**이 XOR를 표현해 4/4가 된다. 두 ReLU 계산을 단순화한 교육용 모델이며 단일 ReLU만으로 XOR를 해결한다는 설명을 금지한다.
+- 그래프 점 안 숫자는 **정답 Label**, 옅은 초록 영역은 **AI가 1이라 판단한 영역**, 빨간 테두리는 **AI 판정 오답**; 점 아래 칸에는 각 입력의 정답과 AI 판정을 모두 표시. “출력”만 단독 표기하지 않는다.
+- `docs/interactive_gates.js` / `docs/interactive_gates.css` 버전을 `20261019-simplewb-2`로 갱신했고 `docs/two_hour_manifest.json` / `docs/lecture_outline.js` 제목 동기화. 55장·120분 무Q&A 구성 불변.
