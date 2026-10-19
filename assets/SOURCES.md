@@ -533,3 +533,11 @@ https://www.nature.com/articles/s42256-020-00257-z
 - `docs/assets/generated/zebra_feature_photo.png`: ImageGen 생성, 1536×1024. 실제 촬영물이 아닌 사진형 생성 자산. 외부 원본 이미지는 사용하지 않았다.
 - 생성 지시: 자연광의 초원에서 오른쪽을 바라보며 서 있는 얼룩말 한 마리, 선명한 검정/흰 줄무늬, 전체 몸과 다리, 글자·테두리·도식 없는 사실적인 야생동물 사진 구도.
 - 같은 파일을 SVG viewport로 줄무늬 `(650,340,250,250)`, 목/머리 `(550,30,820,640)`, 전체 `(0,0,1536,1024)`에 표시한다. 사진형 그림의 확대이지 CNN의 실측 Feature Map이 아니다. 사용자 요청으로 발표 화면의 개념도/뇌 관련 단서 문구는 제거하고 생성 이력은 이 문서에 보존한다.
+
+## Approved Vision AI group A P01–P13 (2026-10-19)
+
+- `docs/assets/vision_task_apple_reference.jpg` — 기존 교육용 생성 사과 원본을 P01/P02/P03/P08/P10–P13에 재사용. ROI 타원은 자체 SVG Annotation이며 학습한 모델의 예측이 아님.
+- `docs/assets/generated/apple_studio_preview.png` — 기존 정상 사과 생성 원본을 P12/P13에 재사용. 불량 사과와 서로 다른 원본을 사용했으므로 결함만 합성한 동일 촬영 비교가 아님.
+- `docs/assets/lesson/lecture_rgb_channel_stack.svg` — 기존 P07 RGB 3-channel 설명 그림 재사용. 마지막 숫자 3은 공간 깊이가 아닌 채널 축.
+- P02 AI⊃ML⊃DL과 Computer Vision의 문제·기술 축, P03 가상 반복 검사, P08 사과 Frame 이동, P13 2×2 밝기/결함 매트릭스는 자체 HTML/SVG/CSS 개념 Figure. 별도 외부 Figure 복제 없음.
+- 기존 회랑 실사 출처: [Livioandronico2013, Wikimedia Commons, CC BY-SA 4.0](https://commons.wikimedia.org/wiki/File:Forced_perspective_gallery_by_Francesco_Borromini.jpg); P03 보조 사례로만 설명, 새 Figure에는 사용하지 않음.

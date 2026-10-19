@@ -18,7 +18,7 @@ for deck,count in [('intro',13),('vision_ai_course',46)]:
  ss=re.findall(r'<section\b[^>]*class="slide[^\"]*"[^>]*>.*?</section>',text,re.S)
  assert len(ss)==count,(deck,len(ss))
  assert text.count('class="slide active"')==1
- assert re.findall(r'lecture_outline.js\?v=([^\"]+)',text)==['arithmetic-vision-20261019-1']
+ assert re.findall(r'lecture_outline.js\?v=([^\"]+)',text)==['approved-a-20261019-1']
  slides[deck]=ss
  for n,s in enumerate(ss,1):
   c=re.search(r'data-concept="([^\"]+)"',s)[1];concepts[c]=s
@@ -91,7 +91,10 @@ for deck in ['intro','vision_ai_course','ai_basics','vision_ai']:
  assert 'cursor:zoom' not in text
 for a in ['perceptron_gate_structure_ko','and_xor_gate_geometry_ko','xor_multilayer_gates_ko']:
  ET.parse(D/'assets/lesson'/f'{a}.svg')
-print('TWO_HOUR_QA_PASSED: 59 slides, 120 teaching minutes without a Q&A block, principles-first prerequisites, shared numeric examples and local assets')
+assert [x['concept'] for x in m['decks']['intro']] == ["start","ai-ml-dl-cv","vision-value","photo-numbers","gray","rgb","hwc","video-frames","resolution","lighting","transform","diversity","relevant-change"]
+assert 'Frame 30' in concepts['video-frames'] and '30fps' in concepts['video-frames']
+assert 'T × H × W × 3' in concepts['video-frames']
+print('TWO_HOUR_QA_PASSED: staged approved group A, 59 slides, 120 teaching minutes without a Q&A block, principles-first prerequisites, shared numeric examples and local assets')
 
 # Open feedback paths must not render as a solid filled blob.
 root=ET.parse(D/'assets/lesson/context_cnn_training.svg').getroot()
@@ -99,7 +102,7 @@ feedback=root.find(".//{http://www.w3.org/2000/svg}path[@d='M1060 320C1060 440 3
 assert feedback is not None and feedback.get('fill')=='none'
 
 # Why/tasks additions and teaching figure must stay attached to their intended slides.
-assert set(['vision-value','vision-challenge']).issubset(concepts)
+assert set(['vision-value','ai-ml-dl-cv','video-frames']).issubset(concepts)
 assert set(['vision-evolution','task-model-data']).issubset(concepts)
 assert seq.index('task-model-data') < seq.index('perceptron')
 assert 'vision_motivation.css?v=why-20261019-1' in (D/'intro.html').read_text()

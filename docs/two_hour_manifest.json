@@ -1,5 +1,5 @@
 {
-  "version": "20261019-arithmetic-rule-vision-learning",
+  "version": "20261019-approved-a-builder",
   "duration_minutes": 120,
   "teaching_minutes": 120,
   "discussion_minutes": 0,
@@ -7,13 +7,13 @@
     "intro": [
       {
         "slide": 1,
-        "title": "AI와 시각의 출발점",
+        "title": "Vision AI란 무엇인가?",
         "concept": "start"
       },
       {
         "slide": 2,
-        "title": "사람의 시각 · 장면 이해",
-        "concept": "scene"
+        "title": "AI·ML·DL과 Computer Vision의 관계",
+        "concept": "ai-ml-dl-cv"
       },
       {
         "slide": 3,
@@ -27,7 +27,7 @@
       },
       {
         "slide": 5,
-        "title": "사진에서 밝기 숫자로",
+        "title": "흑백 사진은 H × W 숫자 배열",
         "concept": "gray"
       },
       {
@@ -37,38 +37,38 @@
       },
       {
         "slide": 7,
-        "title": "RGB 이미지와 숫자 배열",
+        "title": "RGB 이미지 전체는 H × W × 3",
         "concept": "hwc"
       },
       {
         "slide": 8,
-        "title": "해상도에 따른 정보 차이",
-        "concept": "resolution"
+        "title": "동영상은 시간순 RGB 이미지 여러 장",
+        "concept": "video-frames"
       },
       {
         "slide": 9,
-        "title": "조명·색감에 따른 Pixel 변화",
-        "concept": "lighting"
+        "title": "해상도가 낮으면 작은 결함도 사라질까?",
+        "concept": "resolution"
       },
       {
         "slide": 10,
-        "title": "회전·크기·가림·흐림에 따른 변화",
-        "concept": "transform"
+        "title": "조명이 달라지면 Pixel 숫자도 변한다",
+        "concept": "lighting"
       },
       {
         "slide": 11,
+        "title": "회전·크롭·가림·흐림은 무엇을 바꿀까?",
+        "concept": "transform"
+      },
+      {
+        "slide": 12,
         "title": "다르게 생겨도 같은 종류",
         "concept": "diversity"
       },
       {
-        "slide": 12,
+        "slide": 13,
         "title": "큰 변화보다 중요한 차이",
         "concept": "relevant-change"
-      },
-      {
-        "slide": 13,
-        "title": "Vision AI는 왜 어려울까?",
-        "concept": "vision-challenge"
       }
     ],
     "vision_ai_course": [
@@ -306,14 +306,14 @@
   },
   "blocks": [
     {
-      "name": "필요성 · 사진과 숫자",
+      "name": "Vision AI 개관 · AI/ML/DL/CV · RGB·영상",
       "deck": "intro",
       "start": 1,
       "end": 8,
       "minutes": 14
     },
     {
-      "name": "어려움 · 변화와 중요한 차이",
+      "name": "해상도 · 촬영 변화 · 지정 결함",
       "deck": "intro",
       "start": 9,
       "end": 13,
@@ -368,5 +368,23 @@
       "end": 46,
       "minutes": 5
     }
-  ]
+  ],
+  "approved_target": {
+    "slides": 55,
+    "teaching_minutes": 120,
+    "group_a_minutes": 26,
+    "completed_groups": [
+      "A"
+    ],
+    "pending_groups": [
+      "B",
+      "C",
+      "D",
+      "E",
+      "F",
+      "G",
+      "H"
+    ],
+    "note": "Staged: published route remains 59 slides (Intro13+Course46). Inherited Intro timing blocks total 24 minutes; reconcile A target 26 minutes with approved 55-slide B-H restructure."
+  }
 }

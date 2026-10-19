@@ -1,20 +1,20 @@
-/* 59-slide Vision AI curriculum: arithmetic rule and image learning illustrated separately. */
+/* Approved 55-slide plan; builder group A staged, others pending. */
 window.LECTURE_OUTLINE = {
-  "version": "20261019-arithmetic-rule-vision-learning",
+  "version": "20261019-approved-a-builder",
   "groups": [
     {
-      "name": "필요성 · 사진과 숫자",
+      "name": "개관 · AI/ML/DL/CV · Pixel · 동영상",
       "items": [
         {
           "page": "intro.html",
           "slide": 1,
-          "title": "AI와 시각의 출발점",
+          "title": "Vision AI란 무엇인가?",
           "global": 1
         },
         {
           "page": "intro.html",
           "slide": 2,
-          "title": "사람의 시각 · 장면 이해",
+          "title": "AI·ML·DL과 Computer Vision의 관계",
           "global": 2
         },
         {
@@ -32,7 +32,7 @@ window.LECTURE_OUTLINE = {
         {
           "page": "intro.html",
           "slide": 5,
-          "title": "사진에서 밝기 숫자로",
+          "title": "흑백 사진은 H × W 숫자 배열",
           "global": 5
         },
         {
@@ -44,48 +44,48 @@ window.LECTURE_OUTLINE = {
         {
           "page": "intro.html",
           "slide": 7,
-          "title": "RGB 이미지와 숫자 배열",
+          "title": "RGB 이미지 전체는 H × W × 3",
           "global": 7
         },
         {
           "page": "intro.html",
           "slide": 8,
-          "title": "해상도에 따른 정보 차이",
+          "title": "동영상은 시간순 RGB 이미지 여러 장",
           "global": 8
         }
       ]
     },
     {
-      "name": "어려움 · 변화와 중요한 차이",
+      "name": "해상도 · 촬영 변화 · 중요한 결함",
       "items": [
         {
           "page": "intro.html",
           "slide": 9,
-          "title": "조명·색감에 따른 Pixel 변화",
+          "title": "해상도가 낮으면 작은 결함도 사라질까?",
           "global": 9
         },
         {
           "page": "intro.html",
           "slide": 10,
-          "title": "회전·크기·가림·흐림에 따른 변화",
+          "title": "조명이 달라지면 Pixel 숫자도 변한다",
           "global": 10
         },
         {
           "page": "intro.html",
           "slide": 11,
-          "title": "다르게 생겨도 같은 종류",
+          "title": "회전·크롭·가림·흐림은 무엇을 바꿀까?",
           "global": 11
         },
         {
           "page": "intro.html",
           "slide": 12,
-          "title": "큰 변화보다 중요한 차이",
+          "title": "다르게 생겨도 같은 종류",
           "global": 12
         },
         {
           "page": "intro.html",
           "slide": 13,
-          "title": "Vision AI는 왜 어려울까?",
+          "title": "큰 변화보다 중요한 차이",
           "global": 13
         }
       ]
