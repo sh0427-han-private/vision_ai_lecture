@@ -222,8 +222,9 @@ assert 'return</span> a + b' in ar
 assert '데이터 학습은 필요하지 않습니다' in ar
 assert vision.count('class="rl-pane rl-pane--')==2
 assert vision.count('<figure class="rl-photo-card')==6
-assert vision.count('vision_task_apple_reference.jpg')==4
+assert vision.count('vision_task_apple_reference.jpg')==5
 assert vision.count('apple_studio_preview.png')==2
+assert 'class="b55-step b55-new-photo"' in vision and '다른 밝기 가정' in vision
 assert all(vision.count('<b>'+k+'</b>')==2 for k in ['D-L','D-D','N-D'])
 assert '갈색 Pixel 수 ≥ k ?' in vision and '지도학습(Supervised Learning)' in vision
 assert all(x in vision for x in ['Model M','b55-training','b55-inference','b55-bottom-three','b55-prediction','실제 결과 미측정','Validation / Test'])

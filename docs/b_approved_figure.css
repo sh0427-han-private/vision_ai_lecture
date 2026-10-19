@@ -105,3 +105,7 @@
  .principles-deck .b55-choice-row { grid-template-columns:minmax(0,1.55fr) 40px minmax(0,1.1fr) 16px minmax(0,1fr); gap:4px; }
  .principles-deck .b55-label-head,.principles-deck .b55-label-row { gap:4px; }
 }
+
+/* Explicit simulated new-photo input for Model M, separate from the six GT thumbnails. */
+.principles-deck .b55-new-photo img { width: 72px; height: 28px; margin: 0 auto; object-fit: cover; filter: brightness(1.28); }
+.principles-deck .b55-ml-path .b55-step strong { font-size: clamp(16px, 1.06vw, 18px); }
