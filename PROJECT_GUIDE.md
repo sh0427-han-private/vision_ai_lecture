@@ -659,3 +659,13 @@ GitHub Pages:
 - 이 특수식만 사용하면 경계 기울기가 −1로 고정되어 W만으로 회전할 수 없다. C8은 의도적으로 x₂ Weight=1을 고정한 z=Wx₁+x₂+b로 W를 바꿔 회전시키는 **서로 다른 AND 파라미터 예시**임을 표기한다.
 - C10은 Layer1 t=W₁x₁+1·x₂+b₁, Layer2 z=W₂g(t)+1·x₁+b₂이고 추가 입력선 계수는 1로 고정한다. W₁,W₂는 층별 조절 Weight 이름일 뿐, 층마다 실제 연결 하나만 있다는 뜻은 아니다.
 - `docs/perceptron_weights_clarity.css?v=weights-20261019-1` 추가. `docs/lecture_outline.js?v=perceptron-weights-20261019-1` 캐시 동기화. 116뷰 브라우저 QA 및 배포 실화면 검증 필요.
+
+
+## 2026-10-19 · 최신 Course6 W/b 교육용 단순식 및 CNN 지도/비지도 (최상위 기준)
+
+- 현행 강의: **Intro13 + Course46 = 59장**, 120분 강의, Q&A 별도 시간 없음. `docs/two_hour_manifest.json` 기준 최신 Course 34에 **`cnn-learning-paths`** 신규 삽입.
+- **Course 6:** 본문·그림에 W(가중치) 한 개, b(편향) 한 개만 표시한 `z=W(x₁+x₂)+b`. 스칼라 W를 두 입력에 동일하게 적용하는 특별한 퍼셉트론 예시이므로 '뉴런 하나면 모든 입력 연결 Weight도 한 개뿐'이라는 일반 주장 금지. 예시 이미지 `docs/assets/lesson/perceptron_one_weight_ko.svg` 사용. 과거 일반형 병기 및 옛 퍼셉트론 그림은 C6에서 더 이상 표시하지 않음.
+- **C7 AND:** W=0.5,b=−0.7 → Step으로 AND 네 사례. **C8 기울기 실습:** x₂ Weight=1로 고정하고 W·b를 조절하는 별개 단일 뉴런 설정이며, W 공유 예시와 혼동하지 않는다.
+- **C34:** 같은 사전학습 CNN Feature Extractor를 Freeze한 예시로 `Feature 벡터→정답 Label 있는 Classification Head 학습(지도) / Label 없는 Clustering(K-means, 비지도)`을 두 갈래 그림으로 설명. 그룹 A/B는 의미가 없는 발견된 군집이며 자동 정상/불량 판정이 아님.
+- 주의: 지도/비지도는 **분류 Head만 교체하면 변하는 속성**이 아니라 **Label과 학습 목표**의 구분이다. 고정 Backbone이 과거 Label로 지도 사전학습됐을 수도 있으므로 C34의 비지도는 Feature를 활용한 **후단 군집화 단계**를 뜻한다. CNN 추출기 자체 학습은 지도/자기지도 등 별도 방식 가능.
+- 새 로컬 CSS: `docs/supervised_unsupervised_cnn.css?v=cnn-paths-20261019-1`; W/b 도식 CSS `docs/perceptron_weights_clarity.css?v=one-w-20261019-2`; 공유 TOC cache `cnn-paths-20261019-1`. 59장×2뷰=118 브라우저 시각 QA 필요.
