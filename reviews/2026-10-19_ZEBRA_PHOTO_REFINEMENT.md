@@ -9,3 +9,5 @@
 검증: 정적 수치/구조 검사 통과. 실제 Chromium 1366×768 및 1920×1080에서 C12 fitScale=1, overflow=0, overlap=0. 스크린샷은 `/workspace/.onboarding/vision-ai/zebra-photo-20261019/`에 보존. 1366px 화면을 직접 검토했다.
 
 병합 시 최신 main `85fed42`의 AND/XOR 기본 설명 2장을 보존했다. 최종 Intro13+Course45=58장, `cnn-why`는 C14, 전이학습은 C33이다. 최신 번호로 두 해상도 화면 검사를 다시 수행한다.
+
+최신 main의 AND 설명에 있던 “다음 장에서…” 문장은 기존 정적 검사 및 발표 메타 문구 제한과 충돌하여 그 전환 문장만 제거했다. AND 규칙·계산 및 새 슬라이드 구성은 보존했다.
