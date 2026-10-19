@@ -82,11 +82,25 @@ with sync_playwright()as p:
     assert metas[0]['crop']==metas[1]['crop']=='960x640'
     assert metas[0]['mask']==metas[1]['mask']
     assert metas[0]['roi']==metas[1]['roi']
+    # Fractional grid tracks differ by 1 CSS pixel; render both at an
+    # identical 180px QA crop, then restore styles before full-slide captures.
+    svgs.evaluate_all("""nodes=>nodes.forEach(s=>{
+      s.dataset.qaOldWidth=s.style.width;
+      s.dataset.qaOldHeight=s.style.height;
+      s.style.width='180px';
+      s.style.height='180px';
+    })""")
     images=[]
     for variant in ['matte','grid']:
      path=args.out/f'{w}-background-{variant}.png'
      svgs.nth(len(images)).screenshot(path=str(path))
      images.append(Image.open(path).convert('RGB'))
+    svgs.evaluate_all("""nodes=>nodes.forEach(s=>{
+      s.style.width=s.dataset.qaOldWidth;
+      s.style.height=s.dataset.qaOldHeight;
+      delete s.dataset.qaOldWidth;
+      delete s.dataset.qaOldHeight;
+    })""")
     a,b=images
     assert a.size==b.size and min(a.size)>=80,a.size
     fw,fh=a.size
