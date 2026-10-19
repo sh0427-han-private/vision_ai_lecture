@@ -25,7 +25,7 @@
 <link rel="stylesheet" href="gate_basics.css?v=gate-rule-20261019-1">
 <link rel="stylesheet" href="perceptron_weights_clarity.css?v=one-w-20261019-2">
 <link rel="stylesheet" href="supervised_unsupervised_cnn.css?v=cnn-paths-20261019-1">
-<link rel="stylesheet" href="rules_vs_learning.css?v=rules-vs-image-20261019-1">
+<link rel="stylesheet" href="rules_vs_learning.css?v=approved-p15-p16-20261019-1">
 </head><body class="deck-page lesson-deck principles-deck" data-prev-page="intro.html" data-next-page="">
 <header class="site-header"><nav class="nav"><a class="brand" href="intro.html#slide-1">Vision AI Lecture</a></nav></header>
 <main class="deck" aria-live="polite">
@@ -33,36 +33,44 @@
 <section class="slide" data-concept="rules" data-topic="규칙 기반" data-level="basic">
 <div class="slide-inner two-hour rl-lesson">
 <h2 class="slide-title">규칙 기반 · 답을 구하는 방법을 사람이 정한다</h2>
-<p class="slide-subtitle">앞 장에서 무엇을 판단할지 정했습니다. 이제 <strong>어떻게 판단할지</strong> 생각해 봅시다. 더하기는 사람이 규칙을 명확하게 알려줄 수 있습니다.</p>
-<div class="rl-math-board" role="group" aria-label="서로 다른 숫자 계산이 동일한 더하기 규칙을 사용하는 예시">
-<article class="rl-math-card"><h3>예시 ①</h3><div class="rl-equation-tiles" aria-label="1 더하기 1은 2"><span class="rl-digit">1</span><span class="rl-symbol rl-symbol--add">+</span><span class="rl-digit">1</span><span class="rl-symbol">=</span><span class="rl-digit rl-digit--out">2</span></div><p class="rl-small">첫 번째 입력도 같은 덧셈 규칙</p></article>
-<article class="rl-math-card"><h3>예시 ②</h3><div class="rl-equation-tiles" aria-label="2 더하기 1은 3"><span class="rl-digit">2</span><span class="rl-symbol rl-symbol--add">+</span><span class="rl-digit">1</span><span class="rl-symbol">=</span><span class="rl-digit rl-digit--out">3</span></div><p class="rl-small">숫자만 달라져도 계산 방법은 동일</p></article>
-</div>
-<div class="rl-computer-rule" role="group" aria-label="사람이 작성한 단 하나의 규칙이 두 계산에 적용됩니다"><strong>사람이 작성한 규칙</strong><span aria-hidden="true">→</span><span>결과 = 첫 번째 수 + 두 번째 수</span></div>
-<p class="rl-message">계산 규칙이 명확하면 <strong>데이터를 학습하지 않고도</strong> 정확하게 처리할 수 있습니다.</p>
-<p class="lesson-takeaway">규칙 기반(Rule-based)은 사람이 <strong>입력에서 결과까지의 판단 방법</strong>을 직접 작성하는 방식입니다. 그렇다면 사진의 작은 결함은 어떤 규칙으로 판단해야 할까요?</p>
+<p class="slide-subtitle">어떤 문제는 왜 머신러닝이 필요 없을까요? <strong>더하기처럼 계산 방법이 명확하면</strong> 사람이 알고리즘을 바로 작성할 수 있습니다.</p>
+<div class="rl-arithmetic-figure" role="group" aria-label="1+1과 2+1을 사람의 동일한 덧셈 규칙 f(a,b)=a+b로 계산해 2와 3을 출력">
+<div class="rl-arithmetic-headings"><span>입력 · Input</span><span>처리 · 같은 규칙</span><span>출력 · Output</span></div>
+<div class="rl-arithmetic-flow">
+<div class="rl-math-cases"><div class="rl-math-case"><small>입력 ①</small><strong>1 + 1</strong></div><div class="rl-math-case"><small>입력 ②</small><strong>2 + 1</strong></div></div>
+<svg class="rl-join-paths" viewBox="0 0 110 244" preserveAspectRatio="none" aria-label="두 입력에서 공통 규칙으로 연결" role="img"><defs><marker id="rl-in-arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0 0L7 3.5L0 7Z" fill="#6c9aa4"/></marker></defs><path d="M2 57C52 57 60 121 107 121M2 187C52 187 60 123 107 123" fill="none" stroke="#6c9aa4" stroke-width="3" marker-end="url(#rl-in-arrow)"/></svg>
+<div class="rl-shared-rule"><small>사람이 작성한 단 하나의 규칙</small><strong>f(a, b) = a + b</strong><span>숫자가 달라도 같은 계산</span></div>
+<svg class="rl-split-paths" viewBox="0 0 110 244" preserveAspectRatio="none" aria-label="공통 규칙에서 각각 2와 3으로 연결" role="img"><defs><marker id="rl-out-arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0 0L7 3.5L0 7Z" fill="#268d78"/></marker></defs><path d="M2 121C52 121 60 57 107 57M2 123C52 123 60 187 107 187" fill="none" stroke="#268d78" stroke-width="3" marker-end="url(#rl-out-arrow)"/></svg>
+<div class="rl-math-outputs"><div class="rl-math-output"><small>1 + 1의 결과</small><strong>2</strong></div><div class="rl-math-output"><small>2 + 1의 결과</small><strong>3</strong></div></div>
+</div></div>
+<p class="rl-message">판단 규칙이 명확하면 <strong>데이터를 학습하지 않고도</strong> 결과를 계산할 수 있습니다.</p>
+<p class="lesson-takeaway">규칙 기반(Rule-based)은 <strong>사람이 처리 방법을 직접 정의</strong>합니다. 그런데 사과 반점의 모든 색·크기·조명 조건도 하나의 규칙으로 표현할 수 있을까요?</p>
 </div></section>
 <section class="slide" data-concept="rules-image" data-topic="규칙 기반과 머신러닝" data-level="basic">
 <div class="slide-inner two-hour rl-lesson">
 <h2 class="slide-title">이미지 판단 · 규칙을 어디까지 만들어야 할까?</h2>
-<p class="slide-subtitle">사과에 <strong>갈색 반점이 있는지</strong> 판단한다고 합시다. 사진마다 조명·그림자·표면색이 달라지는데, 어떤 조건을 모두 규칙으로 작성해야 할까요?</p>
+<p class="slide-subtitle">목표는 <strong>사과의 갈색 반점 판정</strong>입니다. 양쪽에 <strong>동일한 세 입력 사례</strong>를 제시했습니다. 조명과 그림자가 달라지면 어떨까요?</p>
 <div class="rl-panes" role="group" aria-label="규칙 기반 이미지 판단과 정답 데이터를 이용한 머신러닝 방식의 비교">
 <article class="rl-pane rl-pane--rule"><h3>① 규칙 기반 · 사람이 조건을 작성</h3>
-<div class="rl-photos"><figure class="rl-photo-card"><img src="assets/vision_task_apple_reference.jpg" alt="밝은 사진의 사과 반점 있는 사과 이미지"><small>밝은 사진</small><span class="rl-tag rl-tag--bad">결함 있음</span></figure><figure class="rl-photo-card rl-photo-card--dark"><img src="assets/vision_task_apple_reference.jpg" alt="어두운 사진의 사과 반점 있는 사과 이미지 (밝기 변경으로 설명한 예시)"><small>어두운 사진</small><span class="rl-tag rl-tag--bad">결함 있음</span></figure><figure class="rl-photo-card"><img src="assets/generated/apple_studio_preview.png" alt="정상 사진의 사과 반점 없는 사과 이미지"><small>정상 사진</small><span class="rl-tag">정상</span></figure></div>
-<div class="rl-rule-items">
-<p><strong>규칙 A</strong> · 갈색 픽셀이 일정 수 이상이면 결함? <span>→ 그림자도 갈색처럼 보이면?</span></p>
-<p><strong>규칙 B</strong> · 어두운 영역이 크면 결함? <span>→ 조명이 어두워지면?</span></p>
-</div>
-<p class="rl-pane-note"><strong>가능은 하지만</strong> 촬영 조건·예외가 늘수록 사람이 작성할 기준도 복잡해집니다.</p>
+<div class="rl-photos"><figure class="rl-photo-card"><img src="assets/vision_task_apple_reference.jpg" alt="밝은 불량 사과의 교육용 생성 사진"><small>밝은 불량</small><span class="rl-tag rl-tag--bad">불량</span></figure><figure class="rl-photo-card rl-photo-card--dark"><img src="assets/vision_task_apple_reference.jpg" alt="같은 불량 사과의 화면 밝기를 낮춘 예시"><small>어두운 불량</small><span class="rl-tag rl-tag--bad">불량</span></figure><figure class="rl-photo-card rl-photo-card--dark"><img src="assets/generated/apple_studio_preview.png" alt="별도로 생성한 정상 사과 사진의 화면 밝기를 낮춘 예시"><small>어두운 정상</small><span class="rl-tag">정상</span></figure></div>
+<div class="rl-method-path" aria-label="직접 정의한 조건을 촬영 조건에 맞게 보완하는 절차">
+<div class="rl-method-step"><small>사람의 조건</small><strong>갈색 Pixel 수 ≥ k → 불량?</strong></div><span class="rl-stage-arrow" aria-hidden="true">→</span>
+<div class="rl-method-step rl-method-step--question"><small>예외?</small><strong>그림자·저조도에도 걸릴까?</strong></div><span class="rl-stage-arrow" aria-hidden="true">→</span>
+<div class="rl-method-step"><small>보완</small><strong>조건 수정·유지</strong></div></div>
+<p class="rl-pane-note">규칙도 유효합니다. 다만 촬영 조건과 예외가 늘면 <strong>수동 설계·유지보수</strong>가 복잡해질 수 있습니다.</p>
 </article>
-<article class="rl-pane rl-pane--learn"><h3>② 머신러닝 · 데이터에서 기준을 학습</h3>
-<div class="rl-photos"><figure class="rl-photo-card"><img src="assets/vision_task_apple_reference.jpg" alt="밝은 사진의 사과 반점 있는 사과 이미지"><small>밝은 사진</small><span class="rl-tag rl-tag--bad">결함 있음</span></figure><figure class="rl-photo-card rl-photo-card--dark"><img src="assets/vision_task_apple_reference.jpg" alt="어두운 사진의 사과 반점 있는 사과 이미지 (밝기 변경으로 설명한 예시)"><small>어두운 사진</small><span class="rl-tag rl-tag--bad">결함 있음</span></figure><figure class="rl-photo-card"><img src="assets/generated/apple_studio_preview.png" alt="정상 사진의 사과 반점 없는 사과 이미지"><small>정상 사진</small><span class="rl-tag">정상</span></figure></div>
-<div class="rl-flow-explain"><div class="rl-flow-node"><strong>사진 + 정답 Label</strong><br>정상 / 결함 있음</div><span class="rl-arrow" aria-hidden="true">→</span><div class="rl-flow-node rl-flow-node--result"><strong>학습 모델</strong><br>반점을 구분하는 특징 학습</div></div>
-<p class="rl-pane-note">다양한 조명·배경의 예시와 <strong>정답</strong>을 제공해 판정 기준을 학습시킵니다. 새 사진에서도 되는지는 별도 데이터로 검증합니다.</p>
+<article class="rl-pane rl-pane--learn"><h3>② 지도학습 · 사진과 정답으로 학습</h3>
+<div class="rl-photos"><figure class="rl-photo-card"><img src="assets/vision_task_apple_reference.jpg" alt="밝은 불량 사과의 교육용 생성 사진"><small>밝은 불량</small><span class="rl-tag rl-tag--bad">불량</span></figure><figure class="rl-photo-card rl-photo-card--dark"><img src="assets/vision_task_apple_reference.jpg" alt="같은 불량 사과의 화면 밝기를 낮춘 예시"><small>어두운 불량</small><span class="rl-tag rl-tag--bad">불량</span></figure><figure class="rl-photo-card rl-photo-card--dark"><img src="assets/generated/apple_studio_preview.png" alt="별도로 생성한 정상 사과 사진의 화면 밝기를 낮춘 예시"><small>어두운 정상</small><span class="rl-tag">정상</span></figure></div>
+<div class="rl-learning-path" aria-label="정답 사진으로 모델을 학습하고 새 사진 예측 후 독립적으로 검증">
+<div class="rl-learning-line"><div class="rl-learning-step"><small>사진 + 정답 Label</small><strong>Training</strong></div><span aria-hidden="true">→</span><div class="rl-learning-step rl-learning-step--model"><small>Weight를 조정해</small><strong>학습된 Model</strong></div></div>
+<div class="rl-learning-line"><div class="rl-learning-step"><small>새 사진에 같은 모델 적용</small><strong>Inference</strong></div><span aria-hidden="true">→</span><div class="rl-learning-step rl-learning-step--model"><small>결과는 미측정</small><strong>Prediction?</strong></div></div>
+<div class="rl-learning-check">새 조건에서도 통하는지는 <strong>독립 Validation/Test</strong>로 확인</div>
+</div>
+<p class="rl-pane-note">사람이 <strong>목표·Label·모델 구조</strong>를 정하고 학습 알고리즘이 데이터로 Weight를 조정합니다.</p>
 </article>
 </div>
-<p class="rl-small">같은 교육용 사과 사진의 밝기만 바꾼 비교 · 오른쪽은 <strong>지도학습(Supervised Learning)의 개념</strong>이며 실제 모델 예측 결과가 아닙니다.</p>
-<p class="lesson-takeaway">규칙 기반은 <strong>사람이 판단 기준을 직접 작성</strong>하고, 머신러닝은 <strong>데이터에서 판단 기준을 학습</strong>합니다. 단순한 규칙이면 규칙 기반이 유용하고, 이미지처럼 변화가 복잡할 때 학습이 도움이 됩니다.</p>
+<p class="rl-small">두 가지 기존 교육용 생성 사진을 재사용하고 화면에서만 밝기를 바꾼 비교입니다. 실제 재촬영·모델 학습·예측 결과가 아닙니다.</p>
+<p class="lesson-takeaway">규칙이 간단하고 안정적이면 <strong>Rule-based</strong>가 유용하고, 변화·예외가 많은 이미지에는 <strong>머신러닝</strong>이 도움이 될 수 있습니다. 실제 촬영 조건에서 검증해 선택합니다.</p>
 </div></section>
 <section class="slide" data-concept="vision-evolution" data-level="basic">
 <div class="slide-inner two-hour"><h2 class="slide-title">지금 Vision AI는 어디까지 왔나?</h2>
