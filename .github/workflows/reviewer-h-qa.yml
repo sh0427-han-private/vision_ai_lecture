@@ -32,6 +32,8 @@ jobs:
         run: |
           set +e
           mkdir -p reviews/evidence/h-4469656-browser
+          python -m http.server 8765 --directory . >/tmp/reviewer-h-routes.log 2>&1 &
+          sleep 1
           python automation/verify_approved_contract.py --final > reviews/evidence/h-4469656-browser/static-contract.log 2>&1
           c1=$?
           python scripts/verify_two_hour_course.py > reviews/evidence/h-4469656-browser/static-lecture.log 2>&1
