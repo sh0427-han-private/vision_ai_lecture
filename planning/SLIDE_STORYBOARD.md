@@ -901,7 +901,7 @@
 
 ## 9. Reviewer Critical / Major 이슈 전수 처리 매트릭스
 
-**근거 버전:** `reviews/FULL_LECTURE_AUDIT.md`(main, 2026-10-19, 59장 정적 전수 검수), `reviews/CURRENT_REVIEW_REPORT.md`(main의 Rule/ML PR 관련 2장 범위 검수). 보고서의 `Open`은 **HTML 적용/QA 미완료**를 뜻한다. 아래의 **기획 반영됨**은 실제 화면/코드 이슈 해결 판정이 아니다. 보고서 기준 **Critical 0개**이며 `AUD-01~04,08~11` Major 8개와 `ISSUE-RML-01~03, ISSUE-FLOW-01` Major 4개를 모두 대조한다. `ISSUE-FLOW-01`은 AUD-01과 같은 중복 개념 문제다.
+**근거 버전:** `reviews/FULL_LECTURE_AUDIT.md`(main, 2026-10-19, 59장 정적 전수 검수), `reviews/CURRENT_REVIEW_REPORT.md`(main의 Rule/ML PR 관련 2장 범위 검수). 보고서의 `Open`은 **HTML 적용/QA 미완료**를 뜻한다. 아래의 **기획 반영됨**은 실제 화면/코드 이슈 해결 판정이 아니다. 보고서 기준 **Critical 0개**이며 `AUD-01~04,08~11,13~17` Major 13개(후속 5개는 §12)와 `ISSUE-RML-01~03, ISSUE-FLOW-01` Major 4개를 모두 대조한다. `ISSUE-FLOW-01`은 AUD-01과 같은 중복 개념 문제다.
 
 | 이슈 / 심각도 | 기존 55장으로 해결하도록 설계? | 대응 계획 P | 이번 변경(미해결만) | Builder/Reviewer 처리·완료 증거 |
 |---|---|---|---|---|
@@ -952,3 +952,46 @@
 - **CNN 수치 일관성:** P20 64×64×3 가상 전체모델에서 shape 및 **1,426 학습 매개변수** 검산. P28/P29/P32는 **서로 같은 단일채널 5×5/3×3 Kernel**을 재사용하지만 P20과 동일 사진/입력 측정치가 아니다. P33의 3×3 Padding 전용 배열, P34의 4×4 MaxPool 전용 배열은 추가 소형 예시이며 실제 SqueezeNet의 activation 숫자가 아니다.
 - **평가 수치 일관성:** 교육용 100건의 Label 분포 20/80과 0.30/0.50/0.70별 행렬을 같은 배열에서 검산. P49–P51은 **t=0.50 기준 18/2/4/76**; P50의 모두 정상 모델은 **별도 비교 가상모델**이다. Score는 보정된 확률이라고 표현하지 않는다.
 - **실행된 검증 vs 요구사항:** 보고서의 계산 정적 검증은 재사용 가능하나 **55장 실물 미구현, 110뷰 직접 렌더·모든 UI 테스트·120분 리허설·Pages 배포는 여전히 NOT VERIFIED**. 따라서 상태를 `Resolved`/`PASS`로 변경하지 않고 Builder 증거가 생긴 뒤 Reviewer가 닫는다.
+
+
+## 12. 전수 검수 후속 Major AUD-13~17 — 승인 구조 유지, Builder 확정 사양 (2026-10-19)
+
+> **상태:** Approved 55장 내 Figure·설명·인수 기준 보강. P번호·concept ID·구간 순서·시간 변경 **없음**. 59장 현재 HTML에 대한 지적은 55장 Builder 구현 전까지 **Open**이며, 이 문서 반영만으로 Resolved/PASS가 아니다. Reviewer 원본은 main의 `reviews/FULL_LECTURE_AUDIT.md` §보완 Issue 및 `reviews/CURRENT_REVIEW_REPORT.md`이다.
+
+### P20 / P21 / P27 / P28 — AUD-16, CNN 구조→뉴런→Kernel 수치 복귀
+
+- **P20 마무리 20초:** 동일 로컬 SVG Architecture의 Conv A·Conv B 내부에 **학습 가능한 Weight**, ReLU에 **비선형 활성화** 배지를 붙인다. 다음 P21 도입은 “CNN 내부에서도 입력을 Weight로 결합하고 비선형 변환한다. 먼저 그 가장 작은 계산 단위를 살펴보자.”로 연결. **P21의 Step 퍼셉트론은 CNN ReLU와 동일 함수가 아니다**. P21→P22–P27은 *Weight/결정 경계/비선형성 이해를 위한 우회 구간*임을 미니맵 상단에 표시한다.
+- **P27 종료 15초:** XOR 비선형 결정경계 성공을 보여준 뒤 P20 미니맵 ReLU를 강조하며 “비선형성이 필요한 이유를 확인했으니, 이제 Conv가 주변 Pixel에서 실제로 어떤 숫자를 계산하는지 확대한다.”라고 P28로 복귀. P27의 교육용 `|t|=ReLU(t)+ReLU(-t)`는 XOR 설명용 구성이지 P20 CNN에 그대로 들어가는 복합 Layer가 아니며, 점수 4/4는 네 개 토이 샘플 결과이지 일반화 성능이 아니다.
+- **완료 기준:** P20→P21, P27→P28의 자막·미니맵 강조가 모두 존재하고, 초보자가 “전체 CNN → Weight/비선형성 원리 → Conv 계산으로 복귀”를 설명한다. 23분 C구간·22분 D구간 변경 없음.
+
+### P28 — AUD-17, 사진 Crop과 교육용 5×5 정수의 증거 수준 분리
+
+- **Figure 3단:** [좌] 동일 결함 사과 사진과 **실제 85×85 JPEG ROI(시각적 동기 부여)** → **점선 분리선**에 “아래 숫자는 ROI 픽셀 실측값이 아닌 **별도 가상 연산 예제**” → [중] **가상 단일채널 5×5 입력** `[[1,2,3,0,1],[4,5,6,1,0],[7,8,9,2,1],[0,1,2,3,1],[1,0,1,2,3]]`, 강조된 좌상단 3×3과 Kernel `[[1,0,-1],[1,0,-1],[1,0,-1]]` → [우] 같은 위치의 아홉 쌍을 대응선으로 표시하고 `(1×1+2×0+3×(-1)) + (4×1+5×0+6×(-1)) + (7×1+8×0+9×(-1)) = -6` 출력 셀. 실제 사진 Crop에서 정수 배열로 **실측값이 전달되는 실선 화살표 금지**.
+- **완료 기준:** Figure 안에 `교육용 가상 숫자 / 실제 JPEG에서 추출한 값 아님`을 글자 크기 충분한 캡션으로 표기, 계산 9곱/합 = −6 검산, P29 동일 Matrix와 Kernel 사용, P20 RGB 3채널 Conv A와 토이 단일채널 계산을 구분. 두 해상도에서 점선·캡션·9대응선 판독 가능.
+
+### P43 — AUD-15, 실제 Weight로 돌아오는 Backward 명세
+
+- **공통 P20 아키텍처 재사용:** 상단 **실선 Forward** `사과→Conv A→ReLU→Pool→Conv B→ReLU→GAP→Head→Prediction`; Prediction과 정답 Label이 Loss 노드에 각각 입력된다. 하단 **색상 구별 역방향** `Loss→Backward(Gradient 산출)→Optimizer→[Conv A W,b / Conv B W,b / Dense Head W,b]`를 **실제 세 학습 노드에 도착하는 화살촉**으로 연결한다. 가독성 때문에 역전파 Gradient의 모든 Layer Jacobian을 쓰지 않으며, Optimizer의 화살표는 계산 과정의 Gradient 경로가 아니라 **Weight 갱신 대상**을 나타낸다고 표시한다.
+- **고정 노드:** ReLU/Pool/GAP은 미분·Gradient 전파 **경로에는 포함**되지만 학습할 Weight 없음. Stride/Padding은 Conv 속성. 일반 CNN 학습에서는 세 그룹 모두 업데이트 가능, 이후 P45 Head-only transfer 예제에서는 잠긴 Backbone 업데이트 없음; P43에서 이미 Backbone이 Freeze된 것으로 오인시키지 않는다.
+- **완료 기준:** Caption 없이도 Loss→Optimizer→Conv A/B·Head의 종점과 Forward/Backward 방향을 식별하며, 1920×1080 및 1366×768 PNG에서 실제 화살촉·상자 끝점을 육안 검사. 교육용 그림이지 사과 모델 실제 학습 실행 결과 아님.
+
+### P20 / P45 — AUD-13·AUD-14, 오참조 제거 및 Figure 오프라인 일관성
+
+- **P20 단일 원본 로컬 도식:** `cnn-overview` concept와 `P20`을 안정 식별자로 사용한다. **사과64×64×3 → Conv A(8) → ReLU → Pool → Conv B(16) → ReLU → GAP(16) → Dense(2)**의 동일한 SVG/HTML 설계 자산을 P21–P36 미니맵과 P45 재사용 도식의 source of truth로 둔다. 크기·Shape·파라미터 수는 P20 본문 기존 검산(총 1,426)과 일치시킨다.
+- **P45 오참조 수정 지시:** 현행 C33 `transfer`의 “Course 11의 얼룩말 CNN 구조” 텍스트를 **“앞서 본 P20 CNN 구조(`cnn-overview`)”**로 교체한다. 실제 구현 후 링크는 새 Manifest의 concept→경로 매핑에서 생성하며 **이전 C11 숫자 하드코딩 금지**. 외부 Developers Breach 이미지 의존을 제거해, 기본 설명은 로컬 P20 재사용으로 완결되어야 한다. 외부 참고 URL은 출처로만 유지해도 된다.
+- **P45 두 상태 비교:** 동일 Backbone에서 (1) **Head-only** Conv A/B 자물쇠 잠금, Head 갱신 강조; (2) **Fine-tune** 일부 Conv 잠금 해제 및 업데이트 대상 표시. P20의 가상 구조를 실제 SqueezeNet의 특정 Layer로 제시하지 않으며, P35의 실측 강아지 Feature Map과 출처/모델을 분리한다.
+- **완료 기준:** 정상/원격 네트워크 차단 두 상태에서 1920×1080·1366×768 그림이 동일 의미로 완전히 보임; P45 참조는 현재 55장 Manifest의 `cnn-overview`로 이동; Freeze/학습 대상이 색·잠금·화살표 3가지 방식으로 일치한다.
+
+### Reviewer Critical / Major 추가 매트릭스 (기존 §9에 대한 누락분)
+
+| Issue | 심각도·상태 | 기존 승인안 충족 여부 | 책임/계획 슬라이드 | Builder 조치 및 Reviewer 종료 조건 |
+|---|---|---|---|---|
+| AUD-13 | Major / Open | 미충족: P45의 번호 오류 치환 미확정 | Builder P45 | C11 오참조 제거, P20 concept 기준 링크 확인 |
+| AUD-14 | Major / Open | 부분: P20 로컬 원본 기획 존재, P45 원격 자산 의존 가능 | Builder P20,P45 | 로컬 공유 Figure만으로 핵심 Block/Shape/Weight 완결, 네트워크 차단 QA |
+| AUD-15 | Major / Open | 부분: P43 학습 대상 설명 있었지만 화살표 도착점 미확정 | Builder P43 | Loss→Backward→Optimizer→Conv A/B·Head 실제 화살촉과 경로 검증 |
+| AUD-16 | Major / Open | 부분: P19→P20 선행 이유는 적절, P20→P21→P28 브리지 부족 | Planner/Builder P20,P21,P27,P28 | 예고/복귀 대사·미니맵 하이라이트, 55장 순서 유지 |
+| AUD-17 | Major / Open | 부분: P28 캡션은 있었으나 Crop→실측 오인 가능 | Builder P28 | 가상 데이터 분리 점선, 9곱→−6 Figure, 2뷰 확인 |
+
+**최종 합산:** FULL_LECTURE_AUDIT Critical **0**, Major **13** (`AUD-01~04,08~11,13~17`), CURRENT_REVIEW_REPORT의 Major **4** (`ISSUE-RML-01~03, ISSUE-FLOW-01`, 마지막은 AUD-01과 내용 중복). 따라서 보고서상 Major 행 **17개**를 모두 추적한다. 문서 반영은 구현 이슈의 종료가 아니므로 17개 모두 Reviewer 실증 전 Open. 추가 독립 슬라이드 0장, 삭제 0장, 시간 조정 0분, 새 구조 승인 요청 없음.
+
+**8개 구간 Builder 처리 순서의 추가 게이트:** A(사진·ROI·concept 정착) → B(P16 과실 크기·새 입력+같은 모델·가독성) → C(**P20 로컬 원본, P20→P21 및 P27→P28 브리지**) → D(**P28 가상 숫자 분리/−6, 공통 도식**) → E(동일 제품·촬영 그룹 누출 방지) → F(**P43 역화살표, P45 오참조/오프라인 로컬 재사용**) → G(임계값 100건 검산) → H(55 concept/110뷰/120분 리허설). 구간별 기술·Figure·UI 상세 완료 기준은 기존 §10을 유지하며 굵게 표시한 항목은 **추가 필수 게이트**다.
