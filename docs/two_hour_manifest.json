@@ -1,5 +1,5 @@
 {
-  "version": "20261019-perceptron-input-weights-first",
+  "version": "20261019-cnn-supervised-unsupervised-one-w",
   "duration_minutes": 120,
   "teaching_minutes": 120,
   "discussion_minutes": 0,
@@ -99,7 +99,7 @@
       },
       {
         "slide": 6,
-        "title": "퍼셉트론 · Wx + b에서 판정까지",
+        "title": "퍼셉트론 · 하나의 W와 b로 판정",
         "concept": "perceptron"
       },
       {
@@ -239,61 +239,66 @@
       },
       {
         "slide": 34,
+        "title": "같은 CNN 특징 · 지도와 비지도 활용",
+        "concept": "cnn-learning-paths"
+      },
+      {
+        "slide": 35,
         "title": "Batch · Step · Epoch",
         "concept": "training-log"
       },
       {
-        "slide": 35,
+        "slide": 36,
         "title": "Overfitting · 새 데이터 일반화",
         "concept": "overfit"
       },
       {
-        "slide": 36,
+        "slide": 37,
         "title": "Score Threshold · 판정 기준",
         "concept": "threshold"
       },
       {
-        "slide": 37,
+        "slide": 38,
         "title": "Confusion Matrix · 100건 평가",
         "concept": "confusion"
       },
       {
-        "slide": 38,
+        "slide": 39,
         "title": "Accuracy의 함정 · 모두 정상이라면?",
         "concept": "imbalance"
       },
       {
-        "slide": 39,
+        "slide": 40,
         "title": "Precision과 Recall",
         "concept": "metrics"
       },
       {
-        "slide": 40,
+        "slide": 41,
         "title": "IoU · 박스 겹침 비율",
         "concept": "iou"
       },
       {
-        "slide": 41,
+        "slide": 42,
         "title": "Vision AI 원리 · 한 장으로 연결",
         "concept": "workflow"
       },
       {
-        "slide": 42,
+        "slide": 43,
         "title": "첫 과제를 위한 네 가지 질문",
         "concept": "project-brief"
       },
       {
-        "slide": 43,
+        "slide": 44,
         "title": "실행 결과 확인 · 임계값과 오류 수",
         "concept": "project-run"
       },
       {
-        "slide": 44,
+        "slide": 45,
         "title": "실패 사진이 알려 주는 것",
         "concept": "project-iterate"
       },
       {
-        "slide": 45,
+        "slide": 46,
         "title": "Vision AI 원리 · 무엇을 설명할 수 있나?",
         "concept": "project-check"
       }
@@ -333,7 +338,7 @@
       "deck": "vision_ai_course",
       "start": 13,
       "end": 23,
-      "minutes": 31
+      "minutes": 30
     },
     {
       "name": "데이터 · 전처리와 증강",
@@ -343,24 +348,24 @@
       "minutes": 10
     },
     {
-      "name": "학습 · CNN 가중치와 일반화",
+      "name": "학습 · CNN Feature 재사용과 지도/비지도",
       "deck": "vision_ai_course",
       "start": 29,
-      "end": 35,
-      "minutes": 13
+      "end": 36,
+      "minutes": 14
     },
     {
       "name": "평가 · 결함을 놓치지 않는가",
       "deck": "vision_ai_course",
-      "start": 36,
-      "end": 40,
+      "start": 37,
+      "end": 41,
       "minutes": 9
     },
     {
       "name": "원리 복습 · 사과 검사",
       "deck": "vision_ai_course",
-      "start": 41,
-      "end": 45,
+      "start": 42,
+      "end": 46,
       "minutes": 5
     }
   ]

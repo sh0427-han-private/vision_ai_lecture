@@ -57,6 +57,7 @@ def inspect_slide(page):
             '.vm-grid,.vm-showcase,.vm-blueprint,.vm-training-figure,.vm-intro-message,' +
             '.lf-gate-figure,.lf-pad-shared,.lf-pad-compare,.lf-augment-grid,' +
             '.gb-examples,.gb-example,.gb-gate,.gb-state,' +
+            '.su-figure,.su-shared,.su-paths,.su-path,.su-path-flow,' +
             '.lf-simple-photo-grid,.lf-training-story,.lf-transfer-flow,.lf-cnn-architecture'
           )].filter(x => x.getBoundingClientRect().height > 1);
           // Visually hidden accessibility-only content has no visual overlap.

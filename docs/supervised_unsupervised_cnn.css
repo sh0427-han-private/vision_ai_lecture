@@ -1,0 +1,63 @@
+/* Beginner presentation slide - common pretrained CNN features, two downstream learning paths */
+.lesson-deck .su-lesson .su-figure{display:flex;flex-direction:column;gap:15px;margin:12px 0 10px}
+.lesson-deck .su-shared{display:grid;grid-template-columns:minmax(0,.86fr) 38px minmax(0,1.5fr) 38px minmax(0,1fr);align-items:center;gap:10px;background:#f4f9f9;padding:12px 15px;border-top:3px solid #628e9c}
+.lesson-deck .su-stage{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;min-width:0;text-align:center}
+.lesson-deck .su-stage strong{color:#275b68;font-size:clamp(19px,1.42vw,25px)}
+.lesson-deck .su-stage small{color:#567784;font-size:clamp(15px,1.05vw,18px);line-height:1.34}
+.lesson-deck .su-photo{width:clamp(80px,8.8vw,145px);height:clamp(70px,8vw,126px);object-fit:cover;object-position:50% 43%;border-radius:5px}
+.lesson-deck .su-stage--backbone{border:2px solid #78a4b0;background:#e5f0f1;border-radius:5px;padding:13px;min-height:166px}
+.lesson-deck .su-filter-pills{display:flex;gap:9px;justify-content:center}
+.lesson-deck .su-filter-pills i{display:block;width:42px;height:42px;background:repeating-linear-gradient(45deg,#b5d8d4 0 7px,#f5fbf8 7px 14px);border:2px solid #55938a;border-radius:3px;transform:rotate(-9deg)}
+.lesson-deck .su-filter-pills i:nth-child(2){background:radial-gradient(circle at 65% 39%,#81b2ae 0 26%,#eef5f5 27% 58%,#81b2ae 59%)}
+.lesson-deck .su-filter-pills i:nth-child(3){transform:rotate(7deg);background:linear-gradient(135deg,#f0f8f6 0 35%,#7caaa5 36% 67%,#f0f8f6 68%)}
+.lesson-deck .su-stage--features{border:2px solid #75ad9f;background:#e8f5ef;border-radius:5px;padding:16px 10px;min-height:166px}
+.lesson-deck .su-feature-vector{display:flex;gap:5px;margin:8px auto}
+.lesson-deck .su-feature-vector span{width:25px;height:34px;border:1px solid #73aaa0;background:#c6e7d9;border-radius:3px}
+.lesson-deck .su-feature-vector span:nth-child(2){background:#91cbb5}.lesson-deck .su-feature-vector span:nth-child(3){background:#dcf1e5}.lesson-deck .su-feature-vector span:nth-child(4){background:#64ae99}
+.lesson-deck .su-arrow{font-size:clamp(25px,2.3vw,38px);font-weight:700;color:#6a929c;text-align:center}
+.lesson-deck .su-fork{text-align:center;position:relative;color:#4f8890;font-size:clamp(15px,1.17vw,19px);font-weight:750;line-height:1.2}
+.lesson-deck .su-fork::before{content:'↓';display:block;color:#539e8e;font-size:25px}
+.lesson-deck .su-paths{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.lesson-deck .su-path{min-width:0;border-top:4px solid #238b76;background:#f5faf8;padding:14px 20px 16px;display:flex;flex-direction:column;gap:11px;min-height:250px}
+.lesson-deck .su-path--un{background:#f5f8fb;border-top-color:#5587a0}
+.lesson-deck .su-path h3{font-size:clamp(21px,1.68vw,29px);color:#1e6b5e;margin:0}
+.lesson-deck .su-path--un h3{color:#385f80}
+.lesson-deck .su-path .su-path-sub{font-size:clamp(16px,1.2vw,20px);color:#476977;margin:0;line-height:1.35}
+.lesson-deck .su-path-flow{display:flex;align-items:center;justify-content:space-between;gap:9px;flex:1}
+.lesson-deck .su-path-node{display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:0;flex:1;text-align:center;background:#fff;border:1px solid #bad2cd;border-radius:4px;min-height:95px;padding:9px 7px}
+.lesson-deck .su-path-node strong{color:#246778;font-size:clamp(16px,1.18vw,20px);line-height:1.2}
+.lesson-deck .su-path-node small{color:#54717c;font-size:clamp(14px,.99vw,17px);margin-top:5px;line-height:1.2}
+.lesson-deck .su-path-node--end{border:2px solid #73b19e;background:#e5f5ed}
+.lesson-deck .su-path--un .su-path-node--end{border-color:#78a4bf;background:#e9f2f9}
+.lesson-deck .su-labels{display:flex;flex-direction:column;gap:6px;min-width:97px}
+.lesson-deck .su-labels span{padding:4px 9px;border-radius:3px;background:#dfefe4;color:#176d56;font-size:clamp(15px,1.05vw,18px);font-weight:750}
+.lesson-deck .su-labels span:last-child{background:#fae9df;color:#8d5f41}
+.lesson-deck .su-clusters{position:relative;width:112px;height:86px;border-left:2px solid #95abb9;border-bottom:2px solid #95abb9;margin:7px auto}
+.lesson-deck .su-clusters i{position:absolute;width:12px;height:12px;border-radius:50%;background:#399d7d}
+.lesson-deck .su-clusters i:nth-child(-n+4){background:#4899bd}
+.lesson-deck .su-clusters i:nth-child(1){left:13px;top:52px}.lesson-deck .su-clusters i:nth-child(2){left:27px;top:37px}.lesson-deck .su-clusters i:nth-child(3){left:41px;top:55px}.lesson-deck .su-clusters i:nth-child(4){left:17px;top:22px}
+.lesson-deck .su-clusters i:nth-child(5){left:66px;top:12px}.lesson-deck .su-clusters i:nth-child(6){left:85px;top:28px}.lesson-deck .su-clusters i:nth-child(7){left:93px;top:12px}.lesson-deck .su-clusters i:nth-child(8){left:74px;top:43px}
+.lesson-deck .su-path-note{margin:0;color:#496d78;font-size:clamp(16px,1.08vw,18px);font-weight:650}
+.lesson-deck .su-accuracy{font-size:clamp(14px,1.02vw,17px);line-height:1.45;color:#576f7b;margin:2px 0}
+.lesson-deck .su-lesson .lesson-takeaway{font-size:clamp(17px,1.32vw,22px);margin:7px 0}
+@media(max-height:850px){
+ .lesson-deck .su-lesson .su-figure{gap:6px;margin:5px 0}
+ .lesson-deck .su-stage--backbone,.lesson-deck .su-stage--features{min-height:125px;padding:6px}
+ .lesson-deck .su-photo{height:94px}
+ .lesson-deck .su-shared{padding:7px 12px}
+ .lesson-deck .su-filter-pills i{height:32px;width:32px}
+ .lesson-deck .su-path{min-height:188px;padding:9px 12px;gap:5px}
+ .lesson-deck .su-path-node{min-height:72px}
+ .lesson-deck .su-paths{gap:12px}
+ .lesson-deck .su-clusters{transform:scale(.8);margin:-1px auto}
+ .lesson-deck .su-fork::before{font-size:19px}
+}
+@media(max-width:850px){
+ .lesson-deck .su-shared{grid-template-columns:1fr 17px 1.25fr 17px 1.05fr;gap:3px}
+ .lesson-deck .su-stage small,.lesson-deck .su-path-node small{font-size:12px}
+ .lesson-deck .su-path-flow{gap:3px}
+ .lesson-deck .su-path{padding:6px}
+ .lesson-deck .su-labels{min-width:65px}
+ .lesson-deck .su-labels span{font-size:11px}
+ .lesson-deck .su-clusters{transform:scale(.7);margin:-9px -10px}
+}
