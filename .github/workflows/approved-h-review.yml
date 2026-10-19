@@ -1,0 +1,46 @@
+name: Approved H P53-P55 browser correction evidence
+on:
+  push:
+    branches: [automation/approved-55-20261019]
+    paths:
+      - "docs/vision_ai_course.html"
+      - "docs/approved_h.css"
+      - "automation/check_group_browser.py"
+      - ".github/workflows/approved-h-review.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  h-browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Chromium, Playwright and image inspection libraries
+        run: |
+          python -m pip install playwright pillow lxml
+          python -m playwright install --with-deps chromium
+          sudo ln -sf "$(find "$HOME/.cache/ms-playwright" -type f -path '*/chrome-linux64/chrome' | head -1)" /usr/bin/chromium || true
+      - name: Static contract and global curriculum
+        run: |
+          python automation/verify_approved_contract.py --final
+          python scripts/verify_two_hour_course.py
+      - name: Start local lesson server and verify H at two viewports
+        run: |
+          python -m http.server 8766 --directory docs >/tmp/approved-h-http.log 2>&1 &
+          python automation/check_group_browser.py --group H --out visual_audit_output/approved_h
+        env:
+          AUDIT_BASE_URL: http://127.0.0.1:8766
+      - name: Run legacy learning and interaction regression
+        run: |
+          python -m http.server 8765 --directory docs >/tmp/approved-h-regression.log 2>&1 &
+          python scripts/verify_learning_routes.py
+      - name: Save viewport images and wait-state diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: approved-h-browser-qa
+          path: visual_audit_output/approved_h/
+          if-no-files-found: warn

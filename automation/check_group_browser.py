@@ -33,8 +33,45 @@ with sync_playwright()as p:
    if not page.url.split('#')[0].endswith(deck+'.html'):page.goto(f'{args.base}/{deck}.html')
    page.evaluate('(n)=>location.hash="slide-"+n',number)
    page.wait_for_function('(c)=>document.querySelector(".slide.active")?.dataset.concept===c',arg=target['concept'])
+   # P54 image.onload is asynchronous: never capture incomplete raster canvases.
+   if target['concept']=='project-iterate':
+    try:
+     page.wait_for_function("""() => {
+       const nodes=[...document.querySelectorAll(
+         '.slide.active canvas[data-h-review-resolution]')];
+       if(nodes.length!==2)return false;
+       return nodes.every(c=>{
+         const size=Number(c.dataset.hReviewResolution);
+         if(c.dataset.ready!=='true'||![24,240].includes(size)||
+            c.width!==size||c.height!==size)return false;
+         const px=c.getContext('2d').getImageData(0,0,size,size).data;
+         let opaque=0,nonuniform=0;
+         const first=[px[0],px[1],px[2]];
+         for(let i=0;i<px.length;i+=4){
+           if(px[i+3]===255)opaque++;
+           if(px[i]!==first[0]||px[i+1]!==first[1]||
+              px[i+2]!==first[2])nonuniform++;
+         }
+         return opaque===size*size&&nonuniform>size;
+       });
+     }""",timeout=20000)
+    except Exception as exc:
+     report.setdefault('canvas_errors',[]).append({
+      'concept':target['concept'],'viewport':f'{w}x{h}',
+      'reason':str(exc)[:500]})
+     continue  # No misleading screenshot when either canvas is still blank.
    page.wait_for_timeout(160)
    info=inspect_slide(page)
+   if target['concept']=='project-iterate':
+    info['canvas_checks']=page.locator(
+     '.slide.active canvas[data-h-review-resolution]').evaluate_all(
+     """nodes=>nodes.map(c=>{
+       const p=c.getContext('2d').getImageData(0,0,c.width,c.height).data;
+       let opaque=0;
+       for(let i=3;i<p.length;i+=4)if(p[i]===255)opaque++;
+       return {size:+c.dataset.hReviewResolution,width:c.width,
+               height:c.height,ready:c.dataset.ready,opaque_pixels:opaque};
+     })""")
    info.update({'concept':target['concept'],'plan':target['plan'],'viewport':f'{w}x{h}'})
    info['file']=f'{w}-{target["concept"]}.png'
    page.screenshot(path=str(args.out/info['file']),animations='disabled')
@@ -44,5 +81,5 @@ with sync_playwright()as p:
 issues=[(x['concept'],x['viewport'])for x in report['screens']if x['contentBottomOverflow']>6 or x['contentRightOverflow']>6 or x['browserHorizontalOverflow']>1 or x['fitScale']<.9 or x['overlaps'] or any(not i['loaded']and i['visible']for i in x['images']) or any(not i['loaded']for i in x['svgImages'])]
 report['layout_issues']=issues
 (args.out/'report.json').write_text(json.dumps(report,ensure_ascii=False,indent=2))
-print(json.dumps({'screens':len(report['screens']),'layout_issues':issues,'page_errors':report['page_errors'],'minimum_fit':min(x['fitScale']for x in report['screens'])},ensure_ascii=False))
-assert not issues and not report['page_errors'], 'Inspect report and actual images; fix before independent review'
+print(json.dumps({'screens':len(report['screens']),'layout_issues':issues,'page_errors':report['page_errors'],'minimum_fit':min((x['fitScale']for x in report['screens']),default=None),'canvas_errors':report.get('canvas_errors',[])},ensure_ascii=False))
+assert len(report['screens'])==len(targets)*2 and not report.get('canvas_errors') and not issues and not report['page_errors'], 'Inspect report and actual images; fix before independent review'
