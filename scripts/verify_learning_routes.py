@@ -81,8 +81,12 @@ def main():
   assert '지도학습(Supervised Learning)' in page.locator('.slide.active').inner_text()
   assert '독립' in page.locator('.slide.active').inner_text()
   assert '실제 결과 미측정' in page.locator('.slide.active').inner_text()
-  for img in page.locator('.slide.active .rl-photo-card img').all():
-   assert img.evaluate('(el)=>el.complete&&el.naturalWidth>0'), img.get_attribute('src')
+  page.wait_for_function("""() => {
+   const images = [...document.querySelectorAll('.slide.active .rl-photo-card img')];
+   return images.length === 6 &&
+     images.every(img => img.complete && img.naturalWidth > 0);
+  }""", timeout=15000)
+  assert page.locator('.slide.active .rl-photo-card img').count() == 6
   # P14-P18: GT annotations, shared model and label preparation cost.
   page.goto(f"{BASE}/vision_ai_course.html#slide-{number('task')}")
   assert page.locator('.slide.active .b55-tasks article').count()==3
