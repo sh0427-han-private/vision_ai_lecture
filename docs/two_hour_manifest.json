@@ -1,8 +1,8 @@
 {
-  "version": "20261019-gates-cnn-refine-55",
+  "version": "20261019-interactive-gates-120min",
   "duration_minutes": 120,
-  "teaching_minutes": 110,
-  "discussion_minutes": 10,
+  "teaching_minutes": 120,
+  "discussion_minutes": 0,
   "decks": {
     "intro": [
       {
@@ -297,7 +297,7 @@
       "deck": "intro",
       "start": 9,
       "end": 13,
-      "minutes": 9
+      "minutes": 10
     },
     {
       "name": "Vision Task · 모델·Label",
@@ -311,28 +311,28 @@
       "deck": "vision_ai_course",
       "start": 6,
       "end": 10,
-      "minutes": 11
+      "minutes": 16
     },
     {
       "name": "CNN · Kernel과 특징 추출",
       "deck": "vision_ai_course",
       "start": 11,
       "end": 20,
-      "minutes": 30
+      "minutes": 32
     },
     {
       "name": "데이터 · 전처리와 증강",
       "deck": "vision_ai_course",
       "start": 21,
       "end": 25,
-      "minutes": 10
+      "minutes": 11
     },
     {
       "name": "학습 · CNN 가중치와 일반화",
       "deck": "vision_ai_course",
       "start": 26,
       "end": 32,
-      "minutes": 12
+      "minutes": 13
     },
     {
       "name": "평가 · 결함을 놓치지 않는가",
