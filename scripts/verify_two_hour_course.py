@@ -214,18 +214,19 @@ print('PREPROCESSING_REMOVAL_QA_PASSED: 59 slides, dataset→split→leakage→a
 
 # Rule-based arithmetic and image-based learning must occupy two DISTINCT slides.
 ar=concepts['rules'];vision=concepts['rules-image']
-assert '규칙 기반' in ar and 'rl-math-board' in ar
-assert ar.count('class="rl-math-card"')==2
-assert 'aria-label="1 더하기 1은 2"' in ar and 'aria-label="2 더하기 1은 3"' in ar
-assert '결과 = 첫 번째 수 + 두 번째 수' in ar
-assert '데이터를 학습하지 않고도' in ar
+# PR #113 merged Python add(a,b) and labeled-image figures in main.
+assert '규칙 기반' in ar and 'rl-python-figure' in ar
+assert ar.count('class="rl-math-case"')==2
+assert 'add(1, 1)' in ar and 'add(2, 1)' in ar
+assert 'return</span> a + b' in ar
+assert '데이터 학습은 필요하지 않습니다' in ar
 assert vision.count('class="rl-pane rl-pane--')==2
-assert vision.count('class="rl-photo-card')==6
+assert vision.count('<figure class="rl-photo-card')==6
 assert 'vision_task_apple_reference.jpg' in vision and 'apple_studio_preview.png' in vision
-assert '규칙 A' in vision and '규칙 B' in vision
-assert '판단 기준을 학습' in vision and '실제 모델 예측 결과가 아닙니다' in vision
+assert 'brown_pixels' in vision and '그림자도 갈색이라면?' in vision
+assert '판단 기준을 학습' in vision and '실제 학습·예측 결과가 아닙니다' in vision
 assert (D/'rules_vs_learning.css').is_file()
-assert 'rules_vs_learning.css?v=rules-vs-image-20261019-1' in (D/'vision_ai_course.html').read_text()
+assert 'rules_vs_learning.css?v=python-rule-label-training-20261019-1' in (D/'vision_ai_course.html').read_text()
 assert seq.index('rules')+1==seq.index('rules-image')
 assert seq.index('rules-image')+1==seq.index('vision-evolution')
 print('RULE_VS_LEARNING_QA_PASSED: 1+1/2+1 deterministic plus rule, image rule brittleness vs labeled learning')
