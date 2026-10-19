@@ -34,9 +34,9 @@ def main() -> None:
         page.on("pageerror", lambda error: errors.append(str(error)))
 
         page.goto(BASE_URL + f"#slide-{INTRO['start']}", wait_until="networkidle")
-        assert "AI와 시각의 출발점" in page.locator(".slide.active").inner_text()
-        page.goto(BASE_URL + f"#slide-{INTRO['scene']}", wait_until="networkidle")
-        assert "사람의 시각" in page.locator(".slide.active").inner_text()
+        assert "Vision AI란 무엇인가?" in page.locator(".slide.active").inner_text()
+        page.goto(BASE_URL + f"#slide-{INTRO['ai-ml-dl-cv']}", wait_until="networkidle")
+        assert "Computer Vision" in page.locator(".slide.active").inner_text()
         page.goto(BASE_URL + f"#slide-{INTRO['photo-numbers']}", wait_until="networkidle")
         page.wait_for_function(
             "() => document.querySelector('[data-apple-matrix-bridge]')"
