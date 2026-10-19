@@ -1,0 +1,38 @@
+/* Approved P28–P36: scoped to D, leaving previous sections untouched. */
+.principles-deck .d55 {width:min(1220px,100%)}
+.principles-deck .d55 .slide-subtitle {max-width:1200px;margin-bottom:8px;line-height:1.35}
+.principles-deck .d55 .d55-map {margin:6px 0 9px;padding:3px 0}
+.principles-deck .d55-map>span {flex-basis:140px;font-size:18px;line-height:1.25}
+.principles-deck .d55-diagram {display:block;width:100%;height:auto;max-height:405px;margin:2px auto 8px;overflow:visible}
+.principles-deck .d55 .lesson-takeaway {font-size:clamp(19px,1.45vw,24px);line-height:1.4;margin:8px 0 4px;padding:8px 0}
+.principles-deck .d55-caption {font-size:clamp(16px,1.13vw,18px);color:#587583;line-height:1.4;margin:6px 0 0}
+.principles-deck .d55-kernel {display:grid;grid-template-columns:210px minmax(0,1fr);gap:19px;align-items:center;margin:10px 0}
+.principles-deck .d55-kernel-photo {text-align:center;min-width:0}
+.principles-deck .d55-kernel h3 {font-size:clamp(19px,1.35vw,22px);line-height:1.35;margin:0 0 10px;color:#2f6474}
+.principles-deck .d55-kernel-photo svg:first-of-type {width:100%;height:135px;display:block}
+.principles-deck .d55-kernel-photo svg:nth-of-type(2) {width:132px;height:132px;display:block;margin:8px auto 0;border:2px solid #6aa99a}
+.principles-deck .d55-kernel-photo p {font-size:18px;color:#4f7180;margin:8px 0 0}
+.principles-deck .d55-toy-boundary {min-width:0;border-left:2px dashed #789da9;padding:8px 0 8px 19px}
+.principles-deck .d55-toy-boundary h3 {font-size:clamp(18px,1.35vw,22px);margin-bottom:18px}
+.principles-deck .d55-kernel .d55-diagram {max-height:330px}
+.principles-deck .d55-actual-map .cnn-feature-flow {margin:8px 0 10px;gap:12px}
+.principles-deck .d55-actual-map .cnn-feature-stage h3 {font-size:25px;margin-bottom:5px}
+.principles-deck .d55-actual-map .cnn-feature-stage .cnn-feature-shape {font-size:20px;margin-bottom:8px;white-space:nowrap}
+.principles-deck .d55-actual-map .cnn-feature-stage figcaption {font-size:17px;line-height:1.5;margin-top:8px;color:#4d6e7c}
+.principles-deck .d55-actual-map .cnn-feature-visual {height:210px;max-height:210px}
+.principles-deck .d55-real-source {font-size:16px}
+.principles-deck .d55-map-fallback {display:none;border:1px solid #b7cdd7;padding:35px;text-align:center;color:#365e70}
+.principles-deck .d55-map-fallback strong {font-size:29px}
+.principles-deck .d55-map-fallback p {font-size:21px;line-height:1.5}
+.principles-deck .d55-real[data-load-state="error"] .cnn-feature-flow {display:none}
+.principles-deck .d55-real[data-load-state="error"] .d55-map-fallback {display:block}
+@media (max-width:1450px) {
+ .principles-deck .d55-kernel {grid-template-columns:180px minmax(0,1fr);gap:14px}
+ .principles-deck .d55-toy-boundary {padding-left:14px}
+ .principles-deck .d55-kernel-photo svg:first-of-type {height:125px}
+ .principles-deck .d55-kernel-photo svg:nth-of-type(2) {width:112px;height:112px}
+ .principles-deck .d55-actual-map .cnn-feature-stage h3 {font-size:23px}
+ .principles-deck .d55-actual-map .cnn-feature-stage .cnn-feature-shape {font-size:18px}
+ .principles-deck .d55-actual-map .cnn-feature-visual {height:183px;max-height:183px}
+ .principles-deck .d55-actual-map .cnn-feature-stage figcaption {font-size:16px}
+}

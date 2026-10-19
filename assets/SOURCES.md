@@ -555,3 +555,9 @@ https://www.nature.com/articles/s42256-020-00257-z
 
 - 동일 생성 사과 사진과 자체 정밀 SVG/HTML을 사용. `cnn_apple_architecture.svg`는 64×64×3→Conv8→Pool→Conv16→GAP16→Dense2의 Shape와 1,426 Parameters(Bias 포함)의 단일 로컬 원본이다. 미니맵은 같은 SVG를 복제해 강조하며 실측 활성화가 아니다.
 - `perceptron_approved_c.svg`는 기존 자체 퍼셉트론 그림을 가독성에 맞춰 수정한 것이다. 외부 Figure를 새로 복제하지 않았다. CS231n/PyTorch 공식 원문 신규 GET은 403으로 NOT VERIFIED이며 기존 소스 라이브러리와 독립 산술 검산을 사용했다.
+
+## Approved group D P28–P36 (2026-10-19)
+
+- P28 same generated apple source, exact 85×85 ROI; numeric 5×5 input and 3×3 Kernel are a separate educational array, not measured photo pixels. P29 uses identical arrays, all nine windows and matching output coordinates. P30–34 are original exact SVG calculations; no external Figure reproduced.
+- P35 reuses `cnn_squeezenet_actual_feature_maps.png` unchanged and its source/reproduction script `scripts/render_cnn_feature_maps.py`. Stage `features[1]/[7]/[12]`, shape 111×111×64 / 27×27×256 / 13×13×512; selected IDs 35,30,44,32 / 2,62,24,153 / 471,302,409,415. Per-channel 2–99 percentile display normalization; absolute intensity not comparable between channels/stages. Input image origin remains Stanford CS231n 2017 Lecture5 slide37; actual calculation uses ImageNet SqueezeNet1.1, separate from the virtual apple CNN.
+- P36 crops the same local P20 SVG's spatial Backbone. GAP+Dense belong to the Classification Head; Box/Mask Heads illustrate alternative spatial-output designs, not simultaneous measured predictions.

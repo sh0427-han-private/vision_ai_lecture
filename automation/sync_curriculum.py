@@ -27,7 +27,7 @@ for deck in ['intro','vision_ai_course']:
   new.append(body)
   title=html.unescape(re.sub('<[^>]+>','',re.search(r'<h[12][^>]*class="slide-title[^\"]*"[^>]*>(.*?)</h[12]>',body,re.S)[1])).strip()
   entries.append({'slide':i,'title':title,'concept':c})
- text=text[:matches[0].start()]+'\n'.join(new)+'\n'+text[matches[-1].end():]
+ text=text[:matches[0].start()].rstrip()+'\n'+'\n'.join(new)+'\n'+text[matches[-1].end():].lstrip()
  text=re.sub(r'lecture_outline.js\?v=[^\"]+','lecture_outline.js?v=approved55-20261019-1',text)
  path.write_text(text);pages[deck]=entries
 m={'version':'approved55-20261019-1','duration_minutes':120,'teaching_minutes':120,'discussion_minutes':0,'decks':pages,'blocks':[]}
