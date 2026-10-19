@@ -1,0 +1,37 @@
+/* Two visual-only beginner examples: deterministic arithmetic rules vs learning from labeled images */
+.principles-deck .rl-lesson .rl-message{font-size:clamp(19px,1.48vw,24px);font-weight:730;color:#28726b;background:#e9f5ef;border-left:4px solid #318d78;padding:10px 16px;margin:12px auto 8px;max-width:1150px}
+.principles-deck .rl-math-board{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px;max-width:1170px;margin:16px auto 10px}
+.principles-deck .rl-math-card{display:flex;flex-direction:column;gap:14px;align-items:center;justify-content:center;background:#f4f8f9;border-top:4px solid #85adb6;min-height:260px;padding:22px 12px}
+.principles-deck .rl-math-card h3{font-size:clamp(19px,1.48vw,26px);color:#2d6070;margin:0}
+.principles-deck .rl-equation-tiles{display:flex;align-items:center;justify-content:center;gap:11px;white-space:nowrap}
+.principles-deck .rl-digit{height:90px;width:75px;display:grid;place-items:center;background:#eef5f6;border:2px solid #81a4ac;border-radius:7px;color:#2a6070;font-size:clamp(35px,3.15vw,49px);font-weight:850}
+.principles-deck .rl-digit--out{border-color:#4baf91;background:#dff3e9;color:#117e68}
+.principles-deck .rl-symbol{font-size:clamp(32px,2.7vw,43px);font-weight:850;color:#4e8792}
+.principles-deck .rl-symbol--add{color:#16856c}
+.principles-deck .rl-computer-rule{display:flex;gap:12px;align-items:center;justify-content:center;background:#e7f4ef;padding:13px 26px;margin:14px auto 8px;max-width:750px;font-size:clamp(20px,1.55vw,27px);color:#176f61;font-weight:720;border:1px solid #8ac4af}
+.principles-deck .rl-small{font-size:clamp(15px,1.12vw,18px);color:#54727d;text-align:center;margin:5px auto 10px;line-height:1.4}
+.principles-deck .rl-panes{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin:12px 0 10px}
+.principles-deck .rl-pane{background:#f4f8f9;border-top:4px solid #a3abb2;padding:12px 15px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.principles-deck .rl-pane--learn{border-color:#299177;background:#f2f9f5}
+.principles-deck .rl-pane h3{font-size:clamp(20px,1.56vw,27px);color:#285e6d;margin:0}
+.principles-deck .rl-pane--learn h3{color:#197b65}
+.principles-deck .rl-photos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}
+.principles-deck .rl-photo-card{margin:0;min-width:0;display:flex;flex-direction:column;align-items:center;gap:5px;padding:5px 4px 7px;background:#fff;border:1px solid #becfd2}
+.principles-deck .rl-photo-card img{width:100%;height:clamp(95px,12vw,178px);object-fit:cover;border-radius:2px;display:block}
+.principles-deck .rl-photo-card--dark img{filter:brightness(.48)}
+.principles-deck .rl-photo-card img.rl-clean{object-fit:cover;object-position:center}
+.principles-deck .rl-photo-card small{font-size:clamp(13px,1vw,17px);color:#496c77;font-weight:640;text-align:center;line-height:1.25}
+.principles-deck .rl-photo-card .rl-tag{display:block;font-size:clamp(12px,.9vw,15px);font-weight:780;color:#186f5d;background:#e0f3e9;padding:3px 6px}
+.principles-deck .rl-photo-card .rl-tag--bad{background:#fff0e5;color:#986240}
+.principles-deck .rl-flow-explain{display:flex;align-items:center;justify-content:center;gap:12px;min-height:76px}
+.principles-deck .rl-flow-node{flex:1;min-width:0;padding:10px 11px;border:1px solid #a3c1bd;background:#fff;color:#2d6670;font-size:clamp(16px,1.24vw,21px);font-weight:690;text-align:center;line-height:1.35}
+.principles-deck .rl-flow-node--result{border-color:#76b4a5;background:#e4f4eb;color:#16735f}
+.principles-deck .rl-arrow{font-size:clamp(25px,2vw,34px);font-weight:800;color:#548f92;flex:none}
+.principles-deck .rl-rule-items{display:flex;flex-direction:column;gap:8px}
+.principles-deck .rl-rule-items p{margin:0;padding:9px 12px;font-size:clamp(16px,1.16vw,20px);color:#526d7b;background:#fff;border-left:3px solid #95aeba;line-height:1.35}
+.principles-deck .rl-rule-items p strong{color:#276b78}
+.principles-deck .rl-rule-items p span{font-size:clamp(17px,1.25vw,21px);font-weight:800;color:#aa6c41}
+.principles-deck .rl-pane-note{font-size:clamp(15px,1.14vw,19px);color:#557482;line-height:1.4;margin:0}
+.principles-deck .rl-lesson .lesson-takeaway{margin-top:12px;font-size:clamp(17px,1.34vw,22px)}
+@media(max-height:840px){.principles-deck .rl-math-board{margin:8px auto;gap:12px}.principles-deck .rl-math-card{min-height:195px;padding:10px}.principles-deck .rl-digit{height:65px;width:60px}.principles-deck .rl-computer-rule{padding:8px 16px;margin:7px auto}.principles-deck .rl-photos{gap:5px}.principles-deck .rl-photo-card img{height:100px}.principles-deck .rl-panes{gap:12px;margin:5px 0}.principles-deck .rl-pane{gap:6px;padding:9px 11px}.principles-deck .rl-rule-items p{padding:5px 8px}.principles-deck .rl-lesson .lesson-takeaway{margin-top:6px}.principles-deck .rl-flow-explain{min-height:52px}.principles-deck .rl-flow-node{padding:6px}}
+@media(max-width:760px){.principles-deck .rl-math-board{gap:8px}.principles-deck .rl-math-card{min-height:140px;padding:6px;gap:5px}.principles-deck .rl-digit{height:40px;width:31px;font-size:21px}.principles-deck .rl-symbol{font-size:19px}.principles-deck .rl-equation-tiles{gap:3px}.principles-deck .rl-panes{grid-template-columns:1fr;gap:8px}.principles-deck .rl-photo-card img{height:95px}.principles-deck .rl-rule-items{gap:4px}}

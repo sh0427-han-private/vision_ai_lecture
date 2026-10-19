@@ -53,6 +53,18 @@ def main():
     chapter=link.locator('xpath=ancestor::details[1]')
     if chapter.get_attribute('open') is None:chapter.locator('summary').click()
     link.click();position(page,deck,n,total)
+  # Two prerequisite slides: exact addition rule and image learning.
+  page.goto(f"{BASE}/vision_ai_course.html#slide-{number('rules')}")
+  assert page.locator('.slide.active .rl-math-card').count()==2
+  assert '결과 = 첫 번째 수 + 두 번째 수' in page.locator('.slide.active').inner_text()
+  page.goto(f"{BASE}/vision_ai_course.html#slide-{number('rules-image')}")
+  assert page.locator('.slide.active .rl-pane').count()==2
+  assert page.locator('.slide.active .rl-photo-card').count()==6
+  assert '규칙 A' in page.locator('.slide.active .rl-pane--rule').inner_text()
+  assert '지도학습(Supervised Learning)' in page.locator('.slide.active').inner_text()
+  assert '실제 모델 예측 결과가 아닙니다' in page.locator('.slide.active').inner_text()
+  for img in page.locator('.slide.active .rl-photo-card img').all():
+   assert img.evaluate('(el)=>el.complete&&el.naturalWidth>0'),img.get_attribute('src')
   # Same frozen pretrained CNN output can feed a supervised head or an
   # unlabeled feature clustering stage; these are not equivalent class labels.
   page.goto(f"{BASE}/vision_ai_course.html#slide-{number('cnn-learning-paths')}")
