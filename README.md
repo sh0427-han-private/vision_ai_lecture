@@ -20,7 +20,7 @@ Vision AI를 처음 접하는 사람도 **필요성 → Pixel·RGB → Vision의
 
 - **[Intro 처음부터 보기](https://sh0427-han.github.io/vision_ai_lecture/)**
 - **[통합 Vision AI 바로 보기](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html)**
-- **[왜 필요한가 · Intro 3번](https://sh0427-han.github.io/vision_ai_lecture/intro.html#slide-3)** · **[왜 어려운가 · Intro 13번](https://sh0427-han.github.io/vision_ai_lecture/intro.html#slide-13)** · **[현재 모델 · Course 3번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-3)** · **[과제별 모델·Label · Course 5번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-5)** · **[CNN 원리 · Course 13–23번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-13)** · **[CNN 학습 구조 · Course 31번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-31)**
+- **[왜 필요한가 · Intro 3번](https://sh0427-han.github.io/vision_ai_lecture/intro.html#slide-3)** · **[왜 어려운가 · Intro 13번](https://sh0427-han.github.io/vision_ai_lecture/intro.html#slide-13)** · **[현재 모델 · Course 3번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-4)** · **[과제별 모델·Label · Course 5번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-6)** · **[CNN 원리 · Course 13–23번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-14)** · **[CNN 학습 구조 · Course 31번](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-32)**
 - **[2시간 강의 운영안](TWO_HOUR_LECTURE_PLAN.md)**
 - **[남은 작업 · 현재 활성 TODO](TODO_VISION_AI_LECTURE.md)** — P0/P1 슬라이드별 수정 사양 및 실제 브라우저/배포 검증
 
@@ -30,7 +30,7 @@ Vision AI를 처음 접하는 사람도 **필요성 → Pixel·RGB → Vision의
 
 **[Vision AI Lecture · Intro 1번부터 보기](https://sh0427-han.github.io/vision_ai_lecture/)**
 
-사이트 주소를 열면 Intro 첫 슬라이드부터 **13장 + 통합 45장 = 58장**을 순서대로 봅니다. Vision AI의 원리를 이해하는 **별도 질의응답 없이 120분 전체 강의**로 구성합니다. 핵심 목표는 **Pixel 숫자 → CNN 특징 추출 → 가중치 학습 → 새 사진 평가**를 학생 자신의 말로 설명하는 것입니다.
+사이트 주소를 열면 Intro 첫 슬라이드부터 **13장 + 통합 46장 = 59장**을 순서대로 봅니다. Vision AI의 원리를 이해하는 **별도 질의응답 없이 120분 전체 강의**로 구성합니다. 핵심 목표는 **Pixel 숫자 → CNN 특징 추출 → 가중치 학습 → 새 사진 평가**를 학생 자신의 말로 설명하는 것입니다.
 
 왼쪽 상단의 **☰ 강의 목차**를 클릭하면 58개 슬라이드가 주제별로 표시되어 원하는 장으로 바로 이동할 수 있습니다. 목차 버튼을 다시 누르거나 **✕ 닫기**, 패널 바깥 클릭, **Esc** 키로 목차를 숨길 수 있습니다.
 
@@ -135,7 +135,7 @@ vision_ai_lecture/
 
 ## Web Lecture
 
-정적 강의 사이트는 [Intro 1번](https://sh0427-han.github.io/vision_ai_lecture/)에서 바로 시작합니다. Intro 13장 → [통합 Vision AI 강의 45장](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html), 총 58장입니다. 기존 [AI Basics](docs/ai_basics.html) 및 [Vision AI](docs/vision_ai.html) 개별 슬라이드는 이전 직접 링크의 호환성을 위해 원본으로 유지합니다.
+정적 강의 사이트는 [Intro 1번](https://sh0427-han.github.io/vision_ai_lecture/)에서 바로 시작합니다. Intro 13장 → [통합 Vision AI 강의 46장](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html), 총 59장입니다. 기존 [AI Basics](docs/ai_basics.html) 및 [Vision AI](docs/vision_ai.html) 개별 슬라이드는 이전 직접 링크의 호환성을 위해 원본으로 유지합니다.
 
 디자인은 **흰색 배경, 한 화면 한 슬라이드, 최소한의 포인트 컬러**를 기본으로 합니다.
 
@@ -144,15 +144,15 @@ vision_ai_lecture/
 
 - Intro 1–8: 사과 결함 문제 → 인간의 장면 이해 → 활용 필요성 → Pixel/RGB/해상도
 - Intro 9–13: 조명·회전·가림·품종 차이 → 의미와 Pixel 변화의 차이
-- 통합 1–5: Class/Box/Mask, 현재 Vision AI, 규칙 vs 학습, 기존 모델, Classification/Detection/Segmentation별 Label·데이터 선택
-- 통합 6–12: 퍼셉트론의 1뉴런·입력별 Weight → AND 규칙·직선 실습 → XOR 규칙·비선형 실습 → ReLU
-- **통합 13–23: CNN 전체 Architecture → Kernel/Feature Map → Weight Sharing·Channel·Stride·Padding·Pooling → 실제 Feature Map·Task Head**
-- 통합 24–27: 데이터셋·독립 분할·데이터 증강
-- 통합 28–35: 가중치 학습·Loss·추론·전이학습·**CNN 지도/비지도 활용**·과적합
-- 통합 36–40: Threshold·혼동행렬·불균형·Precision/Recall·IoU
-- 통합 41–45: 공통 사과 사진으로 원리·검증 과정 복습
+- 통합 1–6: Vision Task → 1+1 숫자 규칙 → 이미지의 규칙 작성과 데이터 학습 → 모델 접근과 Label 결정
+- 통합 7–13: 퍼셉트론의 1뉴런·입력별 Weight → AND 규칙·직선 실습 → XOR 규칙·비선형 실습 → ReLU
+- **통합 14–24: CNN 전체 Architecture → Kernel/Feature Map → Weight Sharing·Channel·Stride·Padding·Pooling → 실제 Feature Map·Task Head**
+- 통합 25–28: 데이터셋·독립 분할·데이터 증강
+- 통합 29–36: 가중치 학습·Loss·추론·전이학습·**CNN 지도/비지도 활용**·과적합
+- 통합 37–41: Threshold·혼동행렬·불균형·Precision/Recall·IoU
+- 통합 42–46: 공통 사과 사진으로 원리·검증 과정 복습
 
-[임계값·오류 확인 실습](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-42)의 임계값 연습은 교육용 저장 점수100건을 직접 계산합니다. 실제 모델이나 외부 AI API의 실행 결과가 아닙니다. 실제 SqueezeNet Feature Map 등 외부 예시는 해당 모델·사진의 조건과 출처를 명시합니다.
+[임계값·오류 확인 실습](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-43)의 임계값 연습은 교육용 저장 점수100건을 직접 계산합니다. 실제 모델이나 외부 AI API의 실행 결과가 아닙니다. 실제 SqueezeNet Feature Map 등 외부 예시는 해당 모델·사진의 조건과 출처를 명시합니다.
 
 현재 공개 강의의 순서·120분 운영은 [강의 운영안](TWO_HOUR_LECTURE_PLAN.md), 미완료 작업과 QA는 [활성 TODO](TODO_VISION_AI_LECTURE.md)를 기준으로 합니다. 상세 진단은 [기존 50장 내용 검토](reviews/2026-10-18_VISION_AI_CONTENT_FLOW_REVIEW.md)와 [기존 50장 UI·Figure 검토](reviews/2026-10-18_VISION_AI_UI_FIGURE_REVIEW.md), 최근 반영 내역은 [구현 기록](reviews/2026-10-18_VISION_AI_PRINCIPLES_IMPLEMENTATION.md)을 참고하세요. 과거 Figure 매핑은 현재 슬라이드 번호가 아닌 참고용 이력입니다.
 
@@ -164,21 +164,21 @@ vision_ai_lecture/
 
 ## 2026-10-19 · CNN·퍼셉트론 강의 그림 보완
 
-현재 58장 순서에서 퍼셉트론은 Course 6, AND 규칙은 Course 7, AND 실습은 Course 8, XOR 규칙은 Course 9, XOR 실습은 Course 10, CNN 구조는 Course 13, Kernel은 Course 15, Padding은 Course 20, Max Pooling은 Course 21, 학습 구조는 Course 31, 전이학습은 Course 33입니다. 얼룩말 CNN Architecture 원본은 이미지 출처 표기 및 로컬 대체 그림과 함께 제공합니다. [수정·검증 기록](reviews/2026-10-19_CNN_SLIDE_REFINEMENT.md)을 참조하세요.
+현재 59장 순서에서 숫자 규칙은 Course 2, 이미지 학습 비교는 Course 3, 퍼셉트론은 Course 7, AND 규칙은 Course 8, AND 실습은 Course 9, XOR 규칙은 Course 10, XOR 실습은 Course 11, CNN 구조는 Course 14, Kernel은 Course 16, Padding은 Course 21, Max Pooling은 Course 22, 학습 구조는 Course 32, 전이학습은 Course 34입니다. 얼룩말 CNN Architecture 원본은 이미지 출처 표기 및 로컬 대체 그림과 함께 제공합니다. [수정·검증 기록](reviews/2026-10-19_CNN_SLIDE_REFINEMENT.md)을 참조하세요.
 
 
 ## 2026-10-19 · AND/XOR Gate 실시간 실습
 
-- [Course 8 AND Gate](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-8): W와 Bias 슬라이더 2개로 기울기(−W)와 y절편(−b)을 각각 변경합니다. W를 움직이면 결정 직선이 회전합니다.
-- [Course 10 XOR Gate](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-10): Layer 1의 W₁·b₁, Layer 2의 W₂·b₂, 총 4개 슬라이더로 최종 선형 경계의 기울기·절편을 조절합니다. 이 예제의 Layer 2에는 원래 입력 x₁을 더하는 고정 연결이 포함됩니다. **비선형 없음(3/4) → 비선형 추가(4/4)**를 비교합니다. 비선형 |t|는 두 ReLU 반응의 합으로 구현할 수 있습니다.
+- [Course 8 AND Gate](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-9): W와 Bias 슬라이더 2개로 기울기(−W)와 y절편(−b)을 각각 변경합니다. W를 움직이면 결정 직선이 회전합니다.
+- [Course 10 XOR Gate](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-11): Layer 1의 W₁·b₁, Layer 2의 W₂·b₂, 총 4개 슬라이더로 최종 선형 경계의 기울기·절편을 조절합니다. 이 예제의 Layer 2에는 원래 입력 x₁을 더하는 고정 연결이 포함됩니다. **비선형 없음(3/4) → 비선형 추가(4/4)**를 비교합니다. 비선형 |t|는 두 ReLU 반응의 합으로 구현할 수 있습니다.
 - **강의 시간은 총 120분**이며 별도 질의응답/Q&A 시간은 없습니다. 강의 일정은 [운영안](TWO_HOUR_LECTURE_PLAN.md)을 따릅니다.
 
 
 ## 2026-10-19 · AND와 XOR의 동작 원리 먼저 학습
 
-- [Course 6 · 퍼셉트론](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-6): 뉴런 하나의 가장 쉬운 예시로 두 입력에 같은 W를 적용해 **z=W(x₁+x₂)+b**를 보여줍니다. 일반적인 뉴런의 W는 입력별 가중치를 묶어서 나타낼 수도 있습니다. [Course 7 · AND 동작](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-7)에서는 두 입력이 모두 1일 때만 1이라는 규칙을 확인합니다.
-- [Course 9 · XOR 동작 규칙](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-9): 두 입력이 다를 때만 1. Course 10에서 선형층의 단일 직선 한계와 비선형성 비교.
-- 최신 강의: **Intro 13 + Course 45 = 총 58장**, 120분 전체 강의. 외부 이미지 없이 자체 HTML/CSS 도식으로 4가지 입력 조합을 설명합니다.
+- [Course 6 · 퍼셉트론](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-7): 뉴런 하나의 가장 쉬운 예시로 두 입력에 같은 W를 적용해 **z=W(x₁+x₂)+b**를 보여줍니다. 일반적인 뉴런의 W는 입력별 가중치를 묶어서 나타낼 수도 있습니다. [Course 7 · AND 동작](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-8)에서는 두 입력이 모두 1일 때만 1이라는 규칙을 확인합니다.
+- [Course 9 · XOR 동작 규칙](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-10): 두 입력이 다를 때만 1. Course 10에서 선형층의 단일 직선 한계와 비선형성 비교.
+- 최신 강의: **Intro 13 + Course 46 = 총 59장**, 120분 전체 강의. 외부 이미지 없이 자체 HTML/CSS 도식으로 4가지 입력 조합을 설명합니다.
 
 
 ## 2026-10-19 · 퍼셉트론 입력선과 뉴런 수 구분 (최신)
@@ -192,13 +192,20 @@ vision_ai_lecture/
 ## 2026-10-19 · CNN 지도/비지도 활용 비교 (최신)
 
 - Course 6 퍼셉트론은 화면에서 **W와 b 하나씩**, `z=W(x₁+x₂)+b`의 동일 Weight 예시만 시각화합니다. 한 뉴런이 항상 스칼라 Weight 하나만 갖는다는 주장과는 구분합니다.
-- [Course 33 · 같은 CNN 특징의 지도/비지도 활용](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-33): **고정된 사전학습 CNN Feature Extractor** 뒤 지도(Classification Head + 정답 Label)와 비지도(Feature Clustering + Label 없음)를 비교합니다. 군집 A/B는 정상/불량 Class 이름이 아닙니다.
+- [Course 33 · 같은 CNN 특징의 지도/비지도 활용](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-34): **고정된 사전학습 CNN Feature Extractor** 뒤 지도(Classification Head + 정답 Label)와 비지도(Feature Clustering + Label 없음)를 비교합니다. 군집 A/B는 정상/불량 Class 이름이 아닙니다.
 - **학습 구분은 Head 교체 자체가 아니라 Label 사용 여부와 학습 목표**에 따른 것입니다. 특징 추출기 자체는 별도 방식으로 사전학습할 수 있으므로, 이 그림은 같은 Backbone을 고정해 후단만 비교한 예시임을 명시합니다.
-- Intro 13 + Course 45 = **총 58장**, 별도 Q&A 없는 120분 강의입니다.
+- Intro 13 + Course 46 = **총 59장**, 별도 Q&A 없는 120분 강의입니다.
 
 
 ## 2026-10-19 · Preprocessing 전용 슬라이드 제거
 
 - 요청에 따라 예전 Course 27 `Preprocessing · 입력 크기를 맞추는 방법`을 삭제했습니다. 현재 순서는 **C24 Dataset → C25 Train/Validation/Test → C26 Video Group Split → C27 Data Augmentation → C28 학습**입니다.
 - 이어지는 CNN 지도/비지도 활용 비교는 **C33**, 모델 평가는 C36–40, 업무 예시는 C41–45로 한 칸씩 앞당겨졌습니다.
-- 현행 강의는 **Intro 13 + Course 45 = 총 58장**, 별도 Q&A 없이 120분입니다.
+- 현행 강의는 **Intro 13 + Course 46 = 총 59장**, 별도 Q&A 없이 120분입니다.
+
+
+## 2026-10-19 · 숫자 규칙과 이미지 데이터 학습 비교 (최신)
+
+- [Course 2 · Rule-based 계산](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-2): 1+1=2와 2+1=3은 같은 덧셈 규칙으로 처리할 수 있습니다.
+- [Course 3 · 이미지에서 Rule을 어떻게 만들까?](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-3): 결함 사과의 밝음·어두움과 정상 사과를 비교하면서 색상 조건의 예외와 정답 Label로 지도학습하는 차이를 보여줍니다.
+- 직접 구성한 개념 그림이며 모델을 실제로 실행한 결과가 아닙니다. 전체 Intro13 + Course46 = 59장, 120분 강의입니다.
