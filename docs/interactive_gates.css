@@ -50,3 +50,27 @@
  .principles-deck .gl-slider-grid{gap:4px}
  .principles-deck .gl-visual,.principles-deck .gl-controls{padding:6px}
 }
+
+/* 2026-10-19: W/Bias only per layer, with a visibly linear-first XOR story. */
+.principles-deck .gl-slider-grid--two{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.principles-deck .gl-layout--simplified .gl-controls{display:flex;flex-direction:column;gap:6px}
+.principles-deck .gl-layer-card{background:#eff5f6;border-left:3px solid #78a9a4;padding:10px 13px}
+.principles-deck .gl-layer-card h4{font-size:clamp(19px,1.48vw,23px);margin:0 0 4px;color:#275b6a}
+.principles-deck .gl-layer-card .gl-description{font-size:clamp(15px,1.13vw,18px);margin:2px 0 4px}
+.principles-deck .gl-layout--simplified .gl-slider-grid{margin:3px 0;gap:9px}
+.principles-deck .gl-layout--simplified .gl-equation{font-size:clamp(17px,1.18vw,19px);margin:3px 0 5px}
+.principles-deck .gl-layout--simplified .gl-mode-row h3{margin:0}
+.principles-deck .gl-stage{color:#246879;font-size:clamp(16px,1.2vw,20px);background:#e9f3f1;border-left:3px solid #21947b;line-height:1.4;margin:8px 0;padding:10px 12px;font-weight:650}
+.principles-deck .gl-truth .gl-outcome{display:flex;flex-direction:column;align-items:center;gap:3px;justify-content:center;min-height:66px}
+.principles-deck .gl-outcome .gl-input{font-size:clamp(15px,1.17vw,19px)}
+.principles-deck .gl-outcome small{font-size:clamp(12px,1.03vw,17px);width:100%}
+.principles-deck .gl-outcome small strong{font-size:1.1em}
+.principles-deck .gl-mode button{padding:8px 10px;white-space:nowrap}
+@media(max-height:850px){
+ .principles-deck .gl-layer-card{padding:5px 10px}
+ .principles-deck .gl-layer-card h4{font-size:18px}
+ .principles-deck .gl-layout--simplified .gl-plot{height:215px}
+ .principles-deck .gl-layout--simplified .gl-truth .gl-outcome{min-height:58px}
+ .principles-deck .gl-stage{margin:4px 0;padding:6px 8px}
+ .principles-deck .gl-layout--simplified .gl-controls{gap:3px}
+}
