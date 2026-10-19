@@ -1,0 +1,55 @@
+name: Pinned H Reviewer Chromium QA
+on:
+  push:
+    branches:
+      - review/h-4469656-20261019
+    paths:
+      - .github/workflows/reviewer-h-qa.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  pinned-h-review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check source is fixed independently of builder branch
+        run: |
+          git cat-file -e 4469656244e55476b2c0e8ca2a1344a9710a29db^{commit}
+          test -z "$(git diff --name-only 4469656244e55476b2c0e8ca2a1344a9710a29db HEAD -- docs planning automation)"
+          echo "PINNED_H_SOURCE_UNCHANGED_PASS"
+      - name: Install browser QA dependencies
+        run: |
+          python -m pip install playwright pillow
+          python -m playwright install --with-deps chromium
+      - name: Run static final lecture contracts
+        run: |
+          set +e
+          mkdir -p reviews/evidence/h-4469656-browser
+          python automation/verify_approved_contract.py --final > reviews/evidence/h-4469656-browser/static-contract.log 2>&1
+          c1=$?
+          python scripts/verify_two_hour_course.py > reviews/evidence/h-4469656-browser/static-lecture.log 2>&1
+          c2=$?
+          python scripts/verify_learning_routes.py > reviews/evidence/h-4469656-browser/static-routes.log 2>&1
+          c3=$?
+          cat reviews/evidence/h-4469656-browser/static-contract.log
+          cat reviews/evidence/h-4469656-browser/static-lecture.log
+          cat reviews/evidence/h-4469656-browser/static-routes.log
+          echo "STATIC_EXIT_CODES contract=$c1 lecture=$c2 routes=$c3"
+          test "$c1" -eq 0 -a "$c2" -eq 0 -a "$c3" -eq 0
+      - name: Actual Chromium screens 1920 and 1366
+        if: always()
+        run: |
+          python -m http.server 8766 --directory docs >/tmp/reviewer-h-http.log 2>&1 &
+          python reviews/automation/h_chromium_qa.py
+      - name: Upload six screenshots and measured evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pinned-h-4469656-chromium
+          path: reviews/evidence/h-4469656-browser/
+          retention-days: 14
+          if-no-files-found: warn
