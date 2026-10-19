@@ -72,3 +72,13 @@ Prepared G/H patch generators and scoped assets are saved for continuation; NOT 
 - PASS (source audit): all **39 untouched A–G Course sections** match the pre-H HEAD byte for byte; Intro source was not part of H file changes. Only 3 H sections were rewritten; `project-brief` removed.
 - PASS (source audit): H SVG five nodes and four linked questions; three hypotheses; two raster dimensions 240/24 with one source ROI; four self-check answer nodes in 1→2→3→4 order; existing local CSS/JS paths and final-contract check references.
 - Verification limitation: source audits executed through live GitHub content readback. Python/Node final gate and Chromium screenshot/interactive QA remain unexecuted in this environment; CI showed no run for initial H commit. Independent Reviewer status remains PENDING.
+
+## G Reviewer issues follow-up · 2026-10-19
+
+- Source: `review/g-d27e160c-20261019` → `reviews/automation/G-d27e160c.md`. Original fixed-SHA verdict **CONDITIONAL PASS**; do not reinterpret as independent final PASS.
+- G-01 (Major) implementation: P48 uses precisely one educational cohort: defects 0.8×11, 0.6×7, 0.4×2; normal 0.8×2, 0.6×2, 0.4×26, 0.2×50. The histogram bins, threshold line, TP/FN/FP/TN, error bars, Precision/Recall are all derived from that same array. Histogram vertical axis now fits the 50-case peak.
+- Independent numeric recalculation: threshold 0.30 → TP20/FN0/FP30/TN50, Precision40.0%/Recall100.0%; 0.50 → TP18/FN2/FP4/TN76, Precision81.8%/Recall90.0%; 0.70 → TP11/FN9/FP2/TN78, Precision84.6%/Recall55.0%. P49/P51 fixed-0.50 values remain valid.
+- G-02 (Minor) implementation: P52 photo/grid GT stroke/fill/legend changed to P14 blue `#187c9a`; prediction orange and overlap shading retained. Scoped selector does not recolor P48 histogram's green defect legend.
+- Regression scope: only G JS, P52 HTML, G CSS, G build generator, G Chromium QA and CI trigger, this progress record. No intentional changes to A–F or H slide sections, 55-slide manifest, outline, or 120-minute plan.
+- Browser QA script: `scripts/verify_approved_g_browser.py`; renders P48–P52 in 1920×1080 and 1366×768 and checks histogram provenance, threshold switch/keyboard/Reset, Figure colors/assets, DOM and selected layout metrics. Workflow `.github/workflows/approved-g-review.yml` executes checks on integration-branch push.
+- **Verification status at patch preparation:** independent numeric calculation PASS; Chromium full-deck screenshots/interaction and CI results require observed workflow execution, NOT VERIFIED here until run outcome is retrieved. Reviewer re-review of the new SHA is still required; no main merge/deploy.

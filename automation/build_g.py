@@ -9,10 +9,11 @@ JS_SOURCE=r'''/* One fixed educational score array feeds every displayed count a
   const root=document.querySelector("[data-project-evaluation]");
   if(!root)return;
   const scores=[
-    ...Array.from({length:18},(_,i)=>({label:1,score:(600+15*i)/1000})),
-    {label:1,score:.32},{label:1,score:.41},
-    ...[.56,.62,.73,.88].map(score=>({label:0,score})),
-    ...Array.from({length:76},(_,i)=>({label:0,score:(100+4*i)/1000})),
+    // Approved 100-case cohort: 20 defects, 80 normal.
+    ...[[.8,11],[.6,7],[.4,2]].flatMap(([score,count])=>
+      Array.from({length:count},()=>({label:1,score}))),
+    ...[[.8,2],[.6,2],[.4,26],[.2,50]].flatMap(([score,count])=>
+      Array.from({length:count},()=>({label:0,score}))),
   ];
   const selector=root.querySelector("[data-project-threshold]");
   const histogram=root.querySelector("[data-score-histogram]");
@@ -27,8 +28,11 @@ JS_SOURCE=r'''/* One fixed educational score array feeds every displayed count a
   function renderHistogram(threshold){
     if(!histogram)return;
     histogram.replaceChildren();
-    const base=192,x0=58,dx=49,unit=4.7;
-    for(let y=0;y<=30;y+=10){
+    const base=192,x0=58,dx=49;
+    const peak=Math.max(...bins.map(b=>b.positive+b.negative));
+    const axisMax=Math.max(50,Math.ceil(peak/10)*10);
+    const unit=160/axisMax; // 50-case peak fits above baseline at y=32.
+    for(let y=0;y<=axisMax;y+=10){
       const py=base-y*unit;
       histogram.append(svg("path",{d:`M${x0} ${py}H548`,stroke:"#d7e3e8",fill:"none"}));
       histogram.append(svg("text",{x:45,y:py+6,"text-anchor":"end","font-size":19,fill:"#527282"},String(y)));
@@ -81,7 +85,7 @@ def build():
     # Existing accurate matrix, 100 tiles and 22/20 metric dots are retained.
     doc=doc.replace('총 100건의 같은 평가 데이터를 다음 지표 계산까지 이어갑니다. 실제 불량 20건 중 18건을 찾고, 정상 80건 중 4건을 잘못 알렸습니다.','앞 실습의 기준을 0.50으로 고정한 참조 표입니다. 실제 불량 20건 중 18건을 찾고, 정상 80건 중 4건을 잘못 알렸습니다.')
     doc=doc.replace('직전 혼동행렬의 TP=18·FP=4·FN=2를 그대로 사용합니다.','Threshold 0.50 고정 참조 · P49의 TP=18·FP=4·FN=2를 그대로 사용합니다.')
-    body='''<h2 class="slide-title">IoU · 박스 겹침 비율</h2><p class="slide-subtitle">위치도 맞아야 하는 검출에서는 정답(GT)과 예측 박스의 <strong>교집합 ÷ 합집합</strong>을 계산합니다.</p><div class="g55-iou"><figure><h3>사과의 같은 결함을 둘러싼 두 박스</h3><svg viewBox="450 130 260 240" role="img" aria-label="사과 반점의 정답 박스와 교육용 예측 박스"><image href="assets/vision_task_apple_reference.jpg" width="960" height="640"/><rect x="565" y="197" width="60" height="60" fill="#268d7830" stroke="#16876f" stroke-width="3"/><rect x="580" y="205" width="62" height="65" fill="#d58c3230" stroke="#c17b27" stroke-width="3" stroke-dasharray="7 4"/><rect x="580" y="205" width="45" height="52" fill="#487c9760"/></svg><figcaption><span class="g55-pos">실선: 정답 GT</span>　<span class="g55-pred">점선: 예측 예시</span><br>동일 생성 사진 위의 위치 도식 · 실측 예측 아님</figcaption></figure><figure><h3>별도의 정수 좌표 예제 · 면적 검산</h3><svg viewBox="0 0 420 340" role="img" aria-label="GT x1 y1 너비5 높이6, 예측 x1 y3 너비5 높이6, 겹침5×4, 합집합40"><rect x="85" y="25" width="150" height="240" fill="#e9f0f4"/><rect x="85" y="85" width="150" height="180" fill="#18876d20" stroke="#16876f" stroke-width="3" data-iou-box="gt" data-xyxy="1,1,6,7"/><rect x="85" y="25" width="150" height="180" fill="#d58c3220" stroke="#c17b27" stroke-width="3" stroke-dasharray="7 4" data-iou-box="prediction" data-xyxy="1,3,6,9"/><rect x="85" y="85" width="150" height="120" fill="#759fa777"/><g font-size="22" fill="#365d70"><text x="95" y="137">겹침 5×4</text><text x="125" y="168">=20</text><text x="49" y="272">1</text><text x="49" y="212">3</text><text x="49" y="92">7</text><text x="49" y="32">9</text><text x="80" y="296">1</text><text x="230" y="296">6</text><text x="270" y="296">x</text><text x="47" y="16">y</text><text x="255" y="102">GT (1,1)</text><text x="255" y="130">w=5, h=6</text><text x="255" y="185">예측 (1,3)</text><text x="255" y="213">w=5, h=6</text><text x="80" y="331">각 박스 면적 5×6=30</text></g></svg><figcaption><strong>IoU = 20 / (30+30−20) = 0.5</strong><br>왼쪽 사진의 픽셀 좌표와는 별도의 예제입니다.</figcaption></figure></div><p class="lesson-takeaway">완전 일치 1 · 겹치지 않음 0. IoU는 위치의 일치도입니다. 검출 전체 성능은 클래스·놓침·중복까지 함께 평가하는 mAP 등으로 봅니다.</p>'''
+    body='''<h2 class="slide-title">IoU · 박스 겹침 비율</h2><p class="slide-subtitle">위치도 맞아야 하는 검출에서는 정답(GT)과 예측 박스의 <strong>교집합 ÷ 합집합</strong>을 계산합니다.</p><div class="g55-iou"><figure><h3>사과의 같은 결함을 둘러싼 두 박스</h3><svg viewBox="450 130 260 240" role="img" aria-label="사과 반점의 정답 박스와 교육용 예측 박스"><image href="assets/vision_task_apple_reference.jpg" width="960" height="640"/><rect x="565" y="197" width="60" height="60" fill="#187c9a30" stroke="#187c9a" stroke-width="3"/><rect x="580" y="205" width="62" height="65" fill="#d58c3230" stroke="#c17b27" stroke-width="3" stroke-dasharray="7 4"/><rect x="580" y="205" width="45" height="52" fill="#487c9760"/></svg><figcaption><span class="g55-pos">실선: 정답 GT</span>　<span class="g55-pred">점선: 예측 예시</span><br>동일 생성 사진 위의 위치 도식 · 실측 예측 아님</figcaption></figure><figure><h3>별도의 정수 좌표 예제 · 면적 검산</h3><svg viewBox="0 0 420 340" role="img" aria-label="GT x1 y1 너비5 높이6, 예측 x1 y3 너비5 높이6, 겹침5×4, 합집합40"><rect x="85" y="25" width="150" height="240" fill="#e9f0f4"/><rect x="85" y="85" width="150" height="180" fill="#187c9a20" stroke="#187c9a" stroke-width="3" data-iou-box="gt" data-xyxy="1,1,6,7"/><rect x="85" y="25" width="150" height="180" fill="#d58c3220" stroke="#c17b27" stroke-width="3" stroke-dasharray="7 4" data-iou-box="prediction" data-xyxy="1,3,6,9"/><rect x="85" y="85" width="150" height="120" fill="#759fa777"/><g font-size="22" fill="#365d70"><text x="95" y="137">겹침 5×4</text><text x="125" y="168">=20</text><text x="49" y="272">1</text><text x="49" y="212">3</text><text x="49" y="92">7</text><text x="49" y="32">9</text><text x="80" y="296">1</text><text x="230" y="296">6</text><text x="270" y="296">x</text><text x="47" y="16">y</text><text x="255" y="102">GT (1,1)</text><text x="255" y="130">w=5, h=6</text><text x="255" y="185">예측 (1,3)</text><text x="255" y="213">w=5, h=6</text><text x="80" y="331">각 박스 면적 5×6=30</text></g></svg><figcaption><strong>IoU = 20 / (30+30−20) = 0.5</strong><br>왼쪽 사진의 픽셀 좌표와는 별도의 예제입니다.</figcaption></figure></div><p class="lesson-takeaway">완전 일치 1 · 겹치지 않음 0. IoU는 위치의 일치도입니다. 검출 전체 성능은 클래스·놓침·중복까지 함께 평가하는 mAP 등으로 봅니다.</p>'''
     doc=replace(doc,'iou',body)
     if 'approved_g.css' not in doc:doc=doc.replace('</head>','<link rel="stylesheet" href="approved_g.css?v=approved-g-20261019-1">\n</head>')
     doc=re.sub(r'project_course.js\?v=[^" ]+', 'project_course.js?v=approved-g-20261019-1',doc)

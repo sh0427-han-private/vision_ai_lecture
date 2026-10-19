@@ -4,10 +4,11 @@
   const root=document.querySelector("[data-project-evaluation]");
   if(!root)return;
   const scores=[
-    ...Array.from({length:18},(_,i)=>({label:1,score:(600+15*i)/1000})),
-    {label:1,score:.32},{label:1,score:.41},
-    ...[.56,.62,.73,.88].map(score=>({label:0,score})),
-    ...Array.from({length:76},(_,i)=>({label:0,score:(100+4*i)/1000})),
+    // Approved 100-case cohort: 20 defects, 80 normal.
+    ...[[.8,11],[.6,7],[.4,2]].flatMap(([score,count])=>
+      Array.from({length:count},()=>({label:1,score}))),
+    ...[[.8,2],[.6,2],[.4,26],[.2,50]].flatMap(([score,count])=>
+      Array.from({length:count},()=>({label:0,score}))),
   ];
   const selector=root.querySelector("[data-project-threshold]");
   const histogram=root.querySelector("[data-score-histogram]");
@@ -22,8 +23,11 @@
   function renderHistogram(threshold){
     if(!histogram)return;
     histogram.replaceChildren();
-    const base=192,x0=58,dx=49,unit=4.7;
-    for(let y=0;y<=30;y+=10){
+    const base=192,x0=58,dx=49;
+    const peak=Math.max(...bins.map(b=>b.positive+b.negative));
+    const axisMax=Math.max(50,Math.ceil(peak/10)*10);
+    const unit=160/axisMax; // 50-case peak fits above baseline at y=32.
+    for(let y=0;y<=axisMax;y+=10){
       const py=base-y*unit;
       histogram.append(svg("path",{d:`M${x0} ${py}H548`,stroke:"#d7e3e8",fill:"none"}));
       histogram.append(svg("text",{x:45,y:py+6,"text-anchor":"end","font-size":19,fill:"#527282"},String(y)));
