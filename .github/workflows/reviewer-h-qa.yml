@@ -50,6 +50,32 @@ jobs:
         run: |
           python -m http.server 8766 --directory docs >/tmp/reviewer-h-http.log 2>&1 &
           python reviews/automation/h_chromium_qa.py
+      - name: Produce reviewable screen previews from actual Chromium captures
+        if: always()
+        run: |
+          python - <<'PY'
+          from base64 import b64encode
+          from io import BytesIO
+          from pathlib import Path
+          from PIL import Image
+          base = Path('reviews/evidence/h-4469656-browser')
+          for size in ['1920x1080','1366x768']:
+              for slide in ['P53','P54','P55']:
+                  name=f'{slide}-{size}'
+                  src=base/f'{name}.png'
+                  if not src.exists():
+                      print('H_VIS_MISSING', name)
+                      continue
+                  img=Image.open(src).convert('RGB')
+                  img.thumbnail((1280,720))
+                  data=BytesIO()
+                  img.save(data, format='JPEG', quality=76, optimize=True)
+                  encoded=b64encode(data.getvalue()).decode('ascii')
+                  print(f'H_VIS_BEGIN {name} {len(encoded)}')
+                  for pos in range(0,len(encoded),4000):
+                      print(f'H_VIS_CHUNK {name} {pos//4000} {encoded[pos:pos+4000]}')
+                  print('H_VIS_END',name)
+          PY
       - name: Upload six screenshots and measured evidence
         if: always()
         uses: actions/upload-artifact@v4
