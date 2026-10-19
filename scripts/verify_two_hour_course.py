@@ -176,7 +176,7 @@ print('GATE_RULES_QA_PASSED: AND/XOR operation explained before demonstrations')
 # One neuron can have two input-connection weights; tied weights are a special AND case.
 p=concepts['perceptron'];a=concepts['and-gate'];x=concepts['xor-gate']
 assert 'z = W(x₁ + x₂) + b' in p
-assert p.count('class="pw-equation') == 1 and '두 입력에 공통 Weight W 적용' in p
+assert p.count('<div class="pw-equation pw-equation--') == 1 and '두 입력에 공통 Weight W 적용' in p
 assert '쉬운 예시' in p and '입력별 여러 가중치를 묶어' in p
 assert 'w₂=1로 고정' in a and 'z=Wx₁+1·x₂+b' in a
 assert 'Weight는 1로 고정' in x and '각 층에서 Weight 하나만 조절' in x
