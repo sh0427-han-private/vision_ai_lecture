@@ -109,3 +109,8 @@
 /* Explicit simulated new-photo input for Model M, separate from the six GT thumbnails. */
 .principles-deck .b55-new-photo img { width: 72px; height: 28px; margin: 0 auto; object-fit: cover; filter: brightness(1.28); }
 .principles-deck .b55-ml-path .b55-step strong { font-size: clamp(16px, 1.06vw, 18px); }
+/* RML-01: control full-fruit scale, independent of inherited photo-card rules. */
+.principles-deck .b55-photo-strip .b55-thumb {position:relative}
+.principles-deck .b55-photo-strip .b55-thumb img {position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transform:none}
+.principles-deck .b55-photo-strip .b55-normal .b55-thumb img {inset:16% auto auto 50%;width:auto;height:68%;max-width:72%;object-fit:contain;transform:translateX(-50%)}
+.principles-deck .b55 .b55-foot {font-size:17px}
