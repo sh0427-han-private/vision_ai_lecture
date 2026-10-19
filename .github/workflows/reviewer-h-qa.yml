@@ -16,12 +16,15 @@ jobs:
     timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - name: Check source is fixed independently of builder branch
         run: |
           git cat-file -e 4469656244e55476b2c0e8ca2a1344a9710a29db^{commit}
           test -z "$(git diff --name-only 4469656244e55476b2c0e8ca2a1344a9710a29db HEAD -- docs planning automation)"
           echo "PINNED_H_SOURCE_UNCHANGED_PASS"
       - name: Install browser QA dependencies
+        if: always()
         run: |
           python -m pip install playwright pillow
           python -m playwright install --with-deps chromium
