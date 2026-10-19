@@ -47,7 +47,7 @@
 <section class="slide" data-concept="vision-value"><div class="slide-inner a55"><h2 class="slide-title">Vision AI가 필요한 이유</h2><p class="slide-subtitle">같은 유형의 제품을 반복 검사할 때 AI가 <strong>결함 후보</strong>를 제시하면 사람이 확인할 위치에 집중할 수 있습니다.</p><div class="a55-value-row">
 <div class="a55-stage"><h3>① 반복 검사</h3><div class="a55-picture"><img src="assets/vision_task_apple_reference.jpg" alt="교육용 결함 사과 원본"></div><p>사과 검사 사진 촬영</p></div><span class="a55-arrow" aria-hidden="true">→</span>
 <div class="a55-stage"><h3>② 여러 장을 분석</h3><div class="a55-minis"><img src="assets/vision_task_apple_reference.jpg" alt="교육용 결함 사과 원본"><img src="assets/vision_task_apple_reference.jpg" alt="교육용 결함 사과 원본"><img src="assets/vision_task_apple_reference.jpg" alt="교육용 결함 사과 원본"><img src="assets/vision_task_apple_reference.jpg" alt="교육용 결함 사과 원본"><img src="assets/vision_task_apple_reference.jpg" alt="교육용 결함 사과 원본"><img src="assets/vision_task_apple_reference.jpg" alt="교육용 결함 사과 원본"><img src="assets/vision_task_apple_reference.jpg" alt="교육용 결함 사과 원본"><img src="assets/vision_task_apple_reference.jpg" alt="교육용 결함 사과 원본"><img src="assets/vision_task_apple_reference.jpg" alt="교육용 결함 사과 원본"></div><b>예: 사진 100장</b><p>100은 가상 수량</p></div><span class="a55-arrow" aria-hidden="true">→</span>
-<div class="a55-stage"><h3>③ 후보 표시 및 확인</h3><div class="a55-picture"><svg viewBox="240 85 475 475" role="img" aria-label="사과 표면의 반점과 설명용 ROI 원"><image href="assets/vision_task_apple_reference.jpg" width="960" height="640"/><ellipse cx="589" cy="224" rx="25" ry="26" fill="none" stroke="#c5773d" stroke-width="5"/></svg></div><p>AI 후보 → 사람이 검증</p></div></div><p class="a55-takeaway">자동 분석은 반복 검사를 도울 수 있지만 결과 확인과 오류 검증이 필요합니다.</p><p class="a55-foot">사진 수량과 표시 위치는 개념 예시 · 처리 시간과 검출 정확도는 실측값이 아닙니다. 기존 회랑의 사람 시각 사례는 보조 설명으로 통합.</p></div></section>
+<div class="a55-stage"><h3>③ 후보 표시 및 확인</h3><div class="a55-picture"><svg viewBox="240 85 475 475" role="img" aria-label="사과 표면의 반점과 설명용 ROI 원"><image href="assets/vision_task_apple_reference.jpg" width="960" height="640"/><ellipse cx="589" cy="224" rx="25" ry="26" fill="none" stroke="#c5773d" stroke-width="5"/></svg></div><p>AI 후보 → 사람이 검증</p></div></div><p class="a55-takeaway">자동 분석은 반복 검사를 도울 수 있지만 결과 확인과 오류 검증이 필요합니다.</p><p class="a55-foot">사진 수량과 표시 위치는 개념 예시 · 처리 시간과 검출 정확도는 실측값이 아닙니다.</p></div></section>
 <section class="slide" data-concept="photo-numbers">
   <div class="slide-inner intro-meaning-bridge" data-apple-matrix-bridge>
 
@@ -112,7 +112,7 @@
       <span aria-hidden="true">·</span>
       <strong>밝기 조정:</strong> Y′ = min(255, round(k × Y))
     </p>
-    <p class="intro-pixel-footnote">한 Pixel에는 밝기 값 1개(8-bit 예시 0~255)가 있습니다. 원본을 48 × 32로 축소한 후 계산하며 H·W는 세로·가로 축입니다.</p>
+    <p class="intro-pixel-footnote">한 Pixel에는 밝기 값 1개(8-bit 예시 0~255)가 있습니다. 원본을 48 × 32로 축소해 계산합니다. 사진은 근사 미리보기이며, 정확한 값은 숫자·명암 격자를 보세요.</p>
   </div>
 </section>
 <section class="slide" data-concept="rgb">
@@ -124,7 +124,7 @@
       <article class="visual-panel pixel-photo-panel">
         <div class="apple-photo-frame apple-photo-frame--pixel">
           <button type="button" class="intro-rgb-selector" data-rgb-selector aria-label="사과 사진의 픽셀을 선택. 방향키로 위치 이동">
-            <img src="assets/vision_task_apple_reference.jpg" data-rgb-photo alt="RGB 픽셀을 선택할 실제 사과 사진">
+            <img src="assets/vision_task_apple_reference.jpg" data-rgb-photo alt="RGB 픽셀을 선택할 교육용 생성 사과 사진">
             <span class="pixel-target" data-rgb-target aria-hidden="true"></span>
           </button>
         </div>
