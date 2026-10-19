@@ -53,28 +53,36 @@ def main():
     chapter=link.locator('xpath=ancestor::details[1]')
     if chapter.get_attribute('open') is None:chapter.locator('summary').click()
     link.click();position(page,deck,n,total)
-  # Approved P15/P16: two arithmetic inputs pass through one hand-written rule.
+  # Approved P15/P16: one executable Python function for both arithmetic inputs.
   page.goto(f"{BASE}/vision_ai_course.html#slide-{number('rules')}")
-  assert page.locator('.slide.active .rl-math-case').count()==2
-  assert page.locator('.slide.active .rl-shared-rule').count()==1
-  assert page.locator('.slide.active .rl-math-output').count()==2
-  assert page.locator('.slide.active .rl-join-paths').count()==1
-  assert page.locator('.slide.active .rl-split-paths').count()==1
-  assert 'f(a, b) = a + b' in page.locator('.slide.active').inner_text()
-  assert '1 + 1' in page.locator('.slide.active').inner_text()
-  assert '2 + 1' in page.locator('.slide.active').inner_text()
+  assert page.locator('.slide.active .rl-math-case').count() == 2
+  assert page.locator('.slide.active .rl-python-rule').count() == 1
+  assert page.locator('.slide.active .rl-math-output').count() == 2
+  assert page.locator('.slide.active .rl-join-paths').count() == 1
+  assert page.locator('.slide.active .rl-split-paths').count() == 1
+  python_code = page.locator('.slide.active .rl-python-code').inner_text()
+  assert 'def add(a, b):' in python_code
+  assert 'return a + b' in python_code
+  scope = {}
+  exec(python_code, scope)
+  assert scope['add'](1, 1) == 2
+  assert scope['add'](2, 1) == 3
+  assert 'add(1, 1)' in page.locator('.slide.active').inner_text()
+  assert 'add(2, 1)' in page.locator('.slide.active').inner_text()
   page.goto(f"{BASE}/vision_ai_course.html#slide-{number('rules-image')}")
-  assert page.locator('.slide.active .rl-pane').count()==2
-  assert page.locator('.slide.active .rl-photo-card').count()==6
-  assert page.locator('.slide.active .rl-photo-card--dark').count()==4
-  assert page.locator('.slide.active .rl-method-step').count()==3
-  assert '갈색 Pixel 수 ≥ k' in page.locator('.slide.active .rl-pane--rule').inner_text()
-  assert page.locator('.slide.active .rl-learning-line').count()==2
+  assert page.locator('.slide.active .rl-pane').count() == 2
+  assert page.locator('.slide.active .rl-photo-card').count() == 6
+  assert page.locator('.slide.active .rl-photo-card--dark').count() == 4
+  assert page.locator('.slide.active .rl-image-rule').count() == 1
+  assert 'brown_pixels >= k' in page.locator('.slide.active .rl-rule-code').inner_text()
+  assert page.locator('.slide.active .rl-rule-questions span').count() == 3
+  assert page.locator('.slide.active .rl-training-figure .rl-train-step').count() == 3
+  assert '라벨링 데이터' in page.locator('.slide.active').inner_text()
   assert '지도학습(Supervised Learning)' in page.locator('.slide.active').inner_text()
-  assert '독립 Validation/Test' in page.locator('.slide.active').inner_text()
-  assert '실제 재촬영·모델 학습·예측 결과가 아닙니다' in page.locator('.slide.active').inner_text()
+  assert '새 사진 성능은 따로 검증해야 합니다' in page.locator('.slide.active').inner_text()
+  assert '실제 학습·예측 결과가 아닙니다' in page.locator('.slide.active').inner_text()
   for img in page.locator('.slide.active .rl-photo-card img').all():
-   assert img.evaluate('(el)=>el.complete&&el.naturalWidth>0'),img.get_attribute('src')
+   assert img.evaluate('(el)=>el.complete&&el.naturalWidth>0'), img.get_attribute('src')
   # Same frozen pretrained CNN output can feed a supervised head or an
   # unlabeled feature clustering stage; these are not equivalent class labels.
   page.goto(f"{BASE}/vision_ai_course.html#slide-{number('cnn-learning-paths')}")
