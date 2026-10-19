@@ -1,0 +1,387 @@
+[
+  {
+    "plan": "P01",
+    "title": "Vision AI란 무엇인가? · 사과 사진·영상에서 결함 찾기",
+    "concept": "start",
+    "minutes": 1.5,
+    "group": "A"
+  },
+  {
+    "plan": "P02",
+    "title": "AI·ML·DL과 Computer Vision의 관계",
+    "concept": "ai-ml-dl-cv",
+    "minutes": 2.0,
+    "group": "A"
+  },
+  {
+    "plan": "P03",
+    "title": "Vision AI가 필요한 이유",
+    "concept": "vision-value",
+    "minutes": 2.0,
+    "group": "A"
+  },
+  {
+    "plan": "P04",
+    "title": "사람의 의미 인식 vs Pixel 숫자",
+    "concept": "photo-numbers",
+    "minutes": 2.0,
+    "group": "A"
+  },
+  {
+    "plan": "P05",
+    "title": "흑백 사진은 H×W · 2차원 숫자 배열",
+    "concept": "gray",
+    "minutes": 2.5,
+    "group": "A"
+  },
+  {
+    "plan": "P06",
+    "title": "RGB 사진 클릭 · 한 Pixel에 세 숫자",
+    "concept": "rgb",
+    "minutes": 2.0,
+    "group": "A"
+  },
+  {
+    "plan": "P07",
+    "title": "RGB 이미지 전체 · H×W×3 (3차원 배열)",
+    "concept": "hwc",
+    "minutes": 2.0,
+    "group": "A"
+  },
+  {
+    "plan": "P08",
+    "title": "동영상은 시간순으로 이어진 RGB 이미지 여러 장",
+    "concept": "video-frames",
+    "minutes": 2.0,
+    "group": "A"
+  },
+  {
+    "plan": "P09",
+    "title": "해상도에 따른 정보 차이",
+    "concept": "resolution",
+    "minutes": 2.5,
+    "group": "A"
+  },
+  {
+    "plan": "P10",
+    "title": "조명·색감에 따른 Pixel 변화",
+    "concept": "lighting",
+    "minutes": 2.0,
+    "group": "A"
+  },
+  {
+    "plan": "P11",
+    "title": "회전·크기·가림·흐림에 따른 변화",
+    "concept": "transform",
+    "minutes": 2.0,
+    "group": "A"
+  },
+  {
+    "plan": "P12",
+    "title": "다르게 생겨도 같은 종류",
+    "concept": "diversity",
+    "minutes": 1.5,
+    "group": "A"
+  },
+  {
+    "plan": "P13",
+    "title": "큰 변화보다 중요한 차이",
+    "concept": "relevant-change",
+    "minutes": 2.0,
+    "group": "A"
+  },
+  {
+    "plan": "P14",
+    "title": "같은 사진, 다른 질문과 정답",
+    "concept": "task",
+    "minutes": 2.0,
+    "group": "B"
+  },
+  {
+    "plan": "P15",
+    "title": "규칙 기반 · 답을 구하는 방법을 사람이 정한다",
+    "concept": "rules",
+    "minutes": 2.0,
+    "group": "B"
+  },
+  {
+    "plan": "P16",
+    "title": "이미지 판단 · 규칙을 어디까지 만들어야 할까?",
+    "concept": "rules-image",
+    "minutes": 2.5,
+    "group": "B"
+  },
+  {
+    "plan": "P17",
+    "title": "사과 결함 검사 · 규칙, 기존 모델, 추가 학습 중 선택",
+    "concept": "model-choice",
+    "minutes": 1.5,
+    "group": "B"
+  },
+  {
+    "plan": "P18",
+    "title": "내 과제에 맞는 모델과 Label",
+    "concept": "task-model-data",
+    "minutes": 2.0,
+    "group": "B"
+  },
+  {
+    "plan": "P19",
+    "title": "왜 CNN인가? · 사과의 작은 특징 반복 탐색",
+    "concept": "cnn-why",
+    "minutes": 2.5,
+    "group": "C"
+  },
+  {
+    "plan": "P20",
+    "title": "CNN Architecture 전체 그림 · 사과 판정까지",
+    "concept": "cnn-overview",
+    "minutes": 2.5,
+    "group": "C"
+  },
+  {
+    "plan": "P21",
+    "title": "퍼셉트론 · 하나의 W와 b로 판정",
+    "concept": "perceptron",
+    "minutes": 2.0,
+    "group": "C"
+  },
+  {
+    "plan": "P22",
+    "title": "AND Gate · 두 입력이 모두 1일 때",
+    "concept": "and-rule",
+    "minutes": 2.0,
+    "group": "C"
+  },
+  {
+    "plan": "P23",
+    "title": "AND Gate · Weight와 Bias로 직선 이동",
+    "concept": "and-gate",
+    "minutes": 2.5,
+    "group": "C"
+  },
+  {
+    "plan": "P24",
+    "title": "XOR Gate · 입력이 다를 때만 1",
+    "concept": "xor-rule",
+    "minutes": 2.0,
+    "group": "C"
+  },
+  {
+    "plan": "P25",
+    "title": "비선형성 · 깊어져도 직선이면?",
+    "concept": "nonlinear",
+    "minutes": 2.5,
+    "group": "C"
+  },
+  {
+    "plan": "P26",
+    "title": "ReLU · 비선형성의 시작",
+    "concept": "relu",
+    "minutes": 2.0,
+    "group": "C"
+  },
+  {
+    "plan": "P27",
+    "title": "XOR · 선형층을 쌓아도 직선 하나",
+    "concept": "xor-gate",
+    "minutes": 5.0,
+    "group": "C"
+  },
+  {
+    "plan": "P28",
+    "title": "Kernel · 작은 영역의 가중합",
+    "concept": "kernel",
+    "minutes": 4.0,
+    "group": "D"
+  },
+  {
+    "plan": "P29",
+    "title": "Feature Map · 같은 계산을 위치마다",
+    "concept": "feature-map",
+    "minutes": 3.0,
+    "group": "D"
+  },
+  {
+    "plan": "P30",
+    "title": "CNN · 지역 연결과 가중치 공유",
+    "concept": "sharing",
+    "minutes": 1.5,
+    "group": "D"
+  },
+  {
+    "plan": "P31",
+    "title": "RGB에서 Feature Channel까지",
+    "concept": "channels",
+    "minutes": 2.5,
+    "group": "D"
+  },
+  {
+    "plan": "P32",
+    "title": "Stride · 계산 위치의 간격",
+    "concept": "stride",
+    "minutes": 2.5,
+    "group": "D"
+  },
+  {
+    "plan": "P33",
+    "title": "Padding · 같은 입력, 다른 출력 크기",
+    "concept": "padding",
+    "minutes": 2.5,
+    "group": "D"
+  },
+  {
+    "plan": "P34",
+    "title": "Max Pooling · 영역별 최댓값",
+    "concept": "pool",
+    "minutes": 2.0,
+    "group": "D"
+  },
+  {
+    "plan": "P35",
+    "title": "실제 Feature Map · CNN 내부 반응",
+    "concept": "actual-map",
+    "minutes": 1.0,
+    "group": "D"
+  },
+  {
+    "plan": "P36",
+    "title": "Backbone과 Task Head",
+    "concept": "backbone",
+    "minutes": 3.0,
+    "group": "D"
+  },
+  {
+    "plan": "P37",
+    "title": "데이터셋 · 어떤 사진으로 배우나",
+    "concept": "dataset",
+    "minutes": 2.5,
+    "group": "E"
+  },
+  {
+    "plan": "P38",
+    "title": "Train · Validation · Test",
+    "concept": "split",
+    "minutes": 2.0,
+    "group": "E"
+  },
+  {
+    "plan": "P39",
+    "title": "Video Group Split · 데이터 누출 방지",
+    "concept": "leakage",
+    "minutes": 2.5,
+    "group": "E"
+  },
+  {
+    "plan": "P40",
+    "title": "Data Augmentation · 같은 정답, 다른 조건",
+    "concept": "augment",
+    "minutes": 2.0,
+    "group": "E"
+  },
+  {
+    "plan": "P41",
+    "title": "모델 학습 · 오차를 줄이는 반복",
+    "concept": "learn",
+    "minutes": 2.5,
+    "group": "F"
+  },
+  {
+    "plan": "P42",
+    "title": "Loss · 틀린 정도를 줄이는 방향",
+    "concept": "loss",
+    "minutes": 2.0,
+    "group": "F"
+  },
+  {
+    "plan": "P43",
+    "title": "CNN 학습 · 예측에서 Weight 갱신까지",
+    "concept": "cnn-training",
+    "minutes": 3.0,
+    "group": "F"
+  },
+  {
+    "plan": "P44",
+    "title": "Training과 Inference의 차이",
+    "concept": "infer",
+    "minutes": 1.5,
+    "group": "F"
+  },
+  {
+    "plan": "P45",
+    "title": "전이학습 · 특징은 고정하고 분류기만 학습",
+    "concept": "transfer",
+    "minutes": 2.0,
+    "group": "F"
+  },
+  {
+    "plan": "P46",
+    "title": "같은 CNN 특징 · 지도와 비지도 활용",
+    "concept": "cnn-learning-paths",
+    "minutes": 2.0,
+    "group": "F"
+  },
+  {
+    "plan": "P47",
+    "title": "Overfitting · 새 데이터 일반화",
+    "concept": "overfit",
+    "minutes": 2.0,
+    "group": "F"
+  },
+  {
+    "plan": "P48",
+    "title": "Score Threshold · 판정 기준",
+    "concept": "threshold",
+    "minutes": 3.0,
+    "group": "G"
+  },
+  {
+    "plan": "P49",
+    "title": "Confusion Matrix · 100건 평가",
+    "concept": "confusion",
+    "minutes": 2.0,
+    "group": "G"
+  },
+  {
+    "plan": "P50",
+    "title": "Accuracy의 함정 · 모두 정상이라면?",
+    "concept": "imbalance",
+    "minutes": 1.0,
+    "group": "G"
+  },
+  {
+    "plan": "P51",
+    "title": "Precision과 Recall",
+    "concept": "metrics",
+    "minutes": 2.5,
+    "group": "G"
+  },
+  {
+    "plan": "P52",
+    "title": "IoU · 박스 겹침 비율",
+    "concept": "iou",
+    "minutes": 1.5,
+    "group": "G"
+  },
+  {
+    "plan": "P53",
+    "title": "Vision AI 원리 · 한 장으로 연결",
+    "concept": "workflow",
+    "minutes": 2.0,
+    "group": "H"
+  },
+  {
+    "plan": "P54",
+    "title": "실패 사진이 알려 주는 것",
+    "concept": "project-iterate",
+    "minutes": 1.5,
+    "group": "H"
+  },
+  {
+    "plan": "P55",
+    "title": "Vision AI 원리 · 무엇을 설명할 수 있나?",
+    "concept": "project-check",
+    "minutes": 1.5,
+    "group": "H"
+  }
+]
