@@ -4,7 +4,7 @@ Integration branch: `automation/approved-55-20261019`. Main baseline ad3f0a8; ap
 
 | Group | Slides | Minutes | Build SHA | Independent review | Status |
 |---|---|---:|---|---|---|
-| A | P01–13 |26|d4bc60d; minor text2280772|PASS at d4bc60d|Verified technical A, review1 Major ROI fixed/review2 PASS; residual P04 selected-cell linkage Minor|
+| A | P01–13 |26|2280772|PASS final2280772|Verified technical A; 26+8 independent views, Critical0/Major0/Minor1 (P04 selected-cell linkage)|
 | B | P14–18 |10|9ce8be57 inherited|pending|RML-01 remains open; fix before review|
 | C | P19–27 |23|—|pending|Builder research prepared; no implementation yet|
 | D | P28–36 |22|—|pending|Pending|
