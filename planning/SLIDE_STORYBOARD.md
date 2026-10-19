@@ -179,7 +179,7 @@
 
 #### P08 · 동영상은 시간순으로 이어진 RGB 이미지 여러 장
 
-- **ID / 원본 / 시간 / 변경:** `P08` · 신규 Draft / `data-concept="video-frames"` · 2분 · 신규 Figure 명세 수정. 전역 계획 번호 8.
+- **ID / 원본 / 시간 / 변경:** `P08` · 신규 승인 / `data-concept="video-frames"` · 2분 · 승인 Frame 중심 Figure 명세. 전역 계획 번호 8.
 - **학습 목표와 핵심 메시지:** 동영상은 디코딩해 얻은 **RGB 프레임 여러 장이 시간 순서로 이어지는 것**으로 이해한다. 한 Frame은 `H×W×3`, Frame을 T장 쌓아 나타낸 교육용 숫자 배열은 `T×H×W×3`이며 4차원은 물리적 공간이 아닌 **배열 축의 개수**다.
 - **교육 의도·교수 흐름:** P07 RGB 이미지 한 장을 그대로 회수→'이 사과가 조금 움직인 사진이 4장 연속 나타난다면?'→같은 사과 이미지의 미세한 위치 변화가 있는 대표 Frame 4개를 **시간 →** 순서로 봄→각 Frame은 같은 `H×W×3` 구조임을 확인→**맨 마지막에만** 동영상 `T×H×W×3`과 1초×30fps=30 Frame을 정리→P09 해상도 변화, P39 같은 영상 Group Split으로 연결.
 - **앞뒤 연결:** 이전 P07 `RGB Image = H×W×3` 한 장을 **왼쪽 기준 그림으로 그대로 재사용** → 이번 P08에서 동일한 RGB 이미지가 시간축에 따라 반복된다는 사실만 추가 → 다음 P09 해상도에서는 각각의 Frame도 Pixel을 축소하면 작은 결함이 사라질 수 있음을 확인한다. 이후 P39 영상 그룹 분할에서 시간적으로 가까운 Frame의 높은 유사성을 회수한다.
@@ -273,7 +273,7 @@
 - **ID / 원본 / 시간 / 변경:** `P16` · C03 / `data-concept="rules-image"` · 2.5분 · 유지·Figure 개선. 전역 계획 번호 16.
 - **학습 목표와 핵심 메시지:** 이미지의 결함 판단에는 사람의 수동 조건이 복잡해질 수 있고 Label 기반 학습이 대안임을 구분한다
 - **교육 의도·교수 흐름:** C02 하나의 명료한 규칙→밝은 결함/어두운 결함/어두운 정상의 반례→고정 색 조건 실패→다양한 사진+정답 Label로 학습
-- **앞뒤 연결:** 이전 P15 규칙 기반 · 답을 구하는 방법을 사람이 정한다에서 받은 질문으로 시작 → 이 장의 출력·이해 성과로 다음 P17 첫 선택 · 어떤 모델을 쓸까?을 설명한다.
+- **앞뒤 연결:** 이전 P15 규칙 기반 · 답을 구하는 방법을 사람이 정한다에서 받은 질문으로 시작 → 이 장의 출력·이해 성과로 다음 P17 사과 결함 검사 · 규칙, 기존 모델, 추가 학습 중 선택으로 연결한다.
 - **Figure 명세(입력→처리→출력):** 좌측 Rule-based: 원본/어둡게/정상 3장과 '갈색 픽셀 수≥k?' 경로·예외! 마크; 우측 지도학습: 같은 3장+명시적인 정답 Label→Training→새 사진 예측?·독립 검증, 두 경로 동일 입력 사진
 - **수식·수치·기존 자산/참고:** 불량 밝음/불량 어두움/정상 어두움 모두 개념 예시; 이미지 docs/assets/vision_task_apple_reference.jpg, docs/assets/generated/apple_studio_preview.png
 - **Builder 구현 지시:** 'Rule-based 불가능' 금지, 실제 학습·예측인 양 점수 표현 금지; 화살표 조건/정답/출력 연결 정확히. 디자인은 기존 레이아웃의 figure 형식과 간격을 유지; 핵심 비교나 대응 관계는 실제 화살표·동일 색상의 좌표/ROI 강조로 표시한다.
@@ -308,7 +308,7 @@
 
 - **ID / 원본 / 시간 / 변경:** `P19` · C15 / `data-concept="cnn-why"` · 2.5분 · C14 앞으로 이동·수정. 전역 계획 번호 19.
 - **학습 목표와 핵심 메시지:** 사과 표면의 반점·모서리 등 작은 지역 특징을 같은 필터로 찾아내는 구조가 이미지에 적합한 이유를 설명한다.
-- **교육 의도·교수 흐름:** P17 ML 안의 CNN 위치와 P18 Task/Label을 회수→RGB의 수많은 값을 전부 개별 연결하면 많은 Weight 필요→같은 사과 표면의 반점·윤곽은 작은 지역의 패턴으로 나타남→같은 작은 관찰창(Filter)을 다른 위치에서 반복 적용하는 CNN 아이디어→P20 전체 Architecture.
+- **교육 의도·교수 흐름:** P17 방법 선택과 P18 Task/Label을 회수→RGB의 수많은 값을 전부 개별 연결하면 많은 Weight 필요→같은 사과 표면의 반점·윤곽은 작은 지역의 패턴으로 나타남→같은 작은 관찰창(Filter)을 다른 위치에서 반복 적용하는 CNN 아이디어→P20 전체 Architecture.
 - **앞뒤 연결:** 이전 P18 모델과 Label → CNN이 어떤 이미지 문제를 해결하는가 → 다음 P20 CNN Architecture 전체 그림 · 사과 판정까지.
 - **Figure 명세(입력→처리→출력):** 왼쪽 같은 사과 사진과 결함 ROI→가운데 3×3 관찰창이 정상/불량/경계 위치에서 동일한 Weight로 반복→오른쪽 위치별 반응 지도와 최종 판단 질문. 얼룩말 줄무늬는 보조 인셋만. 숫자는 예시이며 실제 모델 결과 아님.
 - **수식·수치·기존 자산/참고:** 우선 자산 `docs/assets/vision_task_apple_reference.jpg`; 보조 사진 `docs/assets/generated/zebra_feature_photo.png` 사용 가능하나 핵심 Figure는 사과로 구현. 인간 지각과 동일한 메커니즘이라는 주장 금지.
@@ -726,24 +726,24 @@
 
 ## 4. 첫 번째 Builder 제작 단원 — Rule-based vs 데이터 학습 2장 (우선순위 P0)
 
-**Builder 첫 구현 단원:** 현행 `C02 rules` → `C03 rules-image`의 Figure·부제·Takeaway만 우선 보완. C01의 Task 정의 및 C05의 모델 선택은 연결 문구만 검사하고, 다른 강의 HTML 구조·CSS 전역 변경은 범위 밖이다. C02는 명확히 정의한 더하기 규칙, C03은 예외가 많은 이미지 결함 판정과 라벨 기반 지도학습을 대비한다.
+**Builder 첫 구현 단원:** 현행 `C02 rules` → `C03 rules-image`의 Figure·부제·Takeaway만 우선 보완. P14(C01)의 Task 정의 및 P17(C05)의 모델 선택은 연결 문구만 검사하고, 다른 강의 HTML 구조·CSS 전역 변경은 범위 밖이다. C02는 명확히 정의한 더하기 규칙, C03은 예외가 많은 이미지 결함 판정과 라벨 기반 지도학습을 대비한다.
 
 ### Builder 작업 스펙
 
-**1장(C02/P14, 2분) — '규칙이 명료할 때는 사람이 알고리즘을 쓸 수 있다'.**
+**1장(C02/P15, 2분) — '규칙이 명료할 때는 사람이 알고리즘을 쓸 수 있다'.**
 - 중앙 Figure를 **동일 규칙의 재사용**에 집중: 왼쪽 `1+1`, `2+1` 입력 카드→가운데 단 하나의 규칙 블록 `f(a,b)=a+b`→오른쪽 각각 `2`, `3`. 두 입력이 다른데 규칙 블록은 동일하고, 화살표 2쌍을 빠짐없이 연결한다.
 - 덧셈 공식은 인간이 직접 정한 처리 규칙. '예시를 보여주고 덧셈 학습'처럼 그리지 않음. 상단 질문 "어떤 문제는 왜 ML이 필요 없을까?" 하단 "판단 규칙이 명확하면 학습 없이도 된다".
 - 다음 장 연결: "그런데 사과 반점의 모든 색·크기·조명 조건을 하나의 문장으로 표현할 수 있을까?"
 
-**2장(C03/P15, 2.5분) — '이미지에서는 예외를 일일이 쓰기보다 정답 사진으로 학습할 수 있다'.**
+**2장(C03/P16, 2.5분) — '이미지에서는 예외를 일일이 쓰기보다 정답 사진으로 학습할 수 있다'.**
 - **동일 입력 비교**를 명시: 밝은 불량 사과, 어두운 불량 사과, 어두운 정상 사과를 좌/우 경로 모두에서 같은 썸네일/라벨로 제시. 기존 생성 사진과 CSS 밝기 변환 재사용. 실제 서로 다른 원본 사진과 단일 사진 밝기 시뮬레이션을 구분.
 - **좌측 Rule-based:** "갈색 Pixel 수가 k 이상이면 불량" 조건 블록→'그림자/어두운 조명도 조건에 걸림?' 의문 기호→조건 추가 필요. 조건 자체가 나쁜 것이 아니라 현장 변화가 늘 때 **수동 설계·유지보수 비용**이 커지는 사례.
 - **우측 지도학습:** 같은 썸네일+정상/불량 Label→Training→'학습된 판단 기준' Model 블록→새 사진에서 Prediction→Validation/Test로 일반화 확인. 학습된 가중치·정확도·모델 예측 결과는 실제 측정으로 만들거나 주장하지 않음.
-- 결론은 이분법 금지: Rule-based도 유효하고, ML도 틀릴 수 있음. 촬영 조건과 과제 요구에 따라 선택한다. 다음 C05의 '기존 모델부터 시험'으로 연결.
+- 결론은 이분법 금지: Rule-based도 유효하고, ML도 틀릴 수 있음. 촬영 조건과 과제 요구에 따라 선택한다. 다음 P17(C05)의 '기존 모델부터 시험'으로 연결.
 
 ### Builder 파일 변경 경계
 
-대상 후보: `docs/vision_ai_course.html`의 `[data-concept="rules"]`·`[data-concept="rules-image"]`, `docs/rules_vs_learning.css` 스코프만. 기존 사진 `docs/assets/vision_task_apple_reference.jpg`, `docs/assets/generated/apple_studio_preview.png` 재사용. 새로운 글로벌 CSS, 라이브 모델 호출, 외부 이미지 hotlink, Preprocessing 별도 장표는 추가하지 않는다. 두 장의 `data-concept` 및 C01/C05 네비게이션 유지. 55장 재편은 기획상 Approved이며 구현·검수는 별도 Builder 단계로 진행한다.
+대상 후보: `docs/vision_ai_course.html`의 `[data-concept="rules"]`·`[data-concept="rules-image"]`, `docs/rules_vs_learning.css` 스코프만. 기존 사진 `docs/assets/vision_task_apple_reference.jpg`, `docs/assets/generated/apple_studio_preview.png` 재사용. 새로운 글로벌 CSS, 라이브 모델 호출, 외부 이미지 hotlink, Preprocessing 별도 장표는 추가하지 않는다. 두 장의 `data-concept` 및 P14/P17 연결·네비게이션 유지. 55장 재편은 기획상 Approved이며 구현·검수는 별도 Builder 단계로 진행한다.
 
 ### 1차 작업 완료 기준
 
@@ -752,7 +752,7 @@
 3. Rule-based 이미지 검사가 불가능하다는 주장, ML이 새 사진에서 완벽히 일반화한다는 주장이 없다.
 4. 교육용 합성 사진·화면상 CSS 변형과 실제 촬영 데이터/모델 예측을 구분한다.
 5. 타이틀·그림·Takeaway가 1920×1080와 1366×768에서 각각 수동/자동 Chromium 렌더 QA로 검증되고 이미지 로딩·텍스트 잘림·도형 겹침이 0건이다.
-6. C01→C02→C03→C05의 다음/이전 이동, 목차 링크, `data-concept`, 기존 Pixel/RGB·AND/XOR·학습/Threshold 실습 회귀 테스트에 영향이 없다.
+6. P14(C01)→P15(C02)→P16(C03)→P17(C05)의 다음/이전 이동, 목차 링크, `data-concept`, 기존 Pixel/RGB·AND/XOR·학습/Threshold 실습 회귀 테스트에 영향이 없다.
 7. 실제 4.5분 리허설에서 질문→더하기→예외→지도학습 연결을 강사가 추가 기획 없이 수행할 수 있다.
 
 ## 5. Reviewer 검수 체계와 승인 게이트
@@ -775,7 +775,7 @@
 - Swapna K E, *Convolutional Neural Network | Deep Learning*, Developers Breach (2020): https://developersbreach.com/convolution-neural-network-deep-learning/ — 기존 C14/C33 재사용 원본 CNN Architecture. HTML에서 직접 표시 시 기존 Source Caption 유지하고 CDN fallback 테스트.
 - Stanford CS231n 강아지 원본 및 SqueezeNet 재계산 Feature Map은 기존 자산에 한정; 정확한 파일별 저작자/원본은 `assets/SOURCES.md` 및 HTML 근접 Caption을 추가 확인할 것.
 
-**현재 미완료 사항:** Builder 실제 HTML/Figure 구현, 검수와 실측 리허설, 55장 구현 화면 PNG/SVG 렌더 결과. 이 Draft는 기획 제안이며 실제 공개 강의는 여전히 59장이다.
+**현재 미완료 사항:** Builder 실제 HTML/Figure 구현, 검수와 실측 리허설, 55장 구현 화면 PNG/SVG 렌더 결과. 이 55장 스토리보드는 Approved 기획안이며 실제 공개 강의는 아직 59장이다.
 
 
 
