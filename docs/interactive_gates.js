@@ -147,6 +147,8 @@
       }
     }
 
+    // Drag gestures belong to the lab, not the deck's global swipe-to-next handler.
+    root.addEventListener('touchend', event => event.stopPropagation());
     sliders.forEach(s => s.addEventListener('input', () => {
       values[s.dataset.param] = Number(s.value);
       render();
