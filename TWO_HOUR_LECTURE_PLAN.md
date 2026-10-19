@@ -1,7 +1,7 @@
 # Vision AI 기초강의 · 원리 이해 중심 120분 운영안
 
-> **현행 공개 강의 기준 (2026-10-18 개편): Intro 13장 + 통합 42장 = 전체 55장.** `docs/two_hour_manifest.json`을 정답으로 사용한다.  
-> 이전 50장 강의 운영안/검토서의 슬라이드 번호는 현재와 다르다.  
+> **현행 공개 강의 기준 (2026-10-18 개편): Intro 13장 + 통합 43장 = 전체 56장.** `docs/two_hour_manifest.json`을 정답으로 사용한다.
+> 이전 50장 강의 운영안/검토서의 슬라이드 번호는 현재와 다르다.
 > 강의 전체 질문: **“사과 사진에서 작은 갈색 반점을 어떻게 찾고, 다른 사진에서도 믿을 수 있을까?”**
 
 ## 1. 강의 목표와 전체 답변
@@ -24,11 +24,11 @@
 | 어려움과 결정적인 차이 | Intro 9–13 | 10 | 기존 사과 원본을 조명·회전·가림으로 변환, 클래스 다양성, **어려움 종합** | “무슨 출력을 원해야 중요한 특징인지 정할까?” |
 | 지금의 Vision AI / Task / 모델·Label | Course 1–5 | 10 | Class/Box/Mask, **규칙→학습모델→범용 사전학습**, 지도학습, 모델 선택, **유무·위치·영역 데이터** | “그 모델의 가장 기초적인 계산은?” |
 | 신경망·비선형성 | Course 6–10 | 16 | 퍼셉트론 Wx+b·Step, AND/XOR, ReLU, Affine층의 한계 | “이 숫자 계산을 이미지에 효율적으로 적용하려면?” |
-| **CNN 핵심 원리** | **Course 11–20** | **32** | 사진→Feature Map→Head, Kernel 한 칸/이동, 공유, Channel, Stride/Padding/Pooling, 실측 채널, Task Head | “학습에 필요한 데이터는 무엇일까?” |
-| 데이터와 Label | Course 21–25 | 11 | 정상/결함×밝음/어두움, Group Split, 전처리/증강 | “Kernel Weight를 어떻게 바꾸나?” |
-| 학습·일반화 | Course 26–32 | 13 | 숫자 1Step 학습, Loss, 추론 차이, **CNN 전체 학습 아키텍처**, 전이학습, Batch/Epoch, 과적합 | “Loss 감소가 실제 검사 성공을 보장할까?” |
-| 평가 | Course 33–37 | 9 | Threshold, 혼동행렬, 불균형, Precision/Recall, IoU | “새 촬영조건에서 무엇을 놓치는가?” |
-| 원리 회수 | Course 38–42 | 5 | 같은 사과 사진으로 Task→Model/Label→CNN→학습→오류검사 돌아보기 | “이 결과를 왜 믿어야 하는가?” |
+| **CNN 핵심 원리** | **Course 11–21** | **32** | 사진→Feature Map→Head, Kernel 한 칸/이동, 공유, Channel, Stride/Padding/Pooling, 실측 채널, Task Head | “학습에 필요한 데이터는 무엇일까?” |
+| 데이터와 Label | Course 22–26 | 11 | 정상/결함×밝음/어두움, Group Split, 전처리/증강 | “Kernel Weight를 어떻게 바꾸나?” |
+| 학습·일반화 | Course 27–33 | 13 | 숫자 1Step 학습, Loss, 추론 차이, **CNN 전체 학습 아키텍처**, 전이학습, Batch/Epoch, 과적합 | “Loss 감소가 실제 검사 성공을 보장할까?” |
+| 평가 | Course 34–38 | 9 | Threshold, 혼동행렬, 불균형, Precision/Recall, IoU | “새 촬영조건에서 무엇을 놓치는가?” |
+| 원리 회수 | Course 39–43 | 5 | 같은 사과 사진으로 Task→Model/Label→CNN→학습→오류검사 돌아보기 | “이 결과를 왜 믿어야 하는가?” |
 
 **전체 강의 120분**으로 구성하며 별도 질의응답(Q&A) 구간은 배정하지 않습니다. 각 구간의 시간은 예상치이며 실제 발표 리허설로 조정합니다.
 
@@ -83,8 +83,8 @@ Intro는 **3번(필요성)**, **13번(왜 어려운가·종합)**을 새로 추�
 ## 5. 검사·출처·배포
 
 - 기존 외부 Borromini 회랑 사진은 Intro 새 활용 슬라이드에도 원출처를 직접 표기. 직접 가져온 외부 Figure는 인접 출처를 표시하고 자체 도식/변형에 참고 문헌을 장식처럼 추가하지 않는다.
-- 55장 Title/Subtitle/Figure/Takeaway 체계와 `data-concept`, TOC, 수치, 로컬 이미지 경로를 동기화해야 한다.
-- `python scripts/verify_curriculum_overhaul.py`, `python scripts/verify_two_hour_course.py`, `python scripts/verify_learning_routes.py`, `python scripts/audit_visual_slides.py`를 수행하여 총 **110개 뷰(1920×1080, 1366×768)** 검사.
+- 56장 Title/Subtitle/Figure/Takeaway 체계와 `data-concept`, TOC, 수치, 로컬 이미지 경로를 동기화해야 한다.
+- `python scripts/verify_curriculum_overhaul.py`, `python scripts/verify_two_hour_course.py`, `python scripts/verify_learning_routes.py`, `python scripts/audit_visual_slides.py`를 수행하여 총 **112개 뷰(1920×1080, 1366×768)** 검사.
 - 실제 Pages URL을 최신 Commit으로 확인, 이미지 로딩과 JS 이벤트를 확인. 공개 렌더 검사를 정적 검사와 혼동하지 않는다.
 - 전체 콘텐츠 리뷰 및 남은 문제는 [54장 내용·흐름 재검토서](reviews/2026-10-18_VISION_AI_54_SLIDE_FLOW_REVIEW.md)에 기록하고, 활성 TODO는 [TODO_VISION_AI_LECTURE.md](TODO_VISION_AI_LECTURE.md)를 따른다.
 
@@ -107,13 +107,19 @@ Intro는 **3번(필요성)**, **13번(왜 어려운가·종합)**을 새로 추�
 - **C24–25:** Preprocessing/Augmentation을 동일 사과 사진의 본문 HTML 비교로 전환. 브라우저 표시 변화와 실제 학습용 이미지 저장은 구분.
 - **C28:** 복잡한 화살표 교차를 제거하고 Forward / Backward 두 줄로 정렬.
 - **C30:** 동일 CNN 구조에서 Feature Extractor는 Freeze하고 Classification Head만 학습하는 사례를 파란색/초록색으로 비교.
-- 새 스크린샷 55×2=110장 및 실제 Pages 로딩 검증은 별도 확인이 필요하다.
+- 새 스크린샷 56×2=112장 및 실제 Pages 로딩 검증은 별도 확인이 필요하다.
 
 
 ## 2026-10-19 · Gate 인터랙티브 실습 및 Q&A 삭제 (최신)
 
-- 별도 질의응답 시간 **0분**: 55장 강의 내용과 마지막 원리 복습까지 **120분 모두 강의에 사용**합니다.
+- 별도 질의응답 시간 **0분**: 56장 강의 내용과 마지막 원리 복습까지 **120분 모두 강의에 사용**합니다.
 - Course 7 AND: `z=Wx₁+x₂+b`, 직선 `x₂=−Wx₁−b`. W 슬라이더로 기울기 변경(회전), b로 y절편 변경(평행 이동). 네 입력의 **정답**과 **AI 판정**, 일치 개수가 즉시 갱신됩니다.
 - Course 8 XOR: Layer 1은 **W₁,b₁**, Layer 2는 **W₂,b₂**만 조절(총 4개). 먼저 **비선형 없음**에서 t=W₁x₁+x₂+b₁, z=W₂t+x₁+b₂로 합성하여 `z=(1+W₁W₂)x₁+W₂x₂+(W₂b₁+b₂)` 단일 직선이 됨을 보여 줍니다(기본 3/4 정답). Layer 2의 `+x₁`은 훈련 파라미터가 없는 고정 연결이며, 두 층 Weight가 모두 직선 기울기에 영향을 주기 위한 교육용 최소 예시입니다. 이후 **비선형 추가**에서 `z=W₂|t|+x₁+b₂`와 `|t|=ReLU(t)+ReLU(−t)`를 적용하면 양쪽의 경계 두 개 사이를 선택해 XOR 4/4 정답을 구현합니다. |t| 계산은 실제로 두 ReLU 반응의 합이므로 단일 ReLU 뉴런 하나가 XOR를 해결한다는 의미는 아닙니다.
 - 정답(Label)과 AI가 내린 판정을 나란히 표기하며, 이 비선형 예시를 다음 ReLU 강의로 연결합니다. Gate 시연 시간을 11→16분으로 늘리고 데이터·학습·CNN에 추가 시간을 배분해 전체 **120분**을 맞췄습니다.
 - 인터랙션 코드: `docs/interactive_gates.js`, 디자인: `docs/interactive_gates.css`. 두 페이지 새 Figure에 국소 적용. CDN 의존 없음.
+
+## 2026-10-19 · 얼룩말 특징 비유 및 전이학습 재사용 (최신)
+
+Intro13 + Course43 = 56장, 강의 120분 유지. C11 CNN Architecture 뒤에 C12 “왜 CNN인가?”를 추가했다. C12 이후의 이전 Course 번호는 한 장씩 뒤로 이동한다. Kernel C13, Feature Map C14, 실제 반응 C20, Backbone C21, 데이터 C22–26, 학습 C27–33(전이학습 C31), 평가 C34–38, 복습 C39–43이다. 위 과거 개별 예시 번호보다 이 매핑과 manifest를 우선한다.
+
+CNN 구간 32분 안에서 C11 구조 2분, C12 특징 조합 비유 2분, C13 Kernel 5분, C14 Feature Map 4분, C15 공유 3분, C16 채널 3분, C17 Stride 3분, C18 Padding 3분, C19 Pooling 2분, C20 실제 반응 3분, C21 Head 2분을 배정한다. 합계 32분이다. C31에서는 C11 원본 구조를 재사용하여 Freeze와 Head 교체/학습을 연결한다. 사람도 형태·맥락을 함께 본다는 점, CNN은 뇌의 동일한 재현이 아니라는 비유의 범위를 명시한다.

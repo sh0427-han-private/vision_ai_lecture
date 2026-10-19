@@ -109,7 +109,9 @@ def main():
   assert page.locator('.lf-pad-shared .concept-matrix').count()==1
   assert page.locator('.lf-pad-result .concept-matrix').count()==2
   page.goto(f"{BASE}/vision_ai_course.html#slide-{number('transfer')}")
-  assert page.locator('.lf-transfer-block').count()==4
+  assert page.locator('.zebra-transfer-legend article').count()==2
+  assert page.locator('.slide.active .lf-zebra > img').get_attribute('src') == page.locator('[data-concept="cnn-overview"] .lf-zebra > img').get_attribute('src')
+  assert 'Head 교체' in page.locator('.slide.active').inner_text()
   assert 'Freeze' in page.locator('.slide.active').inner_text()
   # Training demonstration really follows the same step as the adjacent slide.
   learn=number('learn')

@@ -60,12 +60,6 @@
 .principles-deck .lf-train-arrow--back{color:#a77a52}
 .principles-deck .lf-train-caption{font-size:clamp(17px,1.28vw,20px);line-height:1.4;text-align:center;margin:8px 0;color:#506e79}
 .principles-deck .lf-transfer-flow{display:grid;grid-template-columns:1.05fr .14fr 1.45fr .14fr 1.14fr .14fr .85fr;gap:9px;align-items:center;margin:23px 0}
-.principles-deck .lf-transfer-block{min-height:220px;border-top:4px solid #83a8b6;background:#f2f7f9;text-align:center;padding:17px 7px;display:flex;align-items:center;flex-direction:column;justify-content:center;gap:10px}
-.principles-deck .lf-transfer-block--train{border-top-color:#238d72;background:#eff8f3}
-.principles-deck .lf-transfer-block h3{font-size:clamp(20px,1.6vw,26px);color:#2b5e6d;margin:0}
-.principles-deck .lf-transfer-block p{font-size:clamp(17px,1.27vw,21px);line-height:1.36;color:#50727d;margin:0}
-.principles-deck .lf-transfer-block .lf-transfer-icon{font-size:32px}
-.principles-deck .lf-transfer-block img{height:112px;width:100%;object-fit:contain}
 @media(max-height:850px){
 .principles-deck .lf-gate-figure{gap:12px;margin:7px auto}
 .principles-deck .lf-panel{padding:8px 11px}
@@ -77,8 +71,6 @@
 .principles-deck .lf-train-step{min-height:100px}
 .principles-deck .lf-zebra{min-height:210px;max-height:38dvh}
 .principles-deck .lf-zebra img{max-height:38dvh}
-.principles-deck .lf-transfer-block{min-height:166px;padding:9px 6px}
-.principles-deck .lf-transfer-block img{height:84px}
 }
 
 /* The first three Task families are shown in one clear row (no Anomaly Detection). */
@@ -121,3 +113,27 @@
 .principles-deck .lf-training-label--back{margin-top:8px}
 .principles-deck .lf-train-step{min-height:92px}
 }
+
+/* Zebra feature analogy and reuse of the original architecture for transfer. */
+.principles-deck .zebra-reasoning {display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:18px;align-items:center;margin:24px auto}
+.principles-deck .zebra-reasoning article {text-align:center;min-width:0;border-top:3px solid #669d9c;padding:18px 8px;background:#f6fafa}
+.principles-deck .zebra-reasoning h3,.principles-deck .zebra-transfer-legend h3 {font-size:clamp(21px,1.8vw,28px);color:#285b65;margin:0 0 12px}
+.principles-deck .zebra-reasoning svg {display:block;width:100%;height:min(23dvh,220px)}
+.principles-deck .zebra-reasoning p,.principles-deck .zebra-transfer-legend p {font-size:clamp(17px,1.45vw,23px);line-height:1.5;margin:10px 0}
+.principles-deck .zebra-link {font-size:32px;color:#238773}
+.principles-deck .zebra-decision {height:min(23dvh,220px);display:grid;place-items:center;font-size:clamp(32px,3vw,48px);color:#177b66;font-weight:750}
+.principles-deck .zebra-transfer-legend {display:grid;grid-template-columns:1fr auto 1fr;gap:16px;align-items:center;margin:12px auto}
+.principles-deck .zebra-transfer-legend article {background:#edf3f9;border-top:4px solid #5186aa;padding:10px 16px;text-align:center}
+.principles-deck .zebra-transfer-legend article:last-child {background:#edf7f1;border-color:#2a9578}
+.principles-deck [data-concept="transfer"] .lf-zebra>img {max-height:27dvh}
+.principles-deck [data-concept="transfer"] .lf-zebra-fallback {min-height:0;padding:8px}
+.principles-deck [data-concept="transfer"] .lf-arch-unit {min-height:0}
+.principles-deck [data-concept="transfer"] .lf-arch-unit img {max-height:90px}
+@media(max-height:850px){
+ .principles-deck .zebra-reasoning {margin:12px auto;gap:10px}
+ .principles-deck .zebra-transfer-legend h3 {margin-bottom:4px;font-size:21px}
+ .principles-deck .zebra-transfer-legend p {margin:4px 0;font-size:18px}
+}
+.principles-deck .zebra-fallback-note {display:none;font-size:18px;text-align:center;color:#56727b}
+.principles-deck .lf-cnn-architecture:has(.lf-no-external) .lf-zebra-caption {display:none}
+.principles-deck .lf-cnn-architecture:has(.lf-no-external) .zebra-fallback-note {display:block}
