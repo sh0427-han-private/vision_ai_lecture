@@ -1,4 +1,4 @@
-/* Intro13 + Course45 = 58 slides, no Preprocessing-only slide, 120 minutes. */
+/* 58-slide Vision AI course; no Preprocessing-only slide; 120 minutes. */
 window.LECTURE_OUTLINE = {
   "version": "20261019-no-preprocessing-58",
   "groups": [
