@@ -146,6 +146,7 @@ def build(root):
     refs = '<link rel="stylesheet" href="approved_c.css?v=approved-c-20261019-1">\n<script src="cnn_architecture.js?v=approved-c-20261019-1" defer></script>\n<script src="approved_c_gates.js?v=approved-c-20261019-1" defer></script>\n'
     if 'href="approved_c.css' not in doc:
         doc = doc.replace('</head>', refs+'</head>', 1)
+    doc = doc.replace("interactive_gates.js?v=20261019-rotate-w-3", "interactive_gates.js?v=approved-c-20261019-2")
     path.write_text(doc)
 
     # Correct overgeneralized prose while preserving the existing calculator.

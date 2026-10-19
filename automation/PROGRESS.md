@@ -6,7 +6,7 @@ Integration branch: `automation/approved-55-20261019`. Main baseline ad3f0a8; ap
 |---|---|---:|---|---|---|
 | A | P01–13 |26|2280772|PASS final2280772|Verified technical A; 26+8 independent views, Critical0/Major0/Minor1 (P04 selected-cell linkage)|
 | B | P14–18 |10|b803380|PASS independent re-review|RML01/02/03 and FLOW01 closed; 10+2 views, Critical0/Major0|
-| C | P19–27 |23|—|pending|Builder C implementing local architecture and 9 approved sections|
+| C | P19–27 |23|fc8d463|running|18 Builder views + 4 interaction runs PASS; independent review running|
 | D | P28–36 |22|—|pending|Pending|
 | E | P37–40 |9|—|pending|Pending|
 | F | P41–47 |15|—|pending|Pending|
@@ -42,3 +42,5 @@ Historical Builder progress is available at commit9ce8be57:BUILDER_PROGRESS.md; 
 | AUD-07 | B | Minor rule threshold is educational; B technical PASS |
 | AUD-12 | E/G | Minor pending split and threshold/static reference labels |
 | A-R1 | A | Open Minor: optional selected-cell/photo ROI correspondence; whole-image downsample already correct |
+
+C parent integration: approved staged contract PASS at58 slides/120min (not final55), full58-slide route/TOC/gate/learning/threshold regression PASS after exact prose assertions were updated to the new visible content. Global historical static checker still awaits final55 migration; not reported as passed. Architecture full figure and maps share modelId apple-cnn-1426.

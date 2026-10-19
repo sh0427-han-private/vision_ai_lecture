@@ -80,7 +80,7 @@ def main():
   assert '정답 사진 + Label' in page.locator('.slide.active').inner_text()
   assert '지도학습(Supervised Learning)' in page.locator('.slide.active').inner_text()
   assert '독립' in page.locator('.slide.active').inner_text()
-  assert '실제 결과 미측정' in page.locator('.slide.active').inner_text()
+  assert '미측정' in page.locator('.slide.active .b55-prediction').inner_text()
   page.wait_for_function("""() => {
    const images = [...document.querySelectorAll('.slide.active .rl-photo-card img')];
    return images.length === 6 &&
@@ -109,21 +109,21 @@ def main():
   assert '그룹 A / B' in page.locator('.slide.active .su-path--un').inner_text()
   assert '학습 데이터의 Label과 학습 목표' in page.locator('.slide.active').inner_text()
   page.goto(f"{BASE}/vision_ai_course.html#slide-{number('perceptron')}")
-  assert page.locator('.slide.active img[src*="perceptron_one_weight_ko.svg"]').count()==1
+  assert page.locator('.slide.active img[src*="perceptron_approved_c.svg"]').count()==1
   # General one-neuron perceptron first; AND logic rule is its application.
   page.goto(f"{BASE}/vision_ai_course.html#slide-{number('perceptron')}")
   assert '하나의 W와 b로 판정' in page.locator('.slide.active').inner_text()
-  assert page.locator('.slide.active .pw-equation').count()==1
-  assert 'W(x₁ + x₂) + b' in page.locator('.slide.active .pw-equations').inner_text()
+  assert 'z=W(x₁+x₂)+b' in page.locator('.slide.active .c55-neuron-note').inner_text()
+  assert '일반 뉴런은 입력마다 다른 Weight 가능' in page.locator('.slide.active .c55-neuron-note').inner_text()
   # Concept explanation before slider labs (the four cases are a visual truth table).
   page.goto(f"{BASE}/vision_ai_course.html#slide-{number('and-rule')}")
   assert page.locator('.slide.active .gb-example').count()==4
   assert '모두 1' in page.locator('.slide.active').inner_text()
-  assert '단일 퍼셉트론' in page.locator('.slide.active').inner_text()
+  assert 'z=0.5(x₁+x₂)−0.7' in page.locator('.slide.active').inner_text()
   page.goto(f"{BASE}/vision_ai_course.html#slide-{number('xor-rule')}")
   assert page.locator('.slide.active .gb-example').count()==4
   assert '서로 다를 때' in page.locator('.slide.active').inner_text()
-  assert '직선 하나로 분리할 수 없습니다' in page.locator('.slide.active').inner_text()
+  assert '직선 하나로 0과 1을 모두 분리할 수 없습니다' in page.locator('.slide.active').inner_text()
   # Course 7: W actually ROTATES the line, while b translates it.
   page.goto(f"{BASE}/vision_ai_course.html#slide-{number('and-gate')}")
   page.wait_for_selector('[data-gate-lab="and"][data-ready="true"]')
@@ -181,7 +181,9 @@ def main():
   assert page.locator('.lf-pad-result .concept-matrix').count()==2
   page.goto(f"{BASE}/vision_ai_course.html#slide-{number('transfer')}")
   assert page.locator('.zebra-transfer-legend article').count()==2
-  assert page.locator('.slide.active .lf-zebra > img').get_attribute('src') == page.locator('[data-concept="cnn-overview"] .lf-zebra > img').get_attribute('src')
+  # Staged build: P20 is local now; P45 will be replaced in F, which is not yet Verified.
+  page.wait_for_selector('[data-concept="cnn-overview"] [data-cnn-architecture][data-ready="true"]',state='attached')
+  assert page.locator('[data-concept="cnn-overview"] [data-cnn-architecture]').get_attribute('data-model-id')=='apple-cnn-1426'
   assert 'Head 교체' in page.locator('.slide.active').inner_text()
   assert 'Freeze' in page.locator('.slide.active').inner_text()
   # Training demonstration really follows the same step as the adjacent slide.
