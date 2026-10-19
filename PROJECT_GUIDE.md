@@ -677,3 +677,12 @@ GitHub Pages:
 - 현행 학습 흐름: C24 Dataset → C25 Train/Validation/Test → C26 Video Group Split → C27 Data Augmentation → C28 모델 학습. 기존 데이터 증강의 Train 전용/Label 정합성 원칙은 보존.
 - C33 지도/비지도 CNN 비교, C36–40 모델 평가, C41–45 적용/복습. 정확한 번호/순서는 `docs/two_hour_manifest.json`과 `docs/lecture_outline.js` 기준.
 - `scripts/verify_two_hour_course.py`에서 `preprocess` Concept이 없어야 하고 `leakage`→`augment`→`learn` 직접 연결을 검사. 공유 TOC 캐시 `no-preprocess-20261019-1`; 전수 브라우저 QA 58×2=116개 화면 필요.
+
+
+## 2026-10-19 · 최신 Rule-based 산수 vs 이미지 데이터 학습 (이전 58장 규칙보다 우선)
+
+- 현행 Course2는 두 산수 예시 1+1=2, 2+1=3을 같은 더하기 규칙으로 처리하는 시각자료. Course3은 결함 사과의 밝음/어두움 및 정상 사과를 놓고 색/밝기 기준의 조건 증가와 Label을 통한 데이터 학습을 대비하는 신규 슬라이드.
+- Rule-based 이미지 검사는 가능하되 예외가 많아질 수 있고, 데이터 학습 역시 새로운 조명/불량에서 반드시 검증해야 한다. 여기서 사용한 ML 예시는 지도학습(정답 Label 제공)이며, 후반 CNN 지도/비지도 구분까지 일반화하지 않는다.
+- 다음 Course4에서는 Rule 기반→Task별 학습 모델→사전학습 모델로 개념을 이어간다. 58장의 원래 Course3부터 +1. 최신 Intro 13 + Course 46 = 59장, 강의 120분, Q&A 0분.
+- 로컬 CSS docs/rules_vs_learning.css?v=rules-vs-image-20261019-1, 공유 TOC arithmetic-vision-20261019-1. 두 새 그림은 로컬 교육용 사진의 CSS 표시 변화이며 실제 모델 예측 결과를 암시하지 않는다.
+- scripts/verify_two_hour_course.py에는 두 개 Concept ID(rules/rules-image), 산수와 이미지 정답/노트/로컬 경로를 검사한다. 시각 QA는 59×2=118뷰.
