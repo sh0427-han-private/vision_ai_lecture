@@ -41,7 +41,7 @@ with sync_playwright()as p:
    report['screens'].append(info)
   page.close()
  browser.close()
-issues=[(x['concept'],x['viewport'])for x in report['screens']if x['contentBottomOverflow']>6 or x['contentRightOverflow']>6 or x['browserHorizontalOverflow']>1 or x['fitScale']<.9 or x['overlaps'] or any(not i['loaded']and i['visible']for i in x['images'])]
+issues=[(x['concept'],x['viewport'])for x in report['screens']if x['contentBottomOverflow']>6 or x['contentRightOverflow']>6 or x['browserHorizontalOverflow']>1 or x['fitScale']<.9 or x['overlaps'] or any(not i['loaded']and i['visible']for i in x['images']) or any(not i['loaded']for i in x['svgImages'])]
 report['layout_issues']=issues
 (args.out/'report.json').write_text(json.dumps(report,ensure_ascii=False,indent=2))
 print(json.dumps({'screens':len(report['screens']),'layout_issues':issues,'page_errors':report['page_errors'],'minimum_fit':min(x['fitScale']for x in report['screens'])},ensure_ascii=False))

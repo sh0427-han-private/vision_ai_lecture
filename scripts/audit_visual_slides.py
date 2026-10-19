@@ -26,7 +26,7 @@ VIEWPORTS = [(1920, 1080), (1366, 768)]
 def inspect_slide(page):
     """Return observable sizes, overlaps, asset loading and legibility risk."""
     return page.evaluate(
-        r"""() => {
+        r"""async () => {
           const slide = document.querySelector('.slide.active');
           if (!slide) return {error:'no active slide'};
           const inner = slide.querySelector('.slide-inner');
@@ -92,6 +92,21 @@ def inspect_slide(page):
                      visible:r.width>0 && r.height>0,
                      renderW:Math.round(r.width),renderH:Math.round(r.height)};
           });
+          // SVG <image> is not covered by HTMLImageElement.naturalWidth.
+          // Probe each distinct referenced source once, including nested maps.
+          const cache=window.__lectureAuditImages ||= new Map();
+          const svgSources=[...new Set([...slide.querySelectorAll('svg image')]
+            .map(n=>n.getAttribute('href')||n.getAttribute('xlink:href')).filter(Boolean))];
+          const svgImages=await Promise.all(svgSources.map(src=>{
+            const absolute=new URL(src,document.baseURI).href;
+            if(!cache.has(absolute))cache.set(absolute,new Promise(resolve=>{
+              const img=new Image();let finished=false;
+              const done=loaded=>{if(!finished){finished=true;resolve(loaded)}};
+              img.onload=()=>done(true);img.onerror=()=>done(false);
+              img.src=absolute;setTimeout(()=>done(false),5000);
+            }));
+            return cache.get(absolute).then(loaded=>({src:src.startsWith('data:')?'embedded data image':src,loaded}));
+          }));
           const fontPx=title?parseFloat(getComputedStyle(title).fontSize)*fit:0;
           return {
             title:titleText,fitScale:fit,titleFontPx:Number(fontPx.toFixed(1)),
@@ -100,7 +115,7 @@ def inspect_slide(page):
             contentBottomOverflow:Math.max(0,Math.round(ir.bottom-availableBottom)),
             contentRightOverflow:Math.max(0,Math.round(ir.right-availableRight)),
             browserHorizontalOverflow:document.documentElement.scrollWidth-innerWidth,
-            overlaps,images:imgs,elements
+            overlaps,images:imgs,svgImages,elements
           };
         }"""
     )
@@ -206,6 +221,8 @@ def main():
         if row["overlaps"]:
             issues.append("overlap")
         if any(not x["loaded"] and x["visible"] for x in row["images"]):
+            issues.append("broken_image")
+        if any(not x["loaded"] for x in row["svgImages"]):
             issues.append("broken_image")
         if issues:
             summary.append({
