@@ -121,7 +121,6 @@
 .principles-deck .zebra-reasoning svg {display:block;width:100%;height:min(23dvh,220px)}
 .principles-deck .zebra-reasoning p,.principles-deck .zebra-transfer-legend p {font-size:clamp(17px,1.45vw,23px);line-height:1.5;margin:10px 0}
 .principles-deck .zebra-link {font-size:32px;color:#238773}
-.principles-deck .zebra-decision {height:min(23dvh,220px);display:grid;place-items:center;font-size:clamp(32px,3vw,48px);color:#177b66;font-weight:750}
 .principles-deck .zebra-transfer-legend {display:grid;grid-template-columns:1fr auto 1fr;gap:16px;align-items:center;margin:12px auto}
 .principles-deck .zebra-transfer-legend article {background:#edf3f9;border-top:4px solid #5186aa;padding:10px 16px;text-align:center}
 .principles-deck .zebra-transfer-legend article:last-child {background:#edf7f1;border-color:#2a9578}
@@ -137,3 +136,6 @@
 .principles-deck .zebra-fallback-note {display:none;font-size:18px;text-align:center;color:#56727b}
 .principles-deck .lf-cnn-architecture:has(.lf-no-external) .lf-zebra-caption {display:none}
 .principles-deck .lf-cnn-architecture:has(.lf-no-external) .zebra-fallback-note {display:block}
+.principles-deck .zebra-reasoning .zebra-photo {height:min(26dvh,250px);background:#e9eee9}
+.principles-deck .zebra-compute {border-left:4px solid #398b7b;padding:10px 16px;background:#edf6f3;color:#305e63;font-size:clamp(18px,1.4vw,23px);line-height:1.5;margin:12px 0}
+@media(max-height:850px){.principles-deck .zebra-reasoning article{padding:10px 8px}.principles-deck .zebra-compute{margin:8px 0;padding:8px 12px}}
