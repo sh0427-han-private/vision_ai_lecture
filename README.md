@@ -169,6 +169,6 @@ vision_ai_lecture/
 
 ## 2026-10-19 · AND/XOR Gate 실시간 실습
 
-- [Course 7 AND Gate](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-7): W와 Bias 슬라이더 2개로 하나의 결정 직선을 움직이며 AND의 네 정답과 AI 판정을 비교합니다.
-- [Course 8 XOR Gate](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-8): Layer 1의 W₁·b₁, Layer 2의 W₂·b₂, 총 4개 슬라이더로 최종 Wx+b 직선을 움직입니다. **비선형 없음(3/4) → 비선형 추가(4/4)**를 비교합니다. 비선형 |t|는 두 ReLU 반응의 합으로 구현할 수 있습니다.
+- [Course 7 AND Gate](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-7): W와 Bias 슬라이더 2개로 기울기(−W)와 y절편(−b)을 각각 변경합니다. W를 움직이면 결정 직선이 회전합니다.
+- [Course 8 XOR Gate](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-8): Layer 1의 W₁·b₁, Layer 2의 W₂·b₂, 총 4개 슬라이더로 최종 선형 경계의 기울기·절편을 조절합니다. 이 예제의 Layer 2에는 원래 입력 x₁을 더하는 고정 연결이 포함됩니다. **비선형 없음(3/4) → 비선형 추가(4/4)**를 비교합니다. 비선형 |t|는 두 ReLU 반응의 합으로 구현할 수 있습니다.
 - **강의 시간은 총 120분**이며 별도 질의응답/Q&A 시간은 없습니다. 강의 일정은 [운영안](TWO_HOUR_LECTURE_PLAN.md)을 따릅니다.
