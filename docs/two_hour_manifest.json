@@ -1,5 +1,5 @@
 {
-  "version": "20261019-cnn-supervised-unsupervised-one-w",
+  "version": "20261019-no-preprocessing-58",
   "duration_minutes": 120,
   "teaching_minutes": 120,
   "discussion_minutes": 0,
@@ -204,101 +204,96 @@
       },
       {
         "slide": 27,
-        "title": "Preprocessing · 입력 크기를 맞추는 방법",
-        "concept": "preprocess"
-      },
-      {
-        "slide": 28,
         "title": "Data Augmentation · 같은 정답, 다른 조건",
         "concept": "augment"
       },
       {
-        "slide": 29,
+        "slide": 28,
         "title": "모델 학습 · 오차를 줄이는 반복",
         "concept": "learn"
       },
       {
-        "slide": 30,
+        "slide": 29,
         "title": "Loss · 틀린 정도를 줄이는 방향",
         "concept": "loss"
       },
       {
-        "slide": 31,
+        "slide": 30,
         "title": "CNN 학습 · 예측에서 Weight 갱신까지",
         "concept": "cnn-training"
       },
       {
-        "slide": 32,
+        "slide": 31,
         "title": "Training과 Inference의 차이",
         "concept": "infer"
       },
       {
-        "slide": 33,
+        "slide": 32,
         "title": "전이학습 · 특징은 고정하고 분류기만 학습",
         "concept": "transfer"
       },
       {
-        "slide": 34,
+        "slide": 33,
         "title": "같은 CNN 특징 · 지도와 비지도 활용",
         "concept": "cnn-learning-paths"
       },
       {
-        "slide": 35,
+        "slide": 34,
         "title": "Batch · Step · Epoch",
         "concept": "training-log"
       },
       {
-        "slide": 36,
+        "slide": 35,
         "title": "Overfitting · 새 데이터 일반화",
         "concept": "overfit"
       },
       {
-        "slide": 37,
+        "slide": 36,
         "title": "Score Threshold · 판정 기준",
         "concept": "threshold"
       },
       {
-        "slide": 38,
+        "slide": 37,
         "title": "Confusion Matrix · 100건 평가",
         "concept": "confusion"
       },
       {
-        "slide": 39,
+        "slide": 38,
         "title": "Accuracy의 함정 · 모두 정상이라면?",
         "concept": "imbalance"
       },
       {
-        "slide": 40,
+        "slide": 39,
         "title": "Precision과 Recall",
         "concept": "metrics"
       },
       {
-        "slide": 41,
+        "slide": 40,
         "title": "IoU · 박스 겹침 비율",
         "concept": "iou"
       },
       {
-        "slide": 42,
+        "slide": 41,
         "title": "Vision AI 원리 · 한 장으로 연결",
         "concept": "workflow"
       },
       {
-        "slide": 43,
+        "slide": 42,
         "title": "첫 과제를 위한 네 가지 질문",
         "concept": "project-brief"
       },
       {
-        "slide": 44,
+        "slide": 43,
         "title": "실행 결과 확인 · 임계값과 오류 수",
         "concept": "project-run"
       },
       {
-        "slide": 45,
+        "slide": 44,
         "title": "실패 사진이 알려 주는 것",
         "concept": "project-iterate"
       },
       {
-        "slide": 46,
+        "slide": 45,
         "title": "Vision AI 원리 · 무엇을 설명할 수 있나?",
         "concept": "project-check"
       }
@@ -341,31 +336,31 @@
       "minutes": 30
     },
     {
-      "name": "데이터 · 전처리와 증강",
+      "name": "데이터 · 독립 분할과 증강",
       "deck": "vision_ai_course",
       "start": 24,
-      "end": 28,
+      "end": 27,
       "minutes": 10
     },
     {
       "name": "학습 · CNN Feature 재사용과 지도/비지도",
       "deck": "vision_ai_course",
-      "start": 29,
-      "end": 36,
+      "start": 28,
+      "end": 35,
       "minutes": 14
     },
     {
       "name": "평가 · 결함을 놓치지 않는가",
       "deck": "vision_ai_course",
-      "start": 37,
-      "end": 41,
+      "start": 36,
+      "end": 40,
       "minutes": 9
     },
     {
       "name": "원리 복습 · 사과 검사",
       "deck": "vision_ai_course",
-      "start": 42,
-      "end": 46,
+      "start": 41,
+      "end": 45,
       "minutes": 5
     }
   ]
