@@ -94,7 +94,7 @@ def check_bins(page) -> None:
     assert sum(b["pos"] + b["neg"] for b in bins) == 100
     svg_text = page.locator(
         ".slide.active [data-score-histogram]"
-    ).inner_text()
+    ).text_content()
     assert "50" in svg_text, svg_text
 
 
