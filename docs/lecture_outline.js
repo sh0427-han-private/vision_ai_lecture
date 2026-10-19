@@ -1,9 +1,9 @@
-/* 55-slide approved plan: staged A+B complete; C-H still pending (58-slide route). */
+/* Approved 55-slide plan; actual staged count 58. */
 window.LECTURE_OUTLINE = {
-  "version": "20261019-approved-ab-builder",
+  "version": "approved55-20261019-1",
   "groups": [
     {
-      "name": "개관 · AI/ML/DL/CV · Pixel · 동영상",
+      "name": "Vision AI·이미지·영상 입력",
       "items": [
         {
           "page": "intro.html",
@@ -52,12 +52,7 @@ window.LECTURE_OUTLINE = {
           "slide": 8,
           "title": "동영상은 시간순 RGB 이미지 여러 장",
           "global": 8
-        }
-      ]
-    },
-    {
-      "name": "해상도 · 촬영 변화 · 중요한 결함",
-      "items": [
+        },
         {
           "page": "intro.html",
           "slide": 9,
@@ -91,7 +86,7 @@ window.LECTURE_OUTLINE = {
       ]
     },
     {
-      "name": "Task · Rule-based · Machine Learning 선택",
+      "name": "Task·규칙과 데이터 학습",
       "items": [
         {
           "page": "vision_ai_course.html",
@@ -126,42 +121,42 @@ window.LECTURE_OUTLINE = {
       ]
     },
     {
-      "name": "퍼셉트론 → AND/XOR의 규칙과 비선형성",
+      "name": "CNN 구조·뉴런·비선형성",
       "items": [
         {
           "page": "vision_ai_course.html",
           "slide": 6,
-          "title": "퍼셉트론 · 하나의 W와 b로 판정",
+          "title": "왜 CNN인가? · 사과의 작은 특징 반복 탐색",
           "global": 19
         },
         {
           "page": "vision_ai_course.html",
           "slide": 7,
-          "title": "AND Gate · 두 입력이 모두 1일 때",
+          "title": "CNN Architecture 전체 그림 · 사과 판정까지",
           "global": 20
         },
         {
           "page": "vision_ai_course.html",
           "slide": 8,
-          "title": "AND Gate · Weight와 Bias로 직선 이동",
+          "title": "퍼셉트론 · 하나의 W와 b로 판정",
           "global": 21
         },
         {
           "page": "vision_ai_course.html",
           "slide": 9,
-          "title": "XOR Gate · 입력이 다를 때만 1",
+          "title": "AND Gate · 두 입력이 모두 1일 때",
           "global": 22
         },
         {
           "page": "vision_ai_course.html",
           "slide": 10,
-          "title": "XOR · 선형층을 쌓아도 직선 하나",
+          "title": "AND Gate · Weight와 Bias로 직선 이동",
           "global": 23
         },
         {
           "page": "vision_ai_course.html",
           "slide": 11,
-          "title": "ReLU · 비선형성의 시작",
+          "title": "XOR Gate · 입력이 다를 때만 1",
           "global": 24
         },
         {
@@ -169,24 +164,24 @@ window.LECTURE_OUTLINE = {
           "slide": 12,
           "title": "비선형성 · 깊어져도 직선이면?",
           "global": 25
-        }
-      ]
-    },
-    {
-      "name": "CNN · Kernel과 특징 추출",
-      "items": [
+        },
         {
           "page": "vision_ai_course.html",
           "slide": 13,
-          "title": "CNN Architecture · 사진에서 분류까지",
+          "title": "ReLU · 비선형성의 시작",
           "global": 26
         },
         {
           "page": "vision_ai_course.html",
           "slide": 14,
-          "title": "왜 CNN인가? · 특징을 모아 얼룩말을 알아보기",
+          "title": "XOR · 선형층을 쌓아도 직선 하나",
           "global": 27
-        },
+        }
+      ]
+    },
+    {
+      "name": "CNN 내부 연산",
+      "items": [
         {
           "page": "vision_ai_course.html",
           "slide": 15,
@@ -244,7 +239,7 @@ window.LECTURE_OUTLINE = {
       ]
     },
     {
-      "name": "데이터 · 독립 분할과 증강",
+      "name": "데이터와 독립 분할",
       "items": [
         {
           "page": "vision_ai_course.html",
@@ -273,7 +268,7 @@ window.LECTURE_OUTLINE = {
       ]
     },
     {
-      "name": "학습 · CNN Feature 재사용과 지도/비지도",
+      "name": "Loss·CNN 학습·전이학습",
       "items": [
         {
           "page": "vision_ai_course.html",
@@ -326,7 +321,7 @@ window.LECTURE_OUTLINE = {
       ]
     },
     {
-      "name": "평가 · 결함을 놓치지 않는가",
+      "name": "평가와 오류",
       "items": [
         {
           "page": "vision_ai_course.html",
@@ -361,7 +356,7 @@ window.LECTURE_OUTLINE = {
       ]
     },
     {
-      "name": "원리 복습 · 사과 검사",
+      "name": "원리 회수",
       "items": [
         {
           "page": "vision_ai_course.html",

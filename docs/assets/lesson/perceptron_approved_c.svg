@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1160" height="330" viewBox="0 0 1160 330" role="img" aria-label="입력 x1과 x2를 더한 뒤 공통 Weight W를 한 번 곱하고 Bias b를 더해 Step 함수로 판정하는 단일 퍼셉트론 설명용 그림">
+<defs><marker id="p-arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#668995"/></marker></defs>
+<style>text{font-family:'Malgun Gothic','Noto Sans KR',sans-serif;fill:#244a58}.cap{font-size:25px;font-weight:740}.mini{font-size:22px;fill:#5a7380}.large{font-size:32px;font-weight:800}.eq{font-size:32px;font-weight:800;fill:#147b67}.arr{stroke:#678995;stroke-width:3;fill:none;marker-end:url(#p-arrow)}</style>
+<rect width="1160" height="390" fill="#fff"/>
+<text x="88" y="37" class="cap" text-anchor="middle">입력</text>
+<text x="323" y="37" class="cap" text-anchor="middle">입력 합</text>
+<text x="565" y="37" class="cap" text-anchor="middle">Weight</text>
+<text x="779" y="37" class="cap" text-anchor="middle">Bias</text>
+<text x="960" y="37" class="cap" text-anchor="middle">판정</text>
+<circle cx="88" cy="122" r="38" fill="#ecf5f7" stroke="#7b9faa" stroke-width="2"/><text x="88" y="130" class="large" text-anchor="middle">x₁</text>
+<circle cx="88" cy="246" r="38" fill="#ecf5f7" stroke="#7b9faa" stroke-width="2"/><text x="88" y="254" class="large" text-anchor="middle">x₂</text>
+<path d="M132 122L233 177M132 246L233 203" class="arr"/>
+<rect x="246" y="144" width="154" height="82" rx="8" fill="#f0f6f8" stroke="#8cabb5" stroke-width="2"/>
+<text x="323" y="180" class="large" text-anchor="middle">x₁ + x₂</text><text x="323" y="209" class="mini" text-anchor="middle">입력 합</text>
+<path d="M403 185H485" class="arr"/>
+<rect x="500" y="130" width="130" height="108" rx="8" fill="#e8f4ed" stroke="#278d77" stroke-width="3"/>
+<text x="565" y="179" class="large" text-anchor="middle">W</text><text x="565" y="207" class="mini" text-anchor="middle">가중치</text>
+<path d="M635 185H699" class="arr"/>
+<circle cx="740" cy="185" r="40" fill="#ecf5f5" stroke="#8daeb4" stroke-width="2"/>
+<text x="740" y="196" class="large" text-anchor="middle">+</text>
+<rect x="699" y="264" width="83" height="58" rx="7" fill="#f2f4f5" stroke="#a2b5ba" stroke-width="2"/>
+<text x="740" y="301" class="large" text-anchor="middle">b</text>
+<path d="M740 261V228" class="arr"/>
+<path d="M787 185H840" class="arr"/>
+<rect x="857" y="133" width="168" height="104" rx="8" fill="#e8f4ed" stroke="#278d77" stroke-width="3"/>
+<text x="941" y="180" class="cap" text-anchor="middle">Step(z)</text>
+<text x="941" y="212" class="mini" text-anchor="middle">0 또는 1</text>
+<path d="M1031 185H1083" class="arr"/>
+<circle cx="1115" cy="185" r="31" fill="#e0f2e9" stroke="#278d77" stroke-width="2"/>
+<text x="1115" y="195" class="large" text-anchor="middle">y</text>
+
+<text x="280" y="310" class="mini" text-anchor="middle">교육용: 두 입력에 같은 W 적용</text>
+</svg>

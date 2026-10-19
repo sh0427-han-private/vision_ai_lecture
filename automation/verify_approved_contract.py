@@ -14,7 +14,7 @@ for deck,entries in m['decks'].items():
   c=re.search(r'data-concept="([^\"]+)"',s)[1];assert c not in concepts,c;concepts[c]=s
   title=html.unescape(re.sub('<[^>]*>','',re.search(r'<h[12][^>]*class="slide-title[^\"]*"[^>]*>(.*?)</h[12]>',s,re.S)[1])).strip()
   assert entries[n-1]==dict(slide=n,title=title,concept=c)
-  total+=1;assert links[total-1]==dict(page=deck+'.html',slide=n,title=title,global=total)
+  total+=1;assert links[total-1]=={'page':deck+'.html','slide':n,'title':title,'global':total}
  for url in re.findall(r'(?:src|href)="([^\"]+)"',text):
   if url.startswith(('https:','http:','#','data:','mailto:','url(')):continue
   path=url.split('?',1)[0].split('#',1)[0]

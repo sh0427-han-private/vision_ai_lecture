@@ -550,3 +550,8 @@ https://www.nature.com/articles/s42256-020-00257-z
 - P17: 기존 C04 발전사/사전학습 모델 개념을 C05 `model-choice`의 독립 검증 중심 선택 도식에 통합. Classifier/Detector 성능, 정량 비용 등 성능 수치는 발명하지 않음.
 - P18: Classification Class / Detection defect Box + Class / Segmentation pixel Mask의 제작 부담은 **정성적 상대 비교**. 실제 어노테이션 시간·인건비 측정 수치가 아님.
 - 새 Figure는 로컬 HTML/CSS/SVG로 직접 작성했고, 별도 외부 논문 Figure/실사/CDN을 삽입하지 않음.
+
+## Approved55 C / P19–P27 · 2026-10-19
+
+- 동일 생성 사과 사진과 자체 정밀 SVG/HTML을 사용. `cnn_apple_architecture.svg`는 64×64×3→Conv8→Pool→Conv16→GAP16→Dense2의 Shape와 1,426 Parameters(Bias 포함)의 단일 로컬 원본이다. 미니맵은 같은 SVG를 복제해 강조하며 실측 활성화가 아니다.
+- `perceptron_approved_c.svg`는 기존 자체 퍼셉트론 그림을 가독성에 맞춰 수정한 것이다. 외부 Figure를 새로 복제하지 않았다. CS231n/PyTorch 공식 원문 신규 GET은 403으로 NOT VERIFIED이며 기존 소스 라이브러리와 독립 산술 검산을 사용했다.

@@ -1,5 +1,5 @@
 {
-  "version": "20261019-approved-ab-builder",
+  "version": "approved55-20261019-1",
   "duration_minutes": 120,
   "teaching_minutes": 120,
   "discussion_minutes": 0,
@@ -99,33 +99,33 @@
       },
       {
         "slide": 6,
+        "title": "왜 CNN인가? · 사과의 작은 특징 반복 탐색",
+        "concept": "cnn-why"
+      },
+      {
+        "slide": 7,
+        "title": "CNN Architecture 전체 그림 · 사과 판정까지",
+        "concept": "cnn-overview"
+      },
+      {
+        "slide": 8,
         "title": "퍼셉트론 · 하나의 W와 b로 판정",
         "concept": "perceptron"
       },
       {
-        "slide": 7,
+        "slide": 9,
         "title": "AND Gate · 두 입력이 모두 1일 때",
         "concept": "and-rule"
       },
       {
-        "slide": 8,
+        "slide": 10,
         "title": "AND Gate · Weight와 Bias로 직선 이동",
         "concept": "and-gate"
       },
       {
-        "slide": 9,
+        "slide": 11,
         "title": "XOR Gate · 입력이 다를 때만 1",
         "concept": "xor-rule"
-      },
-      {
-        "slide": 10,
-        "title": "XOR · 선형층을 쌓아도 직선 하나",
-        "concept": "xor-gate"
-      },
-      {
-        "slide": 11,
-        "title": "ReLU · 비선형성의 시작",
-        "concept": "relu"
       },
       {
         "slide": 12,
@@ -134,13 +134,13 @@
       },
       {
         "slide": 13,
-        "title": "CNN Architecture · 사진에서 분류까지",
-        "concept": "cnn-overview"
+        "title": "ReLU · 비선형성의 시작",
+        "concept": "relu"
       },
       {
         "slide": 14,
-        "title": "왜 CNN인가? · 특징을 모아 얼룩말을 알아보기",
-        "concept": "cnn-why"
+        "title": "XOR · 선형층을 쌓아도 직선 하나",
+        "concept": "xor-gate"
       },
       {
         "slide": 15,
@@ -301,86 +301,60 @@
   },
   "blocks": [
     {
-      "name": "Vision AI 개관 · AI/ML/DL/CV · RGB·영상",
+      "name": "Vision AI·이미지·영상 입력",
       "deck": "intro",
       "start": 1,
-      "end": 8,
-      "minutes": 14
-    },
-    {
-      "name": "해상도 · 촬영 변화 · 지정 결함",
-      "deck": "intro",
-      "start": 9,
       "end": 13,
-      "minutes": 10
+      "minutes": 26
     },
     {
-      "name": "Task · 규칙 기반 · ML 선택",
+      "name": "Task·규칙과 데이터 학습",
       "deck": "vision_ai_course",
       "start": 1,
       "end": 5,
       "minutes": 10
     },
     {
-      "name": "퍼셉트론 → AND/XOR의 규칙과 비선형성",
+      "name": "CNN 구조·뉴런·비선형성",
       "deck": "vision_ai_course",
       "start": 6,
-      "end": 12,
-      "minutes": 18
+      "end": 14,
+      "minutes": 23
     },
     {
-      "name": "CNN · Kernel과 특징 추출",
+      "name": "CNN 내부 연산",
       "deck": "vision_ai_course",
-      "start": 13,
+      "start": 15,
       "end": 23,
-      "minutes": 30
+      "minutes": 22
     },
     {
-      "name": "데이터 · 독립 분할과 증강",
+      "name": "데이터와 독립 분할",
       "deck": "vision_ai_course",
       "start": 24,
       "end": 27,
-      "minutes": 10
-    },
-    {
-      "name": "학습 · CNN Feature 재사용과 지도/비지도",
-      "deck": "vision_ai_course",
-      "start": 28,
-      "end": 35,
-      "minutes": 14
-    },
-    {
-      "name": "평가 · 결함을 놓치지 않는가",
-      "deck": "vision_ai_course",
-      "start": 36,
-      "end": 40,
       "minutes": 9
     },
     {
-      "name": "원리 복습 · 사과 검사",
+      "name": "Loss·CNN 학습·전이학습",
+      "deck": "vision_ai_course",
+      "start": 28,
+      "end": 35,
+      "minutes": 15
+    },
+    {
+      "name": "평가와 오류",
+      "deck": "vision_ai_course",
+      "start": 36,
+      "end": 40,
+      "minutes": 10
+    },
+    {
+      "name": "원리 회수",
       "deck": "vision_ai_course",
       "start": 41,
       "end": 45,
       "minutes": 5
     }
-  ],
-  "approved_target": {
-    "slides": 55,
-    "teaching_minutes": 120,
-    "group_a_minutes": 26,
-    "completed_groups": [
-      "A",
-      "B"
-    ],
-    "pending_groups": [
-      "C",
-      "D",
-      "E",
-      "F",
-      "G",
-      "H"
-    ],
-    "note": "Interim route 58 (Intro13+Course45), 120-minute inherited blocks. End state 55 pending C-H; approved A time 26 vs inherited Intro 24 to reconcile.",
-    "group_b_minutes": 10
-  }
+  ]
 }
