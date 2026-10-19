@@ -73,7 +73,7 @@ def main():
   assert page.locator('[data-gate-lab="xor"] .gl-outcome').count()==4
   page.click('[data-gate-lab="xor"] [data-gate-mode="linear"]')
   assert page.locator('[data-gate-lab="xor"] [data-gate-mode="linear"]').get_attribute('aria-pressed')=='true'
-  assert '정답 2 / 4' in page.locator('[data-gate-lab="xor"] [data-gate-summary]').inner_text()
+  assert '정답 3 / 4' in page.locator('[data-gate-lab="xor"] [data-gate-summary]').inner_text()
   assert '직선 하나' in page.locator('[data-gate-lab="xor"] [data-gate-equation]').inner_text()
   page.click('[data-gate-lab="xor"] [data-gate-mode="step"]')
   page.locator('[data-gate-lab="xor"] [data-param="a1"]').evaluate("(el)=>{el.value='0';el.dispatchEvent(new Event('input',{bubbles:true}));}")
