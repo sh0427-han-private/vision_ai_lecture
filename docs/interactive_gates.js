@@ -68,106 +68,116 @@
   }
   function step(v) { return v >= -1e-9 ? 1 : 0; }
 
+  // Intro-friendly parameterization: each layer has just one shared W and one Bias.
+  // For two inputs, s=x1+x2. The AND layer reads z=W*s+b.
+  // XOR Layer1 computes t=W1*s+b1; Layer2 reads either t (linear) or |t|
+  // where |t|=ReLU(t)+ReLU(-t). The latter is a 2-ReLU hidden-layer example.
   function setup(root) {
-    const kind = root.dataset.gateLab, isXor = kind === "xor";
+    const kind = root.dataset.gateLab;
+    const isXor = kind === "xor";
+    const presets = isXor
+      ? {w1:1,b1:-1,w2:-1,b2:.5}
+      : {w:.5,b:-.7};
     const sliders = [...root.querySelectorAll('input[type="range"][data-param]')];
-    const values = Object.fromEntries(sliders.map(s => [s.dataset.param, Number(s.value)]));
+    const values = Object.fromEntries(sliders.map(slider => [slider.dataset.param, Number(slider.value)]));
     const svg = root.querySelector('[data-gate-svg]');
     const summary = root.querySelector('[data-gate-summary]');
     const results = root.querySelector('[data-gate-results]');
     const equation = root.querySelector('[data-gate-equation]');
-    let activation = isXor ? 'step' : 'step';
-
-    const configs = isXor
-      ? {a1:1,b1:-1,c1:-.1,a2:-1,b2:1,c2:-.1,u1:2,u2:.8,d:-.5}
-      : {w1:.5,w2:.5,b:-.7};
+    const stage = root.querySelector('[data-gate-stage]');
+    let mode = "linear"; // Explain the impossibility FIRST, then introduce a nonlinearity.
+    const target = ([x,y]) => isXor ? x ^ y : x & y;
 
     function render() {
       sliders.forEach(slider => {
-        const target = root.querySelector('[data-value="' + slider.dataset.param + '"]');
-        if (target) target.textContent = num(values[slider.dataset.param]);
+        const label = root.querySelector('[data-value="' + slider.dataset.param + '"]');
+        if (label) label.textContent = num(values[slider.dataset.param]);
       });
-      const normal = [values.w1, values.w2, values.b];
-      const h1 = [values.a1, values.b1, values.c1];
-      const h2 = [values.a2, values.b2, values.c2];
-      const outputAffine = isXor
-        ? [values.u1*h1[0] + values.u2*h2[0], values.u1*h1[1] + values.u2*h2[1], values.u1*h1[2] + values.u2*h2[2] + values.d]
-        : normal;
-      const score = (x, y) => {
-        if (!isXor) return evalLine(normal, x, y);
-        const v1 = evalLine(h1, x, y), v2 = evalLine(h2, x, y);
-        const z1 = activation === 'step' ? step(v1) : v1;
-        const z2 = activation === 'step' ? step(v2) : v2;
-        return values.u1*z1 + values.u2*z2 + values.d;
-      };
-      const predictions = inputs.map(([x, y]) => step(score(x, y)));
-      const targets = inputs.map(([x,y]) => isXor ? x ^ y : x & y);
-      const correct = predictions.filter((p, i) => p === targets[i]).length;
-      const points = inputs.map(([x, y], i) => {
-        const predicted = predictions[i], pass = predicted === targets[i];
-        return '<circle cx="' + xPos(x) + '" cy="' + yPos(y) + '" r="18" fill="' + (predicted ? '#16866c' : '#8a9daa') + '" stroke="' + (pass ? '#fff' : '#d34d47') +
-          '" stroke-width="' + (pass ? '2.5' : '5') + '"/>' +
-          '<text x="' + xPos(x) + '" y="' + (yPos(y)+6) + '" fill="#fff" font-size="17" font-weight="700" text-anchor="middle">' + predicted + '</text>';
-      }).join('');
+      const hidden = [values.w1, values.w1, values.b1];
+      const finalLine = isXor
+        ? [values.w1*values.w2, values.w1*values.w2, values.w2*values.b1+values.b2]
+        : [values.w, values.w, values.b];
+      const activation = t => isXor && mode === "nonlinear" ? Math.abs(t) : t;
+      const score = (x,y) => isXor
+        ? values.w2 * activation(values.w1*(x+y)+values.b1) + values.b2
+        : values.w*(x+y)+values.b;
+      const actual = inputs.map(([x,y]) => step(score(x,y)));
+      const expected = inputs.map(target);
+      const correct = actual.filter((value,i) => value===expected[i]).length;
+      let region = "", lines = "";
 
-      let region = '';
-      if (isXor && activation === 'step') {
-        for (const a of [0,1]) for (const b of [0,1]) {
-          if (step(values.u1 * a + values.u2 * b + values.d) === 1) {
-            const first = halfPlane(rectangle(), h1, Boolean(a));
-            const both = halfPlane(first, h2, Boolean(b));
-            region += polygon(both, '#40a58d');
+      if (!isXor || mode === "linear") {
+        region = polygon(halfPlane(rectangle(), finalLine, true), '#40a58d');
+        lines = line(finalLine, '#c38144', false, '최종 Wx+b의 직선 경계');
+      } else {
+        // |t| gives the union of two clipped linear half-planes.
+        const posCoeffs = [values.w1*values.w2,values.w1*values.w2,values.w2*values.b1+values.b2];
+        const negCoeffs = [-values.w1*values.w2,-values.w1*values.w2,-values.w2*values.b1+values.b2];
+        for(const [sign,coefs] of [[true,posCoeffs],[false,negCoeffs]]) {
+          const domain = halfPlane(rectangle(), hidden, sign);
+          region += polygon(halfPlane(domain,coefs,true),'#40a58d');
+          const seg=lineSegment(coefs);
+          if(seg){
+            const mid=[(seg[0][0]+seg[1][0])/2,(seg[0][1]+seg[1][1])/2];
+            if((sign ? 1 : -1)*evalLine(hidden,mid[0],mid[1])>=-1e-8)
+              lines += line(coefs,'#c38144',false,'비선형 결정을 구성하는 경계');
           }
         }
-      } else {
-        region = polygon(halfPlane(rectangle(), outputAffine, true), '#40a58d');
       }
-      const boundaries = isXor && activation === 'step'
-        ? line(h1, '#2276a1', true, '은닉 뉴런 1의 경계') + line(h2, '#c38144', true, '은닉 뉴런 2의 경계')
-        : line(outputAffine, '#c38144', false, '단일 직선 경계');
-
-      svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
-      svg.innerHTML = '<rect x="' + LEFT + '" y="' + TOP + '" width="' + PW + '" height="' + PH + '" fill="#f4f8f8" stroke="#b2cacd"/>' +
-        '<line x1="' + xPos(0) + '" y1="' + TOP + '" x2="' + xPos(0) + '" y2="' + (TOP+PH) + '" stroke="#9fb7c1" stroke-width="1.5"/>' +
-        '<line x1="' + LEFT + '" y1="' + yPos(0) + '" x2="' + (LEFT+PW) + '" y2="' + yPos(0) + '" stroke="#9fb7c1" stroke-width="1.5"/>' +
-        region + boundaries + points +
-        '<text x="' + (LEFT+PW-5) + '" y="' + (TOP+PH+29) + '" font-size="20" text-anchor="end" fill="#365f70">x₁ →</text>' +
-        '<text x="' + (LEFT-8) + '" y="' + (TOP+12) + '" font-size="20" text-anchor="end" fill="#365f70">x₂ ↑</text>';
-      results.innerHTML = inputs.map(([x,y],i) => '<span class="gl-outcome ' + (predictions[i] === targets[i] ? 'gl-correct' : 'gl-incorrect') + '">' +
-        '('+x+','+y+') <b>'+predictions[i]+'</b><small>정답 '+targets[i]+'</small></span>').join('');
-      summary.textContent = '정답 ' + correct + ' / 4 · ' +
-        (isXor ? (activation === 'linear' ? '비선형성이 없으면 두 층도 직선 하나와 같습니다.' : 'Step 은닉 뉴런 2개가 서로 다른 경계를 만듭니다.') :
-          'Weight·Bias 변화에 따라 하나의 결정 경계가 이동합니다.');
-      if (isXor) {
-        equation.textContent = activation === 'linear'
-          ? '활성화 없음: z = (' + num(outputAffine[0]) + ')x₁ + (' + num(outputAffine[1]) + ')x₂ + (' + num(outputAffine[2]) + ') → 직선 하나'
-          : 'h₁=Step(w₁₁x₁+w₁₂x₂+b₁), h₂=Step(w₂₁x₁+w₂₂x₂+b₂), y=Step(v₁h₁+v₂h₂+b₃)';
-      } else {
-        equation.textContent = 'z = ' + num(values.w1) + 'x₁ + ' + num(values.w2) + 'x₂ + (' + num(values.b) + ')  ·  경계 z=0';
+      const points=inputs.map(([x,y],i)=>{
+        const equal=actual[i]===expected[i],label=expected[i];
+        return '<circle cx="'+xPos(x)+'" cy="'+yPos(y)+'" r="19" fill="'+(label?'#16866c':'#8a9daa')+'" stroke="'+(equal?'#fff':'#d34d47')+'" stroke-width="'+(equal?'2.5':'5')+'"/>'+
+          '<text x="'+xPos(x)+'" y="'+(yPos(y)+6)+'" fill="#fff" font-size="17" font-weight="700" text-anchor="middle">'+label+'</text>';
+      }).join('');
+      svg.setAttribute('viewBox','0 0 '+W+' '+H);
+      svg.innerHTML='<rect x="'+LEFT+'" y="'+TOP+'" width="'+PW+'" height="'+PH+'" fill="#f4f8f8" stroke="#b2cacd"/>'+
+        '<line x1="'+xPos(0)+'" y1="'+TOP+'" x2="'+xPos(0)+'" y2="'+(TOP+PH)+'" stroke="#9fb7c1" stroke-width="1.5"/>'+
+        '<line x1="'+LEFT+'" y1="'+yPos(0)+'" x2="'+(LEFT+PW)+'" y2="'+yPos(0)+'" stroke="#9fb7c1" stroke-width="1.5"/>'+
+        region+lines+points+
+        '<text x="'+(LEFT+PW-5)+'" y="'+(TOP+PH+29)+'" font-size="20" text-anchor="end" fill="#365f70">x₁ →</text>'+
+        '<text x="'+(LEFT-8)+'" y="'+(TOP+12)+'" font-size="20" text-anchor="end" fill="#365f70">x₂ ↑</text>';
+      results.innerHTML=inputs.map(([x,y],i)=>
+        '<span class="gl-outcome '+(actual[i]===expected[i]?'gl-correct':'gl-incorrect')+'">'+
+        '<b class="gl-input">('+x+','+y+')</b><small>정답 '+expected[i]+'</small><small>AI 판정 <strong>'+actual[i]+'</strong></small></span>').join('');
+      const description=isXor
+        ? mode==='linear' ? '비선형이 없으므로 두 층을 지나도 최종 경계는 직선 하나입니다.'
+          : '비선형 |t|를 넣으면 두 경계 사이가 선택되어 XOR 네 점을 구분할 수 있습니다.'
+        : 'W·Bias를 바꿔도 퍼셉트론의 판정 경계는 직선 하나입니다.';
+      summary.textContent='AI 판정 '+correct+' / 4개 일치 · '+description;
+      if(isXor){
+        const w=values.w1*values.w2, b=values.w2*values.b1+values.b2;
+        equation.textContent=mode==='linear'
+          ? '최종 z = ('+num(w)+')(x₁+x₂) + ('+num(b)+')  → Wx+b, 직선 하나'
+          : 't = '+num(values.w1)+'(x₁+x₂) + ('+num(values.b1)+'); z = '+num(values.w2)+'|t| + ('+num(values.b2)+')';
+        if(stage)stage.textContent=mode==='linear'
+          ? 'Layer 1의 Wx+b → Layer 2의 Wx+b = 결국 하나의 직선'
+          : 'Layer 사이에 |t| = ReLU(t)+ReLU(−t)를 적용 → 두 경계로 XOR 구분';
+      }else{
+        equation.textContent='z = '+num(values.w)+'(x₁+x₂) + ('+num(values.b)+') · 경계 z=0';
       }
     }
 
-    // Drag gestures belong to the lab, not the deck's global swipe-to-next handler.
-    root.addEventListener('touchend', event => event.stopPropagation());
-    sliders.forEach(s => s.addEventListener('input', () => {
-      values[s.dataset.param] = Number(s.value);
+    root.addEventListener('touchend',event=>event.stopPropagation());
+    sliders.forEach(slider=>slider.addEventListener('input',()=>{
+      values[slider.dataset.param]=Number(slider.value);
       render();
     }));
-    root.querySelectorAll('[data-gate-mode]').forEach(button => button.addEventListener('click', () => {
-      activation = button.dataset.gateMode;
-      root.querySelectorAll('[data-gate-mode]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.gateMode === activation)));
+    root.querySelectorAll('[data-gate-mode]').forEach(button=>button.addEventListener('click',()=>{
+      mode=button.dataset.gateMode;
+      root.querySelectorAll('[data-gate-mode]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.gateMode===mode)));
       render();
     }));
-    const reset = root.querySelector('[data-gate-reset]');
-    if (reset) reset.addEventListener('click', () => {
-      Object.assign(values, configs);
-      sliders.forEach(s => { s.value = String(values[s.dataset.param]); });
-      activation = 'step';
-      root.querySelectorAll('[data-gate-mode]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.gateMode === activation)));
+    const reset=root.querySelector('[data-gate-reset]');
+    if(reset)reset.addEventListener('click',()=>{
+      Object.assign(values,presets);
+      sliders.forEach(s=>{s.value=String(values[s.dataset.param]);});
+      mode='linear';
+      root.querySelectorAll('[data-gate-mode]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.gateMode===mode)));
       render();
     });
     render();
-    root.dataset.ready = 'true';
+    root.dataset.ready='true';
   }
+
   document.querySelectorAll('[data-gate-lab]').forEach(setup);
 })();
