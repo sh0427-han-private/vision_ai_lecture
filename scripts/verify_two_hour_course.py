@@ -18,7 +18,7 @@ for deck,count in [('intro',13),('vision_ai_course',45)]:
  ss=re.findall(r'<section\b[^>]*class="slide[^\"]*"[^>]*>.*?</section>',text,re.S)
  assert len(ss)==count,(deck,len(ss))
  assert text.count('class="slide active"')==1
- assert re.findall(r'lecture_outline.js\?v=([^\"]+)',text)==['gates58-20261019-1']
+ assert re.findall(r'lecture_outline.js\?v=([^\"]+)',text)==['perceptron-weights-20261019-1']
  slides[deck]=ss
  for n,s in enumerate(ss,1):
   c=re.search(r'data-concept="([^\"]+)"',s)[1];concepts[c]=s
@@ -39,7 +39,7 @@ for deck,count in [('intro',13),('vision_ai_course',45)]:
  assert not re.search(r'VGG-16|BatchNorm|γ|β|Grad-CAM|다음 장|기존 숫자',text),'Removed advanced topic or stale transition'
 # Prerequisites are executable constraints, not just comments in a teaching plan.
 seq=[x['concept'] for x in m['decks']['vision_ai_course']]
-for before,after in [('task','rules'),('rules','vision-evolution'),('vision-evolution','model-choice'),('model-choice','task-model-data'),('task-model-data','and-rule'),('and-rule','perceptron'),('perceptron','and-gate'),('and-gate','xor-rule'),('xor-rule','xor-gate'),('xor-gate','relu'),('relu','nonlinear'),('nonlinear','cnn-overview'),('cnn-overview','cnn-why'),('cnn-why','kernel'),('kernel','feature-map'),('feature-map','sharing'),('sharing','channels'),('channels','stride'),('stride','padding'),('padding','pool'),('pool','actual-map'),('actual-map','backbone'),('backbone','dataset'),('dataset','split'),('split','leakage'),('leakage','preprocess'),('preprocess','augment'),('augment','learn'),('learn','loss'),('loss','cnn-training'),('cnn-training','infer'),('infer','transfer'),('transfer','training-log'),('training-log','overfit'),('overfit','threshold'),('threshold','confusion'),('confusion','imbalance'),('imbalance','metrics'),('metrics','iou'),('iou','workflow'),('workflow','project-brief'),('project-brief','project-run'),('project-run','project-iterate'),('project-iterate','project-check')]:
+for before,after in [('task','rules'),('rules','vision-evolution'),('vision-evolution','model-choice'),('model-choice','task-model-data'),('task-model-data','perceptron'),('perceptron','and-rule'),('and-rule','and-gate'),('and-gate','xor-rule'),('xor-rule','xor-gate'),('xor-gate','relu'),('relu','nonlinear'),('nonlinear','cnn-overview'),('cnn-overview','cnn-why'),('cnn-why','kernel'),('kernel','feature-map'),('feature-map','sharing'),('sharing','channels'),('channels','stride'),('stride','padding'),('padding','pool'),('pool','actual-map'),('actual-map','backbone'),('backbone','dataset'),('dataset','split'),('split','leakage'),('leakage','preprocess'),('preprocess','augment'),('augment','learn'),('learn','loss'),('loss','cnn-training'),('cnn-training','infer'),('infer','transfer'),('transfer','training-log'),('training-log','overfit'),('overfit','threshold'),('threshold','confusion'),('confusion','imbalance'),('imbalance','metrics'),('metrics','iou'),('iou','workflow'),('workflow','project-brief'),('project-brief','project-run'),('project-run','project-iterate'),('project-iterate','project-check')]:
  assert seq.index(before)<seq.index(after),(before,after)
 assert not {'affine-net','affine-collapse','xor-net'} & set(seq)
 # Every slide must belong to one timed block; no omitted or duplicated material.
@@ -159,15 +159,26 @@ assert '뇌의 작동을 그대로 재현한 모델은 아닙니다' in concepts
 assert seq.index('cnn-why') == seq.index('cnn-overview') + 1
 
 # Logic rules must precede their Perceptron and interactive boundary demonstrations.
-assert seq.index('and-rule') < seq.index('perceptron') < seq.index('and-gate')
+assert seq.index('perceptron') < seq.index('and-rule') < seq.index('and-gate')
 assert seq.index('and-gate') < seq.index('xor-rule') < seq.index('xor-gate') < seq.index('relu')
 for concept, outputs in [('and-rule',[0,0,0,1]),('xor-rule',[0,1,1,0])]:
  slide=concepts[concept]
  assert slide.count('<article class="gb-example') == 4,(concept,'four visual truth table cases')
  assert [int(x) for x in re.findall(r'<strong>([01])</strong><small>(?:켜짐|꺼짐)</small>',slide)] == outputs,concept
  assert 'gb-examples' in slide and 'gb-rule' in slide
-assert 'Step 활성화 퍼셉트론 뉴런 하나' in concepts['and-rule']
+assert '단일 퍼셉트론' in concepts['and-rule']
 assert '직선 하나로 분리할 수 없습니다' in concepts['xor-rule']
 assert (D/'gate_basics.css').is_file()
 assert 'gate_basics.css?v=gate-rule-20261019-1' in (D/'vision_ai_course.html').read_text()
 print('GATE_RULES_QA_PASSED: AND/XOR operation explained before demonstrations')
+
+# One neuron can have two input-connection weights; tied weights are a special AND case.
+p=concepts['perceptron'];a=concepts['and-gate'];x=concepts['xor-gate']
+assert 'z = w₁x₁ + w₂x₂ + b' in p
+assert 'z = w(x₁ + x₂) + b' in p and 'w₁ = w₂ = w' in p
+assert '뉴런 1개가 Weight 1개라는 뜻은 아닙니다' in p
+assert 'w₂=1로 고정' in a and 'z=Wx₁+1·x₂+b' in a
+assert 'Weight는 1로 고정' in x and '각 층에서 Weight 하나만 조절' in x
+assert (D/'perceptron_weights_clarity.css').is_file()
+assert 'perceptron_weights_clarity.css?v=weights-20261019-1' in (D/'vision_ai_course.html').read_text()
+print('PERCEPTRON_INPUT_WEIGHTS_QA_PASSED: two input weights/one neuron, tied-weight AND, fixed-coefficient rotating lab')
