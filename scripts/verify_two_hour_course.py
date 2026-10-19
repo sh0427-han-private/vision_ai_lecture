@@ -11,14 +11,14 @@ assert m['duration_minutes']==120
 assert sum(x['minutes'] for x in m['blocks'])==m['teaching_minutes']==120
 assert m['discussion_minutes']==0
 assert m['teaching_minutes']+m['discussion_minutes']==120
-assert [x['global'] for x in items]==list(range(1,60))
+assert [x['global'] for x in items]==list(range(1,59))
 slides={}; concepts={}
-for deck,count in [('intro',13),('vision_ai_course',46)]:
+for deck,count in [('intro',13),('vision_ai_course',45)]:
  text=(D/(deck+'.html')).read_text()
  ss=re.findall(r'<section\b[^>]*class="slide[^\"]*"[^>]*>.*?</section>',text,re.S)
  assert len(ss)==count,(deck,len(ss))
  assert text.count('class="slide active"')==1
- assert re.findall(r'lecture_outline.js\?v=([^\"]+)',text)==['approved-a-20261019-1']
+ assert re.findall(r'lecture_outline.js\?v=([^\"]+)',text)==['approved-ab-20261019-1']
  slides[deck]=ss
  for n,s in enumerate(ss,1):
   c=re.search(r'data-concept="([^\"]+)"',s)[1];concepts[c]=s
@@ -39,7 +39,7 @@ for deck,count in [('intro',13),('vision_ai_course',46)]:
  assert not re.search(r'VGG-16|BatchNorm|γ|β|Grad-CAM|다음 장|기존 숫자',text),'Removed advanced topic or stale transition'
 # Prerequisites are executable constraints, not just comments in a teaching plan.
 seq=[x['concept'] for x in m['decks']['vision_ai_course']]
-for before,after in [('task','rules'),('rules','rules-image'),('rules-image','vision-evolution'),('vision-evolution','model-choice'),('model-choice','task-model-data'),('task-model-data','perceptron'),('perceptron','and-rule'),('and-rule','and-gate'),('and-gate','xor-rule'),('xor-rule','xor-gate'),('xor-gate','relu'),('relu','nonlinear'),('nonlinear','cnn-overview'),('cnn-overview','cnn-why'),('cnn-why','kernel'),('kernel','feature-map'),('feature-map','sharing'),('sharing','channels'),('channels','stride'),('stride','padding'),('padding','pool'),('pool','actual-map'),('actual-map','backbone'),('backbone','dataset'),('dataset','split'),('split','leakage'),('leakage','augment'),('augment','learn'),('learn','loss'),('loss','cnn-training'),('cnn-training','infer'),('infer','transfer'),('transfer','cnn-learning-paths'),('cnn-learning-paths','training-log'),('training-log','overfit'),('overfit','threshold'),('threshold','confusion'),('confusion','imbalance'),('imbalance','metrics'),('metrics','iou'),('iou','workflow'),('workflow','project-brief'),('project-brief','project-run'),('project-run','project-iterate'),('project-iterate','project-check')]:
+for before,after in [('task','rules'),('rules','rules-image'),('rules-image','model-choice'),('model-choice','task-model-data'),('task-model-data','perceptron'),('perceptron','and-rule'),('and-rule','and-gate'),('and-gate','xor-rule'),('xor-rule','xor-gate'),('xor-gate','relu'),('relu','nonlinear'),('nonlinear','cnn-overview'),('cnn-overview','cnn-why'),('cnn-why','kernel'),('kernel','feature-map'),('feature-map','sharing'),('sharing','channels'),('channels','stride'),('stride','padding'),('padding','pool'),('pool','actual-map'),('actual-map','backbone'),('backbone','dataset'),('dataset','split'),('split','leakage'),('leakage','augment'),('augment','learn'),('learn','loss'),('loss','cnn-training'),('cnn-training','infer'),('infer','transfer'),('transfer','cnn-learning-paths'),('cnn-learning-paths','training-log'),('training-log','overfit'),('overfit','threshold'),('threshold','confusion'),('confusion','imbalance'),('imbalance','metrics'),('metrics','iou'),('iou','workflow'),('workflow','project-brief'),('project-brief','project-run'),('project-run','project-iterate'),('project-iterate','project-check')]:
  assert seq.index(before)<seq.index(after),(before,after)
 assert not {'affine-net','affine-collapse','xor-net'} & set(seq)
 # Every slide must belong to one timed block; no omitted or duplicated material.
@@ -94,7 +94,7 @@ for a in ['perceptron_gate_structure_ko','and_xor_gate_geometry_ko','xor_multila
 assert [x['concept'] for x in m['decks']['intro']] == ["start","ai-ml-dl-cv","vision-value","photo-numbers","gray","rgb","hwc","video-frames","resolution","lighting","transform","diversity","relevant-change"]
 assert 'Frame 30' in concepts['video-frames'] and '30fps' in concepts['video-frames']
 assert 'T × H × W × 3' in concepts['video-frames']
-print('TWO_HOUR_QA_PASSED: staged approved group A, 59 slides, 120 teaching minutes without a Q&A block, principles-first prerequisites, shared numeric examples and local assets')
+print('TWO_HOUR_QA_PASSED: staged approved group A, 58 slides, 120 teaching minutes without a Q&A block, principles-first prerequisites, shared numeric examples and local assets')
 
 # Open feedback paths must not render as a solid filled blob.
 root=ET.parse(D/'assets/lesson/context_cnn_training.svg').getroot()
@@ -103,7 +103,7 @@ assert feedback is not None and feedback.get('fill')=='none'
 
 # Why/tasks additions and teaching figure must stay attached to their intended slides.
 assert set(['vision-value','ai-ml-dl-cv','video-frames']).issubset(concepts)
-assert set(['vision-evolution','task-model-data']).issubset(concepts)
+assert set(['model-choice','task-model-data']).issubset(concepts)
 assert seq.index('task-model-data') < seq.index('perceptron')
 assert 'vision_motivation.css?v=why-20261019-1' in (D/'intro.html').read_text()
 assert 'vision_motivation.css?v=why-20261019-1' in (D/'vision_ai_course.html').read_text()
@@ -116,7 +116,7 @@ print('WHY_TASKS_CNN_QA_PASSED: goals, model+label decision, visual training fig
 
 # Refinement-specific educational assertions.
 assert 'Anomaly Detection' not in concepts['task-model-data']
-assert 'lf-three-tasks' in concepts['task-model-data']
+assert 'b55-label-table' in concepts['task-model-data']
 assert 'cnn_banner.png' in concepts['cnn-overview'] and 'lf-zebra-fallback' in concepts['cnn-overview']
 assert 'lf-kernel-result' in concepts['kernel']
 assert 'lf-pad-shared' in concepts['padding'] and '3×3 → 1×1' in concepts['padding'] and '3×3 → 3×3' in concepts['padding']
@@ -203,14 +203,14 @@ assert su.count('class="su-path su-path--') == 2
 assert (D/'supervised_unsupervised_cnn.css').is_file()
 assert 'supervised_unsupervised_cnn.css?v=cnn-paths-20261019-1' in course_page
 assert seq.index('transfer')+1==seq.index('cnn-learning-paths')
-print('CNN_SUPERVISION_QA_PASSED: 59-slide course with same frozen features, labeled classification vs unlabeled clustering')
+print('CNN_SUPERVISION_QA_PASSED: 58-slide course with same frozen features, labeled classification vs unlabeled clustering')
 
 # Intro13 + Course45, no dedicated image preprocessing slide.
 assert 'preprocess' not in seq and 'preprocess' not in concepts
 assert seq.index('leakage') + 1 == seq.index('augment')
 assert seq.index('augment') + 1 == seq.index('learn')
 assert '데이터 · 독립 분할과 증강' in [block['name'] for block in m['blocks']]
-print('PREPROCESSING_REMOVAL_QA_PASSED: 59 slides, dataset→split→leakage→augmentation→training')
+print('PREPROCESSING_REMOVAL_QA_PASSED: 58 slides, dataset→split→leakage→augmentation→training')
 
 # Rule-based arithmetic and image-based learning must occupy two DISTINCT slides.
 ar=concepts['rules'];vision=concepts['rules-image']
@@ -222,11 +222,19 @@ assert 'return</span> a + b' in ar
 assert '데이터 학습은 필요하지 않습니다' in ar
 assert vision.count('class="rl-pane rl-pane--')==2
 assert vision.count('<figure class="rl-photo-card')==6
-assert 'vision_task_apple_reference.jpg' in vision and 'apple_studio_preview.png' in vision
-assert 'brown_pixels' in vision and '그림자도 갈색이라면?' in vision
-assert '판단 기준을 학습' in vision and '실제 학습·예측 결과가 아닙니다' in vision
-assert (D/'rules_vs_learning.css').is_file()
+assert vision.count('vision_task_apple_reference.jpg')==4
+assert vision.count('apple_studio_preview.png')==2
+assert vision.count('D-L ·')==2 and vision.count('D-D ·')==2 and vision.count('N-D ·')==2
+assert '갈색 Pixel 수 ≥ k ?' in vision and '지도학습(Supervised Learning)' in vision
+assert all(x in vision for x in ['Model M','b55-training','b55-inference','b55-bottom-three','b55-prediction','실제 결과 미측정','Validation / Test'])
+assert (D/'b_approved_figure.css').is_file()
+assert 'b_approved_figure.css?v=approved-b-20261019-1' in (D/'vision_ai_course.html').read_text()
 assert 'rules_vs_learning.css?v=python-rule-label-training-20261019-1' in (D/'vision_ai_course.html').read_text()
 assert seq.index('rules')+1==seq.index('rules-image')
-assert seq.index('rules-image')+1==seq.index('vision-evolution')
-print('RULE_VS_LEARNING_QA_PASSED: 1+1/2+1 deterministic plus rule, image rule brittleness vs labeled learning')
+assert seq.index('rules-image')+1==seq.index('model-choice')
+assert 'vision-evolution' not in concepts
+assert concepts['model-choice'].count('class="b55-gate"')==3
+assert '사과 객체 인식 ≠ 결함 판정' in concepts['model-choice']
+assert all(x in concepts['task-model-data'] for x in ['Class: 불량','Box + Class: 불량','Pixel Mask','Box만 표시한 Label'])
+assert 'b55-tasks' in concepts['task'] and '정답(GT)' in concepts['task']
+print('RULE_VS_LEARNING_QA_PASSED: Python arithmetic, GT, Model M, independent validation and label costs')
