@@ -1,6 +1,6 @@
 # 55-slide automation progress
 
-Integration branch: `automation/approved-55-20261019`. Main baseline ad3f0a8; approved storyboard 28fc97d. Existing Builder A/B 9ce8be57 reused. Main merge and Pages deployment are **PROHIBITED until final user approval**.
+Integration branch: `automation/approved-55-20261019`. Main baseline ad3f0a8; approved storyboard 28fc97d. Existing Builder A/B 9ce8be57 reused. User approved main merge on 2026-10-19; execution is **held until final integration PASS report preservation and fresh merge-gate checks**. GitHub Pages deployment/production validation remains separate.
 
 | Group | Slides | Minutes | Build SHA | Independent review | Status |
 |---|---|---:|---|---|---|
@@ -10,8 +10,8 @@ Integration branch: `automation/approved-55-20261019`. Main baseline ad3f0a8; ap
 | D | P28–36 |22|9a4eacf → ae99806|PASS final ae99806|18+2 independent views; Critical0/Major0/Minor0. 24 displayed matrices/9 windows/PNG failure PASS; SqueezeNet re-inference NOT VERIFIED|
 | E | P37–40 |9|39e9cc5|PASS independent|8 independent views; Critical0/Major0/Minor0; split/group/GT transforms verified|
 | F | P41–47 |15|219e2ba|PASS independent|14+2 independent views; Critical0/Major0/Minor0; actual learning/6 update endpoints/local transfer verified|
-| G | P48–52 |10|d27e160 → 025d036 → 4b79d63|CONDITIONAL PASS at d27e160; new-SHA re-review pending|G-01/G-02 Builder fixes applied; Chromium CI 4b79d63 PASS (10 viewports, 14 interactions); Reviewer final verdict pending |
-| H | P53–55 |5|fdfdc47|Independent review pending|P53 workflow+4 questions, P54 hypothesis/control comparison, P55 four-answer recap. Source structure checked; Chromium views not yet verified |
+| G | P48–52 |10|d27e160 → 025d036 → 4b79d63|PASS, G-4b79d63-final.md (pinned SHA)|G-01/G-02 CLOSED; Critical0/Major0/Minor0, 10 views and 14 interactions independently reviewed |
+| H | P53–55 |5|fdfdc47 → c35f1f7|PASS, H-c35f1f7-final.md (pinned SHA)|H-01/02/03 CLOSED, 6 views and exact background-pixel test; H-04 nonblocking Minor OPEN |
 
 Actual checks: Python3.12, Playwright/Pillow/lxml/system Chromium154 imports/version pass. Intro Pixel browser QA started. Existing main exact-text static assertion fails; no assertion bypass counted as pass. GitHub API and official web host access blocked (403), native Git fetch successful. See ENVIRONMENT.md. Existing screenshots/CI and old independent A review are historical evidence, not approval of current HEAD.
 
@@ -106,3 +106,14 @@ Prepared G/H patch generators and scoped assets are saved for continuation; NOT 
 - **H CI SUCCESS:** [run 39246424771](https://github.com/sh0427-han/vision_ai_lecture/actions/runs/39246424771); P53–55 × 1920×1080 / 1366×768 = 6/6 full-slide captures with human Builder visual inspection. P54 1366 fitScale **0.943** (previous draft 0.858); all six fits >=0.943 and no overflow/overlap; P54 Canvas 240²/24² opaque and ready; apple/ROI pixels identical across two synthetic backgrounds; background pixels demonstrably differ.
 - **G CI SUCCESS:** [run 39246424868](https://github.com/sh0427-han/vision_ai_lecture/actions/runs/39246424868), 10 screenshots and existing threshold/Reset/keyboard QA. 55/120 final contract, full static course and complete learning routes PASS in H CI. Current reporting Commit(s) only add documentation; the code tested at `c35f1f7175788921f2a924f3ef1f4e0e552bb5e2` is unchanged.
 - **Outstanding:** independent H re-review against Builder new SHA, G final Reviewer verdict, global end-to-end Reviewer review, classroom rehearsal and public Pages observation. None marked PASS by Builder. **main merge/deploy prohibited**.
+
+## Final merge gate — 2026-10-19 (latest authoritative operational status)
+
+- User approved merging `automation/approved-55-20261019` into `main`. Authorization does **not** replace the independently documented whole-lecture gate or the source/CI verification required before the merge.
+- G final Reviewer PASS: `reviews/automation/G-4b79d63-final.md`; pinned source `4b79d63ab422ac404dc91e45c7ff54ecd7ce3d8a`. G-01/G-02 closed, Critical/Major/Minor 0.
+- H final Reviewer PASS: `reviews/automation/H-c35f1f7-final.md`; pinned source `c35f1f7175788921f2a924f3ef1f4e0e552bb5e2`. H-01/H-02/H-03 closed; H-04 (metadata/label mismatch) is a **nonblocking open Minor**, intentionally not modified in the PASS-tested slide source.
+- G/H evidence on pinned content `c35f1f7`: [G run 39246424868](https://github.com/sh0427-han-private/vision_ai_lecture/actions/runs/39246424868) and [H run 39246424771](https://github.com/sh0427-han-private/vision_ai_lecture/actions/runs/39246424771), both SUCCESS. H CI reports approved 55 slides / 120 minutes, static and learning-route QA PASS. These are **historical observed CI runs, not a fresh post-documentation rerun**.
+- Independently audited content baseline `c35f1f7` → last pre-gate HEAD `f5e0ac5`: only `automation/H_REVIEWER_FIX_QA.md` and `automation/PROGRESS.md` changed. Slide HTML/CSS/JS, media, Manifest, Outline and test source match the PASS-tested content.
+- `main` was observed at `ad3f0a8ce3ca8bce3a52d92c2198654dfcc4c298`; this is the merge base for the integration branch (53 commits ahead / 0 behind as of review). No main-file overwrite is expected from divergent main commits.
+- **Pending final independent integration report:** reviewer branch `review/final-55-f5e0ac5-20261019` was observed, but its report had not yet been committed when this note was prepared. Preserve the exact final report once available; do not invent a PASS certificate. A new commit of report/progress metadata must not alter PASS-tested lecture code.
+- **Merge status: HOLD** until the final integration PASS report is read and copied, final contract/major automated QA is freshly observed, PR diff/mergeability is verified, and no new Critical/Major issue or unexpected conflict appears. Do not delete the work branch. Pages published rendering and classroom rehearsal are NOT VERIFIED.
