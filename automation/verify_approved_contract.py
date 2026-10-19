@@ -90,7 +90,7 @@ if args.final:
  assert 'Test 점수로 모델과 기준을 반복 선택하지 않습니다' in h53
  h54=concepts['project-iterate']
  assert len(re.findall(r'class="h55-compare"',h54))==3
- assert set(re.findall(r'data-h-review-resolution="(\\d+)"',h54))=={'240','24'}
+ assert set(re.findall(r'data-h-review-resolution="(\d+)"',h54))=={'240','24'}
  assert '실제 모델의 실패 결과가 아닙니다' in h54
  h55=concepts['project-check']
  assert set(re.findall(r'data-review-answer="([^"]+)"',h55))=={'pixel','feature','learn','evaluate'}

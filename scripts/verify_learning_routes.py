@@ -240,6 +240,19 @@ def main():
   page.click('.project-answer summary')
   assert page.locator('.project-answer p').is_visible()
   assert 'Mask Label' in page.locator('.project-answer p').inner_text()
+  # H P53–P55: real DOM, same-photo downsampling and interactive recap.
+  page.goto(f"{BASE}/vision_ai_course.html#slide-{number('workflow')}")
+  assert page.locator('.slide.active [data-review-node]').count()==5
+  assert page.locator('.slide.active [data-question-node]').count()==4
+  page.goto(f"{BASE}/vision_ai_course.html#slide-{number('project-iterate')}")
+  page.wait_for_function("()=>[...document.querySelectorAll('.slide.active [data-h-review-resolution]')].every(c=>c.dataset.ready==='true')")
+  raster=page.locator('.slide.active [data-h-review-resolution]').evaluate_all(
+      "nodes=>nodes.map(c=>[Number(c.dataset.hReviewResolution),c.width,c.height])")
+  assert raster==[[240,240,240],[24,24,24]],raster
+  page.goto(f"{BASE}/vision_ai_course.html#slide-{number('project-check')}")
+  assert page.locator('.slide.active [data-review-answer]').count()==4
+  assert page.locator('.slide.active [data-review-answer]').evaluate_all(
+      "nodes=>nodes.map(n=>n.dataset.reviewAnswer)") == ['pixel','feature','learn','evaluate']
   # Every current slide remains reachable in order through the normal controls.
   for deck,total in DECKS:
    page.goto(f'{BASE}/{deck}.html#slide-1');position(page,deck,1,total)

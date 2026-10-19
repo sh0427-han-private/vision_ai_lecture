@@ -11,7 +11,7 @@ Integration branch: `automation/approved-55-20261019`. Main baseline ad3f0a8; ap
 | E | P37–40 |9|39e9cc5|PASS independent|8 independent views; Critical0/Major0/Minor0; split/group/GT transforms verified|
 | F | P41–47 |15|219e2ba|PASS independent|14+2 independent views; Critical0/Major0/Minor0; actual learning/6 update endpoints/local transfer verified|
 | G | P48–52 |10|d27e160|Independent review pending|Existing implementation preserved; prior integrated 10-view/numeric checks recorded; Reviewer additions tracked separately |
-| H | P53–55 |5|H implementation commit (see history)|Independent review pending|P53 workflow+4 questions, P54 hypothesis/control comparison, P55 four-answer recap. Structural source checks pass; Chromium views not yet verified |
+| H | P53–55 |5|fdfdc47|Independent review pending|P53 workflow+4 questions, P54 hypothesis/control comparison, P55 four-answer recap. Source structure checked; Chromium views not yet verified |
 
 Actual checks: Python3.12, Playwright/Pillow/lxml/system Chromium154 imports/version pass. Intro Pixel browser QA started. Existing main exact-text static assertion fails; no assertion bypass counted as pass. GitHub API and official web host access blocked (403), native Git fetch successful. See ENVIRONMENT.md. Existing screenshots/CI and old independent A review are historical evidence, not approval of current HEAD.
 
@@ -59,3 +59,9 @@ Prepared G/H patch generators and scoped assets are saved for continuation; NOT 
 - Local tool access cannot resolve github.com for cloning or launch live repository Chromium in this session. Build-time JavaScript source assertions checked 55 concept order, H figure nodes/questions, answer hooks, old-slide preservation, and 120-minute curriculum. Full Python/static and viewport/browser commands remain **NOT RUN** for this commit, not PASS.
 - G independent Reviewer additions: **not yet available on this branch**; any subsequent G issues must be documented and addressed as a separate G follow-up without rewriting H's approved scope.
 - Main merge and Pages deployment remain prohibited. Independent Reviewer verdict, 110 screenshots, all-slider/keyboard/reset QA, classroom 120-minute rehearsal, Pages production observation: NOT VERIFIED.
+
+## H implementation QA follow-up
+
+- Fixed final-contract H raster matcher (`\\d` regexp overescape) and ordered four P55 response nodes visually/DOM as Pixel → Feature → Learning → Evaluation.
+- Route-level Playwright checks now cover five workflow nodes/four question connections, two source-resolution canvases completing load at exact 240² and 24², and four P55 answer nodes.
+- These new Python/Chromium checks are **authored but not executed** in this connector-only session; the local repository cannot be cloned because github.com DNS resolution fails, and no new GitHub Actions run was reported for the previous commit.
