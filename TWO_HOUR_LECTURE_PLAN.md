@@ -1,103 +1,108 @@
-# Vision AI 초급 강의 · 최신 59장 운영 계획
+# Vision AI 초급 강의 · 55장 / 120분 Approved 운영 계획
 
-> **현재 기준 2026-10-19:** Intro 13 + 통합 Vision AI Course 46 = **총 59장**. 총 120분 전부 설명 및 시연에 사용하며 별도 Q&A 구간 없음.
-> 최종 강의 순서·슬라이드 제목의 기준은 `docs/two_hour_manifest.json`과 `docs/lecture_outline.js`.
+> **기획 승인:** 2026-10-19 사용자 확정 · **Intro 13장 + Course 42장 = 총 55장, 발표 목표 120분, 별도 Q&A 전용 시간 없음.**
+> **Builder 단일 상세 명세:** 동일 브랜치 `planning/SLIDE_STORYBOARD.md`의 **§3 P01~P55**. 본 문서는 전체 교수 흐름·운영 시간·승인/구현 경계의 기준이다.
+> **현재 사이트 상태와 구분:** `main`의 `docs/two_hour_manifest.json`은 아직 Intro13+Course46=59장, version `20261019-arithmetic-rule-vision-learning`. **이 55장안은 승인된 기획이지 구현·배포 완료안이 아니다.**
+> **현재 파일의 적용 위치:** `planning/vision-ai-120min-storyboard-draft-20261019` 기획 브랜치. `main`, HTML, CSS, JS, 이미지, Manifest는 변경하지 않음.
 
-## 1. 전체 질문과 교육 목표
+## 1. 강의 목표 및 수강생 출발점
 
-**대표 사례:** “사진 속 사과의 작은 갈색 반점을 어떻게 찾아, 조명·회전이 바뀐 사진에서도 잘 판단할까?”
+**대상:** AI·ML·Computer Vision을 처음 배우는 비전공자. 모델 구현이나 코드 실습보다는 컴퓨터의 이미지·동영상 입력 및 학습·검증 원리를 이해하는 데 집중한다.
 
-수강생은 이미지가 Pixel 숫자로 입력되고, CNN이 지역 특징을 계산하며, 데이터의 정답 Label로 Weight를 학습하고, 새 사진에서 Precision/Recall 등을 확인해야 한다는 인과관계를 설명할 수 있으면 충분합니다. 모델 코딩이나 모든 Architecture 암기는 목표가 아닙니다.
+**중심 질문:** "사과 사진·카메라 영상에서 작은 갈색 반점을 안정적으로 찾아 정상/불량을 판단하려면, 컴퓨터는 어떤 숫자를 보고 무엇을 학습해야 할까?"
 
-AND/XOR는 Vision AI의 별도 Task가 아니라 **왜 단층 퍼셉트론만으로 충분한 문제와 부족한 문제가 생기는지** 보여주는 계산 예시입니다.
+**강의 종료 시 기대 결과:**
+- **Vision AI 의미:** 카메라 사진/영상에서 필요한 정보를 찾도록 AI를 활용하는 것이라고 설명한다. `AI ⊃ ML ⊃ DL`은 기술의 포함 관계이며 **Computer Vision**은 해결하려는 시각 *문제 분야*라고 구분한다. CNN은 DL의 이미지 처리에 자주 쓰이는 **신경망 아키텍처 중 하나**다.
+- **G1 입력·어려움:** 흑백 `H×W`(2축 숫자 표) → RGB 한 Pixel `[R,G,B]` → RGB 이미지 전체 `H×W×3`(3축) → **RGB 사과 이미지 여러 장의 시간순 배열** `T×H×W×3`(4축)을 그림으로 읽고 조명·해상도·원근·가림·시간 변화가 결함 검사에 미치는 영향을 말한다. 이 축은 공간 차원과 별개이며 압축 MP4 자체의 형식이 아니다.
+- **G2 학습 원리:** 사람이 명시 규칙을 작성하는 Rule-based와 Label+Loss를 바탕으로 Weight를 조절하는 ML을 비교한다. CNN 전체 Architecture를 먼저 보고 Kernel·Feature Map·Weight Sharing·ReLU·Stride·Padding·Max Pooling·Head를 확대해 원리를 이해한다.
+- **평가·일반화:** Label/Prediction 구분, Train/Validation/Test·Video Group Split, Forward/Loss/Backward/Optimizer/Weight 갱신과 Inference 차이, Score Threshold·FP/FN·Precision/Recall·IoU의 의미를 설명한다.
 
-## 2. 120분 슬라이드 구간
+**제외:** 별도 Preprocessing 강의 복구, 고급 Transformer Architecture 상세, 동영상 Tracking, 수학적 증명, 직접 모델 학습·코딩. 기존 UI 시연은 120분 발표 시간에 포함한다.
 
-| 구간 | 최신 번호 | 분 | 수업에서 답하는 질문 |
-|---|---|---:|---|
-| Vision AI 필요성 및 컴퓨터의 입력 | Intro 1–8 | 14 | 왜 사진 검사가 필요하며 사진은 어떤 Pixel 숫자로 변환될까? |
-| 이미지의 어려움 | Intro 9–13 | 10 | 같은 사과가 조명·크기·가림에 따라 왜 다르게 보일까? |
-| Rule-based 숫자 계산과 이미지 데이터 학습 | Course 1–6 | 10 | 간단한 계산은 규칙으로 되는데, 이미지의 판단 기준은 누가 만들까? |
-| AND/XOR와 퍼셉트론·비선형성 | **Course 7–13** | **18** | 언제 뉴런 하나로 되고, 왜 XOR에는 비선형성이 필요할까? |
-| CNN 계산과 특징 추출 | Course 14–24 | 30 | Kernel·Feature Map·Channel·Pooling은 어떤 역할을 할까? |
-| 데이터셋 분할과 증강 | Course 25–28 | 10 | 정상/불량과 촬영 변화를 어떻게 독립적으로 구성할까? |
-| 학습 · 지도와 비지도 활용 | Course 29–36 | 14 | 같은 CNN Feature를 지도 Classifier와 비지도 Clustering에 어떻게 사용할까? |
-| 모델 평가 | Course 37–41 | 9 | 무엇을 놓쳤고 어떤 오류가 발생했나? |
-| 첫 사과 사례로 회수 | Course 42–46 | 5 | 내가 해결할 Task·Label·Model·Metric을 설명할 수 있나? |
+## 2. 승인된 55장·120분 구성
 
-**총합: 120분.** 발표 시간은 실측 리허설 전에 정한 교육용 배분이다.
+| 단원 | 전역 계획 번호 | 장수 | 배정 시간 | 교수 질문 |
+|---|---|---:|---:|---|
+| A. Intro — Vision AI 개관·AI/ML/DL·CV 관계·Pixel·영상·난점 | P01–P13 | 13 | **26분** | Vision AI는 무엇인가? 숫자로 된 이미지·영상은 왜 어려운가? |
+| B. Task와 Rule-based vs ML·모델 선택 | P14–P18 | 5 | **10분** | 규칙을 언제 사람이 쓰고, 언제 데이터로 배우며, 어떤 Label이 필요한가? |
+| C. CNN 필요성·전체 Architecture·비선형성 | P19–P27 | 9 | **23분** | 이미지를 다루는 CNN이 필요한 이유, ReLU의 필요성은 무엇인가? |
+| D. CNN 구성요소·숫자 계산 | P28–P36 | 9 | **22분** | Kernel/Feature Map/Channel/Stride/Padding/Pooling/Head는 각자 무슨 일을 하는가? |
+| E. 데이터와 독립 분할 | P37–P40 | 4 | **9분** | 정상/불량·촬영 조건을 어떻게 수집·분할해야 하는가? |
+| F. Weight 학습·Transfer·일반화 | P41–P47 | 7 | **15분** | Loss·Gradient는 어떤 Weight를 언제 바꾸는가? |
+| G. Threshold와 평가 지표 | P48–P52 | 5 | **10분** | 어떤 결함을 놓쳤고 무엇을 잘못 경고했는가? |
+| H. 사과 사례로 원리 회수 | P53–P55 | 3 | **5분** | Task·Label·CNN·학습·평가를 내 말로 설명할 수 있나? |
+| **합계** | **P01–P55** | **55장** | **120분** | 별도 Q&A 시간 없음 |
 
-## 3. 퍼셉트론 → AND → XOR: 단계별 교수 흐름
+**시간 조정 근거:** 기존 54장/120분 Draft에서 AI·ML·DL/Computer Vision 관계도 P02 1장(2분)을 추가했다. 이를 위해 P17 `model-choice`, P18 `task-model-data`, P19 `cnn-why`, P35 `actual-map`에서 각 30초씩 회수했다. CNN Kernel 4분, XOR 비교 실습 5분, Max Pooling 2분, CNN Weight 학습 3분은 보호한다. 장별 총합은 상세 스토리보드에 명시한다. **발표 시간 실측 완료를 뜻하지 않는다.**
 
-| Course | 핵심 메시지 | 발표자가 연결할 질문 |
+## 3. 교수 진행 — Intro 13장 (26분)
+
+| 전역 계획 | 기존 물리/새 concept | 역할과 전달할 연결 |
 |---|---|---|
-| **7 · 퍼셉트론** | 뉴런 하나의 동일 Weight 예시 z=W(x₁+x₂)+b를 그림으로 보여주고 W,b 한 개씩 설명. 일반 뉴런은 입력별 Weight가 다를 수 있음. Step으로 0/1 출력 | “뉴런 하나로 어떤 논리 규칙을 표현할 수 있을까요?” |
-| **8 · AND Gate 규칙** | 0/1 두 입력 모두 1일 때만 1. 네 입력 (00,01,10,11)을 시각적으로 비교. 동일 Weight를 쓰는 퍼셉트론 한 개로 구현 가능 | “Weight와 Bias를 조절하면 경계가 어떻게 바뀔까요?” |
-| **9 · AND 실습** | x₂의 Weight는 1로 고정하고 W,b를 바꿔 결정 직선의 **기울기와 위치**를 조절. 기본 예시 AND 정답 4/4 | “그렇다면 입력이 서로 다를 때만 1인 규칙도 직선 하나로 분리할 수 있을까요?” |
-| **10 · XOR Gate 규칙** | 둘 중 **정확히 하나가 1**일 때만 1. 정답 1이 (0,1)와 (1,0)에 대각선으로 놓임 | “AND와 다르게 왜 뉴런 하나로 표현이 어려울까요?” |
-| **11 · XOR 실습** | 선형 두 층도 최종 **하나의 직선**; 비선형 활성화 추가로 XOR 패턴을 구현 | “그 직선을 꺾는 활성화가 무엇일까요?” |
-| **12 · ReLU** | 음수를 0으로 바꾸는 꺾임 | “비선형 함수를 중간에 넣으면 어떤 점이 달라질까요?” |
-| **13 · 선형층 합성의 한계** | 비선형성 없이는 깊어져도 하나의 Affine 변환과 같음 | “이미지의 지역 특징을 이런 뉴런으로 효율적으로 배우려면?” |
+| **P01** | I01 `start` | 처음부터 'Vision AI란 사과 사진·영상에서 결함을 찾아주는 분석'을 입력→AI→교육용 출력 그림으로 보여 준다 |
+| **P02** | 신규 `ai-ml-dl-cv` | 기술의 포함 관계 `AI⊃ML⊃DL`과 별도 CV 문제 영역. CNN은 DL Architecture 예. CV를 DL 상자에 넣지 않는다 |
+| **P03** | I03 `vision-value` | 반복 사과 품질검사에서 AI가 후보 판단을 보조하지만 검증·사람의 확인이 필요함을 보여 준다 |
+| P04 | I04 `photo-numbers` | 사람에게는 '사과', 컴퓨터 입력은 Pixel 숫자라는 대비 |
+| **P05** | I05 `gray` | 사과 클릭→한 Pixel 밝기 수 1개, 전체 `H×W` 2축 배열. 밝기 변환식/Slider는 보조 |
+| **P06** | I06 `rgb` | **현재 상호작용 유지**: RGB 사과 사진 클릭→실제 같은 Pixel 좌표의 `[R,G,B]` 세 값과 Swatch |
+| **P07** | I07 `hwc` | RGB 숫자 세 개를 전체 H행/W열로 확장→`H×W×3` 3축, 640×960 Pixel 614400/값 1843200 |
+| **P08** | 신규 `video-frames` | **RGB 사과 이미지 한 장→같은 사과가 조금 움직이는 시간순 대표 Frame 4장→Video 묶음**. **수식은 마지막에만** `T×H×W×3`; `30fps×1초=30 Frame`은 30장 중 4장 대표 표기 |
+| P09–P13 | I08–I12 | 해상도·조명·회전·가림·흐림·다양성·결함 신호의 중요성; 후속 Task로 연결 |
 
-AND는 정답을 정의한 논리 기능이고, Step 퍼셉트론은 이를 구현하는 수치 모델이다. 뉴런 개수와 입력별 Weight 개수는 다르다는 점을 명확히 구분한다. 단층 신경망이라는 설명도 가장 단순한 뉴런 하나의 구현 예시로 제한한다.
+**발표자 원칙:** '2차원/3차원/4차원'은 물리 공간이 아니라 **배열 축 개수**라고 안내. 동영상은 MP4 파일 구조 자체가 아니라 **디코딩한 RGB 프레임의 교육용 시퀀스**다. P08은 Decoder나 4D 수식부터 설명하지 말고 같은 사과 Frame 4장과 시간 화살표를 먼저 가리킨다.
 
-AND/XOR의 새로운 개념 장표에는 외부 이미지 없이 직접 구성한 네 가지 0/1 입력 그림을 사용한다. **녹색 결과가 1, 회색 결과가 0**이며, 설명용 표와 별개로 모델을 실제 학습한 결과로 소개하지 않는다.
+## 4. Course 42장 — 기술 선택→CNN→학습→평가
 
-## 4. 이후 슬라이드 번호(최신 Course)
+### P14–P18 · Task / Rule-based vs ML · Label
 
-- **C14** CNN Architecture, **C15** CNN을 쓰는 이유(얼룩말 예시), **C16** Kernel, **C17** Feature Map, **C18** Weight Sharing, **C19** RGB/Feature Channel
-- **C20** Stride, **C21** Padding, **C22** Max Pooling, **C23** 실제 Feature Map 일부, **C24** Backbone/Task Head
-- **C25–28** Dataset, Train/Validation/Test, Group Split, Data Augmentation
-- **C29–36** 학습 수치 예제, Loss, CNN Forward/Backward, 추론, 전이학습, **지도/비지도 특징 활용(C34)**, Batch/Epoch, Overfitting
-- **C37–41** Score Threshold, Confusion Matrix, Accuracy 함정, Precision/Recall, IoU
-- **C42–46** Vision AI 업무 과제 구성·검증·개선·마무리
+- **P14 `task`:** 사과 결함에 필요한 결과가 전체 정상/불량(Classification)인지, 작은 반점의 Box(Detection)인지, 세밀한 Mask(Segmentation)인지 정의. 설명용 GT와 실제 모델 Output을 혼동하지 않는다.
+- **P15 `rules` → P16 `rules-image`:** 명확한 `1+1=2`, `2+1=3`는 사람이 만든 한 규칙으로 처리. 조명·정상/불량 사과 사진의 결함 판정은 수동 규칙의 예외가 늘 수 있어 이미지·정답 Label로 학습하는 방법과 비교. Rule-based가 언제나 불가능하다는 이분법 금지.
+- **P17 `model-choice`:** Intro의 AI/ML/DL Nested Figure를 **반복하지 않는다**. `규칙이 충분? → 기존 모델이 반점을 검출? → 부족하면 Label 수집 후 추가 학습`의 선택 흐름과 전 경로 독립 검증을 보여 준다.
+- **P18 `task-model-data`:** Class/Box+Class/Mask Label 형식·제작 비용·Task 대응 확인.
 
-## 5. 수치·데이터·실험 설명 원칙
+### P19–P36 · CNN 전체 Figure와 각 내부 개념
 
-- AND 설명 규칙: (00→0, 01→0, 10→0, 11→1), 단일 Step 퍼셉트론으로 구현 가능.
-- XOR 설명 규칙: (00→0, 01→1, 10→1, 11→0), 단일 직선 불가능. 뒤 C10의 비선형 예시는 `|t|=ReLU(t)+ReLU(−t)`를 사용하며 단일 ReLU 하나의 계산 결과라고 설명하지 않음.
-- C16–17 Kernel/Feature Map의 5×5 입력 및 3×3 출력 수치는 동일한 교육용 예시. 사과 JPEG의 실제 픽셀 계산이라고 주장하지 않음.
-- C21 Padding: 동일 입력 3×3, 3×3 Kernel, Stride1을 비교해 Padding0 출력 1×1 vs Padding1 출력 3×3.
-- C29 학습의 1차원 회귀는 **Gradient 설명용**이지 실제 CNN 결함 학습 측정치가 아님.
-- C38–41의 교육용 평가 데이터는 동일한 100건 Cohort로 연결하고 Test 실제 측정 결과로 포장하지 않음.
-- 실제 강아지 SqueezeNet Feature Map 등 외부 실측 예시에는 출처 및 대상 모델·사진을 구분. 사내망을 고려해 직접 재구성 그림은 로컬 CSS/HTML을 사용.
+- **P19 `cnn-why`:** 같은 3×3 관찰창으로 사과의 작은 국소 결함 특징을 위치마다 반복 탐색하는 필요성을 먼저 보여 준다.
+- **P20 `cnn-overview`:** 교육용 가상 Architecture **`64×64×3→Conv8(3×3,S1,P1)→64×64×8→ReLU→MaxPool(2×2,S2)→32×32×8→Conv16(3×3,S1,P1)→32×32×16→ReLU→GAP16→Dense2`**를 왼쪽→오른쪽 한 줄로 보여 준다. 파란 Extractor와 초록 Head를 분리하고, **학습하는 Weight=Conv+Dense Head**, **고정 연산=ReLU+Max Pool**, **연산 설정=Stride+Padding**이라고 표시. 모든 CNN이 Pool/GAP를 쓰는 것은 아님.
+- **P21–P27:** Perceptron → AND 진리표·경계 실습 → XOR 진리표 → Affine 층의 한계 → ReLU → XOR 비선형 전환 실습. AND는 단일 선형 경계로 되지만 XOR는 안 됨. `z=W(x₁+x₂)+b`는 **두 입력에 같은 W를 적용한 특수 예시**; XOR 실습의 `|t|=ReLU(t)+ReLU(-t)`는 단일 ReLU와 다름.
+- **P28–P36:** Conv Kernel 5×5 입력/3×3 Kernel → Feature Map 3×3 교육용 값 `[[-6,12,16],[-6,8,15],[-4,2,7]]` → Weight Sharing → RGB/Feature Channel → Stride → Padding → Max Pooling 4×4→2×2 값 `[[6,4],[7,9]]` → 실제 SqueezeNet Feature Map **실측 예시** → Backbone과 Class/Box/Mask Task Head. P20의 축소 Architecture 미니맵을 각 장에서 현재 블록에 강조 표시.
 
-## 6. 검증·배포 조건
+### P37–P47 · 데이터와 Weight 학습
 
-1. `scripts/verify_two_hour_course.py`: Intro 13 + Course 46, 목차 59개, Concept ID와 제목 동기화, 네 입력 조합 숫자 및 Task/Kernel/평가 관련 기존 검사.
-2. `scripts/verify_learning_routes.py`: 최신 Concept ID로 AND 설명→퍼셉트론→AND 실습→XOR 설명→XOR 실습 이동, Slider·초기화 등 기존 회귀 테스트.
-3. `scripts/audit_visual_slides.py`: 두 발표 해상도 **1920×1080 / 1366×768**, 전체 59×2=**118개 화면**에서 잘림·이미지·레이아웃·콘솔 확인.
-4. Merge 후 `main` 실제 파일 재조회 및 Pages Workflow 최신 커밋 상태, 공개 사이트 실렌더/캐시 확인.
-5. 리허설에서는 Gate 이해 18분/ CNN31분/총 120분 실현 가능성 확인.
+- **P37–P40:** 정상/불량×밝음/어두움 데이터를 교차 수집, Train/Validation/Test 분리, 동일 사과 개체·같은 영상 인접 Frame은 그룹 단위 분할, Train 세트에만 Augmentation. 압축 파일이나 Video Frame 간 유사성은 P08과 연결한다.
+- **P41–P44:** 간단한 수치 `ŷ=wx` 예시로 Loss 감소와 Weight 갱신을 이해한 뒤 CNN에서 `사과 RGB→Conv→Feature Map→Head→Prediction→Loss(+Label)→Gradient/Optimizer→Conv/Head Weight Update`를 도식화. Training과 Inference의 Weight 갱신 여부를 명확히 구분한다.
+- **P45–P47:** 고정 사전학습 Feature Extractor와 Head 학습(전이학습), 같은 고정 Feature의 지도 Classifier vs Label 없는 Clustering 활용, 새 촬영 조건에서 Overfitting 여부 확인. 지도/비지도는 **Label 사용과 학습 목적**으로 구분한다.
 
-**주의:** Connector 기반 정적 구조 검사와 118개 브라우저 실제 스크린샷 검증은 서로 다르다. 후자를 실행하지 않았다면 완료했다고 기록하지 않는다.
+### P48–P55 · 평가와 통합 회수
 
+- **P48–P49:** 동일한 교육용 100건 Score 집합에서 Threshold 0.30/0.50/0.70에 따라 TP/FP/FN/TN 집계를 변경해 Confusion Matrix로 표시. 평가 숫자는 실제 모델 Test 성능이 아니다.
+- **P50–P52:** Accuracy 불균형 함정, Precision/Recall, 결함 GT Box와 Prediction Box의 IoU. FN(놓친 결함)의 업무 위험을 사과 검사로 회수한다.
+- **P53–P55:** 처음 사과 사진을 다시 보고 Pixel→Task/Label→CNN→학습→독립 검증을 한 그림에 연결. 실패 사진의 조명·해상도 원인은 단정 아닌 조사할 **가설**이며 마지막에 네 질문으로 수강생 이해 확인.
 
-## 2026-10-19 · 퍼셉트론 입력선의 Weight와 후속 Gate 실습
+## 5. Builder 인계 조건 및 변경 제어
 
-- 일반 단일 퍼셉트론: z=w₁x₁+w₂x₂+b. 뉴런 1개, 입력 2개, Weight는 2개.
-- 동일 Weight의 AND 예시: w₁=w₂=0.5, b=−0.7이면 z=0.5(x₁+x₂)−0.7이며 Step을 통해 0,0,0,1을 얻는다.
-- AND 기울기 변경 실습: z=Wx₁+1·x₂+b는 두 번째 연결 Weight를 1로 고정했으며, 결정 직선 x₂=−Wx₁−b. 이것은 위의 동일 Weight 사례와 다른 AND 매개변수 설정이다.
-- XOR 설명 실습: Layer1 t=W₁x₁+1·x₂+b₁, Layer2 z=W₂g(t)+1·x₁+b₂. 각각 추가 연결 Weight는 1로 고정되어 화면에서 조절하지 않는다. Layer마다 하나만 조절한다는 뜻이 실제 Weight가 하나뿐이라는 뜻은 아니다.
+**기획 상태는 Approved이며 실제 제작 완료 상태가 아니다.** Builder는 `planning/SLIDE_STORYBOARD.md`의 **P01~P55, 각 `data-concept`, 학습 목표, 상세 Figure, 예상 시간, Reviewer 완료 기준**을 바탕으로 별도 구현 브랜치에서 HTML/SVG/CSS/JS·이미지·Manifest를 개발한다. `TWO_HOUR_LECTURE_PLAN.md`의 120분 합계와 목차 순서를 동일하게 맞춘다.
 
+**Builder에게 전달할 문구:**
 
-## 2026-10-19 · CNN Feature의 지도/비지도 비교
+> "55장·120분 Approved 강의 구성은 `planning/SLIDE_STORYBOARD.md`의 §3 P01~P55 및 `TWO_HOUR_LECTURE_PLAN.md`의 동일 Git Commit을 기준으로 구현하십시오. 현재 main은 59장으로 다르므로 계획 P번호를 현재 물리 HTML 번호와 혼동하지 말고 `concept` ID 매핑으로 대응하십시오. Intro의 Grayscale/RGB 클릭·AND/XOR Slider·학습·Threshold 인터랙션을 보존하면서 신규 AI/ML/DL-CV 관계도와 RGB Frame 시간축 Figure를 구현하십시오. 설명용 결함 ROI·가상 CNN 구조·교육용 계산·실측 SqueezeNet Figure의 사실성 Caption을 유지하십시오. Manifest/목차/네비게이션을 55장에 일치시키고 QA 결과를 제출하십시오. `main` 병합·공개 배포는 별도 최종 승인 전 하지 마십시오."
 
-- **C6:** W(가중치) 1개와 b(편향) 1개만 노출한 공통 Weight 예시 `z=W(x₁+x₂)+b`. 그림은 두 입력에 같은 W를 쓰는 특별한 계산이며 보편적인 모든 퍼셉트론이 한 스칼라 Weight만 가진다는 뜻은 아니다.
-- **C32→C33:** 같은 **고정된 사전학습 CNN**에서 추출한 Feature를 활용. (지도) 정답 Label을 사용해 Classification Head를 학습하고 정상/불량 예측. (비지도) 정답 Label 없이 K-means 등의 Clustering으로 이름 없는 그룹 A/B 발견.
-- 지도/비지도 구분은 **학습할 때 정답 Label을 쓰는가, 학습 목표가 무엇인가**에 따른다. 단순히 Head를 교체해 모든 CNN이 지도/비지도로 전환되는 것은 아니고, Backbone 자체의 학습 방식과도 별개다.
-- 최신 배정: CNN 원리 C13–23 **30분**, CNN 학습 C28–35 **14분**. 전체 **120분**.
+**범위 관리:** 새로운 모델, 고급 수학, 3D/Tracking, 별도 Preprocessing 슬라이드는 임의 추가 금지. 교육적인 결함 발견 시 Reviewer가 학습 목표·전후 연결을 지적하면 Planner가 기획을 수정한다. CSS 위치·Figure 배치 같은 구현 문제는 Builder/Reviewer가 처리한다.
 
+## 6. QA 기준과 미실행 상태
 
-## 2026-10-19 · Preprocessing 삭제에 따른 흐름 최신화
+1. **구조 정합성:** 실제 구현 후 Intro 13·Course42·총55, Concept ID 55개 고유, Manifest·목차·이전/다음 이동, 페이지 수 일치.
+2. **교육·기술 검수:** Intro AI/ML/DL과 CV 관계, Pixel H/W/C/T 축, CNN 숫자 Shape, AND/XOR/비선형성, Kernel/Pooling, GT/Prediction, 학습 Weight 갱신, 영상 Group Leakage, 100건 Threshold 값의 논리 확인.
+3. **브라우저 실제 QA:** 55장×(1920×1080,1366×768)=**110개 화면**, 사과 사진/실측 Feature Map 로드, 텍스트 오버플로·화살표 정합성·Console, Grayscale/RGB Click·Gate Slider·학습·Threshold 인터랙션 동작 검증.
+4. **120분 리허설:** 핵심 계산/시연 시간을 보호하며 시간 초과·축약된 부분 기록. 계획 시간 120분 확인 ≠ 발표 리허설 성공.
+5. **배포:** Reviewer 완료와 별도 병합 승인 후 `main` 및 GitHub Pages의 실제 55장 배포 상태를 다시 확인한다.
 
-- 이전 C27 Preprocessing(Resize/Letterbox 비교)은 강의 범위에서 제외. **C24 Dataset → C25 데이터 분할 → C26 Video Group Split → C27 Data Augmentation → C29 학습**으로 바로 진행합니다.
-- 데이터 학습에 필요한 최소한의 주의점(독립 분할, Train에서만 증강, Label 변경 시 정합성)은 기존 슬라이드에서 유지합니다.
-- 이후 C33 CNN 지도/비지도 비교, C36–40 모델 평가, C41–45 업무 적용. 전체 58장/120분(별도 Q&A 없음).
+**지금까지 실시한 것:** GitHub 최신 main 문서 및 기존 HTML/Manifest 기준 정적 조사, 승인 기획의 슬라이드 수·계획 분 합계와 concept 매핑 정리. **미실시:** 55장 구현, 110뷰 브라우저 실렌더, 상호작용 QA, 발표 리허설, 공개 Pages 검수.
 
+## 7. main(59장)과 승인 계획(55장)의 차이
 
-## 2026-10-19 · 숫자 계산 규칙과 이미지 학습 2장 설명
-
-- **Course 2**: 1+1=2, 2+1=3을 하나의 덧셈 규칙으로 처리. 사람이 명확히 작성할 수 있는 계산은 데이터를 학습하지 않아도 됨.
-- **Course 3**: 같은 결함 사과의 밝음/어두움 사진과 정상 사과를 제시. 색상·밝기 Rule을 직접 작성하면 조명·그림자 등 조건이 추가돼 예외가 증가할 수 있음. 다양한 사진과 정답 Label로 모델이 패턴을 학습하는 지도 머신러닝과 비교. Rule-based 이미지 처리가 불가능하다고 단정하지 않으며 교육용 그림을 실제 예측으로 설명하지 않음.
-- **Course 4**: 직접 규칙 → Task별 학습 모델 → 사전학습 모델 재사용으로 자연스럽게 연결. 앞 6장 데이터/모델 맥락에 기존 10분 배정, 120분/59장 유지.
+- `main`은 Intro13+Course46=59장이고, 현재 공개 사이트의 원본 동작 기준이다.
+- 승인 계획은 Intro13+Course42=55장. Intro의 기존 `scene`과 `vision-challenge`는 주변 내용에 흡수했고 `ai-ml-dl-cv`, `video-frames`를 신규 추가해 Intro 장수 13을 유지했다.
+- Course에서는 `vision-evolution`, `training-log`, `project-brief`, `project-run`이 각각 `model-choice`, `learn`, `workflow`, `threshold`로 통합되어 42장이다.
+- 54장 구안은 Git 커밋 이력에서 확인 가능하며 **Builder의 55장 실행 번호 기준에 포함하지 않는다.**
+- 실물 슬라이드의 구현 완료 후 Reviewer 결과와 발표 시간을 기반으로 구현 버전을 기록하되, **사용자 승인 없이 강의 범위·핵심 개념·제외 주제 변경 금지**.
