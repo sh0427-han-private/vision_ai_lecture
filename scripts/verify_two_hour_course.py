@@ -124,13 +124,13 @@ print('LECTURE_REFINEMENT_QA_PASSED: original CNN architecture, AND/XOR split, p
 
 # Gate interactive assets must be local, versioned, and wired to their slide controls.
 course_page=(D/'vision_ai_course.html').read_text()
-assert 'interactive_gates.js?v=20261019-simplewb-2' in course_page
-assert 'interactive_gates.css?v=20261019-simplewb-2' in course_page
+assert 'interactive_gates.js?v=20261019-rotate-w-3' in course_page
+assert 'interactive_gates.css?v=20261019-rotate-w-3' in course_page
 for name in ['interactive_gates.js','interactive_gates.css']:
  assert (D/name).is_file(),name
 assert 'data-gate-lab="and"' in concepts['and-gate'] and 'data-gate-reset' in concepts['and-gate']
 assert 'data-gate-lab="xor"' in concepts['xor-gate'] and 'data-gate-reset' in concepts['xor-gate']
-assert 'z≥0' in concepts['and-gate']
+assert 'x₂=−Wx₁−b' in concepts['and-gate']
 assert '비선형' in concepts['xor-gate']
 print('GATE_INTERACTIVE_QA_PASSED: 2 AND sliders, 4 XOR sliders, linear-to-nonlinear toggle, 120m all-teaching schedule')
 
@@ -142,3 +142,14 @@ assert '|t|' in concepts['xor-gate'] and 'ReLU' in concepts['xor-gate']
 assert 'data-gate-stage' in concepts['xor-gate']
 assert 'AI 판정' in concepts['xor-gate'] and '정답' in concepts['xor-gate']
 print('GATE_SIMPLIFICATION_QA_PASSED: W/B per layer, linear boundary then ReLU-based nonlinearity')
+
+# Regression for slope/offset geometry, not only moving a fixed-slope line.
+assert 'z=Wx₁+x₂+b' in concepts['and-gate']
+assert '기울기 −W' in concepts['and-gate'] and 'y절편 −b' in concepts['and-gate']
+assert 'z=W₂t+x₁+b₂' in concepts['xor-gate']
+assert '두 번째 층에 더하는 x₁은 고정된 연결' in concepts['xor-gate']
+js_source=(D/'interactive_gates.js').read_text()
+assert '[values.w,1,values.b]' in js_source
+assert '[1+values.w1*values.w2, values.w2, values.w2*values.b1+values.b2]' in js_source
+assert 'clippedLine' in js_source
+print('GATE_ROTATION_QA_PASSED: W rotates effective linear boundary, b translates, XOR nonlinear contours clipped')
