@@ -79,7 +79,7 @@
     let activation = isXor ? 'step' : 'step';
 
     const configs = isXor
-      ? {a1:1,b1:-1,c1:-.5,a2:-1,b2:1,c2:-.5,u1:1,u2:1,d:-.5}
+      ? {a1:1,b1:-1,c1:-.1,a2:-1,b2:1,c2:-.1,u1:2,u2:.8,d:-.5}
       : {w1:.5,w2:.5,b:-.7};
 
     function render() {
