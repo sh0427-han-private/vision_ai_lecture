@@ -83,18 +83,18 @@ def main():
   assert '실제 결과 미측정' in page.locator('.slide.active').inner_text()
   for img in page.locator('.slide.active .rl-photo-card img').all():
    assert img.evaluate('(el)=>el.complete&&el.naturalWidth>0'), img.get_attribute('src')
-   # P14-P18: GT annotations, shared model and label preparation cost.
-   page.goto(f"{BASE}/vision_ai_course.html#slide-{number('task')}")
-   assert page.locator('.slide.active .b55-tasks article').count()==3
-   page.goto(f"{BASE}/vision_ai_course.html#slide-{number('rules-image')}")
-   assert page.locator('.slide.active .b55-model').count()==1
-   assert page.locator('.slide.active .b55-training').count()==1
-   assert page.locator('.slide.active .b55-inference').count()==1
-   assert page.locator('.slide.active .b55-prediction').count()==1
-   page.goto(f"{BASE}/vision_ai_course.html#slide-{number('model-choice')}")
-   assert page.locator('.slide.active .b55-gate').count()==3
-   page.goto(f"{BASE}/vision_ai_course.html#slide-{number('task-model-data')}")
-   assert page.locator('.slide.active .b55-label-row').count()==3
+  # P14-P18: GT annotations, shared model and label preparation cost.
+  page.goto(f"{BASE}/vision_ai_course.html#slide-{number('task')}")
+  assert page.locator('.slide.active .b55-tasks article').count()==3
+  page.goto(f"{BASE}/vision_ai_course.html#slide-{number('rules-image')}")
+  assert page.locator('.slide.active .b55-model').count()==1
+  assert page.locator('.slide.active .b55-training').count()==1
+  assert page.locator('.slide.active .b55-inference').count()==1
+  assert page.locator('.slide.active .b55-prediction').count()==1
+  page.goto(f"{BASE}/vision_ai_course.html#slide-{number('model-choice')}")
+  assert page.locator('.slide.active .b55-gate').count()==3
+  page.goto(f"{BASE}/vision_ai_course.html#slide-{number('task-model-data')}")
+  assert page.locator('.slide.active .b55-label-row').count()==3
   # Same frozen pretrained CNN output can feed a supervised head or an
   # unlabeled feature clustering stage; these are not equivalent class labels.
   page.goto(f"{BASE}/vision_ai_course.html#slide-{number('cnn-learning-paths')}")
