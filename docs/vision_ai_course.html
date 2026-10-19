@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="ko"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Vision AI 기초 · 원리 중심 · 45장</title>
+<title>Vision AI 기초 · 원리 중심 · 46장</title>
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="slide.css?v=vision-first-introfit-20261015-1">
 <link rel="stylesheet" href="lesson.css?v=static-figures-20261018-1">
@@ -25,19 +25,48 @@
 <link rel="stylesheet" href="gate_basics.css?v=gate-rule-20261019-1">
 <link rel="stylesheet" href="perceptron_weights_clarity.css?v=one-w-20261019-2">
 <link rel="stylesheet" href="supervised_unsupervised_cnn.css?v=cnn-paths-20261019-1">
+<link rel="stylesheet" href="rules_vs_learning.css?v=rules-vs-image-20261019-1">
 </head><body class="deck-page lesson-deck principles-deck" data-prev-page="intro.html" data-next-page="">
 <header class="site-header"><nav class="nav"><a class="brand" href="intro.html#slide-1">Vision AI Lecture</a></nav></header>
 <main class="deck" aria-live="polite">
 <section class="slide active" data-concept="task" data-level="basic"><div class="slide-inner two-hour "><h2 class="slide-title">같은 사진, 다른 질문과 정답</h2><p class="slide-subtitle">사과의 갈색 반점을 결함으로 정했다고 가정합니다. 필요한 결과가 Task(해결할 과제)와 Label(학습용 정답)의 형태를 결정합니다.</p><div class="th-panes"><article><h3>Classification · 분류</h3><figure class="lesson-figure"><div class="figure-display"><img src="assets/vision_task_apple_reference.jpg" alt="공통 입력 사과 사진"></div></figure><p>사진 전체의 판정<br><strong>정상 / 결함 있음</strong></p></article><article><h3>Detection · 검출</h3><svg class="th-task-roi" viewBox="440 100 300 300" role="img" aria-label="동일 사과 사진의 반점 부위를 확대한 설명용 bbox"><image href="assets/vision_task_apple_reference.jpg" x="0" y="0" width="960" height="640"/><rect x="565" y="197" width="53" height="57" fill="none" stroke="#168975" stroke-width="5"/></svg><p>결함의 종류 + 위치<br><strong>경계 상자 · Box</strong></p></article><article><h3>Segmentation · 분할</h3><svg class="th-task-roi" viewBox="440 100 300 300" role="img" aria-label="동일 사과 사진의 반점 부위를 확대한 설명용 mask"><image href="assets/vision_task_apple_reference.jpg" x="0" y="0" width="960" height="640"/><path d="M581 201 C595 200 605 209 609 221 C614 234 606 244 594 246 C580 247 572 236 571 224 C568 213 574 204 581 201Z" fill="#2fa58b" fill-opacity=".6" stroke="#137b66" stroke-width="3"/></svg><p>결함의 세밀한 영역<br><strong>Pixel별 Mask</strong></p></article></div><p class="lesson-takeaway">Label은 사람이 정한 정답이고 Prediction은 모델의 예측입니다. 그림의 Box·Mask는 설명용 표시이며 실제 모델 출력이 아닙니다.</p></div></section>
-<section class="slide" data-concept="rules" data-topic="규칙과 학습" data-level="basic">
-<div class="slide-inner">
-<h2 class="slide-title">규칙 기반과 데이터 학습</h2>
-<p class="slide-subtitle">조명만 달라도 같은 결함을 찾아야 한다면, 색상 기준 하나로는 부족할 수 있습니다. 이 강의의 지도학습(Supervised Learning)은 데이터와 정답에서 판단 기준을 학습합니다.</p>
-<figure class="lesson-figure"><div class="figure-display"><img src="assets/lesson/rule_learning_comparison.svg?v=professional-20261006-2" alt="판단 기준을 사람이 쓰거나, 데이터에서 배웁니다"></div></figure>
-<p class="lesson-takeaway">AI는 큰 범주이고 머신러닝은 데이터로 기준을 학습하는 방식입니다. 딥러닝은 여러 층의 신경망을 사용하는 머신러닝입니다. 모든 머신러닝에 사람이 붙인 정답이 필요한 것은 아닙니다.</p></div></section>
+<section class="slide" data-concept="rules" data-topic="규칙 기반" data-level="basic">
+<div class="slide-inner two-hour rl-lesson">
+<h2 class="slide-title">규칙 기반 · 답을 구하는 방법을 사람이 정한다</h2>
+<p class="slide-subtitle">앞 장에서 무엇을 판단할지 정했습니다. 이제 <strong>어떻게 판단할지</strong> 생각해 봅시다. 더하기는 사람이 규칙을 명확하게 알려줄 수 있습니다.</p>
+<div class="rl-math-board" role="group" aria-label="서로 다른 숫자 계산이 동일한 더하기 규칙을 사용하는 예시">
+<article class="rl-math-card"><h3>예시 ①</h3><div class="rl-equation-tiles" aria-label="1 더하기 1는 2"><span class="rl-digit">1</span><span class="rl-symbol rl-symbol--add">+</span><span class="rl-digit">1</span><span class="rl-symbol">=</span><span class="rl-digit rl-digit--out">2</span></div><p class="rl-small">첫 번째 입력도 같은 덧셈 규칙</p></article>
+<article class="rl-math-card"><h3>예시 ②</h3><div class="rl-equation-tiles" aria-label="2 더하기 1는 3"><span class="rl-digit">2</span><span class="rl-symbol rl-symbol--add">+</span><span class="rl-digit">1</span><span class="rl-symbol">=</span><span class="rl-digit rl-digit--out">3</span></div><p class="rl-small">숫자만 달라져도 계산 방법은 동일</p></article>
+</div>
+<div class="rl-computer-rule" role="group" aria-label="사람이 작성한 단 하나의 규칙이 두 계산에 적용됩니다"><strong>사람이 작성한 규칙</strong><span aria-hidden="true">→</span><span>결과 = 첫 번째 수 + 두 번째 수</span></div>
+<p class="rl-message">계산 규칙이 명확하면 <strong>데이터를 학습하지 않고도</strong> 정확하게 처리할 수 있습니다.</p>
+<p class="lesson-takeaway">규칙 기반(Rule-based)은 사람이 <strong>입력에서 결과까지의 판단 방법</strong>을 직접 작성하는 방식입니다. 그렇다면 사진의 작은 결함은 어떤 규칙으로 판단해야 할까요?</p>
+</div></section>
+<section class="slide" data-concept="rules-image" data-topic="규칙 기반과 머신러닝" data-level="basic">
+<div class="slide-inner two-hour rl-lesson">
+<h2 class="slide-title">이미지 판단 · 규칙을 어디까지 만들어야 할까?</h2>
+<p class="slide-subtitle">사과에 <strong>갈색 반점이 있는지</strong> 판단한다고 합시다. 사진마다 조명·그림자·표면색이 달라지는데, 어떤 조건을 모두 규칙으로 작성해야 할까요?</p>
+<div class="rl-panes" role="group" aria-label="규칙 기반 이미지 판단과 정답 데이터를 이용한 머신러닝 방식의 비교">
+<article class="rl-pane rl-pane--rule"><h3>① 규칙 기반 · 사람이 조건을 작성</h3>
+<div class="rl-photos"><figure class="rl-photo-card"><img src="assets/vision_task_apple_reference.jpg" alt="밝은 사진의 사과 반점 있는 사과 이미지"><small>밝은 사진</small><span class="rl-tag rl-tag--bad">결함 있음</span></figure><figure class="rl-photo-card rl-photo-card--dark"><img src="assets/vision_task_apple_reference.jpg" alt="어두운 사진의 사과 반점 있는 사과 이미지 (밝기 변경으로 설명한 예시)"><small>어두운 사진</small><span class="rl-tag rl-tag--bad">결함 있음</span></figure><figure class="rl-photo-card"><img src="assets/generated/apple_studio_preview.png" alt="정상 사진의 사과 반점 없는 사과 이미지"><small>정상 사진</small><span class="rl-tag">정상</span></figure></div>
+<div class="rl-rule-items">
+<p><strong>규칙 A</strong> · 갈색 픽셀이 일정 수 이상이면 결함? <span>→ 그림자도 갈색처럼 보이면?</span></p>
+<p><strong>규칙 B</strong> · 어두운 영역이 크면 결함? <span>→ 조명이 어두워지면?</span></p>
+</div>
+<p class="rl-pane-note"><strong>가능은 하지만</strong> 촬영 조건·예외가 늘수록 사람이 작성할 기준도 복잡해집니다.</p>
+</article>
+<article class="rl-pane rl-pane--learn"><h3>② 머신러닝 · 데이터에서 기준을 학습</h3>
+<div class="rl-photos"><figure class="rl-photo-card"><img src="assets/vision_task_apple_reference.jpg" alt="밝은 사진의 사과 반점 있는 사과 이미지"><small>밝은 사진</small><span class="rl-tag rl-tag--bad">결함 있음</span></figure><figure class="rl-photo-card rl-photo-card--dark"><img src="assets/vision_task_apple_reference.jpg" alt="어두운 사진의 사과 반점 있는 사과 이미지 (밝기 변경으로 설명한 예시)"><small>어두운 사진</small><span class="rl-tag rl-tag--bad">결함 있음</span></figure><figure class="rl-photo-card"><img src="assets/generated/apple_studio_preview.png" alt="정상 사진의 사과 반점 없는 사과 이미지"><small>정상 사진</small><span class="rl-tag">정상</span></figure></div>
+<div class="rl-flow-explain"><div class="rl-flow-node"><strong>사진 + 정답 Label</strong><br>정상 / 결함 있음</div><span class="rl-arrow" aria-hidden="true">→</span><div class="rl-flow-node rl-flow-node--result"><strong>학습 모델</strong><br>반점을 구분하는 특징 학습</div></div>
+<p class="rl-pane-note">다양한 조명·배경의 예시와 <strong>정답</strong>을 제공해 판정 기준을 학습시킵니다. 새 사진에서도 되는지는 별도 데이터로 검증합니다.</p>
+</article>
+</div>
+<p class="rl-small">같은 교육용 사과 사진의 밝기만 바꾼 비교 · 오른쪽은 <strong>지도학습(Supervised Learning)의 개념</strong>이며 실제 모델 예측 결과가 아닙니다.</p>
+<p class="lesson-takeaway">규칙 기반은 <strong>사람이 판단 기준을 직접 작성</strong>하고, 머신러닝은 <strong>데이터에서 판단 기준을 학습</strong>합니다. 단순한 규칙이면 규칙 기반이 유용하고, 이미지처럼 변화가 복잡할 때 학습이 도움이 됩니다.</p>
+</div></section>
 <section class="slide" data-concept="vision-evolution" data-level="basic">
 <div class="slide-inner two-hour"><h2 class="slide-title">지금 Vision AI는 어디까지 왔나?</h2>
-<p class="slide-subtitle">이미지를 숫자 규칙만으로 처리하던 방식에서, 정답 데이터로 학습한 모델과 사전학습 모델을 <strong>목적에 맞게 재사용</strong>하는 방식까지 발전했습니다.</p>
+<p class="slide-subtitle">앞서 이미지에서 규칙을 일일이 작성하기 어려운 이유를 봤습니다. 그 문제에 대응하는 Vision AI 접근을 <strong>규칙 → Task별 학습 모델 → 사전학습 모델 활용</strong> 순서로 비교합니다.</p>
 <div class="vm-showcase">
 <article><h3>① 규칙 기반</h3><div class="vm-visual"><svg viewBox="0 0 300 190" role="img" aria-label="영상의 갈색 밝기 조건을 기반으로 직접 정한 규칙의 예시"><rect x="20" y="18" width="260" height="150" fill="#eef3f4"/><rect x="45" y="55" width="75" height="75" fill="#cd9a75"/><rect x="160" y="55" width="75" height="75" fill="#84bca7"/><text x="82" y="148" text-anchor="middle" fill="#567" font-size="19">조건 비교</text><text x="195" y="148" text-anchor="middle" fill="#567" font-size="19">판정</text><path d="M125 91H152" stroke="#2b8d7b" stroke-width="4"/></svg></div><p>사람이 <strong>색·모양 기준</strong>을 정함</p></article>
 <article><h3>② Task별 학습 모델</h3><div class="vm-visual"><svg viewBox="440 100 300 300" role="img" aria-label="사과 결함 위치에 표시한 설명용 바운딩 박스"><image href="assets/vision_task_apple_reference.jpg" width="960" height="640"/><rect x="565" y="197" width="53" height="57" fill="none" stroke="#168975" stroke-width="5"/></svg></div><p>CNN 기반 분류, YOLO 계열 검출 등 <strong>Class / Box / Mask</strong> 예측</p></article>
@@ -199,7 +228,6 @@
 <p class="slide-subtitle">동일한 원본 영상 A·B·C에서 각각 3개 Frame을 뽑은 예시입니다. 무작위 Frame 분할과 원본 Video를 통째로 나누는 Group Split을 비교합니다.</p>
 <figure class="lesson-figure"><div class="figure-display"><img src="assets/lesson/lesson_video_group_split_comparison.svg?v=pedagogic-20261013-2" alt="9개 프레임을 무작위로 나누면 영상 A B C가 Train Validation Test에 중복되지만 영상별 Group Split에서는 원본 영상이 서로 겹치지 않는 비교"></div></figure>
 <p class="lesson-takeaway">같은 원본 영상의 Frame이 Train·Validation·Test에 동시에 들어가지 않게 합니다. 새 설비 성능을 평가하려면 설비 자체로 Group을 정합니다.</p></div></section>
-
 <section class="slide" data-concept="augment" data-topic="Data Augmentation" data-level="basic"><div class="slide-inner two-hour"><h2 class="slide-title">Data Augmentation · 같은 정답, 다른 조건</h2><p class="slide-subtitle">Train 사진에 밝기·회전 등의 변화를 만들어 <strong>촬영 조건이 달라도 중요한 결함을 찾도록</strong> 학습시킬 수 있습니다. 단, Label이 바뀌면 안 됩니다.</p><div class="lf-augment-grid" role="group" aria-label="같은 사과 사진의 원본, 어두운 표시, 회전, 부분 가림 비교"><article><h3>원본</h3><div class="lf-aug-frame"><img src="assets/vision_task_apple_reference.jpg" alt="결함 사과 원본"></div><p>정답: 결함 있음</p></article><article><h3>밝기 변화</h3><div class="lf-aug-frame lf-aug-dark"><img src="assets/vision_task_apple_reference.jpg" alt="밝기가 감소한 동일 사과"></div><p>밝기 숫자만 달라짐</p></article><article><h3>회전</h3><div class="lf-aug-frame lf-aug-rotate"><img src="assets/vision_task_apple_reference.jpg" alt="20도 회전한 동일 사과"></div><p>위치·방향이 달라짐</p></article><article><h3>부분 가림</h3><div class="lf-aug-frame lf-aug-occlude"><img src="assets/vision_task_apple_reference.jpg" alt="일부 영역을 가린 동일 사과"></div><p>결함을 가리지 않아야 함</p></article></div><p class="lesson-takeaway">원본 그룹을 먼저 Train/Validation/Test로 나누고 <strong>Train에서만 증강</strong>합니다. Box/Mask가 있으면 회전·Crop에 맞춰 Label도 함께 바꿉니다.</p><p class="lf-figure-note">한 장의 프로젝트 생성 사과 사진에 화면상 CSS 변환을 적용한 예시 · 실제 학습 데이터 파일 생성이나 모델 출력이 아님</p></div></section>
 <section class="slide" data-concept="learn" data-topic="학습의 의미" data-level="basic">
 <div class="slide-inner">
