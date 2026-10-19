@@ -1,0 +1,73 @@
+/* Basic AND / XOR Gate - explanation slides directly before their live labs.
+   Scoped to the public integrated Vision AI course. No remote assets. */
+.principles-deck .gb-lesson .gb-lead {
+  display:flex;justify-content:center;align-items:center;gap:14px;
+  margin:12px auto 15px;flex-wrap:wrap
+}
+.principles-deck .gb-lesson .gb-rule {
+  font-size:clamp(19px,1.6vw,26px);font-weight:750;
+  color:#1c6c61;background:#e7f4ef;border-left:4px solid #278f77;
+  padding:12px 22px
+}
+.principles-deck .gb-examples {
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:15px 20px;max-width:1110px;margin:8px auto 14px
+}
+.principles-deck .gb-example {
+  display:flex;min-width:0;align-items:center;justify-content:center;gap:12px;
+  padding:15px 14px;min-height:160px;background:#f5f9f9;
+  border-top:3px solid #9db9bf
+}
+.principles-deck .gb-example--one {background:#edf9f2;border-top-color:#278d77}
+.principles-deck .gb-pair {display:flex;align-items:center;gap:10px}
+.principles-deck .gb-input {display:flex;flex-direction:column;align-items:center;gap:5px}
+.principles-deck .gb-input small {font-size:clamp(16px,1.15vw,19px);color:#587483}
+.principles-deck .gb-state {
+  display:grid;place-items:center;border:2px solid #8fa6b2;border-radius:7px;
+  height:62px;width:54px;font-size:clamp(24px,2.1vw,31px);font-weight:800;
+  background:#d8e1e7;color:#48616d
+}
+.principles-deck .gb-state--on {
+  background:#d6f1e3;border-color:#188a6c;color:#13745e
+}
+.principles-deck .gb-gate {
+  flex:0 0 auto;background:#dae9ed;border:2px solid #7fa7b2;border-radius:8px;
+  padding:12px 9px;min-width:66px;text-align:center;color:#2a6070;
+  font-size:clamp(17px,1.25vw,22px);font-weight:800
+}
+.principles-deck .gb-arrow {color:#4f9094;font-size:clamp(24px,1.9vw,32px);font-weight:700}
+.principles-deck .gb-result {display:flex;flex-direction:column;align-items:center;gap:4px;min-width:69px}
+.principles-deck .gb-result strong {
+  font-size:clamp(29px,2.4vw,40px);line-height:1;
+  font-weight:850;color:#637e8b
+}
+.principles-deck .gb-example--one .gb-result strong {color:#18836c}
+.principles-deck .gb-result small {font-size:clamp(15px,1.1vw,18px);color:#51707f;text-align:center;white-space:nowrap}
+.principles-deck .gb-caption {
+  text-align:center;color:#52747b;font-size:clamp(16px,1.22vw,20px);
+  line-height:1.4;margin:6px auto 12px
+}
+.principles-deck .gb-lesson .lesson-takeaway {margin-top:12px}
+.principles-deck .gb-example[aria-label] {position:relative}
+@media(max-height:850px) {
+  .principles-deck .gb-lesson .gb-lead {margin:7px auto 8px}
+  .principles-deck .gb-lesson .gb-rule {padding:8px 18px}
+  .principles-deck .gb-examples {gap:9px 13px;margin:5px auto 7px}
+  .principles-deck .gb-example {min-height:128px;padding:8px}
+  .principles-deck .gb-state {width:45px;height:48px}
+  .principles-deck .gb-gate {padding:9px 7px}
+  .principles-deck .gb-result strong {font-size:30px}
+  .principles-deck .gb-caption {margin:3px auto 6px}
+}
+@media(max-width:750px) {
+  .principles-deck .gb-examples {gap:5px}
+  .principles-deck .gb-example {gap:3px;padding:4px;min-height:72px}
+  .principles-deck .gb-pair {gap:2px}
+  .principles-deck .gb-state {height:28px;width:23px;font-size:13px}
+  .principles-deck .gb-input small,.principles-deck .gb-result small {font-size:10px}
+  .principles-deck .gb-gate {min-width:33px;padding:4px;font-size:11px}
+  .principles-deck .gb-result {min-width:23px}
+  .principles-deck .gb-result strong {font-size:20px}
+  .principles-deck .gb-arrow {font-size:14px}
+  .principles-deck .gb-lesson .gb-rule {font-size:14px}
+}

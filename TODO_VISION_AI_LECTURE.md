@@ -2,19 +2,31 @@
 
 > **현재 활성 작업 목록(Single Source of Truth)** · 2026-10-19 · 최신 강의 기준: `docs/two_hour_manifest.json` (과거 최초 개편 PR [#101](https://github.com/sh0427-han/vision_ai_lecture/pull/101)은 이력)
 > **강의 목표 A:** Vision AI를 처음 접하는 수강생이 **Pixel → CNN 특징 추출 → Loss/Weight 학습 → 독립 평가**를 그림으로 설명할 수 있도록 구성한다.
-> **공개 강의:** Intro **13장** + `vision_ai_course.html` **43장** = **56장** / **120분 전체 강의**(별도 Q&A 없음).
+> **공개 강의:** Intro **13장** + `vision_ai_course.html` **45장** = **58장** / **120분 전체 강의**(별도 Q&A 없음).
 > **이 문서는 앞으로 할 일만 추적한다.** 과거 진단 보고서의 옛 슬라이드 번호를 그대로 실행하지 않는다. `data-concept`와 현재 `docs/two_hour_manifest.json`을 사용한다.
 
 > **후속 작업 상태:** P0·P1 및 로컬 QA-01~03 완료. 작업 브랜치의 검증이며 main 배포 완료가 아닙니다. [구현·검증 기록](reviews/2026-10-18_VISION_AI_TODO_IMPLEMENTATION.md)을 참고하세요. QA-04 중 main 병합과 Pages 배포 성공을 확인했습니다. 공개 URL 직접 검증 및 현장 리허설은 남았습니다. 사용자의 후속 요청으로 PR API 대신 Git 병합·push를 승인받았습니다.
 
 > [!IMPORTANT]
-> **현행 활성 기준 (2026-10-19 추가 개편): Intro 13장 + Course 43장 = 총 56장.** 이 파일의 아래 50장 P0/P1 체크는 **이전 PR에서 완료된 작업의 이력**입니다. 이전 54장 진단은 [54장 전체 내용·흐름 재검토](reviews/2026-10-18_VISION_AI_54_SLIDE_FLOW_REVIEW.md)의 신규 슬라이드 번호와 `docs/two_hour_manifest.json`을 기준으로 합니다. 새 55장 공개 배포·화면 QA는 아직 완료 처리하지 않습니다.
+> **현행 활성 기준 (2026-10-19 추가 개편): Intro 13장 + Course 45장 = 총 58장.** 이 파일의 아래 50장 P0/P1 체크는 **이전 PR에서 완료된 작업의 이력**입니다. 이전 54장 진단은 [54장 전체 내용·흐름 재검토](reviews/2026-10-18_VISION_AI_54_SLIDE_FLOW_REVIEW.md)의 신규 슬라이드 번호와 `docs/two_hour_manifest.json`을 기준으로 합니다. 새 58장 공개 배포·화면 QA는 아직 완료 처리하지 않습니다.
 
-## 2026-10-19 · AND/XOR 인터랙티브 실습 / Q&A 제거
+## 2026-10-19 · AND / XOR Gate 동작을 먼저 설명하는 두 장 추가
 
-- [x] **C7 AND**: W·Bias 슬라이더 2개, W는 기울기(회전), b는 y절편(평행 이동), 한 직선 결정 영역·네 점 정답/AI 판정·초기화.
-- [x] **C8 XOR**: Layer1 W₁·b₁, Layer2 W₂·b₂ 총 4개만 조절. 원래 입력 x₁을 Layer2에 더하는 고정 연결이 있음. 선형 없음(최종 Wx+b 직선 하나) → 비선형 |t|=ReLU(t)+ReLU(−t)(두 경계), 정답과 AI 판정 차이를 표현·초기화.
-- [x] **운영 계획**: Q&A 별도 구간 제거, 55장 × 총 120분, Gate 학습 구간 16분, CNN 구간 32분. Manifest/운영안/검증 규칙 수정.
+- [x] **Course 6 AND Gate 동작:** (0,0),(0,1),(1,0),(1,1) 네 입력 그림으로 AND 규칙을 먼저 소개. 모두 1일 때만 1. AND는 논리 기능이며, 다음 퍼셉트론 뉴런 하나로 구현 가능한 예제라는 점을 연결.
+- [x] **Course 7 퍼셉트론 연결:** AND 설명 다음에 Wx+b 및 Step 활성화 구조를 배치.
+- [x] **Course 9 XOR Gate 동작:** 입력이 정확히 하나만 1일 때 1이라는 논리 규칙을 같은 그림 템플릿으로 설명. 다음 Course 10 선형/비선형 실습에 연결.
+- [x] **Course 8·10 기존 인터랙션 유지:** W·b 조절, 직선 회전과 이동, XOR 선형 한계/비선형 비교는 기존 Concept ID를 유지하며 번호만 이동.
+- [x] **교육 시간표:** Intro 13+Course45=58장, 기존처럼 Q&A 없이 120분. AND/XOR/퍼셉트론 설명 18분, CNN 핵심 31분.
+- [ ] **실제 브라우저 QA:** 58장×2해상도=116개 화면, 특히 Course 6~10 네 가지 입력 그림·설명·다음 장 전환과 상호작용 확인.
+- [ ] **배포 QA:** Merge 후 최신 `main`, GitHub Pages Workflow 및 공개 URL에 Course 6/9 설명이 표시되는지 확인.
+
+**검증 기준:** `docs/two_hour_manifest.json`, `scripts/verify_two_hour_course.py`, `scripts/verify_learning_routes.py`, `TWO_HOUR_LECTURE_PLAN.md`.
+
+## 2026-10-19 · 이전 AND/XOR 인터랙티브 작업 이력 / Q&A 제거
+
+- [x] **이전 C7(현재 C8) AND**: W·Bias 슬라이더 2개, W는 기울기(회전), b는 y절편(평행 이동), 한 직선 결정 영역·네 점 정답/AI 판정·초기화.
+- [x] **이전 C8(현재 C10) XOR**: Layer1 W₁·b₁, Layer2 W₂·b₂ 총 4개만 조절. 원래 입력 x₁을 Layer2에 더하는 고정 연결이 있음. 선형 없음(최종 Wx+b 직선 하나) → 비선형 |t|=ReLU(t)+ReLU(−t)(두 경계), 정답과 AI 판정 차이를 표현·초기화.
+- [x] **운영 계획**: Q&A 별도 구간 제거, 58장 × 총 120분, Gate 학습 구간 18분, CNN 구간 31분. Manifest/운영안/검증 규칙 수정.
 - [ ] **브라우저 QA**: 실제 Chromium에서 AND W1.0/b−1.2 기본 4/4, W0.4 기울기 변경, b−0.5 평행 이동/복원; XOR 선형 기본 3/4·직선 1개, W₁·W₂ 각각 기울기 변경, 비선형 전환 4/4·두 경계, W₁ 변경과 복원/색상·키보드·모바일 확인.
 - [ ] **실화면 QA**: 1366×768, 1920×1080의 C7/C8에서 슬라이더 2개/4개·한 직선과 두 경계·정답/AI 판정 표기가 잘리거나 겹치지 않는지 확인.
 - [ ] **배포 QA**: 병합 commit의 Pages Workflow 성공 및 실제 공개 URL에서 두 인터랙션 확인.

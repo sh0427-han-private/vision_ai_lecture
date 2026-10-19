@@ -11,14 +11,14 @@ assert m['duration_minutes']==120
 assert sum(x['minutes'] for x in m['blocks'])==m['teaching_minutes']==120
 assert m['discussion_minutes']==0
 assert m['teaching_minutes']+m['discussion_minutes']==120
-assert [x['global'] for x in items]==list(range(1,57))
+assert [x['global'] for x in items]==list(range(1,59))
 slides={}; concepts={}
-for deck,count in [('intro',13),('vision_ai_course',43)]:
+for deck,count in [('intro',13),('vision_ai_course',45)]:
  text=(D/(deck+'.html')).read_text()
  ss=re.findall(r'<section\b[^>]*class="slide[^\"]*"[^>]*>.*?</section>',text,re.S)
  assert len(ss)==count,(deck,len(ss))
  assert text.count('class="slide active"')==1
- assert re.findall(r'lecture_outline.js\?v=([^\"]+)',text)==['zebra-20261019-1']
+ assert re.findall(r'lecture_outline.js\?v=([^\"]+)',text)==['gates58-20261019-1']
  slides[deck]=ss
  for n,s in enumerate(ss,1):
   c=re.search(r'data-concept="([^\"]+)"',s)[1];concepts[c]=s
@@ -39,14 +39,14 @@ for deck,count in [('intro',13),('vision_ai_course',43)]:
  assert not re.search(r'VGG-16|BatchNorm|γ|β|Grad-CAM|다음 장|기존 숫자',text),'Removed advanced topic or stale transition'
 # Prerequisites are executable constraints, not just comments in a teaching plan.
 seq=[x['concept'] for x in m['decks']['vision_ai_course']]
-for before,after in [('task','rules'),('rules','vision-evolution'),('vision-evolution','model-choice'),('model-choice','task-model-data'),('task-model-data','perceptron'),('perceptron','and-gate'),('and-gate','xor-gate'),('xor-gate','relu'),('relu','nonlinear'),('nonlinear','cnn-overview'),('cnn-overview','cnn-why'),('cnn-why','kernel'),('kernel','feature-map'),('feature-map','sharing'),('sharing','channels'),('channels','stride'),('stride','padding'),('padding','pool'),('pool','actual-map'),('actual-map','backbone'),('backbone','dataset'),('dataset','split'),('split','leakage'),('leakage','preprocess'),('preprocess','augment'),('augment','learn'),('learn','loss'),('loss','cnn-training'),('cnn-training','infer'),('infer','transfer'),('transfer','training-log'),('training-log','overfit'),('overfit','threshold'),('threshold','confusion'),('confusion','imbalance'),('imbalance','metrics'),('metrics','iou'),('iou','workflow'),('workflow','project-brief'),('project-brief','project-run'),('project-run','project-iterate'),('project-iterate','project-check')]:
+for before,after in [('task','rules'),('rules','vision-evolution'),('vision-evolution','model-choice'),('model-choice','task-model-data'),('task-model-data','and-rule'),('and-rule','perceptron'),('perceptron','and-gate'),('and-gate','xor-rule'),('xor-rule','xor-gate'),('xor-gate','relu'),('relu','nonlinear'),('nonlinear','cnn-overview'),('cnn-overview','cnn-why'),('cnn-why','kernel'),('kernel','feature-map'),('feature-map','sharing'),('sharing','channels'),('channels','stride'),('stride','padding'),('padding','pool'),('pool','actual-map'),('actual-map','backbone'),('backbone','dataset'),('dataset','split'),('split','leakage'),('leakage','preprocess'),('preprocess','augment'),('augment','learn'),('learn','loss'),('loss','cnn-training'),('cnn-training','infer'),('infer','transfer'),('transfer','training-log'),('training-log','overfit'),('overfit','threshold'),('threshold','confusion'),('confusion','imbalance'),('imbalance','metrics'),('metrics','iou'),('iou','workflow'),('workflow','project-brief'),('project-brief','project-run'),('project-run','project-iterate'),('project-iterate','project-check')]:
  assert seq.index(before)<seq.index(after),(before,after)
 assert not {'affine-net','affine-collapse','xor-net'} & set(seq)
 # Every slide must belong to one timed block; no omitted or duplicated material.
 for deck,entries in m['decks'].items():
  covered=[n for block in m['blocks'] if block['deck']==deck for n in range(block['start'],block['end']+1)]
  assert covered==list(range(1,len(entries)+1)),(deck,covered)
-assert [block['minutes'] for block in m['blocks']]==[14,10,10,16,32,11,13,9,5]
+assert [block['minutes'] for block in m['blocks']]==[14,10,10,18,31,10,13,9,5]
 def matrices(concept):
  s=concepts[concept]; result=[]
  for cols,body in re.findall(r'<div class="concept-matrix[^\"]*" style="--cols:(\d+)"[^>]*>(.*?)</div>',s,re.S):
@@ -91,7 +91,7 @@ for deck in ['intro','vision_ai_course','ai_basics','vision_ai']:
  assert 'cursor:zoom' not in text
 for a in ['perceptron_gate_structure_ko','and_xor_gate_geometry_ko','xor_multilayer_gates_ko']:
  ET.parse(D/'assets/lesson'/f'{a}.svg')
-print('TWO_HOUR_QA_PASSED: 56 slides, 120 teaching minutes without a Q&A block, principles-first prerequisites, shared numeric examples and local assets')
+print('TWO_HOUR_QA_PASSED: 58 slides, 120 teaching minutes without a Q&A block, principles-first prerequisites, shared numeric examples and local assets')
 
 # Open feedback paths must not render as a solid filled blob.
 root=ET.parse(D/'assets/lesson/context_cnn_training.svg').getroot()
@@ -157,3 +157,17 @@ print('GATE_ROTATION_QA_PASSED: W rotates effective linear boundary, b translate
 assert 'cnn_banner.png' in concepts['transfer']
 assert '뇌의 작동을 그대로 재현한 모델은 아닙니다' in concepts['cnn-why']
 assert seq.index('cnn-why') == seq.index('cnn-overview') + 1
+
+# Logic rules must precede their Perceptron and interactive boundary demonstrations.
+assert seq.index('and-rule') < seq.index('perceptron') < seq.index('and-gate')
+assert seq.index('and-gate') < seq.index('xor-rule') < seq.index('xor-gate') < seq.index('relu')
+for concept, outputs in [('and-rule',[0,0,0,1]),('xor-rule',[0,1,1,0])]:
+ slide=concepts[concept]
+ assert slide.count('<article class="gb-example') == 4,(concept,'four visual truth table cases')
+ assert [int(x) for x in re.findall(r'<strong>([01])</strong><small>(?:켜짐|꺼짐)</small>',slide)] == outputs,concept
+ assert 'gb-examples' in slide and 'gb-rule' in slide
+assert 'Step 활성화 퍼셉트론 뉴런 하나' in concepts['and-rule']
+assert '직선 하나로 분리할 수 없습니다' in concepts['xor-rule']
+assert (D/'gate_basics.css').is_file()
+assert 'gate_basics.css?v=gate-rule-20261019-1' in (D/'vision_ai_course.html').read_text()
+print('GATE_RULES_QA_PASSED: AND/XOR operation explained before demonstrations')
