@@ -1,6 +1,6 @@
-/* Current Vision AI course: 58 slides, explicit AND/XOR rules, 120 teaching minutes. */
+/* 58 slide beginner Vision AI teaching order - perceptron before AND example. */
 window.LECTURE_OUTLINE = {
-  "version": "20261019-gate-rules-58",
+  "version": "20261019-perceptron-input-weights-first",
   "groups": [
     {
       "name": "필요성 · 사진과 숫자",
@@ -126,18 +126,18 @@ window.LECTURE_OUTLINE = {
       ]
     },
     {
-      "name": "AND/XOR 동작과 퍼셉트론·비선형성",
+      "name": "퍼셉트론 → AND/XOR의 규칙과 비선형성",
       "items": [
         {
           "page": "vision_ai_course.html",
           "slide": 6,
-          "title": "AND Gate · 두 입력이 모두 1일 때",
+          "title": "퍼셉트론 · Wx + b에서 판정까지",
           "global": 19
         },
         {
           "page": "vision_ai_course.html",
           "slide": 7,
-          "title": "퍼셉트론 · Wx + b에서 판정까지",
+          "title": "AND Gate · 두 입력이 모두 1일 때",
           "global": 20
         },
         {

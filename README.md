@@ -145,7 +145,7 @@ vision_ai_lecture/
 - Intro 1–8: 사과 결함 문제 → 인간의 장면 이해 → 활용 필요성 → Pixel/RGB/해상도
 - Intro 9–13: 조명·회전·가림·품종 차이 → 의미와 Pixel 변화의 차이
 - 통합 1–5: Class/Box/Mask, 현재 Vision AI, 규칙 vs 학습, 기존 모델, Classification/Detection/Segmentation별 Label·데이터 선택
-- 통합 6–12: AND 규칙 → 퍼셉트론 → AND 실습 → XOR 규칙 → XOR 실습 → ReLU·비선형성
+- 통합 6–12: 퍼셉트론의 1뉴런·입력별 Weight → AND 규칙·직선 실습 → XOR 규칙·비선형 실습 → ReLU
 - **통합 13–23: CNN 전체 Architecture → Kernel/Feature Map → Weight Sharing·Channel·Stride·Padding·Pooling → 실제 Feature Map·Task Head**
 - 통합 24–28: 데이터·독립 분할·전처리·증강
 - 통합 29–35: 가중치 학습 실습·Loss·추론·**CNN 학습 구조**·전이학습·과적합
@@ -164,7 +164,7 @@ vision_ai_lecture/
 
 ## 2026-10-19 · CNN·퍼셉트론 강의 그림 보완
 
-현재 58장 순서에서 AND 규칙은 Course 6, 퍼셉트론은 Course 7, AND 실습은 Course 8, XOR 규칙은 Course 9, XOR 실습은 Course 10, CNN 구조는 Course 13, Kernel은 Course 15, Padding은 Course 20, Max Pooling은 Course 21, 학습 구조는 Course 31, 전이학습은 Course 33입니다. 얼룩말 CNN Architecture 원본은 이미지 출처 표기 및 로컬 대체 그림과 함께 제공합니다. [수정·검증 기록](reviews/2026-10-19_CNN_SLIDE_REFINEMENT.md)을 참조하세요.
+현재 58장 순서에서 퍼셉트론은 Course 6, AND 규칙은 Course 7, AND 실습은 Course 8, XOR 규칙은 Course 9, XOR 실습은 Course 10, CNN 구조는 Course 13, Kernel은 Course 15, Padding은 Course 20, Max Pooling은 Course 21, 학습 구조는 Course 31, 전이학습은 Course 33입니다. 얼룩말 CNN Architecture 원본은 이미지 출처 표기 및 로컬 대체 그림과 함께 제공합니다. [수정·검증 기록](reviews/2026-10-19_CNN_SLIDE_REFINEMENT.md)을 참조하세요.
 
 
 ## 2026-10-19 · AND/XOR Gate 실시간 실습
@@ -176,6 +176,14 @@ vision_ai_lecture/
 
 ## 2026-10-19 · AND와 XOR의 동작 원리 먼저 학습
 
-- [Course 6 · AND 동작 규칙](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-6): 두 입력이 모두 1이면 1, 하나라도 0이면 0. 바로 다음 Course 7의 퍼셉트론 Wx+b 설명과 연결.
+- [Course 6 · 퍼셉트론](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-6): 뉴런 1개에도 입력마다 Weight가 붙습니다. 일반형 z=w₁x₁+w₂x₂+b, AND의 동일 가중치 예시 z=w(x₁+x₂)+b를 구분합니다. [Course 7 · AND 동작](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-7)에서는 두 입력이 모두 1일 때만 1이라는 규칙을 확인합니다.
 - [Course 9 · XOR 동작 규칙](https://sh0427-han.github.io/vision_ai_lecture/vision_ai_course.html#slide-9): 두 입력이 다를 때만 1. Course 10에서 선형층의 단일 직선 한계와 비선형성 비교.
 - 최신 강의: **Intro 13 + Course 45 = 총 58장**, 120분 전체 강의. 외부 이미지 없이 자체 HTML/CSS 도식으로 4가지 입력 조합을 설명합니다.
+
+
+## 2026-10-19 · 퍼셉트론 입력선과 뉴런 수 구분 (최신)
+
+- Course 6 퍼셉트론 → Course 7 AND 규칙 → Course 8 AND 직선 실습 → Course 9 XOR 규칙 → Course 10 XOR 선형·비선형 실습.
+- 퍼셉트론 뉴런 1개에 입력 x₁,x₂는 각각 Weight w₁,w₂를 갖습니다. w₁,w₂는 뉴런 두 개를 뜻하지 않습니다.
+- AND 특별 예시에서 w₁=w₂=w로 묶으면 z=w(x₁+x₂)+b입니다. 이 경우 W만 바꿔서는 직선 기울기가 회전하지 않습니다.
+- Course 8은 회전을 보여주기 위해 x₂ Weight=1로 고정한 z=Wx₁+1·x₂+b를 사용합니다. Course 10도 일부 입력선의 Weight=1 고정, 층마다 조절하는 W·b만 표시합니다.
