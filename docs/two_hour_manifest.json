@@ -1,5 +1,5 @@
 {
-  "version": "20261019-no-preprocessing-58",
+  "version": "20261019-arithmetic-rule-vision-learning",
   "duration_minutes": 120,
   "teaching_minutes": 120,
   "discussion_minutes": 0,
@@ -79,221 +79,226 @@
       },
       {
         "slide": 2,
-        "title": "규칙 기반과 데이터 학습",
+        "title": "규칙 기반 · 답을 구하는 방법을 사람이 정한다",
         "concept": "rules"
       },
       {
         "slide": 3,
+        "title": "이미지 판단 · 규칙을 어디까지 만들어야 할까?",
+        "concept": "rules-image"
+      },
+      {
+        "slide": 4,
         "title": "지금 Vision AI는 어디까지 왔나?",
         "concept": "vision-evolution"
       },
       {
-        "slide": 4,
+        "slide": 5,
         "title": "첫 선택 · 어떤 모델을 쓸까?",
         "concept": "model-choice"
       },
       {
-        "slide": 5,
+        "slide": 6,
         "title": "내 과제에 맞는 모델과 Label",
         "concept": "task-model-data"
       },
       {
-        "slide": 6,
+        "slide": 7,
         "title": "퍼셉트론 · 하나의 W와 b로 판정",
         "concept": "perceptron"
       },
       {
-        "slide": 7,
+        "slide": 8,
         "title": "AND Gate · 두 입력이 모두 1일 때",
         "concept": "and-rule"
       },
       {
-        "slide": 8,
+        "slide": 9,
         "title": "AND Gate · Weight와 Bias로 직선 이동",
         "concept": "and-gate"
       },
       {
-        "slide": 9,
+        "slide": 10,
         "title": "XOR Gate · 입력이 다를 때만 1",
         "concept": "xor-rule"
       },
       {
-        "slide": 10,
+        "slide": 11,
         "title": "XOR · 선형층을 쌓아도 직선 하나",
         "concept": "xor-gate"
       },
       {
-        "slide": 11,
+        "slide": 12,
         "title": "ReLU · 비선형성의 시작",
         "concept": "relu"
       },
       {
-        "slide": 12,
+        "slide": 13,
         "title": "비선형성 · 깊어져도 직선이면?",
         "concept": "nonlinear"
       },
       {
-        "slide": 13,
+        "slide": 14,
         "title": "CNN Architecture · 사진에서 분류까지",
         "concept": "cnn-overview"
       },
       {
-        "slide": 14,
+        "slide": 15,
         "title": "왜 CNN인가? · 특징을 모아 얼룩말을 알아보기",
         "concept": "cnn-why"
       },
       {
-        "slide": 15,
+        "slide": 16,
         "title": "Kernel · 작은 영역의 가중합",
         "concept": "kernel"
       },
       {
-        "slide": 16,
+        "slide": 17,
         "title": "Feature Map · 같은 계산을 위치마다",
         "concept": "feature-map"
       },
       {
-        "slide": 17,
+        "slide": 18,
         "title": "CNN · 지역 연결과 가중치 공유",
         "concept": "sharing"
       },
       {
-        "slide": 18,
+        "slide": 19,
         "title": "RGB에서 Feature Channel까지",
         "concept": "channels"
       },
       {
-        "slide": 19,
+        "slide": 20,
         "title": "Stride · 계산 위치의 간격",
         "concept": "stride"
       },
       {
-        "slide": 20,
+        "slide": 21,
         "title": "Padding · 같은 입력, 다른 출력 크기",
         "concept": "padding"
       },
       {
-        "slide": 21,
+        "slide": 22,
         "title": "Max Pooling · 영역별 최댓값",
         "concept": "pool"
       },
       {
-        "slide": 22,
+        "slide": 23,
         "title": "실제 Feature Map · CNN 내부 반응",
         "concept": "actual-map"
       },
       {
-        "slide": 23,
+        "slide": 24,
         "title": "Backbone과 Task Head",
         "concept": "backbone"
       },
       {
-        "slide": 24,
+        "slide": 25,
         "title": "데이터셋 · 어떤 사진으로 배우나",
         "concept": "dataset"
       },
       {
-        "slide": 25,
+        "slide": 26,
         "title": "Train · Validation · Test",
         "concept": "split"
       },
       {
-        "slide": 26,
+        "slide": 27,
         "title": "Video Group Split · 데이터 누출 방지",
         "concept": "leakage"
       },
       {
-        "slide": 27,
+        "slide": 28,
         "title": "Data Augmentation · 같은 정답, 다른 조건",
         "concept": "augment"
       },
       {
-        "slide": 28,
+        "slide": 29,
         "title": "모델 학습 · 오차를 줄이는 반복",
         "concept": "learn"
       },
       {
-        "slide": 29,
+        "slide": 30,
         "title": "Loss · 틀린 정도를 줄이는 방향",
         "concept": "loss"
       },
       {
-        "slide": 30,
+        "slide": 31,
         "title": "CNN 학습 · 예측에서 Weight 갱신까지",
         "concept": "cnn-training"
       },
       {
-        "slide": 31,
+        "slide": 32,
         "title": "Training과 Inference의 차이",
         "concept": "infer"
       },
       {
-        "slide": 32,
+        "slide": 33,
         "title": "전이학습 · 특징은 고정하고 분류기만 학습",
         "concept": "transfer"
       },
       {
-        "slide": 33,
+        "slide": 34,
         "title": "같은 CNN 특징 · 지도와 비지도 활용",
         "concept": "cnn-learning-paths"
       },
       {
-        "slide": 34,
+        "slide": 35,
         "title": "Batch · Step · Epoch",
         "concept": "training-log"
       },
       {
-        "slide": 35,
+        "slide": 36,
         "title": "Overfitting · 새 데이터 일반화",
         "concept": "overfit"
       },
       {
-        "slide": 36,
+        "slide": 37,
         "title": "Score Threshold · 판정 기준",
         "concept": "threshold"
       },
       {
-        "slide": 37,
+        "slide": 38,
         "title": "Confusion Matrix · 100건 평가",
         "concept": "confusion"
       },
       {
-        "slide": 38,
+        "slide": 39,
         "title": "Accuracy의 함정 · 모두 정상이라면?",
         "concept": "imbalance"
       },
       {
-        "slide": 39,
+        "slide": 40,
         "title": "Precision과 Recall",
         "concept": "metrics"
       },
       {
-        "slide": 40,
+        "slide": 41,
         "title": "IoU · 박스 겹침 비율",
         "concept": "iou"
       },
       {
-        "slide": 41,
+        "slide": 42,
         "title": "Vision AI 원리 · 한 장으로 연결",
         "concept": "workflow"
       },
       {
-        "slide": 42,
+        "slide": 43,
         "title": "첫 과제를 위한 네 가지 질문",
         "concept": "project-brief"
       },
       {
-        "slide": 43,
+        "slide": 44,
         "title": "실행 결과 확인 · 임계값과 오류 수",
         "concept": "project-run"
       },
       {
-        "slide": 44,
+        "slide": 45,
         "title": "실패 사진이 알려 주는 것",
         "concept": "project-iterate"
       },
       {
-        "slide": 45,
+        "slide": 46,
         "title": "Vision AI 원리 · 무엇을 설명할 수 있나?",
         "concept": "project-check"
       }
@@ -315,52 +320,52 @@
       "minutes": 10
     },
     {
-      "name": "Vision Task · 모델·Label",
+      "name": "Rule-based 계산과 이미지 데이터 학습 · Task",
       "deck": "vision_ai_course",
       "start": 1,
-      "end": 5,
+      "end": 6,
       "minutes": 10
     },
     {
       "name": "퍼셉트론 → AND/XOR의 규칙과 비선형성",
       "deck": "vision_ai_course",
-      "start": 6,
-      "end": 12,
+      "start": 7,
+      "end": 13,
       "minutes": 18
     },
     {
       "name": "CNN · Kernel과 특징 추출",
       "deck": "vision_ai_course",
-      "start": 13,
-      "end": 23,
+      "start": 14,
+      "end": 24,
       "minutes": 30
     },
     {
       "name": "데이터 · 독립 분할과 증강",
       "deck": "vision_ai_course",
-      "start": 24,
-      "end": 27,
+      "start": 25,
+      "end": 28,
       "minutes": 10
     },
     {
       "name": "학습 · CNN Feature 재사용과 지도/비지도",
       "deck": "vision_ai_course",
-      "start": 28,
-      "end": 35,
+      "start": 29,
+      "end": 36,
       "minutes": 14
     },
     {
       "name": "평가 · 결함을 놓치지 않는가",
       "deck": "vision_ai_course",
-      "start": 36,
-      "end": 40,
+      "start": 37,
+      "end": 41,
       "minutes": 9
     },
     {
       "name": "원리 복습 · 사과 검사",
       "deck": "vision_ai_course",
-      "start": 41,
-      "end": 45,
+      "start": 42,
+      "end": 46,
       "minutes": 5
     }
   ]
