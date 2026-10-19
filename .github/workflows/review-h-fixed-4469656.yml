@@ -1,0 +1,61 @@
+name: Reviewer H pinned SHA viewport QA
+
+on:
+  push:
+    branches:
+      - review/h-4469656-20261019
+    paths:
+      - .github/workflows/review-h-fixed-4469656.yml
+      - reviews/automation/h_chromium_qa.py
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  h-pinned-viewport:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Checkout Reviewer branch with pinned source history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Enforce exact Builder source SHA and zero source modifications
+        shell: bash
+        run: |
+          set -euo pipefail
+          PIN=4469656244e55476b2c0e8ca2a1344a9710a29db
+          git cat-file -e "$PIN^{commit}"
+          git merge-base --is-ancestor "$PIN" HEAD
+          git diff --name-only "$PIN" HEAD > /tmp/review-changes.txt
+          if grep -Ev '^(reviews/automation/H-4469656.md|reviews/automation/h_chromium_qa.py|.github/workflows/review-h-fixed-4469656.yml)$' /tmp/review-changes.txt; then
+            echo 'Unexpected changes to pinned Builder source' >&2
+            exit 1
+          fi
+
+      - name: Install Chromium test dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install playwright pillow lxml
+          python -m playwright install --with-deps chromium
+
+      - name: Validate static approved curriculum contract
+        run: |
+          python automation/verify_approved_contract.py --final
+          python scripts/verify_two_hour_course.py
+
+      - name: Serve immutable lecture source and render six H screens
+        run: |
+          python -m http.server 8766 --directory docs >/tmp/h-http.log 2>&1 &
+          python reviews/automation/h_chromium_qa.py
+
+      - name: Save six screenshots and machine-readable QA
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: h-4469656-six-viewport-evidence
+          path: reviews/evidence/h-4469656-browser/
+          retention-days: 14
+          if-no-files-found: warn
