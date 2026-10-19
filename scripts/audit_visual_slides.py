@@ -86,6 +86,7 @@ def inspect_slide(page):
              const r=img.getBoundingClientRect();
              return {src:img.getAttribute('src'),loaded:img.complete&&img.naturalWidth>0,
                      naturalW:img.naturalWidth,naturalH:img.naturalHeight,
+                     visible:r.width>0 && r.height>0,
                      renderW:Math.round(r.width),renderH:Math.round(r.height)};
           });
           const fontPx=title?parseFloat(getComputedStyle(title).fontSize)*fit:0;
@@ -201,7 +202,7 @@ def main():
             issues.append("shrink")
         if row["overlaps"]:
             issues.append("overlap")
-        if any(not x["loaded"] for x in row["images"]):
+        if any(not x["loaded"] and x["visible"] for x in row["images"]):
             issues.append("broken_image")
         if issues:
             summary.append({

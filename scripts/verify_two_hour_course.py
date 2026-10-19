@@ -11,14 +11,14 @@ assert m['duration_minutes']==120
 assert sum(x['minutes'] for x in m['blocks'])==m['teaching_minutes']==120
 assert m['discussion_minutes']==0
 assert m['teaching_minutes']+m['discussion_minutes']==120
-assert [x['global'] for x in items]==list(range(1,56))
+assert [x['global'] for x in items]==list(range(1,57))
 slides={}; concepts={}
-for deck,count in [('intro',13),('vision_ai_course',42)]:
+for deck,count in [('intro',13),('vision_ai_course',43)]:
  text=(D/(deck+'.html')).read_text()
  ss=re.findall(r'<section\b[^>]*class="slide[^\"]*"[^>]*>.*?</section>',text,re.S)
  assert len(ss)==count,(deck,len(ss))
  assert text.count('class="slide active"')==1
- assert re.findall(r'lecture_outline.js\?v=([^\"]+)',text)==['interactive-gates-20261019-1']
+ assert re.findall(r'lecture_outline.js\?v=([^\"]+)',text)==['zebra-20261019-1']
  slides[deck]=ss
  for n,s in enumerate(ss,1):
   c=re.search(r'data-concept="([^\"]+)"',s)[1];concepts[c]=s
@@ -31,7 +31,7 @@ for deck,count in [('intro',13),('vision_ai_course',42)]:
   if path:assert (D/path).is_file(),(deck,path)
  # The user's requested ORIGINAL zebra CNN Figure is restored with a local fallback.
  remote_images=re.findall(r'<img[^>]+src="(https?://[^"]+)"',text)
- assert len(remote_images)<2,(deck,remote_images)
+ assert len(remote_images)<=2,(deck,remote_images)
  if remote_images:
   assert deck=='vision_ai_course' and all('developersbreach.com/wp-content/uploads/2020/08/cnn_banner.png' in u for u in remote_images)
   assert 'lf-zebra-fallback' in text and 'lf-no-external' in text
@@ -39,7 +39,7 @@ for deck,count in [('intro',13),('vision_ai_course',42)]:
  assert not re.search(r'VGG-16|BatchNorm|γ|β|Grad-CAM|다음 장|기존 숫자',text),'Removed advanced topic or stale transition'
 # Prerequisites are executable constraints, not just comments in a teaching plan.
 seq=[x['concept'] for x in m['decks']['vision_ai_course']]
-for before,after in [('task','rules'),('rules','vision-evolution'),('vision-evolution','model-choice'),('model-choice','task-model-data'),('task-model-data','perceptron'),('perceptron','and-gate'),('and-gate','xor-gate'),('xor-gate','relu'),('relu','nonlinear'),('nonlinear','cnn-overview'),('cnn-overview','kernel'),('kernel','feature-map'),('feature-map','sharing'),('sharing','channels'),('channels','stride'),('stride','padding'),('padding','pool'),('pool','actual-map'),('actual-map','backbone'),('backbone','dataset'),('dataset','split'),('split','leakage'),('leakage','preprocess'),('preprocess','augment'),('augment','learn'),('learn','loss'),('loss','cnn-training'),('cnn-training','infer'),('infer','transfer'),('transfer','training-log'),('training-log','overfit'),('overfit','threshold'),('threshold','confusion'),('confusion','imbalance'),('imbalance','metrics'),('metrics','iou'),('iou','workflow'),('workflow','project-brief'),('project-brief','project-run'),('project-run','project-iterate'),('project-iterate','project-check')]:
+for before,after in [('task','rules'),('rules','vision-evolution'),('vision-evolution','model-choice'),('model-choice','task-model-data'),('task-model-data','perceptron'),('perceptron','and-gate'),('and-gate','xor-gate'),('xor-gate','relu'),('relu','nonlinear'),('nonlinear','cnn-overview'),('cnn-overview','cnn-why'),('cnn-why','kernel'),('kernel','feature-map'),('feature-map','sharing'),('sharing','channels'),('channels','stride'),('stride','padding'),('padding','pool'),('pool','actual-map'),('actual-map','backbone'),('backbone','dataset'),('dataset','split'),('split','leakage'),('leakage','preprocess'),('preprocess','augment'),('augment','learn'),('learn','loss'),('loss','cnn-training'),('cnn-training','infer'),('infer','transfer'),('transfer','training-log'),('training-log','overfit'),('overfit','threshold'),('threshold','confusion'),('confusion','imbalance'),('imbalance','metrics'),('metrics','iou'),('iou','workflow'),('workflow','project-brief'),('project-brief','project-run'),('project-run','project-iterate'),('project-iterate','project-check')]:
  assert seq.index(before)<seq.index(after),(before,after)
 assert not {'affine-net','affine-collapse','xor-net'} & set(seq)
 # Every slide must belong to one timed block; no omitted or duplicated material.
@@ -76,7 +76,7 @@ assert '지도학습(Supervised Learning)' in concepts['rules']
 assert '2 Epoch = 6 Step' in concepts['training-log']
 assert '80%' in concepts['imbalance'] and '0%' in concepts['imbalance']
 assert '실제 불량 확률을 보장하지 않습니다' in concepts['threshold']
-assert 'Label도 함께 변환' in concepts['augment']
+assert 'Label도 함께 바꿉니다' in concepts['augment']
 assert 'Train에서만' in concepts['preprocess']
 assert 'mAP' in concepts['iou']
 assert '실제 모델을 실행한 결과는 아닙니다' in concepts['project-run']
@@ -91,7 +91,7 @@ for deck in ['intro','vision_ai_course','ai_basics','vision_ai']:
  assert 'cursor:zoom' not in text
 for a in ['perceptron_gate_structure_ko','and_xor_gate_geometry_ko','xor_multilayer_gates_ko']:
  ET.parse(D/'assets/lesson'/f'{a}.svg')
-print('TWO_HOUR_QA_PASSED: 55 slides, 120 teaching minutes without a Q&A block, principles-first prerequisites, shared numeric examples and local assets')
+print('TWO_HOUR_QA_PASSED: 56 slides, 120 teaching minutes without a Q&A block, principles-first prerequisites, shared numeric examples and local assets')
 
 # Open feedback paths must not render as a solid filled blob.
 root=ET.parse(D/'assets/lesson/context_cnn_training.svg').getroot()
@@ -147,9 +147,13 @@ print('GATE_SIMPLIFICATION_QA_PASSED: W/B per layer, linear boundary then ReLU-b
 assert 'z=Wx₁+x₂+b' in concepts['and-gate']
 assert '기울기 −W' in concepts['and-gate'] and 'y절편 −b' in concepts['and-gate']
 assert 'z=W₂t+x₁+b₂' in concepts['xor-gate']
-assert '두 번째 층에 더하는 x₁은 고정된 연결' in concepts['xor-gate']
+assert 'x₁은 고정된 입력 연결' in concepts['xor-gate']
 js_source=(D/'interactive_gates.js').read_text()
 assert '[values.w,1,values.b]' in js_source
 assert '[1+values.w1*values.w2, values.w2, values.w2*values.b1+values.b2]' in js_source
 assert 'clippedLine' in js_source
 print('GATE_ROTATION_QA_PASSED: W rotates effective linear boundary, b translates, XOR nonlinear contours clipped')
+
+assert 'cnn_banner.png' in concepts['transfer']
+assert '뇌의 작동을 그대로 재현한 모델은 아닙니다' in concepts['cnn-why']
+assert seq.index('cnn-why') == seq.index('cnn-overview') + 1

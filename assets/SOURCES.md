@@ -522,3 +522,8 @@ https://www.nature.com/articles/s42256-020-00257-z
 - Course 9: `vision_task_apple_reference.jpg`의 실제 ROI `(550,185,85,85)`를 SVG viewport로 확대. 5×5 교육용 배열은 사진에서 추출한 값이 아님을 인접 문장으로 명시.
 - Course 10/12–15/30–33/37: Kernel 위치, 병렬 RGB 필터, 시작 위치, Pooling 영역 및 혼동행렬/지표는 자체 HTML/SVG 수치 도식. 외부 이미지 출처는 추가하지 않는다.
 - Course 16/21/22: 기존 SqueezeNet 계산 및 Stanford 강아지 사진 출처를 보존. 실제 반응/직접 이미지 변환/사과 Task 개념의 차이를 표시.
+
+## 2026-10-19 · 얼룩말 CNN 구조 재사용
+
+- Course11/Course31: Swapna K E · Developers Breach (2020), https://developersbreach.com/convolution-neural-network-deep-learning/ 의 기존 외부 `cnn_banner.png` 참조를 재사용한다. 실제 표시 시 인접 출처를 제공하고 접속 실패 시 로컬 자체 구조로 대체한다. 이번 환경에서는 원본 호스트 접속이 403이라 원본 이미지를 다운로드하거나 수정하지 않았다.
+- Course12 `cnn-why`: 경계/줄무늬·특징 조합·분류는 직접 작성한 HTML/SVG 개념도다. 실제 CNN 채널 출력 또는 뇌 측정 결과가 아니다.
