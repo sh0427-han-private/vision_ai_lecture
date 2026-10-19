@@ -8,7 +8,7 @@
 | Group | Planned slides | Minutes | Status |
 |---|---|---:|---|
 | A | P01–P13 | 26 | Implemented; Chromium automatic QA passed; Reviewer pending |
-| B | P14–P18 | 10 | Implemented; automatic Chromium / Reviewer QA pending |
+| B | P14–P18 | 10 | Implemented; 10-view Chromium B QA and route tests passed; Reviewer pending |
 | C | P19–P27 | 23 | Pending |
 | D | P28–P36 | 22 | Pending |
 | E | P37–P40 | 9 | Pending |
@@ -41,4 +41,14 @@ Changed paths: `docs/intro.html`, `docs/intro_approved_a.css`, `docs/vision_ai_c
 - P18: three rows comparing image Class, defect Box+Class and Pixel Mask annotation effort, Ground Truth vs Prediction distinction and qualitative-cost caveat.
 - The 58-slide staged route has Intro13 + Course45; approved final is 55. Manifest/Outline reindexed downstream Course slide numbers by one. Legacy 120-minute block total retained, approved A=26 min vs interim Intro=24 min still needs regrouping with C–H.
 - Files: `docs/vision_ai_course.html`, `docs/b_approved_figure.css`, `docs/intro.html` (outline cache only), `docs/two_hour_manifest.json`, `docs/lecture_outline.js`, `scripts/verify_two_hour_course.py`, `scripts/verify_learning_routes.py`, `assets/SOURCES.md`, `BUILDER_PROGRESS.md`.
-- CI evidence and remaining problems: pending subsequent section (do not mark verified until automated and independent visual review).
+- CI evidence and remaining problems: see following final validation notes; do not mark Reviewer-Verified.
+
+## Group B CI validation and unresolved work
+
+- Latest browser CI source [commit c1e01d4](https://github.com/sh0427-han/vision_ai_lecture/commit/c1e01d474b31ee8b3931b19376bed056ab77f5d3). [Intro interaction run 39225261789](https://github.com/sh0427-han/vision_ai_lecture/actions/runs/39225261789): **PASS**.
+- [Lecture figure + route + targeted B run 39225261764](https://github.com/sh0427-han/vision_ai_lecture/actions/runs/39225261764): structural/number/math verification PASS; SVG text layout pass; 116 Chromium captures = 58 slides × 2 viewports (1920×1080, 1366×768). Zero automatically flagged layout issues in P14–P18 and earlier A segment.
+- **Targeted approved B Playwright test PASS**: 10 P14–P18 images, six matched D-L/D-D/N-D image instances, sources+brightness equal across panels, aligned photo row coordinates, one shared Model M spanning learning/inference, key node computed font-size ≥16px, three decision/independent validation gates, three GT Label types. Screenshot evidence: [GitHub Actions artifact 12173267197](https://github.com/sh0427-han/vision_ai_lecture/actions/runs/39225261764/artifacts/12173267197), `visual_audit_output/approved_b/`.
+- **Whole-route Playwright QA PASS**: cross-page deep links, 58-slide TOC continuity, Python add(1,1)=2 and add(2,1)=3, P16 image loading, B content and other interactive slides (run 39225261764).
+- **Global layout workflow remains FAIL**, solely due to two inherited out-of-scope screens: course C10 `xor-gate` at 1366×768 fit=0.871 and course C33 `cnn-learning-paths` fit=0.848 (legacy C11/C34 before B). Both are already known and belong to C/F follow-up; no new A/B overlap, broken image or shrink issue reported.
+- **Not yet verified:** independent Reviewer evaluation (RML-01/02/03, FLOW-01 closure still subject to reviewer), manual visual inspection of screenshot compositions, actual classroom readability and 120-minute rehearsal, GitHub Pages deployment and final 55-slide consistency. The rule-vs-learn contrast uses distinct source images for healthy/defect apples and a simulated new-input variant, not experimental evidence.
+- **Next:** C P19–P27, CNN motivation/architecture/perceptron/nonlinearity and address inherited C10 XOR shrink as part of the approved storyboard. Keep this single work branch / draft PR; do not merge automatically.
