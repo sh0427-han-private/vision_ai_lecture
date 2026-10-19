@@ -567,3 +567,9 @@ https://www.nature.com/articles/s42256-020-00257-z
 - P37 reuses existing generated normal/defect originals with controlled viewports and identical CSS brightness factors. Different originals are disclosed; no new actual experiment or external Figure.
 - P38: 100 visible tiles, each representing ten images; 700/150/150. P39 reuses photos to illustrate hypothetical A/B/C ×3 Frame IDs; this is not nine real observations. Identical IDs are rearranged to demonstrate random leakage versus disjoint Group Split.
 - P40 reuses the defect photo and canonical GT Box/Mask. Each valid geometric transform wraps photo and annotations together; complete defect covering is marked invalid. Train-only augmentation is explicit. Original self-authored SVG/HTML diagrams, no external Figure copied.
+
+## Approved group F P41–P47 (2026-10-19)
+
+- P41 retains the actual local Gradient Descent UI (`interactive_lessons.js`); photos+Class Label bridge the image problem to a separate educational scalar regression. Batch/Epoch definitions moved from the removed standalone slide to presenter notes.
+- P42 original SVG computes gradient −12 and learning rate0.1: w0.5→1.7, Loss9→0.36. P43/P45 reuse the exact local P20 model nodes/shapes and parameter counts; Optimizer arrowheads reach trainable Conv/Head boundaries. P45 external zebra Figure is replaced by local Head-only / Fine-tuning comparison and a link to the actual shared model. No external Figure copied.
+- P44/P46 original HTML/SVG Training/Inference and shared Frozen Features branches. Group A/B are arbitrary clusters, not defect classes; past pretraining may have used Labels. P47 curves are explicitly virtual trends and the same generated apple brightness comparison is a hypothesis aid, not a measured failure log.

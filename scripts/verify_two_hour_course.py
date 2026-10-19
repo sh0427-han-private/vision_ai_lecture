@@ -401,7 +401,7 @@ def check_training_and_transfer():
             require(targets == {"head"}, "Frozen Backbone receives a Weight update")
         else:
             require("head" in targets and targets & {"conv-a","conv-b"}, "Fine-tuning does not update a selected Backbone layer")
-    require(CONCEPTS["cnn-learning-paths"].find(cls="su-stage--backbone")
+    require(CONCEPTS["cnn-learning-paths"].find(cls="su-shared")
             and CONCEPTS["cnn-learning-paths"].find(cls="su-path--sup")
             and CONCEPTS["cnn-learning-paths"].find(cls="su-path--un"), "P46 shared frozen features → supervised/unsupervised branches")
 

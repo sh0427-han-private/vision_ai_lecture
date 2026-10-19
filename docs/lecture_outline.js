@@ -1,4 +1,4 @@
-/* Approved 55-slide plan; actual staged count 58. */
+/* Approved 55-slide plan; actual staged count 57. */
 window.LECTURE_OUTLINE = {
   "version": "approved55-20261019-1",
   "groups": [
@@ -309,14 +309,8 @@ window.LECTURE_OUTLINE = {
         {
           "page": "vision_ai_course.html",
           "slide": 34,
-          "title": "Batch · Step · Epoch",
-          "global": 47
-        },
-        {
-          "page": "vision_ai_course.html",
-          "slide": 35,
           "title": "Overfitting · 새 데이터 일반화",
-          "global": 48
+          "global": 47
         }
       ]
     },
@@ -325,33 +319,33 @@ window.LECTURE_OUTLINE = {
       "items": [
         {
           "page": "vision_ai_course.html",
-          "slide": 36,
+          "slide": 35,
           "title": "Score Threshold · 판정 기준",
+          "global": 48
+        },
+        {
+          "page": "vision_ai_course.html",
+          "slide": 36,
+          "title": "Confusion Matrix · 100건 평가",
           "global": 49
         },
         {
           "page": "vision_ai_course.html",
           "slide": 37,
-          "title": "Confusion Matrix · 100건 평가",
+          "title": "Accuracy의 함정 · 모두 정상이라면?",
           "global": 50
         },
         {
           "page": "vision_ai_course.html",
           "slide": 38,
-          "title": "Accuracy의 함정 · 모두 정상이라면?",
+          "title": "Precision과 Recall",
           "global": 51
         },
         {
           "page": "vision_ai_course.html",
           "slide": 39,
-          "title": "Precision과 Recall",
-          "global": 52
-        },
-        {
-          "page": "vision_ai_course.html",
-          "slide": 40,
           "title": "IoU · 박스 겹침 비율",
-          "global": 53
+          "global": 52
         }
       ]
     },
@@ -360,33 +354,33 @@ window.LECTURE_OUTLINE = {
       "items": [
         {
           "page": "vision_ai_course.html",
-          "slide": 41,
+          "slide": 40,
           "title": "Vision AI 원리 · 한 장으로 연결",
+          "global": 53
+        },
+        {
+          "page": "vision_ai_course.html",
+          "slide": 41,
+          "title": "첫 과제를 위한 네 가지 질문",
           "global": 54
         },
         {
           "page": "vision_ai_course.html",
           "slide": 42,
-          "title": "첫 과제를 위한 네 가지 질문",
+          "title": "실행 결과 확인 · 임계값과 오류 수",
           "global": 55
         },
         {
           "page": "vision_ai_course.html",
           "slide": 43,
-          "title": "실행 결과 확인 · 임계값과 오류 수",
+          "title": "실패 사진이 알려 주는 것",
           "global": 56
         },
         {
           "page": "vision_ai_course.html",
           "slide": 44,
-          "title": "실패 사진이 알려 주는 것",
-          "global": 57
-        },
-        {
-          "page": "vision_ai_course.html",
-          "slide": 45,
           "title": "Vision AI 원리 · 무엇을 설명할 수 있나?",
-          "global": 58
+          "global": 57
         }
       ]
     }

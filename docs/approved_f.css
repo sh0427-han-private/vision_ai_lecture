@@ -1,0 +1,26 @@
+/* Approved F: original lecture figures, scoped to seven slides only. */
+.lesson-deck .f55 {gap:12px}
+.f55 .f55-diagram {display:block;width:100%;height:auto;max-height:51dvh;margin:4px auto 0;overflow:visible}
+.f55 .f55-caption {font-size:clamp(16px,1.02vw,19px);line-height:1.4;color:#657e8a;margin:0}
+.f55 .lesson-takeaway {font-size:clamp(17px,1.35vw,25px);line-height:1.45;margin-top:7px}
+.f55 .slide-subtitle {margin-bottom:8px}
+.f55 .f55-paths {display:block;padding:0;border:0;background:none;margin:0;box-shadow:none}
+.f55 .lesson-inline-lab {margin:0;padding:10px 0 4px;font-size:clamp(15px,1.2vw,22px)}
+.f55 .lab-toolbar .lab-prompt,.f55 .lab-toolbar .lab-step {font-size:clamp(16px,1.3vw,24px)}
+.f55 .lab-training {grid-template-columns:1.05fr 1fr;gap:30px}
+.f55 .lab-training-flow {font-size:clamp(16px,1.25vw,23px)}
+.f55 .lab-training-eq {font-size:clamp(25px,2.2vw,39px);margin:12px 0}
+.f55 .lab-training-actions button {font-size:clamp(16px,1.15vw,22px);padding:10px 16px}
+.f55 .lab-learning-note {font-size:clamp(17px,1.35vw,25px);line-height:1.4;margin:10px 0}
+.f55 .lab-caption {font-size:clamp(17px,1.3vw,24px)}
+.f55 .lab-caption em {font-size:clamp(13px,.95vw,18px)}
+.f55 .lab-hint {font-size:clamp(16px,1.04vw,20px);line-height:1.4}
+.f55 .lab-footnote {font-size:clamp(16px,1vw,18px)}
+.f55 .lab-bars {height:24dvh;min-height:150px;max-height:255px}
+.f55 .lab-bar-value {font-size:clamp(24px,2vw,36px)}
+.f55 .lab-bar-label {font-size:clamp(15px,1.15vw,21px)}
+@media(max-height:820px){.lesson-deck .f55{gap:8px}.f55 .f55-diagram{max-height:47dvh}.f55 .lab-learning-note{margin:7px 0}.f55 .lab-training-actions button{padding:8px 12px}.f55 .lab-caption em{display:none}}
+.f55 .f55-learn-bridge{display:flex;align-items:center;gap:20px;border-bottom:1px solid #dce6e9;padding-bottom:6px;color:#31596b;font-size:clamp(16px,1.2vw,22px)}
+.f55-learn-bridge>svg{width:72px;height:72px;flex:0 0 72px}
+.f55-learn-bridge span{color:#657e8a}
+@media(max-height:820px){.f55-learn-bridge>svg{width:54px;height:54px;flex-basis:54px}.f55 .f55-learn-bridge{gap:12px}}

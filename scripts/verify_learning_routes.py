@@ -103,11 +103,11 @@ def main():
   # unlabeled feature clustering stage; these are not equivalent class labels.
   page.goto(f"{BASE}/vision_ai_course.html#slide-{number('cnn-learning-paths')}")
   page.wait_for_selector('.slide.active .su-figure')
-  assert page.locator('.slide.active .su-stage--backbone').count()==1
-  assert page.locator('.slide.active .su-path').count()==2
-  assert '정상 / 불량' in page.locator('.slide.active .su-path--sup').inner_text()
-  assert '그룹 A / B' in page.locator('.slide.active .su-path--un').inner_text()
-  assert '학습 데이터의 Label과 학습 목표' in page.locator('.slide.active').inner_text()
+  assert page.locator('.slide.active .su-shared').count()==1
+  assert page.locator('.slide.active .su-path--sup, .slide.active .su-path--un').count()==2
+  assert '정상 / 불량' in page.locator('.slide.active .su-path--sup').text_content()
+  assert 'Group A / B' in page.locator('.slide.active .su-path--un').text_content()
+  assert 'Label 없이 특징 군집화' in page.locator('.slide.active').inner_text()
   page.goto(f"{BASE}/vision_ai_course.html#slide-{number('perceptron')}")
   assert page.locator('.slide.active img[src*="perceptron_approved_c.svg"]').count()==1
   # General one-neuron perceptron first; AND logic rule is its application.
@@ -182,12 +182,18 @@ def main():
   assert shown_matrix('padding-input')==[[1,2,3],[4,5,6],[7,8,9]]
   assert shown_matrix('padding-output')==[[12,21,16],[27,45,33],[24,39,28]]
   page.goto(f"{BASE}/vision_ai_course.html#slide-{number('transfer')}")
-  assert page.locator('.zebra-transfer-legend article').count()==2
-  # Staged build: P20 is local now; P45 will be replaced in F, which is not yet Verified.
+  assert page.locator('.slide.active [data-transfer-mode]').count()==2
+  head_only=page.locator('.slide.active [data-transfer-mode="head-only"]')
+  assert head_only.locator('[data-update-target="head"]').count()==1
+  assert head_only.locator('[data-update-target="conv-a"], [data-update-target="conv-b"]').count()==0
+  fine_tune=page.locator('.slide.active [data-transfer-mode="fine-tune"]')
+  assert fine_tune.locator('[data-update-target="conv-b"]').count()==1
+  assert fine_tune.locator('[data-update-target="head"]').count()==1
+  assert page.locator('.slide.active img[src^="http"]').count()==0
+  page.click('[data-ref-concept="cnn-overview"]')
+  position(page,'vision_ai_course',number('cnn-overview'),COURSE_TOTAL)
   page.wait_for_selector('[data-concept="cnn-overview"] [data-cnn-architecture][data-ready="true"]',state='attached')
   assert page.locator('[data-concept="cnn-overview"] [data-cnn-architecture]').get_attribute('data-model-id')=='apple-cnn-1426'
-  assert 'Head 교체' in page.locator('.slide.active').inner_text()
-  assert 'Freeze' in page.locator('.slide.active').inner_text()
   # Training demonstration really follows the same step as the adjacent slide.
   learn=number('learn')
   page.goto(f'{BASE}/vision_ai_course.html#slide-{learn}');position(page,'vision_ai_course',learn,COURSE_TOTAL)
@@ -195,6 +201,13 @@ def main():
   assert abs(float(page.locator('[data-weight]').inner_text())-1.7)<1e-6
   assert abs(float(page.locator('[data-loss]').inner_text())-.36)<1e-6
   page.click('[data-train-reset]')
+  assert float(page.locator('[data-weight]').inner_text())==.5
+  page.click('[data-train-run]')
+  page.wait_for_function("Number(document.querySelector('[data-iteration]').textContent)>=1")
+  assert float(page.locator('[data-loss]').inner_text())<9
+  page.click('[data-train-reset]')
+  page.wait_for_timeout(400)
+  assert page.locator('[data-iteration]').inner_text()=='0'
   assert float(page.locator('[data-weight]').inner_text())==.5
   # Recompute the educational validation results when the learner changes threshold.
   page.goto(f"{BASE}/vision_ai_course.html#slide-{number('project-run')}")

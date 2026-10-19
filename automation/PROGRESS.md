@@ -9,7 +9,7 @@ Integration branch: `automation/approved-55-20261019`. Main baseline ad3f0a8; ap
 | C | P19–27 |23|fc8d463 (cache/test follow-up014c4c3)|PASS independent|9 slides/18+2 independent views, 2 viewport interaction/geometry runs, Critical0/Major0/Minor0|
 | D | P28–36 |22|9a4eacf → ae99806|PASS final ae99806|18+2 independent views; Critical0/Major0/Minor0. 24 displayed matrices/9 windows/PNG failure PASS; SqueezeNet re-inference NOT VERIFIED|
 | E | P37–40 |9|39e9cc5|PASS independent|8 independent views; Critical0/Major0/Minor0; split/group/GT transforms verified|
-| F | P41–47 |15|—|pending|Medium Builder implementing 7 lessons, folding training-log into learn|
+| F | P41–47 |15|—|pending|Implemented 7 lessons; training-log absorbed. 14 integrated views, Gradient/parameter/source checks PASS; independent review pending|
 | G | P48–52 |10|—|pending|Pending|
 | H | P53–55 |5|—|pending|Pending|
 
