@@ -154,9 +154,7 @@ Repository를 수정하는 AI coding agent와 HTML 작성 작업은 다음 문�
 
 ## Current Entry Point
 
-강의는 다음 파일에서 시작합니다.
-
-- `docs/intro.html`
+강의는 `docs/index.html`의 **Vision AI 기초** 표지에서 시작합니다. 표지 다음에는 `docs/intro.html#slide-1`이 열립니다. 본문 55장의 번호는 표지 뒤에서 시작합니다.
 
 GitHub Pages:
 
@@ -268,7 +266,7 @@ GitHub Pages:
 - 핵심/전체 모드 전환 및 AI Basics → Vision AI 이동, 전체 슬라이드 100장 × 2개 viewport, 자산·HTML·Figure 겹침 검사를 함께 수행합니다. 자산과 공통 SVG 스타일은 변경하지 않습니다.
 
 
-## 2026-10-15 · 단일 전체 강의 경로 / 목차·핵심 모드 제거 (최신)
+## 2026-10-15 · 단일 전체 강의 경로 / 목차·핵심 모드 제거 (변경 이력)
 
 - **공개 사이트 루트** `/`와 기존 `/docs/index.html`은 모두 즉시 `/docs/intro.html#slide-1`로 리디렉션합니다. 목차 화면 및 챕터 선택 카드를 제공하지 않습니다.
 - Intro/AI Basics/Vision AI 페이지의 헤더에서는 **목차·챕터 바로가기 메뉴를 제거**하고 단일 브랜드 링크(항상 Intro 1번으로 이동)만 표시합니다.

@@ -46,11 +46,14 @@ for name, count in expected.items():
 
     print(f"{name}: {actual} slides and local resources verified")
 
-# Both published entrypoints must go straight to Intro 1, not a contents menu.
+# The published entrypoints open the cover, which leads to Intro 1.
 home = (DOCS / "index.html").read_text("utf-8")
 repo_home = (ROOT / "index.html").read_text("utf-8")
-assert 'location.replace("./intro.html#slide-1")' in home
-assert 'location.replace("./docs/intro.html#slide-1")' in repo_home
+assert 'location.replace("./docs/index.html")' in repo_home
+assert '<h1>Vision AI 기초</h1>' in home
+assert 'data-next-page="intro.html"' in home
+assert 'href="intro.html#slide-1"' in home
+assert (DOCS / "lecture_cover.css").is_file()
 assert 'class="card"' not in home and 'mode=core' not in home
 nav_js = (DOCS / "slide.js").read_text("utf-8")
 assert 'coreMode' not in nav_js and 'nearbyIncluded' not in nav_js
@@ -65,13 +68,13 @@ for page in ("intro.html", "ai_basics.html", "vision_ai.html"):
     assert ('slide.js?v=prevent-toc-wheel-20261016-1' if page == "intro.html"
             else 'slide.js?v=prevent-toc-wheel-20261016-1') in markup, page
 intro_markup = (DOCS / "intro.html").read_text("utf-8")
-assert 'data-prev-page=""' in intro_markup
+assert 'data-prev-page="index.html"' in intro_markup
 assert 'data-next-page="vision_ai_course.html"' in intro_markup
 assert 'data-prev-page="intro.html"' in (DOCS / "ai_basics.html").read_text("utf-8")
 assert 'data-next-page="vision_ai.html"' in (DOCS / "ai_basics.html").read_text("utf-8")
 assert 'data-prev-page="ai_basics.html"' in (DOCS / "vision_ai.html").read_text("utf-8")
 assert 'data-next-page=""' in (DOCS / "vision_ai.html").read_text("utf-8")
-print("Landing redirects and single-track controls validated.")
+print("Cover entry and single-track controls validated.")
 
 figures = sorted((DOCS / "assets/lesson").glob("lecture_*.svg"))
 assert len(figures) >= 9, "missing new lesson illustrations"

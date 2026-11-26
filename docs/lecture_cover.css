@@ -1,0 +1,34 @@
+.lecture-cover {
+  --deck-header-height: 0px;
+}
+
+.lecture-cover .slide {
+  background: #f0f8f5;
+}
+
+.lecture-cover h1 {
+  max-width: none;
+  margin: 0;
+  color: #183f39;
+  text-align: center;
+  font-size: clamp(36px, 6vw, 112px);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.04em;
+  word-break: keep-all;
+}
+
+.lecture-cover .deck-controls-inner {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.lecture-cover .deck-button {
+  display: grid;
+  place-items: center;
+  min-width: 44px;
+  min-height: 44px;
+  font-size: 22px;
+  line-height: 1;
+  text-decoration: none;
+}

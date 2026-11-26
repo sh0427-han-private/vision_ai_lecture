@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Vision AI 강의 시작 · 주소 이동 안내</title>
-<link rel="canonical" href="../intro.html">
-<meta http-equiv="refresh" content="0;url=../intro.html">
+<link rel="canonical" href="../index.html">
+<meta http-equiv="refresh" content="0;url=../index.html">
 <script>
 (function () {
   // GitHub Pages publishes the repository docs/ directory as the site root.
-  // Preserve the original query and slide hash (such as #slide-25).
-  var destination = new URL("../intro.html", window.location.href);
+  // A legacy slide bookmark still opens the same numbered Intro slide.
+  var destination = new URL(window.location.hash ? "../intro.html" : "../index.html", window.location.href);
   destination.search = window.location.search;
   destination.hash = window.location.hash;
   window.location.replace(destination.href);
@@ -18,6 +18,6 @@
 </script>
 </head>
 <body>
-<p>강의자료 주소가 이동되었습니다. <a href="../intro.html">Vision AI 강의 시작 열기</a></p>
+<p>강의자료 주소가 이동되었습니다. <a href="../index.html">Vision AI 강의 시작 열기</a></p>
 </body>
 </html>
