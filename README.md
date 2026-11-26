@@ -17,7 +17,7 @@
 | G | P48–52 | 10 | Threshold·혼동행렬·Precision/Recall·IoU |
 | H | P53–55 | 5 | 같은 사과 사례로 전체 원리 복습 |
 
-`docs/intro.html`에서 시작합니다. 목차 버튼으로 원하는 슬라이드에 이동하고, 이전/다음·키보드로 순서대로 볼 수 있습니다. 정확한 제목·번호는 [Manifest](docs/two_hour_manifest.json)와 [Outline](docs/lecture_outline.js)을 기준으로 합니다.
+`docs/index.html`의 **Vision AI 기초** 표지에서 시작합니다. 표지의 화살표, 오른쪽 방향키 또는 스페이스바로 Intro 1장에 들어갑니다. 본문은 목차와 이전/다음 버튼으로 탐색할 수 있으며, 제목과 번호는 [Manifest](docs/two_hour_manifest.json)와 [Outline](docs/lecture_outline.js)을 기준으로 합니다.
 
 관련 개념 안에 흑백·RGB Pixel, 해상도, AND/XOR 경계, Gradient Descent, 임계값 실습을 배치합니다. 별도 Lab·외부 CDN을 요구하지 않습니다. 같은 사과 사진·로컬 CNN 구조를 재사용하며, 실제 Feature Map과 교육용 수치 예제를 구분합니다.
 

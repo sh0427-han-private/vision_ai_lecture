@@ -25,8 +25,13 @@ def main():
   for deck,total in DECKS:
    page.goto(f'{BASE}/docs/{deck}.html?from=legacy#slide-3');position(page,deck,3,total)
    assert '/docs/' not in page.url and 'from=legacy' in page.url
-  page.goto(BASE+'/index.html');position(page,'intro',1,DECKS[0][1])
-  assert page.locator('[data-slide-prev]').is_disabled()
+  page.goto(BASE+'/index.html')
+  page.wait_for_url('**/index.html#slide-1')
+  assert page.locator('.slide.active').inner_text().strip()=='Vision AI 기초'
+  page.keyboard.press('ArrowRight');position(page,'intro',1,DECKS[0][1])
+  page.click('[data-slide-prev]')
+  page.wait_for_url('**/index.html#slide-1')
+  page.get_by_role('link',name='강의 시작').click();position(page,'intro',1,DECKS[0][1])
   assert page.locator('#lecture-toc-drawer').get_attribute('aria-hidden')=='true'
   page.click('.lecture-toc-toggle')
   assert page.locator('.lecture-toc-link').count()==TOTAL
