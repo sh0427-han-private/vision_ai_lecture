@@ -4,22 +4,22 @@ on:
   push:
     branches:
       - main
+  pull_request:
+    paths:
+      - 'slidev/**'
+      - 'docs/**'
+      - '.github/workflows/deploy-pages.yml'
   workflow_dispatch:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
-  group: pages
+  group: pages-${{ github.event_name == 'pull_request' && github.ref || 'publish' }}
   cancel-in-progress: false
 
 jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -28,13 +28,47 @@ jobs:
       - name: Validate lecture structure
         run: python scripts/verify_curriculum_overhaul.py
 
-      - name: Configure Pages
-        uses: actions/configure-pages@v5
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: 'npm'
+          cache-dependency-path: slidev/package-lock.json
+
+      - name: Build and verify the Slidev deck
+        working-directory: slidev
+        run: |
+          npm ci
+          npm test
+          npm run build
+
+      - name: Stage both lecture formats
+        run: |
+          mkdir -p docs/slidev
+          cp -R slidev/dist/. docs/slidev/
+          test -s docs/index.html
+          test -s docs/slidev/index.html
 
       - name: Upload docs artifact
+        if: github.event_name != 'pull_request'
         uses: actions/upload-pages-artifact@v4
         with:
           path: ./docs
+
+  deploy:
+    if: github.event_name != 'pull_request'
+    needs: build
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
 
       - name: Deploy to GitHub Pages
         id: deployment

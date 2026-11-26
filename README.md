@@ -2,7 +2,7 @@
 
 사진의 Pixel부터 CNN·학습·독립 평가까지 연결하는 초급 강의입니다. 승인 구성은 **Intro13 + Course42 = 55장 / 120분**입니다. 학생이 AI와 프로젝트를 진행할 때 Task·Label·데이터·평가 기준을 설명할 수 있는 기초를 목표로 합니다.
 
-[공개 강의](https://sh0427-han.github.io/vision_ai_lecture/) · [승인 스토리보드](planning/SLIDE_STORYBOARD.md) · [운영안](TWO_HOUR_LECTURE_PLAN.md) · [제작·검수 현황](automation/PROGRESS.md)
+[공개 강의](https://sh0427-han-private.github.io/vision_ai_lecture/) · [승인 스토리보드](planning/SLIDE_STORYBOARD.md) · [운영안](TWO_HOUR_LECTURE_PLAN.md) · [제작·검수 현황](automation/PROGRESS.md) · [Slidev 덱](slidev/README.md)
 
 이 개편은 별도 작업 브랜치에서 진행합니다. **작업 브랜치의 구현과 현재 공개 Pages 버전은 다를 수 있습니다.** 최종 검수 후에도 main 병합과 공개 배포에는 사용자 승인이 필요합니다.
 

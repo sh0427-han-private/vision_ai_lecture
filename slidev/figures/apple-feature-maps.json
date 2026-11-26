@@ -1,0 +1,68 @@
+{
+  "source": "docs/assets/vision_task_apple_reference.jpg",
+  "inputSha256": "bf33421c012941a6587066cb77dee4a824baed3be3da7c5d3ad2c6e6c6073cce",
+  "model": "SqueezeNet1.1",
+  "weights": "IMAGENET1K_V1",
+  "weightsUrl": "https://download.pytorch.org/models/squeezenet1_1-b8a52dc0.pth",
+  "torch": "2.9.1+cpu",
+  "torchvision": "0.24.1+cpu",
+  "preprocessing": {
+    "resizeShortSide": 256,
+    "centerCrop": 224,
+    "mean": [
+      0.485,
+      0.456,
+      0.406
+    ],
+    "std": [
+      0.229,
+      0.224,
+      0.225
+    ]
+  },
+  "display": "Four highest-spatial-variance channels per stage. Each channel uses its own 2nd–99th percentile display range.",
+  "stages": [
+    {
+      "layer": 1,
+      "shape": [
+        111,
+        111,
+        64
+      ],
+      "channels": [
+        35,
+        43,
+        0,
+        50
+      ]
+    },
+    {
+      "layer": 7,
+      "shape": [
+        27,
+        27,
+        256
+      ],
+      "channels": [
+        2,
+        6,
+        139,
+        154
+      ]
+    },
+    {
+      "layer": 12,
+      "shape": [
+        13,
+        13,
+        512
+      ],
+      "channels": [
+        266,
+        465,
+        441,
+        137
+      ]
+    }
+  ]
+}

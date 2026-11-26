@@ -1,0 +1,19 @@
+{
+  "name": "vision-ai-lecture-slidev",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "slidev",
+    "build": "slidev build --base /vision_ai_lecture/slidev/",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "dependencies": {
+    "@slidev/cli": "53.1.0",
+    "@slidev/theme-default": "^0.25.0",
+    "@fontsource-variable/noto-sans-kr": "^5.2.0",
+    "vue": "^3.5.0"
+  }
+}
