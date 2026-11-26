@@ -21,22 +21,28 @@ function reset() {
 
 <template>
   <div class="lecture-interaction training-lab" @keydown.stop @touchstart.stop @touchend.stop>
-    <div class="training-strip" aria-live="polite">
-      <div><small>입력</small><strong>{{ training.input }}</strong></div>
-      <div><small>정답</small><strong>{{ training.target }}</strong></div>
-      <div><small>예측</small><strong data-learning="prediction">{{ format(result.predicted) }}</strong></div>
-      <div><small>손실 · Loss</small><strong data-learning="loss">{{ format(result.loss) }}</strong></div>
-      <div><small>가중치 · W</small><strong data-learning="weight">{{ format(weight) }}</strong></div>
-    </div>
-    <div class="training-chart" aria-label="예측과 정답의 차이">
-      <div><span>예측</span><progress :value="result.predicted" max="4" aria-label="예측값"/></div>
-      <div><span>정답</span><progress value="4" max="4" aria-label="정답값"/></div>
-    </div>
-    <div class="equation-panel"><strong>오차에 주는 벌점</strong><span>({{ format(result.predicted) }} − 4)² = {{ format(result.loss) }}</span></div>
-    <div class="control-row">
-      <button type="button" :disabled="steps >= 8" @click="train">학습 1단계</button>
-      <button type="button" @click="reset">초기화</button>
-      <span>{{ steps }}회 갱신</span>
+    <div class="training-context"><AppleView zoom/><span>사과 사진과 정답으로 배우는 원리를 작은 숫자 예제로 확인합니다.</span></div>
+    <div class="training-layout">
+      <section class="training-calculation">
+        <h2>정답 4를 맞히도록 학습시키면?</h2>
+        <div class="training-input"><span>입력 {{ training.input }}</span><span aria-hidden="true">→</span><span>예측 = W × 입력</span><span aria-hidden="true">→</span><span>정답 {{ training.target }}</span></div>
+        <div class="training-equation" aria-live="polite">ŷ = {{ format(weight) }} × 2 = <strong data-learning="prediction">{{ format(result.predicted) }}</strong></div>
+        <div class="control-row">
+          <button class="training-step" type="button" :disabled="steps >= 8" @click="train">학습 1단계</button>
+          <button type="button" @click="reset">초기화</button>
+          <span>{{ steps }}회 갱신</span>
+        </div>
+        <p>가중치 W = <b data-learning="weight">{{ format(weight) }}</b></p>
+        <p>손실 = ({{ format(result.predicted) }} − 4)² = <b data-learning="loss">{{ format(result.loss) }}</b></p>
+      </section>
+      <section class="training-chart">
+        <h2>예측이 정답에 가까워지는 과정</h2>
+        <div class="training-bars" aria-hidden="true">
+          <div><strong>{{ training.target }}</strong><i style="height: var(--chart-y)"/></div>
+          <div><strong>{{ format(result.predicted) }}</strong><i :style="{ height: `calc(var(--chart-y) * ${result.predicted / training.target})` }"/></div>
+        </div>
+        <div class="training-chart-labels"><span>정답(고정)</span><span>현재 예측</span></div>
+      </section>
     </div>
   </div>
 </template>

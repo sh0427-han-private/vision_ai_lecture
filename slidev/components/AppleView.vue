@@ -1,11 +1,11 @@
 <script setup>
 import { apple, normalApple } from '../lesson/assets.js'
 
-defineProps({ mode: { type: String, default: 'photo' }, filter: String, x: { type: Number, default: 0 }, normal: Boolean, zoom: Boolean })
+defineProps({ mode: { type: String, default: 'photo' }, filter: String, x: { type: Number, default: 0 }, normal: Boolean, zoom: Boolean, crop: String })
 </script>
 
 <template>
-  <svg :viewBox="zoom ? '430 100 295 295' : '0 0 960 640'" class="apple-view" role="img" :aria-label="normal ? '교육용 정상 사과 사진' : '표면에 작은 반점이 있는 교육용 사과 사진'">
+  <svg :viewBox="crop || (zoom ? '430 100 295 295' : '0 0 960 640')" class="apple-view" role="img" :aria-label="normal ? '교육용 정상 사과 사진' : '표면에 작은 반점이 있는 교육용 사과 사진'">
     <rect width="960" height="640" fill="#e9eeed"/>
     <image :href="normal ? normalApple : apple" :x="x" width="960" height="640" :style="{ filter }"/>
     <ellipse v-if="mode === 'mark'" cx="589" cy="224" rx="26" ry="26" fill="none" stroke="#ffde88" stroke-width="8"/>

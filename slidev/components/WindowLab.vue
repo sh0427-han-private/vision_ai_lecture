@@ -37,12 +37,20 @@ function change(value) {
 
 <template>
   <div class="lecture-interaction window-lab" @keydown.stop @touchstart.stop @touchend.stop>
+    <div v-if="mode === 'kernel'" class="kernel-context">
+      <strong>Conv 계산 확대</strong><ArchitectureFigure compact :highlight="['conv-a', 'conv-b']" />
+    </div>
     <div v-if="mode === 'stride' || mode === 'padding'" class="control-row" :aria-label="mode === 'stride' ? '이동 간격' : '패딩'">
       <button v-for="option in mode === 'stride' ? [1, 2] : [0, 1]" :key="option" type="button" :aria-pressed="choice === option" @click="change(option)">
         {{ mode === 'stride' ? '이동 간격' : '패딩' }} {{ option }}
       </button>
     </div>
-    <div class="window-layout">
+    <div class="window-layout" :class="{ 'window-with-photo': mode === 'kernel' }">
+      <figure v-if="mode === 'kernel'" class="kernel-photo">
+        <AppleView mode="mark" />
+        <AppleView crop="547 183 85 85" />
+        <figcaption>사과 사진의 85×85 픽셀 영역</figcaption>
+      </figure>
       <div><h2>입력 · {{ input.length }}×{{ input[0].length }}</h2><MatrixGrid :values="input" :highlight="inWindow" label="입력 행렬"/></div>
       <span class="network-arrow" aria-hidden="true">→</span>
       <div><h2>{{ isPool ? '선택한 2×2 영역' : '커널 · 3×3' }}</h2><MatrixGrid :values="isPool ? windowData : weights" :label="isPool ? '선택한 영역' : '커널 값'"/></div>

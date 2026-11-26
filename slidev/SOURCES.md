@@ -5,6 +5,7 @@
 - 사과 사진 두 장은 본 저장소의 교육용 생성 자산입니다. P01의 타원과 P14/P40의 박스 및 마스크는 직접 그린 설명용 주석입니다. P08의 동영상 프레임은 사진 한 장을 옮겨 보여 주는 시뮬레이션입니다. [기존 이미지 기록](../assets/SOURCES.md)
 - P35는 저장소의 사과 사진을 실제 ImageNet 사전학습 SqueezeNet1.1에서 추론했습니다. 가중치 URL, 원본 해시, 전처리 및 출력 층·채널은 [계산 기록](figures/apple-feature-maps.json)에 기록했습니다. 이미지 실행 결과는 [재현 스크립트](scripts/render_feature_maps.py)로 다시 만들 수 있습니다.
 - P20은 가상의 소형 구조, P28~34는 직접 검산하는 작은 행렬, P41~42는 1변수 회귀, P48~51은 교육용 100건입니다. 각 숫자를 만든 전제는 [강의 운영안](../TWO_HOUR_LECTURE_PLAN.md)과 [계산 코드](lesson/calculations.js)에서 확인할 수 있습니다.
+- P20·P28·P36·P43은 기존 HTML 강의와 [같은 사과 CNN 도식](../docs/assets/lesson/cnn_apple_architecture.svg)을 사용합니다.
 - 로컬 한글 글꼴은 [Noto Sans KR Variable의 OFL-1.1 배포본](https://github.com/fontsource/fontsource/tree/main/fonts/variable/noto-sans-kr)을 사용합니다.
 
 | 번호 | Concept | 제목 | 참고한 원문 |
